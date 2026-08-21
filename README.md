@@ -17,13 +17,13 @@
 
 ## 更新
 
-毎週金曜18:00に Claude のスケジュールタスク `kaigo-funnel-weekly` が HubSpot とスプレッドシートから再集計し、
-`index.html` を差し替えて main に push する（GitHub Pages が自動で再デプロイ）。
+自動更新はしていない。数値は生成時点のスナップショット。
 
-タスク定義: `~/.claude/scheduled-tasks/kaigo-funnel-weekly/SKILL.md`
+最新化するときは、ダッシュボードHTMLを生成したうえで Claude に
+「このHTMLでGitHub Pagesを更新して」と指示すれば、`index.html` を差し替えて push する。
+手作業でやる場合も `index.html` を上書きして main に push すれば GitHub Pages が再デプロイする。
 
-金曜実行のため、最新週の行は月〜金までの途中集計になる。
-手動で最新化したい場合は Claude に「ファネルダッシュボードを更新して」と指示すれば同じ処理が走る。
+公開URLは差し替えても変わらない。
 
 ## 検索エンジン対策
 
