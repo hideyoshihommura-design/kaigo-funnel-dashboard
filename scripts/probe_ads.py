@@ -24,6 +24,14 @@ import urllib.request
 
 API = "https://api.hubapi.com"
 
+# Windowsのコンソールは既定がUTF-8でないことがあり、日本語の出力が
+# 文字化けして読めなくなる。判定結果を読ませるのが目的なので明示しておく。
+for _stream in (sys.stdout, sys.stderr):
+    try:
+        _stream.reconfigure(encoding="utf-8")
+    except Exception:
+        pass
+
 
 def call(path, token, method="GET", payload=None):
     """(status, body) を返す。失敗しても例外を投げない。"""
@@ -53,8 +61,7 @@ def main():
         try:
             token = getpass.getpass("HubSpotのトークンを貼り付けてEnter（表示されません）: ").strip()
         except (EOFError, KeyboardInterrupt):
-            sys.exit("
-中断しました。")
+            sys.exit("\n中断しました。")
     if not token:
         sys.exit("トークンが空です。")
 
