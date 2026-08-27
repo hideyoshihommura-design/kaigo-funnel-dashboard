@@ -771,7 +771,30 @@ white-space:nowrap;}
 /* 横に並べられる表は並べる。1つずつ縦に積むと、幅が余っているのに
    スクロール量だけが増える。入らない幅では自動で縦積みに戻る。 */
 .tabgrid{display:flex;flex-wrap:wrap;gap:0 26px;align-items:flex-start;}
-.tabgrid>div{max-width:100%;min-width:0;}
+.tabgrid>*{max-width:100%;min-width:0;}
+
+/* 表は開いたときだけ場所を取ればいい。閉じているときは見出しだけ残す。
+   <details> を使うのは、JSが無くても開閉でき、キーボードでも操作でき、
+   閉じた中身もブラウザのページ内検索が拾うため。自前の開閉ボタンにすると
+   このどれも自分で作り直すことになる。 */
+details.fold{margin:14px 0 0;}
+details.fold>summary{list-style:none;cursor:pointer;
+display:inline-flex;align-items:center;gap:7px;
+font-size:13px;font-weight:600;color:var(--muted);
+padding:5px 12px 5px 9px;border:1px solid var(--line);border-radius:8px;
+background:var(--card);user-select:none;}
+details.fold>summary::-webkit-details-marker{display:none;}
+details.fold>summary:hover{color:var(--ink-strong);border-color:var(--brand);}
+details.fold>summary:focus-visible{outline:2px solid var(--brand);outline-offset:2px;}
+details.fold>summary .tri{font-size:9px;color:var(--brand);
+transition:transform .15s;}
+details.fold[open]>summary .tri{transform:rotate(90deg);}
+/* 閉じていても「中に何がどれだけあるか」は出す。件数が見えないと、
+   開くまで中身の見当がつかず、結局すべて開いて確認することになる。 */
+details.fold>summary .cnt{font-weight:400;font-size:11px;color:var(--muted);}
+details.fold[open]>summary{margin-bottom:9px;}
+details.fold>.legend{margin:0 2px 7px;}
+@media(prefers-reduced-motion:reduce){details.fold>summary .tri{transition:none;}}
 /* 横スクロールした時に日付・週を見失わないよう左端は残す。 */
 .tabgrid td.wk,.tabgrid thead th:first-child{position:sticky;left:0;}
 .tabgrid td.wk{z-index:1;}
@@ -1176,6 +1199,36 @@ function onApply(){
 """
 
 
+FOLD_JS = """
+/* 開閉はこの端末に憶えておく。毎回開き直すなら畳んでおく意味がない。
+   プライベートウィンドウや設定によっては localStorage が例外を投げるので、
+   読み書きが失敗してもページは普通に動くようにしておく（既定は閉じたまま）。 */
+(function(){
+  var K='kfold:';
+  var ds=document.querySelectorAll('details.fold');
+  for(var i=0;i<ds.length;i++){
+    (function(d){
+      var k=K+d.id;
+      try{var v=localStorage.getItem(k);
+        if(v==='1'){d.open=true;}else if(v==='0'){d.open=false;}
+      }catch(e){}
+      d.addEventListener('toggle',function(){
+        try{localStorage.setItem(k,d.open?'1':'0');}catch(e){}
+        /* 閉じている間に幅0で初期化されたグラフがあれば、開いた時に測り直す。
+           今は折りたたむのは表だけだが、後でグラフを入れても崩れないように。 */
+        if(d.open&&window.Chart&&Chart.getChart){
+          var cs=d.querySelectorAll('canvas');
+          for(var j=0;j<cs.length;j++){
+            var ch=Chart.getChart(cs[j]); if(ch){ch.resize();}
+          }
+        }
+      });
+    })(ds[i]);
+  }
+})();
+"""
+
+
 def ds(label, data, color, dashed=False, width=2, hidden=False):
     d = {
         "label": label,
@@ -1549,11 +1602,11 @@ def render(data):
                 f'<td class="num">{f_int(r["appointed"])}</td>'
                 f'<td class="num">{f_pct(r["rate"])}</td>'
                 "</tr>" for r in conv["rows"])
-            conv_block = f"""  <div><h3>架電したリード → 面談予約（週次）</h3>
+            conv_block = f"""  <details class="fold" id="f-conv"><summary><span class="tri">▶</span>架電したリード → 面談予約<span class="cnt">{len(conv["rows"])}週分</span></summary>
     <div class="tablewrap"><table>
     <thead><tr><th>週</th><th>架電したリード数</th><th>面談予約数</th>
     <th>転換率</th></tr></thead>
-    <tbody>{crows}</tbody></table></div></div>
+    <tbody>{crows}</tbody></table></div></details>
 """
         daily_kpis = "".join(kpi_items)
         daily_section = f"""
@@ -1569,11 +1622,11 @@ def render(data):
     <div class="chart"><canvas id="c_call"></canvas></div></div>
 </div>
 <div class="tabgrid">
-  <div><h3>日次の行動量</h3>
+  <details class="fold" id="f-act"><summary><span class="tri">▶</span>日次の行動量<span class="cnt">{len(drows)}日分</span></summary>
     <div class="tablewrap"><table>
     <thead><tr><th>日付</th><th>架電数</th><th>接続数</th><th>接続率</th>
     <th>面談予約数</th><th>新規リード数</th></tr></thead>
-    <tbody>{daily_table}</tbody></table></div></div>
+    <tbody>{daily_table}</tbody></table></div></details>
 {conv_block}</div>"""
         daily_js = (
             f"mkCallBar('c_call',{js(daily['chart']['labels'])},"
@@ -1691,11 +1744,12 @@ resetRange();
     <div class="base"><canvas id="c_win_b"></canvas></div>
     <div class="baselabel">母数：週次商談数</div></div>
 </div>
+<details class="fold" id="f-direct"><summary><span class="tri">▶</span>週次テーブル<span class="cnt">{len(weeks)}週 × チャネル別</span></summary>
 <div class="legend">各セルの下段グレー数値は4週移動平均</div>
 <div class="tablewrap"><table>
 <thead><tr><th>週</th><th>チャネル</th><th>リード数</th><th>費用</th><th>CPL</th>
 <th>商談数</th><th>商談化率</th><th>成約数</th><th>成約率</th></tr></thead>
-<tbody>{direct_table}</tbody></table></div>
+<tbody>{direct_table}</tbody></table></div></details>
 
 <h2>代理店</h2>
 <div class="charts">
@@ -1706,20 +1760,22 @@ resetRange();
     <div class="base"><canvas id="c_agr_b"></canvas></div>
     <div class="baselabel">母数：週次リード数</div></div>
 </div>
+<details class="fold" id="f-agency"><summary><span class="tri">▶</span>週次テーブル<span class="cnt">{len(weeks)}週</span></summary>
 <div class="legend">各セルの下段グレー数値は4週移動平均</div>
 <div class="tablewrap"><table>
 <thead><tr><th>週</th><th>リード数</th><th>商談数</th><th>商談化率</th>
 <th>成約数</th><th>成約率</th></tr></thead>
-<tbody>{agency_table}</tbody></table></div>
+<tbody>{agency_table}</tbody></table></div></details>
 
 <h2>展示会別CPL</h2>
+<details class="fold" id="f-expo" open><summary><span class="tri">▶</span>展示会別CPL<span class="cnt">{len(data.get("expos") or [])}件</span></summary>
 <div class="tablewrap"><table>
 <thead><tr><th>展示会名</th><th>開催日</th><th>費用</th><th>リード数</th><th>CPL</th>
 <th>商談数</th><th>成約数</th></tr></thead>
-<tbody>{expo_table}</tbody></table></div>
+<tbody>{expo_table}</tbody></table></div></details>
 
 </div>
-<script>{CHART_JS}{charts_js}</script>
+<script>{CHART_JS}{charts_js}{FOLD_JS}</script>
 </body></html>"""
 
 
