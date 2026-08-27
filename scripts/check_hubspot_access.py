@@ -63,8 +63,7 @@ def get_token():
     try:
         return getpass.getpass("HubSpotのキーを貼り付けてEnter（表示されません）: ").strip()
     except (EOFError, KeyboardInterrupt):
-        sys.exit("
-中断しました。")
+        sys.exit("中断しました。")
 
 
 def show(label, ok, detail=""):
