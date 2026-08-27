@@ -90,12 +90,12 @@ def main():
     print("2. 広告系エンドポイントの探索")
     print("=" * 62)
     candidates = [
+        "/marketing/v3/campaigns",
         "/marketing/v3/ads/accounts",
         "/marketing/v3/ads/campaigns",
         "/marketing/v3/ads/ad-accounts",
         "/ads/v1/ad-accounts",
         "/ads/v1/ad-campaigns",
-        "/marketing/v3/campaigns",
     ]
     reachable = []
     for path in candidates:
@@ -104,6 +104,47 @@ def main():
         print(f"  [{st:>3}] {mark:<6} {path}")
         if st == 200:
             reachable.append((path, body))
+
+    # --- キャンペーン配下の掘り下げ
+    # 広告専用のエンドポイントが無くても、キャンペーンに紐づく
+    # 予算・消費の明細に日付が入っていれば、そこから日次を組み立てられる。
+    print()
+    print("=" * 62)
+    print("2b. キャンペーン配下の掘り下げ")
+    print("=" * 62)
+    st, body = call("/marketing/v3/campaigns?limit=5", token)
+    if st != 200:
+        print(f"  キャンペーン一覧に到達できず (status {st})。ここは調べられない。")
+    else:
+        results = body.get("results") or []
+        print(f"  キャンペーン {len(results)}件")
+        for camp in results[:3]:
+            cid = camp.get("id") or (camp.get("properties") or {}).get("hs_object_id")
+            name = (camp.get("properties") or {}).get("hs_name") or camp.get("name") or "(名前不明)"
+            if not cid:
+                continue
+            print("")
+            print(f"  ● {name} (id={cid})")
+            subs = [
+                f"/marketing/v3/campaigns/{cid}",
+                f"/marketing/v3/campaigns/{cid}/budget",
+                f"/marketing/v3/campaigns/{cid}/spend",
+                f"/marketing/v3/campaigns/{cid}/budget-items",
+                f"/marketing/v3/campaigns/{cid}/spend-items",
+                f"/marketing/v3/campaigns/{cid}/reports/metrics",
+                f"/marketing/v3/campaigns/{cid}/assets/AD_CAMPAIGN",
+            ]
+            for sp in subs:
+                sst, sbody = call(sp, token)
+                tail = sp.split("/")[-1]
+                if sst == 200:
+                    text = json.dumps(sbody, ensure_ascii=False)
+                    has_date = any(k in text for k in ("date", "Date", "startDate", "日付"))
+                    has_money = any(k in text for k in ("spend", "amount", "budget", "cost"))
+                    print(f"    [200] {tail:<18} 日付={有 if has_date else 無} "
+                          f"金額={有 if has_money else 無}  {text[:200]}")
+                else:
+                    print(f"    [{sst:>3}] {tail}")
 
     print()
     print("=" * 62)
