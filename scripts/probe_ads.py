@@ -54,9 +54,19 @@ def call(path, token, method="GET", payload=None):
 
 
 def main():
-    # 環境変数が無ければその場で聞く。コマンドに書かせると
-    # シェルの履歴にトークンが残るので、入力は伏せ字で受け取る。
+    # 取得の順番: 環境変数 → キーファイル → その場で入力。
+    # コマンドラインに書かせるとシェルの履歴にトークンが残るため、
+    # 直接渡す手段は用意しない。キーファイルは .gitignore 済み。
     token = os.environ.get("HUBSPOT_TOKEN")
+    if not token:
+        keyfile = os.path.join(
+            os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+            ".hubspot_key")
+        if os.path.exists(keyfile):
+            with open(keyfile, encoding="utf-8") as f:
+                token = f.read().strip()
+            if token:
+                print("[info] .hubspot_key からキーを読み込みました。")
     if not token:
         try:
             token = getpass.getpass("HubSpotのトークンを貼り付けてEnter（表示されません）: ").strip()
