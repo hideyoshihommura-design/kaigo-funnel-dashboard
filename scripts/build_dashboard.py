@@ -1142,9 +1142,19 @@ function resetRange(){
 function onApply(){
   var f=document.getElementById('from').value||RAW.start;
   var t=document.getElementById('to').value||RAW.end;
-  if(f>t){var x=f;f=t;t=x;
-    document.getElementById('from').value=f;
-    document.getElementById('to').value=t;}
+  if(f>t){var x=f;f=t;t=x;}
+  /* データの外を指定されたら端に寄せる。input の min/max は日付ピッカーを
+     絞るだけで、直接入力や貼り付けは素通りする。素通りさせると該当週が
+     0件になり、見出しが「2027-01-01 〜 2026-08-26」のように開始が終了より
+     後ろの状態で出てしまう（総費用も空欄になる）。 */
+  if(f<RAW.start){f=RAW.start;}
+  if(f>RAW.end){f=RAW.end;}
+  if(t<RAW.start){t=RAW.start;}
+  if(t>RAW.end){t=RAW.end;}
+  /* 丸めた値を入力欄にも戻す。表示している期間と入力欄が食い違うと、
+     何を見ているのか分からなくなる。 */
+  document.getElementById('from').value=f;
+  document.getElementById('to').value=t;
   apply(f,t);
 }
 """
