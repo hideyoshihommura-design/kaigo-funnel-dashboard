@@ -1,0 +1,2914 @@
+{
+ "title": "ホリエモンAI学校 介護校 ファネルダッシュボード",
+ "generated_at": "2026-08-26",
+ "week_starts": [
+  "2025-09-01",
+  "2025-09-08",
+  "2025-09-15",
+  "2025-09-22",
+  "2025-09-29",
+  "2025-10-06",
+  "2025-10-13",
+  "2025-10-20",
+  "2025-10-27",
+  "2025-11-03",
+  "2025-11-10",
+  "2025-11-17",
+  "2025-11-24",
+  "2025-12-01",
+  "2025-12-08",
+  "2025-12-15",
+  "2025-12-22",
+  "2025-12-29",
+  "2026-01-05",
+  "2026-01-12",
+  "2026-01-19",
+  "2026-01-26",
+  "2026-02-02",
+  "2026-02-09",
+  "2026-02-16",
+  "2026-02-23",
+  "2026-03-02",
+  "2026-03-09",
+  "2026-03-16",
+  "2026-03-23",
+  "2026-03-30",
+  "2026-04-06",
+  "2026-04-13",
+  "2026-04-20",
+  "2026-04-27",
+  "2026-05-04",
+  "2026-05-11",
+  "2026-05-18",
+  "2026-05-25",
+  "2026-06-01",
+  "2026-06-08",
+  "2026-06-15",
+  "2026-06-22",
+  "2026-06-29",
+  "2026-07-06",
+  "2026-07-13",
+  "2026-07-20",
+  "2026-07-27",
+  "2026-08-03",
+  "2026-08-10",
+  "2026-08-17",
+  "2026-08-24"
+ ],
+ "direct": {
+  "2025-09-01": {
+   "event": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "web": {
+    "leads": 0,
+    "cost": null,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "line": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "referral": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "other": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   }
+  },
+  "2025-09-08": {
+   "event": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "web": {
+    "leads": 0,
+    "cost": null,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "line": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "referral": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "other": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   }
+  },
+  "2025-09-15": {
+   "event": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "web": {
+    "leads": 0,
+    "cost": null,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "line": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "referral": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "other": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   }
+  },
+  "2025-09-22": {
+   "event": {
+    "leads": 153,
+    "cost": 220000,
+    "deals": 2,
+    "won": 0,
+    "won_amount": 0
+   },
+   "web": {
+    "leads": 1,
+    "cost": null,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "line": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "referral": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "other": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   }
+  },
+  "2025-09-29": {
+   "event": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "web": {
+    "leads": 0,
+    "cost": null,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "line": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "referral": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "other": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   }
+  },
+  "2025-10-06": {
+   "event": {
+    "leads": 1,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "web": {
+    "leads": 61,
+    "cost": null,
+    "deals": 1,
+    "won": 0,
+    "won_amount": 0
+   },
+   "line": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "referral": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "other": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   }
+  },
+  "2025-10-13": {
+   "event": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "web": {
+    "leads": 0,
+    "cost": null,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "line": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "referral": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "other": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   }
+  },
+  "2025-10-20": {
+   "event": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "web": {
+    "leads": 0,
+    "cost": null,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "line": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "referral": {
+    "leads": 3,
+    "cost": 0,
+    "deals": 3,
+    "won": 1,
+    "won_amount": 170500
+   },
+   "other": {
+    "leads": 1,
+    "cost": 0,
+    "deals": 1,
+    "won": 1,
+    "won_amount": 81400
+   }
+  },
+  "2025-10-27": {
+   "event": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "web": {
+    "leads": 0,
+    "cost": null,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "line": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "referral": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "other": {
+    "leads": 1,
+    "cost": 0,
+    "deals": 1,
+    "won": 0,
+    "won_amount": 0
+   }
+  },
+  "2025-11-03": {
+   "event": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "web": {
+    "leads": 0,
+    "cost": null,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "line": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "referral": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "other": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   }
+  },
+  "2025-11-10": {
+   "event": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "web": {
+    "leads": 0,
+    "cost": null,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "line": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "referral": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "other": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   }
+  },
+  "2025-11-17": {
+   "event": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "web": {
+    "leads": 2,
+    "cost": null,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "line": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "referral": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "other": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   }
+  },
+  "2025-11-24": {
+   "event": {
+    "leads": 137,
+    "cost": 455323,
+    "deals": 8,
+    "won": 1,
+    "won_amount": 2101000
+   },
+   "web": {
+    "leads": 3,
+    "cost": null,
+    "deals": 1,
+    "won": 0,
+    "won_amount": 0
+   },
+   "line": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "referral": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "other": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   }
+  },
+  "2025-12-01": {
+   "event": {
+    "leads": 17,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "web": {
+    "leads": 1,
+    "cost": null,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "line": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "referral": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "other": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   }
+  },
+  "2025-12-08": {
+   "event": {
+    "leads": 2,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "web": {
+    "leads": 0,
+    "cost": null,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "line": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "referral": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "other": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   }
+  },
+  "2025-12-15": {
+   "event": {
+    "leads": 32,
+    "cost": 0,
+    "deals": 1,
+    "won": 0,
+    "won_amount": 0
+   },
+   "web": {
+    "leads": 0,
+    "cost": null,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "line": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "referral": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "other": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   }
+  },
+  "2025-12-22": {
+   "event": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "web": {
+    "leads": 0,
+    "cost": null,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "line": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "referral": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "other": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   }
+  },
+  "2025-12-29": {
+   "event": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "web": {
+    "leads": 0,
+    "cost": null,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "line": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "referral": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "other": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   }
+  },
+  "2026-01-05": {
+   "event": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "web": {
+    "leads": 0,
+    "cost": null,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "line": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "referral": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "other": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   }
+  },
+  "2026-01-12": {
+   "event": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "web": {
+    "leads": 0,
+    "cost": null,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "line": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "referral": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "other": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   }
+  },
+  "2026-01-19": {
+   "event": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "web": {
+    "leads": 0,
+    "cost": null,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "line": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "referral": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "other": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   }
+  },
+  "2026-01-26": {
+   "event": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "web": {
+    "leads": 0,
+    "cost": null,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "line": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "referral": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "other": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   }
+  },
+  "2026-02-02": {
+   "event": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "web": {
+    "leads": 0,
+    "cost": null,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "line": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "referral": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "other": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   }
+  },
+  "2026-02-09": {
+   "event": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "web": {
+    "leads": 0,
+    "cost": null,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "line": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "referral": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "other": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   }
+  },
+  "2026-02-16": {
+   "event": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "web": {
+    "leads": 1,
+    "cost": null,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "line": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "referral": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "other": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   }
+  },
+  "2026-02-23": {
+   "event": {
+    "leads": 176,
+    "cost": 616000,
+    "deals": 2,
+    "won": 0,
+    "won_amount": 0
+   },
+   "web": {
+    "leads": 1,
+    "cost": null,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "line": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "referral": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "other": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   }
+  },
+  "2026-03-02": {
+   "event": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "web": {
+    "leads": 0,
+    "cost": null,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "line": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "referral": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "other": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   }
+  },
+  "2026-03-09": {
+   "event": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "web": {
+    "leads": 0,
+    "cost": null,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "line": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "referral": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "other": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   }
+  },
+  "2026-03-16": {
+   "event": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "web": {
+    "leads": 0,
+    "cost": null,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "line": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "referral": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "other": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   }
+  },
+  "2026-03-23": {
+   "event": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "web": {
+    "leads": 1,
+    "cost": null,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "line": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "referral": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "other": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   }
+  },
+  "2026-03-30": {
+   "event": {
+    "leads": 1,
+    "cost": 0,
+    "deals": 1,
+    "won": 1,
+    "won_amount": 2101000
+   },
+   "web": {
+    "leads": 1,
+    "cost": null,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "line": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "referral": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "other": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   }
+  },
+  "2026-04-06": {
+   "event": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "web": {
+    "leads": 40,
+    "cost": 246127,
+    "deals": 1,
+    "won": 0,
+    "won_amount": 0
+   },
+   "line": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "referral": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "other": {
+    "leads": 1,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   }
+  },
+  "2026-04-13": {
+   "event": {
+    "leads": 1,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "web": {
+    "leads": 77,
+    "cost": 185135,
+    "deals": 3,
+    "won": 0,
+    "won_amount": 0
+   },
+   "line": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "referral": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "other": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   }
+  },
+  "2026-04-20": {
+   "event": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "web": {
+    "leads": 55,
+    "cost": 205240,
+    "deals": 2,
+    "won": 0,
+    "won_amount": 0
+   },
+   "line": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "referral": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "other": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   }
+  },
+  "2026-04-27": {
+   "event": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "web": {
+    "leads": 27,
+    "cost": 96706,
+    "deals": 1,
+    "won": 0,
+    "won_amount": 0
+   },
+   "line": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "referral": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "other": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   }
+  },
+  "2026-05-04": {
+   "event": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "web": {
+    "leads": 38,
+    "cost": 108252,
+    "deals": 3,
+    "won": 0,
+    "won_amount": 0
+   },
+   "line": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "referral": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "other": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   }
+  },
+  "2026-05-11": {
+   "event": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "web": {
+    "leads": 25,
+    "cost": 105487,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "line": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "referral": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "other": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   }
+  },
+  "2026-05-18": {
+   "event": {
+    "leads": 2,
+    "cost": 0,
+    "deals": 1,
+    "won": 0,
+    "won_amount": 0
+   },
+   "web": {
+    "leads": 36,
+    "cost": 124469,
+    "deals": 3,
+    "won": 1,
+    "won_amount": 81400
+   },
+   "line": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "referral": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "other": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   }
+  },
+  "2026-05-25": {
+   "event": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "web": {
+    "leads": 61,
+    "cost": 210806,
+    "deals": 3,
+    "won": 0,
+    "won_amount": 0
+   },
+   "line": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "referral": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "other": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   }
+  },
+  "2026-06-01": {
+   "event": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "web": {
+    "leads": 95,
+    "cost": 288233,
+    "deals": 2,
+    "won": 0,
+    "won_amount": 0
+   },
+   "line": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "referral": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "other": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   }
+  },
+  "2026-06-08": {
+   "event": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "web": {
+    "leads": 68,
+    "cost": 163270,
+    "deals": 2,
+    "won": 0,
+    "won_amount": 0
+   },
+   "line": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "referral": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "other": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   }
+  },
+  "2026-06-15": {
+   "event": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "web": {
+    "leads": 55,
+    "cost": 213693,
+    "deals": 4,
+    "won": 0,
+    "won_amount": 0
+   },
+   "line": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "referral": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "other": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   }
+  },
+  "2026-06-22": {
+   "event": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "web": {
+    "leads": 54,
+    "cost": 183659,
+    "deals": 1,
+    "won": 0,
+    "won_amount": 0
+   },
+   "line": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "referral": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "other": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   }
+  },
+  "2026-06-29": {
+   "event": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "web": {
+    "leads": 41,
+    "cost": 76823,
+    "deals": 1,
+    "won": 0,
+    "won_amount": 0
+   },
+   "line": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "referral": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "other": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   }
+  },
+  "2026-07-06": {
+   "event": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "web": {
+    "leads": 72,
+    "cost": 76765,
+    "deals": 2,
+    "won": 0,
+    "won_amount": 0
+   },
+   "line": {
+    "leads": 2,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "referral": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "other": {
+    "leads": 1,
+    "cost": 0,
+    "deals": 1,
+    "won": 0,
+    "won_amount": 0
+   }
+  },
+  "2026-07-13": {
+   "event": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "web": {
+    "leads": 43,
+    "cost": 76187,
+    "deals": 1,
+    "won": 0,
+    "won_amount": 0
+   },
+   "line": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "referral": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "other": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   }
+  },
+  "2026-07-20": {
+   "event": {
+    "leads": 545,
+    "cost": 572000,
+    "deals": 3,
+    "won": 0,
+    "won_amount": 0
+   },
+   "web": {
+    "leads": 40,
+    "cost": 78134,
+    "deals": 1,
+    "won": 0,
+    "won_amount": 0
+   },
+   "line": {
+    "leads": 6,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "referral": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "other": {
+    "leads": 1,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   }
+  },
+  "2026-07-27": {
+   "event": {
+    "leads": 27,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "web": {
+    "leads": 37,
+    "cost": 75149,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "line": {
+    "leads": 5,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "referral": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "other": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   }
+  },
+  "2026-08-03": {
+   "event": {
+    "leads": 12,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "web": {
+    "leads": 36,
+    "cost": 77648,
+    "deals": 1,
+    "won": 0,
+    "won_amount": 0
+   },
+   "line": {
+    "leads": 3,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "referral": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "other": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   }
+  },
+  "2026-08-10": {
+   "event": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "web": {
+    "leads": 41,
+    "cost": 79418,
+    "deals": 2,
+    "won": 0,
+    "won_amount": 0
+   },
+   "line": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "referral": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "other": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   }
+  },
+  "2026-08-17": {
+   "event": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "web": {
+    "leads": 34,
+    "cost": 121172,
+    "deals": 1,
+    "won": 0,
+    "won_amount": 0
+   },
+   "line": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "referral": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "other": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   }
+  },
+  "2026-08-24": {
+   "event": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "web": {
+    "leads": 16,
+    "cost": null,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "line": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "referral": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "other": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   }
+  }
+ },
+ "agency": {
+  "2025-09-01": {
+   "leads": 0,
+   "deals": 0,
+   "won": 0,
+   "won_amount": 0
+  },
+  "2025-09-08": {
+   "leads": 0,
+   "deals": 0,
+   "won": 0,
+   "won_amount": 0
+  },
+  "2025-09-15": {
+   "leads": 0,
+   "deals": 0,
+   "won": 0,
+   "won_amount": 0
+  },
+  "2025-09-22": {
+   "leads": 0,
+   "deals": 0,
+   "won": 0,
+   "won_amount": 0
+  },
+  "2025-09-29": {
+   "leads": 0,
+   "deals": 0,
+   "won": 0,
+   "won_amount": 0
+  },
+  "2025-10-06": {
+   "leads": 0,
+   "deals": 0,
+   "won": 0,
+   "won_amount": 0
+  },
+  "2025-10-13": {
+   "leads": 0,
+   "deals": 0,
+   "won": 0,
+   "won_amount": 0
+  },
+  "2025-10-20": {
+   "leads": 3,
+   "deals": 3,
+   "won": 3,
+   "won_amount": 3500750
+  },
+  "2025-10-27": {
+   "leads": 1,
+   "deals": 1,
+   "won": 1,
+   "won_amount": 341000
+  },
+  "2025-11-03": {
+   "leads": 2,
+   "deals": 2,
+   "won": 1,
+   "won_amount": 2101000
+  },
+  "2025-11-10": {
+   "leads": 0,
+   "deals": 0,
+   "won": 0,
+   "won_amount": 0
+  },
+  "2025-11-17": {
+   "leads": 0,
+   "deals": 0,
+   "won": 0,
+   "won_amount": 0
+  },
+  "2025-11-24": {
+   "leads": 1,
+   "deals": 1,
+   "won": 1,
+   "won_amount": 775500
+  },
+  "2025-12-01": {
+   "leads": 2,
+   "deals": 2,
+   "won": 1,
+   "won_amount": 1278750
+  },
+  "2025-12-08": {
+   "leads": 0,
+   "deals": 0,
+   "won": 0,
+   "won_amount": 0
+  },
+  "2025-12-15": {
+   "leads": 2,
+   "deals": 2,
+   "won": 1,
+   "won_amount": 607750
+  },
+  "2025-12-22": {
+   "leads": 1,
+   "deals": 1,
+   "won": 0,
+   "won_amount": 0
+  },
+  "2025-12-29": {
+   "leads": 1,
+   "deals": 1,
+   "won": 0,
+   "won_amount": 0
+  },
+  "2026-01-05": {
+   "leads": 0,
+   "deals": 0,
+   "won": 0,
+   "won_amount": 0
+  },
+  "2026-01-12": {
+   "leads": 1,
+   "deals": 1,
+   "won": 0,
+   "won_amount": 0
+  },
+  "2026-01-19": {
+   "leads": 0,
+   "deals": 0,
+   "won": 0,
+   "won_amount": 0
+  },
+  "2026-01-26": {
+   "leads": 0,
+   "deals": 0,
+   "won": 0,
+   "won_amount": 0
+  },
+  "2026-02-02": {
+   "leads": 1,
+   "deals": 1,
+   "won": 0,
+   "won_amount": 0
+  },
+  "2026-02-09": {
+   "leads": 0,
+   "deals": 0,
+   "won": 0,
+   "won_amount": 0
+  },
+  "2026-02-16": {
+   "leads": 2,
+   "deals": 2,
+   "won": 1,
+   "won_amount": 1111000
+  },
+  "2026-02-23": {
+   "leads": 0,
+   "deals": 0,
+   "won": 0,
+   "won_amount": 0
+  },
+  "2026-03-02": {
+   "leads": 0,
+   "deals": 0,
+   "won": 0,
+   "won_amount": 0
+  },
+  "2026-03-09": {
+   "leads": 0,
+   "deals": 0,
+   "won": 0,
+   "won_amount": 0
+  },
+  "2026-03-16": {
+   "leads": 1,
+   "deals": 1,
+   "won": 0,
+   "won_amount": 0
+  },
+  "2026-03-23": {
+   "leads": 1,
+   "deals": 1,
+   "won": 1,
+   "won_amount": 2101000
+  },
+  "2026-03-30": {
+   "leads": 0,
+   "deals": 0,
+   "won": 0,
+   "won_amount": 0
+  },
+  "2026-04-06": {
+   "leads": 0,
+   "deals": 0,
+   "won": 0,
+   "won_amount": 0
+  },
+  "2026-04-13": {
+   "leads": 0,
+   "deals": 0,
+   "won": 0,
+   "won_amount": 0
+  },
+  "2026-04-20": {
+   "leads": 0,
+   "deals": 0,
+   "won": 0,
+   "won_amount": 0
+  },
+  "2026-04-27": {
+   "leads": 0,
+   "deals": 0,
+   "won": 0,
+   "won_amount": 0
+  },
+  "2026-05-04": {
+   "leads": 0,
+   "deals": 0,
+   "won": 0,
+   "won_amount": 0
+  },
+  "2026-05-11": {
+   "leads": 0,
+   "deals": 0,
+   "won": 0,
+   "won_amount": 0
+  },
+  "2026-05-18": {
+   "leads": 0,
+   "deals": 0,
+   "won": 0,
+   "won_amount": 0
+  },
+  "2026-05-25": {
+   "leads": 0,
+   "deals": 0,
+   "won": 0,
+   "won_amount": 0
+  },
+  "2026-06-01": {
+   "leads": 0,
+   "deals": 0,
+   "won": 0,
+   "won_amount": 0
+  },
+  "2026-06-08": {
+   "leads": 1,
+   "deals": 1,
+   "won": 0,
+   "won_amount": 0
+  },
+  "2026-06-15": {
+   "leads": 0,
+   "deals": 0,
+   "won": 0,
+   "won_amount": 0
+  },
+  "2026-06-22": {
+   "leads": 1,
+   "deals": 1,
+   "won": 1,
+   "won_amount": 943250
+  },
+  "2026-06-29": {
+   "leads": 0,
+   "deals": 0,
+   "won": 0,
+   "won_amount": 0
+  },
+  "2026-07-06": {
+   "leads": 0,
+   "deals": 0,
+   "won": 0,
+   "won_amount": 0
+  },
+  "2026-07-13": {
+   "leads": 0,
+   "deals": 0,
+   "won": 0,
+   "won_amount": 0
+  },
+  "2026-07-20": {
+   "leads": 0,
+   "deals": 0,
+   "won": 0,
+   "won_amount": 0
+  },
+  "2026-07-27": {
+   "leads": 0,
+   "deals": 0,
+   "won": 0,
+   "won_amount": 0
+  },
+  "2026-08-03": {
+   "leads": 0,
+   "deals": 0,
+   "won": 0,
+   "won_amount": 0
+  },
+  "2026-08-10": {
+   "leads": 0,
+   "deals": 0,
+   "won": 0,
+   "won_amount": 0
+  },
+  "2026-08-17": {
+   "leads": 0,
+   "deals": 0,
+   "won": 0,
+   "won_amount": 0
+  },
+  "2026-08-24": {
+   "leads": 0,
+   "deals": 0,
+   "won": 0,
+   "won_amount": 0
+  }
+ },
+ "expos": [
+  {
+   "name": "AI活用EXPO",
+   "date": "2025-09-22",
+   "cost": 220000,
+   "leads": 153,
+   "deals": 2,
+   "won": 0
+  },
+  {
+   "name": "CareTex北陸",
+   "date": "2025-11-24",
+   "cost": 455323,
+   "leads": 121,
+   "deals": 4,
+   "won": 1
+  },
+  {
+   "name": "CareTex東京",
+   "date": "2026-02-23",
+   "cost": 616000,
+   "leads": 175,
+   "deals": 2,
+   "won": 0
+  },
+  {
+   "name": "CareTEX福岡",
+   "date": "2026-07-20",
+   "cost": 572000,
+   "leads": 589,
+   "deals": 4,
+   "won": 0
+  }
+ ],
+ "calls": {
+  "2026-06-01": {
+   "calls": 0,
+   "connected": 0,
+   "appts": 0,
+   "leads": 18
+  },
+  "2026-06-02": {
+   "calls": 0,
+   "connected": 0,
+   "appts": 0,
+   "leads": 14
+  },
+  "2026-06-03": {
+   "calls": 7,
+   "connected": 0,
+   "appts": 0,
+   "leads": 16
+  },
+  "2026-06-04": {
+   "calls": 0,
+   "connected": 0,
+   "appts": 0,
+   "leads": 18
+  },
+  "2026-06-05": {
+   "calls": 5,
+   "connected": 0,
+   "appts": 0,
+   "leads": 7
+  },
+  "2026-06-06": {
+   "calls": 0,
+   "connected": 0,
+   "appts": 0,
+   "leads": 10
+  },
+  "2026-06-07": {
+   "calls": 0,
+   "connected": 0,
+   "appts": 0,
+   "leads": 12
+  },
+  "2026-06-08": {
+   "calls": 16,
+   "connected": 6,
+   "appts": 0,
+   "leads": 14
+  },
+  "2026-06-09": {
+   "calls": 4,
+   "connected": 1,
+   "appts": 0,
+   "leads": 20
+  },
+  "2026-06-10": {
+   "calls": 11,
+   "connected": 1,
+   "appts": 0,
+   "leads": 10
+  },
+  "2026-06-11": {
+   "calls": 0,
+   "connected": 0,
+   "appts": 0,
+   "leads": 9
+  },
+  "2026-06-12": {
+   "calls": 30,
+   "connected": 8,
+   "appts": 0,
+   "leads": 3
+  },
+  "2026-06-13": {
+   "calls": 0,
+   "connected": 0,
+   "appts": 0,
+   "leads": 7
+  },
+  "2026-06-14": {
+   "calls": 0,
+   "connected": 0,
+   "appts": 4,
+   "leads": 5
+  },
+  "2026-06-15": {
+   "calls": 0,
+   "connected": 0,
+   "appts": 0,
+   "leads": 5
+  },
+  "2026-06-16": {
+   "calls": 10,
+   "connected": 4,
+   "appts": 0,
+   "leads": 6
+  },
+  "2026-06-17": {
+   "calls": 22,
+   "connected": 1,
+   "appts": 0,
+   "leads": 7
+  },
+  "2026-06-18": {
+   "calls": 7,
+   "connected": 1,
+   "appts": 1,
+   "leads": 5
+  },
+  "2026-06-19": {
+   "calls": 11,
+   "connected": 2,
+   "appts": 1,
+   "leads": 12
+  },
+  "2026-06-20": {
+   "calls": 0,
+   "connected": 0,
+   "appts": 0,
+   "leads": 9
+  },
+  "2026-06-21": {
+   "calls": 0,
+   "connected": 0,
+   "appts": 0,
+   "leads": 11
+  },
+  "2026-06-22": {
+   "calls": 0,
+   "connected": 0,
+   "appts": 2,
+   "leads": 9
+  },
+  "2026-06-23": {
+   "calls": 15,
+   "connected": 5,
+   "appts": 0,
+   "leads": 12
+  },
+  "2026-06-24": {
+   "calls": 13,
+   "connected": 1,
+   "appts": 0,
+   "leads": 7
+  },
+  "2026-06-25": {
+   "calls": 14,
+   "connected": 2,
+   "appts": 3,
+   "leads": 10
+  },
+  "2026-06-26": {
+   "calls": 12,
+   "connected": 1,
+   "appts": 0,
+   "leads": 9
+  },
+  "2026-06-27": {
+   "calls": 0,
+   "connected": 0,
+   "appts": 0,
+   "leads": 2
+  },
+  "2026-06-28": {
+   "calls": 0,
+   "connected": 0,
+   "appts": 0,
+   "leads": 5
+  },
+  "2026-06-29": {
+   "calls": 9,
+   "connected": 4,
+   "appts": 0,
+   "leads": 5
+  },
+  "2026-06-30": {
+   "calls": 22,
+   "connected": 4,
+   "appts": 1,
+   "leads": 6
+  },
+  "2026-07-01": {
+   "calls": 0,
+   "connected": 0,
+   "appts": 0,
+   "leads": 7
+  },
+  "2026-07-02": {
+   "calls": 14,
+   "connected": 1,
+   "appts": 0,
+   "leads": 5
+  },
+  "2026-07-03": {
+   "calls": 0,
+   "connected": 0,
+   "appts": 0,
+   "leads": 7
+  },
+  "2026-07-04": {
+   "calls": 0,
+   "connected": 0,
+   "appts": 0,
+   "leads": 3
+  },
+  "2026-07-05": {
+   "calls": 0,
+   "connected": 0,
+   "appts": 0,
+   "leads": 8
+  },
+  "2026-07-06": {
+   "calls": 0,
+   "connected": 0,
+   "appts": 0,
+   "leads": 8
+  },
+  "2026-07-07": {
+   "calls": 0,
+   "connected": 0,
+   "appts": 0,
+   "leads": 5
+  },
+  "2026-07-08": {
+   "calls": 7,
+   "connected": 1,
+   "appts": 0,
+   "leads": 3
+  },
+  "2026-07-09": {
+   "calls": 17,
+   "connected": 6,
+   "appts": 1,
+   "leads": 15
+  },
+  "2026-07-10": {
+   "calls": 12,
+   "connected": 1,
+   "appts": 1,
+   "leads": 16
+  },
+  "2026-07-11": {
+   "calls": 0,
+   "connected": 0,
+   "appts": 0,
+   "leads": 17
+  },
+  "2026-07-12": {
+   "calls": 0,
+   "connected": 0,
+   "appts": 0,
+   "leads": 11
+  },
+  "2026-07-13": {
+   "calls": 4,
+   "connected": 2,
+   "appts": 2,
+   "leads": 9
+  },
+  "2026-07-14": {
+   "calls": 2,
+   "connected": 1,
+   "appts": 0,
+   "leads": 7
+  },
+  "2026-07-15": {
+   "calls": 14,
+   "connected": 5,
+   "appts": 0,
+   "leads": 5
+  },
+  "2026-07-16": {
+   "calls": 0,
+   "connected": 0,
+   "appts": 0,
+   "leads": 3
+  },
+  "2026-07-17": {
+   "calls": 0,
+   "connected": 0,
+   "appts": 0,
+   "leads": 5
+  },
+  "2026-07-18": {
+   "calls": 0,
+   "connected": 0,
+   "appts": 0,
+   "leads": 9
+  },
+  "2026-07-19": {
+   "calls": 0,
+   "connected": 0,
+   "appts": 0,
+   "leads": 5
+  },
+  "2026-07-20": {
+   "calls": 0,
+   "connected": 0,
+   "appts": 0,
+   "leads": 1
+  },
+  "2026-07-21": {
+   "calls": 0,
+   "connected": 0,
+   "appts": 0,
+   "leads": 11
+  },
+  "2026-07-22": {
+   "calls": 0,
+   "connected": 0,
+   "appts": 0,
+   "leads": 9
+  },
+  "2026-07-23": {
+   "calls": 0,
+   "connected": 0,
+   "appts": 0,
+   "leads": 11
+  },
+  "2026-07-24": {
+   "calls": 0,
+   "connected": 0,
+   "appts": 0,
+   "leads": 2
+  },
+  "2026-07-25": {
+   "calls": 0,
+   "connected": 0,
+   "appts": 0,
+   "leads": 6
+  },
+  "2026-07-26": {
+   "calls": 0,
+   "connected": 0,
+   "appts": 0,
+   "leads": 552
+  },
+  "2026-07-27": {
+   "calls": 6,
+   "connected": 3,
+   "appts": 0,
+   "leads": 6
+  },
+  "2026-07-28": {
+   "calls": 10,
+   "connected": 1,
+   "appts": 0,
+   "leads": 34
+  },
+  "2026-07-29": {
+   "calls": 4,
+   "connected": 1,
+   "appts": 2,
+   "leads": 1
+  },
+  "2026-07-30": {
+   "calls": 7,
+   "connected": 1,
+   "appts": 3,
+   "leads": 12
+  },
+  "2026-07-31": {
+   "calls": 4,
+   "connected": 1,
+   "appts": 1,
+   "leads": 6
+  },
+  "2026-08-01": {
+   "calls": 0,
+   "connected": 0,
+   "appts": 0,
+   "leads": 4
+  },
+  "2026-08-02": {
+   "calls": 0,
+   "connected": 0,
+   "appts": 0,
+   "leads": 6
+  },
+  "2026-08-03": {
+   "calls": 0,
+   "connected": 0,
+   "appts": 0,
+   "leads": 6
+  },
+  "2026-08-04": {
+   "calls": 0,
+   "connected": 0,
+   "appts": 0,
+   "leads": 7
+  },
+  "2026-08-05": {
+   "calls": 0,
+   "connected": 0,
+   "appts": 0,
+   "leads": 6
+  },
+  "2026-08-06": {
+   "calls": 1,
+   "connected": 0,
+   "appts": 1,
+   "leads": 17
+  },
+  "2026-08-07": {
+   "calls": 1,
+   "connected": 0,
+   "appts": 0,
+   "leads": 6
+  },
+  "2026-08-08": {
+   "calls": 0,
+   "connected": 0,
+   "appts": 0,
+   "leads": 8
+  },
+  "2026-08-09": {
+   "calls": 0,
+   "connected": 0,
+   "appts": 0,
+   "leads": 1
+  },
+  "2026-08-10": {
+   "calls": 1,
+   "connected": 0,
+   "appts": 2,
+   "leads": 8
+  },
+  "2026-08-11": {
+   "calls": 0,
+   "connected": 0,
+   "appts": 0,
+   "leads": 5
+  },
+  "2026-08-12": {
+   "calls": 0,
+   "connected": 0,
+   "appts": 0,
+   "leads": 11
+  },
+  "2026-08-13": {
+   "calls": 0,
+   "connected": 0,
+   "appts": 1,
+   "leads": 3
+  },
+  "2026-08-14": {
+   "calls": 0,
+   "connected": 0,
+   "appts": 0,
+   "leads": 7
+  },
+  "2026-08-15": {
+   "calls": 0,
+   "connected": 0,
+   "appts": 0,
+   "leads": 5
+  },
+  "2026-08-16": {
+   "calls": 0,
+   "connected": 0,
+   "appts": 0,
+   "leads": 2
+  },
+  "2026-08-17": {
+   "calls": 0,
+   "connected": 0,
+   "appts": 1,
+   "leads": 5
+  },
+  "2026-08-18": {
+   "calls": 0,
+   "connected": 0,
+   "appts": 0,
+   "leads": 6
+  },
+  "2026-08-19": {
+   "calls": 0,
+   "connected": 0,
+   "appts": 0,
+   "leads": 7
+  },
+  "2026-08-20": {
+   "calls": 11,
+   "connected": 1,
+   "appts": 0,
+   "leads": 8
+  },
+  "2026-08-22": {
+   "calls": 0,
+   "connected": 0,
+   "appts": 0,
+   "leads": 6
+  },
+  "2026-08-23": {
+   "calls": 0,
+   "connected": 0,
+   "appts": 0,
+   "leads": 2
+  },
+  "2026-08-24": {
+   "calls": 5,
+   "connected": 2,
+   "appts": 1,
+   "leads": 10
+  },
+  "2026-08-25": {
+   "calls": 15,
+   "connected": 3,
+   "appts": 0,
+   "leads": 5
+  },
+  "2026-08-26": {
+   "calls": 31,
+   "connected": 4,
+   "appts": 1,
+   "leads": 1
+  },
+  "2026-05-25": {
+   "calls": 1,
+   "connected": 0,
+   "appts": 0,
+   "leads": 0
+  }
+ },
+ "call_conversion": {
+  "2026-06-01": {
+   "called": 14,
+   "appointed": 0
+  },
+  "2026-06-08": {
+   "called": 58,
+   "appointed": 4
+  },
+  "2026-06-15": {
+   "called": 39,
+   "appointed": 0
+  },
+  "2026-06-22": {
+   "called": 37,
+   "appointed": 1
+  },
+  "2026-06-29": {
+   "called": 36,
+   "appointed": 1
+  },
+  "2026-07-06": {
+   "called": 32,
+   "appointed": 1
+  },
+  "2026-07-13": {
+   "called": 19,
+   "appointed": 0
+  },
+  "2026-07-20": {
+   "called": 0,
+   "appointed": 0
+  },
+  "2026-07-27": {
+   "called": 29,
+   "appointed": 0
+  },
+  "2026-08-03": {
+   "called": 2,
+   "appointed": 1
+  },
+  "2026-08-10": {
+   "called": 1,
+   "appointed": 0
+  },
+  "2026-08-17": {
+   "called": 9,
+   "appointed": 0
+  },
+  "2026-08-24": {
+   "called": 23,
+   "appointed": 1
+  },
+  "2026-05-25": {
+   "called": 1,
+   "appointed": 0
+  }
+ }
+}
