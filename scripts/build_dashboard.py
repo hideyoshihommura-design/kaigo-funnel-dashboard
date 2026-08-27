@@ -754,12 +754,28 @@ gap:16px;margin-bottom:8px;}
 .chart.tall{height:232px;}
 .base{position:relative;height:72px;margin-top:2px;}
 .baselabel{font-size:10px;color:var(--muted);text-align:right;margin-top:2px;}
-.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:10px;
+/* 表は内容幅に合わせ、枠は表に張り付かせる。
+   width:100% で伸ばすと、列数の少ない表ほど1列が広くなる。
+   実測で「架電したリード数」列が249pxあり、3桁の数字1つに対して
+   週ラベルとの間に指2本分の空白ができていた。視線が横に飛ぶぶんだけ
+   同じ行を追うのが難しくなるので、列は数字に寄せる。
+   余白は表の外（右側）に出す。表の中に出すより読む距離が短い。 */
+.tablewrap{display:inline-block;vertical-align:top;max-width:100%;
+overflow-x:auto;border:1px solid var(--line);border-radius:10px;
 background:var(--card);max-height:min(74vh,900px);overflow-y:auto;}
-table{border-collapse:separate;border-spacing:0;width:100%;font-size:12px;
+table{border-collapse:separate;border-spacing:0;width:auto;font-size:12px;
 font-variant-numeric:tabular-nums;}
-th,td{padding:6px 10px;border-bottom:1px solid var(--line);text-align:right;
+/* 列が内容幅になったぶん、左右の余白で列同士を分ける。 */
+th,td{padding:6px 13px;border-bottom:1px solid var(--line);text-align:right;
 white-space:nowrap;}
+/* 横に並べられる表は並べる。1つずつ縦に積むと、幅が余っているのに
+   スクロール量だけが増える。入らない幅では自動で縦積みに戻る。 */
+.tabgrid{display:flex;flex-wrap:wrap;gap:0 26px;align-items:flex-start;}
+.tabgrid>div{max-width:100%;min-width:0;}
+/* 横スクロールした時に日付・週を見失わないよう左端は残す。 */
+.tabgrid td.wk,.tabgrid thead th:first-child{position:sticky;left:0;}
+.tabgrid td.wk{z-index:1;}
+.tabgrid thead th:first-child{z-index:3;}
 th{background:var(--head);font-weight:600;color:var(--ink);text-align:right;
 position:sticky;top:0;z-index:2;font-size:11px;}
 th:first-child,th:nth-child(2){text-align:left;}
@@ -1533,12 +1549,11 @@ def render(data):
                 f'<td class="num">{f_int(r["appointed"])}</td>'
                 f'<td class="num">{f_pct(r["rate"])}</td>'
                 "</tr>" for r in conv["rows"])
-            conv_block = f"""
-<h3>架電したリード → 面談予約（週次）</h3>
-<div class="tablewrap"><table>
-<thead><tr><th>週</th><th>架電したリード数</th><th>面談予約数</th>
-<th>転換率</th></tr></thead>
-<tbody>{crows}</tbody></table></div>
+            conv_block = f"""  <div><h3>架電したリード → 面談予約（週次）</h3>
+    <div class="tablewrap"><table>
+    <thead><tr><th>週</th><th>架電したリード数</th><th>面談予約数</th>
+    <th>転換率</th></tr></thead>
+    <tbody>{crows}</tbody></table></div></div>
 """
         daily_kpis = "".join(kpi_items)
         daily_section = f"""
@@ -1553,12 +1568,13 @@ def render(data):
   <div class="card"><h3>架電数の日次推移（{daily["span"]}）</h3>
     <div class="chart"><canvas id="c_call"></canvas></div></div>
 </div>
-<h3>日次の行動量</h3>
-<div class="tablewrap"><table>
-<thead><tr><th>日付</th><th>架電数</th><th>接続数</th><th>接続率</th>
-<th>面談予約数</th><th>新規リード数</th></tr></thead>
-<tbody>{daily_table}</tbody></table></div>
-{conv_block}"""
+<div class="tabgrid">
+  <div><h3>日次の行動量</h3>
+    <div class="tablewrap"><table>
+    <thead><tr><th>日付</th><th>架電数</th><th>接続数</th><th>接続率</th>
+    <th>面談予約数</th><th>新規リード数</th></tr></thead>
+    <tbody>{daily_table}</tbody></table></div></div>
+{conv_block}</div>"""
         daily_js = (
             f"mkCallBar('c_call',{js(daily['chart']['labels'])},"
             f"{js(daily['chart']['connected'])},{js(daily['chart']['noans'])},"
