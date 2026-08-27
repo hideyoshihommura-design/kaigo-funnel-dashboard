@@ -1,6 +1,6 @@
 {
  "title": "ホリエモンAI学校 介護校 ファネルダッシュボード",
- "generated_at": "2026-08-26",
+ "generated_at": "2026-08-27",
  "week_starts": [
   "2025-09-01",
   "2025-09-08",
@@ -1769,7 +1769,7 @@
    "web": {
     "leads": 40,
     "cost": 78134,
-    "deals": 1,
+    "deals": 2,
     "won": 0,
     "won_amount": 0
    },
@@ -1880,7 +1880,7 @@
    "web": {
     "leads": 41,
     "cost": 79418,
-    "deals": 2,
+    "deals": 3,
     "won": 0,
     "won_amount": 0
    },
@@ -1917,7 +1917,7 @@
    "web": {
     "leads": 34,
     "cost": 121172,
-    "deals": 1,
+    "deals": 3,
     "won": 0,
     "won_amount": 0
    },
@@ -1953,7 +1953,7 @@
    },
    "web": {
     "leads": 16,
-    "cost": null,
+    "cost": 48426,
     "deals": 0,
     "won": 0,
     "won_amount": 0
@@ -2376,7 +2376,7 @@
    "calls": 16,
    "connected": 6,
    "appts": 0,
-   "leads": 14
+   "leads": 15
   },
   "2026-06-09": {
    "calls": 4,
@@ -2460,7 +2460,7 @@
    "calls": 0,
    "connected": 0,
    "appts": 2,
-   "leads": 9
+   "leads": 10
   },
   "2026-06-23": {
    "calls": 15,
@@ -2841,21 +2841,21 @@
    "leads": 5
   },
   "2026-08-26": {
-   "calls": 31,
+   "calls": 36,
    "connected": 4,
-   "appts": 1,
+   "appts": 2,
    "leads": 1
   },
-  "2026-05-25": {
-   "calls": 1,
-   "connected": 0,
-   "appts": 0,
+  "2026-08-27": {
+   "calls": 49,
+   "connected": 5,
+   "appts": 3,
    "leads": 0
   }
  },
  "call_conversion": {
   "2026-06-01": {
-   "called": 14,
+   "called": 12,
    "appointed": 0
   },
   "2026-06-08": {
@@ -2875,15 +2875,11 @@
    "appointed": 1
   },
   "2026-07-06": {
-   "called": 32,
+   "called": 33,
    "appointed": 1
   },
   "2026-07-13": {
    "called": 19,
-   "appointed": 0
-  },
-  "2026-07-20": {
-   "called": 0,
    "appointed": 0
   },
   "2026-07-27": {
@@ -2903,12 +2899,8 @@
    "appointed": 0
   },
   "2026-08-24": {
-   "called": 23,
-   "appointed": 1
-  },
-  "2026-05-25": {
-   "called": 1,
-   "appointed": 0
+   "called": 55,
+   "appointed": 2
   }
  }
 }
