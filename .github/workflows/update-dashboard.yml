@@ -1,0 +1,98 @@
+name: ダッシュボード更新
+
+# 1時間ごとに HubSpot / Googleスプレッドシートから集計し直し、
+# 数字が変わっていれば index.html を差し替えて main に push する。
+# GitHub Pages は main ブランチ配信のまま動くので、Pages側の設定変更は不要。
+#
+# 取得に失敗した場合・妥当性チェックに落ちた場合は push しないので、
+# 公開中のダッシュボードは前回の正常な内容のまま残る。
+# 「取れなかった」が「0件だった」として公開される事故を防ぐのがこの設計の主眼。
+
+on:
+  # 定時実行は「手動で1回通ること」を確認するまで止めてある。
+  # 動かないものを毎時走らせると、失敗通知だけが積み上がって
+  # 本当に壊れた時に気づけなくなる。確認できたら下の2行を有効にする。
+  # schedule:
+  #   # 毎時5分（UTC）。GitHubの定時実行は混雑すると数分〜十数分遅れることがある。
+  #   - cron: "5 * * * *"
+  workflow_dispatch:  # 「今すぐ更新」を手で叩けるようにしておく
+
+# 同時に2本走ると push が衝突するので、常に1本だけにする。
+concurrency:
+  group: update-dashboard
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: 依存を入れる
+        run: pip install --quiet google-auth requests
+
+      - name: 前回の data.json を控える
+        # 妥当性チェックの比較対象。リードは積み上がる一方なので、
+        # 前回より大きく減っていたら取得失敗と判断して公開を見送る。
+        run: cp data.json previous.json 2>/dev/null || echo "{}" > previous.json
+
+      - name: HubSpot / スプレッドシートから集計
+        env:
+          HUBSPOT_TOKEN: ${{ secrets.HUBSPOT_TOKEN }}
+          GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
+        run: python scripts/fetch_data.py -o data.json --previous previous.json
+
+      - name: 数字が変わったか見る
+        # index.html には生成時刻が入るので毎回必ず差分が出る。変化の判定は
+        # 時刻を持たない data.json でやる。ここを index.html で判定すると
+        # 中身が同じでも毎時コミットが積まれる。
+        id: changed
+        run: |
+          # git diff ではなく status を見る。初回は data.json が未追跡なので、
+          # diff では「差分なし」と返って何も公開されないまま終わってしまう。
+          # status なら未追跡(??)も変更(M)も拾える。
+          if [ -n "$(git status --porcelain -- data.json)" ]; then
+            echo "result=yes" >> "$GITHUB_OUTPUT"
+            echo "数字が変わりました。"
+          else
+            echo "result=no" >> "$GITHUB_OUTPUT"
+            echo "数字に変化なし。"
+          fi
+
+      - name: HTMLを生成
+        if: steps.changed.outputs.result == 'yes'
+        run: |
+          python scripts/build_dashboard.py data.json -o index.html
+          python scripts/postprocess.py index.html
+
+      - name: 生成物を検査
+        if: steps.changed.outputs.result == 'yes'
+        # build_dashboard.py が異常終了しなくても、空に近いHTMLが出ていたら止める。
+        run: |
+          size=$(wc -c < index.html)
+          echo "index.html: ${size} bytes"
+          if [ "$size" -lt 200000 ]; then
+            echo "::error::index.html が ${size} バイトしかありません（Chart.js の埋め込みが欠けている可能性）。公開を見送ります。"
+            exit 1
+          fi
+          grep -q "ファネルダッシュボード" index.html || {
+            echo "::error::index.html に見出しがありません。公開を見送ります。"; exit 1; }
+          grep -q 'name="robots"' index.html || {
+            echo "::error::noindex の meta が入っていません。公開を見送ります。"; exit 1; }
+
+      - name: 公開
+        if: steps.changed.outputs.result == 'yes'
+        run: |
+          rm -f previous.json
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html data.json
+          git commit -m "data: $(date -u '+%Y-%m-%d %H:%M') UTC 時点の数字に更新"
+          git push
