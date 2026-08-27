@@ -761,6 +761,11 @@ table{border-collapse:separate;border-spacing:0;width:100%;font-size:12px;
 font-variant-numeric:tabular-nums;}
 th,td{padding:6px 10px;border-bottom:1px solid var(--line);text-align:right;
 white-space:nowrap;}
+/* 列の少ない表で、余った幅を末尾の空き列に吸わせる。
+   全幅のまま列を均等に伸ばすと、3桁の数字ひとつに400px超の列が割り当たり、
+   週ラベルと数値が離れて同じ行を追いにくくなる。枠は全幅のまま、
+   実際の列だけ内容幅に寄せて左に固める。 */
+th.pad,td.pad{width:100%;padding:0;}
 /* 表はそれぞれ全幅を使うので縦に積む。折りたたみがあるので、
    閉じている間は見出し1行しか場所を取らない。 */
 .tabgrid{display:block;}
@@ -1593,11 +1598,12 @@ def render(data):
                 f'<td class="num">{f_int(r["called"])}</td>'
                 f'<td class="num">{f_int(r["appointed"])}</td>'
                 f'<td class="num">{f_pct(r["rate"])}</td>'
+                '<td class="pad"></td>'
                 "</tr>" for r in conv["rows"])
             conv_block = f"""  <details class="fold" id="f-conv"><summary><span class="tri">▶</span>架電したリード → 面談予約<span class="cnt">{len(conv["rows"])}週分</span></summary>
     <div class="tablewrap"><table>
     <thead><tr><th>週</th><th>架電したリード数</th><th>面談予約数</th>
-    <th>転換率</th></tr></thead>
+    <th>転換率</th><th class="pad" aria-hidden="true"></th></tr></thead>
     <tbody>{crows}</tbody></table></div></details>
 """
         daily_kpis = "".join(kpi_items)
