@@ -15,6 +15,7 @@
 トークンは一切表示しない。
 """
 
+import getpass
 import json
 import os
 import sys
@@ -45,9 +46,17 @@ def call(path, token, method="GET", payload=None):
 
 
 def main():
+    # 環境変数が無ければその場で聞く。コマンドに書かせると
+    # シェルの履歴にトークンが残るので、入力は伏せ字で受け取る。
     token = os.environ.get("HUBSPOT_TOKEN")
     if not token:
-        sys.exit("HUBSPOT_TOKEN が設定されていません。")
+        try:
+            token = getpass.getpass("HubSpotのトークンを貼り付けてEnter（表示されません）: ").strip()
+        except (EOFError, KeyboardInterrupt):
+            sys.exit("
+中断しました。")
+    if not token:
+        sys.exit("トークンが空です。")
 
     print("=" * 62)
     print("1. トークンの確認")
