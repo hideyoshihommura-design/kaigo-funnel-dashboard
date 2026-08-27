@@ -1,2 +1,14 @@
+# 認証情報。公開リポジトリなので絶対にコミットしない。
+# Googleは公開リポジトリで見つけたサービスアカウント鍵を自動失効させるため、
+# 誤ってコミットすると自動更新が止まる。
 .hubspot_key
+.google_key.json
+service-account*.json
+*iam.gserviceaccount.com.json
+ozora-sns-auto-*.json
+aozora-*-*.json
+credentials.json
+client_secret*.json
+
+# 実行時の一時ファイル
 previous.json
