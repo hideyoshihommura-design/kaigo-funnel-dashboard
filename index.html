@@ -113,24 +113,16 @@ gap:16px;margin-bottom:8px;}
 .chart.tall{height:232px;}
 .base{position:relative;height:72px;margin-top:2px;}
 .baselabel{font-size:10px;color:var(--muted);text-align:right;margin-top:2px;}
-/* 表は内容幅に合わせ、枠は表に張り付かせる。
-   width:100% で伸ばすと、列数の少ない表ほど1列が広くなる。
-   実測で「架電したリード数」列が249pxあり、3桁の数字1つに対して
-   週ラベルとの間に指2本分の空白ができていた。視線が横に飛ぶぶんだけ
-   同じ行を追うのが難しくなるので、列は数字に寄せる。
-   余白は表の外（右側）に出す。表の中に出すより読む距離が短い。 */
-.tablewrap{display:inline-block;vertical-align:top;max-width:100%;
-overflow-x:auto;border:1px solid var(--line);border-radius:10px;
+/* 表は折りたたんであるので、開いた時は幅をいっぱいに使う。 */
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:10px;
 background:var(--card);max-height:min(74vh,900px);overflow-y:auto;}
-table{border-collapse:separate;border-spacing:0;width:auto;font-size:12px;
+table{border-collapse:separate;border-spacing:0;width:100%;font-size:12px;
 font-variant-numeric:tabular-nums;}
-/* 列が内容幅になったぶん、左右の余白で列同士を分ける。 */
-th,td{padding:6px 13px;border-bottom:1px solid var(--line);text-align:right;
+th,td{padding:6px 10px;border-bottom:1px solid var(--line);text-align:right;
 white-space:nowrap;}
-/* 横に並べられる表は並べる。1つずつ縦に積むと、幅が余っているのに
-   スクロール量だけが増える。入らない幅では自動で縦積みに戻る。 */
-.tabgrid{display:flex;flex-wrap:wrap;gap:0 26px;align-items:flex-start;}
-.tabgrid>*{max-width:100%;min-width:0;}
+/* 表はそれぞれ全幅を使うので縦に積む。折りたたみがあるので、
+   閉じている間は見出し1行しか場所を取らない。 */
+.tabgrid{display:block;}
 
 /* 表は開いたときだけ場所を取ればいい。閉じているときは見出しだけ残す。
    <details> を使うのは、JSが無くても開閉でき、キーボードでも操作でき、
