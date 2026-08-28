@@ -239,10 +239,10 @@ def validate_calls(data):
             fail(f"calls に不正な日付キーがあります: {k!r}（YYYY-MM-DD）")
         if not isinstance(v, dict):
             fail(f"calls[{k}] がオブジェクトではありません。")
-        unknown = set(v) - {"calls", "connected", "appts", "leads"}
+        unknown = set(v) - {"calls", "connected", "appts", "mtgs", "leads"}
         if unknown:
             fail(f"calls[{k}] に未知のキー: {sorted(unknown)}")
-        for f in ("calls", "connected", "appts", "leads"):
+        for f in ("calls", "connected", "appts", "mtgs", "leads"):
             n = v.get(f, 0)
             if not isinstance(n, int) or isinstance(n, bool) or n < 0:
                 fail(f"calls[{k}].{f} は0以上の整数である必要があります: {n!r}")
@@ -550,7 +550,7 @@ def compute_daily(data):  # noqa: C901
     def get(d, f):
         return calls.get(d.isoformat(), {}).get(f, 0)
 
-    FIELDS = ("calls", "connected", "appts", "leads")
+    FIELDS = ("calls", "connected", "appts", "mtgs", "leads")
     # データが1件も無い期間まで行を伸ばさない。窓の起点がデータの開始より前だと、
     # 先頭に全部0の行が並び、「架電していない日」と「まだ記録が始まっていない日」が
     # 同じ見た目になる。
@@ -600,8 +600,10 @@ def compute_daily(data):  # noqa: C901
         "today": f"{end.month}/{end.day}({WD_JA[end.weekday()]})",
         "today_calls": get(end, "calls"),
         "today_appts": get(end, "appts"),
+        "today_mtgs": get(end, "mtgs"),
         "week_calls": sum(get(d, "calls") for d in dates if d >= wk_start),
         "week_appts": sum(get(d, "appts") for d in dates if d >= wk_start),
+        "week_mtgs": sum(get(d, "mtgs") for d in dates if d >= wk_start),
         # 平均の分母は「架電した日」。暦日で割ると、架電していない日が
         # 多いほど平均が下がり、稼働した日の量が見えなくなる。
         "per_day": safe_div(tot["calls"], len(worked)) if worked else None,
@@ -1563,6 +1565,7 @@ def render(data):
                 f'<td class="num">{f_int(r["connected"])}</td>'
                 f'<td class="num">{f_pct(r["rate"])}</td>'
                 f'<td class="num">{f_int(r["appts"])}</td>'
+                f'<td class="num">{f_int(r["mtgs"])}</td>'
                 f'<td class="num">{f_int(r["leads"])}</td>'
                 "</tr>"
             )
@@ -1574,9 +1577,11 @@ def render(data):
         # ここが期間に追従すると本来の役割が消える。
         act_items = "".join([
             kpi(f'本日 {ac["today"]} 架電', f_int(ac["today_calls"])),
-            kpi("本日 面談予約", f_int(ac["today_appts"])),
+            kpi("本日 面談予約 獲得数", f_int(ac["today_appts"])),
+            kpi("本日 面談実施", f_int(ac["today_mtgs"])),
             kpi("今週 架電", f_int(ac["week_calls"])),
-            kpi("今週 面談予約", f_int(ac["week_appts"])),
+            kpi("今週 面談予約 獲得数", f_int(ac["week_appts"])),
+            kpi("今週 面談実施", f_int(ac["week_mtgs"])),
             kpi("1稼働日あたり 架電", f_dec(ac["per_day"]), "c_perday"),
             kpi("稼働日数", f_int(ac["worked_days"]), "c_wdays"),
         ])
@@ -1589,7 +1594,7 @@ def render(data):
         if conv:
             kpi_items += [
                 kpi("架電したリード", f_int(conv["called"]), "v_called"),
-                kpi("面談予約", f_int(conv["appointed"]), "v_appt"),
+                kpi("面談予約 獲得数", f_int(conv["appointed"]), "v_appt"),
                 kpi("転換率", f_pct(conv["rate"]), "v_rate"),
             ]
             crows = "".join(
@@ -1602,7 +1607,7 @@ def render(data):
                 "</tr>" for r in conv["rows"])
             conv_block = f"""  <details class="fold" id="f-conv"><summary><span class="tri">▶</span>架電したリード → 面談予約<span class="cnt">{len(conv["rows"])}週分</span></summary>
     <div class="tablewrap"><table>
-    <thead><tr><th>週</th><th>架電したリード数</th><th>面談予約数</th>
+    <thead><tr><th>週</th><th>架電したリード数</th><th>面談予約 獲得数</th>
     <th>転換率</th><th class="pad" aria-hidden="true"></th></tr></thead>
     <tbody>{crows}</tbody></table></div></details>
 """
@@ -1623,7 +1628,7 @@ def render(data):
   <details class="fold" id="f-act"><summary><span class="tri">▶</span>日次の行動量<span class="cnt">{len(drows)}日分</span></summary>
     <div class="tablewrap"><table>
     <thead><tr><th>日付</th><th>架電数</th><th>接続数</th><th>接続率</th>
-    <th>面談予約数</th><th>新規リード数</th></tr></thead>
+    <th>面談予約 獲得数</th><th>面談実施数</th><th>新規リード数</th></tr></thead>
     <tbody>{daily_table}</tbody></table></div></details>
 {conv_block}</div>"""
         daily_js = (

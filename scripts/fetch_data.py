@@ -614,6 +614,7 @@ def build(token, sheets_token, channel_map, end_date):
     route_deals, route_won = {}, {}
     orphan_deals = 0
     daily_appts = {}
+    daily_mtgs = {}
     for deal in deals:
         p = deal.get("properties") or {}
         assoc = ((deal.get("associations") or {}).get("contacts") or {}).get("results") or []
@@ -627,6 +628,20 @@ def build(token, sheets_token, channel_map, end_date):
         appt_day = parse_hs_datetime(p.get(f"hs_v2_date_entered_{STAGE_APPT}"))
         if appt_day and appt_day >= CALLS_START:
             daily_appts[appt_day] = daily_appts.get(appt_day, 0) + 1
+        # 面談実施は「相談済み」か「提案・見積もり」に入った最初の日で数える。
+        # 相談済みを飛ばして提案・見積もりへ動かされる取引があるため、
+        # 相談済みだけを見ると面談実施が実態より少なく出る。早い方を採り、
+        # 1つの取引を2回数えないようにする。
+        mtg_days = [
+            d for d in (
+                parse_hs_datetime(p.get("hs_v2_date_entered_" + st))
+                for st in STAGE_MEETING_DONE
+            ) if d
+        ]
+        if mtg_days:
+            md = min(mtg_days)
+            if md >= CALLS_START:
+                daily_mtgs[md] = daily_mtgs.get(md, 0) + 1
         if not info:
             orphan_deals += 1
             continue
@@ -724,7 +739,8 @@ def build(token, sheets_token, channel_map, end_date):
         )
 
     calls_out = {}
-    all_days = set(daily_calls) | set(daily_conn) | set(daily_appts) | set(daily_leads)
+    all_days = (set(daily_calls) | set(daily_conn) | set(daily_appts)
+                | set(daily_mtgs) | set(daily_leads))
     for d in sorted(all_days):
         if d < CALLS_START or d > end_date:
             continue
@@ -732,6 +748,7 @@ def build(token, sheets_token, channel_map, end_date):
             "calls": daily_calls.get(d, 0),
             "connected": daily_conn.get(d, 0),
             "appts": daily_appts.get(d, 0),
+            "mtgs": daily_mtgs.get(d, 0),
             "leads": daily_leads.get(d, 0),
         }
 
