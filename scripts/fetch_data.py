@@ -738,9 +738,16 @@ def build(token, sheets_token, channel_map, end_date):
             + ", ".join(f"{k}={v}件" for k, v in unknown_disp.items())
         )
 
+    # 日次の「架電したリード数」＝その日に初めて架電したユニークのコンタクト数。
+    # コール件数（架電数）と対になる「何人に当たったか」。同じ人に同じ日に
+    # 3回かけても1人と数える。累計側と定義を揃えるため「初回架電日」で持つ。
+    daily_called = {}
+    for _cid, _first in first_call_of_contact.items():
+        daily_called[_first] = daily_called.get(_first, 0) + 1
+
     calls_out = {}
     all_days = (set(daily_calls) | set(daily_conn) | set(daily_appts)
-                | set(daily_mtgs) | set(daily_leads))
+                | set(daily_mtgs) | set(daily_called) | set(daily_leads))
     for d in sorted(all_days):
         if d < CALLS_START or d > end_date:
             continue
@@ -749,6 +756,7 @@ def build(token, sheets_token, channel_map, end_date):
             "connected": daily_conn.get(d, 0),
             "appts": daily_appts.get(d, 0),
             "mtgs": daily_mtgs.get(d, 0),
+            "called": daily_called.get(d, 0),
             "leads": daily_leads.get(d, 0),
         }
 

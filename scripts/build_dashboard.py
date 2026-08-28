@@ -239,10 +239,10 @@ def validate_calls(data):
             fail(f"calls に不正な日付キーがあります: {k!r}（YYYY-MM-DD）")
         if not isinstance(v, dict):
             fail(f"calls[{k}] がオブジェクトではありません。")
-        unknown = set(v) - {"calls", "connected", "appts", "mtgs", "leads"}
+        unknown = set(v) - {"calls", "connected", "appts", "mtgs", "called", "leads"}
         if unknown:
             fail(f"calls[{k}] に未知のキー: {sorted(unknown)}")
-        for f in ("calls", "connected", "appts", "mtgs", "leads"):
+        for f in ("calls", "connected", "appts", "mtgs", "called", "leads"):
             n = v.get(f, 0)
             if not isinstance(n, int) or isinstance(n, bool) or n < 0:
                 fail(f"calls[{k}].{f} は0以上の整数である必要があります: {n!r}")
@@ -550,7 +550,7 @@ def compute_daily(data):  # noqa: C901
     def get(d, f):
         return calls.get(d.isoformat(), {}).get(f, 0)
 
-    FIELDS = ("calls", "connected", "appts", "mtgs", "leads")
+    FIELDS = ("calls", "connected", "appts", "mtgs", "called", "leads")
     # データが1件も無い期間まで行を伸ばさない。窓の起点がデータの開始より前だと、
     # 先頭に全部0の行が並び、「架電していない日」と「まだ記録が始まっていない日」が
     # 同じ見た目になる。
@@ -599,6 +599,10 @@ def compute_daily(data):  # noqa: C901
     activity = {
         "today": f"{end.month}/{end.day}({WD_JA[end.weekday()]})",
         "today_calls": get(end, "calls"),
+        "today_conn": get(end, "connected"),
+        "today_called": get(end, "called"),
+        "today_rate": safe_div(get(end, "connected"), get(end, "calls")),
+        "today_conv": safe_div(get(end, "appts"), get(end, "called")),
         "today_appts": get(end, "appts"),
         "today_mtgs": get(end, "mtgs"),
         "week_calls": sum(get(d, "calls") for d in dates if d >= wk_start),
@@ -831,10 +835,15 @@ background:#08959C;color:#fff;}
 /* 活動量と累計は役割が違うので分けて並べる。累計だけを並べると
    「今どれだけ動いているか」が読めず、日次ブロックの用途を果たさない。
    活動量を左（先に目に入る側）に置く。 */
-.actsum{display:grid;grid-template-columns:auto auto;gap:12px;margin:0 0 14px;
+/* 本日と累計は上下に積む。横に並べると1枚あたりの幅が半分になり、
+   6〜8項目が1行に収まらなくなる。項目が折り返して2段になると、
+   上下の同じ位置にある数字が対応しなくなり、見比べられない。 */
+.actsum{display:grid;grid-template-columns:minmax(0,1fr);gap:10px;margin:0 0 14px;
 align-items:stretch;}
 .actsum .card{padding:0 10px 0 0;display:flex;align-items:stretch;overflow:hidden;}
-.actsum .kpis{flex-wrap:wrap;}
+/* 中は必ず1行。入らない時は折り返さず、文字を縮めて収める
+   （.kpi .v の clamp が画面幅に追従する）。 */
+.actsum .kpis{flex-wrap:nowrap;}
 .actsum .card .tag{flex:0 0 auto;display:flex;flex-direction:column;
 justify-content:center;padding:14px 12px;margin-right:12px;min-width:74px;
 font-size:12px;font-weight:700;line-height:1.35;white-space:nowrap;}
@@ -842,7 +851,7 @@ font-size:12px;font-weight:700;line-height:1.35;white-space:nowrap;}
 .actsum .card.cum .tag{background:var(--ink);color:#fff;}
 .actsum .card .tag .taglabel{display:block;color:#fff;font-size:10.5px;
 font-weight:400;opacity:.9;}
-@media(max-width:1250px){.actsum{grid-template-columns:minmax(0,1fr);}}
+
 /* 週次に丸めた行は、日次の行と地色で区別する。
    同じ見た目だと「8/25」と「7/13–7/19」が同列に見えて、
    棒の高さや数値が1日分か1週間分か取り違える。 */
@@ -1140,18 +1149,23 @@ function apply(from,to){
   setK('a_win',jPct(div(t.aw,t.ad))); setK('a_amt',jYen(t.aa));
 
   /* ---- 日次架電KPI（日付でそのまま切る） ---- */
-  var c={calls:0,conn:0,worked:0};
+  var c={calls:0,conn:0,appt:0,called:0,mtgs:0,worked:0};
   for(var d in RAW.days){
     if(!RAW.days.hasOwnProperty(d)){continue;}
     if(d<from||d>to){continue;}
     var r=RAW.days[d];
-    c.calls+=r[0]; c.conn+=r[1];
+    c.calls+=r[0]; c.conn+=r[1]; c.appt+=r[2];
+    c.called+=r[4]||0; c.mtgs+=r[5]||0;
     if(r[0]>0){c.worked++;}
   }
-  setK('c_calls',jInt(c.calls)); setK('c_conn',jInt(c.conn));
+  setK('c_calls',jInt(c.calls)); setK('c_called',jInt(c.called));
+  setK('c_conn',jInt(c.conn));
   setK('c_rate',jPct(div(c.conn,c.calls)));
+  setK('c_appt',jInt(c.appt));
+  setK('c_conv',jPct(div(c.appt,c.called)));
   setK('c_perday',c.worked?jDec(c.calls/c.worked):'');
   setK('c_wdays',jInt(c.worked));
+  setK('fs_total',jInt(c.mtgs));
 
   /* ---- 転換KPI（週単位） ---- */
   var v={called:0,appt:0};
@@ -1574,26 +1588,28 @@ def render(data):
         # 「本日」「今週」は期間フィルタでは動かさない（常に生成日基準）。
         # 期間を切った状態でも「今どれだけ動いているか」は見たいので、
         # ここが期間に追従すると本来の役割が消える。
+        # 本日と累計で同じ並びにする。並びが違うと、上下の数字を
+        # 見比べる時にどれとどれが対応するのか毎回探すことになる。
         act_items = "".join([
-            kpi(f'本日 {ac["today"]} 架電', f_int(ac["today_calls"])),
-            kpi("本日 面談予約 獲得数", f_int(ac["today_appts"])),
-            kpi("今週 架電", f_int(ac["week_calls"])),
-            kpi("今週 面談予約 獲得数", f_int(ac["week_appts"])),
-            kpi("1稼働日あたり 架電", f_dec(ac["per_day"]), "c_perday"),
-            kpi("稼働日数", f_int(ac["worked_days"]), "c_wdays"),
+            kpi("架電数", f_int(ac["today_calls"])),
+            kpi("リード数", f_int(ac["today_called"])),
+            kpi("接続数", f_int(ac["today_conn"])),
+            kpi("接続率", f_pct(ac["today_rate"])),
+            kpi("面談予約 獲得数", f_int(ac["today_appts"])),
+            kpi("転換率", f_pct(ac["today_conv"])),
         ])
         kpi_items = [
-            kpi("累計 架電数", f_int(dk["calls"]), "c_calls"),
-            kpi("累計 接続数", f_int(dk["connected"]), "c_conn"),
+            kpi("架電数", f_int(dk["calls"]), "c_calls"),
+            kpi("リード数", f_int(dk["called"]), "c_called"),
+            kpi("接続数", f_int(dk["connected"]), "c_conn"),
             kpi("接続率", f_pct(dk["rate"]), "c_rate"),
+            kpi("面談予約 獲得数", f_int(dk["appts"]), "c_appt"),
+            kpi("転換率", f_pct(safe_div(dk["appts"], dk["called"])), "c_conv"),
+            kpi("1稼働日あたり 架電数", f_dec(ac["per_day"]), "c_perday"),
+            kpi("稼働日数", f_int(ac["worked_days"]), "c_wdays"),
         ]
         conv_block = ""
         if conv:
-            kpi_items += [
-                kpi("架電したリード", f_int(conv["called"]), "v_called"),
-                kpi("面談予約 獲得数", f_int(conv["appointed"]), "v_appt"),
-                kpi("転換率", f_pct(conv["rate"]), "v_rate"),
-            ]
             crows = "".join(
                 f'<tr data-d="{r["key"]}">'
                 f'<td class="wk">{r["label"]}</td>'
@@ -1624,7 +1640,7 @@ def render(data):
         fs_items = "".join([
             kpi(f'本日 {ac["today"]} 面談実施', f_int(ac["today_mtgs"])),
             kpi("今週 面談実施", f_int(ac["week_mtgs"])),
-            kpi("累計 面談実施", f_int(dk["mtgs"])),
+            kpi("累計 面談実施", f_int(dk["mtgs"]), "fs_total"),
         ])
         fs_section = f"""
 <h2>面談実施</h2>
@@ -1640,11 +1656,11 @@ def render(data):
     <tbody>{fs_rows}</tbody></table></div></details>
 </div>"""
         daily_section = f"""
-<h2>日次架電</h2>
+<h2>IS活動量</h2>
 <div class="actsum">
-  <div class="card act"><div class="tag">活動量<span class="taglabel">直近</span></div>
+  <div class="card act"><div class="tag">本日<span class="taglabel">{daily["activity"]["today"]}</span></div>
     <div class="kpis">{act_items}</div></div>
-  <div class="card cum"><div class="tag">累計<span class="taglabel">全期間</span></div>
+  <div class="card cum"><div class="tag">累計<span class="taglabel">期間内</span></div>
     <div class="kpis">{daily_kpis}</div></div>
 </div>
 <div class="charts one">
@@ -1689,7 +1705,8 @@ def render(data):
         "weeks": raw_weeks,
         "wkend": wkend,
         "days": {k: [v.get("calls", 0), v.get("connected", 0),
-                     v.get("appts", 0), v.get("leads", 0)]
+                     v.get("appts", 0), v.get("leads", 0),
+                     v.get("called", 0), v.get("mtgs", 0)]
                  for k, v in (data.get("calls") or {}).items()},
         "conv": {k: [v.get("called", 0), v.get("appointed", 0)]
                  for k, v in (data.get("call_conversion") or {}).items()},
