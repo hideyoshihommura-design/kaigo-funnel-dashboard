@@ -668,11 +668,14 @@ def build(token, sheets_token, channel_map, end_date):
             prop_day = parse_hs_datetime(p.get("hs_v2_date_entered_qualifiedtobuy"))
             if prop_day:
                 daily_props[prop_day] = daily_props.get(prop_day, 0) + 1
+            # 成約は「今も成約ステージにあること」を条件にする。日付だけで
+            # 数えると、一度成約して後から不成約に戻された取引が残り続ける
+            # （実際に2件あり、上部の成約数と1件ずれていた）。
+            # 上部と同じ won / amount を使うことで定義のズレを作らない。
             won_day = parse_hs_datetime(p.get(f"hs_v2_date_entered_{STAGE_WON}"))
-            if won_day:
+            if won and won_day:
                 daily_wons[won_day] = daily_wons.get(won_day, 0) + 1
-                daily_wonamt[won_day] = daily_wonamt.get(won_day, 0) + int(
-                    to_number(p.get("amount_in_home_currency")) or 0)
+                daily_wonamt[won_day] = daily_wonamt.get(won_day, 0) + amount
 
         target = agency[mon] if ch == "agency" else direct[mon][ch]
         target["deals"] += 1
