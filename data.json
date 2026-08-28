@@ -2334,528 +2334,616 @@
    "calls": 0,
    "connected": 0,
    "appts": 0,
+   "mtgs": 0,
    "leads": 18
   },
   "2026-06-02": {
    "calls": 0,
    "connected": 0,
    "appts": 0,
+   "mtgs": 0,
    "leads": 14
   },
   "2026-06-03": {
    "calls": 7,
    "connected": 0,
    "appts": 0,
+   "mtgs": 0,
    "leads": 16
   },
   "2026-06-04": {
    "calls": 0,
    "connected": 0,
    "appts": 0,
+   "mtgs": 0,
    "leads": 18
   },
   "2026-06-05": {
    "calls": 5,
    "connected": 0,
    "appts": 0,
+   "mtgs": 0,
    "leads": 7
   },
   "2026-06-06": {
    "calls": 0,
    "connected": 0,
    "appts": 0,
+   "mtgs": 0,
    "leads": 10
   },
   "2026-06-07": {
    "calls": 0,
    "connected": 0,
    "appts": 0,
+   "mtgs": 0,
    "leads": 12
   },
   "2026-06-08": {
    "calls": 16,
    "connected": 6,
    "appts": 0,
+   "mtgs": 0,
    "leads": 15
   },
   "2026-06-09": {
    "calls": 4,
    "connected": 1,
    "appts": 0,
+   "mtgs": 0,
    "leads": 20
   },
   "2026-06-10": {
    "calls": 11,
    "connected": 1,
    "appts": 0,
+   "mtgs": 0,
    "leads": 10
   },
   "2026-06-11": {
    "calls": 0,
    "connected": 0,
    "appts": 0,
+   "mtgs": 0,
    "leads": 9
   },
   "2026-06-12": {
    "calls": 30,
    "connected": 8,
    "appts": 0,
+   "mtgs": 0,
    "leads": 3
   },
   "2026-06-13": {
    "calls": 0,
    "connected": 0,
    "appts": 0,
+   "mtgs": 0,
    "leads": 7
   },
   "2026-06-14": {
    "calls": 0,
    "connected": 0,
    "appts": 4,
+   "mtgs": 0,
    "leads": 5
   },
   "2026-06-15": {
    "calls": 0,
    "connected": 0,
    "appts": 0,
+   "mtgs": 0,
    "leads": 5
   },
   "2026-06-16": {
    "calls": 10,
    "connected": 4,
    "appts": 0,
+   "mtgs": 0,
    "leads": 6
   },
   "2026-06-17": {
    "calls": 22,
    "connected": 1,
    "appts": 0,
+   "mtgs": 3,
    "leads": 7
   },
   "2026-06-18": {
    "calls": 7,
    "connected": 1,
    "appts": 1,
+   "mtgs": 0,
    "leads": 5
   },
   "2026-06-19": {
    "calls": 11,
    "connected": 2,
    "appts": 1,
+   "mtgs": 0,
    "leads": 12
   },
   "2026-06-20": {
    "calls": 0,
    "connected": 0,
    "appts": 0,
+   "mtgs": 0,
    "leads": 9
   },
   "2026-06-21": {
    "calls": 0,
    "connected": 0,
    "appts": 0,
+   "mtgs": 0,
    "leads": 11
   },
   "2026-06-22": {
    "calls": 0,
    "connected": 0,
    "appts": 2,
+   "mtgs": 3,
    "leads": 10
   },
   "2026-06-23": {
    "calls": 15,
    "connected": 5,
    "appts": 0,
+   "mtgs": 0,
    "leads": 12
   },
   "2026-06-24": {
    "calls": 13,
    "connected": 1,
    "appts": 0,
+   "mtgs": 0,
    "leads": 7
   },
   "2026-06-25": {
    "calls": 14,
    "connected": 2,
    "appts": 3,
+   "mtgs": 1,
    "leads": 10
   },
   "2026-06-26": {
    "calls": 12,
    "connected": 1,
    "appts": 0,
+   "mtgs": 1,
    "leads": 9
   },
   "2026-06-27": {
    "calls": 0,
    "connected": 0,
    "appts": 0,
+   "mtgs": 0,
    "leads": 2
   },
   "2026-06-28": {
    "calls": 0,
    "connected": 0,
    "appts": 0,
+   "mtgs": 0,
    "leads": 5
   },
   "2026-06-29": {
    "calls": 9,
    "connected": 4,
    "appts": 0,
+   "mtgs": 0,
    "leads": 5
   },
   "2026-06-30": {
    "calls": 22,
    "connected": 4,
    "appts": 1,
+   "mtgs": 0,
    "leads": 6
   },
   "2026-07-01": {
    "calls": 0,
    "connected": 0,
    "appts": 0,
+   "mtgs": 0,
    "leads": 7
   },
   "2026-07-02": {
    "calls": 14,
    "connected": 1,
    "appts": 0,
+   "mtgs": 0,
    "leads": 5
   },
   "2026-07-03": {
    "calls": 0,
    "connected": 0,
    "appts": 0,
+   "mtgs": 0,
    "leads": 7
   },
   "2026-07-04": {
    "calls": 0,
    "connected": 0,
    "appts": 0,
+   "mtgs": 0,
    "leads": 3
   },
   "2026-07-05": {
    "calls": 0,
    "connected": 0,
    "appts": 0,
+   "mtgs": 0,
    "leads": 8
   },
   "2026-07-06": {
    "calls": 0,
    "connected": 0,
    "appts": 0,
+   "mtgs": 0,
    "leads": 8
   },
   "2026-07-07": {
    "calls": 0,
    "connected": 0,
    "appts": 0,
+   "mtgs": 0,
    "leads": 5
   },
   "2026-07-08": {
    "calls": 7,
    "connected": 1,
    "appts": 0,
+   "mtgs": 0,
    "leads": 3
   },
   "2026-07-09": {
    "calls": 17,
    "connected": 6,
    "appts": 1,
+   "mtgs": 0,
    "leads": 15
   },
   "2026-07-10": {
    "calls": 12,
    "connected": 1,
    "appts": 1,
+   "mtgs": 0,
    "leads": 16
   },
   "2026-07-11": {
    "calls": 0,
    "connected": 0,
    "appts": 0,
+   "mtgs": 0,
    "leads": 17
   },
   "2026-07-12": {
    "calls": 0,
    "connected": 0,
    "appts": 0,
+   "mtgs": 0,
    "leads": 11
   },
   "2026-07-13": {
    "calls": 4,
    "connected": 2,
    "appts": 2,
+   "mtgs": 0,
    "leads": 9
   },
   "2026-07-14": {
    "calls": 2,
    "connected": 1,
    "appts": 0,
+   "mtgs": 0,
    "leads": 7
   },
   "2026-07-15": {
    "calls": 14,
    "connected": 5,
    "appts": 0,
+   "mtgs": 0,
    "leads": 5
   },
   "2026-07-16": {
    "calls": 0,
    "connected": 0,
    "appts": 0,
+   "mtgs": 0,
    "leads": 3
   },
   "2026-07-17": {
    "calls": 0,
    "connected": 0,
    "appts": 0,
+   "mtgs": 0,
    "leads": 5
   },
   "2026-07-18": {
    "calls": 0,
    "connected": 0,
    "appts": 0,
+   "mtgs": 0,
    "leads": 9
   },
   "2026-07-19": {
    "calls": 0,
    "connected": 0,
    "appts": 0,
+   "mtgs": 0,
    "leads": 5
   },
   "2026-07-20": {
    "calls": 0,
    "connected": 0,
    "appts": 0,
+   "mtgs": 0,
    "leads": 1
   },
   "2026-07-21": {
    "calls": 0,
    "connected": 0,
    "appts": 0,
+   "mtgs": 0,
    "leads": 11
   },
   "2026-07-22": {
    "calls": 0,
    "connected": 0,
    "appts": 0,
+   "mtgs": 0,
    "leads": 9
   },
   "2026-07-23": {
    "calls": 0,
    "connected": 0,
    "appts": 0,
+   "mtgs": 0,
    "leads": 11
   },
   "2026-07-24": {
    "calls": 0,
    "connected": 0,
    "appts": 0,
+   "mtgs": 6,
    "leads": 2
   },
   "2026-07-25": {
    "calls": 0,
    "connected": 0,
    "appts": 0,
+   "mtgs": 0,
    "leads": 6
   },
   "2026-07-26": {
    "calls": 0,
    "connected": 0,
    "appts": 0,
+   "mtgs": 0,
    "leads": 552
   },
   "2026-07-27": {
    "calls": 6,
    "connected": 3,
    "appts": 0,
+   "mtgs": 0,
    "leads": 6
   },
   "2026-07-28": {
    "calls": 10,
    "connected": 1,
    "appts": 0,
+   "mtgs": 0,
    "leads": 34
   },
   "2026-07-29": {
    "calls": 4,
    "connected": 1,
    "appts": 2,
+   "mtgs": 2,
    "leads": 1
   },
   "2026-07-30": {
    "calls": 7,
    "connected": 1,
    "appts": 3,
+   "mtgs": 0,
    "leads": 12
   },
   "2026-07-31": {
    "calls": 4,
    "connected": 1,
    "appts": 1,
+   "mtgs": 1,
    "leads": 6
   },
   "2026-08-01": {
    "calls": 0,
    "connected": 0,
    "appts": 0,
+   "mtgs": 0,
    "leads": 4
   },
   "2026-08-02": {
    "calls": 0,
    "connected": 0,
    "appts": 0,
+   "mtgs": 0,
    "leads": 6
   },
   "2026-08-03": {
    "calls": 0,
    "connected": 0,
    "appts": 0,
+   "mtgs": 1,
    "leads": 6
   },
   "2026-08-04": {
    "calls": 0,
    "connected": 0,
    "appts": 0,
+   "mtgs": 0,
    "leads": 7
   },
   "2026-08-05": {
    "calls": 0,
    "connected": 0,
    "appts": 0,
+   "mtgs": 0,
    "leads": 6
   },
   "2026-08-06": {
    "calls": 1,
    "connected": 0,
    "appts": 1,
+   "mtgs": 2,
    "leads": 17
   },
   "2026-08-07": {
    "calls": 1,
    "connected": 0,
    "appts": 0,
+   "mtgs": 0,
    "leads": 6
   },
   "2026-08-08": {
    "calls": 0,
    "connected": 0,
    "appts": 0,
+   "mtgs": 0,
    "leads": 8
   },
   "2026-08-09": {
    "calls": 0,
    "connected": 0,
    "appts": 0,
+   "mtgs": 0,
    "leads": 1
   },
   "2026-08-10": {
    "calls": 1,
    "connected": 0,
    "appts": 2,
+   "mtgs": 2,
    "leads": 8
   },
   "2026-08-11": {
    "calls": 0,
    "connected": 0,
    "appts": 0,
+   "mtgs": 0,
    "leads": 5
   },
   "2026-08-12": {
    "calls": 0,
    "connected": 0,
    "appts": 0,
+   "mtgs": 0,
    "leads": 11
   },
   "2026-08-13": {
    "calls": 0,
    "connected": 0,
    "appts": 1,
+   "mtgs": 0,
    "leads": 3
   },
   "2026-08-14": {
    "calls": 0,
    "connected": 0,
    "appts": 0,
+   "mtgs": 1,
    "leads": 7
   },
   "2026-08-15": {
    "calls": 0,
    "connected": 0,
    "appts": 0,
+   "mtgs": 0,
    "leads": 5
   },
   "2026-08-16": {
    "calls": 0,
    "connected": 0,
    "appts": 0,
+   "mtgs": 0,
    "leads": 2
   },
   "2026-08-17": {
    "calls": 0,
    "connected": 0,
    "appts": 1,
+   "mtgs": 1,
    "leads": 5
   },
   "2026-08-18": {
    "calls": 0,
    "connected": 0,
    "appts": 0,
+   "mtgs": 0,
    "leads": 6
   },
   "2026-08-19": {
    "calls": 0,
    "connected": 0,
    "appts": 0,
+   "mtgs": 0,
    "leads": 7
   },
   "2026-08-20": {
    "calls": 11,
    "connected": 1,
    "appts": 0,
+   "mtgs": 0,
    "leads": 8
   },
   "2026-08-22": {
    "calls": 0,
    "connected": 0,
    "appts": 0,
+   "mtgs": 0,
    "leads": 6
   },
   "2026-08-23": {
    "calls": 0,
    "connected": 0,
    "appts": 0,
+   "mtgs": 0,
    "leads": 2
   },
   "2026-08-24": {
    "calls": 5,
    "connected": 2,
    "appts": 1,
+   "mtgs": 0,
    "leads": 10
   },
   "2026-08-25": {
    "calls": 15,
    "connected": 3,
    "appts": 0,
+   "mtgs": 0,
    "leads": 5
   },
   "2026-08-26": {
    "calls": 36,
    "connected": 4,
    "appts": 2,
+   "mtgs": 0,
    "leads": 1
   },
   "2026-08-27": {
    "calls": 49,
    "connected": 5,
    "appts": 3,
+   "mtgs": 2,
    "leads": 0
   },
   "2026-08-28": {
    "calls": 19,
    "connected": 2,
    "appts": 0,
+   "mtgs": 0,
    "leads": 1
   }
  },
