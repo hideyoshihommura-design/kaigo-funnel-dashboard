@@ -1137,7 +1137,7 @@ function sliceDs(d,ix){
 function jInt(v){return (v===null||v===undefined)?'':Math.round(v).toLocaleString();}
 function jDec(v){return (v===null||v===undefined)?'':v.toFixed(1);}
 function jYen(v){return (v===null||v===undefined)?'':'¥'+Math.round(v).toLocaleString();}
-function jPct(v){return (v===null||v===undefined)?'':(v*100).toFixed(1)+'%';}
+function jPct(v,nd){return (v===null||v===undefined)?'':(v*100).toFixed(nd===undefined?1:nd)+'%';}
 function div(n,d){return (d===0||d===null||n===null)?null:n/d;}
 function setK(id,txt){
   var e=document.getElementById(id);
@@ -1230,6 +1230,21 @@ function apply(from,to){
   }
   setK('v_called',jInt(v.called)); setK('v_appt',jInt(v.appt));
   setK('v_rate',jPct(div(v.appt,v.called)));
+
+  /* ---- リード獲得（web広告） ---- */
+  var ad={spend:0,imp:0,clicks:0,cv:0};
+  for(i=0;i<ws.length;i++){
+    var ar=RAW.adperf[ws[i]];
+    if(ar){ad.spend+=ar[0]; ad.imp+=ar[1]; ad.clicks+=ar[2]; ad.cv+=ar[3];}
+  }
+  setK('ap_spend',jYen(ad.spend)); setK('ap_imp',jInt(ad.imp));
+  setK('ap_clicks',jInt(ad.clicks));
+  setK('ap_ctr',jPct(div(ad.clicks,ad.imp),2));
+  setK('ap_cpc',jYen(div(ad.spend,ad.clicks)));
+  setK('ap_cpm',ad.imp?jYen(ad.spend/ad.imp*1000):'');
+  setK('ap_cv',jInt(ad.cv));
+  setK('ap_cvr',jPct(div(ad.cv,ad.clicks),2));
+  setK('ap_cpl',jYen(div(ad.spend,ad.cv)));
 
   showRows(from,to);
   drawAll(from,to);
@@ -1792,7 +1807,7 @@ def render(data):
         for wk, v in sorted(ap.items()):
             sp, imp, clicks, cvn = v["spend"], v["imp"], v["clicks"], v["cv"]
             aprows.append(
-                "<tr>"
+                f'<tr data-d="{wk}">'
                 f'<td class="wk">{week_label(wk)}</td>'
                 f'<td class="num">{f_yen(sp)}</td>'
                 f'<td class="num">{f_int(imp)}</td>'
@@ -1804,8 +1819,29 @@ def render(data):
                 f'<td class="num">{f_pct(safe_div(cvn, clicks), 2)}</td>'
                 f'<td class="num">{f_yen(safe_div(sp, cvn))}</td>'
                 '<td class="pad"></td></tr>')
+        # 期間内のまとめ。率は週ごとの率を平均するのではなく、
+        # 期間の合計から計算し直す。週ごとの率を単純平均すると、
+        # 配信が少ない週が多い週と同じ重みになり実態から外れる。
+        ap_tot = {k: sum(v[k] for v in ap.values())
+                  for k in ("spend", "imp", "clicks", "cv")}
+        ap_items = "".join([
+            kpi("消費金額", f_yen(ap_tot["spend"]), "ap_spend"),
+            kpi("IMP", f_int(ap_tot["imp"]), "ap_imp"),
+            kpi("クリック", f_int(ap_tot["clicks"]), "ap_clicks"),
+            kpi("CTR", f_pct(safe_div(ap_tot["clicks"], ap_tot["imp"]), 2), "ap_ctr"),
+            kpi("CPC", f_yen(safe_div(ap_tot["spend"], ap_tot["clicks"])), "ap_cpc"),
+            kpi("CPM", f_yen(safe_div(ap_tot["spend"], ap_tot["imp"]) * 1000
+                             if ap_tot["imp"] else None), "ap_cpm"),
+            kpi("CV", f_int(ap_tot["cv"]), "ap_cv"),
+            kpi("CVR", f_pct(safe_div(ap_tot["cv"], ap_tot["clicks"]), 2), "ap_cvr"),
+            kpi("CPL", f_yen(safe_div(ap_tot["spend"], ap_tot["cv"])), "ap_cpl"),
+        ])
         adperf_section = f"""
 <h2>リード獲得</h2>
+<div class="actsum">
+  <div class="card cum"><div class="tag">web広告<span class="taglabel">期間内・ウェビナー</span></div>
+    <div class="kpis">{ap_items}</div></div>
+</div>
 <div class="tabgrid">
   <details class="fold" id="f-adperf"><summary><span class="tri">▶</span>web広告の週次指標<span class="cnt">{len(ap)}週分・ウェビナー</span></summary>
     <div class="tablewrap"><table>
@@ -1907,6 +1943,8 @@ def render(data):
         "fs": {k: [v.get("mtgs", 0), v.get("props", 0),
                    v.get("wons", 0), v.get("wonamt", 0)]
                for k, v in (data.get("fs") or {}).items()},
+        "adperf": {k: [v["spend"], v["imp"], v["clicks"], v["cv"]]
+                   for k, v in (data.get("adperf") or {}).items()},
         "conv": {k: [v.get("called", 0), v.get("appointed", 0)]
                  for k, v in (data.get("call_conversion") or {}).items()},
         "wklabel": {w: week_label(w) for w in weeks},
