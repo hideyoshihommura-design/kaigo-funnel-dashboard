@@ -434,6 +434,10 @@ def fetch_web_cost(token, week_starts):  # returns (週次, 日次)
     # この絞り込みは日次入力タブでしか作れない。
     wcost_by_day = {}
     wcv_by_day = {}
+    # CPL悪化の切り分けに使う素材。CPL＝CPM÷(CTR×CVR) なので、
+    # IMP・クリック・CVがあれば、単価が上がったのか、クリックされなく
+    # なったのか、申し込まれなくなったのかを分けられる。週単位で持つ。
+    adperf = {}
     weekset = set(week_starts)
 
     # --- 全体集計（週次・火曜始まり）
@@ -498,6 +502,10 @@ def fetch_web_cost(token, week_starts):  # returns (週次, 日次)
                         cols.setdefault("cv", j)
                     elif "キャンペーン" in c:
                         cols.setdefault("camp", j)
+                    elif c == "IMP":
+                        cols.setdefault("imp", j)
+                    elif "クリック" in c:
+                        cols.setdefault("clicks", j)
                 break
         if header_idx is None:
             warn(f"『{daily_tab}』のヘッダー行（日付／消費金額）が見つかりません。")
@@ -524,6 +532,16 @@ def fetch_web_cost(token, week_starts):  # returns (週次, 日次)
                     wcost_by_day[d] = wcost_by_day.get(d, 0.0) + spend
                     if cvv is not None:
                         wcv_by_day[d] = wcv_by_day.get(d, 0.0) + cvv
+                    wk = monday(d).isoformat()
+                    a = adperf.setdefault(
+                        wk, {"spend": 0.0, "imp": 0.0, "clicks": 0.0, "cv": 0.0})
+                    a["spend"] += spend
+                    a["cv"] += cvv or 0
+                    for key, col in (("imp", "imp"), ("clicks", "clicks")):
+                        if col in cols and len(row) > cols[col]:
+                            v = to_number(row[cols[col]])
+                            if v is not None:
+                                a[key] += v
                 daily_first = d if daily_first is None else min(daily_first, d)
                 last_day = d if last_day is None else max(last_day, d)
             # 日次があるのに全体集計より後ろで途切れているとき、その先を0で
@@ -548,7 +566,8 @@ def fetch_web_cost(token, week_starts):  # returns (週次, 日次)
     for w in week_starts:
         if w < first_known:
             cost[w] = None
-    return cost, cost_by_day, cv_by_day, cv_by_week, cv, wcost_by_day, wcv_by_day
+    return (cost, cost_by_day, cv_by_day, cv_by_week, cv,
+            wcost_by_day, wcv_by_day, adperf)
 
 
 def fetch_expo_costs(token):
@@ -773,7 +792,7 @@ def build(token, sheets_token, channel_map, webinar_cfg, end_date):
 
     # --- web 費用
     (web_cost, web_cost_day, web_cv_day, web_cv_week, web_cv,
-     wb_cost_day, wb_cv_day) = fetch_web_cost(sheets_token, week_starts)
+     wb_cost_day, wb_cv_day, adperf) = fetch_web_cost(sheets_token, week_starts)
     for w in week_starts:
         direct[w]["web"]["cost"] = web_cost[w]
         # CPLの分母は広告側のCV（申込延べ数）に揃える。HubSpotのリード数は
@@ -956,6 +975,8 @@ def build(token, sheets_token, channel_map, webinar_cfg, end_date):
         "calls": calls_out,
         "fs": fs_days,
         "webinars": webinars_out,
+        "adperf": {k: {kk: int(round(vv)) for kk, vv in v.items()}
+                   for k, v in sorted(adperf.items())},
         "call_conversion": {w.isoformat(): v for w, v in sorted(conv.items())},
     }
 

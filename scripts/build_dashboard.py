@@ -1781,6 +1781,42 @@ def render(data):
         fs_section = ""
         daily_js = ""
 
+    # ---- リード獲得（web広告） ----
+    # CPLが悪化した時の切り分け材料。CPL＝CPM÷(CTR×CVR) なので、
+    # 単価が上がったのか（CPM）、クリックされなくなったのか（CTR）、
+    # 申し込まれなくなったのか（CVR）を分けて見られるようにしておく。
+    # 率は表示用に丸めた値からではなく実数から計算する。
+    ap = data.get("adperf") or {}
+    if ap:
+        aprows = []
+        for wk, v in sorted(ap.items()):
+            sp, imp, clicks, cvn = v["spend"], v["imp"], v["clicks"], v["cv"]
+            aprows.append(
+                "<tr>"
+                f'<td class="wk">{week_label(wk)}</td>'
+                f'<td class="num">{f_yen(sp)}</td>'
+                f'<td class="num">{f_int(imp)}</td>'
+                f'<td class="num">{f_int(clicks)}</td>'
+                f'<td class="num">{f_pct(safe_div(clicks, imp), 2)}</td>'
+                f'<td class="num">{f_yen(safe_div(sp, clicks))}</td>'
+                f'<td class="num">{f_yen(safe_div(sp, imp) * 1000 if imp else None)}</td>'
+                f'<td class="num">{f_int(cvn)}</td>'
+                f'<td class="num">{f_pct(safe_div(cvn, clicks), 2)}</td>'
+                f'<td class="num">{f_yen(safe_div(sp, cvn))}</td>'
+                '<td class="pad"></td></tr>')
+        adperf_section = f"""
+<h2>リード獲得</h2>
+<div class="tabgrid">
+  <details class="fold" id="f-adperf"><summary><span class="tri">▶</span>web広告の週次指標<span class="cnt">{len(ap)}週分・ウェビナー</span></summary>
+    <div class="tablewrap"><table>
+    <thead><tr><th>週</th><th>消費金額</th><th>IMP</th><th>クリック</th><th>CTR</th>
+    <th>CPC</th><th>CPM</th><th>CV</th><th>CVR</th><th>CPL</th>
+    <th class="pad" aria-hidden="true"></th></tr></thead>
+    <tbody>{"".join(aprows)}</tbody></table></div></details>
+</div>"""
+    else:
+        adperf_section = ""
+
     # ---- ウェビナー別 ----
     # 同じ申込フォームから入るため、お題の区別は掲載期間でしかできない。
     # 期間フィルタの対象にはしない。ウェビナーごとの期間は固定で、
@@ -1939,6 +1975,7 @@ resetRange();
     <div class="kpis">{agency_kpis}</div></div>
 </div>
 
+{adperf_section}
 {daily_section}
 {fs_section}
 <h2>直契約</h2>
