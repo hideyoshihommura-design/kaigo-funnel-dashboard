@@ -1730,7 +1730,12 @@ def render(data):
     if wbs:
         wrows = []
         for w in wbs:
-            cost, leads = w.get("cost"), w.get("leads", 0)
+            cost = w.get("cost")
+            # 分母は広告シートのCV（申込の延べ数）。HubSpotのコンタクト数は
+            # ユニークなので、同じ人が複数回申し込むと少なく出てCPLが高く見える。
+            # シート側の定義も CPL＝消費金額÷CV、歩留まり＝商談数÷CV。
+            cv = w.get("cv")
+            leads = cv if cv is not None else w.get("leads", 0)
             won_amt = w.get("won_amount", 0)
             cpl = safe_div(cost, leads) if cost is not None else None
             roi = safe_div(won_amt, cost) if cost else None
@@ -1738,6 +1743,11 @@ def render(data):
             # 日次入力が無い期間は週次から日割りで埋めている。厳密な実額ではない
             # ので、その旨を出す。何日ぶんが概算かまで見せないと、
             # 「多少ズレている」のか「ほぼ全部が推定」なのか区別できない。
+            cvnote = ""
+            if cv is not None and w.get("cv_est_days", 0):
+                cvnote = f'<span class="ma">概算 {w["cv_est_days"]}/{w["days"]}日</span>'
+            elif cv is None:
+                cvnote = '<span class="ma">HubSpot集計</span>'
             note = ""
             est = w.get("cost_est_days", 0)
             if cost is not None and est:
@@ -1749,7 +1759,7 @@ def render(data):
                 f'<td class="wk">{w["name"]}</td>'
                 f'<td class="ch">{span}</td>'
                 f'<td class="num">{f_yen(cost)}{note}</td>'
-                f'<td class="num">{f_int(leads)}</td>'
+                f'<td class="num">{f_int(leads)}{cvnote}</td>'
                 f'<td class="num">{f_yen(cpl)}</td>'
                 f'<td class="num">{f_int(w.get("deals", 0))}</td>'
                 f'<td class="num">{f_pct(safe_div(w.get("deals", 0), leads))}</td>'
@@ -1763,7 +1773,7 @@ def render(data):
 <div class="tabgrid">
   <details class="fold" id="f-webinar"><summary><span class="tri">▶</span>お題ごとの成果<span class="cnt">{len(wbs)}回分</span></summary>
     <div class="tablewrap"><table>
-    <thead><tr><th>ウェビナー</th><th>掲載期間</th><th>広告費</th><th>リード数</th><th>CPL</th>
+    <thead><tr><th>ウェビナー</th><th>掲載期間</th><th>広告費</th><th>CV（申込）</th><th>CPL</th>
     <th>商談数</th><th>商談化率</th><th>成約数</th><th>成約率</th><th>成約金額</th><th>回収率</th>
     <th class="pad" aria-hidden="true"></th></tr></thead>
     <tbody>{"".join(wrows)}</tbody></table></div></details>
