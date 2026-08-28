@@ -69,7 +69,8 @@
     "cost": null,
     "deals": 0,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": null
    },
    "line": {
     "leads": 0,
@@ -106,7 +107,8 @@
     "cost": null,
     "deals": 0,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": null
    },
    "line": {
     "leads": 0,
@@ -143,7 +145,8 @@
     "cost": null,
     "deals": 0,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": null
    },
    "line": {
     "leads": 0,
@@ -180,7 +183,8 @@
     "cost": null,
     "deals": 0,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": null
    },
    "line": {
     "leads": 0,
@@ -217,7 +221,8 @@
     "cost": null,
     "deals": 0,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": null
    },
    "line": {
     "leads": 0,
@@ -254,7 +259,8 @@
     "cost": null,
     "deals": 1,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": null
    },
    "line": {
     "leads": 0,
@@ -291,7 +297,8 @@
     "cost": null,
     "deals": 0,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": null
    },
    "line": {
     "leads": 0,
@@ -328,7 +335,8 @@
     "cost": null,
     "deals": 0,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": null
    },
    "line": {
     "leads": 0,
@@ -365,7 +373,8 @@
     "cost": null,
     "deals": 0,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": null
    },
    "line": {
     "leads": 0,
@@ -402,7 +411,8 @@
     "cost": null,
     "deals": 0,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": null
    },
    "line": {
     "leads": 0,
@@ -439,7 +449,8 @@
     "cost": null,
     "deals": 0,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": null
    },
    "line": {
     "leads": 0,
@@ -476,7 +487,8 @@
     "cost": null,
     "deals": 0,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": null
    },
    "line": {
     "leads": 0,
@@ -513,7 +525,8 @@
     "cost": null,
     "deals": 1,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": null
    },
    "line": {
     "leads": 0,
@@ -550,7 +563,8 @@
     "cost": null,
     "deals": 0,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": null
    },
    "line": {
     "leads": 0,
@@ -587,7 +601,8 @@
     "cost": null,
     "deals": 0,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": null
    },
    "line": {
     "leads": 0,
@@ -624,7 +639,8 @@
     "cost": null,
     "deals": 0,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": null
    },
    "line": {
     "leads": 0,
@@ -661,7 +677,8 @@
     "cost": null,
     "deals": 0,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": null
    },
    "line": {
     "leads": 0,
@@ -698,7 +715,8 @@
     "cost": null,
     "deals": 0,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": null
    },
    "line": {
     "leads": 0,
@@ -735,7 +753,8 @@
     "cost": null,
     "deals": 0,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": null
    },
    "line": {
     "leads": 0,
@@ -772,7 +791,8 @@
     "cost": null,
     "deals": 0,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": null
    },
    "line": {
     "leads": 0,
@@ -809,7 +829,8 @@
     "cost": null,
     "deals": 0,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": null
    },
    "line": {
     "leads": 0,
@@ -846,7 +867,8 @@
     "cost": null,
     "deals": 0,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": null
    },
    "line": {
     "leads": 0,
@@ -883,7 +905,8 @@
     "cost": null,
     "deals": 0,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": null
    },
    "line": {
     "leads": 0,
@@ -920,7 +943,8 @@
     "cost": null,
     "deals": 0,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": null
    },
    "line": {
     "leads": 0,
@@ -957,7 +981,8 @@
     "cost": null,
     "deals": 0,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": null
    },
    "line": {
     "leads": 0,
@@ -994,7 +1019,8 @@
     "cost": null,
     "deals": 0,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": null
    },
    "line": {
     "leads": 0,
@@ -1031,7 +1057,8 @@
     "cost": null,
     "deals": 0,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": null
    },
    "line": {
     "leads": 0,
@@ -1068,7 +1095,8 @@
     "cost": null,
     "deals": 0,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": null
    },
    "line": {
     "leads": 0,
@@ -1105,7 +1133,8 @@
     "cost": null,
     "deals": 0,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": null
    },
    "line": {
     "leads": 0,
@@ -1142,7 +1171,8 @@
     "cost": null,
     "deals": 0,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": null
    },
    "line": {
     "leads": 0,
@@ -1179,7 +1209,8 @@
     "cost": null,
     "deals": 0,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": null
    },
    "line": {
     "leads": 0,
@@ -1216,7 +1247,8 @@
     "cost": 246127,
     "deals": 1,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": 53
    },
    "line": {
     "leads": 0,
@@ -1253,7 +1285,8 @@
     "cost": 185135,
     "deals": 3,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": 90
    },
    "line": {
     "leads": 0,
@@ -1290,7 +1323,8 @@
     "cost": 205240,
     "deals": 2,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": 52
    },
    "line": {
     "leads": 0,
@@ -1327,7 +1361,8 @@
     "cost": 96706,
     "deals": 1,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": 35
    },
    "line": {
     "leads": 0,
@@ -1364,7 +1399,8 @@
     "cost": 108252,
     "deals": 3,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": 36
    },
    "line": {
     "leads": 0,
@@ -1401,7 +1437,8 @@
     "cost": 105487,
     "deals": 0,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": 31
    },
    "line": {
     "leads": 0,
@@ -1438,7 +1475,8 @@
     "cost": 124469,
     "deals": 3,
     "won": 1,
-    "won_amount": 81400
+    "won_amount": 81400,
+    "cv": 54
    },
    "line": {
     "leads": 0,
@@ -1475,7 +1513,8 @@
     "cost": 210806,
     "deals": 3,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": 97
    },
    "line": {
     "leads": 0,
@@ -1512,7 +1551,8 @@
     "cost": 288233,
     "deals": 2,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": 126
    },
    "line": {
     "leads": 0,
@@ -1549,7 +1589,8 @@
     "cost": 163270,
     "deals": 2,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": 75
    },
    "line": {
     "leads": 0,
@@ -1586,7 +1627,8 @@
     "cost": 213693,
     "deals": 4,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": 80
    },
    "line": {
     "leads": 0,
@@ -1623,7 +1665,8 @@
     "cost": 183659,
     "deals": 1,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": 68
    },
    "line": {
     "leads": 0,
@@ -1660,7 +1703,8 @@
     "cost": 76823,
     "deals": 1,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": 46
    },
    "line": {
     "leads": 0,
@@ -1697,7 +1741,8 @@
     "cost": 76765,
     "deals": 2,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": 71
    },
    "line": {
     "leads": 2,
@@ -1734,7 +1779,8 @@
     "cost": 76187,
     "deals": 1,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": 44
    },
    "line": {
     "leads": 0,
@@ -1771,7 +1817,8 @@
     "cost": 78134,
     "deals": 2,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": 36
    },
    "line": {
     "leads": 6,
@@ -1808,7 +1855,8 @@
     "cost": 75149,
     "deals": 0,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": 56
    },
    "line": {
     "leads": 5,
@@ -1845,7 +1893,8 @@
     "cost": 77648,
     "deals": 1,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": 47
    },
    "line": {
     "leads": 3,
@@ -1882,7 +1931,8 @@
     "cost": 79418,
     "deals": 3,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": 34
    },
    "line": {
     "leads": 0,
@@ -1919,7 +1969,8 @@
     "cost": 121172,
     "deals": 3,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": 49
    },
    "line": {
     "leads": 0,
@@ -1956,7 +2007,8 @@
     "cost": 48426,
     "deals": 0,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": 18
    },
    "line": {
     "leads": 0,
