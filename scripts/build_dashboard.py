@@ -323,6 +323,7 @@ def build_rows(data):
             cells[ch] = {
                 "leads": c["leads"],
                 "cost": c.get("cost"),
+                "cv": c.get("cv"),
                 "deals": c["deals"],
                 "won": c["won"],
                 "won_amount": c.get("won_amount", 0),
@@ -417,6 +418,16 @@ def compute_direct(data):
     rows = build_rows(data)
     keys = CHANNEL_KEYS + ["total"]
 
+    # CPLの分母。広告側のCV（申込延べ数）があればそれ、無ければリード数。
+    # 移動平均は行のフィールドを合計するので、あらかじめ値として持たせる。
+    for w in weeks:
+        cells = rows[w]
+        for ch in CHANNEL_KEYS:
+            r = cells[ch]
+            r["cvden"] = r.get("cv") or r["leads"]
+        # 合計はチャネルごとの分母を足す。webだけCV、他はリード数になる。
+        cells["total"]["cvden"] = sum(cells[ch]["cvden"] for ch in CHANNEL_KEYS)
+
     metrics = {}
     for k in keys:
         metrics[k] = {
@@ -424,7 +435,11 @@ def compute_direct(data):
             "cost": [rows[w][k]["cost"] for w in weeks],
             "deals": [rows[w][k]["deals"] for w in weeks],
             "won": [rows[w][k]["won"] for w in weeks],
-            "cpl": [safe_div(rows[w][k]["cost"], rows[w][k]["leads"]) for w in weeks],
+            # CPLの分母は広告側のCV（申込延べ数）。HubSpotのリード数はユニークで、
+            # 同じ人の再申込があると分母が小さくなりCPLが高く出る。
+            # CVが無い週（広告シートに記入が無い期間）はリード数で代用する。
+            "cpl": [safe_div(rows[w][k]["cost"], rows[w][k]["cvden"])
+                    for w in weeks],
             "mtg_rate": [safe_div(rows[w][k]["deals"], rows[w][k]["leads"]) for w in weeks],
             "win_rate": [safe_div(rows[w][k]["won"], rows[w][k]["deals"]) for w in weeks],
             "ma": {
@@ -432,7 +447,7 @@ def compute_direct(data):
                 "cost": moving_series(weeks, rows, k, "cost"),
                 "deals": moving_series(weeks, rows, k, "deals"),
                 "won": moving_series(weeks, rows, k, "won"),
-                "cpl": moving_ratio(weeks, rows, k, "cost", "leads"),
+                "cpl": moving_ratio(weeks, rows, k, "cost", "cvden"),
                 "mtg_rate": moving_ratio(weeks, rows, k, "deals", "leads"),
                 "win_rate": moving_ratio(weeks, rows, k, "won", "deals"),
             },
@@ -468,10 +483,12 @@ def totals_direct(rows, weeks):
     deals = sum(rows[w]["total"]["deals"] for w in weeks)
     won = sum(rows[w]["total"]["won"] for w in weeks)
     amount = sum(rows[w]["total"]["won_amount"] for w in weeks)
+    # CPLの分母は週次表と揃える（webはCV、他はリード数）。
+    cvden = sum(rows[w]["total"]["cvden"] for w in weeks)
     return {
         "leads": leads,
         "cost": cost,
-        "cpl": safe_div(cost, leads),
+        "cpl": safe_div(cost, cvden),
         "deals": deals,
         "mtg_rate": safe_div(deals, leads),
         "won": won,
@@ -1131,11 +1148,12 @@ function apply(from,to){
   var ws=weekKeys(from,to),i,w;
 
   /* ---- 週次KPI（直契約・代理店） ---- */
-  var t={leads:0,cost:0,known:0,deals:0,won:0,amt:0,
+  var t={leads:0,cost:0,cvden:0,known:0,deals:0,won:0,amt:0,
          al:0,ad:0,aw:0,aa:0};
   for(i=0;i<ws.length;i++){
     w=RAW.weeks[ws[i]];
-    t.leads+=w.leads; t.deals+=w.deals; t.won+=w.won; t.amt+=w.amt;
+    t.leads+=w.leads; t.cvden+=(w.cvden||0);
+    t.deals+=w.deals; t.won+=w.won; t.amt+=w.amt;
     /* 費用は判明分だけ足す。null（不明）を0として足すと、
        データが無い期間を「0円で回した」ことにしてしまう。 */
     if(w.cost!==null){t.cost+=w.cost; t.known++;}
@@ -1143,7 +1161,7 @@ function apply(from,to){
   }
   var cost = t.known>0 ? t.cost : null;
   setK('d_leads',jInt(t.leads)); setK('d_cost',jYen(cost));
-  setK('d_cpl',jYen(div(cost,t.leads))); setK('d_deals',jInt(t.deals));
+  setK('d_cpl',jYen(div(cost,t.cvden))); setK('d_deals',jInt(t.deals));
   setK('d_mtg',jPct(div(t.deals,t.leads))); setK('d_won',jInt(t.won));
   setK('d_win',jPct(div(t.won,t.deals))); setK('d_amt',jYen(t.amt));
   setK('a_leads',jInt(t.al)); setK('a_deals',jInt(t.ad));
@@ -1791,6 +1809,7 @@ def render(data):
         a = arows[w]
         raw_weeks[w] = {
             "leads": r["total"]["leads"], "cost": r["total"]["cost"],
+            "cvden": r["total"]["cvden"],
             "deals": r["total"]["deals"], "won": r["total"]["won"],
             "amt": r["total"]["won_amount"],
             "al": a["leads"], "ad": a["deals"], "aw": a["won"],

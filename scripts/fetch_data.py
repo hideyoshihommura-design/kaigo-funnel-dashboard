@@ -427,6 +427,7 @@ def fetch_web_cost(token, week_starts):  # returns (週次, 日次)
     # （シート内の定義も CPL＝消費金額÷CV）。
     cv_by_day = {}
     cv_by_week = {}
+    cv = {w: None for w in week_starts}
     weekset = set(week_starts)
 
     # --- 全体集計（週次・火曜始まり）
@@ -470,6 +471,8 @@ def fetch_web_cost(token, week_starts):  # returns (週次, 日次)
                     cvv = to_number(row[cols["cv"]])
                     if cvv is not None:
                         cv_by_week[mon] = cv_by_week.get(mon, 0.0) + cvv
+                        if mon in weekset:
+                            cv[mon] = int(round(cv_by_week[mon]))
 
     # --- 日次入力（この期間は日別で組み直す。こちらを優先して上書きする）
     daily_first = None
@@ -514,6 +517,13 @@ def fetch_web_cost(token, week_starts):  # returns (週次, 日次)
             for mon, total in per_week.items():
                 if mon in weekset:
                     cost[mon] = int(round(total))
+            # 日次があるならCVもそちらを優先する（費用と同じ扱い）。
+            cv_per_week = {}
+            for d, v in cv_by_day.items():
+                cv_per_week[monday(d)] = cv_per_week.get(monday(d), 0.0) + v
+            for mon, total in cv_per_week.items():
+                if mon in weekset:
+                    cv[mon] = int(round(total))
             if last_day:
                 print(f"[info] 日次入力の最終日: {last_day}", file=sys.stderr)
 
@@ -524,7 +534,7 @@ def fetch_web_cost(token, week_starts):  # returns (週次, 日次)
     for w in week_starts:
         if w < first_known:
             cost[w] = None
-    return cost, cost_by_day, cv_by_day, cv_by_week
+    return cost, cost_by_day, cv_by_day, cv_by_week, cv
 
 
 def fetch_expo_costs(token):
@@ -748,10 +758,13 @@ def build(token, sheets_token, channel_map, webinar_cfg, end_date):
     expos.sort(key=lambda e: e["date"])
 
     # --- web 費用
-    web_cost, web_cost_day, web_cv_day, web_cv_week = fetch_web_cost(
-        sheets_token, week_starts)
+    (web_cost, web_cost_day, web_cv_day, web_cv_week,
+     web_cv) = fetch_web_cost(sheets_token, week_starts)
     for w in week_starts:
         direct[w]["web"]["cost"] = web_cost[w]
+        # CPLの分母は広告側のCV（申込延べ数）に揃える。HubSpotのリード数は
+        # ユニークなので、同じ人の再申込があると分母が小さくCPLが高く出る。
+        direct[w]["web"]["cv"] = web_cv[w]
     # LINE・紹介・その他は常に費用0（不明ではなく、発生していないことが分かっている）
     for w in week_starts:
         for ch in ("line", "referral", "other"):
