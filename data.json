@@ -2336,9 +2336,6 @@
    "appts": 0,
    "mtgs": 0,
    "called": 0,
-   "props": 0,
-   "wons": 0,
-   "wonamt": 0,
    "leads": 18
   },
   "2026-06-02": {
@@ -2347,9 +2344,6 @@
    "appts": 0,
    "mtgs": 0,
    "called": 0,
-   "props": 0,
-   "wons": 0,
-   "wonamt": 0,
    "leads": 14
   },
   "2026-06-03": {
@@ -2358,9 +2352,6 @@
    "appts": 0,
    "mtgs": 0,
    "called": 7,
-   "props": 0,
-   "wons": 1,
-   "wonamt": 81400,
    "leads": 16
   },
   "2026-06-04": {
@@ -2369,9 +2360,6 @@
    "appts": 0,
    "mtgs": 0,
    "called": 0,
-   "props": 0,
-   "wons": 0,
-   "wonamt": 0,
    "leads": 18
   },
   "2026-06-05": {
@@ -2380,9 +2368,6 @@
    "appts": 0,
    "mtgs": 0,
    "called": 5,
-   "props": 0,
-   "wons": 0,
-   "wonamt": 0,
    "leads": 7
   },
   "2026-06-06": {
@@ -2391,9 +2376,6 @@
    "appts": 0,
    "mtgs": 0,
    "called": 0,
-   "props": 0,
-   "wons": 0,
-   "wonamt": 0,
    "leads": 10
   },
   "2026-06-07": {
@@ -2402,9 +2384,6 @@
    "appts": 0,
    "mtgs": 0,
    "called": 0,
-   "props": 0,
-   "wons": 0,
-   "wonamt": 0,
    "leads": 12
   },
   "2026-06-08": {
@@ -2413,9 +2392,6 @@
    "appts": 0,
    "mtgs": 0,
    "called": 15,
-   "props": 0,
-   "wons": 0,
-   "wonamt": 0,
    "leads": 15
   },
   "2026-06-09": {
@@ -2424,9 +2400,6 @@
    "appts": 0,
    "mtgs": 0,
    "called": 4,
-   "props": 1,
-   "wons": 0,
-   "wonamt": 0,
    "leads": 20
   },
   "2026-06-10": {
@@ -2435,9 +2408,6 @@
    "appts": 0,
    "mtgs": 0,
    "called": 10,
-   "props": 0,
-   "wons": 0,
-   "wonamt": 0,
    "leads": 10
   },
   "2026-06-11": {
@@ -2446,9 +2416,6 @@
    "appts": 0,
    "mtgs": 0,
    "called": 0,
-   "props": 0,
-   "wons": 0,
-   "wonamt": 0,
    "leads": 9
   },
   "2026-06-12": {
@@ -2457,9 +2424,6 @@
    "appts": 0,
    "mtgs": 0,
    "called": 29,
-   "props": 0,
-   "wons": 0,
-   "wonamt": 0,
    "leads": 3
   },
   "2026-06-13": {
@@ -2468,9 +2432,6 @@
    "appts": 0,
    "mtgs": 0,
    "called": 0,
-   "props": 0,
-   "wons": 0,
-   "wonamt": 0,
    "leads": 7
   },
   "2026-06-14": {
@@ -2479,9 +2440,6 @@
    "appts": 4,
    "mtgs": 0,
    "called": 0,
-   "props": 2,
-   "wons": 0,
-   "wonamt": 0,
    "leads": 5
   },
   "2026-06-15": {
@@ -2490,9 +2448,6 @@
    "appts": 0,
    "mtgs": 0,
    "called": 0,
-   "props": 0,
-   "wons": 0,
-   "wonamt": 0,
    "leads": 5
   },
   "2026-06-16": {
@@ -2501,9 +2456,6 @@
    "appts": 0,
    "mtgs": 0,
    "called": 9,
-   "props": 0,
-   "wons": 0,
-   "wonamt": 0,
    "leads": 6
   },
   "2026-06-17": {
@@ -2512,9 +2464,6 @@
    "appts": 0,
    "mtgs": 3,
    "called": 15,
-   "props": 0,
-   "wons": 0,
-   "wonamt": 0,
    "leads": 7
   },
   "2026-06-18": {
@@ -2523,9 +2472,6 @@
    "appts": 1,
    "mtgs": 0,
    "called": 5,
-   "props": 0,
-   "wons": 1,
-   "wonamt": 0,
    "leads": 5
   },
   "2026-06-19": {
@@ -2534,9 +2480,6 @@
    "appts": 1,
    "mtgs": 0,
    "called": 10,
-   "props": 0,
-   "wons": 0,
-   "wonamt": 0,
    "leads": 12
   },
   "2026-06-20": {
@@ -2545,9 +2488,6 @@
    "appts": 0,
    "mtgs": 0,
    "called": 0,
-   "props": 0,
-   "wons": 0,
-   "wonamt": 0,
    "leads": 9
   },
   "2026-06-21": {
@@ -2556,20 +2496,14 @@
    "appts": 0,
    "mtgs": 0,
    "called": 0,
-   "props": 0,
-   "wons": 0,
-   "wonamt": 0,
    "leads": 11
   },
   "2026-06-22": {
    "calls": 0,
    "connected": 0,
    "appts": 2,
-   "mtgs": 3,
+   "mtgs": 2,
    "called": 0,
-   "props": 2,
-   "wons": 0,
-   "wonamt": 0,
    "leads": 10
   },
   "2026-06-23": {
@@ -2578,9 +2512,6 @@
    "appts": 0,
    "mtgs": 0,
    "called": 15,
-   "props": 1,
-   "wons": 0,
-   "wonamt": 0,
    "leads": 12
   },
   "2026-06-24": {
@@ -2589,9 +2520,6 @@
    "appts": 0,
    "mtgs": 0,
    "called": 9,
-   "props": 0,
-   "wons": 0,
-   "wonamt": 0,
    "leads": 7
   },
   "2026-06-25": {
@@ -2600,9 +2528,6 @@
    "appts": 3,
    "mtgs": 1,
    "called": 7,
-   "props": 1,
-   "wons": 0,
-   "wonamt": 0,
    "leads": 10
   },
   "2026-06-26": {
@@ -2611,9 +2536,6 @@
    "appts": 0,
    "mtgs": 1,
    "called": 6,
-   "props": 0,
-   "wons": 0,
-   "wonamt": 0,
    "leads": 9
   },
   "2026-06-27": {
@@ -2622,9 +2544,6 @@
    "appts": 0,
    "mtgs": 0,
    "called": 0,
-   "props": 0,
-   "wons": 0,
-   "wonamt": 0,
    "leads": 2
   },
   "2026-06-28": {
@@ -2633,9 +2552,6 @@
    "appts": 0,
    "mtgs": 0,
    "called": 0,
-   "props": 0,
-   "wons": 0,
-   "wonamt": 0,
    "leads": 5
   },
   "2026-06-29": {
@@ -2644,9 +2560,6 @@
    "appts": 0,
    "mtgs": 0,
    "called": 9,
-   "props": 0,
-   "wons": 0,
-   "wonamt": 0,
    "leads": 5
   },
   "2026-06-30": {
@@ -2655,9 +2568,6 @@
    "appts": 1,
    "mtgs": 0,
    "called": 21,
-   "props": 1,
-   "wons": 0,
-   "wonamt": 0,
    "leads": 6
   },
   "2026-07-01": {
@@ -2666,9 +2576,6 @@
    "appts": 0,
    "mtgs": 0,
    "called": 0,
-   "props": 0,
-   "wons": 0,
-   "wonamt": 0,
    "leads": 7
   },
   "2026-07-02": {
@@ -2677,9 +2584,6 @@
    "appts": 0,
    "mtgs": 0,
    "called": 6,
-   "props": 0,
-   "wons": 0,
-   "wonamt": 0,
    "leads": 5
   },
   "2026-07-03": {
@@ -2688,9 +2592,6 @@
    "appts": 0,
    "mtgs": 0,
    "called": 0,
-   "props": 0,
-   "wons": 0,
-   "wonamt": 0,
    "leads": 7
   },
   "2026-07-04": {
@@ -2699,9 +2600,6 @@
    "appts": 0,
    "mtgs": 0,
    "called": 0,
-   "props": 0,
-   "wons": 0,
-   "wonamt": 0,
    "leads": 3
   },
   "2026-07-05": {
@@ -2710,9 +2608,6 @@
    "appts": 0,
    "mtgs": 0,
    "called": 0,
-   "props": 0,
-   "wons": 0,
-   "wonamt": 0,
    "leads": 8
   },
   "2026-07-06": {
@@ -2721,9 +2616,6 @@
    "appts": 0,
    "mtgs": 0,
    "called": 0,
-   "props": 0,
-   "wons": 0,
-   "wonamt": 0,
    "leads": 8
   },
   "2026-07-07": {
@@ -2732,9 +2624,6 @@
    "appts": 0,
    "mtgs": 0,
    "called": 0,
-   "props": 0,
-   "wons": 0,
-   "wonamt": 0,
    "leads": 5
   },
   "2026-07-08": {
@@ -2743,9 +2632,6 @@
    "appts": 0,
    "mtgs": 0,
    "called": 7,
-   "props": 0,
-   "wons": 0,
-   "wonamt": 0,
    "leads": 3
   },
   "2026-07-09": {
@@ -2754,9 +2640,6 @@
    "appts": 1,
    "mtgs": 0,
    "called": 14,
-   "props": 0,
-   "wons": 0,
-   "wonamt": 0,
    "leads": 15
   },
   "2026-07-10": {
@@ -2765,9 +2648,6 @@
    "appts": 1,
    "mtgs": 0,
    "called": 12,
-   "props": 0,
-   "wons": 0,
-   "wonamt": 0,
    "leads": 16
   },
   "2026-07-11": {
@@ -2776,9 +2656,6 @@
    "appts": 0,
    "mtgs": 0,
    "called": 0,
-   "props": 0,
-   "wons": 0,
-   "wonamt": 0,
    "leads": 17
   },
   "2026-07-12": {
@@ -2787,9 +2664,6 @@
    "appts": 0,
    "mtgs": 0,
    "called": 0,
-   "props": 0,
-   "wons": 0,
-   "wonamt": 0,
    "leads": 11
   },
   "2026-07-13": {
@@ -2798,9 +2672,6 @@
    "appts": 2,
    "mtgs": 0,
    "called": 4,
-   "props": 0,
-   "wons": 0,
-   "wonamt": 0,
    "leads": 9
   },
   "2026-07-14": {
@@ -2809,9 +2680,6 @@
    "appts": 0,
    "mtgs": 0,
    "called": 2,
-   "props": 0,
-   "wons": 0,
-   "wonamt": 0,
    "leads": 7
   },
   "2026-07-15": {
@@ -2820,9 +2688,6 @@
    "appts": 0,
    "mtgs": 0,
    "called": 13,
-   "props": 0,
-   "wons": 0,
-   "wonamt": 0,
    "leads": 5
   },
   "2026-07-16": {
@@ -2831,9 +2696,6 @@
    "appts": 0,
    "mtgs": 0,
    "called": 0,
-   "props": 0,
-   "wons": 0,
-   "wonamt": 0,
    "leads": 3
   },
   "2026-07-17": {
@@ -2842,9 +2704,6 @@
    "appts": 0,
    "mtgs": 0,
    "called": 0,
-   "props": 0,
-   "wons": 0,
-   "wonamt": 0,
    "leads": 5
   },
   "2026-07-18": {
@@ -2853,9 +2712,6 @@
    "appts": 0,
    "mtgs": 0,
    "called": 0,
-   "props": 0,
-   "wons": 0,
-   "wonamt": 0,
    "leads": 9
   },
   "2026-07-19": {
@@ -2864,9 +2720,6 @@
    "appts": 0,
    "mtgs": 0,
    "called": 0,
-   "props": 0,
-   "wons": 0,
-   "wonamt": 0,
    "leads": 5
   },
   "2026-07-20": {
@@ -2875,9 +2728,6 @@
    "appts": 0,
    "mtgs": 0,
    "called": 0,
-   "props": 0,
-   "wons": 0,
-   "wonamt": 0,
    "leads": 1
   },
   "2026-07-21": {
@@ -2886,9 +2736,6 @@
    "appts": 0,
    "mtgs": 0,
    "called": 0,
-   "props": 0,
-   "wons": 0,
-   "wonamt": 0,
    "leads": 11
   },
   "2026-07-22": {
@@ -2897,9 +2744,6 @@
    "appts": 0,
    "mtgs": 0,
    "called": 0,
-   "props": 0,
-   "wons": 0,
-   "wonamt": 0,
    "leads": 9
   },
   "2026-07-23": {
@@ -2908,9 +2752,6 @@
    "appts": 0,
    "mtgs": 0,
    "called": 0,
-   "props": 0,
-   "wons": 0,
-   "wonamt": 0,
    "leads": 11
   },
   "2026-07-24": {
@@ -2919,9 +2760,6 @@
    "appts": 0,
    "mtgs": 6,
    "called": 0,
-   "props": 5,
-   "wons": 1,
-   "wonamt": 2101000,
    "leads": 2
   },
   "2026-07-25": {
@@ -2930,9 +2768,6 @@
    "appts": 0,
    "mtgs": 0,
    "called": 0,
-   "props": 0,
-   "wons": 0,
-   "wonamt": 0,
    "leads": 6
   },
   "2026-07-26": {
@@ -2941,9 +2776,6 @@
    "appts": 0,
    "mtgs": 0,
    "called": 0,
-   "props": 0,
-   "wons": 0,
-   "wonamt": 0,
    "leads": 552
   },
   "2026-07-27": {
@@ -2952,9 +2784,6 @@
    "appts": 0,
    "mtgs": 0,
    "called": 6,
-   "props": 0,
-   "wons": 0,
-   "wonamt": 0,
    "leads": 6
   },
   "2026-07-28": {
@@ -2963,9 +2792,6 @@
    "appts": 0,
    "mtgs": 0,
    "called": 10,
-   "props": 0,
-   "wons": 0,
-   "wonamt": 0,
    "leads": 34
   },
   "2026-07-29": {
@@ -2974,9 +2800,6 @@
    "appts": 2,
    "mtgs": 2,
    "called": 4,
-   "props": 2,
-   "wons": 0,
-   "wonamt": 0,
    "leads": 1
   },
   "2026-07-30": {
@@ -2985,9 +2808,6 @@
    "appts": 3,
    "mtgs": 0,
    "called": 7,
-   "props": 0,
-   "wons": 0,
-   "wonamt": 0,
    "leads": 12
   },
   "2026-07-31": {
@@ -2996,9 +2816,6 @@
    "appts": 1,
    "mtgs": 1,
    "called": 2,
-   "props": 1,
-   "wons": 0,
-   "wonamt": 0,
    "leads": 6
   },
   "2026-08-01": {
@@ -3007,9 +2824,6 @@
    "appts": 0,
    "mtgs": 0,
    "called": 0,
-   "props": 0,
-   "wons": 0,
-   "wonamt": 0,
    "leads": 4
   },
   "2026-08-02": {
@@ -3018,9 +2832,6 @@
    "appts": 0,
    "mtgs": 0,
    "called": 0,
-   "props": 0,
-   "wons": 0,
-   "wonamt": 0,
    "leads": 6
   },
   "2026-08-03": {
@@ -3029,9 +2840,6 @@
    "appts": 0,
    "mtgs": 1,
    "called": 0,
-   "props": 1,
-   "wons": 0,
-   "wonamt": 0,
    "leads": 6
   },
   "2026-08-04": {
@@ -3040,9 +2848,6 @@
    "appts": 0,
    "mtgs": 0,
    "called": 0,
-   "props": 0,
-   "wons": 0,
-   "wonamt": 0,
    "leads": 7
   },
   "2026-08-05": {
@@ -3051,9 +2856,6 @@
    "appts": 0,
    "mtgs": 0,
    "called": 0,
-   "props": 0,
-   "wons": 0,
-   "wonamt": 0,
    "leads": 6
   },
   "2026-08-06": {
@@ -3062,9 +2864,6 @@
    "appts": 1,
    "mtgs": 2,
    "called": 1,
-   "props": 2,
-   "wons": 1,
-   "wonamt": 943250,
    "leads": 17
   },
   "2026-08-07": {
@@ -3073,9 +2872,6 @@
    "appts": 0,
    "mtgs": 0,
    "called": 1,
-   "props": 0,
-   "wons": 0,
-   "wonamt": 0,
    "leads": 6
   },
   "2026-08-08": {
@@ -3084,9 +2880,6 @@
    "appts": 0,
    "mtgs": 0,
    "called": 0,
-   "props": 0,
-   "wons": 0,
-   "wonamt": 0,
    "leads": 8
   },
   "2026-08-09": {
@@ -3095,9 +2888,6 @@
    "appts": 0,
    "mtgs": 0,
    "called": 0,
-   "props": 0,
-   "wons": 0,
-   "wonamt": 0,
    "leads": 1
   },
   "2026-08-10": {
@@ -3106,9 +2896,6 @@
    "appts": 2,
    "mtgs": 2,
    "called": 1,
-   "props": 2,
-   "wons": 0,
-   "wonamt": 0,
    "leads": 8
   },
   "2026-08-11": {
@@ -3117,9 +2904,6 @@
    "appts": 0,
    "mtgs": 0,
    "called": 0,
-   "props": 0,
-   "wons": 0,
-   "wonamt": 0,
    "leads": 5
   },
   "2026-08-12": {
@@ -3128,9 +2912,6 @@
    "appts": 0,
    "mtgs": 0,
    "called": 0,
-   "props": 0,
-   "wons": 0,
-   "wonamt": 0,
    "leads": 11
   },
   "2026-08-13": {
@@ -3139,9 +2920,6 @@
    "appts": 1,
    "mtgs": 0,
    "called": 0,
-   "props": 0,
-   "wons": 0,
-   "wonamt": 0,
    "leads": 3
   },
   "2026-08-14": {
@@ -3150,9 +2928,6 @@
    "appts": 0,
    "mtgs": 1,
    "called": 0,
-   "props": 1,
-   "wons": 0,
-   "wonamt": 0,
    "leads": 7
   },
   "2026-08-15": {
@@ -3161,9 +2936,6 @@
    "appts": 0,
    "mtgs": 0,
    "called": 0,
-   "props": 0,
-   "wons": 0,
-   "wonamt": 0,
    "leads": 5
   },
   "2026-08-16": {
@@ -3172,9 +2944,6 @@
    "appts": 0,
    "mtgs": 0,
    "called": 0,
-   "props": 0,
-   "wons": 0,
-   "wonamt": 0,
    "leads": 2
   },
   "2026-08-17": {
@@ -3183,9 +2952,6 @@
    "appts": 1,
    "mtgs": 1,
    "called": 0,
-   "props": 1,
-   "wons": 0,
-   "wonamt": 0,
    "leads": 5
   },
   "2026-08-18": {
@@ -3194,9 +2960,6 @@
    "appts": 0,
    "mtgs": 0,
    "called": 0,
-   "props": 0,
-   "wons": 0,
-   "wonamt": 0,
    "leads": 6
   },
   "2026-08-19": {
@@ -3205,9 +2968,6 @@
    "appts": 0,
    "mtgs": 0,
    "called": 0,
-   "props": 0,
-   "wons": 0,
-   "wonamt": 0,
    "leads": 7
   },
   "2026-08-20": {
@@ -3216,9 +2976,6 @@
    "appts": 0,
    "mtgs": 0,
    "called": 9,
-   "props": 0,
-   "wons": 0,
-   "wonamt": 0,
    "leads": 8
   },
   "2026-08-22": {
@@ -3227,9 +2984,6 @@
    "appts": 0,
    "mtgs": 0,
    "called": 0,
-   "props": 0,
-   "wons": 0,
-   "wonamt": 0,
    "leads": 6
   },
   "2026-08-23": {
@@ -3238,9 +2992,6 @@
    "appts": 0,
    "mtgs": 0,
    "called": 0,
-   "props": 0,
-   "wons": 0,
-   "wonamt": 0,
    "leads": 2
   },
   "2026-08-24": {
@@ -3249,9 +3000,6 @@
    "appts": 1,
    "mtgs": 0,
    "called": 5,
-   "props": 0,
-   "wons": 0,
-   "wonamt": 0,
    "leads": 10
   },
   "2026-08-25": {
@@ -3260,9 +3008,6 @@
    "appts": 0,
    "mtgs": 0,
    "called": 12,
-   "props": 0,
-   "wons": 0,
-   "wonamt": 0,
    "leads": 5
   },
   "2026-08-26": {
@@ -3271,9 +3016,6 @@
    "appts": 2,
    "mtgs": 0,
    "called": 7,
-   "props": 0,
-   "wons": 0,
-   "wonamt": 0,
    "leads": 1
   },
   "2026-08-27": {
@@ -3282,21 +3024,293 @@
    "appts": 3,
    "mtgs": 2,
    "called": 31,
-   "props": 2,
-   "wons": 0,
-   "wonamt": 0,
    "leads": 0
   },
   "2026-08-28": {
-   "calls": 25,
+   "calls": 26,
    "connected": 2,
    "appts": 0,
    "mtgs": 0,
-   "called": 15,
+   "called": 16,
+   "leads": 1
+  }
+ },
+ "fs": {
+  "2025-09-29": {
+   "mtgs": 1,
+   "props": 1,
+   "wons": 0,
+   "wonamt": 0
+  },
+  "2025-10-17": {
+   "mtgs": 1,
    "props": 0,
    "wons": 0,
-   "wonamt": 0,
-   "leads": 1
+   "wonamt": 0
+  },
+  "2025-10-21": {
+   "mtgs": 2,
+   "props": 0,
+   "wons": 0,
+   "wonamt": 0
+  },
+  "2025-10-28": {
+   "mtgs": 1,
+   "props": 0,
+   "wons": 0,
+   "wonamt": 0
+  },
+  "2025-10-31": {
+   "mtgs": 1,
+   "props": 1,
+   "wons": 0,
+   "wonamt": 0
+  },
+  "2025-11-06": {
+   "mtgs": 0,
+   "props": 0,
+   "wons": 1,
+   "wonamt": 81400
+  },
+  "2025-11-11": {
+   "mtgs": 0,
+   "props": 1,
+   "wons": 0,
+   "wonamt": 0
+  },
+  "2025-12-08": {
+   "mtgs": 3,
+   "props": 0,
+   "wons": 0,
+   "wonamt": 0
+  },
+  "2025-12-09": {
+   "mtgs": 1,
+   "props": 1,
+   "wons": 0,
+   "wonamt": 0
+  },
+  "2025-12-10": {
+   "mtgs": 1,
+   "props": 0,
+   "wons": 0,
+   "wonamt": 0
+  },
+  "2025-12-13": {
+   "mtgs": 0,
+   "props": 2,
+   "wons": 0,
+   "wonamt": 0
+  },
+  "2025-12-16": {
+   "mtgs": 0,
+   "props": 1,
+   "wons": 0,
+   "wonamt": 0
+  },
+  "2025-12-18": {
+   "mtgs": 0,
+   "props": 1,
+   "wons": 0,
+   "wonamt": 0
+  },
+  "2026-02-03": {
+   "mtgs": 0,
+   "props": 0,
+   "wons": 1,
+   "wonamt": 170500
+  },
+  "2026-02-10": {
+   "mtgs": 1,
+   "props": 1,
+   "wons": 0,
+   "wonamt": 0
+  },
+  "2026-03-18": {
+   "mtgs": 1,
+   "props": 0,
+   "wons": 0,
+   "wonamt": 0
+  },
+  "2026-03-26": {
+   "mtgs": 0,
+   "props": 1,
+   "wons": 1,
+   "wonamt": 2101000
+  },
+  "2026-04-06": {
+   "mtgs": 1,
+   "props": 0,
+   "wons": 0,
+   "wonamt": 0
+  },
+  "2026-04-14": {
+   "mtgs": 4,
+   "props": 4,
+   "wons": 0,
+   "wonamt": 0
+  },
+  "2026-04-21": {
+   "mtgs": 1,
+   "props": 0,
+   "wons": 0,
+   "wonamt": 0
+  },
+  "2026-04-28": {
+   "mtgs": 1,
+   "props": 1,
+   "wons": 0,
+   "wonamt": 0
+  },
+  "2026-05-05": {
+   "mtgs": 1,
+   "props": 0,
+   "wons": 0,
+   "wonamt": 0
+  },
+  "2026-05-11": {
+   "mtgs": 1,
+   "props": 1,
+   "wons": 0,
+   "wonamt": 0
+  },
+  "2026-05-12": {
+   "mtgs": 0,
+   "props": 1,
+   "wons": 0,
+   "wonamt": 0
+  },
+  "2026-05-13": {
+   "mtgs": 0,
+   "props": 0,
+   "wons": 1,
+   "wonamt": 2101000
+  },
+  "2026-05-14": {
+   "mtgs": 2,
+   "props": 0,
+   "wons": 0,
+   "wonamt": 0
+  },
+  "2026-05-20": {
+   "mtgs": 1,
+   "props": 2,
+   "wons": 0,
+   "wonamt": 0
+  },
+  "2026-05-25": {
+   "mtgs": 2,
+   "props": 2,
+   "wons": 0,
+   "wonamt": 0
+  },
+  "2026-06-03": {
+   "mtgs": 0,
+   "props": 0,
+   "wons": 1,
+   "wonamt": 81400
+  },
+  "2026-06-09": {
+   "mtgs": 0,
+   "props": 1,
+   "wons": 0,
+   "wonamt": 0
+  },
+  "2026-06-14": {
+   "mtgs": 0,
+   "props": 2,
+   "wons": 0,
+   "wonamt": 0
+  },
+  "2026-06-17": {
+   "mtgs": 3,
+   "props": 0,
+   "wons": 0,
+   "wonamt": 0
+  },
+  "2026-06-18": {
+   "mtgs": 0,
+   "props": 0,
+   "wons": 1,
+   "wonamt": 0
+  },
+  "2026-06-22": {
+   "mtgs": 2,
+   "props": 2,
+   "wons": 0,
+   "wonamt": 0
+  },
+  "2026-06-23": {
+   "mtgs": 0,
+   "props": 1,
+   "wons": 0,
+   "wonamt": 0
+  },
+  "2026-06-25": {
+   "mtgs": 1,
+   "props": 1,
+   "wons": 0,
+   "wonamt": 0
+  },
+  "2026-06-26": {
+   "mtgs": 1,
+   "props": 0,
+   "wons": 0,
+   "wonamt": 0
+  },
+  "2026-07-24": {
+   "mtgs": 6,
+   "props": 5,
+   "wons": 0,
+   "wonamt": 0
+  },
+  "2026-07-29": {
+   "mtgs": 2,
+   "props": 2,
+   "wons": 0,
+   "wonamt": 0
+  },
+  "2026-07-31": {
+   "mtgs": 1,
+   "props": 1,
+   "wons": 0,
+   "wonamt": 0
+  },
+  "2026-08-03": {
+   "mtgs": 1,
+   "props": 1,
+   "wons": 0,
+   "wonamt": 0
+  },
+  "2026-08-06": {
+   "mtgs": 2,
+   "props": 2,
+   "wons": 0,
+   "wonamt": 0
+  },
+  "2026-08-10": {
+   "mtgs": 2,
+   "props": 2,
+   "wons": 0,
+   "wonamt": 0
+  },
+  "2026-08-14": {
+   "mtgs": 1,
+   "props": 1,
+   "wons": 0,
+   "wonamt": 0
+  },
+  "2026-08-17": {
+   "mtgs": 1,
+   "props": 1,
+   "wons": 0,
+   "wonamt": 0
+  },
+  "2026-08-27": {
+   "mtgs": 2,
+   "props": 2,
+   "wons": 0,
+   "wonamt": 0
   }
  },
  "call_conversion": {
@@ -3345,7 +3359,7 @@
    "appointed": 0
   },
   "2026-08-24": {
-   "called": 70,
+   "called": 71,
    "appointed": 2
   }
  }
