@@ -56,7 +56,13 @@ jobs:
           # git diff ではなく status を見る。初回は data.json が未追跡なので、
           # diff では「差分なし」と返って何も公開されないまま終わってしまう。
           # status なら未追跡(??)も変更(M)も拾える。
-          if [ -n "$(git status --porcelain -- data.json)" ]; then
+          # 手動実行は常に作り直す。表示（ラベル・レイアウト）だけを変えた時は
+          # data.json が動かないため、この逃げ道が無いと数字が変わるまで
+          # 変更が公開されない。定時実行は従来どおり数字の変化で判定する。
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "result=yes" >> "$GITHUB_OUTPUT"
+            echo "手動実行のため、数字の変化に関わらず作り直します。"
+          elif [ -n "$(git status --porcelain -- data.json)" ]; then
             echo "result=yes" >> "$GITHUB_OUTPUT"
             echo "数字が変わりました。"
           else
@@ -92,5 +98,11 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add index.html data.json
+          # 手動実行で作り直した結果、中身が前回と同じになることがある
+          # （更新時刻しか変わらない場合など）。その時はコミットせずに終える。
+          if git diff --cached --quiet; then
+            echo "公開物に差分がありません。コミットしません。"
+            exit 0
+          fi
           git commit -m "data: $(date -u '+%Y-%m-%d %H:%M') UTC 時点の数字に更新"
           git push

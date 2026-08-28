@@ -1565,7 +1565,6 @@ def render(data):
                 f'<td class="num">{f_int(r["connected"])}</td>'
                 f'<td class="num">{f_pct(r["rate"])}</td>'
                 f'<td class="num">{f_int(r["appts"])}</td>'
-                f'<td class="num">{f_int(r["mtgs"])}</td>'
                 f'<td class="num">{f_int(r["leads"])}</td>'
                 "</tr>"
             )
@@ -1578,10 +1577,8 @@ def render(data):
         act_items = "".join([
             kpi(f'本日 {ac["today"]} 架電', f_int(ac["today_calls"])),
             kpi("本日 面談予約 獲得数", f_int(ac["today_appts"])),
-            kpi("本日 面談実施", f_int(ac["today_mtgs"])),
             kpi("今週 架電", f_int(ac["week_calls"])),
             kpi("今週 面談予約 獲得数", f_int(ac["week_appts"])),
-            kpi("今週 面談実施", f_int(ac["week_mtgs"])),
             kpi("1稼働日あたり 架電", f_dec(ac["per_day"]), "c_perday"),
             kpi("稼働日数", f_int(ac["worked_days"]), "c_wdays"),
         ])
@@ -1612,6 +1609,36 @@ def render(data):
     <tbody>{crows}</tbody></table></div></details>
 """
         daily_kpis = "".join(kpi_items)
+
+        # ---- 面談実施（フィールドセールス） ----
+        # 架電はインサイドセールスの活動量、面談実施はフィールドセールスの
+        # 活動量で、担当が違う。同じカードに並べると誰の数字か読めなくなるので
+        # セクションごと分ける。境目は「面談予約 獲得」で、そこまでがIS。
+        fs_rows = "".join(
+            (f'<tr class="roll" data-d="{r["key"]}">' if r["kind"] == "week"
+             else f'<tr data-d="{r["key"]}">')
+            + f'<td class="wk">{r["label"]}</td>'
+            + f'<td class="num">{f_int(r["mtgs"])}</td>'
+            + '<td class="pad"></td></tr>'
+            for r in daily["rows"])
+        fs_items = "".join([
+            kpi(f'本日 {ac["today"]} 面談実施', f_int(ac["today_mtgs"])),
+            kpi("今週 面談実施", f_int(ac["week_mtgs"])),
+            kpi("累計 面談実施", f_int(dk["mtgs"])),
+        ])
+        fs_section = f"""
+<h2>面談実施</h2>
+<div class="actsum">
+  <div class="card act"><div class="tag">面談実施<span class="taglabel">直近・累計</span></div>
+    <div class="kpis">{fs_items}</div></div>
+</div>
+<div class="tabgrid">
+  <details class="fold" id="f-fs"><summary><span class="tri">▶</span>面談実施の日次<span class="cnt">{len(daily["rows"])}行</span></summary>
+    <div class="tablewrap"><table>
+    <thead><tr><th>日付</th><th>面談実施数</th>
+    <th class="pad" aria-hidden="true"></th></tr></thead>
+    <tbody>{fs_rows}</tbody></table></div></details>
+</div>"""
         daily_section = f"""
 <h2>日次架電</h2>
 <div class="actsum">
@@ -1628,7 +1655,7 @@ def render(data):
   <details class="fold" id="f-act"><summary><span class="tri">▶</span>日次の行動量<span class="cnt">{len(drows)}日分</span></summary>
     <div class="tablewrap"><table>
     <thead><tr><th>日付</th><th>架電数</th><th>接続数</th><th>接続率</th>
-    <th>面談予約 獲得数</th><th>面談実施数</th><th>新規リード数</th></tr></thead>
+    <th>面談予約 獲得数</th><th>新規リード数</th></tr></thead>
     <tbody>{daily_table}</tbody></table></div></details>
 {conv_block}</div>"""
         daily_js = (
@@ -1638,6 +1665,7 @@ def render(data):
         )
     else:
         daily_section = ""
+        fs_section = ""
         daily_js = ""
 
     # ---- 期間フィルタに渡す生の数字 ----
@@ -1732,6 +1760,7 @@ resetRange();
 </div>
 
 {daily_section}
+{fs_section}
 <h2>直契約</h2>
 <div class="charts">
   <div class="card"><h3>チャネル別 リード数推移（積み上げ＝合計）</h3>
