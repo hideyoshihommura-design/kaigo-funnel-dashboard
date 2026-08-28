@@ -632,33 +632,12 @@ def build(token, sheets_token, channel_map, end_date):
         appt_day = parse_hs_datetime(p.get(f"hs_v2_date_entered_{STAGE_APPT}"))
         if appt_day and appt_day >= CALLS_START:
             daily_appts[appt_day] = daily_appts.get(appt_day, 0) + 1
+        # ここから下は上部の週次表と同じ母集団に揃える必要があるので、
+        # コンタクトが紐づき route が有効で期間内のものだけを対象にする。
         # 面談実施は「相談済み」か「提案・見積もり」に入った最初の日で数える。
         # 相談済みを飛ばして提案・見積もりへ動かされる取引があるため、
         # 相談済みだけを見ると面談実施が実態より少なく出る。早い方を採り、
         # 1つの取引を2回数えないようにする。
-        mtg_days = [
-            d for d in (
-                parse_hs_datetime(p.get("hs_v2_date_entered_" + st))
-                for st in STAGE_MEETING_DONE
-            ) if d
-        ]
-        if mtg_days:
-            md = min(mtg_days)
-            if md >= CALLS_START:
-                daily_mtgs[md] = daily_mtgs.get(md, 0) + 1
-        # 提案は「提案・見積もり」に入った日。面談実施とは別の出来事として数える
-        # （相談済みを飛ばした取引は、面談実施と提案が同じ日になる）。
-        prop_day = parse_hs_datetime(p.get("hs_v2_date_entered_qualifiedtobuy"))
-        if prop_day and prop_day >= CALLS_START:
-            daily_props[prop_day] = daily_props.get(prop_day, 0) + 1
-        # 成約は「成約」ステージに入った日。週次表の成約は
-        # コンタクトの獲得週に載せているが、こちらは成約した日に載せる。
-        # フィールドセールスの活動を日で追うためのブロックなので軸が違う。
-        won_day = parse_hs_datetime(p.get(f"hs_v2_date_entered_{STAGE_WON}"))
-        if won_day and won_day >= CALLS_START:
-            daily_wons[won_day] = daily_wons.get(won_day, 0) + 1
-            daily_wonamt[won_day] = daily_wonamt.get(won_day, 0) + int(
-                to_number(p.get("amount_in_home_currency")) or 0)
         if not info:
             orphan_deals += 1
             continue
@@ -671,6 +650,30 @@ def build(token, sheets_token, channel_map, end_date):
         amount = int(to_number(p.get("amount_in_home_currency")) or 0) if won else 0
         if won:
             route_won[route] = route_won.get(route, 0) + 1
+        # --- フィールドセールスの活動（直契約のみ）
+        # 代理店経由は代理店が売っているので自社FSの活動ではない。
+        # 上部の直契約カードと同じ母集団（route有効・獲得週が期間内・直契約）に
+        # 揃えるため、ここで数える。日付はステージに入った日で、
+        # 週次表の「獲得週に載せる」とは軸が違う（FSがいつ動いたかを見るため）。
+        if ch != "agency":
+            mtg_days = [
+                d for d in (
+                    parse_hs_datetime(p.get("hs_v2_date_entered_" + st))
+                    for st in STAGE_MEETING_DONE
+                ) if d
+            ]
+            if mtg_days:
+                md = min(mtg_days)
+                daily_mtgs[md] = daily_mtgs.get(md, 0) + 1
+            prop_day = parse_hs_datetime(p.get("hs_v2_date_entered_qualifiedtobuy"))
+            if prop_day:
+                daily_props[prop_day] = daily_props.get(prop_day, 0) + 1
+            won_day = parse_hs_datetime(p.get(f"hs_v2_date_entered_{STAGE_WON}"))
+            if won_day:
+                daily_wons[won_day] = daily_wons.get(won_day, 0) + 1
+                daily_wonamt[won_day] = daily_wonamt.get(won_day, 0) + int(
+                    to_number(p.get("amount_in_home_currency")) or 0)
+
         target = agency[mon] if ch == "agency" else direct[mon][ch]
         target["deals"] += 1
         if won:
@@ -765,7 +768,7 @@ def build(token, sheets_token, channel_map, end_date):
     calls_out = {}
     all_days = (set(daily_calls) | set(daily_conn) | set(daily_appts)
                 | set(daily_mtgs) | set(daily_called) | set(daily_leads)
-                | set(daily_props) | set(daily_wons))
+)
     for d in sorted(all_days):
         if d < CALLS_START or d > end_date:
             continue
@@ -775,10 +778,19 @@ def build(token, sheets_token, channel_map, end_date):
             "appts": daily_appts.get(d, 0),
             "mtgs": daily_mtgs.get(d, 0),
             "called": daily_called.get(d, 0),
+            "leads": daily_leads.get(d, 0),
+        }
+
+    # --- フィールドセールスの日次（架電の窓に縛られず全期間）
+    fs_days = {}
+    for d in sorted(set(daily_mtgs) | set(daily_props) | set(daily_wons)):
+        if d > end_date:
+            continue
+        fs_days[d.isoformat()] = {
+            "mtgs": daily_mtgs.get(d, 0),
             "props": daily_props.get(d, 0),
             "wons": daily_wons.get(d, 0),
             "wonamt": daily_wonamt.get(d, 0),
-            "leads": daily_leads.get(d, 0),
         }
 
     # --- 架電 → 面談予約の週次転換
@@ -813,6 +825,7 @@ def build(token, sheets_token, channel_map, end_date):
         "agency": {w.isoformat(): agency[w] for w in week_starts},
         "expos": expos,
         "calls": calls_out,
+        "fs": fs_days,
         "call_conversion": {w.isoformat(): v for w, v in sorted(conv.items())},
     }
 
