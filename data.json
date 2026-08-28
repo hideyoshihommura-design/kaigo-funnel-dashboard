@@ -3027,11 +3027,11 @@
    "leads": 0
   },
   "2026-08-28": {
-   "calls": 26,
-   "connected": 2,
+   "calls": 27,
+   "connected": 3,
    "appts": 0,
    "mtgs": 0,
-   "called": 16,
+   "called": 17,
    "leads": 1
   }
  },
@@ -3228,12 +3228,6 @@
    "wons": 0,
    "wonamt": 0
   },
-  "2026-06-18": {
-   "mtgs": 0,
-   "props": 0,
-   "wons": 1,
-   "wonamt": 0
-  },
   "2026-06-22": {
    "mtgs": 2,
    "props": 2,
@@ -3359,7 +3353,7 @@
    "appointed": 0
   },
   "2026-08-24": {
-   "called": 71,
+   "called": 72,
    "appointed": 2
   }
  }
