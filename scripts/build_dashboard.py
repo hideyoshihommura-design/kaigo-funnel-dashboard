@@ -1761,17 +1761,20 @@ def render(data):
             # 日次入力が無い期間は週次から日割りで埋めている。厳密な実額ではない
             # ので、その旨を出す。何日ぶんが概算かまで見せないと、
             # 「多少ズレている」のか「ほぼ全部が推定」なのか区別できない。
-            cvnote = ""
-            if cv is not None and w.get("cv_est_days", 0):
-                cvnote = f'<span class="ma">概算 {w["cv_est_days"]}/{w["days"]}日</span>'
-            elif cv is None:
-                cvnote = '<span class="ma">HubSpot集計</span>'
-            note = ""
-            est = w.get("cost_est_days", 0)
-            if cost is not None and est:
-                note = f'<span class="ma">概算 {est}/{w["days"]}日</span>'
-            elif cost is not None and w.get("cost_days", 0) < w.get("days", 0):
-                note = f'<span class="ma">{w["cost_days"]}/{w["days"]}日分</span>'
+            # 注記は「どこまで信用できる数字か」だけを出す。
+            # 手入力・部分的・シートどおり、を区別できれば足りる。
+            def mark(manual, got, need):
+                if manual:
+                    return '<span class="ma">手入力</span>'
+                if got and got < need:
+                    return f'<span class="ma">{got}/{need}日分</span>'
+                return ""
+
+            days_n = w.get("days", 0)
+            note = mark(w.get("cost_manual"), w.get("cost_days", 0), days_n)
+            cvnote = mark(w.get("cv_manual"), w.get("cv_days", 0), days_n)
+            if cv is None:
+                cvnote = '<span class="ma">未取得</span>'
             wrows.append(
                 "<tr>"
                 f'<td class="wk">{w["name"]}</td>'

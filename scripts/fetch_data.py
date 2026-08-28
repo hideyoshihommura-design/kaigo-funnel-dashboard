@@ -428,6 +428,12 @@ def fetch_web_cost(token, week_starts):  # returns (週次, 日次)
     cv_by_day = {}
     cv_by_week = {}
     cv = {w: None for w in week_starts}
+    # ウェビナー別のCPLは、ウェビナー集客のキャンペーンだけで見る必要がある。
+    # シートには Metaウェビナー / Meta介護校 / MetaClaude が並んでおり、
+    # 全部足すと費用が2倍以上になる。週次タブにはキャンペーン列が無いので、
+    # この絞り込みは日次入力タブでしか作れない。
+    wcost_by_day = {}
+    wcv_by_day = {}
     weekset = set(week_starts)
 
     # --- 全体集計（週次・火曜始まり）
@@ -490,6 +496,8 @@ def fetch_web_cost(token, week_starts):  # returns (週次, 日次)
                         cols.setdefault("spend", j)
                     elif c == "CV":
                         cols.setdefault("cv", j)
+                    elif "キャンペーン" in c:
+                        cols.setdefault("camp", j)
                 break
         if header_idx is None:
             warn(f"『{daily_tab}』のヘッダー行（日付／消費金額）が見つかりません。")
@@ -506,10 +514,16 @@ def fetch_web_cost(token, week_starts):  # returns (週次, 日次)
                 mon = monday(d)
                 per_week[mon] = per_week.get(mon, 0.0) + spend
                 cost_by_day[d] = cost_by_day.get(d, 0.0) + spend
+                cvv = None
                 if "cv" in cols and len(row) > cols["cv"]:
                     cvv = to_number(row[cols["cv"]])
                     if cvv is not None:
                         cv_by_day[d] = cv_by_day.get(d, 0.0) + cvv
+                camp = str(row[cols["camp"]]) if "camp" in cols and len(row) > cols["camp"] else ""
+                if "ウェビナー" in camp:
+                    wcost_by_day[d] = wcost_by_day.get(d, 0.0) + spend
+                    if cvv is not None:
+                        wcv_by_day[d] = wcv_by_day.get(d, 0.0) + cvv
                 daily_first = d if daily_first is None else min(daily_first, d)
                 last_day = d if last_day is None else max(last_day, d)
             # 日次があるのに全体集計より後ろで途切れているとき、その先を0で
@@ -534,7 +548,7 @@ def fetch_web_cost(token, week_starts):  # returns (週次, 日次)
     for w in week_starts:
         if w < first_known:
             cost[w] = None
-    return cost, cost_by_day, cv_by_day, cv_by_week, cv
+    return cost, cost_by_day, cv_by_day, cv_by_week, cv, wcost_by_day, wcv_by_day
 
 
 def fetch_expo_costs(token):
@@ -758,8 +772,8 @@ def build(token, sheets_token, channel_map, webinar_cfg, end_date):
     expos.sort(key=lambda e: e["date"])
 
     # --- web 費用
-    (web_cost, web_cost_day, web_cv_day, web_cv_week,
-     web_cv) = fetch_web_cost(sheets_token, week_starts)
+    (web_cost, web_cost_day, web_cv_day, web_cv_week, web_cv,
+     wb_cost_day, wb_cv_day) = fetch_web_cost(sheets_token, week_starts)
     for w in week_starts:
         direct[w]["web"]["cost"] = web_cost[w]
         # CPLの分母は広告側のCV（申込延べ数）に揃える。HubSpotのリード数は
@@ -857,62 +871,26 @@ def build(token, sheets_token, channel_map, webinar_cfg, end_date):
                 deals_n += pc["deals"]
                 won_n += pc["won"]
                 amt += pc["amount"]
-        # 広告費は日次を期間で合計する。日次入力タブは2026-06-09からしか無いので、
-        # それ以前は週次（全体集計）から日割りで補う。ただし単純に7で割ると、
-        # 日次と週次の両方がある週で二重計上になる。週の合計から日次で分かって
-        # いるぶんを引き、残りを未入力の日にだけ配分する。
+        # 費用とCVはウェビナーキャンペーンの日次だけを合計する。
+        # 週次タブにはキャンペーン別の内訳が無いため、日次入力が始まる
+        # 2026-06-09 より前は算出できない。その期間は設定ファイルに
+        # 実額を書いて上書きする（cost / cv）。推定で埋めるより、
+        # 手元にある正しい数字を入れたほうが確かなため。
         days = [ws + dt.timedelta(days=i) for i in range((we - ws).days + 1)]
-        total = 0.0
-        exact_days = 0
+        cost_days = [d for d in days if d in wb_cost_day]
+        cost = int(round(sum(wb_cost_day[d] for d in cost_days))) if cost_days else None
+        cv_days = [d for d in days if d in wb_cv_day]
+        cv = int(round(sum(wb_cv_day[d] for d in cv_days))) if cv_days else None
+        exact_days = len(cost_days)
         est_days = 0
-        week_share = {}
-        for d in days:
-            if d in web_cost_day:
-                total += web_cost_day[d]
-                exact_days += 1
-                continue
-            mon = monday(d)
-            if mon not in week_share:
-                wk_total = web_cost.get(mon)
-                if wk_total is None:
-                    week_share[mon] = None
-                else:
-                    wdays = [mon + dt.timedelta(days=i) for i in range(7)]
-                    covered = sum(web_cost_day.get(x, 0.0) for x in wdays)
-                    blank = [x for x in wdays if x not in web_cost_day]
-                    remain = max(wk_total - covered, 0.0)
-                    week_share[mon] = (remain / len(blank)) if blank else 0.0
-            share = week_share[mon]
-            if share is not None:
-                total += share
-                est_days += 1
-        cost = int(round(total)) if (exact_days or est_days) else None
+        cv_est = 0
+        # 設定に実額があればそれを優先する。
+        if wb.get("cost") is not None:
+            cost = int(wb["cost"])
+            exact_days = len(days)
+        if wb.get("cv") is not None:
+            cv = int(wb["cv"])
 
-        # CVも同じやり方で期間合計を出す。これがCPLと商談化率の分母になる。
-        # HubSpotのコンタクト数（ユニーク）ではなく広告側の申込延べ数。
-        cv_total = 0.0
-        cv_exact = cv_est = 0
-        cv_week_share = {}
-        for d in days:
-            if d in web_cv_day:
-                cv_total += web_cv_day[d]
-                cv_exact += 1
-                continue
-            mon = monday(d)
-            if mon not in cv_week_share:
-                wk = web_cv_week.get(mon)
-                if wk is None:
-                    cv_week_share[mon] = None
-                else:
-                    wdays = [mon + dt.timedelta(days=i) for i in range(7)]
-                    covered = sum(web_cv_day.get(x, 0.0) for x in wdays)
-                    blank = [x for x in wdays if x not in web_cv_day]
-                    cv_week_share[mon] = (max(wk - covered, 0.0) / len(blank)) if blank else 0.0
-            sh = cv_week_share[mon]
-            if sh is not None:
-                cv_total += sh
-                cv_est += 1
-        cv = int(round(cv_total)) if (cv_exact or cv_est) else None
         webinars_out.append({
             "name": wb.get("name") or "(名前なし)",
             "start": ws.isoformat(),
@@ -921,8 +899,11 @@ def build(token, sheets_token, channel_map, webinar_cfg, end_date):
             "cost": cost,
             "cost_days": exact_days,
             "cost_est_days": est_days,
+            "cost_manual": wb.get("cost") is not None,
             "cv": cv,
+            "cv_days": len(cv_days),
             "cv_est_days": cv_est,
+            "cv_manual": wb.get("cv") is not None,
             "leads": leads,
             "deals": deals_n,
             "won": won_n,
