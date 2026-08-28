@@ -239,10 +239,10 @@ def validate_calls(data):
             fail(f"calls に不正な日付キーがあります: {k!r}（YYYY-MM-DD）")
         if not isinstance(v, dict):
             fail(f"calls[{k}] がオブジェクトではありません。")
-        unknown = set(v) - {"calls", "connected", "appts", "mtgs", "called", "leads"}
+        unknown = set(v) - {"calls", "connected", "appts", "mtgs", "called", "leads", "props", "wons", "wonamt"}
         if unknown:
             fail(f"calls[{k}] に未知のキー: {sorted(unknown)}")
-        for f in ("calls", "connected", "appts", "mtgs", "called", "leads"):
+        for f in ("calls", "connected", "appts", "mtgs", "called", "leads", "props", "wons", "wonamt"):
             n = v.get(f, 0)
             if not isinstance(n, int) or isinstance(n, bool) or n < 0:
                 fail(f"calls[{k}].{f} は0以上の整数である必要があります: {n!r}")
@@ -550,7 +550,7 @@ def compute_daily(data):  # noqa: C901
     def get(d, f):
         return calls.get(d.isoformat(), {}).get(f, 0)
 
-    FIELDS = ("calls", "connected", "appts", "mtgs", "called", "leads")
+    FIELDS = ("calls", "connected", "appts", "mtgs", "called", "leads", "props", "wons", "wonamt")
     # データが1件も無い期間まで行を伸ばさない。窓の起点がデータの開始より前だと、
     # 先頭に全部0の行が並び、「架電していない日」と「まだ記録が始まっていない日」が
     # 同じ見た目になる。
@@ -603,6 +603,10 @@ def compute_daily(data):  # noqa: C901
         "today_called": get(end, "called"),
         "today_rate": safe_div(get(end, "connected"), get(end, "calls")),
         "today_conv": safe_div(get(end, "appts"), get(end, "called")),
+        "today_props": get(end, "props"),
+        "today_wons": get(end, "wons"),
+        "today_wonamt": get(end, "wonamt"),
+        "today_close": safe_div(get(end, "wons"), get(end, "mtgs")),
         "today_appts": get(end, "appts"),
         "today_mtgs": get(end, "mtgs"),
         "week_calls": sum(get(d, "calls") for d in dates if d >= wk_start),
@@ -1149,13 +1153,14 @@ function apply(from,to){
   setK('a_win',jPct(div(t.aw,t.ad))); setK('a_amt',jYen(t.aa));
 
   /* ---- 日次架電KPI（日付でそのまま切る） ---- */
-  var c={calls:0,conn:0,appt:0,called:0,mtgs:0,worked:0};
+  var c={calls:0,conn:0,appt:0,called:0,mtgs:0,props:0,wons:0,amt:0,worked:0};
   for(var d in RAW.days){
     if(!RAW.days.hasOwnProperty(d)){continue;}
     if(d<from||d>to){continue;}
     var r=RAW.days[d];
     c.calls+=r[0]; c.conn+=r[1]; c.appt+=r[2];
     c.called+=r[4]||0; c.mtgs+=r[5]||0;
+    c.props+=r[6]||0; c.wons+=r[7]||0; c.amt+=r[8]||0;
     if(r[0]>0){c.worked++;}
   }
   setK('c_calls',jInt(c.calls)); setK('c_called',jInt(c.called));
@@ -1165,7 +1170,10 @@ function apply(from,to){
   setK('c_conv',jPct(div(c.appt,c.called)));
   setK('c_perday',c.worked?jDec(c.calls/c.worked):'');
   setK('c_wdays',jInt(c.worked));
-  setK('fs_total',jInt(c.mtgs));
+  setK('fs_mtgs',jInt(c.mtgs)); setK('fs_props',jInt(c.props));
+  setK('fs_wons',jInt(c.wons)); setK('fs_amt',jYen(c.amt));
+  setK('fs_close',jPct(div(c.wons,c.mtgs)));
+  setK('fs_avg',c.wons?jYen(c.amt/c.wons):'');
 
   /* ---- 転換KPI（週単位） ---- */
   var v={called:0,appt:0};
@@ -1596,7 +1604,7 @@ def render(data):
             kpi("接続数", f_int(ac["today_conn"])),
             kpi("接続率", f_pct(ac["today_rate"])),
             kpi("面談予約 獲得数", f_int(ac["today_appts"])),
-            kpi("転換率", f_pct(ac["today_conv"])),
+            kpi("商談化率", f_pct(ac["today_conv"])),
         ])
         kpi_items = [
             kpi("架電数", f_int(dk["calls"]), "c_calls"),
@@ -1604,7 +1612,7 @@ def render(data):
             kpi("接続数", f_int(dk["connected"]), "c_conn"),
             kpi("接続率", f_pct(dk["rate"]), "c_rate"),
             kpi("面談予約 獲得数", f_int(dk["appts"]), "c_appt"),
-            kpi("転換率", f_pct(safe_div(dk["appts"], dk["called"])), "c_conv"),
+            kpi("商談化率", f_pct(safe_div(dk["appts"], dk["called"])), "c_conv"),
             kpi("1稼働日あたり 架電数", f_dec(ac["per_day"]), "c_perday"),
             kpi("稼働日数", f_int(ac["worked_days"]), "c_wdays"),
         ]
@@ -1635,23 +1643,43 @@ def render(data):
              else f'<tr data-d="{r["key"]}">')
             + f'<td class="wk">{r["label"]}</td>'
             + f'<td class="num">{f_int(r["mtgs"])}</td>'
+            + f'<td class="num">{f_int(r["props"])}</td>'
+            + f'<td class="num">{f_int(r["wons"])}</td>'
+            + f'<td class="num">{f_yen(r["wonamt"])}</td>'
             + '<td class="pad"></td></tr>'
             for r in daily["rows"])
-        fs_items = "".join([
-            kpi(f'本日 {ac["today"]} 面談実施', f_int(ac["today_mtgs"])),
-            kpi("今週 面談実施", f_int(ac["week_mtgs"])),
-            kpi("累計 面談実施", f_int(dk["mtgs"]), "fs_total"),
+        # IS側と同じ並びの考え方。実数を先に、率を後ろに置く。
+        # 率は「実施→成約」の1本だけにしてある。実施・提案・成約の実数が
+        # 並んでいるので、どこで止まっているかは数字を見れば分かる。
+        # 率を2本置くと、分母が違うだけで分子が同じものを2回見せることになる。
+        fs_today = "".join([
+            kpi("面談実施", f_int(ac["today_mtgs"])),
+            kpi("提案", f_int(ac["today_props"])),
+            kpi("成約数", f_int(ac["today_wons"])),
+            kpi("成約金額", f_yen(ac["today_wonamt"])),
+            kpi("実施→成約率", f_pct(ac["today_close"])),
+        ])
+        fs_total = "".join([
+            kpi("面談実施", f_int(dk["mtgs"]), "fs_mtgs"),
+            kpi("提案", f_int(dk["props"]), "fs_props"),
+            kpi("成約数", f_int(dk["wons"]), "fs_wons"),
+            kpi("成約金額", f_yen(dk["wonamt"]), "fs_amt"),
+            kpi("実施→成約率", f_pct(safe_div(dk["wons"], dk["mtgs"])), "fs_close"),
+            kpi("平均成約単価", f_yen(safe_div(dk["wonamt"], dk["wons"])), "fs_avg"),
         ])
         fs_section = f"""
-<h2>面談実施</h2>
+<h2>FS活動量</h2>
 <div class="actsum">
-  <div class="card act"><div class="tag">面談実施<span class="taglabel">直近・累計</span></div>
-    <div class="kpis">{fs_items}</div></div>
+  <div class="card act"><div class="tag">本日<span class="taglabel">{ac["today"]}</span></div>
+    <div class="kpis">{fs_today}</div></div>
+  <div class="card cum"><div class="tag">累計<span class="taglabel">期間内</span></div>
+    <div class="kpis">{fs_total}</div></div>
 </div>
 <div class="tabgrid">
-  <details class="fold" id="f-fs"><summary><span class="tri">▶</span>面談実施の日次<span class="cnt">{len(daily["rows"])}行</span></summary>
+  <details class="fold" id="f-fs"><summary><span class="tri">▶</span>FS活動の日次<span class="cnt">{len(daily["rows"])}行</span></summary>
     <div class="tablewrap"><table>
-    <thead><tr><th>日付</th><th>面談実施数</th>
+    <thead><tr><th>日付</th><th>面談実施</th><th>提案</th>
+    <th>成約数</th><th>成約金額</th>
     <th class="pad" aria-hidden="true"></th></tr></thead>
     <tbody>{fs_rows}</tbody></table></div></details>
 </div>"""
@@ -1706,7 +1734,8 @@ def render(data):
         "wkend": wkend,
         "days": {k: [v.get("calls", 0), v.get("connected", 0),
                      v.get("appts", 0), v.get("leads", 0),
-                     v.get("called", 0), v.get("mtgs", 0)]
+                     v.get("called", 0), v.get("mtgs", 0),
+                     v.get("props", 0), v.get("wons", 0), v.get("wonamt", 0)]
                  for k, v in (data.get("calls") or {}).items()},
         "conv": {k: [v.get("called", 0), v.get("appointed", 0)]
                  for k, v in (data.get("call_conversion") or {}).items()},

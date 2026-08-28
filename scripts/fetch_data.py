@@ -287,6 +287,7 @@ def fetch_deals(token):
         f"hs_v2_date_entered_{STAGE_APPT}",
         "hs_v2_date_entered_appointmentscheduled",
         "hs_v2_date_entered_qualifiedtobuy",
+        f"hs_v2_date_entered_{STAGE_WON}",
     ]
     rows = hs_list_all(token, "deals", props, associations="contacts")
     kept = [r for r in rows if (r.get("properties") or {}).get("pipeline") == PIPELINE]
@@ -615,6 +616,9 @@ def build(token, sheets_token, channel_map, end_date):
     orphan_deals = 0
     daily_appts = {}
     daily_mtgs = {}
+    daily_props = {}
+    daily_wons = {}
+    daily_wonamt = {}
     for deal in deals:
         p = deal.get("properties") or {}
         assoc = ((deal.get("associations") or {}).get("contacts") or {}).get("results") or []
@@ -642,6 +646,19 @@ def build(token, sheets_token, channel_map, end_date):
             md = min(mtg_days)
             if md >= CALLS_START:
                 daily_mtgs[md] = daily_mtgs.get(md, 0) + 1
+        # 提案は「提案・見積もり」に入った日。面談実施とは別の出来事として数える
+        # （相談済みを飛ばした取引は、面談実施と提案が同じ日になる）。
+        prop_day = parse_hs_datetime(p.get("hs_v2_date_entered_qualifiedtobuy"))
+        if prop_day and prop_day >= CALLS_START:
+            daily_props[prop_day] = daily_props.get(prop_day, 0) + 1
+        # 成約は「成約」ステージに入った日。週次表の成約は
+        # コンタクトの獲得週に載せているが、こちらは成約した日に載せる。
+        # フィールドセールスの活動を日で追うためのブロックなので軸が違う。
+        won_day = parse_hs_datetime(p.get(f"hs_v2_date_entered_{STAGE_WON}"))
+        if won_day and won_day >= CALLS_START:
+            daily_wons[won_day] = daily_wons.get(won_day, 0) + 1
+            daily_wonamt[won_day] = daily_wonamt.get(won_day, 0) + int(
+                to_number(p.get("amount_in_home_currency")) or 0)
         if not info:
             orphan_deals += 1
             continue
@@ -747,7 +764,8 @@ def build(token, sheets_token, channel_map, end_date):
 
     calls_out = {}
     all_days = (set(daily_calls) | set(daily_conn) | set(daily_appts)
-                | set(daily_mtgs) | set(daily_called) | set(daily_leads))
+                | set(daily_mtgs) | set(daily_called) | set(daily_leads)
+                | set(daily_props) | set(daily_wons))
     for d in sorted(all_days):
         if d < CALLS_START or d > end_date:
             continue
@@ -757,6 +775,9 @@ def build(token, sheets_token, channel_map, end_date):
             "appts": daily_appts.get(d, 0),
             "mtgs": daily_mtgs.get(d, 0),
             "called": daily_called.get(d, 0),
+            "props": daily_props.get(d, 0),
+            "wons": daily_wons.get(d, 0),
+            "wonamt": daily_wonamt.get(d, 0),
             "leads": daily_leads.get(d, 0),
         }
 
