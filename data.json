@@ -1952,7 +1952,7 @@
     "won_amount": 0
    },
    "web": {
-    "leads": 16,
+    "leads": 17,
     "cost": 48426,
     "deals": 0,
     "won": 0,
@@ -2851,6 +2851,12 @@
    "connected": 5,
    "appts": 3,
    "leads": 0
+  },
+  "2026-08-28": {
+   "calls": 19,
+   "connected": 2,
+   "appts": 0,
+   "leads": 1
   }
  },
  "call_conversion": {
@@ -2899,7 +2905,7 @@
    "appointed": 0
   },
   "2026-08-24": {
-   "called": 55,
+   "called": 64,
    "appointed": 2
   }
  }
