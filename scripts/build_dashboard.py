@@ -1722,6 +1722,51 @@ def render(data):
         fs_section = ""
         daily_js = ""
 
+    # ---- ウェビナー別 ----
+    # 同じ申込フォームから入るため、お題の区別は掲載期間でしかできない。
+    # 期間フィルタの対象にはしない。ウェビナーごとの期間は固定で、
+    # 上の期間指定で切ると「掲載期間の一部だけ」という意味の無い数字になる。
+    wbs = data.get("webinars") or []
+    if wbs:
+        wrows = []
+        for w in wbs:
+            cost, leads = w.get("cost"), w.get("leads", 0)
+            won_amt = w.get("won_amount", 0)
+            cpl = safe_div(cost, leads) if cost is not None else None
+            roi = safe_div(won_amt, cost) if cost else None
+            span = f'{w["start"][5:].replace("-", "/")}〜{w["end"][5:].replace("-", "/")}'
+            # 広告費が期間の一部しか無い場合は、その旨が分かるようにしておく。
+            # 全額と誤読すると CPL を実際より高く見積もることになる。
+            note = ""
+            if cost is not None and w.get("cost_days", 0) < w.get("days", 0):
+                note = f'<span class="ma">{w["cost_days"]}/{w["days"]}日分</span>'
+            wrows.append(
+                "<tr>"
+                f'<td class="wk">{w["name"]}</td>'
+                f'<td class="ch">{span}</td>'
+                f'<td class="num">{f_yen(cost)}{note}</td>'
+                f'<td class="num">{f_int(leads)}</td>'
+                f'<td class="num">{f_yen(cpl)}</td>'
+                f'<td class="num">{f_int(w.get("deals", 0))}</td>'
+                f'<td class="num">{f_pct(safe_div(w.get("deals", 0), leads))}</td>'
+                f'<td class="num">{f_int(w.get("won", 0))}</td>'
+                f'<td class="num">{f_pct(safe_div(w.get("won", 0), w.get("deals", 0)))}</td>'
+                f'<td class="num">{f_yen(won_amt)}</td>'
+                f'<td class="num">{f_pct(roi)}</td>'
+                '<td class="pad"></td></tr>')
+        webinar_section = f"""
+<h2>ウェビナー別</h2>
+<div class="tabgrid">
+  <details class="fold" id="f-webinar"><summary><span class="tri">▶</span>お題ごとの成果<span class="cnt">{len(wbs)}回分</span></summary>
+    <div class="tablewrap"><table>
+    <thead><tr><th>ウェビナー</th><th>掲載期間</th><th>広告費</th><th>リード数</th><th>CPL</th>
+    <th>商談数</th><th>商談化率</th><th>成約数</th><th>成約率</th><th>成約金額</th><th>回収率</th>
+    <th class="pad" aria-hidden="true"></th></tr></thead>
+    <tbody>{"".join(wrows)}</tbody></table></div></details>
+</div>"""
+    else:
+        webinar_section = ""
+
     # ---- 期間フィルタに渡す生の数字 ----
     # KPIは期間ごとに計算し直す必要があるので、集計済みの表示値ではなく
     # 週ごと・日ごとの素の数を持たせる。費用の null はそのまま null で運ぶ
@@ -1863,6 +1908,7 @@ resetRange();
 <thead><tr><th>展示会名</th><th>開催日</th><th>費用</th><th>リード数</th><th>CPL</th>
 <th>商談数</th><th>成約数</th></tr></thead>
 <tbody>{expo_table}</tbody></table></div></details>
+{webinar_section}
 
 </div>
 <script>{CHART_JS}{charts_js}{FOLD_JS}</script>

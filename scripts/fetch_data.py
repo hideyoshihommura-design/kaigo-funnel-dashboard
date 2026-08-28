@@ -404,7 +404,7 @@ def parse_sheet_date(value):
     return None
 
 
-def fetch_web_cost(token, week_starts):
+def fetch_web_cost(token, week_starts):  # returns (週次, 日次)
     """web の週次広告費を月曜週に割り当てる.
 
     シート側は火曜始まりで、指定の月曜始まりと1日ズレている。
@@ -421,6 +421,7 @@ def fetch_web_cost(token, week_starts):
         raise RuntimeError(f"週次分析テンプレのタブが見つかりません。実際のタブ: {tabs}")
 
     cost = {w: None for w in week_starts}
+    cost_by_day = {}
     weekset = set(week_starts)
 
     # --- 全体集計（週次・火曜始まり）
@@ -478,6 +479,7 @@ def fetch_web_cost(token, week_starts):
             warn(f"『{daily_tab}』のヘッダー行（日付／消費金額）が見つかりません。")
         else:
             per_week, last_day = {}, None
+            # ウェビナーの掲載期間は週の境目と一致しないので、日次のまま持つ。
             for row in rows[header_idx + 1:]:
                 if len(row) <= max(cols.values()):
                     continue
@@ -487,6 +489,7 @@ def fetch_web_cost(token, week_starts):
                 spend = to_number(row[cols["spend"]]) or 0.0
                 mon = monday(d)
                 per_week[mon] = per_week.get(mon, 0.0) + spend
+                cost_by_day[d] = cost_by_day.get(d, 0.0) + spend
                 daily_first = d if daily_first is None else min(daily_first, d)
                 last_day = d if last_day is None else max(last_day, d)
             # 日次があるのに全体集計より後ろで途切れているとき、その先を0で
@@ -504,7 +507,7 @@ def fetch_web_cost(token, week_starts):
     for w in week_starts:
         if w < first_known:
             cost[w] = None
-    return cost
+    return cost, cost_by_day
 
 
 def fetch_expo_costs(token):
@@ -539,7 +542,7 @@ def fetch_expo_costs(token):
 # ---------------------------------------------------------------- 集計
 
 
-def build(token, sheets_token, channel_map, end_date):
+def build(token, sheets_token, channel_map, webinar_cfg, end_date):
     channels = channel_map["channels"]
     route_to_channel = {}
     for key, spec in channels.items():
@@ -612,6 +615,8 @@ def build(token, sheets_token, channel_map, end_date):
             daily_leads[d] = daily_leads.get(d, 0) + 1
 
     # --- 商談・成約（週はコンタクトの実効獲得日。取引の作成日ではない）
+    # ウェビナー別の集計でも同じ紐付けを使うので、コンタクト単位でも持っておく。
+    per_contact = {}
     route_deals, route_won = {}, {}
     orphan_deals = 0
     daily_appts = {}
@@ -677,6 +682,16 @@ def build(token, sheets_token, channel_map, end_date):
                 daily_wons[won_day] = daily_wons.get(won_day, 0) + 1
                 daily_wonamt[won_day] = daily_wonamt.get(won_day, 0) + amount
 
+        for a in assoc:
+            acid = str(a.get("id"))
+            if acid in cinfo:
+                pc = per_contact.setdefault(acid, {"deals": 0, "won": 0, "amount": 0})
+                pc["deals"] += 1
+                if won:
+                    pc["won"] += 1
+                    pc["amount"] += amount
+                break
+
         target = agency[mon] if ch == "agency" else direct[mon][ch]
         target["deals"] += 1
         if won:
@@ -716,7 +731,7 @@ def build(token, sheets_token, channel_map, end_date):
     expos.sort(key=lambda e: e["date"])
 
     # --- web 費用
-    web_cost = fetch_web_cost(sheets_token, week_starts)
+    web_cost, web_cost_day = fetch_web_cost(sheets_token, week_starts)
     for w in week_starts:
         direct[w]["web"]["cost"] = web_cost[w]
     # LINE・紹介・その他は常に費用0（不明ではなく、発生していないことが分かっている）
@@ -784,6 +799,51 @@ def build(token, sheets_token, channel_map, end_date):
             "leads": daily_leads.get(d, 0),
         }
 
+    # --- ウェビナー別（掲載期間で切る）
+    # 同じ「ウェビナー申込みフォーム」から入るため、お題の区別は期間でしかできない。
+    # 期間が重なると同じリードを2回数えるので、設定側で重ならないようにしてある。
+    # 商談・成約は期間内に獲得したリードに紐づくものを、いつ発生したかに関係なく数える
+    # （獲得してから決まるまで時間がかかるため、期間で切ると成果が消える）。
+    webinars_out = []
+    wroutes = set(webinar_cfg.get("webinar_routes") or [])
+    for wb in webinar_cfg.get("webinars") or []:
+        try:
+            ws = dt.date.fromisoformat(wb["start"])
+            we = dt.date.fromisoformat(wb["end"])
+        except (KeyError, ValueError):
+            warn(f"webinars.json の期間が読めません: {wb}")
+            continue
+        use = set(wb.get("routes") or wroutes)
+        leads = deals_n = won_n = amt = 0
+        for cid, info in cinfo.items():
+            if info["route"] not in use:
+                continue
+            if not (ws <= info["date"] <= we):
+                continue
+            leads += 1
+            pc = per_contact.get(cid)
+            if pc:
+                deals_n += pc["deals"]
+                won_n += pc["won"]
+                amt += pc["amount"]
+        # 広告費は日次を期間で合計する。日次が無い日は不明として扱い、
+        # 0円で埋めない（埋めると「広告を止めていた」ことになる）。
+        days = [ws + dt.timedelta(days=i) for i in range((we - ws).days + 1)]
+        known = [web_cost_day[d] for d in days if d in web_cost_day]
+        cost = int(round(sum(known))) if known else None
+        webinars_out.append({
+            "name": wb.get("name") or "(名前なし)",
+            "start": ws.isoformat(),
+            "end": we.isoformat(),
+            "days": len(days),
+            "cost": cost,
+            "cost_days": len(known),
+            "leads": leads,
+            "deals": deals_n,
+            "won": won_n,
+            "won_amount": amt,
+        })
+
     # --- フィールドセールスの日次（架電の窓に縛られず全期間）
     fs_days = {}
     for d in sorted(set(daily_mtgs) | set(daily_props) | set(daily_wons)):
@@ -829,6 +889,7 @@ def build(token, sheets_token, channel_map, end_date):
         "expos": expos,
         "calls": calls_out,
         "fs": fs_days,
+        "webinars": webinars_out,
         "call_conversion": {w.isoformat(): v for w, v in sorted(conv.items())},
     }
 
@@ -885,6 +946,7 @@ def main():
     ap = argparse.ArgumentParser(description="HubSpot/Sheets から data.json を作る")
     ap.add_argument("-o", "--output", default="data.json")
     ap.add_argument("--channel-map", default="config/channel_map.json")
+    ap.add_argument("--webinars", default="config/webinars.json")
     ap.add_argument("--previous", help="前回の data.json（妥当性チェックの比較対象）")
     ap.add_argument("--end", help="集計終端 YYYY-MM-DD（既定: 今日 JST）")
     args = ap.parse_args()
@@ -902,6 +964,13 @@ def main():
     )
     with open(args.channel_map, encoding="utf-8") as f:
         channel_map = json.load(f)
+    # ウェビナー定義は任意。無ければそのセクションを出さないだけ。
+    webinar_cfg = {}
+    if os.path.exists(args.webinars):
+        with open(args.webinars, encoding="utf-8") as f:
+            webinar_cfg = json.load(f)
+    else:
+        warn(f"{args.webinars} がありません。ウェビナー別の集計は出しません。")
 
     previous = None
     if args.previous and os.path.exists(args.previous):
@@ -912,7 +981,7 @@ def main():
             warn(f"前回の data.json を読めませんでした（比較なしで続行）: {e}")
 
     sheets_token = google_access_token(sa_json)
-    data = build(token, sheets_token, channel_map, end_date)
+    data = build(token, sheets_token, channel_map, webinar_cfg, end_date)
 
     if not sanity_check(data, previous):
         sys.exit(2)
