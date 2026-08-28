@@ -36,6 +36,11 @@ CHANNEL_KEYS = [k for k, _ in CHANNELS]
 # イベント行・合計行の週次 CPL は意味を持たない → 空欄にする。
 CPL_VISIBLE_ROWS = {"web"}
 
+# 架電業者の稼働開始日。ここからの累計を別カードで出す。業者を変えたり
+# 体制が変わったらこの日付を変える。既存の「累計（期間内）」は期間指定に
+# 連動するままで、こちらは日付固定。両者は入れ子（業者ぶんは期間内累計の一部）。
+VENDOR_START = dt.date(2026, 8, 19)
+
 MA_WINDOW = 4
 
 # ---- 日次架電ブロック ----
@@ -633,10 +638,27 @@ def compute_daily(data):  # noqa: C901
         "worked_days": len(worked),
     }
 
+    # 架電業者ぶん（VENDOR_START 以降）。期間指定では動かさない。
+    vd = [d for d in dates if d >= VENDOR_START]
+    vworked = [d for d in vd if get(d, "calls") > 0]
+    vt = {f: sum(get(d, f) for d in vd) for f in FIELDS}
+    vendor = {
+        "from": VENDOR_START.isoformat(),
+        "calls": vt["calls"],
+        "called": vt["called"],
+        "connected": vt["connected"],
+        "rate": safe_div(vt["connected"], vt["calls"]),
+        "appts": vt["appts"],
+        "conv": safe_div(vt["appts"], vt["called"]),
+        "per_day": safe_div(vt["calls"], len(vworked)) if vworked else None,
+        "worked_days": len(vworked),
+    }
+
     return {
         "rows": rows,
         "kpi": dict(rate=safe_div(tot["connected"], tot["calls"]), **tot),
         "activity": activity,
+        "vendor": vendor,
         # グラフは日次区間だけ。日の棒と週の棒を同じ横軸に混ぜると、
         # 棒の高さが1日分なのか1週間分なのか区別できなくなる。
         "chart": {
@@ -868,6 +890,8 @@ justify-content:center;padding:14px 12px;margin-right:12px;min-width:74px;
 font-size:12px;font-weight:700;line-height:1.35;white-space:nowrap;}
 .actsum .card.act .tag{background:#08959C;color:#fff;}
 .actsum .card.cum .tag{background:var(--ink);color:#fff;}
+/* 業者ぶんは期間指定で動かない固定の集計。上2枚と役割が違うので色も変える。 */
+.actsum .card.vendor .tag{background:#8459A5;color:#fff;}
 .actsum .card .tag .taglabel{display:block;color:#fff;font-size:10.5px;
 font-weight:400;opacity:.9;}
 
@@ -1657,6 +1681,21 @@ def render(data):
 """
         daily_kpis = "".join(kpi_items)
 
+        # 架電業者ぶん。期間指定では動かさないので id は振らない。
+        # 振ってしまうとフィルタが値を書き換え、8/19起点でなくなる。
+        vn = daily["vendor"]
+        vn_from = f'{vn["from"][5:7]}/{vn["from"][8:10]}'
+        vendor_items = "".join([
+            kpi("架電数", f_int(vn["calls"])),
+            kpi("リード数", f_int(vn["called"])),
+            kpi("接続数", f_int(vn["connected"])),
+            kpi("接続率", f_pct(vn["rate"])),
+            kpi("面談予約 獲得数", f_int(vn["appts"])),
+            kpi("商談化率", f_pct(vn["conv"])),
+            kpi("1稼働日あたり 架電数", f_dec(vn["per_day"])),
+            kpi("稼働日数", f_int(vn["worked_days"])),
+        ])
+
         # ---- FS活動量（直契約のみ・全期間） ----
         # 上部の直契約カードと同じ母集団に揃えてある。揃えないと
         # 「面談実施が商談数より多い」という論理的にありえない状態になる
@@ -1718,6 +1757,8 @@ def render(data):
     <div class="kpis">{act_items}</div></div>
   <div class="card cum"><div class="tag">累計<span class="taglabel">期間内</span></div>
     <div class="kpis">{daily_kpis}</div></div>
+  <div class="card vendor"><div class="tag">架電業者<span class="taglabel">{vn_from}〜</span></div>
+    <div class="kpis">{vendor_items}</div></div>
 </div>
 <div class="charts one">
   <div class="card"><h3>架電数の日次推移（{daily["span"]}）</h3>
