@@ -2003,7 +2003,7 @@
     "won_amount": 0
    },
    "web": {
-    "leads": 17,
+    "leads": 18,
     "cost": 48426,
     "deals": 0,
     "won": 0,
@@ -3079,12 +3079,12 @@
    "leads": 0
   },
   "2026-08-28": {
-   "calls": 32,
+   "calls": 33,
    "connected": 3,
    "appts": 0,
    "mtgs": 0,
    "called": 21,
-   "leads": 1
+   "leads": 2
   }
  },
  "fs": {
