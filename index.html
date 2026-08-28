@@ -202,6 +202,8 @@ justify-content:center;padding:14px 12px;margin-right:12px;min-width:74px;
 font-size:12px;font-weight:700;line-height:1.35;white-space:nowrap;}
 .actsum .card.act .tag{background:#08959C;color:#fff;}
 .actsum .card.cum .tag{background:var(--ink);color:#fff;}
+/* 業者ぶんは期間指定で動かない固定の集計。上2枚と役割が違うので色も変える。 */
+.actsum .card.vendor .tag{background:#8459A5;color:#fff;}
 .actsum .card .tag .taglabel{display:block;color:#fff;font-size:10.5px;
 font-weight:400;opacity:.9;}
 
@@ -214,7 +216,7 @@ tr.roll td.wk{background:var(--head);color:var(--muted);font-weight:600;}
 <body><div class="wrap">
 
 <h1>ホリエモンAI学校 介護校 ファネルダッシュボード</h1>
-<div class="sub"><span id="period">2025-09-01 〜 2026-08-28（週次・月曜始まり）</span>　/　数字の更新 2026-08-28 17:43</div>
+<div class="sub"><span id="period">2025-09-01 〜 2026-08-28（週次・月曜始まり）</span>　/　数字の更新 2026-08-28 17:55</div>
 <div class="range">
   <label>期間</label>
   <input type="date" id="from" value="2025-09-01" min="2025-09-01" max="2026-08-28">
@@ -238,6 +240,8 @@ tr.roll td.wk{background:var(--head);color:var(--muted);font-weight:600;}
     <div class="kpis"><div class="kpi"><div class="k">架電数</div><div class="v">32</div></div><div class="kpi"><div class="k">リード数</div><div class="v">21</div></div><div class="kpi"><div class="k">接続数</div><div class="v">3</div></div><div class="kpi"><div class="k">接続率</div><div class="v">9.4%</div></div><div class="kpi"><div class="k">面談予約 獲得数</div><div class="v">0</div></div><div class="kpi"><div class="k">商談化率</div><div class="v">0.0%</div></div></div></div>
   <div class="card cum"><div class="tag">累計<span class="taglabel">期間内</span></div>
     <div class="kpis"><div class="kpi"><div class="k">架電数</div><div class="v" id="c_calls">460</div></div><div class="kpi"><div class="k">リード数</div><div class="v" id="c_called">351</div></div><div class="kpi"><div class="k">接続数</div><div class="v" id="c_conn">83</div></div><div class="kpi"><div class="k">接続率</div><div class="v" id="c_rate">18.0%</div></div><div class="kpi"><div class="k">面談予約 獲得数</div><div class="v" id="c_appt">33</div></div><div class="kpi"><div class="k">商談化率</div><div class="v" id="c_conv">9.4%</div></div><div class="kpi"><div class="k">1稼働日あたり 架電数</div><div class="v" id="c_perday">12.4</div></div><div class="kpi"><div class="k">稼働日数</div><div class="v" id="c_wdays">37</div></div></div></div>
+  <div class="card vendor"><div class="tag">架電業者<span class="taglabel">08/19〜</span></div>
+    <div class="kpis"><div class="kpi"><div class="k">架電数</div><div class="v">148</div></div><div class="kpi"><div class="k">リード数</div><div class="v">85</div></div><div class="kpi"><div class="k">接続数</div><div class="v">18</div></div><div class="kpi"><div class="k">接続率</div><div class="v">12.2%</div></div><div class="kpi"><div class="k">面談予約 獲得数</div><div class="v">6</div></div><div class="kpi"><div class="k">商談化率</div><div class="v">7.1%</div></div><div class="kpi"><div class="k">1稼働日あたり 架電数</div><div class="v">24.7</div></div><div class="kpi"><div class="k">稼働日数</div><div class="v">6</div></div></div></div>
 </div>
 <div class="charts one">
   <div class="card"><h3>架電数の日次推移（2026-06-01 〜 2026-08-28）</h3>
