@@ -1735,10 +1735,14 @@ def render(data):
             cpl = safe_div(cost, leads) if cost is not None else None
             roi = safe_div(won_amt, cost) if cost else None
             span = f'{w["start"][5:].replace("-", "/")}〜{w["end"][5:].replace("-", "/")}'
-            # 広告費が期間の一部しか無い場合は、その旨が分かるようにしておく。
-            # 全額と誤読すると CPL を実際より高く見積もることになる。
+            # 日次入力が無い期間は週次から日割りで埋めている。厳密な実額ではない
+            # ので、その旨を出す。何日ぶんが概算かまで見せないと、
+            # 「多少ズレている」のか「ほぼ全部が推定」なのか区別できない。
             note = ""
-            if cost is not None and w.get("cost_days", 0) < w.get("days", 0):
+            est = w.get("cost_est_days", 0)
+            if cost is not None and est:
+                note = f'<span class="ma">概算 {est}/{w["days"]}日</span>'
+            elif cost is not None and w.get("cost_days", 0) < w.get("days", 0):
                 note = f'<span class="ma">{w["cost_days"]}/{w["days"]}日分</span>'
             wrows.append(
                 "<tr>"

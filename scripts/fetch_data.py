@@ -826,18 +826,44 @@ def build(token, sheets_token, channel_map, webinar_cfg, end_date):
                 deals_n += pc["deals"]
                 won_n += pc["won"]
                 amt += pc["amount"]
-        # 広告費は日次を期間で合計する。日次が無い日は不明として扱い、
-        # 0円で埋めない（埋めると「広告を止めていた」ことになる）。
+        # 広告費は日次を期間で合計する。日次入力タブは2026-06-09からしか無いので、
+        # それ以前は週次（全体集計）から日割りで補う。ただし単純に7で割ると、
+        # 日次と週次の両方がある週で二重計上になる。週の合計から日次で分かって
+        # いるぶんを引き、残りを未入力の日にだけ配分する。
         days = [ws + dt.timedelta(days=i) for i in range((we - ws).days + 1)]
-        known = [web_cost_day[d] for d in days if d in web_cost_day]
-        cost = int(round(sum(known))) if known else None
+        total = 0.0
+        exact_days = 0
+        est_days = 0
+        week_share = {}
+        for d in days:
+            if d in web_cost_day:
+                total += web_cost_day[d]
+                exact_days += 1
+                continue
+            mon = monday(d)
+            if mon not in week_share:
+                wk_total = web_cost.get(mon)
+                if wk_total is None:
+                    week_share[mon] = None
+                else:
+                    wdays = [mon + dt.timedelta(days=i) for i in range(7)]
+                    covered = sum(web_cost_day.get(x, 0.0) for x in wdays)
+                    blank = [x for x in wdays if x not in web_cost_day]
+                    remain = max(wk_total - covered, 0.0)
+                    week_share[mon] = (remain / len(blank)) if blank else 0.0
+            share = week_share[mon]
+            if share is not None:
+                total += share
+                est_days += 1
+        cost = int(round(total)) if (exact_days or est_days) else None
         webinars_out.append({
             "name": wb.get("name") or "(名前なし)",
             "start": ws.isoformat(),
             "end": we.isoformat(),
             "days": len(days),
             "cost": cost,
-            "cost_days": len(known),
+            "cost_days": exact_days,
+            "cost_est_days": est_days,
             "leads": leads,
             "deals": deals_n,
             "won": won_n,
