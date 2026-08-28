@@ -1256,6 +1256,32 @@ function apply(from,to){
     lab.textContent=a+' 〜 '+b+'（週次・月曜始まり）';
   }
 }
+/* 表示中のページはブラウザやCDNのキャッシュで古いことがある。
+   クエリを変えて読み直すことで、確実に配信中の最新を取りに行く。
+   ここで押しても再集計は走らない（数字の作り直しはGitHub Actions側）。
+   静的サイトに再集計ボタンは置けない。起動にはトークンが要り、
+   公開ページに置くと誰でも読めてしまうため。 */
+function reloadFresh(){
+  var u = location.pathname + '?t=' + Date.now();
+  location.replace(u);
+}
+/* 「数字の更新」がいつかを、経過時間で添える。日時だけだと
+   それが今の数字なのか判断できない。 */
+function showAge(){
+  var el = document.getElementById('age');
+  if(!el){return;}
+  var m = document.querySelector('.sub').textContent.match(
+    /(\d{4})-(\d{2})-(\d{2})(?:\s+(\d{2}):(\d{2}))?/);
+  if(!m){return;}
+  var t = new Date(m[1]+'-'+m[2]+'-'+m[3]+'T'+(m[4]||'00')+':'+(m[5]||'00')+':00+09:00');
+  var mins = Math.floor((Date.now() - t.getTime()) / 60000);
+  if(mins < 0 || !isFinite(mins)){return;}
+  var s;
+  if(mins < 60){ s = mins + '分前'; }
+  else if(mins < 60*24){ s = Math.floor(mins/60) + '時間前'; }
+  else { s = Math.floor(mins/1440) + '日前'; }
+  el.textContent = '（' + s + '）';
+}
 function resetRange(){
   document.getElementById('from').value=RAW.start;
   document.getElementById('to').value=RAW.end;
@@ -1976,6 +2002,7 @@ var CC='{COLORS["call_conn"]}'; var CN='{COLORS["call_noans"]}';
 var L={js(labels)};
 {DRAW_JS}{FILTER_JS}
 resetRange();
+showAge();
 """
 
     try:
@@ -1996,7 +2023,7 @@ resetRange();
 <body><div class="wrap">
 
 <h1>{title}</h1>
-<div class="sub"><span id="period">{period}（週次・月曜始まり）</span>{('　/　生成日 ' + gen) if gen else ''}</div>
+<div class="sub"><span id="period">{period}（週次・月曜始まり）</span>{('　/　生成日 ' + gen) if gen else ''}<span id="age"></span></div>
 <div class="range">
   <label>期間</label>
   <input type="date" id="from" value="{weeks[0]}" min="{weeks[0]}" max="{period_end.isoformat()}">
@@ -2004,6 +2031,7 @@ resetRange();
   <input type="date" id="to" value="{period_end.isoformat()}" min="{weeks[0]}" max="{period_end.isoformat()}">
   <button type="button" onclick="onApply()">適用</button>
   <button type="button" class="ghost" onclick="resetRange()">全期間</button>
+  <button type="button" class="ghost" onclick="reloadFresh()">最新を取得</button>
 </div>
 
 <div class="summary">
