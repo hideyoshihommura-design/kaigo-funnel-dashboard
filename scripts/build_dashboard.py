@@ -2014,6 +2014,7 @@ resetRange();
 </div>
 
 {adperf_section}
+{webinar_section}
 {daily_section}
 {fs_section}
 <h2>直契約</h2>
@@ -2060,7 +2061,6 @@ resetRange();
 <thead><tr><th>展示会名</th><th>開催日</th><th>費用</th><th>リード数</th><th>CPL</th>
 <th>商談数</th><th>成約数</th></tr></thead>
 <tbody>{expo_table}</tbody></table></div></details>
-{webinar_section}
 
 </div>
 <script>{CHART_JS}{charts_js}{FOLD_JS}</script>
