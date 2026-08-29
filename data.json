@@ -2004,11 +2004,11 @@
    },
    "web": {
     "leads": 19,
-    "cost": 48426,
+    "cost": 55061,
     "deals": 0,
     "won": 0,
     "won_amount": 0,
-    "cv": 18
+    "cv": 21
    },
    "line": {
     "leads": 0,
@@ -3617,10 +3617,10 @@
    "cv": 49
   },
   "2026-08-24": {
-   "spend": 48426,
-   "imp": 21603,
-   "clicks": 418,
-   "cv": 18
+   "spend": 55061,
+   "imp": 24410,
+   "clicks": 479,
+   "cv": 21
   }
  },
  "call_conversion": {
