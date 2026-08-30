@@ -1,6 +1,6 @@
 {
  "title": "ホリエモンAI学校 介護校 ファネルダッシュボード",
- "generated_at": "2026-08-30",
+ "generated_at": "2026-08-31",
  "week_starts": [
   "2025-09-01",
   "2025-09-08",
@@ -53,7 +53,8 @@
   "2026-08-03",
   "2026-08-10",
   "2026-08-17",
-  "2026-08-24"
+  "2026-08-24",
+  "2026-08-31"
  ],
  "direct": {
   "2025-09-01": {
@@ -2031,6 +2032,44 @@
     "won": 0,
     "won_amount": 0
    }
+  },
+  "2026-08-31": {
+   "event": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "web": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "cv": 0
+   },
+   "line": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "referral": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "other": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   }
   }
  },
  "agency": {
@@ -2341,6 +2380,12 @@
    "won_amount": 0
   },
   "2026-08-24": {
+   "leads": 0,
+   "deals": 0,
+   "won": 0,
+   "won_amount": 0
+  },
+  "2026-08-31": {
    "leads": 0,
    "deals": 0,
    "won": 0,
