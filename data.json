@@ -2042,7 +2042,7 @@
     "won_amount": 0
    },
    "web": {
-    "leads": 1,
+    "leads": 2,
     "cost": 0,
     "deals": 0,
     "won": 0,
@@ -2386,7 +2386,7 @@
    "won_amount": 0
   },
   "2026-08-31": {
-   "leads": 0,
+   "leads": 1,
    "deals": 0,
    "won": 0,
    "won_amount": 0
@@ -3148,12 +3148,12 @@
    "leads": 2
   },
   "2026-08-31": {
-   "calls": 20,
-   "connected": 0,
-   "appts": 0,
+   "calls": 38,
+   "connected": 2,
+   "appts": 1,
    "mtgs": 0,
-   "called": 0,
-   "leads": 1
+   "called": 1,
+   "leads": 3
   }
  },
  "fs": {
@@ -3732,6 +3732,10 @@
   "2026-08-24": {
    "called": 76,
    "appointed": 2
+  },
+  "2026-08-31": {
+   "called": 1,
+   "appointed": 0
   }
  }
 }
