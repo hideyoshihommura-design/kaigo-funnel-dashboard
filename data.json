@@ -517,7 +517,7 @@
    "event": {
     "leads": 137,
     "cost": 455323,
-    "deals": 8,
+    "deals": 9,
     "won": 1,
     "won_amount": 2101000
    },
@@ -2406,7 +2406,7 @@
    "date": "2025-11-24",
    "cost": 455323,
    "leads": 121,
-   "deals": 4,
+   "deals": 5,
    "won": 1
   },
   {
@@ -3156,10 +3156,10 @@
    "leads": 3
   },
   "2026-09-01": {
-   "calls": 32,
-   "connected": 1,
-   "appts": 0,
-   "mtgs": 0,
+   "calls": 34,
+   "connected": 3,
+   "appts": 1,
+   "mtgs": 1,
    "called": 22,
    "leads": 0
   }
@@ -3432,6 +3432,12 @@
   "2026-08-27": {
    "mtgs": 2,
    "props": 2,
+   "wons": 0,
+   "wonamt": 0
+  },
+  "2026-09-01": {
+   "mtgs": 1,
+   "props": 1,
    "wons": 0,
    "wonamt": 0
   }
@@ -4407,7 +4413,7 @@
    "event": {
     "leads": 119,
     "cost": 455323,
-    "deals": 4,
+    "deals": 5,
     "won": 1,
     "won_amount": 2101000
    },
