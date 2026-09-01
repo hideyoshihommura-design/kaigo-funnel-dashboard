@@ -2005,11 +2005,11 @@
    },
    "web": {
     "leads": 22,
-    "cost": 55061,
+    "cost": 73752,
     "deals": 0,
     "won": 0,
     "won_amount": 0,
-    "cv": 21
+    "cv": 30
    },
    "line": {
     "leads": 0,
@@ -2043,11 +2043,11 @@
    },
    "web": {
     "leads": 2,
-    "cost": 0,
+    "cost": 9620,
     "deals": 0,
     "won": 0,
     "won_amount": 0,
-    "cv": 0
+    "cv": 3
    },
    "line": {
     "leads": 0,
@@ -3154,6 +3154,14 @@
    "mtgs": 0,
    "called": 1,
    "leads": 3
+  },
+  "2026-09-01": {
+   "calls": 10,
+   "connected": 0,
+   "appts": 0,
+   "mtgs": 0,
+   "called": 7,
+   "leads": 0
   }
  },
  "fs": {
@@ -3678,10 +3686,16 @@
    "cv": 49
   },
   "2026-08-24": {
-   "spend": 55061,
-   "imp": 24410,
-   "clicks": 479,
-   "cv": 21
+   "spend": 73752,
+   "imp": 30397,
+   "clicks": 605,
+   "cv": 30
+  },
+  "2026-08-31": {
+   "spend": 9620,
+   "imp": 3450,
+   "clicks": 67,
+   "cv": 3
   }
  },
  "call_conversion": {
@@ -3734,7 +3748,7 @@
    "appointed": 2
   },
   "2026-08-31": {
-   "called": 1,
+   "called": 8,
    "appointed": 0
   }
  }
