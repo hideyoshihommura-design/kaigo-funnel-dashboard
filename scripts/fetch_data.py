@@ -438,6 +438,7 @@ def fetch_web_cost(token, week_starts):  # returns (週次, 日次)
     # IMP・クリック・CVがあれば、単価が上がったのか、クリックされなく
     # なったのか、申し込まれなくなったのかを分けられる。週単位で持つ。
     adperf = {}
+    adperf_day = {}
     weekset = set(week_starts)
 
     # --- 全体集計（週次・火曜始まり）
@@ -533,15 +534,23 @@ def fetch_web_cost(token, week_starts):  # returns (週次, 日次)
                     if cvv is not None:
                         wcv_by_day[d] = wcv_by_day.get(d, 0.0) + cvv
                     wk = monday(d).isoformat()
+                    # 週次と日次の両方に積む。週次だけにすると、期間指定を
+                    # 1日に絞ったときにその週まるごとの値が出てしまう。
                     a = adperf.setdefault(
                         wk, {"spend": 0.0, "imp": 0.0, "clicks": 0.0, "cv": 0.0})
+                    b = adperf_day.setdefault(
+                        d.isoformat(), {"spend": 0.0, "imp": 0.0,
+                                        "clicks": 0.0, "cv": 0.0})
                     a["spend"] += spend
+                    b["spend"] += spend
                     a["cv"] += cvv or 0
+                    b["cv"] += cvv or 0
                     for key, col in (("imp", "imp"), ("clicks", "clicks")):
                         if col in cols and len(row) > cols[col]:
                             v = to_number(row[cols[col]])
                             if v is not None:
                                 a[key] += v
+                                b[key] += v
                 daily_first = d if daily_first is None else min(daily_first, d)
                 last_day = d if last_day is None else max(last_day, d)
             # 日次があるのに全体集計より後ろで途切れているとき、その先を0で
@@ -567,7 +576,7 @@ def fetch_web_cost(token, week_starts):  # returns (週次, 日次)
         if w < first_known:
             cost[w] = None
     return (cost, cost_by_day, cv_by_day, cv_by_week, cv,
-            wcost_by_day, wcv_by_day, adperf)
+            wcost_by_day, wcv_by_day, adperf, adperf_day)
 
 
 def fetch_expo_costs(token):
@@ -655,6 +664,22 @@ def build(token, sheets_token, channel_map, webinar_cfg, end_date):
     }
     agency = {w: {"leads": 0, "deals": 0, "won": 0, "won_amount": 0} for w in week_starts}
 
+    # 日別の直契約／代理店。期間指定を1日や数日に絞ったとき、週次だけだと
+    # その週まるごとの値が出てしまうため、同じ数え方で日別にも積んでおく。
+    # チャネル別の内訳は週次表でしか使わないので、ここでは合計だけ持つ。
+    direct_day, agency_day = {}, {}
+    CHANNELS = ["event", "web", "line", "referral", "other"]
+
+    def dday_direct(d):
+        return direct_day.setdefault(d.isoformat(), {
+            k: {"leads": 0, "cost": 0, "deals": 0, "won": 0, "won_amount": 0}
+            for k in CHANNELS})
+
+    def dday_agency(d):
+        return agency_day.setdefault(
+            d.isoformat(),
+            {"leads": 0, "deals": 0, "won": 0, "won_amount": 0})
+
     # --- リード数
     route_leads_total = {}
     route_week_leads = {}
@@ -669,8 +694,10 @@ def build(token, sheets_token, channel_map, webinar_cfg, end_date):
         route_leads_total[route] = route_leads_total.get(route, 0) + 1
         if ch == "agency":
             agency[mon]["leads"] += 1
+            dday_agency(d)["leads"] += 1
         else:
             direct[mon][ch]["leads"] += 1
+            dday_direct(d)[ch]["leads"] += 1
         if d >= CALLS_START:
             daily_leads[d] = daily_leads.get(d, 0) + 1
 
@@ -757,6 +784,13 @@ def build(token, sheets_token, channel_map, webinar_cfg, end_date):
         if won:
             target["won"] += 1
             target["won_amount"] += amount
+        # 日別も同じ軸（コンタクトの実効獲得日）で数える
+        td = (dday_agency(info["date"]) if ch == "agency"
+              else dday_direct(info["date"])[ch])
+        td["deals"] += 1
+        if won:
+            td["won"] += 1
+            td["won_amount"] += amount
     if orphan_deals:
         warn(
             f"コンタクト未紐付け、または route 未設定/除外の取引 {orphan_deals} 件を"
@@ -788,11 +822,13 @@ def build(token, sheets_token, channel_map, webinar_cfg, end_date):
         })
         # イベント費用は開催週にだけ全額を計上する
         direct[peak]["event"]["cost"] += cost
+        dday_direct(peak)["event"]["cost"] += cost
     expos.sort(key=lambda e: e["date"])
 
     # --- web 費用
     (web_cost, web_cost_day, web_cv_day, web_cv_week, web_cv,
-     wb_cost_day, wb_cv_day, adperf) = fetch_web_cost(sheets_token, week_starts)
+     wb_cost_day, wb_cv_day, adperf,
+     adperf_day) = fetch_web_cost(sheets_token, week_starts)
     for w in week_starts:
         direct[w]["web"]["cost"] = web_cost[w]
         # CPLの分母は広告側のCV（申込延べ数）に揃える。HubSpotのリード数は
@@ -802,6 +838,11 @@ def build(token, sheets_token, channel_map, webinar_cfg, end_date):
     for w in week_starts:
         for ch in ("line", "referral", "other"):
             direct[w][ch]["cost"] = 0
+    # 日別のweb費用・CV。週次と同じ元データ（日次入力タブ）から引く。
+    for d, v in web_cost_day.items():
+        dday_direct(d)["web"]["cost"] = int(round(v))
+    for d, v in web_cv_day.items():
+        dday_direct(d)["web"]["cv"] = int(round(v))
 
     # --- 日次架電
     daily_calls, daily_conn = {}, {}
@@ -977,6 +1018,10 @@ def build(token, sheets_token, channel_map, webinar_cfg, end_date):
         "webinars": webinars_out,
         "adperf": {k: {kk: int(round(vv)) for kk, vv in v.items()}
                    for k, v in sorted(adperf.items())},
+        "adperf_day": {k: {kk: int(round(vv)) for kk, vv in v.items()}
+                       for k, v in sorted(adperf_day.items())},
+        "direct_day": {k: direct_day[k] for k in sorted(direct_day)},
+        "agency_day": {k: agency_day[k] for k in sorted(agency_day)},
         "call_conversion": {w.isoformat(): v for w, v in sorted(conv.items())},
     }
 

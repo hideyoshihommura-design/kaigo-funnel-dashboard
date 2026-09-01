@@ -1170,20 +1170,36 @@ function apply(from,to){
   if(!from){from='0000-01-01';}
   if(!to){to='9999-12-31';}
   var ws=weekKeys(from,to),i,w;
+  /* 日別の広告費が揃っている期間なら、日単位でそのまま切る。
+     それより前は日次入力タブが無いので、従来どおり週で足す。 */
+  var dayMode = (from>=RAW.dfrom);
 
-  /* ---- 週次KPI（直契約・代理店） ---- */
+  /* ---- 直契約・代理店 ---- */
   var t={leads:0,cost:0,cvden:0,known:0,deals:0,won:0,amt:0,
          al:0,ad:0,aw:0,aa:0};
-  for(i=0;i<ws.length;i++){
-    w=RAW.weeks[ws[i]];
-    t.leads+=w.leads; t.cvden+=(w.cvden||0);
-    t.deals+=w.deals; t.won+=w.won; t.amt+=w.amt;
-    /* 費用は判明分だけ足す。null（不明）を0として足すと、
-       データが無い期間を「0円で回した」ことにしてしまう。 */
-    if(w.cost!==null){t.cost+=w.cost; t.known++;}
-    t.al+=w.al; t.ad+=w.ad; t.aw+=w.aw; t.aa+=w.aa;
+  var cost;
+  if(dayMode){
+    for(var dk in RAW.dkpi){
+      if(!RAW.dkpi.hasOwnProperty(dk)){continue;}
+      if(dk<from||dk>to){continue;}
+      var dv=RAW.dkpi[dk];
+      t.leads+=dv[0]; t.cost+=dv[1]; t.cvden+=dv[2];
+      t.deals+=dv[3]; t.won+=dv[4]; t.amt+=dv[5];
+      t.al+=dv[6]; t.ad+=dv[7]; t.aw+=dv[8]; t.aa+=dv[9];
+    }
+    cost = t.cost;
+  }else{
+    for(i=0;i<ws.length;i++){
+      w=RAW.weeks[ws[i]];
+      t.leads+=w.leads; t.cvden+=(w.cvden||0);
+      t.deals+=w.deals; t.won+=w.won; t.amt+=w.amt;
+      /* 費用は判明分だけ足す。null（不明）を0として足すと、
+         データが無い期間を「0円で回した」ことにしてしまう。 */
+      if(w.cost!==null){t.cost+=w.cost; t.known++;}
+      t.al+=w.al; t.ad+=w.ad; t.aw+=w.aw; t.aa+=w.aa;
+    }
+    cost = t.known>0 ? t.cost : null;
   }
-  var cost = t.known>0 ? t.cost : null;
   setK('d_leads',jInt(t.leads)); setK('d_cost',jYen(cost));
   setK('d_cpl',jYen(div(cost,t.cvden))); setK('d_deals',jInt(t.deals));
   setK('d_mtg',jPct(div(t.deals,t.leads))); setK('d_won',jInt(t.won));
@@ -1231,11 +1247,24 @@ function apply(from,to){
   setK('v_called',jInt(v.called)); setK('v_appt',jInt(v.appt));
   setK('v_rate',jPct(div(v.appt,v.called)));
 
-  /* ---- リード獲得（web広告） ---- */
-  var ad={spend:0,imp:0,clicks:0,cv:0};
-  for(i=0;i<ws.length;i++){
-    var ar=RAW.adperf[ws[i]];
-    if(ar){ad.spend+=ar[0]; ad.imp+=ar[1]; ad.clicks+=ar[2]; ad.cv+=ar[3];}
+  /* ---- リード獲得（web広告） ----
+     日次入力タブは日別に持っているので、日付でそのまま切る。
+     週キーで足すと、1日だけ指定してもその週まるごとの値が出る。
+     日次が無い期間（日次入力タブの開始前）は週次で補う。 */
+  var ad={spend:0,imp:0,clicks:0,cv:0}, adDay=dayMode, apd;
+  if(dayMode){
+    for(var ad1 in RAW.adpd){
+      if(!RAW.adpd.hasOwnProperty(ad1)){continue;}
+      if(ad1<from||ad1>to){continue;}
+      apd=RAW.adpd[ad1];
+      ad.spend+=apd[0]; ad.imp+=apd[1]; ad.clicks+=apd[2]; ad.cv+=apd[3];
+    }
+  }
+  if(!adDay){
+    for(i=0;i<ws.length;i++){
+      var ar=RAW.adperf[ws[i]];
+      if(ar){ad.spend+=ar[0]; ad.imp+=ar[1]; ad.clicks+=ar[2]; ad.cv+=ar[3];}
+    }
   }
   setK('ap_spend',jYen(ad.spend)); setK('ap_imp',jInt(ad.imp));
   setK('ap_clicks',jInt(ad.clicks));
@@ -1251,9 +1280,15 @@ function apply(from,to){
 
   var lab=document.getElementById('period');
   if(lab){
-    var a=ws.length?ws[0]:from, b=ws.length?RAW.wkend[ws[ws.length-1]]:to;
-    if(b>RAW.end){b=RAW.end;}
-    lab.textContent=a+' 〜 '+b+'（週次・月曜始まり）';
+    var a,b;
+    if(dayMode){
+      a=from; b=to>RAW.end?RAW.end:to;
+      lab.textContent=a+' 〜 '+b+'（日次）';
+    }else{
+      a=ws.length?ws[0]:from; b=ws.length?RAW.wkend[ws[ws.length-1]]:to;
+      if(b>RAW.end){b=RAW.end;}
+      lab.textContent=a+' 〜 '+b+'（週次・月曜始まり）';
+    }
   }
 }
 /* 表示中のページはブラウザやCDNのキャッシュで古いことがある。
@@ -1959,9 +1994,37 @@ def render(data):
         }
     wkend = {w: (dt.date.fromisoformat(w) + dt.timedelta(days=6)).isoformat()
              for w in weeks}
+
+    # 日別のKPI。週次と同じ数え方（CPLの分母は web だけCV、他はリード数）で
+    # 組み直す。期間を1日に絞ったとき、週次だけだとその週まるごとが出るため。
+    dd_src = data.get("direct_day") or {}
+    ad_src = data.get("agency_day") or {}
+    raw_dkpi, dcost_first = {}, None
+    for day in sorted(set(dd_src) | set(ad_src)):
+        chs = dd_src.get(day) or {}
+        agy = ad_src.get(day) or {}
+        cost, cvden, leads, deals, won, amt = 0, 0, 0, 0, 0, 0
+        for ch in CHANNEL_KEYS:
+            r = chs.get(ch) or {}
+            leads += r.get("leads", 0)
+            deals += r.get("deals", 0)
+            won += r.get("won", 0)
+            amt += r.get("won_amount", 0)
+            cost += r.get("cost", 0) or 0
+            cvden += r.get("cv") or r.get("leads", 0)
+            if ch == "web" and (r.get("cost") or r.get("cv")):
+                if dcost_first is None or day < dcost_first:
+                    dcost_first = day
+        raw_dkpi[day] = [leads, cost, cvden, deals, won, amt,
+                         agy.get("leads", 0), agy.get("deals", 0),
+                         agy.get("won", 0), agy.get("won_amount", 0)]
     raw = {
         "weeks": raw_weeks,
         "wkend": wkend,
+        "dkpi": raw_dkpi,
+        # この日以降なら日別の広告費が揃っているので、日単位で正確に切れる。
+        # それより前は日次入力タブが無く週次テンプレしか無いので週で出す。
+        "dfrom": dcost_first or "9999-12-31",
         "days": {k: [v.get("calls", 0), v.get("connected", 0),
                      v.get("appts", 0), v.get("leads", 0),
                      v.get("called", 0)]
@@ -1971,6 +2034,8 @@ def render(data):
                for k, v in (data.get("fs") or {}).items()},
         "adperf": {k: [v["spend"], v["imp"], v["clicks"], v["cv"]]
                    for k, v in (data.get("adperf") or {}).items()},
+        "adpd": {k: [v["spend"], v["imp"], v["clicks"], v["cv"]]
+                 for k, v in (data.get("adperf_day") or {}).items()},
         "conv": {k: [v.get("called", 0), v.get("appointed", 0)]
                  for k, v in (data.get("call_conversion") or {}).items()},
         "wklabel": {w: week_label(w) for w in weeks},
