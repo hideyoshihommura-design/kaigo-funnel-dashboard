@@ -3156,11 +3156,11 @@
    "leads": 3
   },
   "2026-09-01": {
-   "calls": 10,
-   "connected": 0,
+   "calls": 32,
+   "connected": 1,
    "appts": 0,
    "mtgs": 0,
-   "called": 7,
+   "called": 22,
    "leads": 0
   }
  },
@@ -10512,7 +10512,7 @@
    "appointed": 2
   },
   "2026-08-31": {
-   "called": 8,
+   "called": 23,
    "appointed": 0
   }
  }
