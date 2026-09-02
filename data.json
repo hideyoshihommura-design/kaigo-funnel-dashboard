@@ -1245,11 +1245,11 @@
    },
    "web": {
     "leads": 40,
-    "cost": 246127,
+    "cost": 213916,
     "deals": 1,
     "won": 0,
     "won_amount": 0,
-    "cv": 53
+    "cv": 45
    },
    "line": {
     "leads": 0,
@@ -1283,11 +1283,11 @@
    },
    "web": {
     "leads": 77,
-    "cost": 185135,
+    "cost": 222633,
     "deals": 3,
     "won": 0,
     "won_amount": 0,
-    "cv": 90
+    "cv": 92
    },
    "line": {
     "leads": 0,
@@ -1321,11 +1321,11 @@
    },
    "web": {
     "leads": 55,
-    "cost": 205240,
+    "cost": 230550,
     "deals": 2,
     "won": 0,
     "won_amount": 0,
-    "cv": 52
+    "cv": 65
    },
    "line": {
     "leads": 0,
@@ -1359,11 +1359,11 @@
    },
    "web": {
     "leads": 27,
-    "cost": 96706,
+    "cost": 101994,
     "deals": 1,
     "won": 0,
     "won_amount": 0,
-    "cv": 35
+    "cv": 32
    },
    "line": {
     "leads": 0,
@@ -1397,11 +1397,11 @@
    },
    "web": {
     "leads": 38,
-    "cost": 108252,
+    "cost": 109417,
     "deals": 3,
     "won": 0,
     "won_amount": 0,
-    "cv": 36
+    "cv": 39
    },
    "line": {
     "leads": 0,
@@ -1435,11 +1435,11 @@
    },
    "web": {
     "leads": 25,
-    "cost": 105487,
+    "cost": 103700,
     "deals": 0,
     "won": 0,
     "won_amount": 0,
-    "cv": 31
+    "cv": 33
    },
    "line": {
     "leads": 0,
@@ -1473,11 +1473,11 @@
    },
    "web": {
     "leads": 37,
-    "cost": 124469,
+    "cost": 105743,
     "deals": 3,
     "won": 1,
     "won_amount": 81400,
-    "cv": 54
+    "cv": 33
    },
    "line": {
     "leads": 0,
@@ -1511,11 +1511,11 @@
    },
    "web": {
     "leads": 61,
-    "cost": 210806,
+    "cost": 174252,
     "deals": 3,
     "won": 0,
     "won_amount": 0,
-    "cv": 97
+    "cv": 74
    },
    "line": {
     "leads": 0,
@@ -1549,11 +1549,11 @@
    },
    "web": {
     "leads": 95,
-    "cost": 288233,
+    "cost": 285890,
     "deals": 2,
     "won": 0,
     "won_amount": 0,
-    "cv": 126
+    "cv": 128
    },
    "line": {
     "leads": 0,
@@ -1587,11 +1587,11 @@
    },
    "web": {
     "leads": 68,
-    "cost": 163270,
+    "cost": 204933,
     "deals": 2,
     "won": 0,
     "won_amount": 0,
-    "cv": 75
+    "cv": 93
    },
    "line": {
     "leads": 0,
@@ -2042,12 +2042,12 @@
     "won_amount": 0
    },
    "web": {
-    "leads": 3,
-    "cost": 9620,
+    "leads": 4,
+    "cost": 20674,
     "deals": 0,
     "won": 0,
     "won_amount": 0,
-    "cv": 3
+    "cv": 5
    },
    "line": {
     "leads": 0,
@@ -3164,12 +3164,12 @@
    "leads": 0
   },
   "2026-09-02": {
-   "calls": 0,
+   "calls": 12,
    "connected": 0,
    "appts": 0,
    "mtgs": 0,
-   "called": 0,
-   "leads": 1
+   "called": 12,
+   "leads": 2
   }
  },
  "fs": {
@@ -3456,14 +3456,14 @@
    "start": "2026-03-24",
    "end": "2026-04-15",
    "days": 23,
-   "cost": 128155,
-   "cost_days": 23,
+   "cost": 170032,
+   "cost_days": 9,
    "cost_est_days": 0,
-   "cost_manual": true,
+   "cost_manual": false,
    "cv": 54,
-   "cv_days": 0,
+   "cv_days": 9,
    "cv_est_days": 0,
-   "cv_manual": true,
+   "cv_manual": false,
    "leads": 48,
    "deals": 0,
    "won": 0,
@@ -3474,14 +3474,14 @@
    "start": "2026-04-17",
    "end": "2026-04-25",
    "days": 9,
-   "cost": 146023,
+   "cost": 198007,
    "cost_days": 9,
    "cost_est_days": 0,
-   "cost_manual": true,
-   "cv": 40,
-   "cv_days": 0,
+   "cost_manual": false,
+   "cv": 44,
+   "cv_days": 9,
    "cv_est_days": 0,
-   "cv_manual": true,
+   "cv_manual": false,
    "leads": 40,
    "deals": 1,
    "won": 0,
@@ -3495,11 +3495,11 @@
    "cost": 203900,
    "cost_days": 15,
    "cost_est_days": 0,
-   "cost_manual": true,
+   "cost_manual": false,
    "cv": 150,
-   "cv_days": 3,
+   "cv_days": 15,
    "cv_est_days": 0,
-   "cv_manual": true,
+   "cv_manual": false,
    "leads": 120,
    "deals": 6,
    "won": 0,
@@ -3633,11 +3633,47 @@
   }
  ],
  "adperf": {
+  "2026-04-06": {
+   "spend": 91683,
+   "imp": 243174,
+   "clicks": 9798,
+   "cv": 31
+  },
+  "2026-04-13": {
+   "spend": 137203,
+   "imp": 362313,
+   "clicks": 12668,
+   "cv": 34
+  },
+  "2026-04-20": {
+   "spend": 146383,
+   "imp": 572256,
+   "clicks": 20369,
+   "cv": 36
+  },
+  "2026-04-27": {
+   "spend": 5061,
+   "imp": 124424,
+   "clicks": 3646,
+   "cv": 0
+  },
+  "2026-05-25": {
+   "spend": 49249,
+   "imp": 11702,
+   "clicks": 372,
+   "cv": 38
+  },
+  "2026-06-01": {
+   "spend": 103690,
+   "imp": 42907,
+   "clicks": 794,
+   "cv": 68
+  },
   "2026-06-08": {
-   "spend": 36717,
-   "imp": 12817,
-   "clicks": 232,
-   "cv": 33
+   "spend": 50961,
+   "imp": 17345,
+   "clicks": 302,
+   "cv": 44
   },
   "2026-06-15": {
    "spend": 78075,
@@ -3706,13 +3742,223 @@
    "cv": 30
   },
   "2026-08-31": {
-   "spend": 9620,
-   "imp": 3450,
-   "clicks": 67,
-   "cv": 3
+   "spend": 20674,
+   "imp": 7517,
+   "clicks": 143,
+   "cv": 5
   }
  },
  "adperf_day": {
+  "2026-04-07": {
+   "spend": 2408,
+   "imp": 7498,
+   "clicks": 491,
+   "cv": 0
+  },
+  "2026-04-08": {
+   "spend": 9805,
+   "imp": 15147,
+   "clicks": 1268,
+   "cv": 7
+  },
+  "2026-04-09": {
+   "spend": 18373,
+   "imp": 11114,
+   "clicks": 1274,
+   "cv": 4
+  },
+  "2026-04-10": {
+   "spend": 19714,
+   "imp": 56749,
+   "clicks": 2584,
+   "cv": 5
+  },
+  "2026-04-11": {
+   "spend": 20422,
+   "imp": 72057,
+   "clicks": 1642,
+   "cv": 9
+  },
+  "2026-04-12": {
+   "spend": 20961,
+   "imp": 80609,
+   "clicks": 2539,
+   "cv": 6
+  },
+  "2026-04-13": {
+   "spend": 23813,
+   "imp": 131580,
+   "clicks": 3265,
+   "cv": 4
+  },
+  "2026-04-14": {
+   "spend": 26151,
+   "imp": 40456,
+   "clicks": 2552,
+   "cv": 10
+  },
+  "2026-04-15": {
+   "spend": 28385,
+   "imp": 29402,
+   "clicks": 2087,
+   "cv": 9
+  },
+  "2026-04-16": {
+   "spend": 2568,
+   "imp": 7321,
+   "clicks": 342,
+   "cv": 3
+  },
+  "2026-04-17": {
+   "spend": 553,
+   "imp": 13263,
+   "clicks": 473,
+   "cv": 0
+  },
+  "2026-04-18": {
+   "spend": 26874,
+   "imp": 95150,
+   "clicks": 2749,
+   "cv": 2
+  },
+  "2026-04-19": {
+   "spend": 28859,
+   "imp": 45141,
+   "clicks": 1200,
+   "cv": 6
+  },
+  "2026-04-20": {
+   "spend": 23035,
+   "imp": 84621,
+   "clicks": 2862,
+   "cv": 9
+  },
+  "2026-04-21": {
+   "spend": 29484,
+   "imp": 67539,
+   "clicks": 3127,
+   "cv": 5
+  },
+  "2026-04-22": {
+   "spend": 26673,
+   "imp": 62386,
+   "clicks": 2003,
+   "cv": 6
+  },
+  "2026-04-23": {
+   "spend": 29587,
+   "imp": 92864,
+   "clicks": 2629,
+   "cv": 10
+  },
+  "2026-04-24": {
+   "spend": 25475,
+   "imp": 73883,
+   "clicks": 3151,
+   "cv": 5
+  },
+  "2026-04-25": {
+   "spend": 7467,
+   "imp": 90303,
+   "clicks": 3027,
+   "cv": 1
+  },
+  "2026-04-26": {
+   "spend": 4662,
+   "imp": 100660,
+   "clicks": 3570,
+   "cv": 0
+  },
+  "2026-04-27": {
+   "spend": 3899,
+   "imp": 88964,
+   "clicks": 2796,
+   "cv": 0
+  },
+  "2026-04-28": {
+   "spend": 1161,
+   "imp": 35460,
+   "clicks": 849,
+   "cv": 0
+  },
+  "2026-04-29": {
+   "spend": 1,
+   "imp": 0,
+   "clicks": 1,
+   "cv": 0
+  },
+  "2026-05-28": {
+   "spend": 1055,
+   "imp": 311,
+   "clicks": 16,
+   "cv": 1
+  },
+  "2026-05-29": {
+   "spend": 16219,
+   "imp": 2895,
+   "clicks": 113,
+   "cv": 17
+  },
+  "2026-05-30": {
+   "spend": 14066,
+   "imp": 3105,
+   "clicks": 98,
+   "cv": 5
+  },
+  "2026-05-31": {
+   "spend": 17909,
+   "imp": 5391,
+   "clicks": 145,
+   "cv": 15
+  },
+  "2026-06-01": {
+   "spend": 14622,
+   "imp": 6507,
+   "clicks": 124,
+   "cv": 11
+  },
+  "2026-06-02": {
+   "spend": 15774,
+   "imp": 7531,
+   "clicks": 156,
+   "cv": 11
+  },
+  "2026-06-03": {
+   "spend": 14334,
+   "imp": 6374,
+   "clicks": 124,
+   "cv": 10
+  },
+  "2026-06-04": {
+   "spend": 13074,
+   "imp": 5182,
+   "clicks": 98,
+   "cv": 11
+  },
+  "2026-06-05": {
+   "spend": 14163,
+   "imp": 5746,
+   "clicks": 78,
+   "cv": 6
+  },
+  "2026-06-06": {
+   "spend": 15081,
+   "imp": 5421,
+   "clicks": 108,
+   "cv": 12
+  },
+  "2026-06-07": {
+   "spend": 16642,
+   "imp": 6146,
+   "clicks": 106,
+   "cv": 7
+  },
+  "2026-06-08": {
+   "spend": 14244,
+   "imp": 4528,
+   "clicks": 70,
+   "cv": 11
+  },
   "2026-06-09": {
    "spend": 16749,
    "imp": 5791,
@@ -4192,6 +4438,12 @@
    "imp": 3450,
    "clicks": 67,
    "cv": 3
+  },
+  "2026-09-01": {
+   "spend": 11054,
+   "imp": 4067,
+   "clicks": 76,
+   "cv": 2
   }
  },
  "direct_day": {
@@ -4935,6 +5187,44 @@
     "won_amount": 0
    }
   },
+  "2026-04-07": {
+   "event": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "web": {
+    "leads": 0,
+    "cost": 31554,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "cv": 0
+   },
+   "line": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "referral": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "other": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   }
+  },
   "2026-04-08": {
    "event": {
     "leads": 0,
@@ -4945,10 +5235,11 @@
    },
    "web": {
     "leads": 4,
-    "cost": 0,
+    "cost": 44088,
     "deals": 0,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": 8
    },
    "line": {
     "leads": 0,
@@ -4982,10 +5273,11 @@
    },
    "web": {
     "leads": 2,
-    "cost": 0,
+    "cost": 40860,
     "deals": 0,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": 4
    },
    "line": {
     "leads": 0,
@@ -5019,10 +5311,11 @@
    },
    "web": {
     "leads": 8,
-    "cost": 0,
+    "cost": 29822,
     "deals": 0,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": 8
    },
    "line": {
     "leads": 0,
@@ -5056,10 +5349,11 @@
    },
    "web": {
     "leads": 13,
-    "cost": 0,
+    "cost": 30535,
     "deals": 1,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": 12
    },
    "line": {
     "leads": 0,
@@ -5093,10 +5387,11 @@
    },
    "web": {
     "leads": 13,
-    "cost": 0,
+    "cost": 37057,
     "deals": 0,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": 13
    },
    "line": {
     "leads": 0,
@@ -5130,10 +5425,11 @@
    },
    "web": {
     "leads": 7,
-    "cost": 0,
+    "cost": 33661,
     "deals": 0,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": 8
    },
    "line": {
     "leads": 0,
@@ -5167,10 +5463,11 @@
    },
    "web": {
     "leads": 22,
-    "cost": 0,
+    "cost": 39072,
     "deals": 1,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": 22
    },
    "line": {
     "leads": 0,
@@ -5204,10 +5501,11 @@
    },
    "web": {
     "leads": 12,
-    "cost": 0,
+    "cost": 41422,
     "deals": 1,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": 16
    },
    "line": {
     "leads": 0,
@@ -5241,10 +5539,11 @@
    },
    "web": {
     "leads": 6,
-    "cost": 0,
+    "cost": 16000,
     "deals": 0,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": 7
    },
    "line": {
     "leads": 0,
@@ -5278,10 +5577,11 @@
    },
    "web": {
     "leads": 3,
-    "cost": 0,
+    "cost": 13000,
     "deals": 0,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": 7
    },
    "line": {
     "leads": 0,
@@ -5315,10 +5615,11 @@
    },
    "web": {
     "leads": 12,
-    "cost": 0,
+    "cost": 37366,
     "deals": 1,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": 15
    },
    "line": {
     "leads": 0,
@@ -5352,10 +5653,11 @@
    },
    "web": {
     "leads": 15,
-    "cost": 0,
+    "cost": 42112,
     "deals": 0,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": 17
    },
    "line": {
     "leads": 0,
@@ -5389,10 +5691,11 @@
    },
    "web": {
     "leads": 9,
-    "cost": 0,
+    "cost": 35243,
     "deals": 0,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": 15
    },
    "line": {
     "leads": 0,
@@ -5426,10 +5729,11 @@
    },
    "web": {
     "leads": 12,
-    "cost": 0,
+    "cost": 40203,
     "deals": 0,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": 11
    },
    "line": {
     "leads": 0,
@@ -5463,10 +5767,11 @@
    },
    "web": {
     "leads": 7,
-    "cost": 0,
+    "cost": 37806,
     "deals": 0,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": 8
    },
    "line": {
     "leads": 0,
@@ -5500,10 +5805,11 @@
    },
    "web": {
     "leads": 14,
-    "cost": 0,
+    "cost": 40556,
     "deals": 2,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": 17
    },
    "line": {
     "leads": 0,
@@ -5537,10 +5843,11 @@
    },
    "web": {
     "leads": 6,
-    "cost": 0,
+    "cost": 34555,
     "deals": 0,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": 6
    },
    "line": {
     "leads": 0,
@@ -5574,10 +5881,11 @@
    },
    "web": {
     "leads": 4,
-    "cost": 0,
+    "cost": 20853,
     "deals": 0,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": 4
    },
    "line": {
     "leads": 0,
@@ -5611,10 +5919,11 @@
    },
    "web": {
     "leads": 3,
-    "cost": 0,
+    "cost": 21334,
     "deals": 0,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": 4
    },
    "line": {
     "leads": 0,
@@ -5648,10 +5957,11 @@
    },
    "web": {
     "leads": 2,
-    "cost": 0,
+    "cost": 18442,
     "deals": 0,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": 2
    },
    "line": {
     "leads": 0,
@@ -5685,10 +5995,11 @@
    },
    "web": {
     "leads": 8,
-    "cost": 0,
+    "cost": 18081,
     "deals": 0,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": 10
    },
    "line": {
     "leads": 0,
@@ -5722,10 +6033,11 @@
    },
    "web": {
     "leads": 4,
-    "cost": 0,
+    "cost": 14663,
     "deals": 0,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": 4
    },
    "line": {
     "leads": 0,
@@ -5759,10 +6071,11 @@
    },
    "web": {
     "leads": 3,
-    "cost": 0,
+    "cost": 9779,
     "deals": 1,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": 3
    },
    "line": {
     "leads": 0,
@@ -5796,10 +6109,11 @@
    },
    "web": {
     "leads": 6,
-    "cost": 0,
+    "cost": 10760,
     "deals": 0,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": 6
    },
    "line": {
     "leads": 0,
@@ -5833,10 +6147,11 @@
    },
    "web": {
     "leads": 3,
-    "cost": 0,
+    "cost": 14131,
     "deals": 0,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": 3
    },
    "line": {
     "leads": 0,
@@ -5870,10 +6185,11 @@
    },
    "web": {
     "leads": 1,
-    "cost": 0,
+    "cost": 16138,
     "deals": 0,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": 4
    },
    "line": {
     "leads": 0,
@@ -5907,10 +6223,11 @@
    },
    "web": {
     "leads": 5,
-    "cost": 0,
+    "cost": 14315,
     "deals": 0,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": 5
    },
    "line": {
     "leads": 0,
@@ -5944,10 +6261,11 @@
    },
    "web": {
     "leads": 12,
-    "cost": 0,
+    "cost": 16834,
     "deals": 1,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": 9
    },
    "line": {
     "leads": 0,
@@ -5981,10 +6299,11 @@
    },
    "web": {
     "leads": 3,
-    "cost": 0,
+    "cost": 16557,
     "deals": 1,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": 3
    },
    "line": {
     "leads": 0,
@@ -6018,10 +6337,11 @@
    },
    "web": {
     "leads": 3,
-    "cost": 0,
+    "cost": 15618,
     "deals": 0,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": 4
    },
    "line": {
     "leads": 0,
@@ -6055,10 +6375,11 @@
    },
    "web": {
     "leads": 5,
-    "cost": 0,
+    "cost": 13231,
     "deals": 0,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": 7
    },
    "line": {
     "leads": 0,
@@ -6092,10 +6413,11 @@
    },
    "web": {
     "leads": 3,
-    "cost": 0,
+    "cost": 14455,
     "deals": 0,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": 4
    },
    "line": {
     "leads": 0,
@@ -6129,10 +6451,11 @@
    },
    "web": {
     "leads": 7,
-    "cost": 0,
+    "cost": 18407,
     "deals": 1,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": 7
    },
    "line": {
     "leads": 0,
@@ -6166,10 +6489,11 @@
    },
    "web": {
     "leads": 1,
-    "cost": 0,
+    "cost": 13160,
     "deals": 0,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": 2
    },
    "line": {
     "leads": 0,
@@ -6203,10 +6527,11 @@
    },
    "web": {
     "leads": 7,
-    "cost": 0,
+    "cost": 16761,
     "deals": 0,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": 7
    },
    "line": {
     "leads": 0,
@@ -6240,10 +6565,11 @@
    },
    "web": {
     "leads": 6,
-    "cost": 0,
+    "cost": 14262,
     "deals": 0,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": 8
    },
    "line": {
     "leads": 0,
@@ -6277,10 +6603,49 @@
    },
    "web": {
     "leads": 4,
+    "cost": 15275,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "cv": 7
+   },
+   "line": {
+    "leads": 0,
     "cost": 0,
     "deals": 0,
     "won": 0,
     "won_amount": 0
+   },
+   "referral": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "other": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   }
+  },
+  "2026-05-15": {
+   "event": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "web": {
+    "leads": 0,
+    "cost": 13810,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "cv": 1
    },
    "line": {
     "leads": 0,
@@ -6314,10 +6679,11 @@
    },
    "web": {
     "leads": 6,
-    "cost": 0,
+    "cost": 13458,
     "deals": 0,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": 7
    },
    "line": {
     "leads": 0,
@@ -6351,10 +6717,49 @@
    },
    "web": {
     "leads": 1,
+    "cost": 16974,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "cv": 1
+   },
+   "line": {
+    "leads": 0,
     "cost": 0,
     "deals": 0,
     "won": 0,
     "won_amount": 0
+   },
+   "referral": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "other": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   }
+  },
+  "2026-05-18": {
+   "event": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "web": {
+    "leads": 0,
+    "cost": 14879,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "cv": 0
    },
    "line": {
     "leads": 0,
@@ -6388,10 +6793,11 @@
    },
    "web": {
     "leads": 7,
-    "cost": 0,
+    "cost": 15294,
     "deals": 1,
     "won": 1,
-    "won_amount": 81400
+    "won_amount": 81400,
+    "cv": 8
    },
    "line": {
     "leads": 0,
@@ -6425,10 +6831,11 @@
    },
    "web": {
     "leads": 7,
-    "cost": 0,
+    "cost": 14200,
     "deals": 0,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": 5
    },
    "line": {
     "leads": 0,
@@ -6462,10 +6869,11 @@
    },
    "web": {
     "leads": 13,
-    "cost": 0,
+    "cost": 15274,
     "deals": 2,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": 9
    },
    "line": {
     "leads": 0,
@@ -6499,10 +6907,11 @@
    },
    "web": {
     "leads": 1,
-    "cost": 0,
+    "cost": 14976,
     "deals": 0,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": 0
    },
    "line": {
     "leads": 0,
@@ -6536,10 +6945,11 @@
    },
    "web": {
     "leads": 5,
-    "cost": 0,
+    "cost": 13403,
     "deals": 0,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": 8
    },
    "line": {
     "leads": 0,
@@ -6573,10 +6983,11 @@
    },
    "web": {
     "leads": 4,
-    "cost": 0,
+    "cost": 17717,
     "deals": 0,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": 3
    },
    "line": {
     "leads": 0,
@@ -6610,10 +7021,11 @@
    },
    "web": {
     "leads": 5,
-    "cost": 0,
+    "cost": 14798,
     "deals": 0,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": 8
    },
    "line": {
     "leads": 0,
@@ -6647,10 +7059,11 @@
    },
    "web": {
     "leads": 1,
-    "cost": 0,
+    "cost": 15316,
     "deals": 0,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": 1
    },
    "line": {
     "leads": 0,
@@ -6684,10 +7097,11 @@
    },
    "web": {
     "leads": 7,
-    "cost": 0,
+    "cost": 15395,
     "deals": 0,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": 5
    },
    "line": {
     "leads": 0,
@@ -6721,10 +7135,11 @@
    },
    "web": {
     "leads": 6,
-    "cost": 0,
+    "cost": 15139,
     "deals": 0,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": 4
    },
    "line": {
     "leads": 0,
@@ -6758,10 +7173,11 @@
    },
    "web": {
     "leads": 16,
-    "cost": 0,
+    "cost": 40300,
     "deals": 2,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": 22
    },
    "line": {
     "leads": 0,
@@ -6795,10 +7211,11 @@
    },
    "web": {
     "leads": 7,
-    "cost": 0,
+    "cost": 35398,
     "deals": 0,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": 11
    },
    "line": {
     "leads": 0,
@@ -6832,10 +7249,11 @@
    },
    "web": {
     "leads": 19,
-    "cost": 0,
+    "cost": 37906,
     "deals": 1,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": 23
    },
    "line": {
     "leads": 0,
@@ -6869,10 +7287,11 @@
    },
    "web": {
     "leads": 18,
-    "cost": 0,
+    "cost": 35678,
     "deals": 1,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": 19
    },
    "line": {
     "leads": 0,
@@ -6906,10 +7325,11 @@
    },
    "web": {
     "leads": 14,
-    "cost": 0,
+    "cost": 46191,
     "deals": 0,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": 23
    },
    "line": {
     "leads": 0,
@@ -6943,10 +7363,11 @@
    },
    "web": {
     "leads": 16,
-    "cost": 0,
+    "cost": 42111,
     "deals": 0,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": 17
    },
    "line": {
     "leads": 0,
@@ -6980,10 +7401,11 @@
    },
    "web": {
     "leads": 18,
-    "cost": 0,
+    "cost": 39262,
     "deals": 0,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": 17
    },
    "line": {
     "leads": 0,
@@ -7017,10 +7439,11 @@
    },
    "web": {
     "leads": 7,
-    "cost": 0,
+    "cost": 40180,
     "deals": 0,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": 17
    },
    "line": {
     "leads": 0,
@@ -7054,10 +7477,11 @@
    },
    "web": {
     "leads": 10,
-    "cost": 0,
+    "cost": 37477,
     "deals": 0,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": 20
    },
    "line": {
     "leads": 0,
@@ -7091,10 +7515,11 @@
    },
    "web": {
     "leads": 12,
-    "cost": 0,
+    "cost": 44991,
     "deals": 1,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": 15
    },
    "line": {
     "leads": 0,
@@ -7128,10 +7553,11 @@
    },
    "web": {
     "leads": 14,
-    "cost": 0,
+    "cost": 41663,
     "deals": 1,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": 18
    },
    "line": {
     "leads": 0,
@@ -10347,6 +10773,44 @@
     "won_amount": 0
    }
   },
+  "2026-09-01": {
+   "event": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "web": {
+    "leads": 0,
+    "cost": 11054,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "cv": 2
+   },
+   "line": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "referral": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "other": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   }
+  },
   "2026-09-02": {
    "event": {
     "leads": 0,
@@ -10356,7 +10820,7 @@
     "won_amount": 0
    },
    "web": {
-    "leads": 1,
+    "leads": 2,
     "cost": 0,
     "deals": 0,
     "won": 0,
@@ -10563,7 +11027,7 @@
    "appointed": 2
   },
   "2026-08-31": {
-   "called": 23,
+   "called": 35,
    "appointed": 0
   }
  }
