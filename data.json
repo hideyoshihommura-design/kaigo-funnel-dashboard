@@ -3164,11 +3164,11 @@
    "leads": 0
   },
   "2026-09-02": {
-   "calls": 13,
-   "connected": 0,
+   "calls": 27,
+   "connected": 1,
    "appts": 0,
    "mtgs": 0,
-   "called": 12,
+   "called": 16,
    "leads": 2
   }
  },
@@ -3448,6 +3448,428 @@
    "props": 1,
    "wons": 0,
    "wonamt": 0
+  }
+ },
+ "is_attr": {
+  "2026-06-03": {
+   "vendor": {
+    "appts": 0,
+    "deals": 0,
+    "wons": 0,
+    "wonamt": 0
+   },
+   "inhouse": {
+    "appts": 0,
+    "deals": 0,
+    "wons": 0,
+    "wonamt": 0
+   },
+   "nocall": {
+    "appts": 0,
+    "deals": 0,
+    "wons": 1,
+    "wonamt": 81400
+   }
+  },
+  "2026-06-14": {
+   "vendor": {
+    "appts": 0,
+    "deals": 0,
+    "wons": 0,
+    "wonamt": 0
+   },
+   "inhouse": {
+    "appts": 1,
+    "deals": 1,
+    "wons": 0,
+    "wonamt": 0
+   },
+   "nocall": {
+    "appts": 2,
+    "deals": 2,
+    "wons": 0,
+    "wonamt": 0
+   }
+  },
+  "2026-06-18": {
+   "vendor": {
+    "appts": 0,
+    "deals": 0,
+    "wons": 0,
+    "wonamt": 0
+   },
+   "inhouse": {
+    "appts": 1,
+    "deals": 1,
+    "wons": 0,
+    "wonamt": 0
+   },
+   "nocall": {
+    "appts": 0,
+    "deals": 0,
+    "wons": 0,
+    "wonamt": 0
+   }
+  },
+  "2026-06-19": {
+   "vendor": {
+    "appts": 0,
+    "deals": 0,
+    "wons": 0,
+    "wonamt": 0
+   },
+   "inhouse": {
+    "appts": 0,
+    "deals": 0,
+    "wons": 0,
+    "wonamt": 0
+   },
+   "nocall": {
+    "appts": 1,
+    "deals": 1,
+    "wons": 0,
+    "wonamt": 0
+   }
+  },
+  "2026-06-22": {
+   "vendor": {
+    "appts": 0,
+    "deals": 0,
+    "wons": 0,
+    "wonamt": 0
+   },
+   "inhouse": {
+    "appts": 0,
+    "deals": 0,
+    "wons": 0,
+    "wonamt": 0
+   },
+   "nocall": {
+    "appts": 1,
+    "deals": 1,
+    "wons": 0,
+    "wonamt": 0
+   }
+  },
+  "2026-06-25": {
+   "vendor": {
+    "appts": 0,
+    "deals": 0,
+    "wons": 0,
+    "wonamt": 0
+   },
+   "inhouse": {
+    "appts": 1,
+    "deals": 1,
+    "wons": 0,
+    "wonamt": 0
+   },
+   "nocall": {
+    "appts": 2,
+    "deals": 2,
+    "wons": 0,
+    "wonamt": 0
+   }
+  },
+  "2026-06-30": {
+   "vendor": {
+    "appts": 0,
+    "deals": 0,
+    "wons": 0,
+    "wonamt": 0
+   },
+   "inhouse": {
+    "appts": 1,
+    "deals": 1,
+    "wons": 0,
+    "wonamt": 0
+   },
+   "nocall": {
+    "appts": 0,
+    "deals": 0,
+    "wons": 0,
+    "wonamt": 0
+   }
+  },
+  "2026-07-09": {
+   "vendor": {
+    "appts": 0,
+    "deals": 0,
+    "wons": 0,
+    "wonamt": 0
+   },
+   "inhouse": {
+    "appts": 0,
+    "deals": 0,
+    "wons": 0,
+    "wonamt": 0
+   },
+   "nocall": {
+    "appts": 1,
+    "deals": 1,
+    "wons": 0,
+    "wonamt": 0
+   }
+  },
+  "2026-07-10": {
+   "vendor": {
+    "appts": 0,
+    "deals": 0,
+    "wons": 0,
+    "wonamt": 0
+   },
+   "inhouse": {
+    "appts": 0,
+    "deals": 0,
+    "wons": 0,
+    "wonamt": 0
+   },
+   "nocall": {
+    "appts": 1,
+    "deals": 1,
+    "wons": 0,
+    "wonamt": 0
+   }
+  },
+  "2026-07-13": {
+   "vendor": {
+    "appts": 0,
+    "deals": 0,
+    "wons": 0,
+    "wonamt": 0
+   },
+   "inhouse": {
+    "appts": 0,
+    "deals": 0,
+    "wons": 0,
+    "wonamt": 0
+   },
+   "nocall": {
+    "appts": 2,
+    "deals": 2,
+    "wons": 0,
+    "wonamt": 0
+   }
+  },
+  "2026-07-29": {
+   "vendor": {
+    "appts": 0,
+    "deals": 0,
+    "wons": 0,
+    "wonamt": 0
+   },
+   "inhouse": {
+    "appts": 1,
+    "deals": 1,
+    "wons": 0,
+    "wonamt": 0
+   },
+   "nocall": {
+    "appts": 1,
+    "deals": 1,
+    "wons": 0,
+    "wonamt": 0
+   }
+  },
+  "2026-07-30": {
+   "vendor": {
+    "appts": 0,
+    "deals": 0,
+    "wons": 0,
+    "wonamt": 0
+   },
+   "inhouse": {
+    "appts": 0,
+    "deals": 0,
+    "wons": 0,
+    "wonamt": 0
+   },
+   "nocall": {
+    "appts": 3,
+    "deals": 3,
+    "wons": 0,
+    "wonamt": 0
+   }
+  },
+  "2026-07-31": {
+   "vendor": {
+    "appts": 0,
+    "deals": 0,
+    "wons": 0,
+    "wonamt": 0
+   },
+   "inhouse": {
+    "appts": 1,
+    "deals": 1,
+    "wons": 0,
+    "wonamt": 0
+   },
+   "nocall": {
+    "appts": 0,
+    "deals": 0,
+    "wons": 0,
+    "wonamt": 0
+   }
+  },
+  "2026-08-06": {
+   "vendor": {
+    "appts": 0,
+    "deals": 0,
+    "wons": 0,
+    "wonamt": 0
+   },
+   "inhouse": {
+    "appts": 1,
+    "deals": 1,
+    "wons": 0,
+    "wonamt": 0
+   },
+   "nocall": {
+    "appts": 0,
+    "deals": 0,
+    "wons": 0,
+    "wonamt": 0
+   }
+  },
+  "2026-08-10": {
+   "vendor": {
+    "appts": 0,
+    "deals": 0,
+    "wons": 0,
+    "wonamt": 0
+   },
+   "inhouse": {
+    "appts": 0,
+    "deals": 0,
+    "wons": 0,
+    "wonamt": 0
+   },
+   "nocall": {
+    "appts": 2,
+    "deals": 2,
+    "wons": 0,
+    "wonamt": 0
+   }
+  },
+  "2026-08-13": {
+   "vendor": {
+    "appts": 0,
+    "deals": 0,
+    "wons": 0,
+    "wonamt": 0
+   },
+   "inhouse": {
+    "appts": 0,
+    "deals": 0,
+    "wons": 0,
+    "wonamt": 0
+   },
+   "nocall": {
+    "appts": 1,
+    "deals": 1,
+    "wons": 0,
+    "wonamt": 0
+   }
+  },
+  "2026-08-17": {
+   "vendor": {
+    "appts": 0,
+    "deals": 0,
+    "wons": 0,
+    "wonamt": 0
+   },
+   "inhouse": {
+    "appts": 0,
+    "deals": 0,
+    "wons": 0,
+    "wonamt": 0
+   },
+   "nocall": {
+    "appts": 1,
+    "deals": 1,
+    "wons": 0,
+    "wonamt": 0
+   }
+  },
+  "2026-08-24": {
+   "vendor": {
+    "appts": 1,
+    "deals": 1,
+    "wons": 0,
+    "wonamt": 0
+   },
+   "inhouse": {
+    "appts": 0,
+    "deals": 0,
+    "wons": 0,
+    "wonamt": 0
+   },
+   "nocall": {
+    "appts": 0,
+    "deals": 0,
+    "wons": 0,
+    "wonamt": 0
+   }
+  },
+  "2026-08-26": {
+   "vendor": {
+    "appts": 0,
+    "deals": 0,
+    "wons": 0,
+    "wonamt": 0
+   },
+   "inhouse": {
+    "appts": 0,
+    "deals": 0,
+    "wons": 0,
+    "wonamt": 0
+   },
+   "nocall": {
+    "appts": 2,
+    "deals": 2,
+    "wons": 0,
+    "wonamt": 0
+   }
+  },
+  "2026-08-27": {
+   "vendor": {
+    "appts": 1,
+    "deals": 1,
+    "wons": 0,
+    "wonamt": 0
+   },
+   "inhouse": {
+    "appts": 0,
+    "deals": 0,
+    "wons": 0,
+    "wonamt": 0
+   },
+   "nocall": {
+    "appts": 2,
+    "deals": 2,
+    "wons": 0,
+    "wonamt": 0
+   }
+  },
+  "2026-09-01": {
+   "vendor": {
+    "appts": 0,
+    "deals": 0,
+    "wons": 0,
+    "wonamt": 0
+   },
+   "inhouse": {
+    "appts": 0,
+    "deals": 0,
+    "wons": 0,
+    "wonamt": 0
+   },
+   "nocall": {
+    "appts": 1,
+    "deals": 1,
+    "wons": 0,
+    "wonamt": 0
+   }
   }
  },
  "webinars": [
@@ -11027,7 +11449,7 @@
    "appointed": 2
   },
   "2026-08-31": {
-   "called": 35,
+   "called": 39,
    "appointed": 0
   }
  }
