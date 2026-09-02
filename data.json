@@ -4061,14 +4061,14 @@
    "inhouse": {
     "appts": 0,
     "deals": 0,
-    "wons": 0,
-    "wonamt": 0
+    "wons": 1,
+    "wonamt": 81400
    },
    "nocall": {
     "appts": 0,
     "deals": 0,
-    "wons": 1,
-    "wonamt": 81400
+    "wons": 0,
+    "wonamt": 0
    }
   },
   "2026-06-14": {
@@ -4159,14 +4159,14 @@
     "wonamt": 0
    },
    "inhouse": {
-    "appts": 1,
-    "deals": 1,
+    "appts": 2,
+    "deals": 2,
     "wons": 0,
     "wonamt": 0
    },
    "nocall": {
-    "appts": 2,
-    "deals": 2,
+    "appts": 1,
+    "deals": 1,
     "wons": 0,
     "wonamt": 0
    }
@@ -4433,8 +4433,8 @@
   },
   "2026-08-27": {
    "vendor": {
-    "appts": 1,
-    "deals": 1,
+    "appts": 3,
+    "deals": 3,
     "wons": 0,
     "wonamt": 0
    },
@@ -4445,8 +4445,8 @@
     "wonamt": 0
    },
    "nocall": {
-    "appts": 2,
-    "deals": 2,
+    "appts": 0,
+    "deals": 0,
     "wons": 0,
     "wonamt": 0
    }
