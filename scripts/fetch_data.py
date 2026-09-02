@@ -872,15 +872,16 @@ def build(token, sheets_token, channel_map, webinar_cfg, campaign_cfg,
         ts = parse_hs_datetime(p.get("hs_timestamp"))
         if not ts or ts > end_date:
             continue
-        direction = (p.get("hs_call_direction") or "").upper()
-        if "OUTBOUND" not in direction:
-            if not direction:
-                no_direction += 1
-            continue
         cid = c.get("_contact_id")
-        # 由来の判定は全期間の架電履歴を使う。ここを CALLS_START で切ると、
-        # それ以前の架電が無かったことになり、その架電から生まれた商談が
-        # 「架電なし」に落ちる。
+        # 由来の判定は全期間・発信着信を問わずに使う。
+        # 期間で切らないのは、CALLS_START より前の架電を無かったことにすると
+        # その架電から生まれた商談が「架電なし」に落ちるため。
+        # hs_call_direction で切らないのは、CRM_UI に手で残したコールは
+        # direction が空のことがあり（業者ぶんで5件あった）、発信と判定
+        # できないだけで「かけていない」わけではないため。ここで落として
+        # 面談予約2件（中込・小林）が業者由来から漏れていた。
+        # 着信を含めても取り違えにならない。業者アカウントに折り返しが
+        # 来ているなら、その相手に接触しているのは業者だからである。
         if cid:
             owner = str(p.get("hubspot_owner_id") or "").strip()
             if owner:
@@ -891,9 +892,13 @@ def build(token, sheets_token, channel_map, webinar_cfg, campaign_cfg,
                 # 寄せると業者の実績が社内に付け替わるので、由来の判定材料から
                 # 外して警告だけ出す（架電数・接続数の集計には入れたまま）。
                 no_owner += 1
-        # ここから下はIS活動量ブロック用。架電を本格的に始める前
-        # （CALLS_START より前）は日次表・接続率の対象にしない。
-        # 数件しかない月を並べると1稼働日あたりの平均が実態から外れる。
+        # ここから下はIS活動量ブロック用。発信と判定できたものだけを、
+        # CALLS_START 以降について数える（既存カードの定義を変えない）。
+        direction = (p.get("hs_call_direction") or "").upper()
+        if "OUTBOUND" not in direction:
+            if not direction:
+                no_direction += 1
+            continue
         if ts < CALLS_START:
             continue
         daily_calls[ts] = daily_calls.get(ts, 0) + 1
