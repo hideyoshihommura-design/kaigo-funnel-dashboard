@@ -41,6 +41,19 @@ CPL_VISIBLE_ROWS = {"web"}
 # 連動するままで、こちらは日付固定。両者は入れ子（業者ぶんは期間内累計の一部）。
 VENDOR_START = dt.date(2026, 8, 19)
 
+# 架電由来の内訳。「面談予約・商談・成約が起きた日の直前に、そのコンタクトへ
+# かけていたのは誰か」で3つに分ける。判定は fetch_data.py 側（業者アカウントの
+# owner_id は config/callers.json）。ここは並び順と表示名だけを持つ。
+# 順番は 業者 → 社内 → 架電なし で固定。カードとテーブルで並びが違うと、
+# 上下の数字がどの由来のものか毎回読み直すことになる。
+ATTR_BUCKETS = [
+    ("vendor", "架電業者由来"),
+    ("inhouse", "社内由来"),
+    ("nocall", "架電なし"),
+]
+ATTR_KEYS = [k for k, _ in ATTR_BUCKETS]
+ATTR_FIELDS = ("appts", "deals", "wons", "wonamt")
+
 MA_WINDOW = 4
 
 # ---- 日次架電ブロック ----
@@ -285,6 +298,43 @@ def validate_conversion(data):
         if v.get("appointed", 0) > v.get("called", 0):
             warn(f"call_conversion[{k}]: 面談予約 {v.get('appointed')} > "
                  f"架電したリード {v.get('called', 0)}")
+
+    validate_is_attr(data)
+
+
+def validate_is_attr(data):
+    """is_attr は日次。架電由来（業者／社内／架電なし）の内訳。任意."""
+    attr = data.get("is_attr")
+    if attr is None:
+        return
+    if not isinstance(attr, dict):
+        fail("is_attr は日付をキーにしたオブジェクトである必要があります。")
+    fs = data.get("fs") or {}
+    tot = {f: 0 for f in ATTR_FIELDS}
+    for k, v in sorted(attr.items()):
+        try:
+            dt.date.fromisoformat(k)
+        except (ValueError, TypeError):
+            fail(f"is_attr に不正な日付キーがあります: {k!r}（YYYY-MM-DD）")
+        unknown = set(v) - set(ATTR_KEYS)
+        if unknown:
+            fail(f"is_attr[{k}] に未知の由来キー: {sorted(unknown)}")
+        for b in ATTR_KEYS:
+            row = v.get(b) or {}
+            for f in ATTR_FIELDS:
+                n = row.get(f, 0)
+                if not isinstance(n, int) or isinstance(n, bool) or n < 0:
+                    fail(f"is_attr[{k}][{b}].{f} は0以上の整数である必要があります: {n!r}")
+                tot[f] += n
+            if row.get("wons", 0) == 0 and row.get("wonamt", 0):
+                warn(f"is_attr[{k}][{b}]: 成約0件なのに成約金額 {row['wonamt']}")
+    # 由来の3つを足した成約数は、FS側の成約数と同じ母集団（直契約）なので
+    # 超えることはありえない。架電データの開始前に起きたぶんは is_attr に
+    # 入らないためFS側が多いのは正常で、逆向きのズレだけが取り違えを意味する。
+    fs_wons = sum(v.get("wons", 0) for v in fs.values())
+    if tot["wons"] > fs_wons:
+        warn(f"is_attr の成約数合計 {tot['wons']} が fs の成約数合計 {fs_wons} を"
+             "超えています。母集団の絞り込みがズレています。")
 
 
 # --------------------------------------------------------------------------
@@ -892,6 +942,12 @@ font-size:12px;font-weight:700;line-height:1.35;white-space:nowrap;}
 .actsum .card.cum .tag{background:var(--ink);color:#fff;}
 /* 業者ぶんは期間指定で動かない固定の集計。上2枚と役割が違うので色も変える。 */
 .actsum .card.vendor .tag{background:#8459A5;color:#fff;}
+/* 架電由来の3枚は同じ指標を分けたものなので、IS活動量で使っている色を流用する。
+   業者は業者カードと同じ紫、社内は活動量と同じ青緑。架電なしは分類であって
+   成果ではないのでグレーに落とし、上2枚と対等に見えないようにする。 */
+.actsum .card.ia-vendor .tag{background:#8459A5;color:#fff;}
+.actsum .card.ia-inhouse .tag{background:#08959C;color:#fff;}
+.actsum .card.ia-nocall .tag{background:var(--muted);color:#fff;}
 .actsum .card .tag .taglabel{display:block;color:#fff;font-size:10.5px;
 font-weight:400;opacity:.9;}
 
@@ -1237,6 +1293,27 @@ function apply(from,to){
   setK('fs_wons',jInt(f.wons)); setK('fs_amt',jYen(f.amt));
   setK('fs_close',jPct(div(f.wons,f.mtgs)));
   setK('fs_avg',f.wons?jYen(f.amt/f.wons):'');
+
+  /* ---- 架電由来（直契約・日付でそのまま切る） ----
+     由来 × 指標の並びは Python 側の ATTR_KEYS × ATTR_FIELDS と同じ順で、
+     由来 i・指標 j が添字 i*4+j。片方だけ並べ替えると数字が入れ替わる。
+     FSと同じく日付キーなので、日単位でそのまま切れる。 */
+  var IAB=['vendor','inhouse','nocall'],ia=[],bi,fi,ir,iad;
+  for(bi=0;bi<IAB.length;bi++){ia.push([0,0,0,0]);}
+  for(iad in RAW.isattr){
+    if(!RAW.isattr.hasOwnProperty(iad)){continue;}
+    if(iad<from||iad>to){continue;}
+    ir=RAW.isattr[iad];
+    for(bi=0;bi<IAB.length;bi++){
+      for(fi=0;fi<4;fi++){ia[bi][fi]+=ir[bi*4+fi];}
+    }
+  }
+  for(bi=0;bi<IAB.length;bi++){
+    setK('ia_'+IAB[bi]+'_appt',jInt(ia[bi][0]));
+    setK('ia_'+IAB[bi]+'_deals',jInt(ia[bi][1]));
+    setK('ia_'+IAB[bi]+'_wons',jInt(ia[bi][2]));
+    setK('ia_'+IAB[bi]+'_amt',jYen(ia[bi][3]));
+  }
 
   /* ---- 転換KPI（週単位） ---- */
   var v={called:0,appt:0};
@@ -1857,6 +1934,63 @@ def render(data):
         fs_section = ""
         daily_js = ""
 
+    # ---- 架電由来（直契約のみ） ----
+    # FS活動量と同じ母集団を、架電の由来で3つに割ったもの。だから
+    # 業者由来＋社内由来＋架電なし＝FS活動量の同じ指標になる（ただし架電
+    # データの開始前に起きたぶんは、判定材料が無いのでここには出ない）。
+    # 面談予約は取引の相談申込ステージ入り日、商談は取引の作成日、成約は
+    # 成約ステージ入り日。それぞれの日の直前にかけていた人で由来を決める。
+    iad = data.get("is_attr") or {}
+    if iad:
+        ia_tot = {b: {f: 0 for f in ATTR_FIELDS} for b in ATTR_KEYS}
+        for v in iad.values():
+            for b in ATTR_KEYS:
+                row = v.get(b) or {}
+                for f in ATTR_FIELDS:
+                    ia_tot[b][f] += row.get(f, 0)
+        ia_cards = "".join(
+            f'<div class="card ia-{b}"><div class="tag">{label}'
+            '<span class="taglabel">期間内・直契約</span></div>'
+            '<div class="kpis">'
+            + "".join([
+                kpi("面談予約 獲得数", f_int(ia_tot[b]["appts"]), f"ia_{b}_appt"),
+                kpi("商談数", f_int(ia_tot[b]["deals"]), f"ia_{b}_deals"),
+                kpi("成約数", f_int(ia_tot[b]["wons"]), f"ia_{b}_wons"),
+                kpi("成約金額", f_yen(ia_tot[b]["wonamt"]), f"ia_{b}_amt"),
+            ])
+            + "</div></div>"
+            for b, label in ATTR_BUCKETS)
+        # 1日 × 3由来で行を作ると空行だらけになるので、動きがあった由来だけ出す。
+        ia_rows = []
+        for d in sorted(iad):
+            for b, label in ATTR_BUCKETS:
+                row = iad[d].get(b) or {}
+                if not any(row.get(f) for f in ATTR_FIELDS):
+                    continue
+                ia_rows.append(
+                    f'<tr data-d="{d}">'
+                    f'<td class="wk">{d[5:].replace("-", "/")}</td>'
+                    f'<td class="ch">{label}</td>'
+                    f'<td class="num">{f_int(row.get("appts", 0))}</td>'
+                    f'<td class="num">{f_int(row.get("deals", 0))}</td>'
+                    f'<td class="num">{f_int(row.get("wons", 0))}</td>'
+                    f'<td class="num">{f_yen(row.get("wonamt", 0))}</td>'
+                    '<td class="pad"></td></tr>')
+        ia_body = "".join(ia_rows)
+        ia_section = f"""
+<h2>架電由来</h2>
+<div class="actsum">{ia_cards}</div>
+<div class="tabgrid">
+  <details class="fold" id="f-ia"><summary><span class="tri">▶</span>架電由来の日次<span class="cnt">{len(ia_rows)}行</span></summary>
+    <div class="tablewrap"><table>
+    <thead><tr><th>日付</th><th>由来</th><th>面談予約 獲得数</th><th>商談数</th>
+    <th>成約数</th><th>成約金額</th>
+    <th class="pad" aria-hidden="true"></th></tr></thead>
+    <tbody>{ia_body}</tbody></table></div></details>
+</div>"""
+    else:
+        ia_section = ""
+
     # ---- リード獲得（web広告） ----
     # CPLが悪化した時の切り分け材料。CPL＝CPM÷(CTR×CVR) なので、
     # 単価が上がったのか（CPM）、クリックされなくなったのか（CTR）、
@@ -2032,6 +2166,11 @@ def render(data):
         "fs": {k: [v.get("mtgs", 0), v.get("props", 0),
                    v.get("wons", 0), v.get("wonamt", 0)]
                for k, v in (data.get("fs") or {}).items()},
+        # 由来 × 指標を平らな配列にする。ATTR_KEYS × ATTR_FIELDS の順で、
+        # 由来 i・指標 j は添字 i*4+j。JS側も同じ順で読む。
+        "isattr": {k: [(v.get(b) or {}).get(f, 0)
+                       for b in ATTR_KEYS for f in ATTR_FIELDS]
+                   for k, v in (data.get("is_attr") or {}).items()},
         "adperf": {k: [v["spend"], v["imp"], v["clicks"], v["cv"]]
                    for k, v in (data.get("adperf") or {}).items()},
         "adpd": {k: [v["spend"], v["imp"], v["clicks"], v["cv"]]
@@ -2110,6 +2249,7 @@ showAge();
 {webinar_section}
 {daily_section}
 {fs_section}
+{ia_section}
 <h2>直契約</h2>
 <div class="charts">
   <div class="card"><h3>チャネル別 リード数推移（積み上げ＝合計）</h3>

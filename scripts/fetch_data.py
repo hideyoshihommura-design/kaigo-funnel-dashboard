@@ -311,6 +311,10 @@ def fetch_calls(token, end_date):
     props = [
         "hs_object_id", "hs_timestamp", "hs_call_disposition",
         "hs_call_direction", "hs_object_source_label",
+        # 誰がかけたか。架電業者ぶんと社内ぶんを分けるのに使う。
+        # hs_created_by（作成者）でも同じ値が入っていたが、担当者の付け替えに
+        # 追従するのは owner のほうなので、こちらを正とする。
+        "hubspot_owner_id",
     ]
     calls = hs_search_all(token, "calls", groups, props)
     print(f"[info] calls({CALL_SOURCE}): {len(calls)}件", file=sys.stderr)
@@ -599,7 +603,8 @@ def fetch_expo_costs(token):
 # ---------------------------------------------------------------- 集計
 
 
-def build(token, sheets_token, channel_map, webinar_cfg, campaign_cfg, end_date):
+def build(token, sheets_token, channel_map, webinar_cfg, campaign_cfg,
+          vendor_ids, end_date):
     channels = channel_map["channels"]
     route_to_channel = {}
     for key, spec in channels.items():
@@ -699,13 +704,18 @@ def build(token, sheets_token, channel_map, webinar_cfg, campaign_cfg, end_date)
     daily_props = {}
     daily_wons = {}
     daily_wonamt = {}
+    # 架電由来の切り分け用の素材。コールを読むのはこの後なので、ここでは
+    # 「いつ何が起きたか」だけ溜めておき、架電履歴が揃ってから振り分ける。
+    attr_src = []
     for deal in deals:
         p = deal.get("properties") or {}
         assoc = ((deal.get("associations") or {}).get("contacts") or {}).get("results") or []
         info = None
+        info_cid = None
         for a in assoc:
-            info = cinfo.get(str(a.get("id")))
-            if info:
+            cand = cinfo.get(str(a.get("id")))
+            if cand:
+                info, info_cid = cand, str(a.get("id"))
                 break
         # 面談予約数は取引側の「相談申込ステージ入り日」で数える。
         # コンタクトが紐づいていなくても成立するので先に処理する。
@@ -756,6 +766,17 @@ def build(token, sheets_token, channel_map, webinar_cfg, campaign_cfg, end_date)
             if won and won_day:
                 daily_wons[won_day] = daily_wons.get(won_day, 0) + 1
                 daily_wonamt[won_day] = daily_wonamt.get(won_day, 0) + amount
+            # 架電由来の切り分けはFS指標と同じ母集団（直契約・route有効・
+            # 獲得週が期間内）で数える。揃えないと「業者由来＋社内由来＋
+            # 架電なし」の合計が上のFSカードと一致せず、どちらが正しいのか
+            # 判断できなくなる。
+            attr_src.append({
+                "cid": info_cid,
+                "appts": appt_day,
+                "deals": parse_hs_datetime(p.get("createdate")),
+                "wons": won_day if won else None,
+                "amount": amount,
+            })
 
         for a in assoc:
             acid = str(a.get("id"))
@@ -835,8 +856,12 @@ def build(token, sheets_token, channel_map, webinar_cfg, campaign_cfg, end_date)
     # --- 日次架電
     daily_calls, daily_conn = {}, {}
     first_call_of_contact = {}
+    # コンタクトごとの発信履歴 [(日付, 生のtimestamp, ownerId), ...]。
+    # 「面談予約が立った日の直前にかけたのは誰か」を引くために時系列で持つ。
+    calls_of_contact = {}
     unknown_disp = {}
     no_direction = 0
+    no_owner = 0
     for c in calls:
         p = c.get("properties") or {}
         ts = parse_hs_datetime(p.get("hs_timestamp"))
@@ -857,6 +882,24 @@ def build(token, sheets_token, channel_map, webinar_cfg, campaign_cfg, end_date)
         if cid:
             prev = first_call_of_contact.get(cid)
             first_call_of_contact[cid] = ts if prev is None else min(prev, ts)
+            owner = str(p.get("hubspot_owner_id") or "").strip()
+            if owner:
+                calls_of_contact.setdefault(cid, []).append(
+                    (ts, str(p.get("hs_timestamp") or ""), owner))
+            else:
+                # 担当者が空のコールは架電者を判定できない。空を社内側に
+                # 寄せると業者の実績が社内に付け替わるので、由来の判定材料から
+                # 外して警告だけ出す（架電数・接続数の集計には入れたまま）。
+                no_owner += 1
+    # 同じ日に複数回かけている相手がいるので、日付だけでなく生のtimestampまで
+    # 見て並べる。日付で丸めて並べると、同日の最後のコールが誰なのか定まらない。
+    for _hist in calls_of_contact.values():
+        _hist.sort(key=lambda x: (x[0], x[1]))
+    if no_owner:
+        warn(
+            f"担当者（hubspot_owner_id）が空の発信コールが {no_owner} 件あります。"
+            "架電由来の判定材料から外しています（架電数・接続数には入っています）。"
+        )
     if no_direction:
         warn(
             f"hs_call_direction が未設定のコールが {no_direction} 件あります。"
@@ -875,6 +918,41 @@ def build(token, sheets_token, channel_map, webinar_cfg, campaign_cfg, end_date)
     daily_called = {}
     for _cid, _first in first_call_of_contact.items():
         daily_called[_first] = daily_called.get(_first, 0) + 1
+
+    # --- 架電由来の切り分け（直契約のみ）
+    # 面談予約・商談・成約が起きた日について、「その直前にそのコンタクトへ
+    # かけていたのは業者か社内か」で振り分ける。初回架電者で決めてはいけない。
+    # 社内が一度かけて不発だった相手を業者が掘り起こした分が社内の成果になり、
+    # 業者の実績が過小に出る。
+    # 架電データは CALLS_START からしか無いので、それ以前に起きた分は判定材料が
+    # 無い。区間の外は出さない（架電なしとして0を並べると嘘になる）。
+    is_attr = {}
+
+    def dattr(d):
+        return is_attr.setdefault(d.isoformat(), {
+            b: {"appts": 0, "deals": 0, "wons": 0, "wonamt": 0}
+            for b in ("vendor", "inhouse", "nocall")})
+
+    def caller_at(cid, day):
+        """day の時点で直前にそのコンタクトへかけていたのは業者か社内か."""
+        owner = None
+        for hist_day, _ts, hist_owner in calls_of_contact.get(cid) or []:
+            if hist_day > day:
+                break
+            owner = hist_owner
+        if owner is None:
+            return "nocall"
+        return "vendor" if owner in vendor_ids else "inhouse"
+
+    for src in attr_src:
+        for field in ("appts", "deals", "wons"):
+            day = src[field]
+            if not day or day < CALLS_START or day > end_date:
+                continue
+            bucket = caller_at(src["cid"], day)
+            dattr(day)[bucket][field] += 1
+            if field == "wons":
+                dattr(day)[bucket]["wonamt"] += src["amount"]
 
     calls_out = {}
     all_days = (set(daily_calls) | set(daily_conn) | set(daily_appts)
@@ -1003,6 +1081,7 @@ def build(token, sheets_token, channel_map, webinar_cfg, campaign_cfg, end_date)
         "expos": expos,
         "calls": calls_out,
         "fs": fs_days,
+        "is_attr": {k: is_attr[k] for k in sorted(is_attr)},
         "webinars": webinars_out,
         "adperf": {k: {kk: int(round(vv)) for kk, vv in v.items()}
                    for k, v in sorted(adperf.items())},
@@ -1068,6 +1147,7 @@ def main():
     ap.add_argument("--channel-map", default="config/channel_map.json")
     ap.add_argument("--webinars", default="config/webinars.json")
     ap.add_argument("--ad-campaigns", default="config/ad_campaigns.json")
+    ap.add_argument("--callers", default="config/callers.json")
     ap.add_argument("--previous", help="前回の data.json（妥当性チェックの比較対象）")
     ap.add_argument("--end", help="集計終端 YYYY-MM-DD（既定: 今日 JST）")
     args = ap.parse_args()
@@ -1098,6 +1178,20 @@ def main():
     with open(args.ad_campaigns, encoding="utf-8") as f:
         campaign_cfg = json.load(f)
 
+    # 架電業者のアカウント。無ければ全部の架電が社内扱いになり、由来の
+    # 切り分けが意味を持たなくなるので、無いことを警告して先へ進む
+    # （他のセクションは架電由来と無関係に出せる）。
+    vendor_ids = set()
+    if os.path.exists(args.callers):
+        with open(args.callers, encoding="utf-8") as f:
+            vendor_ids = {str(v).strip()
+                          for v in (json.load(f).get("vendor_owner_ids") or [])}
+    if not vendor_ids:
+        warn(
+            f"{args.callers} に架電業者のアカウントがありません。"
+            "架電由来の切り分けで業者ぶんが常に0件になります。"
+        )
+
     previous = None
     if args.previous and os.path.exists(args.previous):
         try:
@@ -1108,7 +1202,7 @@ def main():
 
     sheets_token = google_access_token(sa_json)
     data = build(token, sheets_token, channel_map, webinar_cfg,
-                 campaign_cfg, end_date)
+                 campaign_cfg, vendor_ids, end_date)
 
     if not sanity_check(data, previous):
         sys.exit(2)
