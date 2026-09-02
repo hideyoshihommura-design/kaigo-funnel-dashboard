@@ -3164,7 +3164,7 @@
    "leads": 0
   },
   "2026-09-02": {
-   "calls": 27,
+   "calls": 30,
    "connected": 1,
    "appts": 0,
    "mtgs": 0,
@@ -3460,12 +3460,6 @@
    },
    "inhouse": {
     "appts": 0,
-    "deals": 0,
-    "wons": 0,
-    "wonamt": 0
-   },
-   "nocall": {
-    "appts": 0,
     "deals": 1,
     "wons": 0,
     "wonamt": 0
@@ -3479,12 +3473,6 @@
     "wonamt": 0
    },
    "inhouse": {
-    "appts": 0,
-    "deals": 0,
-    "wons": 0,
-    "wonamt": 0
-   },
-   "nocall": {
     "appts": 0,
     "deals": 1,
     "wons": 0,
@@ -3500,12 +3488,6 @@
    },
    "inhouse": {
     "appts": 0,
-    "deals": 0,
-    "wons": 0,
-    "wonamt": 0
-   },
-   "nocall": {
-    "appts": 0,
     "deals": 2,
     "wons": 0,
     "wonamt": 0
@@ -3520,12 +3502,6 @@
    },
    "inhouse": {
     "appts": 0,
-    "deals": 0,
-    "wons": 0,
-    "wonamt": 0
-   },
-   "nocall": {
-    "appts": 0,
     "deals": 1,
     "wons": 0,
     "wonamt": 0
@@ -3539,12 +3515,6 @@
     "wonamt": 0
    },
    "inhouse": {
-    "appts": 0,
-    "deals": 0,
-    "wons": 0,
-    "wonamt": 0
-   },
-   "nocall": {
     "appts": 1,
     "deals": 2,
     "wons": 0,
@@ -3561,12 +3531,6 @@
    "inhouse": {
     "appts": 0,
     "deals": 0,
-    "wons": 0,
-    "wonamt": 0
-   },
-   "nocall": {
-    "appts": 0,
-    "deals": 0,
     "wons": 1,
     "wonamt": 81400
    }
@@ -3579,12 +3543,6 @@
     "wonamt": 0
    },
    "inhouse": {
-    "appts": 0,
-    "deals": 0,
-    "wons": 0,
-    "wonamt": 0
-   },
-   "nocall": {
     "appts": 1,
     "deals": 1,
     "wons": 0,
@@ -3599,12 +3557,6 @@
     "wonamt": 0
    },
    "inhouse": {
-    "appts": 0,
-    "deals": 0,
-    "wons": 0,
-    "wonamt": 0
-   },
-   "nocall": {
     "appts": 1,
     "deals": 1,
     "wons": 0,
@@ -3619,12 +3571,6 @@
     "wonamt": 0
    },
    "inhouse": {
-    "appts": 0,
-    "deals": 0,
-    "wons": 0,
-    "wonamt": 0
-   },
-   "nocall": {
     "appts": 2,
     "deals": 2,
     "wons": 0,
@@ -3640,12 +3586,6 @@
    },
    "inhouse": {
     "appts": 0,
-    "deals": 0,
-    "wons": 0,
-    "wonamt": 0
-   },
-   "nocall": {
-    "appts": 0,
     "deals": 1,
     "wons": 0,
     "wonamt": 0
@@ -3660,12 +3600,6 @@
    },
    "inhouse": {
     "appts": 0,
-    "deals": 0,
-    "wons": 0,
-    "wonamt": 0
-   },
-   "nocall": {
-    "appts": 0,
     "deals": 1,
     "wons": 0,
     "wonamt": 0
@@ -3679,12 +3613,6 @@
     "wonamt": 0
    },
    "inhouse": {
-    "appts": 0,
-    "deals": 0,
-    "wons": 0,
-    "wonamt": 0
-   },
-   "nocall": {
     "appts": 2,
     "deals": 2,
     "wons": 0,
@@ -3701,12 +3629,6 @@
    "inhouse": {
     "appts": 0,
     "deals": 0,
-    "wons": 0,
-    "wonamt": 0
-   },
-   "nocall": {
-    "appts": 0,
-    "deals": 0,
     "wons": 1,
     "wonamt": 170500
    }
@@ -3719,12 +3641,6 @@
     "wonamt": 0
    },
    "inhouse": {
-    "appts": 0,
-    "deals": 0,
-    "wons": 0,
-    "wonamt": 0
-   },
-   "nocall": {
     "appts": 1,
     "deals": 1,
     "wons": 0,
@@ -3739,12 +3655,6 @@
     "wonamt": 0
    },
    "inhouse": {
-    "appts": 0,
-    "deals": 0,
-    "wons": 0,
-    "wonamt": 0
-   },
-   "nocall": {
     "appts": 1,
     "deals": 1,
     "wons": 0,
@@ -3761,12 +3671,6 @@
    "inhouse": {
     "appts": 0,
     "deals": 0,
-    "wons": 0,
-    "wonamt": 0
-   },
-   "nocall": {
-    "appts": 0,
-    "deals": 0,
     "wons": 1,
     "wonamt": 2101000
    }
@@ -3779,12 +3683,6 @@
     "wonamt": 0
    },
    "inhouse": {
-    "appts": 0,
-    "deals": 0,
-    "wons": 0,
-    "wonamt": 0
-   },
-   "nocall": {
     "appts": 1,
     "deals": 1,
     "wons": 0,
@@ -3799,12 +3697,6 @@
     "wonamt": 0
    },
    "inhouse": {
-    "appts": 0,
-    "deals": 0,
-    "wons": 0,
-    "wonamt": 0
-   },
-   "nocall": {
     "appts": 1,
     "deals": 1,
     "wons": 0,
@@ -3819,12 +3711,6 @@
     "wonamt": 0
    },
    "inhouse": {
-    "appts": 0,
-    "deals": 0,
-    "wons": 0,
-    "wonamt": 0
-   },
-   "nocall": {
     "appts": 3,
     "deals": 3,
     "wons": 0,
@@ -3839,12 +3725,6 @@
     "wonamt": 0
    },
    "inhouse": {
-    "appts": 0,
-    "deals": 0,
-    "wons": 0,
-    "wonamt": 0
-   },
-   "nocall": {
     "appts": 1,
     "deals": 1,
     "wons": 0,
@@ -3859,12 +3739,6 @@
     "wonamt": 0
    },
    "inhouse": {
-    "appts": 0,
-    "deals": 0,
-    "wons": 0,
-    "wonamt": 0
-   },
-   "nocall": {
     "appts": 1,
     "deals": 1,
     "wons": 0,
@@ -3879,12 +3753,6 @@
     "wonamt": 0
    },
    "inhouse": {
-    "appts": 0,
-    "deals": 0,
-    "wons": 0,
-    "wonamt": 0
-   },
-   "nocall": {
     "appts": 1,
     "deals": 1,
     "wons": 0,
@@ -3899,12 +3767,6 @@
     "wonamt": 0
    },
    "inhouse": {
-    "appts": 0,
-    "deals": 0,
-    "wons": 0,
-    "wonamt": 0
-   },
-   "nocall": {
     "appts": 1,
     "deals": 1,
     "wons": 0,
@@ -3919,12 +3781,6 @@
     "wonamt": 0
    },
    "inhouse": {
-    "appts": 0,
-    "deals": 0,
-    "wons": 0,
-    "wonamt": 0
-   },
-   "nocall": {
     "appts": 1,
     "deals": 1,
     "wons": 0,
@@ -3939,12 +3795,6 @@
     "wonamt": 0
    },
    "inhouse": {
-    "appts": 0,
-    "deals": 0,
-    "wons": 0,
-    "wonamt": 0
-   },
-   "nocall": {
     "appts": 1,
     "deals": 1,
     "wons": 0,
@@ -3961,12 +3811,6 @@
    "inhouse": {
     "appts": 0,
     "deals": 0,
-    "wons": 0,
-    "wonamt": 0
-   },
-   "nocall": {
-    "appts": 0,
-    "deals": 0,
     "wons": 1,
     "wonamt": 2101000
    }
@@ -3979,12 +3823,6 @@
     "wonamt": 0
    },
    "inhouse": {
-    "appts": 0,
-    "deals": 0,
-    "wons": 0,
-    "wonamt": 0
-   },
-   "nocall": {
     "appts": 1,
     "deals": 1,
     "wons": 0,
@@ -3999,12 +3837,6 @@
     "wonamt": 0
    },
    "inhouse": {
-    "appts": 0,
-    "deals": 0,
-    "wons": 0,
-    "wonamt": 0
-   },
-   "nocall": {
     "appts": 1,
     "deals": 1,
     "wons": 0,
@@ -4019,12 +3851,6 @@
     "wonamt": 0
    },
    "inhouse": {
-    "appts": 0,
-    "deals": 0,
-    "wons": 0,
-    "wonamt": 0
-   },
-   "nocall": {
     "appts": 1,
     "deals": 1,
     "wons": 0,
@@ -4039,12 +3865,6 @@
     "wonamt": 0
    },
    "inhouse": {
-    "appts": 0,
-    "deals": 0,
-    "wons": 0,
-    "wonamt": 0
-   },
-   "nocall": {
     "appts": 2,
     "deals": 2,
     "wons": 0,
@@ -4063,12 +3883,6 @@
     "deals": 0,
     "wons": 1,
     "wonamt": 81400
-   },
-   "nocall": {
-    "appts": 0,
-    "deals": 0,
-    "wons": 0,
-    "wonamt": 0
    }
   },
   "2026-06-14": {
@@ -4079,14 +3893,8 @@
     "wonamt": 0
    },
    "inhouse": {
-    "appts": 1,
-    "deals": 1,
-    "wons": 0,
-    "wonamt": 0
-   },
-   "nocall": {
-    "appts": 2,
-    "deals": 2,
+    "appts": 3,
+    "deals": 3,
     "wons": 0,
     "wonamt": 0
    }
@@ -4103,12 +3911,6 @@
     "deals": 1,
     "wons": 0,
     "wonamt": 0
-   },
-   "nocall": {
-    "appts": 0,
-    "deals": 0,
-    "wons": 0,
-    "wonamt": 0
    }
   },
   "2026-06-19": {
@@ -4119,12 +3921,6 @@
     "wonamt": 0
    },
    "inhouse": {
-    "appts": 0,
-    "deals": 0,
-    "wons": 0,
-    "wonamt": 0
-   },
-   "nocall": {
     "appts": 1,
     "deals": 1,
     "wons": 0,
@@ -4139,12 +3935,6 @@
     "wonamt": 0
    },
    "inhouse": {
-    "appts": 0,
-    "deals": 0,
-    "wons": 0,
-    "wonamt": 0
-   },
-   "nocall": {
     "appts": 1,
     "deals": 1,
     "wons": 0,
@@ -4159,14 +3949,8 @@
     "wonamt": 0
    },
    "inhouse": {
-    "appts": 2,
-    "deals": 2,
-    "wons": 0,
-    "wonamt": 0
-   },
-   "nocall": {
-    "appts": 1,
-    "deals": 1,
+    "appts": 3,
+    "deals": 3,
     "wons": 0,
     "wonamt": 0
    }
@@ -4183,12 +3967,6 @@
     "deals": 1,
     "wons": 0,
     "wonamt": 0
-   },
-   "nocall": {
-    "appts": 0,
-    "deals": 0,
-    "wons": 0,
-    "wonamt": 0
    }
   },
   "2026-07-09": {
@@ -4199,12 +3977,6 @@
     "wonamt": 0
    },
    "inhouse": {
-    "appts": 0,
-    "deals": 0,
-    "wons": 0,
-    "wonamt": 0
-   },
-   "nocall": {
     "appts": 1,
     "deals": 1,
     "wons": 0,
@@ -4219,12 +3991,6 @@
     "wonamt": 0
    },
    "inhouse": {
-    "appts": 0,
-    "deals": 0,
-    "wons": 0,
-    "wonamt": 0
-   },
-   "nocall": {
     "appts": 1,
     "deals": 1,
     "wons": 0,
@@ -4239,12 +4005,6 @@
     "wonamt": 0
    },
    "inhouse": {
-    "appts": 0,
-    "deals": 0,
-    "wons": 0,
-    "wonamt": 0
-   },
-   "nocall": {
     "appts": 2,
     "deals": 2,
     "wons": 0,
@@ -4259,14 +4019,8 @@
     "wonamt": 0
    },
    "inhouse": {
-    "appts": 1,
-    "deals": 1,
-    "wons": 0,
-    "wonamt": 0
-   },
-   "nocall": {
-    "appts": 1,
-    "deals": 1,
+    "appts": 2,
+    "deals": 2,
     "wons": 0,
     "wonamt": 0
    }
@@ -4279,12 +4033,6 @@
     "wonamt": 0
    },
    "inhouse": {
-    "appts": 0,
-    "deals": 0,
-    "wons": 0,
-    "wonamt": 0
-   },
-   "nocall": {
     "appts": 3,
     "deals": 3,
     "wons": 0,
@@ -4303,12 +4051,6 @@
     "deals": 1,
     "wons": 0,
     "wonamt": 0
-   },
-   "nocall": {
-    "appts": 0,
-    "deals": 0,
-    "wons": 0,
-    "wonamt": 0
    }
   },
   "2026-08-06": {
@@ -4323,12 +4065,6 @@
     "deals": 1,
     "wons": 0,
     "wonamt": 0
-   },
-   "nocall": {
-    "appts": 0,
-    "deals": 0,
-    "wons": 0,
-    "wonamt": 0
    }
   },
   "2026-08-10": {
@@ -4339,12 +4075,6 @@
     "wonamt": 0
    },
    "inhouse": {
-    "appts": 0,
-    "deals": 0,
-    "wons": 0,
-    "wonamt": 0
-   },
-   "nocall": {
     "appts": 2,
     "deals": 2,
     "wons": 0,
@@ -4359,12 +4089,6 @@
     "wonamt": 0
    },
    "inhouse": {
-    "appts": 0,
-    "deals": 0,
-    "wons": 0,
-    "wonamt": 0
-   },
-   "nocall": {
     "appts": 1,
     "deals": 1,
     "wons": 0,
@@ -4379,12 +4103,6 @@
     "wonamt": 0
    },
    "inhouse": {
-    "appts": 0,
-    "deals": 0,
-    "wons": 0,
-    "wonamt": 0
-   },
-   "nocall": {
     "appts": 1,
     "deals": 1,
     "wons": 0,
@@ -4403,12 +4121,6 @@
     "deals": 0,
     "wons": 0,
     "wonamt": 0
-   },
-   "nocall": {
-    "appts": 0,
-    "deals": 0,
-    "wons": 0,
-    "wonamt": 0
    }
   },
   "2026-08-26": {
@@ -4419,12 +4131,6 @@
     "wonamt": 0
    },
    "inhouse": {
-    "appts": 0,
-    "deals": 0,
-    "wons": 0,
-    "wonamt": 0
-   },
-   "nocall": {
     "appts": 2,
     "deals": 2,
     "wons": 0,
@@ -4443,12 +4149,6 @@
     "deals": 0,
     "wons": 0,
     "wonamt": 0
-   },
-   "nocall": {
-    "appts": 0,
-    "deals": 0,
-    "wons": 0,
-    "wonamt": 0
    }
   },
   "2026-09-01": {
@@ -4459,12 +4159,6 @@
     "wonamt": 0
    },
    "inhouse": {
-    "appts": 0,
-    "deals": 0,
-    "wons": 0,
-    "wonamt": 0
-   },
-   "nocall": {
     "appts": 1,
     "deals": 1,
     "wons": 0,
