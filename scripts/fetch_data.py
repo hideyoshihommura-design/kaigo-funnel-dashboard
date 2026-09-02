@@ -296,16 +296,21 @@ def fetch_deals(token):
 
 
 def fetch_calls(token, end_date):
-    """介護校の架電（CRM_UI）を取り、コンタクトIDを紐づける."""
-    start_ms = int(dt.datetime.combine(CALLS_START, dt.time(), JST).timestamp() * 1000)
+    """介護校の架電（CRM_UI）を全期間取り、コンタクトIDを紐づける.
+
+    開始日で切らない。以前は CALLS_START（2026-06-01）以降だけを取っていたが、
+    それは「IS活動量ブロックをどこから表示するか」の境界であって、架電が
+    存在しない証拠ではなかった。実際には 2026-05-12 から3件あり、その3件を
+    落としたまま「架電由来」を判定していた。
+    CRM_UI の架電は全期間で600件弱しかないので、全部取っても負荷は変わらない。
+    """
     end_ms = int(
         dt.datetime.combine(end_date + dt.timedelta(days=1), dt.time(), JST).timestamp() * 1000
     )
     groups = [{
         "filters": [
             {"propertyName": "hs_object_source_label", "operator": "EQ", "value": CALL_SOURCE},
-            {"propertyName": "hs_timestamp", "operator": "BETWEEN",
-             "value": str(start_ms), "highValue": str(end_ms)},
+            {"propertyName": "hs_timestamp", "operator": "LT", "value": str(end_ms)},
         ]
     }]
     props = [
@@ -872,16 +877,11 @@ def build(token, sheets_token, channel_map, webinar_cfg, campaign_cfg,
             if not direction:
                 no_direction += 1
             continue
-        daily_calls[ts] = daily_calls.get(ts, 0) + 1
-        disp = (p.get("hs_call_disposition") or "").strip()
-        if disp in CONNECTED_DISPOSITIONS:
-            daily_conn[ts] = daily_conn.get(ts, 0) + 1
-        elif disp and disp[:8] not in KNOWN_NOT_CONNECTED_PREFIX:
-            unknown_disp[disp] = unknown_disp.get(disp, 0) + 1
         cid = c.get("_contact_id")
+        # 由来の判定は全期間の架電履歴を使う。ここを CALLS_START で切ると、
+        # それ以前の架電が無かったことになり、その架電から生まれた商談が
+        # 「架電なし」に落ちる。
         if cid:
-            prev = first_call_of_contact.get(cid)
-            first_call_of_contact[cid] = ts if prev is None else min(prev, ts)
             owner = str(p.get("hubspot_owner_id") or "").strip()
             if owner:
                 calls_of_contact.setdefault(cid, []).append(
@@ -891,6 +891,20 @@ def build(token, sheets_token, channel_map, webinar_cfg, campaign_cfg,
                 # 寄せると業者の実績が社内に付け替わるので、由来の判定材料から
                 # 外して警告だけ出す（架電数・接続数の集計には入れたまま）。
                 no_owner += 1
+        # ここから下はIS活動量ブロック用。架電を本格的に始める前
+        # （CALLS_START より前）は日次表・接続率の対象にしない。
+        # 数件しかない月を並べると1稼働日あたりの平均が実態から外れる。
+        if ts < CALLS_START:
+            continue
+        daily_calls[ts] = daily_calls.get(ts, 0) + 1
+        disp = (p.get("hs_call_disposition") or "").strip()
+        if disp in CONNECTED_DISPOSITIONS:
+            daily_conn[ts] = daily_conn.get(ts, 0) + 1
+        elif disp and disp[:8] not in KNOWN_NOT_CONNECTED_PREFIX:
+            unknown_disp[disp] = unknown_disp.get(disp, 0) + 1
+        if cid:
+            prev = first_call_of_contact.get(cid)
+            first_call_of_contact[cid] = ts if prev is None else min(prev, ts)
     # 同じ日に複数回かけている相手がいるので、日付だけでなく生のtimestampまで
     # 見て並べる。日付で丸めて並べると、同日の最後のコールが誰なのか定まらない。
     for _hist in calls_of_contact.values():
@@ -924,8 +938,10 @@ def build(token, sheets_token, channel_map, webinar_cfg, campaign_cfg,
     # かけていたのは業者か社内か」で振り分ける。初回架電者で決めてはいけない。
     # 社内が一度かけて不発だった相手を業者が掘り起こした分が社内の成果になり、
     # 業者の実績が過小に出る。
-    # 架電データは CALLS_START からしか無いので、それ以前に起きた分は判定材料が
-    # 無い。区間の外は出さない（架電なしとして0を並べると嘘になる）。
+    # 集計期間の頭（PERIOD_START）から出す。介護校の架電は2026-05-12が最初で、
+    # それ以前は1件も無い。だから2025年9月〜2026年4月の商談が「架電なし」に
+    # 並ぶのは事実であって、データ欠けではない。ここを架電開始日で切ると
+    # 「9月から取引があるのに6月からしか出ない」ことになる。
     is_attr = {}
 
     def dattr(d):
@@ -947,7 +963,7 @@ def build(token, sheets_token, channel_map, webinar_cfg, campaign_cfg,
     for src in attr_src:
         for field in ("appts", "deals", "wons"):
             day = src[field]
-            if not day or day < CALLS_START or day > end_date:
+            if not day or day < PERIOD_START or day > end_date:
                 continue
             bucket = caller_at(src["cid"], day)
             dattr(day)[bucket][field] += 1
