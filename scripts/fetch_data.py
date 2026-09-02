@@ -84,12 +84,12 @@ KNOWN_NOT_CONNECTED_PREFIX = {
     "6590e4e2", "17b47fee", "980c20eb", "97db3e14", "c8088d85", "82438db7",
 }
 
-SHEET_WEEKLY_AD = "1VSB7cykhDu2HHfPcCm-YItRU5zAfiwhSVeVGcfgq_qQ"  # 週次分析テンプレ(1年分)
+# 広告日次データ（ダッシュボード専用。1行 = 1日 × 1媒体 × 1キャンペーン）。
+# 旧「週次分析テンプレ(1年分)」は火曜始まりの週次タブと日次入力タブが混在し、
+# 日次が始まる 2026-06-09 より前は日単位に切れなかった。こちらは配信初日
+# （2026-04-07）から全期間が日次なので、期間指定を任意の日で切れる。
+SHEET_AD_DAILY = "1w2BnLqWotS3O5VwT5hdCngD1DvFjP0DNF_twOlaS0mM"
 SHEET_EXPO = "1dILS3Wavlrfrd8W_DHIvsSuRtsTxrDnjmLPIrhhFIAc"        # 展示会リード獲得単価
-
-# 週次分析テンプレの「全体集計（週次）」は W1 = 2026-04-07（火）始まり。
-# これより前の週の web 費用は「存在しない」ので null にする。0 にはしない。
-AD_DATA_FIRST_MONDAY = dt.date(2026, 4, 6)
 
 JST = dt.timezone(dt.timedelta(hours=9))
 
@@ -366,15 +366,6 @@ def sheet_values(token, sheet_id, tab):
     return data.get("values", [])
 
 
-def find_tab(tabs, *needles):
-    """タブ名を部分一致で探す。タブ名の表記ゆれで落ちないようにするため."""
-    for t in tabs:
-        flat = t.replace(" ", "").replace("　", "")
-        if all(n in flat for n in needles):
-            return t
-    return None
-
-
 def to_number(value):
     """`¥16,749` のような表記も数値にする。読めなければ None."""
     if value is None or value == "":
@@ -404,178 +395,175 @@ def parse_sheet_date(value):
     return None
 
 
-def fetch_web_cost(token, week_starts):  # returns (週次, 日次)
-    """web の週次広告費を月曜週に割り当てる.
+def row_num(row, idx):
+    """行の idx 番目を数値で取る。列が足りない・空欄なら 0."""
+    if len(row) <= idx:
+        return 0.0
+    return to_number(row[idx]) or 0.0
 
-    シート側は火曜始まりで、指定の月曜始まりと1日ズレている。
-    さらに日次入力タブがある期間は、日単位で月曜週に組み直したほうが正確。
 
-    - 日次入力にデータがある期間 … 日別の消費金額を月曜週で再集計
-    - それ以前で全体集計（週次）にデータがある期間 … 火曜週を月曜週に寄せる
-    - さらに前 … null（不明）。0 にはしない
+def fetch_ad_daily(token, week_starts, campaign_cfg):
+    """広告日次シート（1タブ・1行 = 1日 × 1媒体 × 1キャンペーン）を読む.
+
+    旧「週次分析テンプレ」の 全体集計（火曜始まり）／日次入力 の2タブ読みを
+    置き換えたもの。旧方式には次の問題があった。
+
+    - タブ名も列名も部分一致で探し、週次側は行数を数えて日付を推定していた。
+      シートに空行が1つ入るだけで、以降の全週が静かに1週ずれる。
+    - 日次入力タブが 2026-06-09 始まりで、それ以前は週次（火曜始まり）しか
+      無かった。各週が月曜週と1日ずれ、期間指定を日単位で切れなかった。
+    - 媒体の区別が無く、キャンペーン名の文字列に「ウェビナー」が含まれるかで
+      ウェビナー配信を判定していた。Google/LINE のウェビナー配信は日次タブに
+      存在せず、拾えていなかった。
+
+    新シートは全期間が日次で、媒体とキャンペーンが別の列にある。ここでは
+    1行目のヘッダーを完全一致で引き、日付はセルの値をそのまま使う。
+    読めなければ黙って空を返さず例外で止める（空のまま進むと、取得できな
+    かった期間が「実績0の期間」として data.json に入る）。
+
+    返すのは実数だけ。CPL・CPM・CTR・CVR は build_dashboard.py の担当。
     """
-    tabs = sheet_tabs(token, SHEET_WEEKLY_AD)
-    daily_tab = find_tab(tabs, "日次入力") or find_tab(tabs, "日次")
-    weekly_tab = find_tab(tabs, "全体集計") or find_tab(tabs, "週次")
-    if not daily_tab and not weekly_tab:
-        raise RuntimeError(f"週次分析テンプレのタブが見つかりません。実際のタブ: {tabs}")
+    tabs = sheet_tabs(token, SHEET_AD_DAILY)
+    if not tabs:
+        raise RuntimeError("広告日次シートにタブがありません。")
+    # 広告日次専用のシートなので1枚目で確定させる。タブ名には依存しない。
+    tab = tabs[0]
+    rows = sheet_values(token, SHEET_AD_DAILY, tab)
+    if len(rows) < 2:
+        raise RuntimeError(
+            f"広告日次シート『{tab}』にデータ行がありません（ヘッダーのみ）。"
+            "0円で埋めると広告を止めた期間に見えるため、ここで止めます。"
+        )
 
-    cost = {w: None for w in week_starts}
-    cost_by_day = {}
-    # CVは広告側が数えた申込数（延べ）。HubSpotのコンタクト数はユニークなので、
-    # 同じ人が複数回申し込むと少なく出る。CPLの分母はシートと同じCVを使う
-    # （シート内の定義も CPL＝消費金額÷CV）。
-    cv_by_day = {}
-    cv_by_week = {}
-    cv = {w: None for w in week_starts}
-    # ウェビナー別のCPLは、ウェビナー集客のキャンペーンだけで見る必要がある。
-    # シートには Metaウェビナー / Meta介護校 / MetaClaude が並んでおり、
-    # 全部足すと費用が2倍以上になる。週次タブにはキャンペーン列が無いので、
-    # この絞り込みは日次入力タブでしか作れない。
-    wcost_by_day = {}
-    wcv_by_day = {}
-    # CPL悪化の切り分けに使う素材。CPL＝CPM÷(CTR×CVR) なので、
-    # IMP・クリック・CVがあれば、単価が上がったのか、クリックされなく
-    # なったのか、申し込まれなくなったのかを分けられる。週単位で持つ。
-    adperf = {}
-    adperf_day = {}
+    header = [str(c).strip() for c in rows[0]]
+    cols = {}
+    for name in ("日付", "媒体", "キャンペーン", "消費金額", "IMP", "クリック", "CV"):
+        if name not in header:
+            raise RuntimeError(
+                f"広告日次シート『{tab}』の1行目に『{name}』列がありません。"
+                f"実際のヘッダー: {header}"
+            )
+        cols[name] = header.index(name)
+
+    campaigns = {
+        k: v for k, v in (campaign_cfg.get("campaigns") or {}).items()
+        if not k.startswith("_")
+    }
+    known_pairs = set(campaign_cfg.get("known_pairs") or [])
+
+    cost_by_day, cv_by_day = {}, {}
+    wcost_by_day, wcv_by_day = {}, {}
+    adperf, adperf_day = {}, {}
+    unknown_campaigns, unknown_pairs = {}, {}
+    seen = set()
+    dup_rows = 0
+    bad_dates = 0
+    first_day = last_day = None
+
+    for row in rows[1:]:
+        if len(row) <= cols["日付"]:
+            continue
+        d = parse_sheet_date(row[cols["日付"]])
+        if not d:
+            if any(str(c).strip() for c in row):
+                bad_dates += 1
+            continue
+        media = (str(row[cols["媒体"]]).strip()
+                 if len(row) > cols["媒体"] else "")
+        camp = (str(row[cols["キャンペーン"]]).strip()
+                if len(row) > cols["キャンペーン"] else "")
+        pair = f"{media}/{camp}"
+
+        # 同じ日・同じ媒体・同じキャンペーンが2行あると二重計上になる。
+        # 貼り付けのやり直しで起きやすいので、気づけるようにしておく。
+        key = (d, media, camp)
+        if key in seen:
+            dup_rows += 1
+        seen.add(key)
+
+        spend = row_num(row, cols["消費金額"])
+        imp = row_num(row, cols["IMP"])
+        clicks = row_num(row, cols["クリック"])
+        cvv = row_num(row, cols["CV"])
+
+        # web費用と全体CVは媒体・区分に関係なく全行を合計する。
+        cost_by_day[d] = cost_by_day.get(d, 0.0) + spend
+        cv_by_day[d] = cv_by_day.get(d, 0.0) + cvv
+        first_day = d if first_day is None else min(first_day, d)
+        last_day = d if last_day is None else max(last_day, d)
+
+        if known_pairs and pair not in known_pairs:
+            unknown_pairs[pair] = unknown_pairs.get(pair, 0) + 1
+
+        # ウェビナー別の集計はウェビナー集客のキャンペーンだけ。媒体はまたぐ。
+        # 全キャンペーンを足すと費用が2倍以上になる。
+        kind = campaigns.get(camp)
+        if kind is None:
+            key2 = camp or "(空欄)"
+            unknown_campaigns[key2] = unknown_campaigns.get(key2, 0) + 1
+            continue
+        if kind != "webinar":
+            continue
+        wcost_by_day[d] = wcost_by_day.get(d, 0.0) + spend
+        wcv_by_day[d] = wcv_by_day.get(d, 0.0) + cvv
+        # 週次と日次の両方に積む。週次だけにすると、期間指定を1日に絞った
+        # ときにその週まるごとの値が出てしまう。
+        for bucket, bkey in (
+            (adperf, monday(d).isoformat()),
+            (adperf_day, d.isoformat()),
+        ):
+            a = bucket.setdefault(
+                bkey, {"spend": 0.0, "imp": 0.0, "clicks": 0.0, "cv": 0.0})
+            a["spend"] += spend
+            a["imp"] += imp
+            a["clicks"] += clicks
+            a["cv"] += cvv
+
+    if bad_dates:
+        warn(
+            f"広告日次シートで日付が読めなかった行が {bad_dates} 行あります"
+            "（費用にもCVにも入れていません）。"
+        )
+    if dup_rows:
+        warn(
+            f"広告日次シートに同じ日付×媒体×キャンペーンの行が {dup_rows} 組"
+            "あります。二重計上になっているので、シート側を確認してください。"
+        )
+    if unknown_pairs:
+        warn(
+            "config/ad_campaigns.json の known_pairs に無い媒体×キャンペーンの"
+            "組み合わせがあります（費用には入れています。入力ミスでなければ"
+            "known_pairs に足してください）: "
+            + ", ".join(f"{k}={v}行" for k, v in sorted(unknown_pairs.items()))
+        )
+    if unknown_campaigns:
+        warn(
+            "config/ad_campaigns.json に無いキャンペーン名があります"
+            "（web費用の合計には入れていますが、ウェビナー別の集計からは外して"
+            "います）: "
+            + ", ".join(f"{k}={v}行" for k, v in sorted(unknown_campaigns.items()))
+        )
+    print(f"[info] 広告日次: {first_day} 〜 {last_day}（{len(rows) - 1}行）",
+          file=sys.stderr)
+
+    # 週次は日次から組み立てる。行が1つも無い週は None のまま残す。
+    # 0 にすると「広告を止めた週」に見えるが、実際は未入力なだけ。
     weekset = set(week_starts)
+    cost = {w: None for w in week_starts}
+    cv = {w: None for w in week_starts}
+    cost_week, cv_week = {}, {}
+    for d, v in cost_by_day.items():
+        cost_week[monday(d)] = cost_week.get(monday(d), 0.0) + v
+    for d, v in cv_by_day.items():
+        cv_week[monday(d)] = cv_week.get(monday(d), 0.0) + v
+    for w, v in cost_week.items():
+        if w in weekset:
+            cost[w] = int(round(v))
+    for w, v in cv_week.items():
+        if w in weekset:
+            cv[w] = int(round(v))
 
-    # --- 全体集計（週次・火曜始まり）
-    weekly_first_monday = None
-    if weekly_tab:
-        rows = sheet_values(token, SHEET_WEEKLY_AD, weekly_tab)
-        header_idx, cols = None, {}
-        for i, row in enumerate(rows[:40]):
-            flat = [str(c).replace(" ", "").replace("　", "") for c in row]
-            if any("期間" in c for c in flat) and any("消費金額" in c for c in flat):
-                header_idx = i
-                for j, c in enumerate(flat):
-                    if "期間" in c:
-                        cols["period"] = j
-                    elif "消費金額" in c:
-                        cols["spend"] = j
-                    elif c == "CV":
-                        cols["cv"] = j
-                break
-        if header_idx is None:
-            warn(f"『{weekly_tab}』のヘッダー行（期間／消費金額）が見つかりません。")
-        else:
-            # 期間は `4/7–4/13` の形で年が無い。W1 = 2026-04-07 から1週ずつ進む前提で
-            # 月曜週に寄せる（開始日の前日を含む月曜週）。
-            wk = 0
-            for row in rows[header_idx + 1:]:
-                if len(row) <= max(cols.values()):
-                    continue
-                period = str(row[cols["period"]]).strip()
-                if not re.match(r"^\d{1,2}/\d{1,2}", period):
-                    continue
-                spend = to_number(row[cols["spend"]])
-                tuesday = dt.date(2026, 4, 7) + dt.timedelta(weeks=wk)
-                wk += 1
-                mon = monday(tuesday - dt.timedelta(days=1))
-                if weekly_first_monday is None:
-                    weekly_first_monday = mon
-                if mon in weekset and spend is not None:
-                    cost[mon] = int(round(spend))
-                if "cv" in cols and len(row) > cols["cv"]:
-                    cvv = to_number(row[cols["cv"]])
-                    if cvv is not None:
-                        cv_by_week[mon] = cv_by_week.get(mon, 0.0) + cvv
-                        if mon in weekset:
-                            cv[mon] = int(round(cv_by_week[mon]))
-
-    # --- 日次入力（この期間は日別で組み直す。こちらを優先して上書きする）
-    daily_first = None
-    if daily_tab:
-        rows = sheet_values(token, SHEET_WEEKLY_AD, daily_tab)
-        header_idx, cols = None, {}
-        for i, row in enumerate(rows[:40]):
-            flat = [str(c).replace(" ", "").replace("　", "") for c in row]
-            if any("日付" in c for c in flat) and any("消費金額" in c for c in flat):
-                header_idx = i
-                for j, c in enumerate(flat):
-                    if "日付" in c:
-                        cols.setdefault("date", j)
-                    elif "消費金額" in c:
-                        cols.setdefault("spend", j)
-                    elif c == "CV":
-                        cols.setdefault("cv", j)
-                    elif "キャンペーン" in c:
-                        cols.setdefault("camp", j)
-                    elif c == "IMP":
-                        cols.setdefault("imp", j)
-                    elif "クリック" in c:
-                        cols.setdefault("clicks", j)
-                break
-        if header_idx is None:
-            warn(f"『{daily_tab}』のヘッダー行（日付／消費金額）が見つかりません。")
-        else:
-            per_week, last_day = {}, None
-            # ウェビナーの掲載期間は週の境目と一致しないので、日次のまま持つ。
-            for row in rows[header_idx + 1:]:
-                if len(row) <= max(cols.values()):
-                    continue
-                d = parse_sheet_date(row[cols["date"]])
-                if not d:
-                    continue
-                spend = to_number(row[cols["spend"]]) or 0.0
-                mon = monday(d)
-                per_week[mon] = per_week.get(mon, 0.0) + spend
-                cost_by_day[d] = cost_by_day.get(d, 0.0) + spend
-                cvv = None
-                if "cv" in cols and len(row) > cols["cv"]:
-                    cvv = to_number(row[cols["cv"]])
-                    if cvv is not None:
-                        cv_by_day[d] = cv_by_day.get(d, 0.0) + cvv
-                camp = str(row[cols["camp"]]) if "camp" in cols and len(row) > cols["camp"] else ""
-                if "ウェビナー" in camp:
-                    wcost_by_day[d] = wcost_by_day.get(d, 0.0) + spend
-                    if cvv is not None:
-                        wcv_by_day[d] = wcv_by_day.get(d, 0.0) + cvv
-                    wk = monday(d).isoformat()
-                    # 週次と日次の両方に積む。週次だけにすると、期間指定を
-                    # 1日に絞ったときにその週まるごとの値が出てしまう。
-                    a = adperf.setdefault(
-                        wk, {"spend": 0.0, "imp": 0.0, "clicks": 0.0, "cv": 0.0})
-                    b = adperf_day.setdefault(
-                        d.isoformat(), {"spend": 0.0, "imp": 0.0,
-                                        "clicks": 0.0, "cv": 0.0})
-                    a["spend"] += spend
-                    b["spend"] += spend
-                    a["cv"] += cvv or 0
-                    b["cv"] += cvv or 0
-                    for key, col in (("imp", "imp"), ("clicks", "clicks")):
-                        if col in cols and len(row) > cols[col]:
-                            v = to_number(row[cols[col]])
-                            if v is not None:
-                                a[key] += v
-                                b[key] += v
-                daily_first = d if daily_first is None else min(daily_first, d)
-                last_day = d if last_day is None else max(last_day, d)
-            # 日次があるのに全体集計より後ろで途切れているとき、その先を0で
-            # 埋めると「広告を止めた週」に見える。実際は未入力なので触らない。
-            for mon, total in per_week.items():
-                if mon in weekset:
-                    cost[mon] = int(round(total))
-            # 日次があるならCVもそちらを優先する（費用と同じ扱い）。
-            cv_per_week = {}
-            for d, v in cv_by_day.items():
-                cv_per_week[monday(d)] = cv_per_week.get(monday(d), 0.0) + v
-            for mon, total in cv_per_week.items():
-                if mon in weekset:
-                    cv[mon] = int(round(total))
-            if last_day:
-                print(f"[info] 日次入力の最終日: {last_day}", file=sys.stderr)
-
-    # --- データが始まる前の週は null のまま残す
-    first_known = AD_DATA_FIRST_MONDAY
-    if weekly_first_monday:
-        first_known = min(first_known, weekly_first_monday)
-    for w in week_starts:
-        if w < first_known:
-            cost[w] = None
-    return (cost, cost_by_day, cv_by_day, cv_by_week, cv,
+    return (cost, cost_by_day, cv_by_day, cv,
             wcost_by_day, wcv_by_day, adperf, adperf_day)
 
 
@@ -611,7 +599,7 @@ def fetch_expo_costs(token):
 # ---------------------------------------------------------------- 集計
 
 
-def build(token, sheets_token, channel_map, webinar_cfg, end_date):
+def build(token, sheets_token, channel_map, webinar_cfg, campaign_cfg, end_date):
     channels = channel_map["channels"]
     route_to_channel = {}
     for key, spec in channels.items():
@@ -826,9 +814,9 @@ def build(token, sheets_token, channel_map, webinar_cfg, end_date):
     expos.sort(key=lambda e: e["date"])
 
     # --- web 費用
-    (web_cost, web_cost_day, web_cv_day, web_cv_week, web_cv,
+    (web_cost, web_cost_day, web_cv_day, web_cv,
      wb_cost_day, wb_cv_day, adperf,
-     adperf_day) = fetch_web_cost(sheets_token, week_starts)
+     adperf_day) = fetch_ad_daily(sheets_token, week_starts, campaign_cfg)
     for w in week_starts:
         direct[w]["web"]["cost"] = web_cost[w]
         # CPLの分母は広告側のCV（申込延べ数）に揃える。HubSpotのリード数は
@@ -838,7 +826,7 @@ def build(token, sheets_token, channel_map, webinar_cfg, end_date):
     for w in week_starts:
         for ch in ("line", "referral", "other"):
             direct[w][ch]["cost"] = 0
-    # 日別のweb費用・CV。週次と同じ元データ（日次入力タブ）から引く。
+    # 日別のweb費用・CV。週次と同じ元データ（広告日次シート）から引く。
     for d, v in web_cost_day.items():
         dday_direct(d)["web"]["cost"] = int(round(v))
     for d, v in web_cv_day.items():
@@ -1079,6 +1067,7 @@ def main():
     ap.add_argument("-o", "--output", default="data.json")
     ap.add_argument("--channel-map", default="config/channel_map.json")
     ap.add_argument("--webinars", default="config/webinars.json")
+    ap.add_argument("--ad-campaigns", default="config/ad_campaigns.json")
     ap.add_argument("--previous", help="前回の data.json（妥当性チェックの比較対象）")
     ap.add_argument("--end", help="集計終端 YYYY-MM-DD（既定: 今日 JST）")
     args = ap.parse_args()
@@ -1104,6 +1093,11 @@ def main():
     else:
         warn(f"{args.webinars} がありません。ウェビナー別の集計は出しません。")
 
+    # 広告のキャンペーン定義は必須。無いと媒体×キャンペーンを判定できず、
+    # ウェビナー別のCPLが全キャンペーンの合計になって倍以上に出る。
+    with open(args.ad_campaigns, encoding="utf-8") as f:
+        campaign_cfg = json.load(f)
+
     previous = None
     if args.previous and os.path.exists(args.previous):
         try:
@@ -1113,7 +1107,8 @@ def main():
             warn(f"前回の data.json を読めませんでした（比較なしで続行）: {e}")
 
     sheets_token = google_access_token(sa_json)
-    data = build(token, sheets_token, channel_map, webinar_cfg, end_date)
+    data = build(token, sheets_token, channel_map, webinar_cfg,
+                 campaign_cfg, end_date)
 
     if not sanity_check(data, previous):
         sys.exit(2)
