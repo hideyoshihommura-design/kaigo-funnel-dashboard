@@ -175,7 +175,7 @@
    "event": {
     "leads": 153,
     "cost": 220000,
-    "deals": 2,
+    "deals": 3,
     "won": 0,
     "won_amount": 0
    },
@@ -2398,7 +2398,7 @@
    "date": "2025-09-22",
    "cost": 220000,
    "leads": 153,
-   "deals": 2,
+   "deals": 3,
    "won": 0
   },
   {
@@ -3174,7 +3174,7 @@
  },
  "fs": {
   "2025-09-29": {
-   "mtgs": 1,
+   "mtgs": 2,
    "props": 1,
    "wons": 0,
    "wonamt": 0
@@ -3460,7 +3460,7 @@
    },
    "inhouse": {
     "appts": 0,
-    "deals": 1,
+    "deals": 2,
     "wons": 0,
     "wonamt": 0
    }
@@ -3585,7 +3585,7 @@
     "wonamt": 0
    },
    "inhouse": {
-    "appts": 0,
+    "appts": 1,
     "deals": 1,
     "wons": 0,
     "wonamt": 0
@@ -5167,7 +5167,7 @@
    "event": {
     "leads": 153,
     "cost": 220000,
-    "deals": 2,
+    "deals": 3,
     "won": 0,
     "won_amount": 0
    },
