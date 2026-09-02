@@ -12,3 +12,6 @@ client_secret*.json
 
 # 実行時の一時ファイル
 previous.json
+
+# セッション引き継ぎメモ（ローカル専用）
+.claude/HANDOFF.md
