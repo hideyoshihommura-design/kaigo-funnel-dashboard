@@ -2164,8 +2164,8 @@
    "won_amount": 0
   },
   "2025-12-15": {
-   "leads": 2,
-   "deals": 2,
+   "leads": 3,
+   "deals": 3,
    "won": 1,
    "won_amount": 607750
   },
@@ -3164,7 +3164,7 @@
    "leads": 0
   },
   "2026-09-02": {
-   "calls": 30,
+   "calls": 31,
    "connected": 1,
    "appts": 0,
    "mtgs": 0,
@@ -11621,8 +11621,8 @@
    "won_amount": 607750
   },
   "2025-12-18": {
-   "leads": 1,
-   "deals": 1,
+   "leads": 2,
+   "deals": 2,
    "won": 0,
    "won_amount": 0
   },
