@@ -41,15 +41,14 @@ CPL_VISIBLE_ROWS = {"web"}
 # 連動するままで、こちらは日付固定。両者は入れ子（業者ぶんは期間内累計の一部）。
 VENDOR_START = dt.date(2026, 8, 19)
 
-# 架電由来の内訳。「面談予約・商談・成約が起きた日の直前に、そのコンタクトへ
-# かけていたのは誰か」で3つに分ける。判定は fetch_data.py 側（業者アカウントの
-# owner_id は config/callers.json）。ここは並び順と表示名だけを持つ。
-# 順番は 業者 → 社内 → 架電なし で固定。カードとテーブルで並びが違うと、
-# 上下の数字がどの由来のものか毎回読み直すことになる。
+# 取引作成者別の内訳。取引は相談申込に入った瞬間に作られるので、作成者＝
+# 面談予約を取った人。判定は fetch_data.py 側（業者アカウントのIDは
+# config/callers.json）。ここは並び順と表示名だけを持つ。
+# 順番は 業者 → 社内 で固定。カードとテーブルで並びが違うと、上下の数字が
+# どちらのものか毎回読み直すことになる。
 ATTR_BUCKETS = [
-    ("vendor", "架電業者由来"),
-    ("inhouse", "社内由来"),
-    ("nocall", "架電なし"),
+    ("vendor", "架電業者 作成"),
+    ("inhouse", "社内 作成"),
 ]
 ATTR_KEYS = [k for k, _ in ATTR_BUCKETS]
 ATTR_FIELDS = ("appts", "deals", "wons", "wonamt")
@@ -303,7 +302,7 @@ def validate_conversion(data):
 
 
 def validate_is_attr(data):
-    """is_attr は日次。架電由来（業者／社内／架電なし）の内訳。任意."""
+    """is_attr は日次。取引作成者別（架電業者／社内）の内訳。任意."""
     attr = data.get("is_attr")
     if attr is None:
         return
@@ -318,7 +317,7 @@ def validate_is_attr(data):
             fail(f"is_attr に不正な日付キーがあります: {k!r}（YYYY-MM-DD）")
         unknown = set(v) - set(ATTR_KEYS)
         if unknown:
-            fail(f"is_attr[{k}] に未知の由来キー: {sorted(unknown)}")
+            fail(f"is_attr[{k}] に未知の作成者キー: {sorted(unknown)}")
         for b in ATTR_KEYS:
             row = v.get(b) or {}
             for f in ATTR_FIELDS:
@@ -328,7 +327,7 @@ def validate_is_attr(data):
                 tot[f] += n
             if row.get("wons", 0) == 0 and row.get("wonamt", 0):
                 warn(f"is_attr[{k}][{b}]: 成約0件なのに成約金額 {row['wonamt']}")
-    # 由来の3つを足した成約数は、FS側の成約数と同じ母集団（直契約）を
+    # 作成者2つを足した成約数は、FS側の成約数と同じ母集団（直契約）を
     # 割ったものなので一致するはず。ズレたらどちらかの絞り込みが変わっている。
     # FS側が多い方向は、成約日が集計期間の頭より前という稀なケースで起きうる。
     fs_wons = sum(v.get("wons", 0) for v in fs.values())
@@ -942,12 +941,11 @@ font-size:12px;font-weight:700;line-height:1.35;white-space:nowrap;}
 .actsum .card.cum .tag{background:var(--ink);color:#fff;}
 /* 業者ぶんは期間指定で動かない固定の集計。上2枚と役割が違うので色も変える。 */
 .actsum .card.vendor .tag{background:#8459A5;color:#fff;}
-/* 架電由来の3枚は同じ指標を分けたものなので、IS活動量で使っている色を流用する。
-   業者は業者カードと同じ紫、社内は活動量と同じ青緑。架電なしは分類であって
-   成果ではないのでグレーに落とし、上2枚と対等に見えないようにする。 */
+/* 作成者別の2枚は同じ指標を分けたものなので、IS活動量で使っている色を流用する。
+   業者はIS活動量の業者カードと同じ紫、社内は活動量と同じ青緑。ここで別の色を
+   当てると、同じ「架電業者」が場所によって違う色になり結び付けられなくなる。 */
 .actsum .card.ia-vendor .tag{background:#8459A5;color:#fff;}
 .actsum .card.ia-inhouse .tag{background:#08959C;color:#fff;}
-.actsum .card.ia-nocall .tag{background:var(--muted);color:#fff;}
 .actsum .card .tag .taglabel{display:block;color:#fff;font-size:10.5px;
 font-weight:400;opacity:.9;}
 
@@ -1294,11 +1292,11 @@ function apply(from,to){
   setK('fs_close',jPct(div(f.wons,f.mtgs)));
   setK('fs_avg',f.wons?jYen(f.amt/f.wons):'');
 
-  /* ---- 架電由来（直契約・日付でそのまま切る） ----
-     由来 × 指標の並びは Python 側の ATTR_KEYS × ATTR_FIELDS と同じ順で、
-     由来 i・指標 j が添字 i*4+j。片方だけ並べ替えると数字が入れ替わる。
+  /* ---- 取引作成者別（直契約・日付でそのまま切る） ----
+     作成者 × 指標の並びは Python 側の ATTR_KEYS × ATTR_FIELDS と同じ順で、
+     作成者 i・指標 j が添字 i*4+j。片方だけ並べ替えると数字が入れ替わる。
      FSと同じく日付キーなので、日単位でそのまま切れる。 */
-  var IAB=['vendor','inhouse','nocall'],ia=[],bi,fi,ir,iad;
+  var IAB=['vendor','inhouse'],ia=[],bi,fi,ir,iad;
   for(bi=0;bi<IAB.length;bi++){ia.push([0,0,0,0]);}
   for(iad in RAW.isattr){
     if(!RAW.isattr.hasOwnProperty(iad)){continue;}
@@ -1934,13 +1932,12 @@ def render(data):
         fs_section = ""
         daily_js = ""
 
-    # ---- 架電由来（直契約のみ） ----
-    # FS活動量と同じ母集団を、架電の由来で3つに割ったもの。だから
-    # 業者由来＋社内由来＋架電なし＝FS活動量の同じ指標になる。
+    # ---- 取引作成者別（直契約のみ） ----
+    # FS活動量と同じ母集団を、取引を作った人で2つに割ったもの。だから
+    # 業者作成＋社内作成＝FS活動量の同じ指標になる。
     # 面談予約は取引の相談申込ステージ入り日、商談は取引の作成日、成約は
-    # 成約ステージ入り日。それぞれの日の直前にかけていた人で由来を決める。
-    # 集計期間の頭から出す。介護校の架電は2026-05-12が最初なので、それ以前の
-    # 商談は全部「架電なし」に入る。これは事実であってデータ欠けではない。
+    # 成約ステージ入り日。どれも作成者は同じなので、3指標で判定がズレない。
+    # 架電記録は見ない。コールの記録漏れや発信着信欄の空白で結果が狂うため。
     iad = data.get("is_attr") or {}
     if iad:
         ia_tot = {b: {f: 0 for f in ATTR_FIELDS} for b in ATTR_KEYS}
@@ -1979,12 +1976,12 @@ def render(data):
                     '<td class="pad"></td></tr>')
         ia_body = "".join(ia_rows)
         ia_section = f"""
-<h2>架電由来</h2>
+<h2>取引作成者別</h2>
 <div class="actsum">{ia_cards}</div>
 <div class="tabgrid">
-  <details class="fold" id="f-ia"><summary><span class="tri">▶</span>架電由来の日次<span class="cnt">{len(ia_rows)}行</span></summary>
+  <details class="fold" id="f-ia"><summary><span class="tri">▶</span>取引作成者別の日次<span class="cnt">{len(ia_rows)}行</span></summary>
     <div class="tablewrap"><table>
-    <thead><tr><th>日付</th><th>由来</th><th>面談予約 獲得数</th><th>商談数</th>
+    <thead><tr><th>日付</th><th>作成者</th><th>面談予約 獲得数</th><th>商談数</th>
     <th>成約数</th><th>成約金額</th>
     <th class="pad" aria-hidden="true"></th></tr></thead>
     <tbody>{ia_body}</tbody></table></div></details>

@@ -284,6 +284,12 @@ def fetch_deals(token):
     props = [
         "hs_object_id", "dealname", "pipeline", "dealstage",
         "amount_in_home_currency", "createdate",
+        # 取引を作った人。架電業者ぶんと社内ぶんを分けるのに使う。
+        # 取引は相談申込に入った瞬間に作られる（作成日時とステージ入り日時が
+        # ミリ秒まで一致する）ので、作成者＝面談予約を取った人。
+        # IDの体系は hubspot_owner_id と同じなので config/callers.json を
+        # そのまま引き当てられる。
+        "hs_created_by_user_id",
         f"hs_v2_date_entered_{STAGE_APPT}",
         "hs_v2_date_entered_appointmentscheduled",
         "hs_v2_date_entered_qualifiedtobuy",
@@ -296,30 +302,26 @@ def fetch_deals(token):
 
 
 def fetch_calls(token, end_date):
-    """介護校の架電（CRM_UI）を全期間取り、コンタクトIDを紐づける.
+    """介護校の架電（CRM_UI）を取り、コンタクトIDを紐づける.
 
-    開始日で切らない。以前は CALLS_START（2026-06-01）以降だけを取っていたが、
-    それは「IS活動量ブロックをどこから表示するか」の境界であって、架電が
-    存在しない証拠ではなかった。実際には 2026-05-12 から3件あり、その3件を
-    落としたまま「架電由来」を判定していた。
-    CRM_UI の架電は全期間で600件弱しかないので、全部取っても負荷は変わらない。
+    業者ぶんと社内ぶんの切り分けにコールは使わない（取引の作成者で判定する）。
+    ここで取るのはIS活動量ブロック（架電数・接続率・転換率）のためだけなので、
+    表示開始日 CALLS_START 以降でよい。
     """
+    start_ms = int(dt.datetime.combine(CALLS_START, dt.time(), JST).timestamp() * 1000)
     end_ms = int(
         dt.datetime.combine(end_date + dt.timedelta(days=1), dt.time(), JST).timestamp() * 1000
     )
     groups = [{
         "filters": [
             {"propertyName": "hs_object_source_label", "operator": "EQ", "value": CALL_SOURCE},
-            {"propertyName": "hs_timestamp", "operator": "LT", "value": str(end_ms)},
+            {"propertyName": "hs_timestamp", "operator": "BETWEEN",
+             "value": str(start_ms), "highValue": str(end_ms)},
         ]
     }]
     props = [
         "hs_object_id", "hs_timestamp", "hs_call_disposition",
         "hs_call_direction", "hs_object_source_label",
-        # 誰がかけたか。架電業者ぶんと社内ぶんを分けるのに使う。
-        # hs_created_by（作成者）でも同じ値が入っていたが、担当者の付け替えに
-        # 追従するのは owner のほうなので、こちらを正とする。
-        "hubspot_owner_id",
     ]
     calls = hs_search_all(token, "calls", groups, props)
     print(f"[info] calls({CALL_SOURCE}): {len(calls)}件", file=sys.stderr)
@@ -709,18 +711,26 @@ def build(token, sheets_token, channel_map, webinar_cfg, campaign_cfg,
     daily_props = {}
     daily_wons = {}
     daily_wonamt = {}
-    # 架電由来の切り分け用の素材。コールを読むのはこの後なので、ここでは
-    # 「いつ何が起きたか」だけ溜めておき、架電履歴が揃ってから振り分ける。
-    attr_src = []
+    # --- 取引作成者別（直契約のみ）
+    # 取引は相談申込に入った瞬間に作られるので、作成者＝面談予約を取った人。
+    # 架電履歴から「直前にかけたのは誰か」を推定する必要はない。推定に頼ると
+    # コールの記録漏れ・発信着信欄の空白でそのまま結果が狂う（実際に狂った）。
+    # 集計期間の頭（PERIOD_START）から出す。
+    is_attr = {}
+    unknown_creators = {}
+
+    def dattr(d):
+        return is_attr.setdefault(d.isoformat(), {
+            b: {"appts": 0, "deals": 0, "wons": 0, "wonamt": 0}
+            for b in ("vendor", "inhouse")})
+
     for deal in deals:
         p = deal.get("properties") or {}
         assoc = ((deal.get("associations") or {}).get("contacts") or {}).get("results") or []
         info = None
-        info_cid = None
         for a in assoc:
-            cand = cinfo.get(str(a.get("id")))
-            if cand:
-                info, info_cid = cand, str(a.get("id"))
+            info = cinfo.get(str(a.get("id")))
+            if info:
                 break
         # 面談予約数は取引側の「相談申込ステージ入り日」で数える。
         # コンタクトが紐づいていなくても成立するので先に処理する。
@@ -771,17 +781,24 @@ def build(token, sheets_token, channel_map, webinar_cfg, campaign_cfg,
             if won and won_day:
                 daily_wons[won_day] = daily_wons.get(won_day, 0) + 1
                 daily_wonamt[won_day] = daily_wonamt.get(won_day, 0) + amount
-            # 架電由来の切り分けはFS指標と同じ母集団（直契約・route有効・
-            # 獲得週が期間内）で数える。揃えないと「業者由来＋社内由来＋
-            # 架電なし」の合計が上のFSカードと一致せず、どちらが正しいのか
-            # 判断できなくなる。
-            attr_src.append({
-                "cid": info_cid,
-                "appts": appt_day,
-                "deals": parse_hs_datetime(p.get("createdate")),
-                "wons": won_day if won else None,
-                "amount": amount,
-            })
+            # 作成者別の内訳はFS指標と同じ母集団（直契約・route有効・
+            # 獲得週が期間内）で数える。揃えないと「業者作成＋社内作成」の
+            # 合計が上のFSカードと一致せず、どちらが正しいのか判断できない。
+            # コンタクト未紐付けの取引は作成者だけなら判定できるが、route が
+            # 引けず直契約か代理店かを決められないので、ここでも母集団から
+            # 外している（他のセクション全部と同じ扱い）。
+            creator = str(p.get("hs_created_by_user_id") or "").strip()
+            if not creator:
+                unknown_creators["(空)"] = unknown_creators.get("(空)", 0) + 1
+            bucket = "vendor" if creator in vendor_ids else "inhouse"
+            for field, day in (("appts", appt_day),
+                               ("deals", parse_hs_datetime(p.get("createdate"))),
+                               ("wons", won_day if won else None)):
+                if not day or day < PERIOD_START or day > end_date:
+                    continue
+                dattr(day)[bucket][field] += 1
+                if field == "wons":
+                    dattr(day)[bucket]["wonamt"] += amount
 
         for a in assoc:
             acid = str(a.get("id"))
@@ -809,6 +826,11 @@ def build(token, sheets_token, channel_map, webinar_cfg, campaign_cfg,
         warn(
             f"コンタクト未紐付け、または route 未設定/除外の取引 {orphan_deals} 件を"
             "どのチャネルにも入れていません（入れると商談化率の分子だけ増えて率が歪むため）。"
+        )
+    if unknown_creators:
+        warn(
+            "作成者が読めない取引がありました（社内作成として数えています）: "
+            + ", ".join(f"{k}={v}件" for k, v in unknown_creators.items())
         )
 
     # --- 展示会（開催週 = その route のリードが最も多い週）
@@ -861,45 +883,17 @@ def build(token, sheets_token, channel_map, webinar_cfg, campaign_cfg,
     # --- 日次架電
     daily_calls, daily_conn = {}, {}
     first_call_of_contact = {}
-    # コンタクトごとの発信履歴 [(日付, 生のtimestamp, ownerId), ...]。
-    # 「面談予約が立った日の直前にかけたのは誰か」を引くために時系列で持つ。
-    calls_of_contact = {}
     unknown_disp = {}
     no_direction = 0
-    no_owner = 0
     for c in calls:
         p = c.get("properties") or {}
         ts = parse_hs_datetime(p.get("hs_timestamp"))
-        if not ts or ts > end_date:
+        if not ts or ts < CALLS_START or ts > end_date:
             continue
-        cid = c.get("_contact_id")
-        # 由来の判定は全期間・発信着信を問わずに使う。
-        # 期間で切らないのは、CALLS_START より前の架電を無かったことにすると
-        # その架電から生まれた商談が「架電なし」に落ちるため。
-        # hs_call_direction で切らないのは、CRM_UI に手で残したコールは
-        # direction が空のことがあり（業者ぶんで5件あった）、発信と判定
-        # できないだけで「かけていない」わけではないため。ここで落として
-        # 面談予約2件（中込・小林）が業者由来から漏れていた。
-        # 着信を含めても取り違えにならない。業者アカウントに折り返しが
-        # 来ているなら、その相手に接触しているのは業者だからである。
-        if cid:
-            owner = str(p.get("hubspot_owner_id") or "").strip()
-            if owner:
-                calls_of_contact.setdefault(cid, []).append(
-                    (ts, str(p.get("hs_timestamp") or ""), owner))
-            else:
-                # 担当者が空のコールは架電者を判定できない。空を社内側に
-                # 寄せると業者の実績が社内に付け替わるので、由来の判定材料から
-                # 外して警告だけ出す（架電数・接続数の集計には入れたまま）。
-                no_owner += 1
-        # ここから下はIS活動量ブロック用。発信と判定できたものだけを、
-        # CALLS_START 以降について数える（既存カードの定義を変えない）。
         direction = (p.get("hs_call_direction") or "").upper()
         if "OUTBOUND" not in direction:
             if not direction:
                 no_direction += 1
-            continue
-        if ts < CALLS_START:
             continue
         daily_calls[ts] = daily_calls.get(ts, 0) + 1
         disp = (p.get("hs_call_disposition") or "").strip()
@@ -907,18 +901,10 @@ def build(token, sheets_token, channel_map, webinar_cfg, campaign_cfg,
             daily_conn[ts] = daily_conn.get(ts, 0) + 1
         elif disp and disp[:8] not in KNOWN_NOT_CONNECTED_PREFIX:
             unknown_disp[disp] = unknown_disp.get(disp, 0) + 1
+        cid = c.get("_contact_id")
         if cid:
             prev = first_call_of_contact.get(cid)
             first_call_of_contact[cid] = ts if prev is None else min(prev, ts)
-    # 同じ日に複数回かけている相手がいるので、日付だけでなく生のtimestampまで
-    # 見て並べる。日付で丸めて並べると、同日の最後のコールが誰なのか定まらない。
-    for _hist in calls_of_contact.values():
-        _hist.sort(key=lambda x: (x[0], x[1]))
-    if no_owner:
-        warn(
-            f"担当者（hubspot_owner_id）が空の発信コールが {no_owner} 件あります。"
-            "架電由来の判定材料から外しています（架電数・接続数には入っています）。"
-        )
     if no_direction:
         warn(
             f"hs_call_direction が未設定のコールが {no_direction} 件あります。"
@@ -937,43 +923,6 @@ def build(token, sheets_token, channel_map, webinar_cfg, campaign_cfg,
     daily_called = {}
     for _cid, _first in first_call_of_contact.items():
         daily_called[_first] = daily_called.get(_first, 0) + 1
-
-    # --- 架電由来の切り分け（直契約のみ）
-    # 面談予約・商談・成約が起きた日について、「その直前にそのコンタクトへ
-    # かけていたのは業者か社内か」で振り分ける。初回架電者で決めてはいけない。
-    # 社内が一度かけて不発だった相手を業者が掘り起こした分が社内の成果になり、
-    # 業者の実績が過小に出る。
-    # 集計期間の頭（PERIOD_START）から出す。介護校の架電は2026-05-12が最初で、
-    # それ以前は1件も無い。だから2025年9月〜2026年4月の商談が「架電なし」に
-    # 並ぶのは事実であって、データ欠けではない。ここを架電開始日で切ると
-    # 「9月から取引があるのに6月からしか出ない」ことになる。
-    is_attr = {}
-
-    def dattr(d):
-        return is_attr.setdefault(d.isoformat(), {
-            b: {"appts": 0, "deals": 0, "wons": 0, "wonamt": 0}
-            for b in ("vendor", "inhouse", "nocall")})
-
-    def caller_at(cid, day):
-        """day の時点で直前にそのコンタクトへかけていたのは業者か社内か."""
-        owner = None
-        for hist_day, _ts, hist_owner in calls_of_contact.get(cid) or []:
-            if hist_day > day:
-                break
-            owner = hist_owner
-        if owner is None:
-            return "nocall"
-        return "vendor" if owner in vendor_ids else "inhouse"
-
-    for src in attr_src:
-        for field in ("appts", "deals", "wons"):
-            day = src[field]
-            if not day or day < PERIOD_START or day > end_date:
-                continue
-            bucket = caller_at(src["cid"], day)
-            dattr(day)[bucket][field] += 1
-            if field == "wons":
-                dattr(day)[bucket]["wonamt"] += src["amount"]
 
     calls_out = {}
     all_days = (set(daily_calls) | set(daily_conn) | set(daily_appts)
