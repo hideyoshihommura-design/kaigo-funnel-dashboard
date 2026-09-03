@@ -1807,7 +1807,7 @@
   },
   "2026-07-20": {
    "event": {
-    "leads": 545,
+    "leads": 544,
     "cost": 572000,
     "deals": 3,
     "won": 0,
@@ -2042,7 +2042,7 @@
     "won_amount": 0
    },
    "web": {
-    "leads": 7,
+    "leads": 8,
     "cost": 20674,
     "deals": 0,
     "won": 0,
@@ -2350,7 +2350,7 @@
    "won_amount": 0
   },
   "2026-07-20": {
-   "leads": 0,
+   "leads": 1,
    "deals": 0,
    "won": 0,
    "won_amount": 0
@@ -2421,7 +2421,7 @@
    "name": "CareTEX福岡",
    "date": "2026-07-20",
    "cost": 572000,
-   "leads": 589,
+   "leads": 588,
    "deals": 4,
    "won": 0
   }
@@ -3172,12 +3172,12 @@
    "leads": 4
   },
   "2026-09-03": {
-   "calls": 12,
-   "connected": 0,
+   "calls": 42,
+   "connected": 4,
    "appts": 0,
-   "mtgs": 0,
-   "called": 7,
-   "leads": 1
+   "mtgs": 1,
+   "called": 35,
+   "leads": 2
   }
  },
  "fs": {
@@ -3452,6 +3452,12 @@
    "wonamt": 0
   },
   "2026-09-01": {
+   "mtgs": 1,
+   "props": 1,
+   "wons": 0,
+   "wonamt": 0
+  },
+  "2026-09-03": {
    "mtgs": 1,
    "props": 1,
    "wons": 0,
@@ -12293,7 +12299,7 @@
   },
   "2026-07-26": {
    "event": {
-    "leads": 545,
+    "leads": 544,
     "cost": 0,
     "deals": 3,
     "won": 0,
@@ -13781,7 +13787,7 @@
     "won_amount": 0
    },
    "web": {
-    "leads": 1,
+    "leads": 2,
     "cost": 0,
     "deals": 0,
     "won": 0,
@@ -13931,6 +13937,12 @@
    "won": 1,
    "won_amount": 943250
   },
+  "2026-07-26": {
+   "leads": 1,
+   "deals": 0,
+   "won": 0,
+   "won_amount": 0
+  },
   "2026-08-31": {
    "leads": 1,
    "deals": 1,
@@ -13988,7 +14000,7 @@
    "appointed": 2
   },
   "2026-08-31": {
-   "called": 46,
+   "called": 74,
    "appointed": 0
   }
  }
