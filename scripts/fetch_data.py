@@ -740,7 +740,8 @@ def build(token, sheets_token, channel_map, webinar_cfg, campaign_cfg,
 
     def dattr(d):
         return is_attr.setdefault(d.isoformat(), {
-            b: {"appts": 0, "deals": 0, "wons": 0, "wonamt": 0}
+            b: {"appts": 0, "deals": 0, "mtgs": 0, "props": 0,
+                "wons": 0, "wonamt": 0}
             for b in ("vendor", "inhouse")})
 
     for deal in deals:
@@ -786,9 +787,9 @@ def build(token, sheets_token, channel_map, webinar_cfg, campaign_cfg,
                     for st in STAGE_MEETING_DONE
                 ) if d
             ]
-            if mtg_days:
-                md = min(mtg_days)
-                daily_mtgs[md] = daily_mtgs.get(md, 0) + 1
+            mtg_day = min(mtg_days) if mtg_days else None
+            if mtg_day:
+                daily_mtgs[mtg_day] = daily_mtgs.get(mtg_day, 0) + 1
             prop_day = parse_hs_datetime(p.get("hs_v2_date_entered_qualifiedtobuy"))
             if prop_day:
                 daily_props[prop_day] = daily_props.get(prop_day, 0) + 1
@@ -810,8 +811,13 @@ def build(token, sheets_token, channel_map, webinar_cfg, campaign_cfg,
             if not creator:
                 unknown_creators["(空)"] = unknown_creators.get("(空)", 0) + 1
             bucket = "vendor" if creator in vendor_ids else "inhouse"
+            # 面談実施と提案も作成者別に持つ。面談を実施するのは社内のFSだが、
+            # ここで見たいのは「誰が実施したか」ではなく「業者が取った予約が
+            # その後どこまで進んだか」。だから取引の作成者で振り分けるのが正しい。
             for field, day in (("appts", appt_day),
                                ("deals", parse_hs_datetime(p.get("createdate"))),
+                               ("mtgs", mtg_day),
+                               ("props", prop_day),
                                ("wons", won_day if won else None)):
                 if not day or day < PERIOD_START or day > end_date:
                     continue
