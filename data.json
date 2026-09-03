@@ -2042,7 +2042,7 @@
     "won_amount": 0
    },
    "web": {
-    "leads": 6,
+    "leads": 7,
     "cost": 20674,
     "deals": 0,
     "won": 0,
@@ -3172,12 +3172,12 @@
    "leads": 4
   },
   "2026-09-03": {
-   "calls": 11,
+   "calls": 12,
    "connected": 0,
    "appts": 0,
    "mtgs": 0,
-   "called": 6,
-   "leads": 0
+   "called": 7,
+   "leads": 1
   }
  },
  "fs": {
@@ -13771,6 +13771,43 @@
     "won": 0,
     "won_amount": 0
    }
+  },
+  "2026-09-03": {
+   "event": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "web": {
+    "leads": 1,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "line": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "referral": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "other": {
+    "leads": 0,
+    "cost": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   }
   }
  },
  "agency_day": {
@@ -13951,7 +13988,7 @@
    "appointed": 2
   },
   "2026-08-31": {
-   "called": 45,
+   "called": 46,
    "appointed": 0
   }
  }
