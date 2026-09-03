@@ -3469,12 +3469,16 @@
    "vendor": {
     "appts": 0,
     "deals": 0,
+    "mtgs": 0,
+    "props": 0,
     "wons": 0,
     "wonamt": 0
    },
    "inhouse": {
     "appts": 0,
     "deals": 2,
+    "mtgs": 2,
+    "props": 1,
     "wons": 0,
     "wonamt": 0
    }
@@ -3483,12 +3487,16 @@
    "vendor": {
     "appts": 0,
     "deals": 0,
+    "mtgs": 0,
+    "props": 0,
     "wons": 0,
     "wonamt": 0
    },
    "inhouse": {
     "appts": 0,
     "deals": 1,
+    "mtgs": 1,
+    "props": 0,
     "wons": 0,
     "wonamt": 0
    }
@@ -3497,12 +3505,16 @@
    "vendor": {
     "appts": 0,
     "deals": 0,
+    "mtgs": 0,
+    "props": 0,
     "wons": 0,
     "wonamt": 0
    },
    "inhouse": {
     "appts": 0,
     "deals": 2,
+    "mtgs": 2,
+    "props": 0,
     "wons": 0,
     "wonamt": 0
    }
@@ -3511,12 +3523,16 @@
    "vendor": {
     "appts": 0,
     "deals": 0,
+    "mtgs": 0,
+    "props": 0,
     "wons": 0,
     "wonamt": 0
    },
    "inhouse": {
     "appts": 0,
     "deals": 1,
+    "mtgs": 1,
+    "props": 0,
     "wons": 0,
     "wonamt": 0
    }
@@ -3525,12 +3541,16 @@
    "vendor": {
     "appts": 0,
     "deals": 0,
+    "mtgs": 0,
+    "props": 0,
     "wons": 0,
     "wonamt": 0
    },
    "inhouse": {
     "appts": 1,
     "deals": 2,
+    "mtgs": 1,
+    "props": 1,
     "wons": 0,
     "wonamt": 0
    }
@@ -3539,26 +3559,52 @@
    "vendor": {
     "appts": 0,
     "deals": 0,
+    "mtgs": 0,
+    "props": 0,
     "wons": 0,
     "wonamt": 0
    },
    "inhouse": {
     "appts": 0,
     "deals": 0,
+    "mtgs": 0,
+    "props": 0,
     "wons": 1,
     "wonamt": 81400
+   }
+  },
+  "2025-11-11": {
+   "vendor": {
+    "appts": 0,
+    "deals": 0,
+    "mtgs": 0,
+    "props": 0,
+    "wons": 0,
+    "wonamt": 0
+   },
+   "inhouse": {
+    "appts": 0,
+    "deals": 0,
+    "mtgs": 0,
+    "props": 1,
+    "wons": 0,
+    "wonamt": 0
    }
   },
   "2025-12-02": {
    "vendor": {
     "appts": 0,
     "deals": 0,
+    "mtgs": 0,
+    "props": 0,
     "wons": 0,
     "wonamt": 0
    },
    "inhouse": {
     "appts": 1,
     "deals": 1,
+    "mtgs": 0,
+    "props": 0,
     "wons": 0,
     "wonamt": 0
    }
@@ -3567,12 +3613,16 @@
    "vendor": {
     "appts": 0,
     "deals": 0,
+    "mtgs": 0,
+    "props": 0,
     "wons": 0,
     "wonamt": 0
    },
    "inhouse": {
     "appts": 1,
     "deals": 1,
+    "mtgs": 0,
+    "props": 0,
     "wons": 0,
     "wonamt": 0
    }
@@ -3581,12 +3631,16 @@
    "vendor": {
     "appts": 0,
     "deals": 0,
+    "mtgs": 0,
+    "props": 0,
     "wons": 0,
     "wonamt": 0
    },
    "inhouse": {
     "appts": 2,
     "deals": 2,
+    "mtgs": 3,
+    "props": 0,
     "wons": 0,
     "wonamt": 0
    }
@@ -3595,12 +3649,16 @@
    "vendor": {
     "appts": 0,
     "deals": 0,
+    "mtgs": 0,
+    "props": 0,
     "wons": 0,
     "wonamt": 0
    },
    "inhouse": {
     "appts": 1,
     "deals": 1,
+    "mtgs": 1,
+    "props": 1,
     "wons": 0,
     "wonamt": 0
    }
@@ -3609,12 +3667,70 @@
    "vendor": {
     "appts": 0,
     "deals": 0,
+    "mtgs": 0,
+    "props": 0,
     "wons": 0,
     "wonamt": 0
    },
    "inhouse": {
     "appts": 0,
     "deals": 1,
+    "mtgs": 1,
+    "props": 0,
+    "wons": 0,
+    "wonamt": 0
+   }
+  },
+  "2025-12-13": {
+   "vendor": {
+    "appts": 0,
+    "deals": 0,
+    "mtgs": 0,
+    "props": 0,
+    "wons": 0,
+    "wonamt": 0
+   },
+   "inhouse": {
+    "appts": 0,
+    "deals": 0,
+    "mtgs": 0,
+    "props": 2,
+    "wons": 0,
+    "wonamt": 0
+   }
+  },
+  "2025-12-16": {
+   "vendor": {
+    "appts": 0,
+    "deals": 0,
+    "mtgs": 0,
+    "props": 0,
+    "wons": 0,
+    "wonamt": 0
+   },
+   "inhouse": {
+    "appts": 0,
+    "deals": 0,
+    "mtgs": 0,
+    "props": 1,
+    "wons": 0,
+    "wonamt": 0
+   }
+  },
+  "2025-12-18": {
+   "vendor": {
+    "appts": 0,
+    "deals": 0,
+    "mtgs": 0,
+    "props": 0,
+    "wons": 0,
+    "wonamt": 0
+   },
+   "inhouse": {
+    "appts": 0,
+    "deals": 0,
+    "mtgs": 0,
+    "props": 1,
     "wons": 0,
     "wonamt": 0
    }
@@ -3623,12 +3739,16 @@
    "vendor": {
     "appts": 0,
     "deals": 0,
+    "mtgs": 0,
+    "props": 0,
     "wons": 0,
     "wonamt": 0
    },
    "inhouse": {
     "appts": 2,
     "deals": 2,
+    "mtgs": 0,
+    "props": 0,
     "wons": 0,
     "wonamt": 0
    }
@@ -3637,12 +3757,16 @@
    "vendor": {
     "appts": 0,
     "deals": 0,
+    "mtgs": 0,
+    "props": 0,
     "wons": 0,
     "wonamt": 0
    },
    "inhouse": {
     "appts": 0,
     "deals": 0,
+    "mtgs": 0,
+    "props": 0,
     "wons": 1,
     "wonamt": 170500
    }
@@ -3651,12 +3775,34 @@
    "vendor": {
     "appts": 0,
     "deals": 0,
+    "mtgs": 0,
+    "props": 0,
     "wons": 0,
     "wonamt": 0
    },
    "inhouse": {
     "appts": 1,
     "deals": 1,
+    "mtgs": 0,
+    "props": 0,
+    "wons": 0,
+    "wonamt": 0
+   }
+  },
+  "2026-02-10": {
+   "vendor": {
+    "appts": 0,
+    "deals": 0,
+    "mtgs": 0,
+    "props": 0,
+    "wons": 0,
+    "wonamt": 0
+   },
+   "inhouse": {
+    "appts": 0,
+    "deals": 0,
+    "mtgs": 1,
+    "props": 1,
     "wons": 0,
     "wonamt": 0
    }
@@ -3665,12 +3811,16 @@
    "vendor": {
     "appts": 0,
     "deals": 0,
+    "mtgs": 0,
+    "props": 0,
     "wons": 0,
     "wonamt": 0
    },
    "inhouse": {
     "appts": 1,
     "deals": 1,
+    "mtgs": 1,
+    "props": 0,
     "wons": 0,
     "wonamt": 0
    }
@@ -3679,12 +3829,16 @@
    "vendor": {
     "appts": 0,
     "deals": 0,
+    "mtgs": 0,
+    "props": 0,
     "wons": 0,
     "wonamt": 0
    },
    "inhouse": {
     "appts": 0,
     "deals": 0,
+    "mtgs": 0,
+    "props": 1,
     "wons": 1,
     "wonamt": 2101000
    }
@@ -3693,12 +3847,16 @@
    "vendor": {
     "appts": 0,
     "deals": 0,
+    "mtgs": 0,
+    "props": 0,
     "wons": 0,
     "wonamt": 0
    },
    "inhouse": {
     "appts": 1,
     "deals": 1,
+    "mtgs": 0,
+    "props": 0,
     "wons": 0,
     "wonamt": 0
    }
@@ -3707,12 +3865,34 @@
    "vendor": {
     "appts": 0,
     "deals": 0,
+    "mtgs": 0,
+    "props": 0,
     "wons": 0,
     "wonamt": 0
    },
    "inhouse": {
     "appts": 1,
     "deals": 1,
+    "mtgs": 0,
+    "props": 0,
+    "wons": 0,
+    "wonamt": 0
+   }
+  },
+  "2026-04-06": {
+   "vendor": {
+    "appts": 0,
+    "deals": 0,
+    "mtgs": 0,
+    "props": 0,
+    "wons": 0,
+    "wonamt": 0
+   },
+   "inhouse": {
+    "appts": 0,
+    "deals": 0,
+    "mtgs": 1,
+    "props": 0,
     "wons": 0,
     "wonamt": 0
    }
@@ -3721,12 +3901,16 @@
    "vendor": {
     "appts": 0,
     "deals": 0,
+    "mtgs": 0,
+    "props": 0,
     "wons": 0,
     "wonamt": 0
    },
    "inhouse": {
     "appts": 3,
     "deals": 3,
+    "mtgs": 4,
+    "props": 4,
     "wons": 0,
     "wonamt": 0
    }
@@ -3735,12 +3919,16 @@
    "vendor": {
     "appts": 0,
     "deals": 0,
+    "mtgs": 0,
+    "props": 0,
     "wons": 0,
     "wonamt": 0
    },
    "inhouse": {
     "appts": 1,
     "deals": 1,
+    "mtgs": 1,
+    "props": 0,
     "wons": 0,
     "wonamt": 0
    }
@@ -3749,12 +3937,16 @@
    "vendor": {
     "appts": 0,
     "deals": 0,
+    "mtgs": 0,
+    "props": 0,
     "wons": 0,
     "wonamt": 0
    },
    "inhouse": {
     "appts": 1,
     "deals": 1,
+    "mtgs": 0,
+    "props": 0,
     "wons": 0,
     "wonamt": 0
    }
@@ -3763,12 +3955,16 @@
    "vendor": {
     "appts": 0,
     "deals": 0,
+    "mtgs": 0,
+    "props": 0,
     "wons": 0,
     "wonamt": 0
    },
    "inhouse": {
     "appts": 1,
     "deals": 1,
+    "mtgs": 1,
+    "props": 1,
     "wons": 0,
     "wonamt": 0
    }
@@ -3777,12 +3973,16 @@
    "vendor": {
     "appts": 0,
     "deals": 0,
+    "mtgs": 0,
+    "props": 0,
     "wons": 0,
     "wonamt": 0
    },
    "inhouse": {
     "appts": 1,
     "deals": 1,
+    "mtgs": 1,
+    "props": 0,
     "wons": 0,
     "wonamt": 0
    }
@@ -3791,12 +3991,16 @@
    "vendor": {
     "appts": 0,
     "deals": 0,
+    "mtgs": 0,
+    "props": 0,
     "wons": 0,
     "wonamt": 0
    },
    "inhouse": {
     "appts": 1,
     "deals": 1,
+    "mtgs": 1,
+    "props": 1,
     "wons": 0,
     "wonamt": 0
    }
@@ -3805,12 +4009,16 @@
    "vendor": {
     "appts": 0,
     "deals": 0,
+    "mtgs": 0,
+    "props": 0,
     "wons": 0,
     "wonamt": 0
    },
    "inhouse": {
     "appts": 1,
     "deals": 1,
+    "mtgs": 0,
+    "props": 1,
     "wons": 0,
     "wonamt": 0
    }
@@ -3819,12 +4027,16 @@
    "vendor": {
     "appts": 0,
     "deals": 0,
+    "mtgs": 0,
+    "props": 0,
     "wons": 0,
     "wonamt": 0
    },
    "inhouse": {
     "appts": 0,
     "deals": 0,
+    "mtgs": 0,
+    "props": 0,
     "wons": 1,
     "wonamt": 2101000
    }
@@ -3833,12 +4045,16 @@
    "vendor": {
     "appts": 0,
     "deals": 0,
+    "mtgs": 0,
+    "props": 0,
     "wons": 0,
     "wonamt": 0
    },
    "inhouse": {
     "appts": 1,
     "deals": 1,
+    "mtgs": 2,
+    "props": 0,
     "wons": 0,
     "wonamt": 0
    }
@@ -3847,12 +4063,16 @@
    "vendor": {
     "appts": 0,
     "deals": 0,
+    "mtgs": 0,
+    "props": 0,
     "wons": 0,
     "wonamt": 0
    },
    "inhouse": {
     "appts": 1,
     "deals": 1,
+    "mtgs": 1,
+    "props": 2,
     "wons": 0,
     "wonamt": 0
    }
@@ -3861,12 +4081,16 @@
    "vendor": {
     "appts": 0,
     "deals": 0,
+    "mtgs": 0,
+    "props": 0,
     "wons": 0,
     "wonamt": 0
    },
    "inhouse": {
     "appts": 1,
     "deals": 1,
+    "mtgs": 2,
+    "props": 2,
     "wons": 0,
     "wonamt": 0
    }
@@ -3875,12 +4099,16 @@
    "vendor": {
     "appts": 0,
     "deals": 0,
+    "mtgs": 0,
+    "props": 0,
     "wons": 0,
     "wonamt": 0
    },
    "inhouse": {
     "appts": 2,
     "deals": 2,
+    "mtgs": 0,
+    "props": 0,
     "wons": 0,
     "wonamt": 0
    }
@@ -3889,26 +4117,70 @@
    "vendor": {
     "appts": 0,
     "deals": 0,
+    "mtgs": 0,
+    "props": 0,
     "wons": 0,
     "wonamt": 0
    },
    "inhouse": {
     "appts": 0,
     "deals": 0,
+    "mtgs": 0,
+    "props": 0,
     "wons": 1,
     "wonamt": 81400
+   }
+  },
+  "2026-06-09": {
+   "vendor": {
+    "appts": 0,
+    "deals": 0,
+    "mtgs": 0,
+    "props": 0,
+    "wons": 0,
+    "wonamt": 0
+   },
+   "inhouse": {
+    "appts": 0,
+    "deals": 0,
+    "mtgs": 0,
+    "props": 1,
+    "wons": 0,
+    "wonamt": 0
    }
   },
   "2026-06-14": {
    "vendor": {
     "appts": 0,
     "deals": 0,
+    "mtgs": 0,
+    "props": 0,
     "wons": 0,
     "wonamt": 0
    },
    "inhouse": {
     "appts": 3,
     "deals": 3,
+    "mtgs": 0,
+    "props": 2,
+    "wons": 0,
+    "wonamt": 0
+   }
+  },
+  "2026-06-17": {
+   "vendor": {
+    "appts": 0,
+    "deals": 0,
+    "mtgs": 0,
+    "props": 0,
+    "wons": 0,
+    "wonamt": 0
+   },
+   "inhouse": {
+    "appts": 0,
+    "deals": 0,
+    "mtgs": 3,
+    "props": 0,
     "wons": 0,
     "wonamt": 0
    }
@@ -3917,12 +4189,16 @@
    "vendor": {
     "appts": 0,
     "deals": 0,
+    "mtgs": 0,
+    "props": 0,
     "wons": 0,
     "wonamt": 0
    },
    "inhouse": {
     "appts": 1,
     "deals": 1,
+    "mtgs": 0,
+    "props": 0,
     "wons": 0,
     "wonamt": 0
    }
@@ -3931,12 +4207,16 @@
    "vendor": {
     "appts": 0,
     "deals": 0,
+    "mtgs": 0,
+    "props": 0,
     "wons": 0,
     "wonamt": 0
    },
    "inhouse": {
     "appts": 1,
     "deals": 1,
+    "mtgs": 0,
+    "props": 0,
     "wons": 0,
     "wonamt": 0
    }
@@ -3945,12 +4225,34 @@
    "vendor": {
     "appts": 0,
     "deals": 0,
+    "mtgs": 0,
+    "props": 0,
     "wons": 0,
     "wonamt": 0
    },
    "inhouse": {
     "appts": 1,
     "deals": 1,
+    "mtgs": 2,
+    "props": 2,
+    "wons": 0,
+    "wonamt": 0
+   }
+  },
+  "2026-06-23": {
+   "vendor": {
+    "appts": 0,
+    "deals": 0,
+    "mtgs": 0,
+    "props": 0,
+    "wons": 0,
+    "wonamt": 0
+   },
+   "inhouse": {
+    "appts": 0,
+    "deals": 0,
+    "mtgs": 0,
+    "props": 1,
     "wons": 0,
     "wonamt": 0
    }
@@ -3959,12 +4261,34 @@
    "vendor": {
     "appts": 0,
     "deals": 0,
+    "mtgs": 0,
+    "props": 0,
     "wons": 0,
     "wonamt": 0
    },
    "inhouse": {
     "appts": 3,
     "deals": 3,
+    "mtgs": 1,
+    "props": 1,
+    "wons": 0,
+    "wonamt": 0
+   }
+  },
+  "2026-06-26": {
+   "vendor": {
+    "appts": 0,
+    "deals": 0,
+    "mtgs": 0,
+    "props": 0,
+    "wons": 0,
+    "wonamt": 0
+   },
+   "inhouse": {
+    "appts": 0,
+    "deals": 0,
+    "mtgs": 1,
+    "props": 0,
     "wons": 0,
     "wonamt": 0
    }
@@ -3973,12 +4297,16 @@
    "vendor": {
     "appts": 0,
     "deals": 0,
+    "mtgs": 0,
+    "props": 0,
     "wons": 0,
     "wonamt": 0
    },
    "inhouse": {
     "appts": 1,
     "deals": 1,
+    "mtgs": 0,
+    "props": 0,
     "wons": 0,
     "wonamt": 0
    }
@@ -3987,12 +4315,16 @@
    "vendor": {
     "appts": 0,
     "deals": 0,
+    "mtgs": 0,
+    "props": 0,
     "wons": 0,
     "wonamt": 0
    },
    "inhouse": {
     "appts": 1,
     "deals": 1,
+    "mtgs": 0,
+    "props": 0,
     "wons": 0,
     "wonamt": 0
    }
@@ -4001,12 +4333,16 @@
    "vendor": {
     "appts": 0,
     "deals": 0,
+    "mtgs": 0,
+    "props": 0,
     "wons": 0,
     "wonamt": 0
    },
    "inhouse": {
     "appts": 1,
     "deals": 1,
+    "mtgs": 0,
+    "props": 0,
     "wons": 0,
     "wonamt": 0
    }
@@ -4015,12 +4351,34 @@
    "vendor": {
     "appts": 0,
     "deals": 0,
+    "mtgs": 0,
+    "props": 0,
     "wons": 0,
     "wonamt": 0
    },
    "inhouse": {
     "appts": 2,
     "deals": 2,
+    "mtgs": 0,
+    "props": 0,
+    "wons": 0,
+    "wonamt": 0
+   }
+  },
+  "2026-07-24": {
+   "vendor": {
+    "appts": 0,
+    "deals": 0,
+    "mtgs": 0,
+    "props": 0,
+    "wons": 0,
+    "wonamt": 0
+   },
+   "inhouse": {
+    "appts": 0,
+    "deals": 0,
+    "mtgs": 6,
+    "props": 5,
     "wons": 0,
     "wonamt": 0
    }
@@ -4029,12 +4387,16 @@
    "vendor": {
     "appts": 0,
     "deals": 0,
+    "mtgs": 0,
+    "props": 0,
     "wons": 0,
     "wonamt": 0
    },
    "inhouse": {
     "appts": 2,
     "deals": 2,
+    "mtgs": 2,
+    "props": 2,
     "wons": 0,
     "wonamt": 0
    }
@@ -4043,12 +4405,16 @@
    "vendor": {
     "appts": 0,
     "deals": 0,
+    "mtgs": 0,
+    "props": 0,
     "wons": 0,
     "wonamt": 0
    },
    "inhouse": {
     "appts": 3,
     "deals": 3,
+    "mtgs": 0,
+    "props": 0,
     "wons": 0,
     "wonamt": 0
    }
@@ -4057,12 +4423,34 @@
    "vendor": {
     "appts": 0,
     "deals": 0,
+    "mtgs": 0,
+    "props": 0,
     "wons": 0,
     "wonamt": 0
    },
    "inhouse": {
     "appts": 1,
     "deals": 1,
+    "mtgs": 1,
+    "props": 1,
+    "wons": 0,
+    "wonamt": 0
+   }
+  },
+  "2026-08-03": {
+   "vendor": {
+    "appts": 0,
+    "deals": 0,
+    "mtgs": 0,
+    "props": 0,
+    "wons": 0,
+    "wonamt": 0
+   },
+   "inhouse": {
+    "appts": 0,
+    "deals": 0,
+    "mtgs": 1,
+    "props": 1,
     "wons": 0,
     "wonamt": 0
    }
@@ -4071,12 +4459,16 @@
    "vendor": {
     "appts": 0,
     "deals": 0,
+    "mtgs": 0,
+    "props": 0,
     "wons": 0,
     "wonamt": 0
    },
    "inhouse": {
     "appts": 1,
     "deals": 1,
+    "mtgs": 2,
+    "props": 2,
     "wons": 0,
     "wonamt": 0
    }
@@ -4085,12 +4477,16 @@
    "vendor": {
     "appts": 0,
     "deals": 0,
+    "mtgs": 0,
+    "props": 0,
     "wons": 0,
     "wonamt": 0
    },
    "inhouse": {
     "appts": 2,
     "deals": 2,
+    "mtgs": 2,
+    "props": 2,
     "wons": 0,
     "wonamt": 0
    }
@@ -4099,12 +4495,34 @@
    "vendor": {
     "appts": 0,
     "deals": 0,
+    "mtgs": 0,
+    "props": 0,
     "wons": 0,
     "wonamt": 0
    },
    "inhouse": {
     "appts": 1,
     "deals": 1,
+    "mtgs": 0,
+    "props": 0,
+    "wons": 0,
+    "wonamt": 0
+   }
+  },
+  "2026-08-14": {
+   "vendor": {
+    "appts": 0,
+    "deals": 0,
+    "mtgs": 0,
+    "props": 0,
+    "wons": 0,
+    "wonamt": 0
+   },
+   "inhouse": {
+    "appts": 0,
+    "deals": 0,
+    "mtgs": 1,
+    "props": 1,
     "wons": 0,
     "wonamt": 0
    }
@@ -4113,12 +4531,16 @@
    "vendor": {
     "appts": 0,
     "deals": 0,
+    "mtgs": 0,
+    "props": 0,
     "wons": 0,
     "wonamt": 0
    },
    "inhouse": {
     "appts": 1,
     "deals": 1,
+    "mtgs": 1,
+    "props": 1,
     "wons": 0,
     "wonamt": 0
    }
@@ -4127,12 +4549,16 @@
    "vendor": {
     "appts": 1,
     "deals": 1,
+    "mtgs": 0,
+    "props": 0,
     "wons": 0,
     "wonamt": 0
    },
    "inhouse": {
     "appts": 0,
     "deals": 0,
+    "mtgs": 0,
+    "props": 0,
     "wons": 0,
     "wonamt": 0
    }
@@ -4141,12 +4567,16 @@
    "vendor": {
     "appts": 0,
     "deals": 0,
+    "mtgs": 0,
+    "props": 0,
     "wons": 0,
     "wonamt": 0
    },
    "inhouse": {
     "appts": 2,
     "deals": 2,
+    "mtgs": 0,
+    "props": 0,
     "wons": 0,
     "wonamt": 0
    }
@@ -4155,12 +4585,16 @@
    "vendor": {
     "appts": 3,
     "deals": 3,
+    "mtgs": 0,
+    "props": 0,
     "wons": 0,
     "wonamt": 0
    },
    "inhouse": {
     "appts": 0,
     "deals": 0,
+    "mtgs": 2,
+    "props": 2,
     "wons": 0,
     "wonamt": 0
    }
@@ -4169,12 +4603,34 @@
    "vendor": {
     "appts": 0,
     "deals": 0,
+    "mtgs": 0,
+    "props": 0,
     "wons": 0,
     "wonamt": 0
    },
    "inhouse": {
     "appts": 1,
     "deals": 1,
+    "mtgs": 1,
+    "props": 1,
+    "wons": 0,
+    "wonamt": 0
+   }
+  },
+  "2026-09-03": {
+   "vendor": {
+    "appts": 0,
+    "deals": 0,
+    "mtgs": 1,
+    "props": 1,
+    "wons": 0,
+    "wonamt": 0
+   },
+   "inhouse": {
+    "appts": 0,
+    "deals": 0,
+    "mtgs": 0,
+    "props": 0,
     "wons": 0,
     "wonamt": 0
    }
