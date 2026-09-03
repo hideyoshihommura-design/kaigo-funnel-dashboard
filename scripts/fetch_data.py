@@ -433,6 +433,9 @@ def fetch_ad_daily(token, week_starts, campaign_cfg):
     かった期間が「実績0の期間」として data.json に入る）。
 
     返すのは実数だけ。CPL・CPM・CTR・CVR は build_dashboard.py の担当。
+
+    最後に返す ad_day は 日 × 媒体/キャンペーン の生データ。集計も除外もして
+    いないので、媒体別・キャンペーン別・その掛け合わせのどれでも作れる。
     """
     tabs = sheet_tabs(token, SHEET_AD_DAILY)
     if not tabs:
@@ -465,6 +468,13 @@ def fetch_ad_daily(token, week_starts, campaign_cfg):
     cost_by_day, cv_by_day = {}, {}
     wcost_by_day, wcv_by_day = {}, {}
     adperf, adperf_day = {}, {}
+    # 日 × 媒体 × キャンペーンの生データ。ここだけは集計せずに一番細かい粒度で
+    # 残す。媒体別・キャンペーン別・その掛け合わせ・全体のどれでも後から計算
+    # できるようにするため。
+    # 媒体を混ぜた率は実態を表さない。LINEはクリック単価がMetaの70分の1で、
+    # 2026-04のクリックの約94%を占めていた。CVはMetaにしか入っていない。
+    # 足した数字は大きい方の媒体の数字になるので、媒体で割れるようにしておく。
+    ad_day = {}
     unknown_campaigns, unknown_pairs = {}, {}
     seen = set()
     dup_rows = 0
@@ -500,6 +510,15 @@ def fetch_ad_daily(token, week_starts, campaign_cfg):
         # web費用と全体CVは媒体・区分に関係なく全行を合計する。
         cost_by_day[d] = cost_by_day.get(d, 0.0) + spend
         cv_by_day[d] = cv_by_day.get(d, 0.0) + cvv
+
+        # 生データ。この時点では何も除外しない（キャンペーン定義に無いものも
+        # 残す。除外すると媒体別の費用合計が総web費用と合わなくなる）。
+        slot = ad_day.setdefault(d.isoformat(), {}).setdefault(
+            pair, {"spend": 0.0, "imp": 0.0, "clicks": 0.0, "cv": 0.0})
+        slot["spend"] += spend
+        slot["imp"] += imp
+        slot["clicks"] += clicks
+        slot["cv"] += cvv
         first_day = d if first_day is None else min(first_day, d)
         last_day = d if last_day is None else max(last_day, d)
 
@@ -575,7 +594,7 @@ def fetch_ad_daily(token, week_starts, campaign_cfg):
             cv[w] = int(round(v))
 
     return (cost, cost_by_day, cv_by_day, cv,
-            wcost_by_day, wcv_by_day, adperf, adperf_day)
+            wcost_by_day, wcv_by_day, adperf, adperf_day, ad_day)
 
 
 def fetch_expo_costs(token):
@@ -863,8 +882,8 @@ def build(token, sheets_token, channel_map, webinar_cfg, campaign_cfg,
 
     # --- web 費用
     (web_cost, web_cost_day, web_cv_day, web_cv,
-     wb_cost_day, wb_cv_day, adperf,
-     adperf_day) = fetch_ad_daily(sheets_token, week_starts, campaign_cfg)
+     wb_cost_day, wb_cv_day, adperf, adperf_day,
+     ad_day) = fetch_ad_daily(sheets_token, week_starts, campaign_cfg)
     for w in week_starts:
         direct[w]["web"]["cost"] = web_cost[w]
         # CPLの分母は広告側のCV（申込延べ数）に揃える。HubSpotのリード数は
@@ -1057,6 +1076,11 @@ def build(token, sheets_token, channel_map, webinar_cfg, campaign_cfg,
                    for k, v in sorted(adperf.items())},
         "adperf_day": {k: {kk: int(round(vv)) for kk, vv in v.items()}
                        for k, v in sorted(adperf_day.items())},
+        # 日 × 媒体/キャンペーン の生データ。表示側はまだ使っていない。
+        # 媒体別・キャンペーン別のどちらでも切れるように持っておくもの。
+        "ad_day": {d: {p: {kk: int(round(vv)) for kk, vv in m.items()}
+                       for p, m in sorted(pairs.items())}
+                   for d, pairs in sorted(ad_day.items())},
         "direct_day": {k: direct_day[k] for k in sorted(direct_day)},
         "agency_day": {k: agency_day[k] for k in sorted(agency_day)},
         "call_conversion": {w.isoformat(): v for w, v in sorted(conv.items())},
