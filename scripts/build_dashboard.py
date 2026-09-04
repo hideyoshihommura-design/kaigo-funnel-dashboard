@@ -964,6 +964,31 @@ font-size:12px;font-weight:700;line-height:1.35;white-space:nowrap;}
 .actsum .card .tag .taglabel{display:block;color:#fff;font-size:10.5px;
 font-weight:400;opacity:.9;}
 
+/* 月次ファネル。月を横に並べる唯一の表なので、専用の指定を持つ。
+   指標名と累計の2列を左に固定しないと、右にスクロールした瞬間に
+   どの行を見ているのか分からなくなる（横並びの表で一番効く）。 */
+h2 .h2sub{font-size:11.5px;color:var(--muted);font-weight:400;margin-left:10px;}
+.fnl{overflow-x:auto;border:1px solid var(--line);border-radius:8px;
+background:var(--bg);margin:0 0 16px;}
+.fnl table{border-collapse:separate;border-spacing:0;white-space:nowrap;
+font-size:13px;font-variant-numeric:tabular-nums;}
+.fnl th,.fnl td{padding:7px 11px;text-align:right;
+border-bottom:1px solid var(--line);}
+.fnl thead th{background:var(--head);font-size:11.5px;color:var(--muted);
+font-weight:700;position:sticky;top:0;z-index:1;}
+.fnl .fk{text-align:left;position:sticky;left:0;background:var(--bg);z-index:2;
+min-width:118px;border-right:1px solid var(--line);}
+.fnl thead .fk{background:var(--head);z-index:3;}
+.fnl .fc{position:sticky;left:118px;background:#fbfcfd;z-index:2;
+border-right:2px solid var(--line);font-weight:700;min-width:96px;}
+.fnl thead .fc{background:var(--head);z-index:3;}
+/* 前月比は本体の数字より弱く。数字が2段に見えて主従が逆にならないように。 */
+.fnl tr.dlt td{font-size:11px;color:var(--muted);padding-top:0;padding-bottom:6px;}
+.fnl tr.dlt td.fk{font-size:10.5px;color:#9aa7b4;}
+.fnl tr.main.hl td{font-weight:700;}
+/* 段階間の率は一段下げて、上下の行の「あいだ」の数字だと分かるようにする。 */
+.fnl tr.main.sub td.fk{padding-left:24px;color:var(--muted);font-weight:400;}
+
 /* 週次に丸めた行は、日次の行と地色で区別する。
    同じ見た目だと「8/25」と「7/13–7/19」が同列に見えて、
    棒の高さや数値が1日分か1週間分か取り違える。 */
@@ -1364,6 +1389,16 @@ function apply(from,to){
   setK('ap_cv',jInt(ad.cv));
   setK('ap_cvr',jPct(div(ad.cv,ad.clicks),2));
   setK('ap_cpl',jYen(div(ad.spend,ad.cv)));
+
+  /* ---- 月次ファネルは月を「列」に並べているので、行ではなく列を隠す ----
+     他の表は showRows が行を隠すが、この表だけ向きが違う。
+     月はまるごと入れる（指定日を含む月は残す）。週次表と同じ考え方で、
+     月の途中で切ると分母と分子が別の集団になるため。 */
+  var mcell=document.querySelectorAll('[data-m]'),mi;
+  for(mi=0;mi<mcell.length;mi++){
+    var mk=mcell[mi].getAttribute('data-m');
+    mcell[mi].style.display=((mk+'-31')>=from && (mk+'-01')<=to)?'':'none';
+  }
 
   showRows(from,to);
   drawAll(from,to);
@@ -1947,6 +1982,94 @@ def render(data):
         fs_section = ""
         daily_js = ""
 
+    # ---- 月次ファネル（直契約・コホート軸） ----
+    # 段階と段階の「あいだ」を見るための唯一の常設ブロック。折りたたまない。
+    # 全部 direct_day から引く。あそこはコンタクトの実効獲得日を軸にしていて、
+    # リードも予約も実施も提案も成約も同じ集団に載っている。だから段階間の率が
+    # 成立する。calls / fs / is_attr はイベント軸なので**ここに混ぜてはいけない**。
+    FU_F = ("leads", "appts", "mtgs", "props", "won", "won_amount")
+    fu = {}
+    for day, cells in (data.get("direct_day") or {}).items():
+        s = fu.setdefault(day[:7], {f: 0 for f in FU_F})
+        for ch in CHANNEL_KEYS:
+            cell = cells.get(ch) or {}
+            for f in FU_F:
+                s[f] += cell.get(f, 0)
+    fu_keys = sorted(fu)
+    if fu_keys:
+        # 実績が1件も無い月も列を出す。消すと「12月の次が2月」になり、
+        # 時間の流れが読めなくなる。
+        y, mth = int(fu_keys[0][:4]), int(fu_keys[0][5:7])
+        ey, em = int(fu_keys[-1][:4]), int(fu_keys[-1][5:7])
+        fu_keys = []
+        while (y, mth) <= (ey, em):
+            k = f"{y:04d}-{mth:02d}"
+            fu_keys.append(k)
+            fu.setdefault(k, {f: 0 for f in FU_F})
+            mth += 1
+            if mth > 12:
+                y, mth = y + 1, 1
+    fu_tot = {f: sum(fu[k][f] for k in fu_keys) for f in FU_F}
+
+    def d_pct(cur, prev):
+        """件数・金額の前月比。前月が0なら出さない（+∞になるため）."""
+        if not prev or cur is None:
+            return ""
+        r = (cur - prev) / prev
+        if abs(r) < 0.005:
+            return "±0%"
+        return ("+" if r > 0 else "") + f"{round(r * 100)}%"
+
+    def d_pt(cur, prev):
+        """率の前月比はポイント差。%の%は読み分けられない."""
+        if cur is None or prev is None:
+            return ""
+        r = (cur - prev) * 100
+        if abs(r) < 0.05:
+            return "±0pt"
+        return ("+" if r > 0 else "") + f"{r:.1f}pt"
+
+    if fu_keys:
+        # (表示名, 値の取り方, 整形, 前月比の出し方, 強調, 段階間の率か)
+        fu_rows = [
+            ("リード数", lambda s: s["leads"], f_int, d_pct, True, False),
+            ("面談予約", lambda s: s["appts"], f_int, d_pct, True, False),
+            ("予約率", lambda s: safe_div(s["appts"], s["leads"]), f_pct, d_pt,
+             False, True),
+            ("面談実施", lambda s: s["mtgs"], f_int, d_pct, False, False),
+            ("提案", lambda s: s["props"], f_int, d_pct, False, False),
+            ("成約", lambda s: s["won"], f_int, None, True, False),
+            ("成約金額", lambda s: s["won_amount"], f_yen, None, True, False),
+        ]
+        head = ('<tr><th class="fk">指標</th><th class="fc">累計</th>'
+                + "".join(f'<th data-m="{k}">{k[2:4]}/{int(k[5:7])}</th>'
+                          for k in fu_keys) + "</tr>")
+        body = []
+        for name, get, fmt, delta, hl, sub in fu_rows:
+            vals = [get(fu[k]) for k in fu_keys]
+            cls = "main" + (" hl" if hl else "") + (" sub" if sub else "")
+            body.append(
+                f'<tr class="{cls}"><td class="fk">{name}</td>'
+                f'<td class="fc">{fmt(get(fu_tot))}</td>'
+                + "".join(f'<td data-m="{k}">{fmt(v)}</td>'
+                          for k, v in zip(fu_keys, vals)) + "</tr>")
+            if delta:
+                ds = [""] + [delta(vals[i], vals[i - 1])
+                             for i in range(1, len(vals))]
+                body.append(
+                    '<tr class="dlt"><td class="fk">↳ 前月比</td><td class="fc"></td>'
+                    + "".join(f'<td data-m="{k}">{s}</td>'
+                              for k, s in zip(fu_keys, ds)) + "</tr>")
+        funnel_section = f"""
+<h2>月次ファネル<span class="h2sub">直契約・獲得月ベース</span></h2>
+<div class="fnl"><table>
+<thead>{head}</thead>
+<tbody>{"".join(body)}</tbody>
+</table></div>
+"""
+    else:
+        funnel_section = ""
+
     # ---- 取引作成者別（直契約のみ） ----
     # FS活動量と同じ母集団を、取引を作った人で2つに割ったもの。だから
     # 業者作成＋社内作成＝FS活動量の同じ指標になる。
@@ -2258,6 +2381,7 @@ showAge();
     <div class="kpis">{agency_kpis}</div></div>
 </div>
 
+{funnel_section}
 {adperf_section}
 {webinar_section}
 {daily_section}

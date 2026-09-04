@@ -686,8 +686,8 @@ def build(token, sheets_token, channel_map, webinar_cfg, campaign_cfg,
     # 混ぜると「7月に獲得したリード798件」と「7月に入った予約10件」を
     # 割ることになり、別の集団の割り算になる。
     direct = {
-        w: {k: {"leads": 0, "cost": 0, "appts": 0, "deals": 0,
-                "won": 0, "won_amount": 0}
+        w: {k: {"leads": 0, "cost": 0, "appts": 0, "mtgs": 0, "props": 0,
+                "deals": 0, "won": 0, "won_amount": 0}
             for k in ["event", "web", "line", "referral", "other"]}
         for w in week_starts
     }
@@ -704,8 +704,8 @@ def build(token, sheets_token, channel_map, webinar_cfg, campaign_cfg,
 
     def dday_direct(d):
         return direct_day.setdefault(d.isoformat(), {
-            k: {"leads": 0, "cost": 0, "appts": 0, "deals": 0,
-                "won": 0, "won_amount": 0}
+            k: {"leads": 0, "cost": 0, "appts": 0, "mtgs": 0, "props": 0,
+                "deals": 0, "won": 0, "won_amount": 0}
             for k in CHANNELS})
 
     def dday_agency(d):
@@ -868,6 +868,17 @@ def build(token, sheets_token, channel_map, webinar_cfg, campaign_cfg,
         if appt_day:
             target["appts"] += 1
             td["appts"] += 1
+        # 面談実施と提案もコホート軸に載せる。ファネルで
+        # リード→予約→実施→提案→成約 を1本に並べたとき、途中で軸が
+        # 変わると段階間の率が別集団の割り算になるため。
+        # 代理店は自社FSを通らないので mtgs / props を持たない。
+        if ch != "agency":
+            if mtg_day:
+                target["mtgs"] += 1
+                td["mtgs"] += 1
+            if prop_day:
+                target["props"] += 1
+                td["props"] += 1
     if orphan_deals:
         warn(
             f"コンタクト未紐付け、または route 未設定/除外の取引 {orphan_deals} 件を"
