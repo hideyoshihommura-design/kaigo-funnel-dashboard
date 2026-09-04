@@ -766,17 +766,35 @@ def build(token, sheets_token, channel_map, webinar_cfg, campaign_cfg,
             info = cinfo.get(str(a.get("id")))
             if info:
                 break
-        # 面談予約数は取引側の「相談申込ステージ入り日」で数える。
-        # コンタクトが紐づいていなくても成立するので先に処理する。
-        appt_day = parse_hs_datetime(p.get(f"hs_v2_date_entered_{STAGE_APPT}"))
-        if appt_day and appt_day >= CALLS_START:
-            daily_appts[appt_day] = daily_appts.get(appt_day, 0) + 1
-        # ここから下は上部の週次表と同じ母集団に揃える必要があるので、
-        # コンタクトが紐づき route が有効で期間内のものだけを対象にする。
         # 面談実施は「相談済み」か「提案・見積もり」に入った最初の日で数える。
         # 相談済みを飛ばして提案・見積もりへ動かされる取引があるため、
         # 相談済みだけを見ると面談実施が実態より少なく出る。早い方を採り、
         # 1つの取引を2回数えないようにする。
+        # 面談予約日が無いときの代わりにも使うので、ここで先に出しておく。
+        mtg_days = [
+            d for d in (
+                parse_hs_datetime(p.get("hs_v2_date_entered_" + st))
+                for st in STAGE_MEETING_DONE
+            ) if d
+        ]
+        mtg_day = min(mtg_days) if mtg_days else None
+        # 面談予約数は取引側の「相談申込ステージ入り日」で数える。
+        # コンタクトが紐づいていなくても成立するので先に処理する。
+        appt_day = parse_hs_datetime(p.get(f"hs_v2_date_entered_{STAGE_APPT}"))
+        # 相談申込を通っていない取引が14件ある。全部2025-09〜2025-12で、
+        # 当時は相談申込を飛ばして「相談済み」から取引を作っていた。
+        # ステージ自体は2025-10-31から存在するので、無かったのではなく運用が
+        # 不統一だっただけ。面談まで進んでいるのに面談予約0件として扱われるため、
+        # 相談申込の日が無い取引は面談実施日を面談予約日として使う。
+        # 面談したなら予約はあったはずで、記録が残っていないだけである。
+        # この2つが同日になるが、ファネルに「予約→実施率」の行は無いので
+        # 画面に不自然な100%は出ない。
+        if not appt_day:
+            appt_day = mtg_day
+        if appt_day and appt_day >= CALLS_START:
+            daily_appts[appt_day] = daily_appts.get(appt_day, 0) + 1
+        # ここから下は上部の週次表と同じ母集団に揃える必要があるので、
+        # コンタクトが紐づき route が有効で期間内のものだけを対象にする。
         if not info:
             orphan_deals += 1
             continue
@@ -795,13 +813,6 @@ def build(token, sheets_token, channel_map, webinar_cfg, campaign_cfg,
         # 揃えるため、ここで数える。日付はステージに入った日で、
         # 週次表の「獲得週に載せる」とは軸が違う（FSがいつ動いたかを見るため）。
         if ch != "agency":
-            mtg_days = [
-                d for d in (
-                    parse_hs_datetime(p.get("hs_v2_date_entered_" + st))
-                    for st in STAGE_MEETING_DONE
-                ) if d
-            ]
-            mtg_day = min(mtg_days) if mtg_days else None
             if mtg_day:
                 daily_mtgs[mtg_day] = daily_mtgs.get(mtg_day, 0) + 1
             prop_day = parse_hs_datetime(p.get("hs_v2_date_entered_qualifiedtobuy"))
