@@ -2825,15 +2825,15 @@
     "won_amount": 0
    },
    "web": {
-    "leads": 10,
-    "cost": 45801,
+    "leads": 11,
+    "cost": 50831,
     "appts": 0,
     "mtgs": 0,
     "props": 0,
     "deals": 0,
     "won": 0,
     "won_amount": 0,
-    "cv": 12
+    "cv": 16
    },
    "line": {
     "leads": 0,
@@ -4033,7 +4033,7 @@
    "appts": 0,
    "mtgs": 0,
    "called": 1,
-   "leads": 2
+   "leads": 3
   }
  },
  "fs": {
@@ -5530,6 +5530,8 @@
    "cv_days": 9,
    "cv_est_days": 0,
    "cv_manual": false,
+   "imp": 444612,
+   "clicks": 17702,
    "leads": 48,
    "deals": 0,
    "won": 0,
@@ -5548,6 +5550,8 @@
    "cv_days": 9,
    "cv_est_days": 0,
    "cv_manual": false,
+   "imp": 625150,
+   "clicks": 21221,
    "leads": 40,
    "deals": 1,
    "won": 0,
@@ -5566,6 +5570,8 @@
    "cv_days": 15,
    "cv_est_days": 0,
    "cv_manual": false,
+   "imp": 71954,
+   "clicks": 1468,
    "leads": 120,
    "deals": 6,
    "won": 0,
@@ -5584,6 +5590,8 @@
    "cv_days": 10,
    "cv_est_days": 0,
    "cv_manual": false,
+   "imp": 47957,
+   "clicks": 716,
    "leads": 38,
    "deals": 0,
    "won": 0,
@@ -5602,6 +5610,8 @@
    "cv_days": 13,
    "cv_est_days": 0,
    "cv_manual": false,
+   "imp": 75760,
+   "clicks": 1148,
    "leads": 67,
    "deals": 3,
    "won": 0,
@@ -5620,6 +5630,8 @@
    "cv_days": 7,
    "cv_est_days": 0,
    "cv_manual": false,
+   "imp": 41101,
+   "clicks": 967,
    "leads": 64,
    "deals": 0,
    "won": 0,
@@ -5638,6 +5650,8 @@
    "cv_days": 14,
    "cv_est_days": 0,
    "cv_manual": false,
+   "imp": 88490,
+   "clicks": 1453,
    "leads": 74,
    "deals": 3,
    "won": 0,
@@ -5656,6 +5670,8 @@
    "cv_days": 14,
    "cv_est_days": 0,
    "cv_manual": false,
+   "imp": 69327,
+   "clicks": 1696,
    "leads": 79,
    "deals": 1,
    "won": 0,
@@ -5674,6 +5690,8 @@
    "cv_days": 6,
    "cv_est_days": 0,
    "cv_manual": false,
+   "imp": 29570,
+   "clicks": 511,
    "leads": 26,
    "deals": 4,
    "won": 0,
@@ -5692,8 +5710,30 @@
    "cv_days": 8,
    "cv_est_days": 0,
    "cv_manual": false,
+   "imp": 59890,
+   "clicks": 1325,
    "leads": 36,
    "deals": 1,
+   "won": 0,
+   "won_amount": 0
+  },
+  {
+   "name": "第11回 音声→各項目へ",
+   "start": "2026-08-27",
+   "end": "2026-09-04",
+   "days": 9,
+   "cost": 76157,
+   "cost_days": 9,
+   "cost_est_days": 0,
+   "cost_manual": false,
+   "cv": 28,
+   "cv_days": 9,
+   "cv_est_days": 0,
+   "cv_manual": false,
+   "imp": 27776,
+   "clicks": 543,
+   "leads": 14,
+   "deals": 0,
    "won": 0,
    "won_amount": 0
   }
@@ -5808,10 +5848,10 @@
    "cv": 30
   },
   "2026-08-31": {
-   "spend": 45801,
-   "imp": 16850,
-   "clicks": 310,
-   "cv": 12
+   "spend": 50831,
+   "imp": 18982,
+   "clicks": 356,
+   "cv": 16
   }
  },
  "adperf_day": {
@@ -6521,6 +6561,12 @@
    "spend": 13149,
    "imp": 5253,
    "clicks": 82,
+   "cv": 4
+  },
+  "2026-09-04": {
+   "spend": 5030,
+   "imp": 2132,
+   "clicks": 46,
    "cv": 4
   }
  },
@@ -8736,6 +8782,14 @@
     "spend": 13149,
     "imp": 5253,
     "clicks": 82,
+    "cv": 4
+   }
+  },
+  "2026-09-04": {
+   "Meta/ウェビナー": {
+    "spend": 5030,
+    "imp": 2132,
+    "clicks": 46,
     "cv": 4
    }
   }
@@ -17743,14 +17797,15 @@
     "won_amount": 0
    },
    "web": {
-    "leads": 2,
-    "cost": 0,
+    "leads": 3,
+    "cost": 5030,
     "appts": 0,
     "mtgs": 0,
     "props": 0,
     "deals": 0,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": 4
    },
    "line": {
     "leads": 0,
