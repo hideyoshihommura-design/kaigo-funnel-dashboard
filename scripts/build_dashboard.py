@@ -2231,7 +2231,22 @@ def render(data):
     # 単価が上がったのか（CPM）、クリックされなくなったのか（CTR）、
     # 申し込まれなくなったのか（CVR）を分けて見られるようにしておく。
     # 率は表示用に丸めた値からではなく実数から計算する。
-    ap = data.get("adperf") or {}
+    # 全キャンペーン合計で見る。以前は adperf（ウェビナーキャンペーンだけ）を
+    # 使っていて、全web費用 ¥293万 のうち ¥153万 しか見せていなかった。
+    # ad_day は 日 × 媒体/キャンペーン の生データなので、そこから足し直す。
+    ADF = ("spend", "imp", "clicks", "cv")
+    ap_day = {}
+    for ap_d, ap_pairs in (data.get("ad_day") or {}).items():
+        ap_slot = ap_day.setdefault(ap_d, {f: 0 for f in ADF})
+        for ap_v in ap_pairs.values():
+            for ap_f in ADF:
+                ap_slot[ap_f] += ap_v.get(ap_f, 0)
+    ap = {}
+    for ap_d, ap_v in ap_day.items():
+        ap_wk = monday_of(dt.date.fromisoformat(ap_d)).isoformat()
+        ap_slot = ap.setdefault(ap_wk, {f: 0 for f in ADF})
+        for ap_f in ADF:
+            ap_slot[ap_f] += ap_v[ap_f]
     if ap:
         aprows = []
         for wk, v in sorted(ap.items()):
@@ -2267,8 +2282,12 @@ def render(data):
             kpi("CPL", f_yen(safe_div(ap_tot["spend"], ap_tot["cv"])), "ap_cpl"),
         ])
         adperf_section = f"""
+<div class="actsum">
+  <div class="card cum"><div class="tag">web広告<span class="taglabel">期間内・全キャンペーン</span></div>
+    <div class="kpis">{ap_items}</div></div>
+</div>
 <div class="tabgrid">
-  <details class="fold" id="f-adperf"><summary><span class="tri">▶</span>web広告の週次指標<span class="cnt">{len(ap)}週分・ウェビナーのみ</span></summary>
+  <details class="fold" id="f-adperf"><summary><span class="tri">▶</span>web広告の週次指標<span class="cnt">{len(ap)}週分</span></summary>
     <div class="tablewrap"><table>
     <thead><tr><th>週</th><th>消費金額</th><th>IMP</th><th>クリック</th><th>CTR</th>
     <th>CPC</th><th>CPM</th><th>CV</th><th>CVR</th><th>CPL</th>
@@ -2443,10 +2462,12 @@ def render(data):
         "isattr": {k: [(v.get(b) or {}).get(f, 0)
                        for b in ATTR_KEYS for f in ATTR_FIELDS]
                    for k, v in (data.get("is_attr") or {}).items()},
+        # web広告カードの再計算用。全キャンペーン合計（ap / ap_day）を渡す。
+        # data.json の adperf / adperf_day はウェビナーだけなので使わない。
         "adperf": {k: [v["spend"], v["imp"], v["clicks"], v["cv"]]
-                   for k, v in (data.get("adperf") or {}).items()},
+                   for k, v in sorted(ap.items())},
         "adpd": {k: [v["spend"], v["imp"], v["clicks"], v["cv"]]
-                 for k, v in (data.get("adperf_day") or {}).items()},
+                 for k, v in sorted(ap_day.items())},
         "conv": {k: [v.get("called", 0), v.get("appointed", 0)]
                  for k, v in (data.get("call_conversion") or {}).items()},
         "wklabel": {w: week_label(w) for w in weeks},
