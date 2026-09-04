@@ -759,6 +759,112 @@ def f_man_v(m):
     return f"{round(m):,}" if abs(m) >= 1000 else f"{m:.1f}"
 
 
+# ---- 月を横に並べる表 ----------------------------------------------------
+# 前月「比」ではなく前月「差」で出す。比だと母数が小さい月に +19200%
+# （3月1件→4月193件）のような値が出るうえ、母数0の月は計算できず空欄になる。
+# 空欄の理由が「計算できない」「意味が無いので出さない」「そもそも出さない
+# 設計」の3種類に分かれ、見た目で区別できなくなる。差ならどの月でも出せて、
+# 空欄は一番左の月だけになる。
+
+
+def d_num(cur, prev):
+    """件数の前月差."""
+    if cur is None or prev is None:
+        return ""
+    r = cur - prev
+    return "±0" if r == 0 else ("+" if r > 0 else "") + f"{r:,}"
+
+
+def d_man(cur, prev):
+    """金額の前月差。万単位."""
+    if cur is None or prev is None:
+        return ""
+    r = cur - prev
+    if r == 0:
+        return "±0"
+    return ("+¥" if r > 0 else "-¥") + f_man_v(abs(r) / 10000) + "万"
+
+
+def d_pt(cur, prev):
+    """率の前月差はポイント。%の%は読み分けられない."""
+    if cur is None or prev is None:
+        return ""
+    r = (cur - prev) * 100
+    if abs(r) < 0.05:
+        return "±0pt"
+    return ("+" if r > 0 else "") + f"{r:.1f}pt"
+
+
+def month_keys(day_keys):
+    """日付キー（YYYY-MM-DD）から連続した月キーの列を作る.
+
+    実績が1件も無い月も返す。消すと「12月の次が2月」になり、
+    時間の流れが読めなくなる。
+    """
+    months = sorted({k[:7] for k in day_keys})
+    if not months:
+        return []
+    out = []
+    y, m = int(months[0][:4]), int(months[0][5:7])
+    ey, em = int(months[-1][:4]), int(months[-1][5:7])
+    while (y, m) <= (ey, em):
+        out.append(f"{y:04d}-{m:02d}")
+        m += 1
+        if m > 12:
+            y, m = y + 1, 1
+    return out
+
+
+def month_table(keys, buckets, rows, totals):
+    """月を横に並べた表のHTML.
+
+    rows は (表示名, 値の取り方, 整形, 前月差の出し方|None, 強調, 内訳か, 区切り線)。
+    列幅は colgroup で固定する。auto のままだと ¥2,101,000 の月だけ広くなり、
+    月ごとに幅が変わって目が列を追えない。幅がそろえば数字は右揃え＋等幅なので
+    桁が縦に並び、縦罫線が不要になる。
+    """
+    if not keys:
+        return ""
+    last = keys[-1]
+    colg = (f'<colgroup><col style="width:{FU_W_K}px">'
+            f'<col style="width:{FU_W_C}px">'
+            + f'<col style="width:{FU_W_M}px">' * len(keys) + "</colgroup>")
+    width = FU_W_K + FU_W_C + FU_W_M * len(keys)
+    head = ('<tr><th class="fk">指標</th><th class="fc">累計</th>'
+            + "".join(f'<th data-m="{mk}"'
+                      + (' class="now"' if mk == last else "")
+                      + f">{mk[2:4]}/{int(mk[5:7])}</th>" for mk in keys)
+            + "</tr>")
+    body = []
+    for name, get, fmt, delta, hl, sub, sep in rows:
+        vals = [get(buckets.get(mk) or {}) for mk in keys]
+        ds = [""] + [delta(vals[i], vals[i - 1]) if delta else ""
+                     for i in range(1, len(vals))]
+        cls = " ".join(c for c in (
+            "main", "hl" if hl else "", "sub" if sub else "",
+            "sep" if sep else "") if c)
+        cells = []
+        for mk, val, dtxt in zip(keys, vals, ds):
+            # 値と前月差を1つのセルに上下2段で入れる。行を分けると指標7つで
+            # 14行になり、半分が補助情報の行になってしまう。
+            # 0を薄くしてはいけない。「成約0が続いている」はこの表で一番
+            # 重要な事実で、薄くすると空欄と区別がつかず消えてしまう。
+            cells.append(
+                f'<td data-m="{mk}"'
+                + (' class="now"' if mk == last else "")
+                + f"><b>{fmt(val)}</b>"
+                + (f"<i>{dtxt or '&nbsp;'}</i>" if delta else "")
+                + "</td>")
+        body.append(
+            f'<tr class="{cls}"><td class="fk">{name}</td>'
+            f'<td class="fc"><b>{fmt(get(totals))}</b>'
+            + ("<i>&nbsp;</i>" if delta else "") + "</td>"
+            + "".join(cells) + "</tr>")
+    return (f'<div class="fnl"><table style="width:{width}px">{colg}'
+            f"<thead>{head}</thead><tbody>{''.join(body)}</tbody>"
+            "</table></div>")
+
+
 def f_man(v):
     """月次ファネルの金額。列幅を決めていたのが金額で、¥2,101,000 のままだと
     1列が100px近くなり13ヶ月が画面に収まらない。正確な額はヘッダーにある。"""
@@ -2024,132 +2130,44 @@ def render(data):
     # ---- 月次ファネル（直契約・コホート軸） ----
     # 段階と段階の「あいだ」を見るための唯一の常設ブロック。折りたたまない。
     # 全部 direct_day から引く。あそこはコンタクトの実効獲得日を軸にしていて、
-    # リードも予約も実施も提案も成約も同じ集団に載っている。だから段階間の率が
+    # リードも予約も実施も成約も同じ集団に載っている。だから段階間の率が
     # 成立する。calls / fs / is_attr はイベント軸なので**ここに混ぜてはいけない**。
-    # 変数名はすべて fu_ を付ける。render() の中で cell / body のような
-    # 一般的な名前を再代入すると、モジュール側の同名の関数や、この関数の
-    # 別の場所で使っている変数を潰す（実際に cell() を潰して落ちた）。
-    FU_F = ("leads", "appts", "mtgs", "props", "won", "won_amount")
-    fu = {}
-    for fu_day, fu_cells in (data.get("direct_day") or {}).items():
-        fu_slot = fu.setdefault(fu_day[:7], {x: 0 for x in FU_F})
+    FU_F = ('leads', 'appts', 'mtgs', 'props', 'won', 'won_amount')
+    fu_day_src = data.get('direct_day') or {}
+    fu_keys = month_keys(fu_day_src)
+    fu = {mk: {x: 0 for x in FU_F} for mk in fu_keys}
+    for fu_day, fu_cells in fu_day_src.items():
+        fu_slot = fu[fu_day[:7]]
         for fu_ch in CHANNEL_KEYS:
             fu_cell = fu_cells.get(fu_ch) or {}
             for fu_f in FU_F:
                 fu_slot[fu_f] += fu_cell.get(fu_f, 0)
-    fu_keys = sorted(fu)
-    if fu_keys:
-        # 実績が1件も無い月も列を出す。消すと「12月の次が2月」になり、
-        # 時間の流れが読めなくなる。
-        fu_y, fu_m = int(fu_keys[0][:4]), int(fu_keys[0][5:7])
-        fu_ey, fu_em = int(fu_keys[-1][:4]), int(fu_keys[-1][5:7])
-        fu_keys = []
-        while (fu_y, fu_m) <= (fu_ey, fu_em):
-            fu_mk = f"{fu_y:04d}-{fu_m:02d}"
-            fu_keys.append(fu_mk)
-            fu.setdefault(fu_mk, {x: 0 for x in FU_F})
-            fu_m += 1
-            if fu_m > 12:
-                fu_y, fu_m = fu_y + 1, 1
     fu_tot = {x: sum(fu[mk][x] for mk in fu_keys) for x in FU_F}
 
-    # 前月「比」ではなく前月「差」で出す。比だと母数が小さい月に +19200%
-    # （3月1件→4月193件）のような値が出るうえ、母数0の月は計算できず空欄に
-    # なる。空欄の理由が「計算できない」「意味が無いので出さない」「そもそも
-    # 出さない設計」の3種類に分かれ、見た目で区別できなくなる。
-    # 差ならどの月でも必ず出せる。空欄は一番左の月だけになる。
-    def fu_dnum(cur, prev):
-        """件数の前月差."""
-        if cur is None or prev is None:
-            return ""
-        r = cur - prev
-        return "±0" if r == 0 else ("+" if r > 0 else "") + f"{r:,}"
-
-    def fu_dman(cur, prev):
-        """金額の前月差。万単位."""
-        if cur is None or prev is None:
-            return ""
-        r = cur - prev
-        if r == 0:
-            return "±0"
-        return ("+¥" if r > 0 else "-¥") + f_man_v(abs(r) / 10000) + "万"
-
-    def fu_dpt(cur, prev):
-        """率の前月差はポイント。%の%は読み分けられない."""
-        if cur is None or prev is None:
-            return ""
-        r = (cur - prev) * 100
-        if abs(r) < 0.05:
-            return "±0pt"
-        return ("+" if r > 0 else "") + f"{r:.1f}pt"
-
-    if fu_keys:
-        fu_last = fu_keys[-1]
-        # (表示名, 値の取り方, 整形, 前月差の出し方, 強調, 段階間の率か, 区切り線)
-        # 段階間の率は「リード→予約」のように両端を名前にする。
-        # 「成約率」だとヘッダーの成約率（成約÷商談 = 9.1%）と同じ名前で
-        # 違う数字（成約÷面談実施 = 10.9%）が並び、どちらかが間違っていると
-        # 読まれる。分母を名前に含めれば取り違えない。
-        # 提案の行は外した。面談実施は「相談済みか提案の早い方」なので定義が
-        # 重なり、13ヶ月のうち9ヶ月が面談実施と同値だった。通過率も85.5%で
-        # ここでは誰も止まっていない。提案件数はFS活動量に残してある。
-        fu_rows = [
-            ("リード数", lambda v: v["leads"], f_int, fu_dnum, True, False, False),
-            ("面談予約", lambda v: v["appts"], f_int, fu_dnum, True, False, True),
-            ("リード→予約", lambda v: safe_div(v["appts"], v["leads"]), f_pct,
-             fu_dpt, False, True, False),
-            ("面談実施", lambda v: v["mtgs"], f_int, fu_dnum, False, False, True),
-            ("成約", lambda v: v["won"], f_int, fu_dnum, True, False, True),
-            ("実施→成約", lambda v: safe_div(v["won"], v["mtgs"]), f_pct,
-             fu_dpt, False, True, False),
-            ("成約金額", lambda v: v["won_amount"], f_man, fu_dman, True, False,
-             False),
-        ]
-        # 列幅は中身ではなくレイアウトで決める。auto のままだと ¥2,101,000 の
-        # 月だけ広くなり、月ごとに幅が変わって目が列を追えない。
-        fu_colg = (f'<colgroup><col style="width:{FU_W_K}px">'
-                   f'<col style="width:{FU_W_C}px">'
-                   + f'<col style="width:{FU_W_M}px">' * len(fu_keys)
-                   + "</colgroup>")
-        fu_tw = FU_W_K + FU_W_C + FU_W_M * len(fu_keys)
-        fu_head = ('<tr><th class="fk">指標</th><th class="fc">累計</th>'
-                   + "".join(
-                       f'<th data-m="{mk}"'
-                       + (' class="now"' if mk == fu_last else "")
-                       + f">{mk[2:4]}/{int(mk[5:7])}</th>"
-                       for mk in fu_keys) + "</tr>")
-        fu_body = []
-        for (fu_name, fu_get, fu_fmt, fu_delta, fu_hl, fu_sub,
-             fu_sep) in fu_rows:
-            fu_vals = [fu_get(fu[mk]) for mk in fu_keys]
-            fu_ds = [""] + [fu_delta(fu_vals[i], fu_vals[i - 1])
-                            for i in range(1, len(fu_vals))]
-            fu_cls = " ".join(c for c in (
-                "main", "hl" if fu_hl else "", "sub" if fu_sub else "",
-                "sep" if fu_sep else "") if c)
-            fu_cells = []
-            for mk, val, dtxt in zip(fu_keys, fu_vals, fu_ds):
-                # 値と前月差を1つのセルに上下2段で入れる。行を分けると指標7つで
-                # 14行になり、半分が補助情報の行になってしまう。
-                # 0を薄くしてはいけない。「成約0が続いている」はこの表で一番
-                # 重要な事実で、薄くすると空欄と区別がつかず消えてしまう。
-                fu_cells.append(
-                    f'<td data-m="{mk}">'
-                    f"<b>{fu_fmt(val)}</b><i>{dtxt or '&nbsp;'}</i></td>")
-            fu_body.append(
-                f'<tr class="{fu_cls}"><td class="fk">{fu_name}</td>'
-                f'<td class="fc"><b>{fu_fmt(fu_get(fu_tot))}</b>'
-                '<i>&nbsp;</i></td>' + "".join(fu_cells) + "</tr>")
-        fu_body_html = "".join(fu_body)
-        funnel_section = f"""
-<h2>月次ファネル<span class="h2sub">直契約・獲得月ベース</span></h2>
-<div class="fnl"><table style="width:{fu_tw}px">{fu_colg}
-<thead>{fu_head}</thead>
-<tbody>{fu_body_html}</tbody>
-</table></div>
-"""
-    else:
-        funnel_section = ""
+    # 段階間の率は「リード→予約」のように両端を名前にする。「成約率」だと
+    # ヘッダーの成約率（成約÷商談）と同じ名前で違う数字（成約÷面談実施）が
+    # 並び、どちらかが間違っていると読まれる。分母を名前に含めれば取り違えない。
+    # 提案の行は外した。面談実施は「相談済みか提案の早い方」なので定義が
+    # 重なり、13ヶ月のうち9ヶ月が面談実施と同値だった。通過率も85.5%で
+    # ここでは誰も止まっていない。提案件数はFS活動量に残してある。
+    fu_rows = [
+        ('リード数', lambda v: v.get('leads'), f_int, d_num, True, False, False),
+        ('面談予約', lambda v: v.get('appts'), f_int, d_num, True, False, True),
+        ('リード→予約', lambda v: safe_div(v.get('appts'), v.get('leads')),
+         f_pct, d_pt, False, True, False),
+        ('面談実施', lambda v: v.get('mtgs'), f_int, d_num, False, False, True),
+        ('成約', lambda v: v.get('won'), f_int, d_num, True, False, True),
+        ('実施→成約', lambda v: safe_div(v.get('won'), v.get('mtgs')),
+         f_pct, d_pt, False, True, False),
+        ('成約金額', lambda v: v.get('won_amount'), f_man, d_man, True, False,
+         False),
+    ]
+    fu_html = month_table(fu_keys, fu, fu_rows, fu_tot)
+    funnel_section = (
+        '\n<h2>月次ファネル'
+        '<span class="h2sub">直契約・獲得月ベース</span></h2>\n'
+        + fu_html + "\n"
+    ) if fu_html else ""
 
     # ---- 取引作成者別（直契約のみ） ----
     # FS活動量と同じ母集団を、取引を作った人で2つに割ったもの。だから
@@ -2249,13 +2267,8 @@ def render(data):
             kpi("CPL", f_yen(safe_div(ap_tot["spend"], ap_tot["cv"])), "ap_cpl"),
         ])
         adperf_section = f"""
-<h2>リード獲得</h2>
-<div class="actsum">
-  <div class="card cum"><div class="tag">web広告<span class="taglabel">期間内・ウェビナー</span></div>
-    <div class="kpis">{ap_items}</div></div>
-</div>
 <div class="tabgrid">
-  <details class="fold" id="f-adperf"><summary><span class="tri">▶</span>web広告の週次指標<span class="cnt">{len(ap)}週分・ウェビナー</span></summary>
+  <details class="fold" id="f-adperf"><summary><span class="tri">▶</span>web広告の週次指標<span class="cnt">{len(ap)}週分・ウェビナーのみ</span></summary>
     <div class="tablewrap"><table>
     <thead><tr><th>週</th><th>消費金額</th><th>IMP</th><th>クリック</th><th>CTR</th>
     <th>CPC</th><th>CPM</th><th>CV</th><th>CVR</th><th>CPL</th>
@@ -2264,6 +2277,48 @@ def render(data):
 </div>"""
     else:
         adperf_section = ""
+
+    # ---- リード獲得（直契約・チャネル別） ----
+    # ここの先頭は直契約全体でなければならない。以前は web広告のカード1枚
+    # （しかもウェビナーキャンペーンだけ）を「リード獲得」の直下に置いていて、
+    # 全web費用 ¥293万 のうち ¥153万 しか見せていなかった（48%が非表示）。
+    # 見出しが「リード獲得」なので、普通に見ればそれが全体だと読める。
+    LD_F = ("leads", "cost", "cvden")
+    ld_day = data.get("direct_day") or {}
+    ld_keys = month_keys(ld_day)
+    ld = {mk: {"cost": 0, "cvden": 0,
+               **{c: 0 for c in CHANNEL_KEYS}} for mk in ld_keys}
+    for ld_d, ld_cells in ld_day.items():
+        ld_slot = ld[ld_d[:7]]
+        for ld_ch in CHANNEL_KEYS:
+            ld_cell = ld_cells.get(ld_ch) or {}
+            ld_slot[ld_ch] += ld_cell.get("leads", 0)
+            ld_slot["cost"] += ld_cell.get("cost", 0)
+            # CPLの分母は「広告CVがあればCV、無ければリード数」。
+            # チャネルごとに決まるので、ここで足しておく。
+            ld_slot["cvden"] += (ld_cell.get("cv")
+                                 or ld_cell.get("leads", 0))
+    for ld_slot in ld.values():
+        ld_slot["leads"] = sum(ld_slot[c] for c in CHANNEL_KEYS)
+    ld_tot = {k: sum(v[k] for v in ld.values())
+              for k in list(CHANNEL_KEYS) + list(LD_F)}
+    ld_rows = [
+        ("リード数", lambda v: v.get("leads"), f_int, d_num, True, False, False),
+    ] + [
+        (f"　{lab}", (lambda c: lambda v: v.get(c))(ch), f_int, None,
+         False, True, False)
+        for ch, lab in CHANNELS
+    ] + [
+        ("費用", lambda v: v.get("cost"), f_man, d_man, False, False, True),
+        ("CPL", lambda v: safe_div(v.get("cost"), v.get("cvden")), f_yen,
+         d_man, True, False, False),
+    ]
+    ld_html = month_table(ld_keys, ld, ld_rows, ld_tot)
+    lead_section = (
+        "\n<h2>リード獲得"
+        '<span class="h2sub">直契約・獲得月ベース</span></h2>\n'
+        + ld_html + "\n"
+    ) if ld_html else ""
 
     # ---- ウェビナー別 ----
     # 同じ申込フォームから入るため、お題の区別は掲載期間でしかできない。
@@ -2463,6 +2518,7 @@ showAge();
 </div>
 
 {funnel_section}
+{lead_section}
 {adperf_section}
 {webinar_section}
 {daily_section}
