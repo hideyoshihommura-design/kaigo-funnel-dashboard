@@ -2086,14 +2086,22 @@ def render(data):
     if fu_keys:
         fu_last = fu_keys[-1]
         # (表示名, 値の取り方, 整形, 前月差の出し方, 強調, 段階間の率か, 区切り線)
+        # 段階間の率は「リード→予約」のように両端を名前にする。
+        # 「成約率」だとヘッダーの成約率（成約÷商談 = 9.1%）と同じ名前で
+        # 違う数字（成約÷面談実施 = 10.9%）が並び、どちらかが間違っていると
+        # 読まれる。分母を名前に含めれば取り違えない。
+        # 提案の行は外した。面談実施は「相談済みか提案の早い方」なので定義が
+        # 重なり、13ヶ月のうち9ヶ月が面談実施と同値だった。通過率も85.5%で
+        # ここでは誰も止まっていない。提案件数はFS活動量に残してある。
         fu_rows = [
             ("リード数", lambda v: v["leads"], f_int, fu_dnum, True, False, False),
             ("面談予約", lambda v: v["appts"], f_int, fu_dnum, True, False, True),
-            ("予約率", lambda v: safe_div(v["appts"], v["leads"]), f_pct,
+            ("リード→予約", lambda v: safe_div(v["appts"], v["leads"]), f_pct,
              fu_dpt, False, True, False),
             ("面談実施", lambda v: v["mtgs"], f_int, fu_dnum, False, False, True),
-            ("提案", lambda v: v["props"], f_int, fu_dnum, False, False, False),
             ("成約", lambda v: v["won"], f_int, fu_dnum, True, False, True),
+            ("実施→成約", lambda v: safe_div(v["won"], v["mtgs"]), f_pct,
+             fu_dpt, False, True, False),
             ("成約金額", lambda v: v["won_amount"], f_man, fu_dman, True, False,
              False),
         ]
