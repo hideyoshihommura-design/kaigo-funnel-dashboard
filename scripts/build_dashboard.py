@@ -999,22 +999,24 @@ font-weight:700;position:sticky;top:0;z-index:1;}
 .fnl .fk{text-align:left;position:sticky;left:0;background:var(--bg);z-index:2;
 border-right:1px solid var(--line);vertical-align:middle;}
 .fnl thead .fk{background:var(--head);z-index:3;}
-.fnl .fc{position:sticky;left:118px;background:#fbfcfd;z-index:2;
-border-right:2px solid var(--line);font-weight:700;}
-.fnl thead .fc{background:var(--head);z-index:3;}
+.fnl .fc{position:sticky;left:118px;background:#eef2f6;z-index:2;
+border-right:2px solid #8fa0b0;font-weight:700;}
+.fnl thead .fc{background:#e2e8ee;z-index:3;}
 /* 値と前月差は1つのセルの中で上下2段。行を分けると指標7つで14行になり、
-   半分が補助情報の行になる。下段は本体より弱くして主従を保つ。 */
-.fnl td b{display:block;font-weight:400;line-height:1.3;}
-.fnl td i{display:block;font-style:normal;font-size:10.5px;color:var(--muted);
+   半分が補助情報の行になる。
+   **薄い扱いは前月差の1種類だけにする。** 0を薄く、値を細く、背景を淡く、
+   線を薄く、と薄いものを重ねた版を作ったが、全体が霞んでどこを見ればいいか
+   分からなくなった。とくに0を薄くしたのが致命的で、「成約0が3ヶ月続いている」
+   という一番重要な事実が消えていた。濃さの差で階層を作る。 */
+.fnl td b{display:block;font-weight:600;line-height:1.3;}
+.fnl td i{display:block;font-style:normal;font-size:11.5px;color:#7a8794;
 line-height:1.3;margin-top:1px;}
 .fnl tr.main.hl td b{font-weight:700;}
-/* 動きの無いセルは落とす。0が黒字で並ぶと、数字のある場所が埋もれる。 */
-.fnl td.z b{color:#c3ccd5;}
-/* 直近の月。開いた瞬間にどこを見るべきかを示す。 */
-.fnl thead th.now{background:#e4f2f2;color:var(--ink);}
-.fnl td.now{background:#f0f8f8;}
-/* ファネルの段の切れ目。どこで落ちているかを線をまたいで見る。 */
-.fnl tr.sep td{border-top:2px solid #c9d3dc;}
+/* 直近の月。列全体を塗ると、中身が0だらけの月では「空欄の列を強調している」
+   ように見える。見出しだけを塗って位置を示す。 */
+.fnl thead th.now{background:#08959C;color:#fff;}
+/* ファネルの段の切れ目。通常の罫線と区別がつく濃さにする。 */
+.fnl tr.sep td{border-top:2px solid #8fa0b0;}
 /* 段階間の率は一段下げて、上下の行の「あいだ」の数字だと分かるようにする。 */
 .fnl tr.main.sub td.fk{padding-left:22px;color:var(--muted);font-weight:400;}
 
@@ -2121,14 +2123,11 @@ def render(data):
             for mk, val, dtxt in zip(fu_keys, fu_vals, fu_ds):
                 # 値と前月差を1つのセルに上下2段で入れる。行を分けると指標7つで
                 # 14行になり、半分が補助情報の行になってしまう。
-                # 動きの無いセルは薄くする。0が黒字で並ぶと数字のある場所が埋もれる。
-                fu_ccls = " ".join(c for c in (
-                    "now" if mk == fu_last else "",
-                    "z" if not val else "") if c)
+                # 0を薄くしてはいけない。「成約0が続いている」はこの表で一番
+                # 重要な事実で、薄くすると空欄と区別がつかず消えてしまう。
                 fu_cells.append(
-                    f'<td data-m="{mk}"'
-                    + (f' class="{fu_ccls}"' if fu_ccls else "")
-                    + f"><b>{fu_fmt(val)}</b><i>{dtxt or '&nbsp;'}</i></td>")
+                    f'<td data-m="{mk}">'
+                    f"<b>{fu_fmt(val)}</b><i>{dtxt or '&nbsp;'}</i></td>")
             fu_body.append(
                 f'<tr class="{fu_cls}"><td class="fk">{fu_name}</td>'
                 f'<td class="fc"><b>{fu_fmt(fu_get(fu_tot))}</b>'
