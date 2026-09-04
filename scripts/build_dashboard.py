@@ -1125,8 +1125,6 @@ font-size:12px;font-weight:700;line-height:1.35;white-space:nowrap;}
 /* 作成者別の2枚は同じ指標を分けたものなので、IS活動量で使っている色を流用する。
    業者はIS活動量の業者カードと同じ紫、社内は活動量と同じ青緑。ここで別の色を
    当てると、同じ「架電業者」が場所によって違う色になり結び付けられなくなる。 */
-.actsum .card.ia-vendor .tag{background:#8459A5;color:#fff;}
-.actsum .card.ia-inhouse .tag{background:#08959C;color:#fff;}
 .actsum .card .tag .taglabel{display:block;color:#fff;font-size:10.5px;
 font-weight:400;opacity:.9;}
 
@@ -1511,27 +1509,6 @@ function apply(from,to){
   setK('fs_wons',jInt(f.wons)); setK('fs_amt',jYen(f.amt));
   setK('fs_close',jPct(div(f.wons,f.mtgs)));
   setK('fs_avg',f.wons?jYen(f.amt/f.wons):'');
-
-  /* ---- 取引作成者別（直契約・日付でそのまま切る） ----
-     作成者 × 指標の並びは Python 側の ATTR_KEYS × ATTR_FIELDS と同じ順で、
-     作成者 i・指標 j が添字 i*4+j。片方だけ並べ替えると数字が入れ替わる。
-     FSと同じく日付キーなので、日単位でそのまま切れる。 */
-  var IAB=['vendor','inhouse'],ia=[],bi,fi,ir,iad;
-  for(bi=0;bi<IAB.length;bi++){ia.push([0,0,0,0]);}
-  for(iad in RAW.isattr){
-    if(!RAW.isattr.hasOwnProperty(iad)){continue;}
-    if(iad<from||iad>to){continue;}
-    ir=RAW.isattr[iad];
-    for(bi=0;bi<IAB.length;bi++){
-      for(fi=0;fi<4;fi++){ia[bi][fi]+=ir[bi*4+fi];}
-    }
-  }
-  for(bi=0;bi<IAB.length;bi++){
-    setK('ia_'+IAB[bi]+'_appt',jInt(ia[bi][0]));
-    setK('ia_'+IAB[bi]+'_deals',jInt(ia[bi][1]));
-    setK('ia_'+IAB[bi]+'_wons',jInt(ia[bi][2]));
-    setK('ia_'+IAB[bi]+'_amt',jYen(ia[bi][3]));
-  }
 
   /* ---- リード獲得（web広告） ----
      日次入力タブは日別に持っているので、日付でそのまま切る。
@@ -2251,62 +2228,10 @@ def render(data):
         + fu_html + "\n"
     ) if fu_html else ""
 
-    # ---- 取引作成者別（直契約のみ） ----
-    # FS活動量と同じ母集団を、取引を作った人で2つに割ったもの。だから
-    # 業者作成＋社内作成＝FS活動量の同じ指標になる。
-    # 面談予約は取引の相談申込ステージ入り日、商談は取引の作成日、成約は
-    # 成約ステージ入り日。どれも作成者は同じなので、3指標で判定がズレない。
-    # 架電記録は見ない。コールの記録漏れや発信着信欄の空白で結果が狂うため。
-    iad = data.get("is_attr") or {}
-    if iad:
-        ia_tot = {b: {f: 0 for f in ATTR_FIELDS} for b in ATTR_KEYS}
-        for v in iad.values():
-            for b in ATTR_KEYS:
-                row = v.get(b) or {}
-                for f in ATTR_FIELDS:
-                    ia_tot[b][f] += row.get(f, 0)
-        ia_cards = "".join(
-            f'<div class="card ia-{b}"><div class="tag">{label}'
-            '<span class="taglabel">期間内・直契約</span></div>'
-            '<div class="kpis">'
-            + "".join([
-                kpi("面談予約 獲得数", f_int(ia_tot[b]["appts"]), f"ia_{b}_appt"),
-                kpi("商談数", f_int(ia_tot[b]["deals"]), f"ia_{b}_deals"),
-                kpi("成約数", f_int(ia_tot[b]["wons"]), f"ia_{b}_wons"),
-                kpi("成約金額", f_yen(ia_tot[b]["wonamt"]), f"ia_{b}_amt"),
-            ])
-            + "</div></div>"
-            for b, label in ATTR_BUCKETS)
-        # 1日 × 3由来で行を作ると空行だらけになるので、動きがあった由来だけ出す。
-        ia_rows = []
-        for d in sorted(iad):
-            for b, label in ATTR_BUCKETS:
-                row = iad[d].get(b) or {}
-                if not any(row.get(f) for f in ATTR_FIELDS):
-                    continue
-                ia_rows.append(
-                    f'<tr data-d="{d}">'
-                    f'<td class="wk">{d[5:].replace("-", "/")}</td>'
-                    f'<td class="ch">{label}</td>'
-                    f'<td class="num">{f_int(row.get("appts", 0))}</td>'
-                    f'<td class="num">{f_int(row.get("deals", 0))}</td>'
-                    f'<td class="num">{f_int(row.get("wons", 0))}</td>'
-                    f'<td class="num">{f_yen(row.get("wonamt", 0))}</td>'
-                    '<td class="pad"></td></tr>')
-        ia_body = "".join(ia_rows)
-        ia_section = f"""
-<h2>取引作成者別</h2>
-<div class="actsum">{ia_cards}</div>
-<div class="tabgrid">
-  <details class="fold" id="f-ia"><summary><span class="tri">▶</span>取引作成者別の日次<span class="cnt">{len(ia_rows)}行</span></summary>
-    <div class="tablewrap"><table>
-    <thead><tr><th>日付</th><th>作成者</th><th>面談予約 獲得数</th><th>商談数</th>
-    <th>成約数</th><th>成約金額</th>
-    <th class="pad" aria-hidden="true"></th></tr></thead>
-    <tbody>{ia_body}</tbody></table></div></details>
-</div>"""
-    else:
-        ia_section = ""
+    # 「取引作成者別」のセクションは廃止した。作成者で切った数字のうち
+    # 見たいのは架電業者ぶんで、それはIS活動量の「架電業者の週次」に入って
+    # いる。data.json の is_attr はそちらと、ファネルとの突き合わせ
+    # （validate_is_attr）で使い続けている。
 
     # ---- リード獲得（web広告） ----
     # CPLが悪化した時の切り分け材料。CPL＝CPM÷(CTR×CVR) なので、
@@ -2565,11 +2490,6 @@ def render(data):
         "fs": {k: [v.get("mtgs", 0), v.get("props", 0),
                    v.get("wons", 0), v.get("wonamt", 0)]
                for k, v in (data.get("fs") or {}).items()},
-        # 由来 × 指標を平らな配列にする。ATTR_KEYS × ATTR_FIELDS の順で、
-        # 由来 i・指標 j は添字 i*4+j。JS側も同じ順で読む。
-        "isattr": {k: [(v.get(b) or {}).get(f, 0)
-                       for b in ATTR_KEYS for f in ATTR_FIELDS]
-                   for k, v in (data.get("is_attr") or {}).items()},
         # web広告カードの再計算用。全キャンペーン合計（ap / ap_day）を渡す。
         # data.json の adperf / adperf_day はウェビナーだけなので使わない。
         "adperf": {k: [v["spend"], v["imp"], v["clicks"], v["cv"]]
@@ -2649,7 +2569,6 @@ showAge();
 {webinar_section}
 {daily_section}
 {fs_section}
-{ia_section}
 <h2>直契約</h2>
 <div class="charts">
   <div class="card"><h3>チャネル別 リード数推移（積み上げ＝合計）</h3>
