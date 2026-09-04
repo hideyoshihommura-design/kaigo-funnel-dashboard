@@ -2194,11 +2194,15 @@ def render(data):
             vn_slot["appts"] += vn_ven + (vn_v.get("inhouse") or {}).get(
                 "appts", 0)
 
-        def vn_block(label, fold_id, ck, nk, ak, dk_):
-            """週次の折りたたみを1つ作る。全体と業者で見る列だけが違う."""
-            # 架電も予約も0の週は出さない。稼働前の週が延々並ぶと
-            # 「やったのに成果0」に見える。
-            keys = [k for k in sorted(vn_wk) if vn_wk[k][ck] or vn_wk[k][ak]]
+        def vn_block(label, fold_id, ck, nk, dk_, ak=None):
+            """週次の折りたたみを1つ作る。全体と業者で見る列だけが違う.
+
+            ak を渡すと面談予約と商談化率の行が付く。全体では渡さない
+            （理由は下の vn_folds のコメント）。
+            """
+            # 架電0の週は出さない。架電が始まるのは2026-05-12で、それ以前の
+            # 週を並べると「架電0」の行が18週続く。
+            keys = [k for k in sorted(vn_wk) if vn_wk[k][ck]]
             if not keys:
                 return ""
             tot = {f: sum(vn_wk[k][f] for k in keys) for f in VN_F}
@@ -2210,30 +2214,37 @@ def render(data):
                 ("接続数", lambda v: v.get(nk), f_int, d_num, False, False,
                  True),
                 ("接続率", lambda v: safe_div(v.get(nk), v.get(ck)),
-                 f_pct, d_pt, False, True, False),
-                ("面談予約", lambda v: v.get(ak), f_int, d_num, True, False,
-                 True),
-                ("商談化率", lambda v: safe_div(v.get(ak), v.get(ck)),
-                 f_pct, d_pt, True, True, False),
+                 f_pct, d_pt, not ak, True, False),
             ]
+            cnt = (f'　架電 {f_int(tot[ck])}'
+                   f'　接続率 {f_pct(safe_div(tot[nk], tot[ck]))}')
+            if ak:
+                rows += [
+                    ("面談予約", lambda v: v.get(ak), f_int, d_num, True,
+                     False, True),
+                    ("商談化率", lambda v: safe_div(v.get(ak), v.get(ck)),
+                     f_pct, d_pt, True, True, False),
+                ]
+                cnt += (f'　面談予約 {f_int(tot[ak])}'
+                        f'　商談化率 {f_pct(safe_div(tot[ak], tot[ck]))}')
             return (
                 f'<details class="fold" id="{fold_id}"><summary>'
                 f'<span class="tri">▶</span>{label}'
-                f'<span class="cnt">{len(keys)}週分'
-                f'　架電 {f_int(tot[ck])}'
-                f'　接続率 {f_pct(safe_div(tot[nk], tot[ck]))}'
-                f'　面談予約 {f_int(tot[ak])}'
-                f'　商談化率 {f_pct(safe_div(tot[ak], tot[ck]))}'
+                f'<span class="cnt">{len(keys)}週分{cnt}'
                 "</span></summary>"
                 '<div class="foldin">'
                 + week_table(keys, vn_wk, rows, tot)
                 + "</div></details>")
 
+        # 全体には面談予約と商談化率を出さない。分子（作成者ベースの面談予約）
+        # にはウェビナーやフォームから来て社内が入力しただけのものが入るので、
+        # 架電数で割ると意味を持たない。実際に出してみると8/10の週は
+        # 架電1件・面談予約3件で商談化率300%になった。
+        # 業者は架電しかせず、その架電から取った予約しか作らないので成立する。
         vn_folds = (
-            vn_block("全体の週次", "f-is-all",
-                     "calls", "conn", "appts", "days")
+            vn_block("全体の週次", "f-is-all", "calls", "conn", "days")
             + vn_block("架電業者の週次", "f-vendor-wk",
-                       "vcalls", "vconn", "vappts", "vdays")
+                       "vcalls", "vconn", "vdays", "vappts")
         )
         vn_fold = f'<div class="tabgrid">{vn_folds}</div>' if vn_folds else ""
 
