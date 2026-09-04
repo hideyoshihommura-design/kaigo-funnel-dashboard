@@ -588,32 +588,6 @@ def monday_of(d):
     return d - dt.timedelta(days=d.weekday())
 
 
-def compute_conversion(data):
-    """架電→面談予約の週次転換。
-
-    分母は「その週に初めて架電したリード（ユニークコンタクト）」で、
-    分子は「そのリードが後に面談予約になった数」。母集団を週で固定するので、
-    架電日とアポ日が数日〜数週間ズレても率が壊れない。
-
-    日次で率を出さないのはこのズレのため。日単位だと母数が数件になり、
-    0%か100%にしか動かず、行動の良し悪しと無関係な数字になる。
-    """
-    conv = data.get("call_conversion")
-    if not conv:
-        return None
-    rows = []
-    tc = ta = 0
-    for k in sorted(conv):
-        v = conv[k]
-        c, a = v.get("called", 0), v.get("appointed", 0)
-        tc += c
-        ta += a
-        rows.append({"key": k, "label": week_label(k), "called": c,
-                     "appointed": a, "rate": safe_div(a, c)})
-    return {"rows": rows, "called": tc, "appointed": ta,
-            "rate": safe_div(ta, tc)}
-
-
 def compute_daily(data):  # noqa: C901
     """日次架電ブロックの行・グラフ・累計を組み立てる。
 
@@ -1556,15 +1530,6 @@ function apply(from,to){
     setK('ia_'+IAB[bi]+'_amt',jYen(ia[bi][3]));
   }
 
-  /* ---- 転換KPI（週単位） ---- */
-  var v={called:0,appt:0};
-  for(i=0;i<ws.length;i++){
-    var cv=RAW.conv[ws[i]];
-    if(cv){v.called+=cv[0]; v.appt+=cv[1];}
-  }
-  setK('v_called',jInt(v.called)); setK('v_appt',jInt(v.appt));
-  setK('v_rate',jPct(div(v.appt,v.called)));
-
   /* ---- リード獲得（web広告） ----
      日次入力タブは日別に持っているので、日付でそのまま切る。
      週キーで足すと、1日だけ指定してもその週まるごとの値が出る。
@@ -1755,7 +1720,6 @@ def render(data):
     td = totals_direct(rows, weeks)
     ta = totals_agency(arows, weeks)
     daily = compute_daily(data)
-    conv = compute_conversion(data)
 
     title = data.get("title") or "ホリエモンAI学校 介護校 ファネルダッシュボード"
     gen = data.get("generated_at", "")
@@ -2057,21 +2021,6 @@ def render(data):
 
     # ---- 日次架電 ----
     if daily:
-        drows = []
-        for r in daily["rows"]:
-            cls = ' class="roll"' if r["kind"] == "week" else ""
-            cls += f' data-d="{r["key"]}"'
-            drows.append(
-                f"<tr{cls}>"
-                f'<td class="wk">{r["label"]}</td>'
-                f'<td class="num">{f_int(r["calls"])}</td>'
-                f'<td class="num">{f_int(r["connected"])}</td>'
-                f'<td class="num">{f_pct(r["rate"])}</td>'
-                f'<td class="num">{f_int(r["appts"])}</td>'
-                f'<td class="num">{f_int(r["leads"])}</td>'
-                "</tr>"
-            )
-        daily_table = "".join(drows)
         ac = daily["activity"]
         # 「本日」「今週」は期間フィルタでは動かさない（常に生成日基準）。
         # 期間を切った状態でも「今どれだけ動いているか」は見たいので、
@@ -2086,22 +2035,11 @@ def render(data):
             kpi("面談予約 獲得数", f_int(ac["today_appts"])),
             kpi("商談化率", f_pct(ac["today_conv"])),
         ])
-        conv_block = ""
-        if conv:
-            crows = "".join(
-                f'<tr data-d="{r["key"]}">'
-                f'<td class="wk">{r["label"]}</td>'
-                f'<td class="num">{f_int(r["called"])}</td>'
-                f'<td class="num">{f_int(r["appointed"])}</td>'
-                f'<td class="num">{f_pct(r["rate"])}</td>'
-                '<td class="pad"></td>'
-                "</tr>" for r in conv["rows"])
-            conv_block = f"""  <details class="fold" id="f-conv"><summary><span class="tri">▶</span>架電したリード → 面談予約<span class="cnt">{len(conv["rows"])}週分</span></summary>
-    <div class="tablewrap"><table>
-    <thead><tr><th>週</th><th>架電したリード数</th><th>面談予約 獲得数</th>
-    <th>転換率</th><th class="pad" aria-hidden="true"></th></tr></thead>
-    <tbody>{crows}</tbody></table></div></details>
-"""
+        # 「日次の行動量」と「架電したリード → 面談予約」の折りたたみは廃止した。
+        # 前者は架電数・接続数・接続率が上のグラフと全体の週次と重複し、
+        # 後者は「面談予約 ÷ 架電したリード数」という、全体の週次から
+        # 外したのと同じ意味を持たない割り算を出していた
+        # （分子に社内が入力したウェビナー・フォーム由来が入る）。
         # 累計（期間内）と架電業者のカードは廃止した。同じ数字を週次の
         # 折りたたみ（f-is-all / f-vendor-wk）で出しているので、
         # カードは「本日」だけにしてある。
@@ -2258,14 +2196,7 @@ def render(data):
 <div class="charts one">
   <div class="card"><h3>架電数の日次推移（{daily["span"]}）</h3>
     <div class="chart"><canvas id="c_call"></canvas></div></div>
-</div>
-<div class="tabgrid">
-  <details class="fold" id="f-act"><summary><span class="tri">▶</span>日次の行動量<span class="cnt">{len(drows)}日分</span></summary>
-    <div class="tablewrap"><table>
-    <thead><tr><th>日付</th><th>架電数</th><th>接続数</th><th>接続率</th>
-    <th>面談予約 獲得数</th><th>新規リード数</th></tr></thead>
-    <tbody>{daily_table}</tbody></table></div></details>
-{conv_block}</div>"""
+</div>"""
         daily_js = (
             f"mkCallBar('c_call',{js(daily['chart']['labels'])},"
             f"{js(daily['chart']['connected'])},{js(daily['chart']['noans'])},"
@@ -2643,8 +2574,6 @@ def render(data):
                    for k, v in sorted(ap.items())},
         "adpd": {k: [v["spend"], v["imp"], v["clicks"], v["cv"]]
                  for k, v in sorted(ap_day.items())},
-        "conv": {k: [v.get("called", 0), v.get("appointed", 0)]
-                 for k, v in (data.get("call_conversion") or {}).items()},
         "wklabel": {w: week_label(w) for w in weeks},
         "start": weeks[0],
         "end": period_end.isoformat(),
