@@ -2055,20 +2055,11 @@ def render(data):
         # 全期間で数える。calls ブロックとは別建てにしているのはこのため。
         fsd = data.get("fs") or {}
 
-        def fg(day, f):
-            return (fsd.get(day) or {}).get(f, 0)
-
         fs_t = {f: sum((v.get(f, 0) for v in fsd.values()))
                 for f in FS_FIELDS}
-        today_key = ac["today_key"]
-        fs_today = "".join([
-            kpi("面談実施", f_int(fg(today_key, "mtgs"))),
-            kpi("提案", f_int(fg(today_key, "props"))),
-            kpi("成約数", f_int(fg(today_key, "wons"))),
-            kpi("成約金額", f_yen(fg(today_key, "wonamt"))),
-            kpi("実施→成約率",
-                f_pct(safe_div(fg(today_key, "wons"), fg(today_key, "mtgs")))),
-        ])
+        # 「本日」カードは置かない。面談・提案・成約のどれかが起きた日は
+        # この12ヶ月で48日しかなく、ほとんどの日が全部0のカードになる。
+        # 今日の動きは月次の一番右の列に入っている。
         fs_total = "".join([
             kpi("面談実施", f_int(fs_t["mtgs"]), "fs_mtgs"),
             kpi("提案", f_int(fs_t["props"]), "fs_props"),
@@ -2102,8 +2093,6 @@ def render(data):
         fs_section = f"""
 <h2>FS活動量</h2>
 <div class="actsum">
-  <div class="card act"><div class="tag">本日<span class="taglabel">{ac["today"]}</span></div>
-    <div class="kpis">{fs_today}</div></div>
   <div class="card cum"><div class="tag">累計<span class="taglabel">全期間・直契約</span></div>
     <div class="kpis">{fs_total}</div></div>
 </div>
