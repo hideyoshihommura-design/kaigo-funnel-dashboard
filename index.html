@@ -214,6 +214,31 @@ font-size:12px;font-weight:700;line-height:1.35;white-space:nowrap;}
 .actsum .card .tag .taglabel{display:block;color:#fff;font-size:10.5px;
 font-weight:400;opacity:.9;}
 
+/* 月次ファネル。月を横に並べる唯一の表なので、専用の指定を持つ。
+   指標名と累計の2列を左に固定しないと、右にスクロールした瞬間に
+   どの行を見ているのか分からなくなる（横並びの表で一番効く）。 */
+h2 .h2sub{font-size:11.5px;color:var(--muted);font-weight:400;margin-left:10px;}
+.fnl{overflow-x:auto;border:1px solid var(--line);border-radius:8px;
+background:var(--bg);margin:0 0 16px;}
+.fnl table{border-collapse:separate;border-spacing:0;white-space:nowrap;
+font-size:13px;font-variant-numeric:tabular-nums;}
+.fnl th,.fnl td{padding:7px 11px;text-align:right;
+border-bottom:1px solid var(--line);}
+.fnl thead th{background:var(--head);font-size:11.5px;color:var(--muted);
+font-weight:700;position:sticky;top:0;z-index:1;}
+.fnl .fk{text-align:left;position:sticky;left:0;background:var(--bg);z-index:2;
+min-width:118px;border-right:1px solid var(--line);}
+.fnl thead .fk{background:var(--head);z-index:3;}
+.fnl .fc{position:sticky;left:118px;background:#fbfcfd;z-index:2;
+border-right:2px solid var(--line);font-weight:700;min-width:96px;}
+.fnl thead .fc{background:var(--head);z-index:3;}
+/* 前月比は本体の数字より弱く。数字が2段に見えて主従が逆にならないように。 */
+.fnl tr.dlt td{font-size:11px;color:var(--muted);padding-top:0;padding-bottom:6px;}
+.fnl tr.dlt td.fk{font-size:10.5px;color:#9aa7b4;}
+.fnl tr.main.hl td{font-weight:700;}
+/* 段階間の率は一段下げて、上下の行の「あいだ」の数字だと分かるようにする。 */
+.fnl tr.main.sub td.fk{padding-left:24px;color:var(--muted);font-weight:400;}
+
 /* 週次に丸めた行は、日次の行と地色で区別する。
    同じ見た目だと「8/25」と「7/13–7/19」が同列に見えて、
    棒の高さや数値が1日分か1週間分か取り違える。 */
@@ -223,7 +248,7 @@ tr.roll td.wk{background:var(--head);color:var(--muted);font-weight:600;}
 <body><div class="wrap">
 
 <h1>ホリエモンAI学校 介護校 ファネルダッシュボード</h1>
-<div class="sub"><span id="period">2025-09-01 〜 2026-09-04（週次・月曜始まり）</span>　/　数字の更新 2026-09-04 13:15<span id="age"></span></div>
+<div class="sub"><span id="period">2025-09-01 〜 2026-09-04（週次・月曜始まり）</span>　/　数字の更新 2026-09-04 13:26<span id="age"></span></div>
 <div class="range">
   <label>期間</label>
   <input type="date" id="from" value="2025-09-01" min="2025-09-01" max="2026-09-04">
@@ -240,6 +265,13 @@ tr.roll td.wk{background:var(--head);color:var(--muted);font-weight:600;}
   <div class="card a"><div class="tag">代理店<span class="taglabel">期間累計</span></div>
     <div class="kpis"><div class="kpi"><div class="k">総リード数</div><div class="v" id="a_leads">24</div></div><div class="kpi"><div class="k">総商談数</div><div class="v" id="a_deals">23</div></div><div class="kpi"><div class="k">商談化率</div><div class="v" id="a_mtg">95.8%</div></div><div class="kpi"><div class="k">総成約数</div><div class="v" id="a_won">11</div></div><div class="kpi"><div class="k">成約率</div><div class="v" id="a_win">47.8%</div></div><div class="kpi"><div class="k">成約金額</div><div class="v" id="a_amt">¥12,760,000</div></div></div></div>
 </div>
+
+
+<h2>月次ファネル<span class="h2sub">直契約・獲得月ベース</span></h2>
+<div class="fnl"><table>
+<thead><tr><th class="fk">指標</th><th class="fc">累計</th><th data-m="2025-09">25/9</th><th data-m="2025-10">25/10</th><th data-m="2025-11">25/11</th><th data-m="2025-12">25/12</th><th data-m="2026-01">26/1</th><th data-m="2026-02">26/2</th><th data-m="2026-03">26/3</th><th data-m="2026-04">26/4</th><th data-m="2026-05">26/5</th><th data-m="2026-06">26/6</th><th data-m="2026-07">26/7</th><th data-m="2026-08">26/8</th><th data-m="2026-09">26/9</th></tr></thead>
+<tbody><tr class="main hl"><td class="fk">リード数</td><td class="fc">2,208</td><td data-m="2025-09">154</td><td data-m="2025-10">67</td><td data-m="2025-11">142</td><td data-m="2025-12">52</td><td data-m="2026-01">0</td><td data-m="2026-02">178</td><td data-m="2026-03">1</td><td data-m="2026-04">193</td><td data-m="2026-05">173</td><td data-m="2026-06">283</td><td data-m="2026-07">798</td><td data-m="2026-08">160</td><td data-m="2026-09">7</td></tr><tr class="dlt"><td class="fk">↳ 前月比</td><td class="fc"></td><td data-m="2025-09"></td><td data-m="2025-10">-56%</td><td data-m="2025-11">+112%</td><td data-m="2025-12">-63%</td><td data-m="2026-01">-100%</td><td data-m="2026-02"></td><td data-m="2026-03">-99%</td><td data-m="2026-04">+19200%</td><td data-m="2026-05">-10%</td><td data-m="2026-06">+64%</td><td data-m="2026-07">+182%</td><td data-m="2026-08">-80%</td><td data-m="2026-09">-96%</td></tr><tr class="main hl"><td class="fk">面談予約</td><td class="fc">58</td><td data-m="2025-09">2</td><td data-m="2025-10">1</td><td data-m="2025-11">8</td><td data-m="2025-12">1</td><td data-m="2026-01">0</td><td data-m="2026-02">2</td><td data-m="2026-03">0</td><td data-m="2026-04">8</td><td data-m="2026-05">10</td><td data-m="2026-06">9</td><td data-m="2026-07">10</td><td data-m="2026-08">7</td><td data-m="2026-09">0</td></tr><tr class="dlt"><td class="fk">↳ 前月比</td><td class="fc"></td><td data-m="2025-09"></td><td data-m="2025-10">-50%</td><td data-m="2025-11">+700%</td><td data-m="2025-12">-88%</td><td data-m="2026-01">-100%</td><td data-m="2026-02"></td><td data-m="2026-03">-100%</td><td data-m="2026-04"></td><td data-m="2026-05">+25%</td><td data-m="2026-06">-10%</td><td data-m="2026-07">+11%</td><td data-m="2026-08">-30%</td><td data-m="2026-09">-100%</td></tr><tr class="main sub"><td class="fk">予約率</td><td class="fc">2.6%</td><td data-m="2025-09">1.3%</td><td data-m="2025-10">1.5%</td><td data-m="2025-11">5.6%</td><td data-m="2025-12">1.9%</td><td data-m="2026-01"></td><td data-m="2026-02">1.1%</td><td data-m="2026-03">0.0%</td><td data-m="2026-04">4.1%</td><td data-m="2026-05">5.8%</td><td data-m="2026-06">3.2%</td><td data-m="2026-07">1.3%</td><td data-m="2026-08">4.4%</td><td data-m="2026-09">0.0%</td></tr><tr class="dlt"><td class="fk">↳ 前月比</td><td class="fc"></td><td data-m="2025-09"></td><td data-m="2025-10">+0.2pt</td><td data-m="2025-11">+4.1pt</td><td data-m="2025-12">-3.7pt</td><td data-m="2026-01"></td><td data-m="2026-02"></td><td data-m="2026-03">-1.1pt</td><td data-m="2026-04">+4.1pt</td><td data-m="2026-05">+1.6pt</td><td data-m="2026-06">-2.6pt</td><td data-m="2026-07">-1.9pt</td><td data-m="2026-08">+3.1pt</td><td data-m="2026-09">-4.4pt</td></tr><tr class="main"><td class="fk">面談実施</td><td class="fc">55</td><td data-m="2025-09">2</td><td data-m="2025-10">5</td><td data-m="2025-11">9</td><td data-m="2025-12">0</td><td data-m="2026-01">0</td><td data-m="2026-02">2</td><td data-m="2026-03">0</td><td data-m="2026-04">7</td><td data-m="2026-05">8</td><td data-m="2026-06">8</td><td data-m="2026-07">9</td><td data-m="2026-08">5</td><td data-m="2026-09">0</td></tr><tr class="dlt"><td class="fk">↳ 前月比</td><td class="fc"></td><td data-m="2025-09"></td><td data-m="2025-10">+150%</td><td data-m="2025-11">+80%</td><td data-m="2025-12">-100%</td><td data-m="2026-01"></td><td data-m="2026-02"></td><td data-m="2026-03">-100%</td><td data-m="2026-04"></td><td data-m="2026-05">+14%</td><td data-m="2026-06">±0%</td><td data-m="2026-07">+12%</td><td data-m="2026-08">-44%</td><td data-m="2026-09">-100%</td></tr><tr class="main"><td class="fk">提案</td><td class="fc">47</td><td data-m="2025-09">0</td><td data-m="2025-10">4</td><td data-m="2025-11">8</td><td data-m="2025-12">0</td><td data-m="2026-01">0</td><td data-m="2026-02">2</td><td data-m="2026-03">0</td><td data-m="2026-04">7</td><td data-m="2026-05">6</td><td data-m="2026-06">6</td><td data-m="2026-07">9</td><td data-m="2026-08">5</td><td data-m="2026-09">0</td></tr><tr class="dlt"><td class="fk">↳ 前月比</td><td class="fc"></td><td data-m="2025-09"></td><td data-m="2025-10"></td><td data-m="2025-11">+100%</td><td data-m="2025-12">-100%</td><td data-m="2026-01"></td><td data-m="2026-02"></td><td data-m="2026-03">-100%</td><td data-m="2026-04"></td><td data-m="2026-05">-14%</td><td data-m="2026-06">±0%</td><td data-m="2026-07">+50%</td><td data-m="2026-08">-44%</td><td data-m="2026-09">-100%</td></tr><tr class="main hl"><td class="fk">成約</td><td class="fc">5</td><td data-m="2025-09">0</td><td data-m="2025-10">2</td><td data-m="2025-11">1</td><td data-m="2025-12">0</td><td data-m="2026-01">0</td><td data-m="2026-02">0</td><td data-m="2026-03">0</td><td data-m="2026-04">1</td><td data-m="2026-05">1</td><td data-m="2026-06">0</td><td data-m="2026-07">0</td><td data-m="2026-08">0</td><td data-m="2026-09">0</td></tr><tr class="main hl"><td class="fk">成約金額</td><td class="fc">¥4,535,300</td><td data-m="2025-09">¥0</td><td data-m="2025-10">¥251,900</td><td data-m="2025-11">¥2,101,000</td><td data-m="2025-12">¥0</td><td data-m="2026-01">¥0</td><td data-m="2026-02">¥0</td><td data-m="2026-03">¥0</td><td data-m="2026-04">¥2,101,000</td><td data-m="2026-05">¥81,400</td><td data-m="2026-06">¥0</td><td data-m="2026-07">¥0</td><td data-m="2026-08">¥0</td><td data-m="2026-09">¥0</td></tr></tbody>
+</table></div>
 
 
 <h2>リード獲得</h2>
@@ -769,6 +801,16 @@ function apply(from,to){
   setK('ap_cv',jInt(ad.cv));
   setK('ap_cvr',jPct(div(ad.cv,ad.clicks),2));
   setK('ap_cpl',jYen(div(ad.spend,ad.cv)));
+
+  /* ---- 月次ファネルは月を「列」に並べているので、行ではなく列を隠す ----
+     他の表は showRows が行を隠すが、この表だけ向きが違う。
+     月はまるごと入れる（指定日を含む月は残す）。週次表と同じ考え方で、
+     月の途中で切ると分母と分子が別の集団になるため。 */
+  var mcell=document.querySelectorAll('[data-m]'),mi;
+  for(mi=0;mi<mcell.length;mi++){
+    var mk=mcell[mi].getAttribute('data-m');
+    mcell[mi].style.display=((mk+'-31')>=from && (mk+'-01')<=to)?'':'none';
+  }
 
   showRows(from,to);
   drawAll(from,to);
