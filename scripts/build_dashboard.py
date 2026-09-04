@@ -1046,6 +1046,9 @@ details.fold[open]>summary .tri{transform:rotate(90deg);}
 /* 閉じていても「中に何がどれだけあるか」は出す。件数が見えないと、
    開くまで中身の見当がつかず、結局すべて開いて確認することになる。 */
 details.fold>summary .cnt{font-weight:400;font-size:11px;color:var(--muted);}
+/* 折りたたみの中に月次テーブルを入れるときの余白。テーブルが枠に
+   ぴったり付くと、開閉の境目が分からなくなる。 */
+details.fold>.foldin{padding:0 0 10px;}
 details.fold[open]>summary{margin-bottom:9px;}
 details.fold>.legend{margin:0 2px 7px;}
 @media(prefers-reduced-motion:reduce){details.fold>summary .tri{transition:none;}}
@@ -2304,14 +2307,72 @@ def render(data):
             kpi("CVR", f_pct(safe_div(ap_tot["cv"], ap_tot["clicks"]), 2), "ap_cvr"),
             kpi("CPL", f_yen(safe_div(ap_tot["spend"], ap_tot["cv"])), "ap_cpl"),
         ])
+        # ---- Metaのキャンペーン別（月次） ----
+        # Metaが費用の93%・CVの99%を占めるので、まずここを割る。
+        # 媒体を混ぜた率は使えない。クリックの78%がLINE（CPC ¥1台）なので、
+        # 全媒体のCTR 3.58% / CPC ¥21 は実質LINEの数字になる。
+        # CPL = CPM ÷ (CTR × CVR) なので、9指標を縦に並べると
+        # 「表示単価が上がったのか、クリックされないのか、申し込まれないのか」
+        # を切り分けられる。
+        APC_F = ("spend", "imp", "clicks", "cv")
+        apc_pairs = sorted({
+            pr for day in (data.get("ad_day") or {}).values()
+            for pr in day if pr.startswith("Meta/")
+        })
+        apc_rows = [
+            ("消費金額", lambda v: v.get("spend"), f_man, d_man, True, False,
+             False),
+            ("IMP", lambda v: v.get("imp"), f_int, d_num, False, False, True),
+            ("CPM", lambda v: safe_div(v.get("spend"), v.get("imp")) * 1000
+             if v.get("imp") else None, f_yen, d_yen, False, True, False),
+            ("クリック", lambda v: v.get("clicks"), f_int, d_num, False, False,
+             True),
+            ("CTR", lambda v: safe_div(v.get("clicks"), v.get("imp")), f_pct2,
+             d_pt2, False, True, False),
+            ("CPC", lambda v: safe_div(v.get("spend"), v.get("clicks")), f_yen,
+             d_yen, False, True, False),
+            ("CV", lambda v: v.get("cv"), f_int, d_num, True, False, True),
+            ("CVR", lambda v: safe_div(v.get("cv"), v.get("clicks")), f_pct2,
+             d_pt2, False, True, False),
+            ("CPL", lambda v: safe_div(v.get("spend"), v.get("cv")), f_yen,
+             d_yen, True, True, False),
+        ]
+        apc_blocks = []
+        for apc_pair in apc_pairs:
+            apc_days = {d_: pv[apc_pair]
+                        for d_, pv in (data.get("ad_day") or {}).items()
+                        if apc_pair in pv}
+            apc_keys = month_keys(apc_days)
+            if not apc_keys:
+                continue
+            apc_m = {mk: {f: 0 for f in APC_F} for mk in apc_keys}
+            for apc_d, apc_v in apc_days.items():
+                for apc_f in APC_F:
+                    apc_m[apc_d[:7]][apc_f] += apc_v.get(apc_f, 0)
+            apc_tot = {f: sum(apc_m[mk][f] for mk in apc_keys) for f in APC_F}
+            apc_name = apc_pair.replace("Meta/", "")
+            apc_blocks.append(
+                f'<details class="fold" id="f-ap-{apc_name}">'
+                f'<summary><span class="tri">▶</span>Meta / {apc_name}'
+                f'<span class="cnt">消費 {f_man(apc_tot["spend"])}'
+                f'　CV {f_int(apc_tot["cv"])}'
+                f'　CPL {f_yen(safe_div(apc_tot["spend"], apc_tot["cv"]))}'
+                "</span></summary>"
+                '<div class="foldin">'
+                + month_table(apc_keys, apc_m, apc_rows, apc_tot)
+                + "</div></details>")
+        apc_html = ('<div class="tabgrid">' + "".join(apc_blocks) + "</div>"
+                    if apc_blocks else "")
+
         adperf_section = f"""
 <h2>リード獲得<span class="h2sub">web広告のみ・展示会は含まない</span></h2>
 <div class="actsum">
   <div class="card cum"><div class="tag">web広告<span class="taglabel">期間内・全キャンペーン</span></div>
     <div class="kpis">{ap_items}</div></div>
 </div>
+{apc_html}
 <div class="tabgrid">
-  <details class="fold" id="f-adperf"><summary><span class="tri">▶</span>web広告の週次指標<span class="cnt">{len(ap)}週分</span></summary>
+  <details class="fold" id="f-adperf"><summary><span class="tri">▶</span>web広告の週次指標<span class="cnt">{len(ap)}週分・全媒体</span></summary>
     <div class="tablewrap"><table>
     <thead><tr><th>週</th><th>消費金額</th><th>IMP</th><th>クリック</th><th>CTR</th>
     <th>CPC</th><th>CPM</th><th>CV</th><th>CVR</th><th>CPL</th>
