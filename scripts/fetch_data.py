@@ -466,7 +466,9 @@ def fetch_ad_daily(token, week_starts, campaign_cfg):
     known_pairs = set(campaign_cfg.get("known_pairs") or [])
 
     cost_by_day, cv_by_day = {}, {}
+    # ウェビナーキャンペーンだけの日次。回ごとの掲載期間で切って使う。
     wcost_by_day, wcv_by_day = {}, {}
+    wimp_by_day, wclk_by_day = {}, {}
     adperf, adperf_day = {}, {}
     # 日 × 媒体 × キャンペーンの生データ。ここだけは集計せずに一番細かい粒度で
     # 残す。媒体別・キャンペーン別・その掛け合わせ・全体のどれでも後から計算
@@ -536,6 +538,8 @@ def fetch_ad_daily(token, week_starts, campaign_cfg):
             continue
         wcost_by_day[d] = wcost_by_day.get(d, 0.0) + spend
         wcv_by_day[d] = wcv_by_day.get(d, 0.0) + cvv
+        wimp_by_day[d] = wimp_by_day.get(d, 0.0) + imp
+        wclk_by_day[d] = wclk_by_day.get(d, 0.0) + clicks
         # 週次と日次の両方に積む。週次だけにすると、期間指定を1日に絞った
         # ときにその週まるごとの値が出てしまう。
         for bucket, bkey in (
@@ -594,7 +598,8 @@ def fetch_ad_daily(token, week_starts, campaign_cfg):
             cv[w] = int(round(v))
 
     return (cost, cost_by_day, cv_by_day, cv,
-            wcost_by_day, wcv_by_day, adperf, adperf_day, ad_day)
+            wcost_by_day, wcv_by_day, wimp_by_day, wclk_by_day,
+            adperf, adperf_day, ad_day)
 
 
 def fetch_expo_costs(token):
@@ -931,7 +936,7 @@ def build(token, sheets_token, channel_map, webinar_cfg, campaign_cfg,
 
     # --- web 費用
     (web_cost, web_cost_day, web_cv_day, web_cv,
-     wb_cost_day, wb_cv_day, adperf, adperf_day,
+     wb_cost_day, wb_cv_day, wb_imp_day, wb_clk_day, adperf, adperf_day,
      ad_day) = fetch_ad_daily(sheets_token, week_starts, campaign_cfg)
     for w in week_starts:
         direct[w]["web"]["cost"] = web_cost[w]
@@ -1054,6 +1059,13 @@ def build(token, sheets_token, channel_map, webinar_cfg, campaign_cfg,
             exact_days = len(days)
         if wb.get("cv") is not None:
             cv = int(wb["cv"])
+        # 表示回数とクリックも同じ期間で切る。CPL = CPM ÷ (CTR × CVR) なので、
+        # 回ごとのCPLが動いたときに「表示単価か、クリック率か、申込率か」を
+        # 切り分けられる。手入力の上書きは用意しない（cost / cv だけの経緯）。
+        imp_days = [d for d in days if d in wb_imp_day]
+        imp = int(round(sum(wb_imp_day[d] for d in imp_days))) if imp_days else None
+        clk_days = [d for d in days if d in wb_clk_day]
+        clicks = int(round(sum(wb_clk_day[d] for d in clk_days))) if clk_days else None
 
         webinars_out.append({
             "name": wb.get("name") or "(名前なし)",
@@ -1068,6 +1080,8 @@ def build(token, sheets_token, channel_map, webinar_cfg, campaign_cfg,
             "cv_days": len(cv_days),
             "cv_est_days": cv_est,
             "cv_manual": wb.get("cv") is not None,
+            "imp": imp,
+            "clicks": clicks,
             "leads": leads,
             "deals": deals_n,
             "won": won_n,

@@ -2462,17 +2462,30 @@ def render(data):
             cvnote = mark(w.get("cv_manual"), w.get("cv_days", 0), days_n)
             if cv is None:
                 cvnote = '<span class="ma">未取得</span>'
+            # 広告指標も同じ列に並べる。CPL = CPM ÷ (CTR × CVR) なので、
+            # 回ごとのCPLが動いたときに「表示単価か、クリック率か、申込率か」
+            # を切り分けられる。掲載期間は回ごとに固定なので、時系列ではなく
+            # 並列な選択肢の比較になる。だから回は縦に置く（月次テーブルとは
+            # 向きが逆で正しい。展示会別も同じ）。
+            imp = w.get("imp")
+            clicks = w.get("clicks")
             wrows.append(
                 "<tr>"
                 f'<td class="wk">{w["name"]}</td>'
                 f'<td class="ch">{span}</td>'
                 f'<td class="num">{f_yen(cost)}{note}</td>'
+                f'<td class="num">{f_int(imp)}</td>'
+                f'<td class="num">{f_yen(safe_div(cost, imp) * 1000 if imp else None)}</td>'
+                f'<td class="num">{f_int(clicks)}</td>'
+                f'<td class="num">{f_pct(safe_div(clicks, imp), 2)}</td>'
+                f'<td class="num">{f_yen(safe_div(cost, clicks))}</td>'
                 f'<td class="num">{f_int(leads)}{cvnote}</td>'
+                f'<td class="num">{f_pct(safe_div(cv, clicks), 2)}</td>'
                 f'<td class="num">{f_yen(cpl)}</td>'
+                f'<td class="num">{f_int(w.get("leads", 0))}</td>'
                 f'<td class="num">{f_int(w.get("deals", 0))}</td>'
                 f'<td class="num">{f_pct(safe_div(w.get("deals", 0), leads))}</td>'
                 f'<td class="num">{f_int(w.get("won", 0))}</td>'
-                f'<td class="num">{f_pct(safe_div(w.get("won", 0), w.get("deals", 0)))}</td>'
                 f'<td class="num">{f_yen(won_amt)}</td>'
                 f'<td class="num">{f_pct(roi)}</td>'
                 '<td class="pad"></td></tr>')
@@ -2481,8 +2494,10 @@ def render(data):
 <div class="tabgrid">
   <details class="fold" id="f-webinar"><summary><span class="tri">▶</span>お題ごとの成果<span class="cnt">{len(wbs)}回分</span></summary>
     <div class="tablewrap"><table>
-    <thead><tr><th>ウェビナー</th><th>掲載期間</th><th>広告費</th><th>CV（申込）</th><th>CPL</th>
-    <th>商談数</th><th>商談化率</th><th>成約数</th><th>成約率</th><th>成約金額</th><th>回収率</th>
+    <thead><tr><th>ウェビナー</th><th>掲載期間</th><th>広告費</th>
+    <th>IMP</th><th>CPM</th><th>クリック</th><th>CTR</th><th>CPC</th>
+    <th>CV（申込）</th><th>CVR</th><th>CPL</th>
+    <th>リード</th><th>商談数</th><th>商談化率</th><th>成約数</th><th>成約金額</th><th>回収率</th>
     <th class="pad" aria-hidden="true"></th></tr></thead>
     <tbody>{"".join(wrows)}</tbody></table></div></details>
 </div>"""
