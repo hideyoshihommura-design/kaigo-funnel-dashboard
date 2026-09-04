@@ -1032,20 +1032,29 @@ th.pad,td.pad{width:100%;padding:0;}
    閉じた中身もブラウザのページ内検索が拾うため。自前の開閉ボタンにすると
    このどれも自分で作り直すことになる。 */
 details.fold{margin:14px 0 0;}
+/* 幅は中身に合わせず、横いっぱいに広げる。inline-flex にしていたので
+   ラベルの長さで1つずつ幅が変わり、押せる場所の大きさが不揃いだった。
+   横幅をそろえると、複数並んだときに「同じ種類の操作」だと分かる。 */
 details.fold>summary{list-style:none;cursor:pointer;
-display:inline-flex;align-items:center;gap:7px;
-font-size:13px;font-weight:600;color:var(--muted);
-padding:5px 12px 5px 9px;border:1px solid var(--line);border-radius:8px;
-background:var(--card);user-select:none;}
+display:flex;align-items:center;gap:9px;
+font-size:13.5px;font-weight:700;color:var(--ink);
+padding:11px 14px;border:1px solid var(--line);border-radius:8px;
+background:var(--head);user-select:none;}
 details.fold>summary::-webkit-details-marker{display:none;}
-details.fold>summary:hover{color:var(--ink-strong);border-color:var(--brand);}
+details.fold>summary:hover{border-color:var(--brand);background:#eaf4f5;}
 details.fold>summary:focus-visible{outline:2px solid var(--brand);outline-offset:2px;}
-details.fold>summary .tri{font-size:9px;color:var(--brand);
+/* 三角は塗った四角に白抜きで置く。文字色だけの三角は装飾に見えて、
+   押せる場所だと気づかれない。 */
+details.fold>summary .tri{flex:0 0 auto;width:18px;height:18px;
+display:inline-flex;align-items:center;justify-content:center;
+font-size:9px;color:#fff;background:#08959C;border-radius:4px;
 transition:transform .15s;}
 details.fold[open]>summary .tri{transform:rotate(90deg);}
 /* 閉じていても「中に何がどれだけあるか」は出す。件数が見えないと、
-   開くまで中身の見当がつかず、結局すべて開いて確認することになる。 */
-details.fold>summary .cnt{font-weight:400;font-size:11px;color:var(--muted);}
+   開くまで中身の見当がつかず、結局すべて開いて確認することになる。
+   右端に寄せると、縦に並んだボタンで数字の位置がそろって見比べられる。 */
+details.fold>summary .cnt{margin-left:auto;padding-left:14px;
+font-weight:400;font-size:11.5px;color:var(--muted);text-align:right;}
 /* 折りたたみの中に月次テーブルを入れるときの余白。テーブルが枠に
    ぴったり付くと、開閉の境目が分からなくなる。 */
 details.fold>.foldin{padding:0 0 10px;}
@@ -2337,7 +2346,7 @@ def render(data):
             ("CPL", lambda v: safe_div(v.get("spend"), v.get("cv")), f_yen,
              d_yen, True, True, False),
         ]
-        apc_blocks = []
+        apc_built = {}
         for apc_pair in apc_pairs:
             apc_days = {d_: pv[apc_pair]
                         for d_, pv in (data.get("ad_day") or {}).items()
@@ -2350,6 +2359,14 @@ def render(data):
                 for apc_f in APC_F:
                     apc_m[apc_d[:7]][apc_f] += apc_v.get(apc_f, 0)
             apc_tot = {f: sum(apc_m[mk][f] for mk in apc_keys) for f in APC_F}
+            apc_built[apc_pair] = (apc_keys, apc_m, apc_tot)
+        # 消費金額の大きい順に並べる。名前順だと Claude が先頭に来て、
+        # 費用の1割にも満たない配信が一番上になる。順番を固定で書くと
+        # キャンペーンが増えたときに漏れるので、金額で決める。
+        apc_blocks = []
+        for apc_pair in sorted(apc_built,
+                               key=lambda k: -apc_built[k][2]["spend"]):
+            apc_keys, apc_m, apc_tot = apc_built[apc_pair]
             apc_name = apc_pair.replace("Meta/", "")
             apc_blocks.append(
                 f'<details class="fold" id="f-ap-{apc_name}">'
