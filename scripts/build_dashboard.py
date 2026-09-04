@@ -53,6 +53,10 @@ ATTR_BUCKETS = [
 ATTR_KEYS = [k for k, _ in ATTR_BUCKETS]
 ATTR_FIELDS = ("appts", "deals", "wons", "wonamt")
 
+# 月次ファネルの列幅（px）。指標名・累計・各月。中身で決めさせない。
+# 118 + 88 + 76×13 = 1,194px で、13ヶ月が横スクロールなしで収まる。
+FU_W_K, FU_W_C, FU_W_M = 118, 88, 76
+
 MA_WINDOW = 4
 
 # ---- 日次架電ブロック ----
@@ -750,6 +754,19 @@ def f_yen(v):
     return "" if v is None else f"¥{int(round(v)):,}"
 
 
+def f_man_v(m):
+    """万単位の数値部分。1000万以上は小数を落とす（桁が増えるため）."""
+    return f"{round(m):,}" if abs(m) >= 1000 else f"{m:.1f}"
+
+
+def f_man(v):
+    """月次ファネルの金額。列幅を決めていたのが金額で、¥2,101,000 のままだと
+    1列が100px近くなり13ヶ月が画面に収まらない。正確な額はヘッダーにある。"""
+    if v is None:
+        return ""
+    return "0" if v == 0 else f"¥{f_man_v(v / 10000)}万"
+
+
 def f_pct(v, nd=1):
     return "" if v is None else f"{v * 100:.{nd}f}%"
 
@@ -970,24 +987,36 @@ font-weight:400;opacity:.9;}
 h2 .h2sub{font-size:11.5px;color:var(--muted);font-weight:400;margin-left:10px;}
 .fnl{overflow-x:auto;border:1px solid var(--line);border-radius:8px;
 background:var(--bg);margin:0 0 16px;}
+/* 列幅は colgroup で固定する（table-layout:fixed）。auto のままだと
+   ¥2,101,000 の月だけ広くなり、月ごとに幅が変わって目が列を追えない。
+   幅がそろえば数字は右揃え＋等幅なので桁が縦に並び、縦罫線が不要になる。 */
 .fnl table{border-collapse:separate;border-spacing:0;white-space:nowrap;
-font-size:13px;font-variant-numeric:tabular-nums;}
-.fnl th,.fnl td{padding:7px 11px;text-align:right;
-border-bottom:1px solid var(--line);}
+font-size:13px;font-variant-numeric:tabular-nums;table-layout:fixed;}
+.fnl th,.fnl td{padding:7px 8px;text-align:right;overflow:hidden;
+vertical-align:top;border-bottom:1px solid var(--line);}
 .fnl thead th{background:var(--head);font-size:11.5px;color:var(--muted);
 font-weight:700;position:sticky;top:0;z-index:1;}
 .fnl .fk{text-align:left;position:sticky;left:0;background:var(--bg);z-index:2;
-min-width:118px;border-right:1px solid var(--line);}
+border-right:1px solid var(--line);vertical-align:middle;}
 .fnl thead .fk{background:var(--head);z-index:3;}
 .fnl .fc{position:sticky;left:118px;background:#fbfcfd;z-index:2;
-border-right:2px solid var(--line);font-weight:700;min-width:96px;}
+border-right:2px solid var(--line);font-weight:700;}
 .fnl thead .fc{background:var(--head);z-index:3;}
-/* 前月比は本体の数字より弱く。数字が2段に見えて主従が逆にならないように。 */
-.fnl tr.dlt td{font-size:11px;color:var(--muted);padding-top:0;padding-bottom:6px;}
-.fnl tr.dlt td.fk{font-size:10.5px;color:#9aa7b4;}
-.fnl tr.main.hl td{font-weight:700;}
+/* 値と前月差は1つのセルの中で上下2段。行を分けると指標7つで14行になり、
+   半分が補助情報の行になる。下段は本体より弱くして主従を保つ。 */
+.fnl td b{display:block;font-weight:400;line-height:1.3;}
+.fnl td i{display:block;font-style:normal;font-size:10.5px;color:var(--muted);
+line-height:1.3;margin-top:1px;}
+.fnl tr.main.hl td b{font-weight:700;}
+/* 動きの無いセルは落とす。0が黒字で並ぶと、数字のある場所が埋もれる。 */
+.fnl td.z b{color:#c3ccd5;}
+/* 直近の月。開いた瞬間にどこを見るべきかを示す。 */
+.fnl thead th.now{background:#e4f2f2;color:var(--ink);}
+.fnl td.now{background:#f0f8f8;}
+/* ファネルの段の切れ目。どこで落ちているかを線をまたいで見る。 */
+.fnl tr.sep td{border-top:2px solid #c9d3dc;}
 /* 段階間の率は一段下げて、上下の行の「あいだ」の数字だと分かるようにする。 */
-.fnl tr.main.sub td.fk{padding-left:24px;color:var(--muted);font-weight:400;}
+.fnl tr.main.sub td.fk{padding-left:22px;color:var(--muted);font-weight:400;}
 
 /* 週次に丸めた行は、日次の行と地色で区別する。
    同じ見た目だと「8/25」と「7/13–7/19」が同列に見えて、
@@ -1494,6 +1523,14 @@ FOLD_JS = """
       });
     })(ds[i]);
   }
+})();
+
+/* 月次ファネルは月が横に並ぶので、画面より広ければ横スクロールになる。
+   開いた瞬間は最新月が見えている方がいい。左端（2025-09）に寄っていると
+   毎回スクロールしてから読むことになる。収まっていれば何も起きない。 */
+(function(){
+  var f=document.querySelector('.fnl');
+  if(f){f.scrollLeft=f.scrollWidth;}
 })();
 """
 
@@ -2014,17 +2051,29 @@ def render(data):
                 fu_y, fu_m = fu_y + 1, 1
     fu_tot = {x: sum(fu[mk][x] for mk in fu_keys) for x in FU_F}
 
-    def fu_dpct(cur, prev):
-        """件数・金額の前月比。前月が0なら出さない（+∞になるため）."""
-        if not prev or cur is None:
+    # 前月「比」ではなく前月「差」で出す。比だと母数が小さい月に +19200%
+    # （3月1件→4月193件）のような値が出るうえ、母数0の月は計算できず空欄に
+    # なる。空欄の理由が「計算できない」「意味が無いので出さない」「そもそも
+    # 出さない設計」の3種類に分かれ、見た目で区別できなくなる。
+    # 差ならどの月でも必ず出せる。空欄は一番左の月だけになる。
+    def fu_dnum(cur, prev):
+        """件数の前月差."""
+        if cur is None or prev is None:
             return ""
-        r = (cur - prev) / prev
-        if abs(r) < 0.005:
-            return "±0%"
-        return ("+" if r > 0 else "") + f"{round(r * 100)}%"
+        r = cur - prev
+        return "±0" if r == 0 else ("+" if r > 0 else "") + f"{r:,}"
+
+    def fu_dman(cur, prev):
+        """金額の前月差。万単位."""
+        if cur is None or prev is None:
+            return ""
+        r = cur - prev
+        if r == 0:
+            return "±0"
+        return ("+¥" if r > 0 else "-¥") + f_man_v(abs(r) / 10000) + "万"
 
     def fu_dpt(cur, prev):
-        """率の前月比はポイント差。%の%は読み分けられない."""
+        """率の前月差はポイント。%の%は読み分けられない."""
         if cur is None or prev is None:
             return ""
         r = (cur - prev) * 100
@@ -2033,42 +2082,61 @@ def render(data):
         return ("+" if r > 0 else "") + f"{r:.1f}pt"
 
     if fu_keys:
-        # (表示名, 値の取り方, 整形, 前月比の出し方, 強調, 段階間の率か)
+        fu_last = fu_keys[-1]
+        # (表示名, 値の取り方, 整形, 前月差の出し方, 強調, 段階間の率か, 区切り線)
         fu_rows = [
-            ("リード数", lambda v: v["leads"], f_int, fu_dpct, True, False),
-            ("面談予約", lambda v: v["appts"], f_int, fu_dpct, True, False),
+            ("リード数", lambda v: v["leads"], f_int, fu_dnum, True, False, False),
+            ("面談予約", lambda v: v["appts"], f_int, fu_dnum, True, False, True),
             ("予約率", lambda v: safe_div(v["appts"], v["leads"]), f_pct,
-             fu_dpt, False, True),
-            ("面談実施", lambda v: v["mtgs"], f_int, fu_dpct, False, False),
-            ("提案", lambda v: v["props"], f_int, fu_dpct, False, False),
-            ("成約", lambda v: v["won"], f_int, None, True, False),
-            ("成約金額", lambda v: v["won_amount"], f_yen, None, True, False),
+             fu_dpt, False, True, False),
+            ("面談実施", lambda v: v["mtgs"], f_int, fu_dnum, False, False, True),
+            ("提案", lambda v: v["props"], f_int, fu_dnum, False, False, False),
+            ("成約", lambda v: v["won"], f_int, fu_dnum, True, False, True),
+            ("成約金額", lambda v: v["won_amount"], f_man, fu_dman, True, False,
+             False),
         ]
+        # 列幅は中身ではなくレイアウトで決める。auto のままだと ¥2,101,000 の
+        # 月だけ広くなり、月ごとに幅が変わって目が列を追えない。
+        fu_colg = (f'<colgroup><col style="width:{FU_W_K}px">'
+                   f'<col style="width:{FU_W_C}px">'
+                   + f'<col style="width:{FU_W_M}px">' * len(fu_keys)
+                   + "</colgroup>")
+        fu_tw = FU_W_K + FU_W_C + FU_W_M * len(fu_keys)
         fu_head = ('<tr><th class="fk">指標</th><th class="fc">累計</th>'
-                   + "".join(f'<th data-m="{mk}">{mk[2:4]}/{int(mk[5:7])}</th>'
-                             for mk in fu_keys) + "</tr>")
+                   + "".join(
+                       f'<th data-m="{mk}"'
+                       + (' class="now"' if mk == fu_last else "")
+                       + f">{mk[2:4]}/{int(mk[5:7])}</th>"
+                       for mk in fu_keys) + "</tr>")
         fu_body = []
-        for fu_name, fu_get, fu_fmt, fu_delta, fu_hl, fu_sub in fu_rows:
+        for (fu_name, fu_get, fu_fmt, fu_delta, fu_hl, fu_sub,
+             fu_sep) in fu_rows:
             fu_vals = [fu_get(fu[mk]) for mk in fu_keys]
-            fu_cls = ("main" + (" hl" if fu_hl else "")
-                      + (" sub" if fu_sub else ""))
+            fu_ds = [""] + [fu_delta(fu_vals[i], fu_vals[i - 1])
+                            for i in range(1, len(fu_vals))]
+            fu_cls = " ".join(c for c in (
+                "main", "hl" if fu_hl else "", "sub" if fu_sub else "",
+                "sep" if fu_sep else "") if c)
+            fu_cells = []
+            for mk, val, dtxt in zip(fu_keys, fu_vals, fu_ds):
+                # 値と前月差を1つのセルに上下2段で入れる。行を分けると指標7つで
+                # 14行になり、半分が補助情報の行になってしまう。
+                # 動きの無いセルは薄くする。0が黒字で並ぶと数字のある場所が埋もれる。
+                fu_ccls = " ".join(c for c in (
+                    "now" if mk == fu_last else "",
+                    "z" if not val else "") if c)
+                fu_cells.append(
+                    f'<td data-m="{mk}"'
+                    + (f' class="{fu_ccls}"' if fu_ccls else "")
+                    + f"><b>{fu_fmt(val)}</b><i>{dtxt or '&nbsp;'}</i></td>")
             fu_body.append(
                 f'<tr class="{fu_cls}"><td class="fk">{fu_name}</td>'
-                f'<td class="fc">{fu_fmt(fu_get(fu_tot))}</td>'
-                + "".join(f'<td data-m="{mk}">{fu_fmt(v)}</td>'
-                          for mk, v in zip(fu_keys, fu_vals)) + "</tr>")
-            if fu_delta:
-                fu_ds = [""] + [fu_delta(fu_vals[i], fu_vals[i - 1])
-                                for i in range(1, len(fu_vals))]
-                fu_body.append(
-                    '<tr class="dlt"><td class="fk">↳ 前月比</td>'
-                    '<td class="fc"></td>'
-                    + "".join(f'<td data-m="{mk}">{txt}</td>'
-                              for mk, txt in zip(fu_keys, fu_ds)) + "</tr>")
+                f'<td class="fc"><b>{fu_fmt(fu_get(fu_tot))}</b>'
+                '<i>&nbsp;</i></td>' + "".join(fu_cells) + "</tr>")
         fu_body_html = "".join(fu_body)
         funnel_section = f"""
 <h2>月次ファネル<span class="h2sub">直契約・獲得月ベース</span></h2>
-<div class="fnl"><table>
+<div class="fnl"><table style="width:{fu_tw}px">{fu_colg}
 <thead>{fu_head}</thead>
 <tbody>{fu_body_html}</tbody>
 </table></div>
