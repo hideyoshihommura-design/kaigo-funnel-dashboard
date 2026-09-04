@@ -785,6 +785,29 @@ def d_man(cur, prev):
     return ("+¥" if r > 0 else "-¥") + f_man_v(abs(r) / 10000) + "万"
 
 
+def d_yen(cur, prev):
+    """円のままの前月差。CPM・CPC・CPL のように桁が小さいものに使う
+    （万単位にすると ¥751 が ¥0.1万 になって読めない）."""
+    if cur is None or prev is None:
+        return ""
+    r = round(cur) - round(prev)
+    return "±0" if r == 0 else ("+¥" if r > 0 else "-¥") + f"{abs(r):,}"
+
+
+def f_pct2(v):
+    """CTR・CVR は小数第2位まで。1%を下回る値が多く、1桁だと0.0%に潰れる."""
+    return f_pct(v, 2)
+
+
+def d_pt2(cur, prev):
+    if cur is None or prev is None:
+        return ""
+    r = (cur - prev) * 100
+    if abs(r) < 0.005:
+        return "±0pt"
+    return ("+" if r > 0 else "") + f"{r:.2f}pt"
+
+
 def d_pt(cur, prev):
     """率の前月差はポイント。%の%は読み分けられない."""
     if cur is None or prev is None:
@@ -2282,6 +2305,7 @@ def render(data):
             kpi("CPL", f_yen(safe_div(ap_tot["spend"], ap_tot["cv"])), "ap_cpl"),
         ])
         adperf_section = f"""
+<h2>リード獲得<span class="h2sub">web広告のみ・展示会は含まない</span></h2>
 <div class="actsum">
   <div class="card cum"><div class="tag">web広告<span class="taglabel">期間内・全キャンペーン</span></div>
     <div class="kpis">{ap_items}</div></div>
@@ -2296,48 +2320,6 @@ def render(data):
 </div>"""
     else:
         adperf_section = ""
-
-    # ---- リード獲得（直契約・チャネル別） ----
-    # ここの先頭は直契約全体でなければならない。以前は web広告のカード1枚
-    # （しかもウェビナーキャンペーンだけ）を「リード獲得」の直下に置いていて、
-    # 全web費用 ¥293万 のうち ¥153万 しか見せていなかった（48%が非表示）。
-    # 見出しが「リード獲得」なので、普通に見ればそれが全体だと読める。
-    LD_F = ("leads", "cost", "cvden")
-    ld_day = data.get("direct_day") or {}
-    ld_keys = month_keys(ld_day)
-    ld = {mk: {"cost": 0, "cvden": 0,
-               **{c: 0 for c in CHANNEL_KEYS}} for mk in ld_keys}
-    for ld_d, ld_cells in ld_day.items():
-        ld_slot = ld[ld_d[:7]]
-        for ld_ch in CHANNEL_KEYS:
-            ld_cell = ld_cells.get(ld_ch) or {}
-            ld_slot[ld_ch] += ld_cell.get("leads", 0)
-            ld_slot["cost"] += ld_cell.get("cost", 0)
-            # CPLの分母は「広告CVがあればCV、無ければリード数」。
-            # チャネルごとに決まるので、ここで足しておく。
-            ld_slot["cvden"] += (ld_cell.get("cv")
-                                 or ld_cell.get("leads", 0))
-    for ld_slot in ld.values():
-        ld_slot["leads"] = sum(ld_slot[c] for c in CHANNEL_KEYS)
-    ld_tot = {k: sum(v[k] for v in ld.values())
-              for k in list(CHANNEL_KEYS) + list(LD_F)}
-    ld_rows = [
-        ("リード数", lambda v: v.get("leads"), f_int, d_num, True, False, False),
-    ] + [
-        (f"　{lab}", (lambda c: lambda v: v.get(c))(ch), f_int, None,
-         False, True, False)
-        for ch, lab in CHANNELS
-    ] + [
-        ("費用", lambda v: v.get("cost"), f_man, d_man, False, False, True),
-        ("CPL", lambda v: safe_div(v.get("cost"), v.get("cvden")), f_yen,
-         d_man, True, False, False),
-    ]
-    ld_html = month_table(ld_keys, ld, ld_rows, ld_tot)
-    lead_section = (
-        "\n<h2>リード獲得"
-        '<span class="h2sub">直契約・獲得月ベース</span></h2>\n'
-        + ld_html + "\n"
-    ) if ld_html else ""
 
     # ---- ウェビナー別 ----
     # 同じ申込フォームから入るため、お題の区別は掲載期間でしかできない。
@@ -2539,7 +2521,6 @@ showAge();
 </div>
 
 {funnel_section}
-{lead_section}
 {adperf_section}
 {webinar_section}
 {daily_section}
