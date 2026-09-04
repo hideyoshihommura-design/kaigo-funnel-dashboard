@@ -1792,7 +1792,9 @@ def render(data):
         if k == "total":
             row = ch_tot
         else:
-            row = {f: sum((wk.get(k) or {}).get(f, 0)
+            # `or 0` が必要。web の cost は広告データが無い週（2026-04より前）
+            # が None で入っていて、`.get(f, 0)` では None がそのまま返る。
+            row = {f: sum(((wk.get(k) or {}).get(f) or 0)
                           for wk in (data.get("direct") or {}).values())
                    for f in ch_fields}
             for f in ch_fields:
