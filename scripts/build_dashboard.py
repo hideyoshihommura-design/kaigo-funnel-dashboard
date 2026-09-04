@@ -1987,31 +1987,34 @@ def render(data):
     # 全部 direct_day から引く。あそこはコンタクトの実効獲得日を軸にしていて、
     # リードも予約も実施も提案も成約も同じ集団に載っている。だから段階間の率が
     # 成立する。calls / fs / is_attr はイベント軸なので**ここに混ぜてはいけない**。
+    # 変数名はすべて fu_ を付ける。render() の中で cell / body のような
+    # 一般的な名前を再代入すると、モジュール側の同名の関数や、この関数の
+    # 別の場所で使っている変数を潰す（実際に cell() を潰して落ちた）。
     FU_F = ("leads", "appts", "mtgs", "props", "won", "won_amount")
     fu = {}
-    for day, cells in (data.get("direct_day") or {}).items():
-        s = fu.setdefault(day[:7], {f: 0 for f in FU_F})
-        for ch in CHANNEL_KEYS:
-            cell = cells.get(ch) or {}
-            for f in FU_F:
-                s[f] += cell.get(f, 0)
+    for fu_day, fu_cells in (data.get("direct_day") or {}).items():
+        fu_slot = fu.setdefault(fu_day[:7], {x: 0 for x in FU_F})
+        for fu_ch in CHANNEL_KEYS:
+            fu_cell = fu_cells.get(fu_ch) or {}
+            for fu_f in FU_F:
+                fu_slot[fu_f] += fu_cell.get(fu_f, 0)
     fu_keys = sorted(fu)
     if fu_keys:
         # 実績が1件も無い月も列を出す。消すと「12月の次が2月」になり、
         # 時間の流れが読めなくなる。
-        y, mth = int(fu_keys[0][:4]), int(fu_keys[0][5:7])
-        ey, em = int(fu_keys[-1][:4]), int(fu_keys[-1][5:7])
+        fu_y, fu_m = int(fu_keys[0][:4]), int(fu_keys[0][5:7])
+        fu_ey, fu_em = int(fu_keys[-1][:4]), int(fu_keys[-1][5:7])
         fu_keys = []
-        while (y, mth) <= (ey, em):
-            k = f"{y:04d}-{mth:02d}"
-            fu_keys.append(k)
-            fu.setdefault(k, {f: 0 for f in FU_F})
-            mth += 1
-            if mth > 12:
-                y, mth = y + 1, 1
-    fu_tot = {f: sum(fu[k][f] for k in fu_keys) for f in FU_F}
+        while (fu_y, fu_m) <= (fu_ey, fu_em):
+            fu_mk = f"{fu_y:04d}-{fu_m:02d}"
+            fu_keys.append(fu_mk)
+            fu.setdefault(fu_mk, {x: 0 for x in FU_F})
+            fu_m += 1
+            if fu_m > 12:
+                fu_y, fu_m = fu_y + 1, 1
+    fu_tot = {x: sum(fu[mk][x] for mk in fu_keys) for x in FU_F}
 
-    def d_pct(cur, prev):
+    def fu_dpct(cur, prev):
         """件数・金額の前月比。前月が0なら出さない（+∞になるため）."""
         if not prev or cur is None:
             return ""
@@ -2020,7 +2023,7 @@ def render(data):
             return "±0%"
         return ("+" if r > 0 else "") + f"{round(r * 100)}%"
 
-    def d_pt(cur, prev):
+    def fu_dpt(cur, prev):
         """率の前月比はポイント差。%の%は読み分けられない."""
         if cur is None or prev is None:
             return ""
@@ -2032,39 +2035,42 @@ def render(data):
     if fu_keys:
         # (表示名, 値の取り方, 整形, 前月比の出し方, 強調, 段階間の率か)
         fu_rows = [
-            ("リード数", lambda s: s["leads"], f_int, d_pct, True, False),
-            ("面談予約", lambda s: s["appts"], f_int, d_pct, True, False),
-            ("予約率", lambda s: safe_div(s["appts"], s["leads"]), f_pct, d_pt,
-             False, True),
-            ("面談実施", lambda s: s["mtgs"], f_int, d_pct, False, False),
-            ("提案", lambda s: s["props"], f_int, d_pct, False, False),
-            ("成約", lambda s: s["won"], f_int, None, True, False),
-            ("成約金額", lambda s: s["won_amount"], f_yen, None, True, False),
+            ("リード数", lambda v: v["leads"], f_int, fu_dpct, True, False),
+            ("面談予約", lambda v: v["appts"], f_int, fu_dpct, True, False),
+            ("予約率", lambda v: safe_div(v["appts"], v["leads"]), f_pct,
+             fu_dpt, False, True),
+            ("面談実施", lambda v: v["mtgs"], f_int, fu_dpct, False, False),
+            ("提案", lambda v: v["props"], f_int, fu_dpct, False, False),
+            ("成約", lambda v: v["won"], f_int, None, True, False),
+            ("成約金額", lambda v: v["won_amount"], f_yen, None, True, False),
         ]
-        head = ('<tr><th class="fk">指標</th><th class="fc">累計</th>'
-                + "".join(f'<th data-m="{k}">{k[2:4]}/{int(k[5:7])}</th>'
-                          for k in fu_keys) + "</tr>")
-        body = []
-        for name, get, fmt, delta, hl, sub in fu_rows:
-            vals = [get(fu[k]) for k in fu_keys]
-            cls = "main" + (" hl" if hl else "") + (" sub" if sub else "")
-            body.append(
-                f'<tr class="{cls}"><td class="fk">{name}</td>'
-                f'<td class="fc">{fmt(get(fu_tot))}</td>'
-                + "".join(f'<td data-m="{k}">{fmt(v)}</td>'
-                          for k, v in zip(fu_keys, vals)) + "</tr>")
-            if delta:
-                ds = [""] + [delta(vals[i], vals[i - 1])
-                             for i in range(1, len(vals))]
-                body.append(
-                    '<tr class="dlt"><td class="fk">↳ 前月比</td><td class="fc"></td>'
-                    + "".join(f'<td data-m="{k}">{s}</td>'
-                              for k, s in zip(fu_keys, ds)) + "</tr>")
+        fu_head = ('<tr><th class="fk">指標</th><th class="fc">累計</th>'
+                   + "".join(f'<th data-m="{mk}">{mk[2:4]}/{int(mk[5:7])}</th>'
+                             for mk in fu_keys) + "</tr>")
+        fu_body = []
+        for fu_name, fu_get, fu_fmt, fu_delta, fu_hl, fu_sub in fu_rows:
+            fu_vals = [fu_get(fu[mk]) for mk in fu_keys]
+            fu_cls = ("main" + (" hl" if fu_hl else "")
+                      + (" sub" if fu_sub else ""))
+            fu_body.append(
+                f'<tr class="{fu_cls}"><td class="fk">{fu_name}</td>'
+                f'<td class="fc">{fu_fmt(fu_get(fu_tot))}</td>'
+                + "".join(f'<td data-m="{mk}">{fu_fmt(v)}</td>'
+                          for mk, v in zip(fu_keys, fu_vals)) + "</tr>")
+            if fu_delta:
+                fu_ds = [""] + [fu_delta(fu_vals[i], fu_vals[i - 1])
+                                for i in range(1, len(fu_vals))]
+                fu_body.append(
+                    '<tr class="dlt"><td class="fk">↳ 前月比</td>'
+                    '<td class="fc"></td>'
+                    + "".join(f'<td data-m="{mk}">{txt}</td>'
+                              for mk, txt in zip(fu_keys, fu_ds)) + "</tr>")
+        fu_body_html = "".join(fu_body)
         funnel_section = f"""
 <h2>月次ファネル<span class="h2sub">直契約・獲得月ベース</span></h2>
 <div class="fnl"><table>
-<thead>{head}</thead>
-<tbody>{"".join(body)}</tbody>
+<thead>{fu_head}</thead>
+<tbody>{fu_body_html}</tbody>
 </table></div>
 """
     else:
