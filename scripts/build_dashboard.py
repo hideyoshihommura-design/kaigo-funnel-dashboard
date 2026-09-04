@@ -53,6 +53,9 @@ ATTR_BUCKETS = [
 ATTR_KEYS = [k for k, _ in ATTR_BUCKETS]
 ATTR_FIELDS = ("appts", "deals", "wons", "wonamt")
 
+# FS活動量（data.json の fs）で持っている指標。
+FS_FIELDS = ("mtgs", "props", "wons", "wonamt")
+
 # 月次ファネルの列幅（px）。指標名・累計・各月。中身で決めさせない。
 # 118 + 88 + 76×13 = 1,194px で、13ヶ月が横スクロールなしで収まる。
 FU_W_K, FU_W_C, FU_W_M = 118, 88, 76
@@ -2056,7 +2059,7 @@ def render(data):
             return (fsd.get(day) or {}).get(f, 0)
 
         fs_t = {f: sum((v.get(f, 0) for v in fsd.values()))
-                for f in ("mtgs", "props", "wons", "wonamt")}
+                for f in FS_FIELDS}
         today_key = ac["today_key"]
         fs_today = "".join([
             kpi("面談実施", f_int(fg(today_key, "mtgs"))),
@@ -2074,14 +2077,28 @@ def render(data):
             kpi("実施→成約率", f_pct(safe_div(fs_t["wons"], fs_t["mtgs"])), "fs_close"),
             kpi("平均成約単価", f_yen(safe_div(fs_t["wonamt"], fs_t["wons"])), "fs_avg"),
         ])
-        fs_rows = "".join(
-            f'<tr data-d="{d}"><td class="wk">{week_label(d) if False else d[5:].replace("-", "/")}</td>'
-            f'<td class="num">{f_int(v.get("mtgs", 0))}</td>'
-            f'<td class="num">{f_int(v.get("props", 0))}</td>'
-            f'<td class="num">{f_int(v.get("wons", 0))}</td>'
-            f'<td class="num">{f_yen(v.get("wonamt", 0))}</td>'
-            '<td class="pad"></td></tr>'
-            for d, v in sorted(fsd.items()))
+        # 月次。週次にしないのは動きが少ないため。この12ヶ月で面談・提案・成約の
+        # どれかが起きた日は48日しかなく、週で切ると50列ちかくが0で埋まる。
+        # 率は1つも出さない。成約は面談の数週間〜数ヶ月あとに決まるので、
+        # 同じ月に分子と分母がそろわない（2025-11は面談実施0で成約1、
+        # 2026-02と2026-03は1/1で100%になる）。正しい実施→成約率は
+        # コホート軸の月次ファネルにある。
+        fs_mk = month_keys(fsd)
+        fs_mo = {mk: {f: 0 for f in FS_FIELDS} for mk in fs_mk}
+        for fs_d, fs_v in fsd.items():
+            slot = fs_mo[fs_d[:7]]
+            for f in FS_FIELDS:
+                slot[f] += fs_v.get(f, 0)
+        fs_mrows = [
+            ("面談実施", lambda v: v.get("mtgs"), f_int, d_num, True, False,
+             False),
+            ("提案", lambda v: v.get("props"), f_int, d_num, False, True,
+             True),
+            ("成約数", lambda v: v.get("wons"), f_int, d_num, True, False,
+             True),
+            ("成約金額", lambda v: v.get("wonamt"), f_man, d_man, True, False,
+             False),
+        ]
         fs_section = f"""
 <h2>FS活動量</h2>
 <div class="actsum">
@@ -2091,12 +2108,8 @@ def render(data):
     <div class="kpis">{fs_total}</div></div>
 </div>
 <div class="tabgrid">
-  <details class="fold" id="f-fs"><summary><span class="tri">▶</span>FS活動の日次<span class="cnt">{len(fsd)}日分</span></summary>
-    <div class="tablewrap"><table>
-    <thead><tr><th>日付</th><th>面談実施</th><th>提案</th>
-    <th>成約数</th><th>成約金額</th>
-    <th class="pad" aria-hidden="true"></th></tr></thead>
-    <tbody>{fs_rows}</tbody></table></div></details>
+  <details class="fold" id="f-fs-m"><summary><span class="tri">▶</span>月次<span class="cnt">{len(fs_mk)}ヶ月分　面談実施 {f_int(fs_t["mtgs"])}　成約 {f_int(fs_t["wons"])}　成約金額 {f_man(fs_t["wonamt"])}</span></summary>
+    <div class="foldin">{month_table(fs_mk, fs_mo, fs_mrows, fs_t)}</div></details>
 </div>"""
         # ---- IS活動量の週次（全体 / 架電業者） ----
         # 業者ぶんの架電数・接続数は calls の vcalls / vconn（業者アカウントの
