@@ -2609,10 +2609,13 @@ showAge();
 <tbody>{expo_table}</tbody></table></div></details>
 
 <h2>チャネル別<span class="h2sub">全期間・直契約・実数のみ</span></h2>
+<div class="tabgrid">
+<details class="fold" id="f-channel"><summary><span class="tri">▶</span>チャネル別<span class="cnt">{len(CHANNELS)}チャネル　リード {f_int(ch_tot["leads"])}　成約 {f_int(ch_tot["won"])}　成約金額 {f_man(ch_tot["won_amount"])}</span></summary>
 <div class="tablewrap"><table>
 <thead><tr><th>チャネル</th><th>リード数</th><th>費用</th><th>面談予約</th>
 <th>面談実施</th><th>成約数</th><th>成約金額</th></tr></thead>
-<tbody>{channel_table}</tbody></table></div>
+<tbody>{channel_table}</tbody></table></div></details>
+</div>
 
 </div>
 <script>{CHART_JS}{charts_js}{FOLD_JS}</script>
