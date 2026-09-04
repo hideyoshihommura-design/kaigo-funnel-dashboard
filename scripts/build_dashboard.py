@@ -838,12 +838,32 @@ def month_keys(day_keys):
     return out
 
 
-def month_table(keys, buckets, rows, totals):
-    """月を横に並べた表のHTML.
+def week_col_label(wk):
+    """週の列見出し。月曜日を M/D で出す."""
+    d = dt.date.fromisoformat(wk)
+    return f"{d.month}/{d.day}"
 
-    rows は (表示名, 値の取り方, 整形, 前月差の出し方|None, 強調, 内訳か, 区切り線)。
-    列幅は colgroup で固定する。auto のままだと ¥2,101,000 の月だけ広くなり、
-    月ごとに幅が変わって目が列を追えない。幅がそろえば数字は右揃え＋等幅なので
+
+def month_col_label(mk):
+    return f"{mk[2:4]}/{int(mk[5:7])}"
+
+
+def month_table(keys, buckets, rows, totals):
+    """月を横に並べた表."""
+    return period_table(keys, buckets, rows, totals, "data-m", month_col_label)
+
+
+def week_table(keys, buckets, rows, totals):
+    """週を横に並べた表。列が50を超えることがあるので横スクロール前提."""
+    return period_table(keys, buckets, rows, totals, "data-w", week_col_label)
+
+
+def period_table(keys, buckets, rows, totals, attr, labeler):
+    """期間を横に並べた表のHTML.
+
+    rows は (表示名, 値の取り方, 整形, 前期間差の出し方|None, 強調, 内訳か, 区切り線)。
+    列幅は colgroup で固定する。auto のままだと ¥2,101,000 の列だけ広くなり、
+    期間ごとに幅が変わって目が列を追えない。幅がそろえば数字は右揃え＋等幅なので
     桁が縦に並び、縦罫線が不要になる。
     """
     if not keys:
@@ -854,9 +874,9 @@ def month_table(keys, buckets, rows, totals):
             + f'<col style="width:{FU_W_M}px">' * len(keys) + "</colgroup>")
     width = FU_W_K + FU_W_C + FU_W_M * len(keys)
     head = ('<tr><th class="fk">指標</th><th class="fc">累計</th>'
-            + "".join(f'<th data-m="{mk}"'
+            + "".join(f"<th {attr}=\"{mk}\""
                       + (' class="now"' if mk == last else "")
-                      + f">{mk[2:4]}/{int(mk[5:7])}</th>" for mk in keys)
+                      + f">{labeler(mk)}</th>" for mk in keys)
             + "</tr>")
     body = []
     for name, get, fmt, delta, hl, sub, sep in rows:
@@ -873,7 +893,7 @@ def month_table(keys, buckets, rows, totals):
             # 0を薄くしてはいけない。「成約0が続いている」はこの表で一番
             # 重要な事実で、薄くすると空欄と区別がつかず消えてしまう。
             cells.append(
-                f'<td data-m="{mk}"'
+                f"<td {attr}=\"{mk}\""
                 + (' class="now"' if mk == last else "")
                 + f"><b>{fmt(val)}</b>"
                 + (f"<i>{dtxt or '&nbsp;'}</i>" if delta else "")
@@ -1571,6 +1591,16 @@ function apply(from,to){
     var mk=mcell[mi].getAttribute('data-m');
     mcell[mi].style.display=((mk+'-31')>=from && (mk+'-01')<=to)?'':'none';
   }
+  /* 週を列に並べた表も同じ。週はまるごと入れる（月曜〜日曜のどこかが
+     期間に入っていれば残す）。data-w は月曜日の日付。 */
+  var wcell=document.querySelectorAll('[data-w]'),wi;
+  for(wi=0;wi<wcell.length;wi++){
+    var wk=wcell[wi].getAttribute('data-w');
+    var we=new Date(wk+'T00:00:00Z');
+    we.setUTCDate(we.getUTCDate()+6);
+    var wend=we.toISOString().slice(0,10);
+    wcell[wi].style.display=(wend>=from && wk<=to)?'':'none';
+  }
 
   showRows(from,to);
   drawAll(from,to);
@@ -1668,12 +1698,24 @@ FOLD_JS = """
   }
 })();
 
-/* 月次ファネルは月が横に並ぶので、画面より広ければ横スクロールになる。
-   開いた瞬間は最新月が見えている方がいい。左端（2025-09）に寄っていると
-   毎回スクロールしてから読むことになる。収まっていれば何も起きない。 */
+/* 月や週が横に並ぶ表は、画面より広ければ横スクロールになる。開いた瞬間は
+   最新が見えている方がいい。左端に寄っていると毎回スクロールしてから読む
+   ことになる。列幅は固定なので、右端に寄せると画面幅ぶん（週なら直近
+   2〜3ヶ月）が最初から見える。収まっていれば何も起きない。 */
+function toLatest(root){
+  var t=(root||document).querySelectorAll('.fnl'),i;
+  for(i=0;i<t.length;i++){t[i].scrollLeft=t[i].scrollWidth;}
+}
+toLatest();
+/* 折りたたみの中は閉じている間は幅0で、開くまでスクロール位置を決められない。
+   開いた時点で測り直す。 */
 (function(){
-  var f=document.querySelector('.fnl');
-  if(f){f.scrollLeft=f.scrollWidth;}
+  var ds=document.querySelectorAll('details.fold'),i;
+  for(i=0;i<ds.length;i++){
+    (function(d){
+      d.addEventListener('toggle',function(){if(d.open){toLatest(d);}});
+    })(ds[i]);
+  }
 })();
 """
 
@@ -2283,22 +2325,6 @@ def render(data):
         for ap_f in ADF:
             ap_slot[ap_f] += ap_v[ap_f]
     if ap:
-        aprows = []
-        for wk, v in sorted(ap.items()):
-            sp, imp, clicks, cvn = v["spend"], v["imp"], v["clicks"], v["cv"]
-            aprows.append(
-                f'<tr data-d="{wk}">'
-                f'<td class="wk">{week_label(wk)}</td>'
-                f'<td class="num">{f_yen(sp)}</td>'
-                f'<td class="num">{f_int(imp)}</td>'
-                f'<td class="num">{f_int(clicks)}</td>'
-                f'<td class="num">{f_pct(safe_div(clicks, imp), 2)}</td>'
-                f'<td class="num">{f_yen(safe_div(sp, clicks))}</td>'
-                f'<td class="num">{f_yen(safe_div(sp, imp) * 1000 if imp else None)}</td>'
-                f'<td class="num">{f_int(cvn)}</td>'
-                f'<td class="num">{f_pct(safe_div(cvn, clicks), 2)}</td>'
-                f'<td class="num">{f_yen(safe_div(sp, cvn))}</td>'
-                '<td class="pad"></td></tr>')
         # 期間内のまとめ。率は週ごとの率を平均するのではなく、
         # 期間の合計から計算し直す。週ごとの率を単純平均すると、
         # 配信が少ない週が多い週と同じ重みになり実態から外れる。
@@ -2381,6 +2407,12 @@ def render(data):
         apc_html = ('<div class="tabgrid">' + "".join(apc_blocks) + "</div>"
                     if apc_blocks else "")
 
+        # 週次も同じ形（指標を縦・週を横）にする。以前は週が行・指標が列で、
+        # キャンペーン別の表と向きが逆だった。同じ9指標を並べているのに
+        # 向きが違うと、見比べるたびに読み替えることになる。
+        ap_week_keys = sorted(ap)
+        ap_week_html = week_table(ap_week_keys, ap, apc_rows, ap_tot)
+
         adperf_section = f"""
 <h2>リード獲得<span class="h2sub">web広告のみ・展示会は含まない</span></h2>
 <div class="actsum">
@@ -2389,12 +2421,8 @@ def render(data):
 </div>
 {apc_html}
 <div class="tabgrid">
-  <details class="fold" id="f-adperf"><summary><span class="tri">▶</span>web広告の週次指標<span class="cnt">{len(ap)}週分・全媒体</span></summary>
-    <div class="tablewrap"><table>
-    <thead><tr><th>週</th><th>消費金額</th><th>IMP</th><th>クリック</th><th>CTR</th>
-    <th>CPC</th><th>CPM</th><th>CV</th><th>CVR</th><th>CPL</th>
-    <th class="pad" aria-hidden="true"></th></tr></thead>
-    <tbody>{"".join(aprows)}</tbody></table></div></details>
+  <details class="fold" id="f-adperf"><summary><span class="tri">▶</span>web広告の週次<span class="cnt">{len(ap)}週分・全媒体</span></summary>
+    <div class="foldin">{ap_week_html}</div></details>
 </div>"""
     else:
         adperf_section = ""
