@@ -263,7 +263,8 @@ def validate_calls(data):
         # mtgs/props/wons/wonamt は一時期ここに入れていた（今は fs ブロック）。
         # 生成の途中で古い data.json を読むことがあるので、あっても弾かない。
         unknown = set(v) - {"calls", "connected", "appts", "called", "leads",
-                            "mtgs", "props", "wons", "wonamt"}
+                            "mtgs", "props", "wons", "wonamt",
+                            "vcalls", "vconn"}
         if unknown:
             fail(f"calls[{k}] に未知のキー: {sorted(unknown)}")
         for f in ("calls", "connected", "appts", "called", "leads"):
@@ -704,18 +705,28 @@ def compute_daily(data):  # noqa: C901
         "worked_days": len(worked),
     }
 
-    # 架電業者ぶん（VENDOR_START 以降）。期間指定では動かさない。
-    vd = [d for d in dates if d >= VENDOR_START]
-    vworked = [d for d in vd if get(d, "calls") > 0]
-    vt = {f: sum(get(d, f) for d in vd) for f in FIELDS}
+    # 架電業者ぶん。**日付（VENDOR_START 以降）では切らない。**
+    # 業者アカウントのコール（vcalls / vconn）と、業者アカウントが作った
+    # 面談予約（is_attr の vendor）で数える。日付で切ると、社内が1件でも
+    # 架電した日から業者ぶんに混ざる。
+    vcalls = data.get("calls") or {}
+    vattr = data.get("is_attr") or {}
+    vt = {
+        "calls": sum(v.get("vcalls", 0) for v in vcalls.values()),
+        "connected": sum(v.get("vconn", 0) for v in vcalls.values()),
+        "appts": sum((v.get("vendor") or {}).get("appts", 0)
+                     for v in vattr.values()),
+    }
+    vworked = [k for k, v in vcalls.items() if v.get("vcalls", 0) > 0]
+    vfirst = min(vworked) if vworked else VENDOR_START.isoformat()
     vendor = {
-        "from": VENDOR_START.isoformat(),
+        "from": vfirst,
         "calls": vt["calls"],
-        "called": vt["called"],
         "connected": vt["connected"],
         "rate": safe_div(vt["connected"], vt["calls"]),
         "appts": vt["appts"],
-        "conv": safe_div(vt["appts"], vt["called"]),
+        # 商談化率の分母は架電数。接続数だと入力の有無で分母が動く。
+        "conv": safe_div(vt["appts"], vt["calls"]),
         "per_day": safe_div(vt["calls"], len(vworked)) if vworked else None,
         "worked_days": len(vworked),
     }
@@ -2108,9 +2119,11 @@ def render(data):
         # 振ってしまうとフィルタが値を書き換え、8/19起点でなくなる。
         vn = daily["vendor"]
         vn_from = f'{vn["from"][5:7]}/{vn["from"][8:10]}'
+        # リード数（架電した人数）は外した。業者アカウント基準の
+        # ユニーク人数を数えるには初回架電を担当者別に持つ必要があり、
+        # 商談化率の分母も架電数に変えたので使い道が無い。
         vendor_items = "".join([
             kpi("架電数", f_int(vn["calls"])),
-            kpi("リード数", f_int(vn["called"])),
             kpi("接続数", f_int(vn["connected"])),
             kpi("接続率", f_pct(vn["rate"])),
             kpi("面談予約 獲得数", f_int(vn["appts"])),
@@ -2173,6 +2186,52 @@ def render(data):
     <th class="pad" aria-hidden="true"></th></tr></thead>
     <tbody>{fs_rows}</tbody></table></div></details>
 </div>"""
+        # ---- 架電業者の行動実績（週次） ----
+        # 架電数・接続数は calls の vcalls / vconn（業者アカウントのコール）。
+        # 面談予約は is_attr の vendor 側（業者アカウントが作った取引）。
+        # どちらもアカウントで切っているので、日付判定の業者カードと違って
+        # 社内が架電しても混ざらない。
+        VN_F = ("vcalls", "vconn", "vappts")
+        vn_wk = {}
+        for vn_d, vn_v in (data.get("calls") or {}).items():
+            vn_k = monday_of(dt.date.fromisoformat(vn_d)).isoformat()
+            vn_slot = vn_wk.setdefault(vn_k, {f: 0 for f in VN_F})
+            vn_slot["vcalls"] += vn_v.get("vcalls", 0)
+            vn_slot["vconn"] += vn_v.get("vconn", 0)
+        for vn_d, vn_v in (data.get("is_attr") or {}).items():
+            vn_k = monday_of(dt.date.fromisoformat(vn_d)).isoformat()
+            vn_slot = vn_wk.setdefault(vn_k, {f: 0 for f in VN_F})
+            vn_slot["vappts"] += (vn_v.get("vendor") or {}).get("appts", 0)
+        # 稼働前の週は出さない。架電も予約も0の週が延々並ぶと、
+        # 「やったのに成果0」に見える。
+        vn_keys = [k for k in sorted(vn_wk)
+                   if vn_wk[k]["vcalls"] or vn_wk[k]["vappts"]]
+        vn_tot = {f: sum(vn_wk[k][f] for k in vn_keys) for f in VN_F}
+        vn_rows = [
+            ("架電数", lambda v: v.get("vcalls"), f_int, d_num, True, False,
+             False),
+            ("接続数", lambda v: v.get("vconn"), f_int, d_num, False, False,
+             True),
+            ("接続率", lambda v: safe_div(v.get("vconn"), v.get("vcalls")),
+             f_pct, d_pt, False, True, False),
+            ("面談予約", lambda v: v.get("vappts"), f_int, d_num, True, False,
+             True),
+            ("商談化率", lambda v: safe_div(v.get("vappts"), v.get("vcalls")),
+             f_pct, d_pt, True, True, False),
+        ]
+        vn_html = week_table(vn_keys, vn_wk, vn_rows, vn_tot)
+        vn_fold = (
+            '<div class="tabgrid">'
+            '<details class="fold" id="f-vendor-wk"><summary>'
+            '<span class="tri">▶</span>架電業者の週次'
+            f'<span class="cnt">{len(vn_keys)}週分'
+            f'　架電 {f_int(vn_tot["vcalls"])}'
+            f'　面談予約 {f_int(vn_tot["vappts"])}'
+            f'　商談化率 {f_pct(safe_div(vn_tot["vappts"], vn_tot["vcalls"]))}'
+            "</span></summary>"
+            f'<div class="foldin">{vn_html}</div></details></div>'
+        ) if vn_keys else ""
+
         daily_section = f"""
 <h2>IS活動量</h2>
 <div class="actsum">
@@ -2183,6 +2242,7 @@ def render(data):
   <div class="card vendor"><div class="tag">架電業者<span class="taglabel">{vn_from}〜</span></div>
     <div class="kpis">{vendor_items}</div></div>
 </div>
+{vn_fold}
 <div class="charts one">
   <div class="card"><h3>架電数の日次推移（{daily["span"]}）</h3>
     <div class="chart"><canvas id="c_call"></canvas></div></div>

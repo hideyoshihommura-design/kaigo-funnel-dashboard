@@ -322,6 +322,8 @@ def fetch_calls(token, end_date):
     props = [
         "hs_object_id", "hs_timestamp", "hs_call_disposition",
         "hs_call_direction", "hs_object_source_label",
+        # 誰がかけたか。架電業者ぶんを日付ではなくアカウントで切るのに使う。
+        "hubspot_owner_id",
     ]
     calls = hs_search_all(token, "calls", groups, props)
     print(f"[info] calls({CALL_SOURCE}): {len(calls)}件", file=sys.stderr)
@@ -955,23 +957,37 @@ def build(token, sheets_token, channel_map, webinar_cfg, campaign_cfg,
 
     # --- 日次架電
     daily_calls, daily_conn = {}, {}
+    # 架電業者ぶん。日付（VENDOR_START 以降）で切ってはいけない。
+    # 今は業者アカウントしか架電していないので日付でも数字は合うが、
+    # 社内が1件でも架電すれば業者ぶんに混ざる。
+    vendor_calls, vendor_conn = {}, {}
     first_call_of_contact = {}
     unknown_disp = {}
     no_direction = 0
+    inbound = 0
     for c in calls:
         p = c.get("properties") or {}
         ts = parse_hs_datetime(p.get("hs_timestamp"))
         if not ts or ts < CALLS_START or ts > end_date:
             continue
+        # 着信は「かけた電話」ではないので数えない。
+        # 方向が未設定のもの（CRM_UIに手入力で欄が空。21件）は数える。
+        # かけた事実は変わらず、記録の不備で落とすと架電数が実態より少なくなる。
         direction = (p.get("hs_call_direction") or "").upper()
-        if "OUTBOUND" not in direction:
-            if not direction:
-                no_direction += 1
+        if "INBOUND" in direction:
+            inbound += 1
             continue
+        if not direction:
+            no_direction += 1
+        is_vendor = str(p.get("hubspot_owner_id") or "").strip() in vendor_ids
         daily_calls[ts] = daily_calls.get(ts, 0) + 1
+        if is_vendor:
+            vendor_calls[ts] = vendor_calls.get(ts, 0) + 1
         disp = (p.get("hs_call_disposition") or "").strip()
         if disp in CONNECTED_DISPOSITIONS:
             daily_conn[ts] = daily_conn.get(ts, 0) + 1
+            if is_vendor:
+                vendor_conn[ts] = vendor_conn.get(ts, 0) + 1
         elif disp and disp[:8] not in KNOWN_NOT_CONNECTED_PREFIX:
             unknown_disp[disp] = unknown_disp.get(disp, 0) + 1
         cid = c.get("_contact_id")
@@ -981,9 +997,11 @@ def build(token, sheets_token, channel_map, webinar_cfg, campaign_cfg,
     if no_direction:
         warn(
             f"hs_call_direction が未設定のコールが {no_direction} 件あります。"
-            "発信と判定できないため架電数・接続数・転換率の分母から外しています"
-            "（そのぶん転換率は高めに出ます）。"
+            "架電数には数えています（かけた事実は変わらないため）。"
+            "着信と混ざっている可能性があるので、シート側の入力を確認してください。"
         )
+    if inbound:
+        warn(f"着信のコールが {inbound} 件ありました。架電数から外しています。")
     if unknown_disp:
         warn(
             "対応表に無いコール成果GUIDがありました（接続に数えていません）: "
@@ -1011,6 +1029,10 @@ def build(token, sheets_token, channel_map, webinar_cfg, campaign_cfg,
             "mtgs": daily_mtgs.get(d, 0),
             "called": daily_called.get(d, 0),
             "leads": daily_leads.get(d, 0),
+            # 架電業者ぶん（config/callers.json のアカウント）。
+            # 面談予約の業者ぶんは is_attr の vendor 側にある。
+            "vcalls": vendor_calls.get(d, 0),
+            "vconn": vendor_conn.get(d, 0),
         }
 
     # --- ウェビナー別（掲載期間で切る）
