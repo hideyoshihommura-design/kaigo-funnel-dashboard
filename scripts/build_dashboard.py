@@ -2072,7 +2072,6 @@ def render(data):
                 "</tr>"
             )
         daily_table = "".join(drows)
-        dk = daily["kpi"]
         ac = daily["activity"]
         # 「本日」「今週」は期間フィルタでは動かさない（常に生成日基準）。
         # 期間を切った状態でも「今どれだけ動いているか」は見たいので、
@@ -2087,16 +2086,6 @@ def render(data):
             kpi("面談予約 獲得数", f_int(ac["today_appts"])),
             kpi("商談化率", f_pct(ac["today_conv"])),
         ])
-        kpi_items = [
-            kpi("架電数", f_int(dk["calls"]), "c_calls"),
-            kpi("リード数", f_int(dk["called"]), "c_called"),
-            kpi("接続数", f_int(dk["connected"]), "c_conn"),
-            kpi("接続率", f_pct(dk["rate"]), "c_rate"),
-            kpi("面談予約 獲得数", f_int(dk["appts"]), "c_appt"),
-            kpi("商談化率", f_pct(safe_div(dk["appts"], dk["called"])), "c_conv"),
-            kpi("1稼働日あたり 架電数", f_dec(ac["per_day"]), "c_perday"),
-            kpi("稼働日数", f_int(ac["worked_days"]), "c_wdays"),
-        ]
         conv_block = ""
         if conv:
             crows = "".join(
@@ -2113,24 +2102,9 @@ def render(data):
     <th>転換率</th><th class="pad" aria-hidden="true"></th></tr></thead>
     <tbody>{crows}</tbody></table></div></details>
 """
-        daily_kpis = "".join(kpi_items)
-
-        # 架電業者ぶん。期間指定では動かさないので id は振らない。
-        # 振ってしまうとフィルタが値を書き換え、8/19起点でなくなる。
-        vn = daily["vendor"]
-        vn_from = f'{vn["from"][5:7]}/{vn["from"][8:10]}'
-        # リード数（架電した人数）は外した。業者アカウント基準の
-        # ユニーク人数を数えるには初回架電を担当者別に持つ必要があり、
-        # 商談化率の分母も架電数に変えたので使い道が無い。
-        vendor_items = "".join([
-            kpi("架電数", f_int(vn["calls"])),
-            kpi("接続数", f_int(vn["connected"])),
-            kpi("接続率", f_pct(vn["rate"])),
-            kpi("面談予約 獲得数", f_int(vn["appts"])),
-            kpi("商談化率", f_pct(vn["conv"])),
-            kpi("1稼働日あたり 架電数", f_dec(vn["per_day"])),
-            kpi("稼働日数", f_int(vn["worked_days"])),
-        ])
+        # 累計（期間内）と架電業者のカードは廃止した。同じ数字を週次の
+        # 折りたたみ（f-is-all / f-vendor-wk）で出しているので、
+        # カードは「本日」だけにしてある。
 
         # ---- FS活動量（直契約のみ・全期間） ----
         # 上部の直契約カードと同じ母集団に揃えてある。揃えないと
@@ -2186,61 +2160,88 @@ def render(data):
     <th class="pad" aria-hidden="true"></th></tr></thead>
     <tbody>{fs_rows}</tbody></table></div></details>
 </div>"""
-        # ---- 架電業者の行動実績（週次） ----
-        # 架電数・接続数は calls の vcalls / vconn（業者アカウントのコール）。
-        # 面談予約は is_attr の vendor 側（業者アカウントが作った取引）。
-        # どちらもアカウントで切っているので、日付判定の業者カードと違って
-        # 社内が架電しても混ざらない。
-        VN_F = ("vcalls", "vconn", "vappts")
+        # ---- IS活動量の週次（全体 / 架電業者） ----
+        # 業者ぶんの架電数・接続数は calls の vcalls / vconn（業者アカウントの
+        # コール）、面談予約は is_attr の vendor 側（業者アカウントが作った
+        # 取引）。どちらもアカウントで切っているので、社内が架電しても
+        # 混ざらない（廃止した日付起点の業者カードはここが崩れる作りだった）。
+        # 面談予約は全体・業者ともに is_attr（取引の作成者）から取る。
+        # 全体を calls の appts（その日に入った予約すべて）にすると、
+        # 代理店やコンタクト未紐付けも入って業者ぶんと引き算できなくなる。
+        # 同じ規則で数えることで「全体 − 業者 = 社内」が成立する。
+        # 稼働日数は「1件でも架電があった日」の数。累計カードを畳んだので
+        # ここに置いておかないとページから消える。
+        VN_F = ("calls", "conn", "appts", "days",
+                "vcalls", "vconn", "vappts", "vdays")
         vn_wk = {}
+
+        def vn_slot_of(day):
+            key = monday_of(dt.date.fromisoformat(day)).isoformat()
+            return vn_wk.setdefault(key, {f: 0 for f in VN_F})
+
         for vn_d, vn_v in (data.get("calls") or {}).items():
-            vn_k = monday_of(dt.date.fromisoformat(vn_d)).isoformat()
-            vn_slot = vn_wk.setdefault(vn_k, {f: 0 for f in VN_F})
+            vn_slot = vn_slot_of(vn_d)
+            vn_slot["calls"] += vn_v.get("calls", 0)
+            vn_slot["conn"] += vn_v.get("connected", 0)
+            vn_slot["days"] += 1 if vn_v.get("calls", 0) else 0
             vn_slot["vcalls"] += vn_v.get("vcalls", 0)
             vn_slot["vconn"] += vn_v.get("vconn", 0)
+            vn_slot["vdays"] += 1 if vn_v.get("vcalls", 0) else 0
         for vn_d, vn_v in (data.get("is_attr") or {}).items():
-            vn_k = monday_of(dt.date.fromisoformat(vn_d)).isoformat()
-            vn_slot = vn_wk.setdefault(vn_k, {f: 0 for f in VN_F})
-            vn_slot["vappts"] += (vn_v.get("vendor") or {}).get("appts", 0)
-        # 稼働前の週は出さない。架電も予約も0の週が延々並ぶと、
-        # 「やったのに成果0」に見える。
-        vn_keys = [k for k in sorted(vn_wk)
-                   if vn_wk[k]["vcalls"] or vn_wk[k]["vappts"]]
-        vn_tot = {f: sum(vn_wk[k][f] for k in vn_keys) for f in VN_F}
-        vn_rows = [
-            ("架電数", lambda v: v.get("vcalls"), f_int, d_num, True, False,
-             False),
-            ("接続数", lambda v: v.get("vconn"), f_int, d_num, False, False,
-             True),
-            ("接続率", lambda v: safe_div(v.get("vconn"), v.get("vcalls")),
-             f_pct, d_pt, False, True, False),
-            ("面談予約", lambda v: v.get("vappts"), f_int, d_num, True, False,
-             True),
-            ("商談化率", lambda v: safe_div(v.get("vappts"), v.get("vcalls")),
-             f_pct, d_pt, True, True, False),
-        ]
-        vn_html = week_table(vn_keys, vn_wk, vn_rows, vn_tot)
-        vn_fold = (
-            '<div class="tabgrid">'
-            '<details class="fold" id="f-vendor-wk"><summary>'
-            '<span class="tri">▶</span>架電業者の週次'
-            f'<span class="cnt">{len(vn_keys)}週分'
-            f'　架電 {f_int(vn_tot["vcalls"])}'
-            f'　面談予約 {f_int(vn_tot["vappts"])}'
-            f'　商談化率 {f_pct(safe_div(vn_tot["vappts"], vn_tot["vcalls"]))}'
-            "</span></summary>"
-            f'<div class="foldin">{vn_html}</div></details></div>'
-        ) if vn_keys else ""
+            vn_slot = vn_slot_of(vn_d)
+            vn_ven = (vn_v.get("vendor") or {}).get("appts", 0)
+            vn_slot["vappts"] += vn_ven
+            vn_slot["appts"] += vn_ven + (vn_v.get("inhouse") or {}).get(
+                "appts", 0)
+
+        def vn_block(label, fold_id, ck, nk, ak, dk_):
+            """週次の折りたたみを1つ作る。全体と業者で見る列だけが違う."""
+            # 架電も予約も0の週は出さない。稼働前の週が延々並ぶと
+            # 「やったのに成果0」に見える。
+            keys = [k for k in sorted(vn_wk) if vn_wk[k][ck] or vn_wk[k][ak]]
+            if not keys:
+                return ""
+            tot = {f: sum(vn_wk[k][f] for k in keys) for f in VN_F}
+            rows = [
+                ("架電数", lambda v: v.get(ck), f_int, d_num, True, False,
+                 False),
+                ("稼働日数", lambda v: v.get(dk_), f_int, None, False, True,
+                 True),
+                ("接続数", lambda v: v.get(nk), f_int, d_num, False, False,
+                 True),
+                ("接続率", lambda v: safe_div(v.get(nk), v.get(ck)),
+                 f_pct, d_pt, False, True, False),
+                ("面談予約", lambda v: v.get(ak), f_int, d_num, True, False,
+                 True),
+                ("商談化率", lambda v: safe_div(v.get(ak), v.get(ck)),
+                 f_pct, d_pt, True, True, False),
+            ]
+            return (
+                f'<details class="fold" id="{fold_id}"><summary>'
+                f'<span class="tri">▶</span>{label}'
+                f'<span class="cnt">{len(keys)}週分'
+                f'　架電 {f_int(tot[ck])}'
+                f'　接続率 {f_pct(safe_div(tot[nk], tot[ck]))}'
+                f'　面談予約 {f_int(tot[ak])}'
+                f'　商談化率 {f_pct(safe_div(tot[ak], tot[ck]))}'
+                "</span></summary>"
+                '<div class="foldin">'
+                + week_table(keys, vn_wk, rows, tot)
+                + "</div></details>")
+
+        vn_folds = (
+            vn_block("全体の週次", "f-is-all",
+                     "calls", "conn", "appts", "days")
+            + vn_block("架電業者の週次", "f-vendor-wk",
+                       "vcalls", "vconn", "vappts", "vdays")
+        )
+        vn_fold = f'<div class="tabgrid">{vn_folds}</div>' if vn_folds else ""
 
         daily_section = f"""
 <h2>IS活動量</h2>
 <div class="actsum">
   <div class="card act"><div class="tag">本日<span class="taglabel">{daily["activity"]["today"]}</span></div>
     <div class="kpis">{act_items}</div></div>
-  <div class="card cum"><div class="tag">累計<span class="taglabel">期間内</span></div>
-    <div class="kpis">{daily_kpis}</div></div>
-  <div class="card vendor"><div class="tag">架電業者<span class="taglabel">{vn_from}〜</span></div>
-    <div class="kpis">{vendor_items}</div></div>
 </div>
 {vn_fold}
 <div class="charts one">
