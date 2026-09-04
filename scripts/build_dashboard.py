@@ -335,6 +335,19 @@ def validate_is_attr(data):
         warn(f"is_attr の成約数合計 {tot['wons']} が fs の成約数合計 {fs_wons} を"
              "超えています。母集団の絞り込みがズレています。")
 
+    # 面談予約は2つの軸で持っている。is_attr は「予約が入った日」、
+    # direct は「そのリードを獲得した日」。同じ取引を違う日付に載せている
+    # だけなので、直契約の合計は一致するはず。ズレたら軸の取り違えか、
+    # どちらかの絞り込みが変わっている。
+    direct_appts = sum(
+        cell.get("appts", 0)
+        for wk in (data.get("direct") or {}).values()
+        for cell in wk.values()
+    )
+    if direct_appts and tot["appts"] != direct_appts:
+        warn(f"面談予約の合計が軸によって違います: is_attr(予約日軸) {tot['appts']} "
+             f"／ direct(獲得日軸) {direct_appts}。軸の取り違えを疑ってください。")
+
 
 # --------------------------------------------------------------------------
 # 集計

@@ -676,12 +676,25 @@ def build(token, sheets_token, channel_map, webinar_cfg, campaign_cfg,
             + ", ".join(f"{k}={v}件" for k, v in sorted(unknown_routes.items()))
         )
 
+    # ここから下の direct / agency / direct_day / agency_day は
+    # **すべてコンタクトの実効獲得日を軸にする**（コホート軸）。
+    # leads も deals も won も appts も「そのリードを獲得した日」に載せる。
+    # 率を出すときに分子と分母が同じ集団になるのはこの軸だけ。
+    #
+    # もう一方の軸（イベント軸＝そのできごとが起きた日）は
+    # calls / fs / is_attr が持っている。**この2つを混ぜてはいけない。**
+    # 混ぜると「7月に獲得したリード798件」と「7月に入った予約10件」を
+    # 割ることになり、別の集団の割り算になる。
     direct = {
-        w: {k: {"leads": 0, "cost": 0, "deals": 0, "won": 0, "won_amount": 0}
+        w: {k: {"leads": 0, "cost": 0, "appts": 0, "deals": 0,
+                "won": 0, "won_amount": 0}
             for k in ["event", "web", "line", "referral", "other"]}
         for w in week_starts
     }
-    agency = {w: {"leads": 0, "deals": 0, "won": 0, "won_amount": 0} for w in week_starts}
+    agency = {
+        w: {"leads": 0, "appts": 0, "deals": 0, "won": 0, "won_amount": 0}
+        for w in week_starts
+    }
 
     # 日別の直契約／代理店。期間指定を1日や数日に絞ったとき、週次だけだと
     # その週まるごとの値が出てしまうため、同じ数え方で日別にも積んでおく。
@@ -691,13 +704,14 @@ def build(token, sheets_token, channel_map, webinar_cfg, campaign_cfg,
 
     def dday_direct(d):
         return direct_day.setdefault(d.isoformat(), {
-            k: {"leads": 0, "cost": 0, "deals": 0, "won": 0, "won_amount": 0}
+            k: {"leads": 0, "cost": 0, "appts": 0, "deals": 0,
+                "won": 0, "won_amount": 0}
             for k in CHANNELS})
 
     def dday_agency(d):
         return agency_day.setdefault(
             d.isoformat(),
-            {"leads": 0, "deals": 0, "won": 0, "won_amount": 0})
+            {"leads": 0, "appts": 0, "deals": 0, "won": 0, "won_amount": 0})
 
     # --- リード数
     route_leads_total = {}
@@ -847,6 +861,13 @@ def build(token, sheets_token, channel_map, webinar_cfg, campaign_cfg,
         if won:
             td["won"] += 1
             td["won_amount"] += amount
+        # 面談予約をコホート軸（獲得日）でも数える。
+        # 「そのリードは予約に至ったか」を見るための数字で、リード数と
+        # 同じ集団になる。予約が入った日で数えた calls / is_attr の appts
+        # とは別物。**足し合わせたり、片方を分子・片方を分母にしない。**
+        if appt_day:
+            target["appts"] += 1
+            td["appts"] += 1
     if orphan_deals:
         warn(
             f"コンタクト未紐付け、または route 未設定/除外の取引 {orphan_deals} 件を"
