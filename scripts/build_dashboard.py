@@ -793,8 +793,8 @@ padding:16px 18px;}
 .summary{position:sticky;top:0;z-index:60;
 background:var(--bg);padding:12px 0 14px;margin:0 0 10px;
 border-bottom:1px solid var(--line);
-display:grid;grid-template-columns:auto auto;gap:12px;align-items:stretch;
-justify-content:stretch;}
+display:grid;grid-template-columns:minmax(0,8fr) minmax(0,6fr);gap:12px;
+align-items:stretch;justify-content:stretch;}
 /* 直契約と代理店の区別は、カードの左辺を色で塗って高さいっぱいに出す。
    見出しの横に細い線を置いても、カード自体が枠線で分かれている以上
    足せる情報がほとんど無く、区別の役に立たない。 */
@@ -817,27 +817,29 @@ font-size:10.5px;font-weight:400;opacity:.9;}
 .kpis{display:flex;flex-wrap:nowrap;gap:0;flex:1;min-width:0;}
 /* 幅を等分（flex:1 1 0）すると、"5" のような1桁と ¥4,455,106 が同じ幅になり、
    長い数字だけが枠にぎゅうぎゅうに詰まる。中身に応じて幅を配る。 */
-/* 幅が足りないときは枠を縮めるのではなく文字を小さくして1行を守る
-   （下の .v の clamp が vw に連動する）。枠側で max-content を強制すると
-   狭い画面で横にはみ出すので、ここでは最低幅だけ確保する。 */
-.kpi{flex:1 1 auto;min-width:0;padding:14px 13px;
+/* 幅が足りないときは、枠は縮めてよい。守るのは「1行に収まること」で、
+   文字を小さくして対応する（下の .v の clamp が vw に連動する）。
+   枠側に最低幅を持たせると、縮められないぶんが横にはみ出して切れる。 */
+.kpi{flex:1 1 auto;min-width:0;padding:14px 8px;
 border-left:1px solid var(--line);}
 .kpi:first-child{border-left:none;}
-.kpi .k{font-size:clamp(9px,0.78vw,11px);color:var(--muted);white-space:nowrap;
+.kpi .k{font-size:clamp(8.5px,0.68vw,10.5px);color:var(--muted);white-space:nowrap;
 overflow:hidden;text-overflow:ellipsis;letter-spacing:.03em;line-height:1.2;}
-/* 総費用・成約金額は7桁+¥で最長になる。clamp で枠幅に追従させ、桁が切れないようにする。 */
-.kpi .v{font-size:clamp(11px,1.2vw,18px);font-weight:700;margin-top:4px;
+/* 総費用・成約金額は7桁+¥で最長になる。clamp で枠幅に追従させ、桁が切れないようにする。
+   係数を 1.2vw から下げてある。1.2vw だと 1280px 幅で 15.4px になり、
+   直契約8枠＋代理店6枠の合計が枠幅を 61px 超えて成約金額の末尾が切れていた。 */
+.kpi .v{font-size:clamp(10px,0.98vw,16px);font-weight:700;margin-top:4px;
 color:var(--ink-strong);
 font-variant-numeric:tabular-nums;letter-spacing:-.02em;white-space:nowrap;}
 .kpi .v.empty::after{content:"—";color:var(--line);}
 /* 1440px級だと直契約8＋代理店6の計14枠を横1列に置けるが、
    700〜800pxのパネル幅では物理的に入らない。そこではカードを縦に積むが、
    カードの中は必ず1行のまま（タグは左、指標は折り返さない）。 */
-/* 横に2枚並べられる幅では、枠を「ラベルと数値の長い方」より狭くしない。
-   これが無いと flex が枠を縮めて ¥4,455,106 の末尾が切れる。 */
-@media(min-width:1251px){
-  .kpi{min-width:max-content;}
-}
+/* かつてここに `@media(min-width:1251px){.kpi{min-width:max-content}}` があったが、
+   これが切れる原因だった。枠を content 幅より縮めない指定なので、2枚並べるのに
+   必要な約1390pxに満たない 1251〜1390px では、はみ出したぶんが
+   .card の overflow:hidden で切り落とされていた（1280px で61px）。
+   枠は縮めてよく、代わりに上の clamp で文字を小さくして1行を守る。 */
 @media(max-width:1250px){
   .summary{grid-template-columns:minmax(0,1fr);}
   .kpi{padding:12px 9px;}
