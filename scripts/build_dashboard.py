@@ -1349,13 +1349,6 @@ function drawAll(from,to){
   mkLine('c_win',pick(L,iw),wds,fPct,false,true);
   mkBar('c_win_b',pick(L,iw),'週次商談数',pick(WIN_BASE,iw),'#C9C4B4');
 
-  var ads=[],ards=[];
-  for(k=0;k<AG_DS.length;k++){ads.push(sliceDs(AG_DS[k],iw));}
-  for(k=0;k<AG_RATE_DS.length;k++){ards.push(sliceDs(AG_RATE_DS[k],iw));}
-  mkLine('c_ag',pick(L,iw),ads,fInt,true);
-  mkLine('c_agr',pick(L,iw),ards,fPct,false,true);
-  mkBar('c_agr_b',pick(L,iw),'リード数',pick(AG_LEADS,iw),'#C9C4B4');
-
   if(document.getElementById('c_call')){
     var id_=idxOf(DAY_D,from,to);
     mkCallBar('c_call',pick(DAY_L,id_),pick(DAY_C,id_),pick(DAY_N,id_),CC,CN);
@@ -1692,7 +1685,9 @@ def render(data):
     weeks = data["week_starts"]
     labels = [week_label(w) for w in weeks]
     rows, dm = compute_direct(data)
-    arows, am = compute_agency(data)
+    # 2つめの戻り値（グラフ用の系列）は代理店セクションを消したので使わない。
+    # arows はヘッダーの代理店カードを期間で計算し直すのに使う。
+    arows, _ = compute_agency(data)
     td = totals_direct(rows, weeks)
     ta = totals_agency(arows, weeks)
     daily = compute_daily(data)
@@ -1745,20 +1740,12 @@ def render(data):
     # 中身は上の4枚のグラフと同じで、しかも週を縦に並べる古い向きだった。
     # チャネル別の実数だけを展示会別CPLの下に残してある（channel_table）。
 
-    # ---- 代理店 表 ----
-    abody = []
-    for idx, w in enumerate(weeks):
-        abody.append(
-            f'<tr data-d="{w}">'
-            f'<td class="wk">{week_label(w)}</td>'
-            + cell(f_int(am["leads"][idx]), f_dec(am["ma"]["leads"][idx]))
-            + cell(f_int(am["deals"][idx]), f_dec(am["ma"]["deals"][idx]))
-            + cell(f_pct(am["mtg_rate"][idx]), f_pct(am["ma"]["mtg_rate"][idx]))
-            + cell(f_int(am["won"][idx]), f_dec(am["ma"]["won"][idx]))
-            + cell(f_pct(am["win_rate"][idx]), f_pct(am["ma"]["win_rate"][idx]))
-            + "</tr>"
-        )
-    agency_table = "".join(abody)
+    # 「代理店」のセクション（グラフ2枚＋週次テーブル）ごと廃止した。
+    # 全期間でリード24件しかなく、53週のうち19週にしか値が入っていない。
+    # 商談化率はリードがそのまま商談になるためほぼ全週100%、成約率は
+    # 1件の増減で0%と100%を行き来していた。
+    # 代理店の数字はヘッダーのカードに残っている（compute_agency /
+    # totals_agency はそのために使い続ける）。
 
     # ---- 展示会 表 ----
     ebody = []
@@ -1979,25 +1966,6 @@ def render(data):
         win_labels, win_ds, win_base, win_title = rate_panel(
             win_raw, win_line("total"), COLORS["win_raw"], COLORS["win"],
             dm["total"]["deals"], "成約率推移")
-
-    ag_ds = [
-        ds("リード数", am["leads"], COLORS["leads"]),
-        ds("リード数 (4週移動平均)", am["ma"]["leads"], COLORS["leads"],
-           dashed=True, width=1.5),
-        ds("成約数", am["won"], COLORS["won"]),
-        ds("成約数 (4週移動平均)", am["ma"]["won"], COLORS["won"],
-           dashed=True, width=1.5),
-    ]
-
-    # 代理店には母数フィルタをかけない。
-    # フィルタは「母数の大きいチャネルと小さいチャネルが同じ縦軸に載る」ことへの
-    # 対処であって、代理店セクションは全期間で20リードしかなく、どの週も小さい。
-    # ここに直契約と同じ閾値を当てると線がほぼ全部消え、グラフが成立しない。
-    # 代理店は母数が小さいことを承知で見るセクションなので、そのまま描く。
-    ag_rate_ds = [
-        ds("商談化率", am["ma"]["mtg_rate"], COLORS["mtg"], width=2.5),
-        ds("成約率", am["ma"]["win_rate"], COLORS["win"], width=2.5),
-    ]
 
     # ---- 日次架電 ----
     if daily:
@@ -2516,8 +2484,6 @@ var LEADS_MA={js(leads_ma)};
 var CPL_DS={js(cpl_ds)};
 var MTG_DS={js(mtg_ds)}; var MTG_BASE={js(mtg_base)};
 var WIN_DS={js(win_ds)}; var WIN_BASE={js(win_base)};
-var AG_DS={js(ag_ds)}; var AG_RATE_DS={js(ag_rate_ds)};
-var AG_LEADS={js(am["leads"])};
 var DAY_D={day_dates}; var DAY_L={day_labels};
 var DAY_C={day_conn}; var DAY_N={day_no};
 var TOTC='{COLORS["total"]}';
@@ -2584,22 +2550,6 @@ showAge();
     <div class="base"><canvas id="c_win_b"></canvas></div>
     <div class="baselabel">母数：週次商談数</div></div>
 </div>
-
-<h2>代理店</h2>
-<div class="charts">
-  <div class="card"><h3>リード数・成約数の推移</h3>
-    <div class="chart"><canvas id="c_ag"></canvas></div></div>
-  <div class="card"><h3>商談化率・成約率推移（4週移動平均）</h3>
-    <div class="chart tall"><canvas id="c_agr"></canvas></div>
-    <div class="base"><canvas id="c_agr_b"></canvas></div>
-    <div class="baselabel">母数：週次リード数</div></div>
-</div>
-<details class="fold" id="f-agency"><summary><span class="tri">▶</span>週次テーブル<span class="cnt">{len(weeks)}週</span></summary>
-<div class="legend">各セルの下段グレー数値は4週移動平均</div>
-<div class="tablewrap"><table>
-<thead><tr><th>週</th><th>リード数</th><th>商談数</th><th>商談化率</th>
-<th>成約数</th><th>成約率</th></tr></thead>
-<tbody>{agency_table}</tbody></table></div></details>
 
 <h2>展示会別CPL</h2>
 <details class="fold" id="f-expo" open><summary><span class="tri">▶</span>展示会別CPL<span class="cnt">{len(data.get("expos") or [])}件</span></summary>
