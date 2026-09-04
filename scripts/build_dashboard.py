@@ -32,10 +32,6 @@ CHANNELS = [
 ]
 CHANNEL_KEYS = [k for k, _ in CHANNELS]
 
-# 週次表で CPL を表示するチャネル。展示会は開催日とリード発生日がズレるため
-# イベント行・合計行の週次 CPL は意味を持たない → 空欄にする。
-CPL_VISIBLE_ROWS = {"web"}
-
 # 架電業者の稼働開始日。ここからの累計を別カードで出す。業者を変えたり
 # 体制が変わったらこの日付を変える。既存の「累計（期間内）」は期間指定に
 # 連動するままで、こちらは日付固定。両者は入れ子（業者ぶんは期間内累計の一部）。
@@ -1745,41 +1741,9 @@ def render(data):
         kpi("成約金額", f_yen(ta["amount"]), "a_amt"),
     ])
 
-    # ---- 直契約 表 ----
-    body = []
-    for idx, w in enumerate(weeks):
-        for i, (ch, chlabel) in enumerate(CHANNELS + [("total", "合計")]):
-            m = dm[ch]
-            tr_cls = []
-            if ch == "total":
-                tr_cls.append("total")
-            if i == 0:
-                tr_cls.append("wkstart")
-            cls = f' class="{" ".join(tr_cls)}"' if tr_cls else ""
-            # 週の6行すべてに同じ日付を振る。1行だけに振ると、期間で隠したとき
-            # rowspan の週ラベルだけが残って行がずれる。
-            cls += f' data-d="{w}"'
-
-            wk_td = (f'<td class="wk" rowspan="6">{week_label(w)}</td>'
-                     if i == 0 else "")
-
-            show_cpl = ch in CPL_VISIBLE_ROWS
-            cpl_v = f_yen(m["cpl"][idx]) if show_cpl else ""
-            cpl_ma = f_yen(m["ma"]["cpl"][idx]) if show_cpl else ""
-
-            body.append(
-                f"<tr{cls}>{wk_td}"
-                f'<td class="ch">{chlabel}</td>'
-                + cell(f_int(m["leads"][idx]), f_dec(m["ma"]["leads"][idx]))
-                + cell(f_yen(m["cost"][idx]), f_yen(m["ma"]["cost"][idx]))
-                + cell(cpl_v, cpl_ma)
-                + cell(f_int(m["deals"][idx]), f_dec(m["ma"]["deals"][idx]))
-                + cell(f_pct(m["mtg_rate"][idx]), f_pct(m["ma"]["mtg_rate"][idx]))
-                + cell(f_int(m["won"][idx]), f_dec(m["ma"]["won"][idx]))
-                + cell(f_pct(m["win_rate"][idx]), f_pct(m["ma"]["win_rate"][idx]))
-                + "</tr>"
-            )
-    direct_table = "".join(body)
+    # 「週次テーブル（53週 × チャネル別）」は廃止した。319行あり、
+    # 中身は上の4枚のグラフと同じで、しかも週を縦に並べる古い向きだった。
+    # チャネル別の実数だけを展示会別CPLの下に残してある（channel_table）。
 
     # ---- 代理店 表 ----
     abody = []
@@ -1812,6 +1776,40 @@ def render(data):
             "</tr>"
         )
     expo_table = "".join(ebody) or '<tr><td colspan="7" class="ch"></td></tr>'
+
+    # ---- チャネル別の実数（全期間・直契約） ----
+    # 廃止した「週次テーブル（53週 × チャネル別）」の代わり。あの表が
+    # チャネル別の数字が数字で出ている唯一の場所だった。
+    # 率は入れない。LINE・紹介・その他はリードが3〜16件しかなく、
+    # 率にすると1件の増減で0%と33%を行き来する。
+    # 商談数は出さない。取引は相談申込に入った瞬間に作られるので
+    # 面談予約と必ず同数になり（20/20・40/40・3/3）、列が2本重複する。
+    # 並列な選択肢なのでチャネルを縦に置く（ウェビナー別・展示会別と同じ）。
+    ch_fields = ("leads", "cost", "appts", "mtgs", "won", "won_amount")
+    ch_tot = {f: 0 for f in ch_fields}
+    cbody = []
+    for k, lbl in CHANNELS + [("total", "合計")]:
+        if k == "total":
+            row = ch_tot
+        else:
+            row = {f: sum((wk.get(k) or {}).get(f, 0)
+                          for wk in (data.get("direct") or {}).values())
+                   for f in ch_fields}
+            for f in ch_fields:
+                ch_tot[f] += row[f]
+        cls = ' class="roll"' if k == "total" else ""
+        cbody.append(
+            f"<tr{cls}>"
+            f'<td class="ch">{lbl}</td>'
+            f'<td class="num">{f_int(row["leads"])}</td>'
+            f'<td class="num">{f_yen(row["cost"])}</td>'
+            f'<td class="num">{f_int(row["appts"])}</td>'
+            f'<td class="num">{f_int(row["mtgs"])}</td>'
+            f'<td class="num">{f_int(row["won"])}</td>'
+            f'<td class="num">{f_yen(row["won_amount"])}</td>'
+            "</tr>"
+        )
+    channel_table = "".join(cbody)
 
     # ---- グラフ ----
     leads_bars = [{"label": lbl, "data": dm[k]["leads"], "color": COLORS[k]}
@@ -2584,12 +2582,6 @@ showAge();
     <div class="base"><canvas id="c_win_b"></canvas></div>
     <div class="baselabel">母数：週次商談数</div></div>
 </div>
-<details class="fold" id="f-direct"><summary><span class="tri">▶</span>週次テーブル<span class="cnt">{len(weeks)}週 × チャネル別</span></summary>
-<div class="legend">各セルの下段グレー数値は4週移動平均</div>
-<div class="tablewrap"><table>
-<thead><tr><th>週</th><th>チャネル</th><th>リード数</th><th>費用</th><th>CPL</th>
-<th>商談数</th><th>商談化率</th><th>成約数</th><th>成約率</th></tr></thead>
-<tbody>{direct_table}</tbody></table></div></details>
 
 <h2>代理店</h2>
 <div class="charts">
@@ -2613,6 +2605,12 @@ showAge();
 <thead><tr><th>展示会名</th><th>開催日</th><th>費用</th><th>リード数</th><th>CPL</th>
 <th>商談数</th><th>成約数</th></tr></thead>
 <tbody>{expo_table}</tbody></table></div></details>
+
+<h2>チャネル別<span class="h2sub">全期間・直契約・実数のみ</span></h2>
+<div class="tablewrap"><table>
+<thead><tr><th>チャネル</th><th>リード数</th><th>費用</th><th>面談予約</th>
+<th>面談実施</th><th>成約数</th><th>成約金額</th></tr></thead>
+<tbody>{channel_table}</tbody></table></div>
 
 </div>
 <script>{CHART_JS}{charts_js}{FOLD_JS}</script>
