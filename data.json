@@ -2825,7 +2825,7 @@
     "won_amount": 0
    },
    "web": {
-    "leads": 9,
+    "leads": 10,
     "cost": 45801,
     "appts": 0,
     "mtgs": 0,
@@ -4028,12 +4028,12 @@
    "leads": 2
   },
   "2026-09-04": {
-   "calls": 25,
+   "calls": 28,
    "connected": 2,
    "appts": 0,
    "mtgs": 0,
    "called": 0,
-   "leads": 1
+   "leads": 2
   }
  },
  "fs": {
@@ -17719,7 +17719,7 @@
     "won_amount": 0
    },
    "web": {
-    "leads": 1,
+    "leads": 2,
     "cost": 0,
     "appts": 0,
     "mtgs": 0,
