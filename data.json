@@ -2826,14 +2826,14 @@
    },
    "web": {
     "leads": 9,
-    "cost": 20674,
+    "cost": 45801,
     "appts": 0,
     "mtgs": 0,
     "props": 0,
     "deals": 0,
     "won": 0,
     "won_amount": 0,
-    "cv": 5
+    "cv": 12
    },
    "line": {
     "leads": 0,
@@ -4028,8 +4028,8 @@
    "leads": 2
   },
   "2026-09-04": {
-   "calls": 12,
-   "connected": 0,
+   "calls": 25,
+   "connected": 2,
    "appts": 0,
    "mtgs": 0,
    "called": 0,
@@ -5784,10 +5784,10 @@
    "cv": 30
   },
   "2026-08-31": {
-   "spend": 20674,
-   "imp": 7517,
-   "clicks": 143,
-   "cv": 5
+   "spend": 45801,
+   "imp": 16850,
+   "clicks": 310,
+   "cv": 12
   }
  },
  "adperf_day": {
@@ -6482,10 +6482,22 @@
    "cv": 3
   },
   "2026-09-01": {
-   "spend": 11054,
-   "imp": 4067,
+   "spend": 11066,
+   "imp": 4069,
    "clicks": 76,
    "cv": 2
+  },
+  "2026-09-02": {
+   "spend": 11966,
+   "imp": 4078,
+   "clicks": 85,
+   "cv": 3
+  },
+  "2026-09-03": {
+   "spend": 13149,
+   "imp": 5253,
+   "clicks": 82,
+   "cv": 4
   }
  },
  "ad_day": {
@@ -8681,10 +8693,26 @@
   },
   "2026-09-01": {
    "Meta/ウェビナー": {
-    "spend": 11054,
-    "imp": 4067,
+    "spend": 11066,
+    "imp": 4069,
     "clicks": 76,
     "cv": 2
+   }
+  },
+  "2026-09-02": {
+   "Meta/ウェビナー": {
+    "spend": 11966,
+    "imp": 4078,
+    "clicks": 85,
+    "cv": 3
+   }
+  },
+  "2026-09-03": {
+   "Meta/ウェビナー": {
+    "spend": 13149,
+    "imp": 5253,
+    "clicks": 82,
+    "cv": 4
    }
   }
  },
@@ -17533,7 +17561,7 @@
    },
    "web": {
     "leads": 0,
-    "cost": 11054,
+    "cost": 11066,
     "appts": 0,
     "mtgs": 0,
     "props": 0,
@@ -17586,13 +17614,14 @@
    },
    "web": {
     "leads": 4,
-    "cost": 0,
+    "cost": 11966,
     "appts": 0,
     "mtgs": 0,
     "props": 0,
     "deals": 0,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": 3
    },
    "line": {
     "leads": 0,
@@ -17638,13 +17667,14 @@
    },
    "web": {
     "leads": 2,
-    "cost": 0,
+    "cost": 13149,
     "appts": 0,
     "mtgs": 0,
     "props": 0,
     "deals": 0,
     "won": 0,
-    "won_amount": 0
+    "won_amount": 0,
+    "cv": 4
    },
    "line": {
     "leads": 0,
