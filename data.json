@@ -3281,7 +3281,9 @@
    "appts": 0,
    "mtgs": 0,
    "called": 0,
-   "leads": 18
+   "leads": 18,
+   "vcalls": 0,
+   "vconn": 0
   },
   "2026-06-02": {
    "calls": 0,
@@ -3289,15 +3291,19 @@
    "appts": 0,
    "mtgs": 0,
    "called": 0,
-   "leads": 14
+   "leads": 14,
+   "vcalls": 0,
+   "vconn": 0
   },
   "2026-06-03": {
-   "calls": 7,
-   "connected": 0,
+   "calls": 13,
+   "connected": 6,
    "appts": 0,
    "mtgs": 0,
-   "called": 7,
-   "leads": 16
+   "called": 13,
+   "leads": 16,
+   "vcalls": 0,
+   "vconn": 0
   },
   "2026-06-04": {
    "calls": 0,
@@ -3305,15 +3311,19 @@
    "appts": 0,
    "mtgs": 0,
    "called": 0,
-   "leads": 18
+   "leads": 18,
+   "vcalls": 0,
+   "vconn": 0
   },
   "2026-06-05": {
-   "calls": 5,
-   "connected": 0,
+   "calls": 7,
+   "connected": 1,
    "appts": 0,
    "mtgs": 0,
-   "called": 5,
-   "leads": 7
+   "called": 7,
+   "leads": 7,
+   "vcalls": 0,
+   "vconn": 0
   },
   "2026-06-06": {
    "calls": 0,
@@ -3321,7 +3331,9 @@
    "appts": 0,
    "mtgs": 0,
    "called": 0,
-   "leads": 10
+   "leads": 10,
+   "vcalls": 0,
+   "vconn": 0
   },
   "2026-06-07": {
    "calls": 0,
@@ -3329,7 +3341,9 @@
    "appts": 0,
    "mtgs": 0,
    "called": 0,
-   "leads": 12
+   "leads": 12,
+   "vcalls": 0,
+   "vconn": 0
   },
   "2026-06-08": {
    "calls": 16,
@@ -3337,7 +3351,9 @@
    "appts": 0,
    "mtgs": 0,
    "called": 15,
-   "leads": 15
+   "leads": 15,
+   "vcalls": 0,
+   "vconn": 0
   },
   "2026-06-09": {
    "calls": 4,
@@ -3345,15 +3361,19 @@
    "appts": 0,
    "mtgs": 0,
    "called": 4,
-   "leads": 20
+   "leads": 20,
+   "vcalls": 0,
+   "vconn": 0
   },
   "2026-06-10": {
-   "calls": 11,
+   "calls": 12,
    "connected": 1,
    "appts": 0,
    "mtgs": 0,
    "called": 10,
-   "leads": 10
+   "leads": 10,
+   "vcalls": 0,
+   "vconn": 0
   },
   "2026-06-11": {
    "calls": 0,
@@ -3361,15 +3381,19 @@
    "appts": 0,
    "mtgs": 0,
    "called": 0,
-   "leads": 9
+   "leads": 9,
+   "vcalls": 0,
+   "vconn": 0
   },
   "2026-06-12": {
-   "calls": 30,
+   "calls": 31,
    "connected": 8,
    "appts": 0,
    "mtgs": 0,
-   "called": 29,
-   "leads": 3
+   "called": 30,
+   "leads": 3,
+   "vcalls": 0,
+   "vconn": 0
   },
   "2026-06-13": {
    "calls": 0,
@@ -3377,7 +3401,9 @@
    "appts": 0,
    "mtgs": 0,
    "called": 0,
-   "leads": 7
+   "leads": 7,
+   "vcalls": 0,
+   "vconn": 0
   },
   "2026-06-14": {
    "calls": 0,
@@ -3385,7 +3411,9 @@
    "appts": 4,
    "mtgs": 0,
    "called": 0,
-   "leads": 5
+   "leads": 5,
+   "vcalls": 0,
+   "vconn": 0
   },
   "2026-06-15": {
    "calls": 0,
@@ -3393,7 +3421,9 @@
    "appts": 0,
    "mtgs": 0,
    "called": 0,
-   "leads": 5
+   "leads": 5,
+   "vcalls": 0,
+   "vconn": 0
   },
   "2026-06-16": {
    "calls": 10,
@@ -3401,15 +3431,19 @@
    "appts": 0,
    "mtgs": 0,
    "called": 9,
-   "leads": 6
+   "leads": 6,
+   "vcalls": 0,
+   "vconn": 0
   },
   "2026-06-17": {
    "calls": 22,
    "connected": 1,
    "appts": 0,
    "mtgs": 3,
-   "called": 15,
-   "leads": 7
+   "called": 14,
+   "leads": 7,
+   "vcalls": 0,
+   "vconn": 0
   },
   "2026-06-18": {
    "calls": 7,
@@ -3417,15 +3451,19 @@
    "appts": 1,
    "mtgs": 0,
    "called": 5,
-   "leads": 5
+   "leads": 5,
+   "vcalls": 0,
+   "vconn": 0
   },
   "2026-06-19": {
-   "calls": 11,
-   "connected": 2,
+   "calls": 14,
+   "connected": 3,
    "appts": 1,
    "mtgs": 0,
-   "called": 10,
-   "leads": 12
+   "called": 13,
+   "leads": 12,
+   "vcalls": 0,
+   "vconn": 0
   },
   "2026-06-20": {
    "calls": 0,
@@ -3433,7 +3471,9 @@
    "appts": 0,
    "mtgs": 0,
    "called": 0,
-   "leads": 9
+   "leads": 9,
+   "vcalls": 0,
+   "vconn": 0
   },
   "2026-06-21": {
    "calls": 0,
@@ -3441,7 +3481,9 @@
    "appts": 0,
    "mtgs": 0,
    "called": 0,
-   "leads": 11
+   "leads": 11,
+   "vcalls": 0,
+   "vconn": 0
   },
   "2026-06-22": {
    "calls": 0,
@@ -3449,7 +3491,9 @@
    "appts": 2,
    "mtgs": 2,
    "called": 0,
-   "leads": 10
+   "leads": 10,
+   "vcalls": 0,
+   "vconn": 0
   },
   "2026-06-23": {
    "calls": 15,
@@ -3457,7 +3501,9 @@
    "appts": 0,
    "mtgs": 0,
    "called": 15,
-   "leads": 12
+   "leads": 12,
+   "vcalls": 0,
+   "vconn": 0
   },
   "2026-06-24": {
    "calls": 13,
@@ -3465,7 +3511,9 @@
    "appts": 0,
    "mtgs": 0,
    "called": 9,
-   "leads": 7
+   "leads": 7,
+   "vcalls": 0,
+   "vconn": 0
   },
   "2026-06-25": {
    "calls": 14,
@@ -3473,7 +3521,9 @@
    "appts": 3,
    "mtgs": 1,
    "called": 7,
-   "leads": 10
+   "leads": 10,
+   "vcalls": 0,
+   "vconn": 0
   },
   "2026-06-26": {
    "calls": 12,
@@ -3481,7 +3531,9 @@
    "appts": 0,
    "mtgs": 1,
    "called": 6,
-   "leads": 9
+   "leads": 9,
+   "vcalls": 0,
+   "vconn": 0
   },
   "2026-06-27": {
    "calls": 0,
@@ -3489,7 +3541,9 @@
    "appts": 0,
    "mtgs": 0,
    "called": 0,
-   "leads": 2
+   "leads": 2,
+   "vcalls": 0,
+   "vconn": 0
   },
   "2026-06-28": {
    "calls": 0,
@@ -3497,7 +3551,9 @@
    "appts": 0,
    "mtgs": 0,
    "called": 0,
-   "leads": 5
+   "leads": 5,
+   "vcalls": 0,
+   "vconn": 0
   },
   "2026-06-29": {
    "calls": 9,
@@ -3505,7 +3561,9 @@
    "appts": 0,
    "mtgs": 0,
    "called": 9,
-   "leads": 5
+   "leads": 5,
+   "vcalls": 0,
+   "vconn": 0
   },
   "2026-06-30": {
    "calls": 22,
@@ -3513,7 +3571,9 @@
    "appts": 1,
    "mtgs": 0,
    "called": 21,
-   "leads": 6
+   "leads": 6,
+   "vcalls": 0,
+   "vconn": 0
   },
   "2026-07-01": {
    "calls": 0,
@@ -3521,7 +3581,9 @@
    "appts": 0,
    "mtgs": 0,
    "called": 0,
-   "leads": 7
+   "leads": 7,
+   "vcalls": 0,
+   "vconn": 0
   },
   "2026-07-02": {
    "calls": 14,
@@ -3529,7 +3591,9 @@
    "appts": 0,
    "mtgs": 0,
    "called": 6,
-   "leads": 5
+   "leads": 5,
+   "vcalls": 0,
+   "vconn": 0
   },
   "2026-07-03": {
    "calls": 0,
@@ -3537,7 +3601,9 @@
    "appts": 0,
    "mtgs": 0,
    "called": 0,
-   "leads": 7
+   "leads": 7,
+   "vcalls": 0,
+   "vconn": 0
   },
   "2026-07-04": {
    "calls": 0,
@@ -3545,7 +3611,9 @@
    "appts": 0,
    "mtgs": 0,
    "called": 0,
-   "leads": 3
+   "leads": 3,
+   "vcalls": 0,
+   "vconn": 0
   },
   "2026-07-05": {
    "calls": 0,
@@ -3553,7 +3621,9 @@
    "appts": 0,
    "mtgs": 0,
    "called": 0,
-   "leads": 8
+   "leads": 8,
+   "vcalls": 0,
+   "vconn": 0
   },
   "2026-07-06": {
    "calls": 0,
@@ -3561,7 +3631,9 @@
    "appts": 0,
    "mtgs": 0,
    "called": 0,
-   "leads": 8
+   "leads": 8,
+   "vcalls": 0,
+   "vconn": 0
   },
   "2026-07-07": {
    "calls": 0,
@@ -3569,15 +3641,19 @@
    "appts": 0,
    "mtgs": 0,
    "called": 0,
-   "leads": 5
+   "leads": 5,
+   "vcalls": 0,
+   "vconn": 0
   },
   "2026-07-08": {
    "calls": 7,
    "connected": 1,
    "appts": 0,
    "mtgs": 0,
-   "called": 7,
-   "leads": 3
+   "called": 6,
+   "leads": 3,
+   "vcalls": 0,
+   "vconn": 0
   },
   "2026-07-09": {
    "calls": 17,
@@ -3585,15 +3661,19 @@
    "appts": 1,
    "mtgs": 0,
    "called": 14,
-   "leads": 15
+   "leads": 15,
+   "vcalls": 0,
+   "vconn": 0
   },
   "2026-07-10": {
-   "calls": 12,
+   "calls": 14,
    "connected": 1,
    "appts": 1,
    "mtgs": 0,
-   "called": 12,
-   "leads": 16
+   "called": 14,
+   "leads": 16,
+   "vcalls": 0,
+   "vconn": 0
   },
   "2026-07-11": {
    "calls": 0,
@@ -3601,7 +3681,9 @@
    "appts": 0,
    "mtgs": 0,
    "called": 0,
-   "leads": 17
+   "leads": 17,
+   "vcalls": 0,
+   "vconn": 0
   },
   "2026-07-12": {
    "calls": 0,
@@ -3609,7 +3691,9 @@
    "appts": 0,
    "mtgs": 0,
    "called": 0,
-   "leads": 11
+   "leads": 11,
+   "vcalls": 0,
+   "vconn": 0
   },
   "2026-07-13": {
    "calls": 4,
@@ -3617,7 +3701,9 @@
    "appts": 2,
    "mtgs": 0,
    "called": 4,
-   "leads": 9
+   "leads": 9,
+   "vcalls": 0,
+   "vconn": 0
   },
   "2026-07-14": {
    "calls": 2,
@@ -3625,7 +3711,9 @@
    "appts": 0,
    "mtgs": 0,
    "called": 2,
-   "leads": 7
+   "leads": 7,
+   "vcalls": 0,
+   "vconn": 0
   },
   "2026-07-15": {
    "calls": 14,
@@ -3633,7 +3721,9 @@
    "appts": 0,
    "mtgs": 0,
    "called": 13,
-   "leads": 5
+   "leads": 5,
+   "vcalls": 0,
+   "vconn": 0
   },
   "2026-07-16": {
    "calls": 0,
@@ -3641,7 +3731,9 @@
    "appts": 0,
    "mtgs": 0,
    "called": 0,
-   "leads": 3
+   "leads": 3,
+   "vcalls": 0,
+   "vconn": 0
   },
   "2026-07-17": {
    "calls": 0,
@@ -3649,7 +3741,9 @@
    "appts": 0,
    "mtgs": 0,
    "called": 0,
-   "leads": 5
+   "leads": 5,
+   "vcalls": 0,
+   "vconn": 0
   },
   "2026-07-18": {
    "calls": 0,
@@ -3657,7 +3751,9 @@
    "appts": 0,
    "mtgs": 0,
    "called": 0,
-   "leads": 9
+   "leads": 9,
+   "vcalls": 0,
+   "vconn": 0
   },
   "2026-07-19": {
    "calls": 0,
@@ -3665,7 +3761,9 @@
    "appts": 0,
    "mtgs": 0,
    "called": 0,
-   "leads": 5
+   "leads": 5,
+   "vcalls": 0,
+   "vconn": 0
   },
   "2026-07-20": {
    "calls": 0,
@@ -3673,7 +3771,9 @@
    "appts": 0,
    "mtgs": 0,
    "called": 0,
-   "leads": 1
+   "leads": 1,
+   "vcalls": 0,
+   "vconn": 0
   },
   "2026-07-21": {
    "calls": 0,
@@ -3681,7 +3781,9 @@
    "appts": 0,
    "mtgs": 0,
    "called": 0,
-   "leads": 11
+   "leads": 11,
+   "vcalls": 0,
+   "vconn": 0
   },
   "2026-07-22": {
    "calls": 0,
@@ -3689,7 +3791,9 @@
    "appts": 0,
    "mtgs": 0,
    "called": 0,
-   "leads": 9
+   "leads": 9,
+   "vcalls": 0,
+   "vconn": 0
   },
   "2026-07-23": {
    "calls": 0,
@@ -3697,7 +3801,9 @@
    "appts": 0,
    "mtgs": 0,
    "called": 0,
-   "leads": 11
+   "leads": 11,
+   "vcalls": 0,
+   "vconn": 0
   },
   "2026-07-24": {
    "calls": 0,
@@ -3705,7 +3811,9 @@
    "appts": 0,
    "mtgs": 6,
    "called": 0,
-   "leads": 2
+   "leads": 2,
+   "vcalls": 0,
+   "vconn": 0
   },
   "2026-07-25": {
    "calls": 0,
@@ -3713,7 +3821,9 @@
    "appts": 0,
    "mtgs": 0,
    "called": 0,
-   "leads": 6
+   "leads": 6,
+   "vcalls": 0,
+   "vconn": 0
   },
   "2026-07-26": {
    "calls": 0,
@@ -3721,7 +3831,9 @@
    "appts": 0,
    "mtgs": 0,
    "called": 0,
-   "leads": 552
+   "leads": 552,
+   "vcalls": 0,
+   "vconn": 0
   },
   "2026-07-27": {
    "calls": 6,
@@ -3729,7 +3841,9 @@
    "appts": 0,
    "mtgs": 0,
    "called": 6,
-   "leads": 6
+   "leads": 6,
+   "vcalls": 0,
+   "vconn": 0
   },
   "2026-07-28": {
    "calls": 10,
@@ -3737,7 +3851,9 @@
    "appts": 0,
    "mtgs": 0,
    "called": 10,
-   "leads": 34
+   "leads": 34,
+   "vcalls": 0,
+   "vconn": 0
   },
   "2026-07-29": {
    "calls": 4,
@@ -3745,7 +3861,9 @@
    "appts": 2,
    "mtgs": 2,
    "called": 4,
-   "leads": 1
+   "leads": 1,
+   "vcalls": 0,
+   "vconn": 0
   },
   "2026-07-30": {
    "calls": 7,
@@ -3753,7 +3871,9 @@
    "appts": 3,
    "mtgs": 0,
    "called": 7,
-   "leads": 12
+   "leads": 12,
+   "vcalls": 0,
+   "vconn": 0
   },
   "2026-07-31": {
    "calls": 4,
@@ -3761,7 +3881,9 @@
    "appts": 1,
    "mtgs": 1,
    "called": 2,
-   "leads": 6
+   "leads": 6,
+   "vcalls": 0,
+   "vconn": 0
   },
   "2026-08-01": {
    "calls": 0,
@@ -3769,7 +3891,9 @@
    "appts": 0,
    "mtgs": 0,
    "called": 0,
-   "leads": 4
+   "leads": 4,
+   "vcalls": 0,
+   "vconn": 0
   },
   "2026-08-02": {
    "calls": 0,
@@ -3777,7 +3901,9 @@
    "appts": 0,
    "mtgs": 0,
    "called": 0,
-   "leads": 6
+   "leads": 6,
+   "vcalls": 0,
+   "vconn": 0
   },
   "2026-08-03": {
    "calls": 0,
@@ -3785,7 +3911,9 @@
    "appts": 0,
    "mtgs": 1,
    "called": 0,
-   "leads": 6
+   "leads": 6,
+   "vcalls": 0,
+   "vconn": 0
   },
   "2026-08-04": {
    "calls": 0,
@@ -3793,7 +3921,9 @@
    "appts": 0,
    "mtgs": 0,
    "called": 0,
-   "leads": 7
+   "leads": 7,
+   "vcalls": 0,
+   "vconn": 0
   },
   "2026-08-05": {
    "calls": 0,
@@ -3801,7 +3931,9 @@
    "appts": 0,
    "mtgs": 0,
    "called": 0,
-   "leads": 6
+   "leads": 6,
+   "vcalls": 0,
+   "vconn": 0
   },
   "2026-08-06": {
    "calls": 2,
@@ -3809,7 +3941,9 @@
    "appts": 1,
    "mtgs": 2,
    "called": 1,
-   "leads": 17
+   "leads": 17,
+   "vcalls": 0,
+   "vconn": 0
   },
   "2026-08-07": {
    "calls": 1,
@@ -3817,7 +3951,9 @@
    "appts": 0,
    "mtgs": 0,
    "called": 1,
-   "leads": 6
+   "leads": 6,
+   "vcalls": 0,
+   "vconn": 0
   },
   "2026-08-08": {
    "calls": 0,
@@ -3825,7 +3961,9 @@
    "appts": 0,
    "mtgs": 0,
    "called": 0,
-   "leads": 8
+   "leads": 8,
+   "vcalls": 0,
+   "vconn": 0
   },
   "2026-08-09": {
    "calls": 0,
@@ -3833,7 +3971,9 @@
    "appts": 0,
    "mtgs": 0,
    "called": 0,
-   "leads": 1
+   "leads": 1,
+   "vcalls": 0,
+   "vconn": 0
   },
   "2026-08-10": {
    "calls": 1,
@@ -3841,7 +3981,9 @@
    "appts": 2,
    "mtgs": 2,
    "called": 1,
-   "leads": 8
+   "leads": 8,
+   "vcalls": 0,
+   "vconn": 0
   },
   "2026-08-11": {
    "calls": 0,
@@ -3849,7 +3991,9 @@
    "appts": 0,
    "mtgs": 0,
    "called": 0,
-   "leads": 5
+   "leads": 5,
+   "vcalls": 0,
+   "vconn": 0
   },
   "2026-08-12": {
    "calls": 0,
@@ -3857,7 +4001,9 @@
    "appts": 0,
    "mtgs": 0,
    "called": 0,
-   "leads": 11
+   "leads": 11,
+   "vcalls": 0,
+   "vconn": 0
   },
   "2026-08-13": {
    "calls": 0,
@@ -3865,7 +4011,9 @@
    "appts": 1,
    "mtgs": 0,
    "called": 0,
-   "leads": 3
+   "leads": 3,
+   "vcalls": 0,
+   "vconn": 0
   },
   "2026-08-14": {
    "calls": 0,
@@ -3873,7 +4021,9 @@
    "appts": 0,
    "mtgs": 1,
    "called": 0,
-   "leads": 7
+   "leads": 7,
+   "vcalls": 0,
+   "vconn": 0
   },
   "2026-08-15": {
    "calls": 0,
@@ -3881,7 +4031,9 @@
    "appts": 0,
    "mtgs": 0,
    "called": 0,
-   "leads": 5
+   "leads": 5,
+   "vcalls": 0,
+   "vconn": 0
   },
   "2026-08-16": {
    "calls": 0,
@@ -3889,7 +4041,9 @@
    "appts": 0,
    "mtgs": 0,
    "called": 0,
-   "leads": 2
+   "leads": 2,
+   "vcalls": 0,
+   "vconn": 0
   },
   "2026-08-17": {
    "calls": 0,
@@ -3897,7 +4051,9 @@
    "appts": 1,
    "mtgs": 1,
    "called": 0,
-   "leads": 5
+   "leads": 5,
+   "vcalls": 0,
+   "vconn": 0
   },
   "2026-08-18": {
    "calls": 0,
@@ -3905,7 +4061,9 @@
    "appts": 0,
    "mtgs": 0,
    "called": 0,
-   "leads": 6
+   "leads": 6,
+   "vcalls": 0,
+   "vconn": 0
   },
   "2026-08-19": {
    "calls": 0,
@@ -3913,7 +4071,9 @@
    "appts": 0,
    "mtgs": 0,
    "called": 0,
-   "leads": 7
+   "leads": 7,
+   "vcalls": 0,
+   "vconn": 0
   },
   "2026-08-20": {
    "calls": 12,
@@ -3921,7 +4081,9 @@
    "appts": 0,
    "mtgs": 0,
    "called": 10,
-   "leads": 8
+   "leads": 8,
+   "vcalls": 11,
+   "vconn": 1
   },
   "2026-08-22": {
    "calls": 0,
@@ -3929,7 +4091,9 @@
    "appts": 0,
    "mtgs": 0,
    "called": 0,
-   "leads": 6
+   "leads": 6,
+   "vcalls": 0,
+   "vconn": 0
   },
   "2026-08-23": {
    "calls": 0,
@@ -3937,7 +4101,9 @@
    "appts": 0,
    "mtgs": 0,
    "called": 0,
-   "leads": 2
+   "leads": 2,
+   "vcalls": 0,
+   "vconn": 0
   },
   "2026-08-24": {
    "calls": 5,
@@ -3945,31 +4111,39 @@
    "appts": 1,
    "mtgs": 0,
    "called": 5,
-   "leads": 10
+   "leads": 10,
+   "vcalls": 5,
+   "vconn": 2
   },
   "2026-08-25": {
-   "calls": 15,
-   "connected": 3,
+   "calls": 16,
+   "connected": 4,
    "appts": 0,
    "mtgs": 0,
    "called": 12,
-   "leads": 5
+   "leads": 5,
+   "vcalls": 16,
+   "vconn": 4
   },
   "2026-08-26": {
    "calls": 36,
    "connected": 4,
    "appts": 2,
    "mtgs": 0,
-   "called": 7,
-   "leads": 1
+   "called": 6,
+   "leads": 1,
+   "vcalls": 36,
+   "vconn": 4
   },
   "2026-08-27": {
-   "calls": 49,
-   "connected": 5,
+   "calls": 53,
+   "connected": 9,
    "appts": 3,
    "mtgs": 2,
-   "called": 31,
-   "leads": 0
+   "called": 34,
+   "leads": 0,
+   "vcalls": 53,
+   "vconn": 9
   },
   "2026-08-28": {
    "calls": 33,
@@ -3977,7 +4151,9 @@
    "appts": 0,
    "mtgs": 0,
    "called": 21,
-   "leads": 2
+   "leads": 2,
+   "vcalls": 33,
+   "vconn": 3
   },
   "2026-08-29": {
    "calls": 0,
@@ -3985,7 +4161,9 @@
    "appts": 0,
    "mtgs": 0,
    "called": 0,
-   "leads": 2
+   "leads": 2,
+   "vcalls": 0,
+   "vconn": 0
   },
   "2026-08-30": {
    "calls": 0,
@@ -3993,7 +4171,9 @@
    "appts": 0,
    "mtgs": 0,
    "called": 0,
-   "leads": 2
+   "leads": 2,
+   "vcalls": 0,
+   "vconn": 0
   },
   "2026-08-31": {
    "calls": 38,
@@ -4001,7 +4181,9 @@
    "appts": 1,
    "mtgs": 0,
    "called": 1,
-   "leads": 3
+   "leads": 3,
+   "vcalls": 38,
+   "vconn": 2
   },
   "2026-09-01": {
    "calls": 34,
@@ -4009,15 +4191,19 @@
    "appts": 1,
    "mtgs": 1,
    "called": 22,
-   "leads": 0
+   "leads": 0,
+   "vcalls": 34,
+   "vconn": 3
   },
   "2026-09-02": {
-   "calls": 37,
+   "calls": 38,
    "connected": 1,
    "appts": 0,
    "mtgs": 0,
    "called": 16,
-   "leads": 4
+   "leads": 4,
+   "vcalls": 36,
+   "vconn": 1
   },
   "2026-09-03": {
    "calls": 42,
@@ -4025,7 +4211,9 @@
    "appts": 0,
    "mtgs": 1,
    "called": 35,
-   "leads": 2
+   "leads": 2,
+   "vcalls": 42,
+   "vconn": 4
   },
   "2026-09-04": {
    "calls": 41,
@@ -4033,7 +4221,9 @@
    "appts": 0,
    "mtgs": 0,
    "called": 1,
-   "leads": 3
+   "leads": 3,
+   "vcalls": 40,
+   "vconn": 2
   }
  },
  "fs": {
@@ -17997,15 +18187,15 @@
  },
  "call_conversion": {
   "2026-06-01": {
-   "called": 12,
+   "called": 20,
    "appointed": 0
   },
   "2026-06-08": {
-   "called": 58,
-   "appointed": 4
+   "called": 59,
+   "appointed": 5
   },
   "2026-06-15": {
-   "called": 39,
+   "called": 41,
    "appointed": 0
   },
   "2026-06-22": {
@@ -18017,7 +18207,7 @@
    "appointed": 1
   },
   "2026-07-06": {
-   "called": 33,
+   "called": 34,
    "appointed": 1
   },
   "2026-07-13": {
@@ -18041,8 +18231,8 @@
    "appointed": 0
   },
   "2026-08-24": {
-   "called": 76,
-   "appointed": 2
+   "called": 78,
+   "appointed": 4
   },
   "2026-08-31": {
    "called": 75,
