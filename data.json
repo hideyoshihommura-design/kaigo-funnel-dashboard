@@ -6758,6 +6758,12 @@
    "imp": 2132,
    "clicks": 46,
    "cv": 4
+  },
+  "2026-09-05": {
+   "spend": 0,
+   "imp": 0,
+   "clicks": 0,
+   "cv": 0
   }
  },
  "ad_day": {
@@ -8981,6 +8987,14 @@
     "imp": 2132,
     "clicks": 46,
     "cv": 4
+   }
+  },
+  "2026-09-05": {
+   "Meta/ウェビナー": {
+    "spend": 0,
+    "imp": 0,
+    "clicks": 0,
+    "cv": 0
    }
   }
  },
@@ -17996,6 +18010,59 @@
     "won": 0,
     "won_amount": 0,
     "cv": 4
+   },
+   "line": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "other": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   }
+  },
+  "2026-09-05": {
+   "event": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0
+   },
+   "web": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "cv": 0
    },
    "line": {
     "leads": 0,
