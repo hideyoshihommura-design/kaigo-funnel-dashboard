@@ -263,15 +263,22 @@ def validate_calls(data):
         # 生成の途中で古い data.json を読むことがあるので、あっても弾かない。
         unknown = set(v) - {"calls", "connected", "appts", "called", "leads",
                             "mtgs", "props", "wons", "wonamt",
-                            "vcalls", "vconn"}
+                            "vcalls", "vconn", "vcalled"}
         if unknown:
             fail(f"calls[{k}] に未知のキー: {sorted(unknown)}")
-        for f in ("calls", "connected", "appts", "called", "leads"):
+        for f in ("calls", "connected", "appts", "called", "leads",
+                  "vcalls", "vconn", "vcalled"):
             n = v.get(f, 0)
             if not isinstance(n, int) or isinstance(n, bool) or n < 0:
                 fail(f"calls[{k}].{f} は0以上の整数である必要があります: {n!r}")
         if v.get("connected", 0) > v.get("calls", 0):
             warn(f"calls[{k}]: 接続数 {v.get('connected')} > 架電数 {v.get('calls', 0)}")
+        # かけた人数は架電数を超えられない（同じ人に複数回かけるので必ず以下）。
+        for cnt, tot, lbl in (("called", "calls", "全体"),
+                              ("vcalled", "vcalls", "架電業者")):
+            if v.get(cnt, 0) > v.get(tot, 0):
+                warn(f"calls[{k}]: {lbl}の架電件数 {v.get(cnt)} > "
+                     f"架電数 {v.get(tot, 0)}")
 
     validate_conversion(data)
 
@@ -1977,7 +1984,9 @@ def render(data):
         # 見比べる時にどれとどれが対応するのか毎回探すことになる。
         act_items = "".join([
             kpi("架電数", f_int(ac["today_calls"])),
-            kpi("リード数", f_int(ac["today_called"])),
+            # 「リード数」という名前で出していたが、中身は today_called
+            # （その日に初めてかけた人数）で、獲得リード数ではない。
+            kpi("架電件数", f_int(ac["today_called"])),
             kpi("接続数", f_int(ac["today_conn"])),
             kpi("接続率", f_pct(ac["today_rate"])),
             kpi("面談予約 獲得数", f_int(ac["today_appts"])),
@@ -2056,8 +2065,12 @@ def render(data):
         # 同じ規則で数えることで「全体 − 業者 = 社内」が成立する。
         # 稼働日数は「1件でも架電があった日」の数。累計カードを畳んだので
         # ここに置いておかないとページから消える。
-        VN_F = ("calls", "conn", "appts", "days",
-                "vcalls", "vconn", "vappts", "vdays")
+        # 架電件数（かけた人数）は called / vcalled。コンタクトの初回架電日に
+        # 1回だけ立っているので、週で足しても人を重複して数えない。
+        # 業者ぶんは全体の初回架電日とは別に持っている（社内が先にかけた人を
+        # 業者が後からかけた場合に、業者側で数え落ちないようにするため）。
+        VN_F = ("calls", "conn", "appts", "days", "called",
+                "vcalls", "vconn", "vappts", "vdays", "vcalled")
         vn_wk = {}
 
         def vn_slot_of(day):
@@ -2068,9 +2081,11 @@ def render(data):
             vn_slot = vn_slot_of(vn_d)
             vn_slot["calls"] += vn_v.get("calls", 0)
             vn_slot["conn"] += vn_v.get("connected", 0)
+            vn_slot["called"] += vn_v.get("called", 0)
             vn_slot["days"] += 1 if vn_v.get("calls", 0) else 0
             vn_slot["vcalls"] += vn_v.get("vcalls", 0)
             vn_slot["vconn"] += vn_v.get("vconn", 0)
+            vn_slot["vcalled"] += vn_v.get("vcalled", 0)
             vn_slot["vdays"] += 1 if vn_v.get("vcalls", 0) else 0
         for vn_d, vn_v in (data.get("is_attr") or {}).items():
             vn_slot = vn_slot_of(vn_d)
@@ -2079,9 +2094,10 @@ def render(data):
             vn_slot["appts"] += vn_ven + (vn_v.get("inhouse") or {}).get(
                 "appts", 0)
 
-        def vn_block(label, fold_id, ck, nk, dk_, ak=None):
+        def vn_block(label, fold_id, ck, nk, dk_, cc, ak=None):
             """週次の折りたたみを1つ作る。全体と業者で見る列だけが違う.
 
+            ck=架電数 / nk=接続数 / dk_=稼働日数 / cc=架電件数（かけた人数）。
             ak を渡すと面談予約と商談化率の行が付く。全体では渡さない
             （理由は下の vn_folds のコメント）。
             """
@@ -2094,6 +2110,12 @@ def render(data):
             rows = [
                 ("架電数", lambda v: v.get(ck), f_int, d_num, True, False,
                  False),
+                # 架電数のすぐ下に置く。コールの回数と人数は必ず対で読む。
+                ("架電件数", lambda v: v.get(cc), f_int, d_num, True, False,
+                 False),
+                ("1人あたり 架電数",
+                 lambda v: safe_div(v.get(ck), v.get(cc)),
+                 f_dec, None, False, True, False),
                 ("稼働日数", lambda v: v.get(dk_), f_int, None, False, True,
                  True),
                 ("接続数", lambda v: v.get(nk), f_int, d_num, False, False,
@@ -2102,6 +2124,7 @@ def render(data):
                  f_pct, d_pt, not ak, True, False),
             ]
             cnt = (f'　架電 {f_int(tot[ck])}'
+                   f'　{f_int(tot[cc])}件'
                    f'　接続率 {f_pct(safe_div(tot[nk], tot[ck]))}')
             if ak:
                 rows += [
@@ -2127,9 +2150,10 @@ def render(data):
         # 架電1件・面談予約3件で商談化率300%になった。
         # 業者は架電しかせず、その架電から取った予約しか作らないので成立する。
         vn_folds = (
-            vn_block("全体の週次", "f-is-all", "calls", "conn", "days")
+            vn_block("全体の週次", "f-is-all",
+                     "calls", "conn", "days", "called")
             + vn_block("架電業者の週次", "f-vendor-wk",
-                       "vcalls", "vconn", "vdays", "vappts")
+                       "vcalls", "vconn", "vdays", "vcalled", "vappts")
         )
         vn_fold = f'<div class="tabgrid">{vn_folds}</div>' if vn_folds else ""
 

@@ -962,6 +962,10 @@ def build(token, sheets_token, channel_map, webinar_cfg, campaign_cfg,
     # 社内が1件でも架電すれば業者ぶんに混ざる。
     vendor_calls, vendor_conn = {}, {}
     first_call_of_contact = {}
+    # 業者ぶんの「かけた人数」用。全体と分けて持つ必要がある。全体の初回架電日を
+    # 流用すると、社内が先にかけた人を業者が後からかけたとき、業者側の件数から
+    # 落ちる（あるいは社内の日付に載る）。
+    vendor_first_call = {}
     unknown_disp = {}
     no_direction = 0
     inbound = 0
@@ -994,6 +998,9 @@ def build(token, sheets_token, channel_map, webinar_cfg, campaign_cfg,
         if cid:
             prev = first_call_of_contact.get(cid)
             first_call_of_contact[cid] = ts if prev is None else min(prev, ts)
+            if is_vendor:
+                vprev = vendor_first_call.get(cid)
+                vendor_first_call[cid] = ts if vprev is None else min(vprev, ts)
     if no_direction:
         warn(
             f"hs_call_direction が未設定のコールが {no_direction} 件あります。"
@@ -1014,11 +1021,14 @@ def build(token, sheets_token, channel_map, webinar_cfg, campaign_cfg,
     daily_called = {}
     for _cid, _first in first_call_of_contact.items():
         daily_called[_first] = daily_called.get(_first, 0) + 1
+    vendor_called = {}
+    for _cid, _first in vendor_first_call.items():
+        vendor_called[_first] = vendor_called.get(_first, 0) + 1
 
     calls_out = {}
     all_days = (set(daily_calls) | set(daily_conn) | set(daily_appts)
                 | set(daily_mtgs) | set(daily_called) | set(daily_leads)
-)
+                | set(vendor_called))
     for d in sorted(all_days):
         if d < CALLS_START or d > end_date:
             continue
@@ -1033,6 +1043,7 @@ def build(token, sheets_token, channel_map, webinar_cfg, campaign_cfg,
             # 面談予約の業者ぶんは is_attr の vendor 側にある。
             "vcalls": vendor_calls.get(d, 0),
             "vconn": vendor_conn.get(d, 0),
+            "vcalled": vendor_called.get(d, 0),
         }
 
     # --- ウェビナー別（掲載期間で切る）
