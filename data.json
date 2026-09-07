@@ -2775,10 +2775,10 @@
    "web": {
     "leads": 22,
     "cost": 73752,
-    "appts": 0,
+    "appts": 1,
     "mtgs": 0,
     "props": 0,
-    "deals": 0,
+    "deals": 1,
     "won": 0,
     "won_amount": 0,
     "cv": 30
@@ -4382,15 +4382,15 @@
    "vcalled": 0
   },
   "2026-09-07": {
-   "calls": 14,
-   "connected": 1,
-   "appts": 0,
+   "calls": 52,
+   "connected": 7,
+   "appts": 2,
    "mtgs": 0,
-   "called": 0,
+   "called": 5,
    "leads": 0,
-   "vcalls": 14,
-   "vconn": 1,
-   "vcalled": 0
+   "vcalls": 52,
+   "vconn": 7,
+   "vcalled": 7
   }
  },
  "fs": {
@@ -5871,6 +5871,24 @@
     "wons": 1,
     "wonamt": 550000
    }
+  },
+  "2026-09-07": {
+   "vendor": {
+    "appts": 1,
+    "deals": 1,
+    "mtgs": 0,
+    "props": 0,
+    "wons": 0,
+    "wonamt": 0
+   },
+   "inhouse": {
+    "appts": 0,
+    "deals": 0,
+    "mtgs": 0,
+    "props": 0,
+    "wons": 0,
+    "wonamt": 0
+   }
   }
  },
  "webinars": [
@@ -6090,7 +6108,7 @@
    "imp": 27776,
    "clicks": 543,
    "leads": 14,
-   "deals": 0,
+   "deals": 1,
    "won": 0,
    "won_amount": 0
   }
@@ -17852,10 +17870,10 @@
    "web": {
     "leads": 2,
     "cost": 8735,
-    "appts": 0,
+    "appts": 1,
     "mtgs": 0,
     "props": 0,
-    "deals": 0,
+    "deals": 1,
     "won": 0,
     "won_amount": 0,
     "cv": 6
@@ -18471,6 +18489,10 @@
   "2026-08-31": {
    "called": 75,
    "appointed": 0
+  },
+  "2026-09-07": {
+   "called": 5,
+   "appointed": 1
   }
  }
 }
