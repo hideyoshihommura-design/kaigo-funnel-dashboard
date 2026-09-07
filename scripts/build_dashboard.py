@@ -2219,7 +2219,10 @@ def render(data):
         ('広告費', lambda v: v.get('cost'), f_man, d_man, False, False, False),
         ('リード数', lambda v: v.get('leads'), f_int, d_num, True, False,
          False),
-        ('CPL', lambda v: safe_div(v.get('cost'), v.get('cvden')),
+        # 広告を回していない月は空欄にする。safe_div のままだと ¥0 が出て、
+        # ¥3,206 の隣に並ぶと「タダで取れた」ではなく数字の壊れに見える。
+        ('CPL', lambda v: (safe_div(v.get('cost'), v.get('cvden'))
+                           if v.get('cost') else None),
          f_yen, d_yen, True, True, True),
         ('架電済み', lambda v: v.get('called'), f_int, d_num, False, False,
          False),
