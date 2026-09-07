@@ -2184,7 +2184,9 @@ def render(data):
     # 全部 direct_day から引く。あそこはコンタクトの実効獲得日を軸にしていて、
     # リードも予約も実施も成約も同じ集団に載っている。だから段階間の率が
     # 成立する。calls / fs / is_attr はイベント軸なので**ここに混ぜてはいけない**。
-    FU_F = ('leads', 'appts', 'mtgs', 'props', 'won', 'won_amount')
+    FU_SUM = ('leads', 'appts', 'mtgs', 'props', 'won', 'won_amount',
+              'called', 'cappt')
+    FU_F = FU_SUM + ('cost', 'cvden')
     fu_day_src = data.get('direct_day') or {}
     fu_keys = month_keys(fu_day_src)
     fu = {mk: {x: 0 for x in FU_F} for mk in fu_keys}
@@ -2192,32 +2194,54 @@ def render(data):
         fu_slot = fu[fu_day[:7]]
         for fu_ch in CHANNEL_KEYS:
             fu_cell = fu_cells.get(fu_ch) or {}
-            for fu_f in FU_F:
+            for fu_f in FU_SUM:
                 fu_slot[fu_f] += fu_cell.get(fu_f, 0)
+            # 費用は広告データが無い期間が None。0として足す
+            # （「0円で回した」と「データが無い」は別だが、月合計では
+            # どちらも足せない額なので同じ扱いにする）。
+            fu_slot['cost'] += fu_cell.get('cost') or 0
+            # CPLの分母はページ内で統一。web はシートのCV、他はリード数。
+            fu_slot['cvden'] += (fu_cell.get('cv')
+                                 or fu_cell.get('leads', 0))
     fu_tot = {x: sum(fu[mk][x] for mk in fu_keys) for x in FU_F}
 
-    # 段階間の率は「リード→予約」のように両端を名前にする。「成約率」だと
-    # ヘッダーの成約率（成約÷商談）と同じ名前で違う数字（成約÷面談実施）が
-    # 並び、どちらかが間違っていると読まれる。分母を名前に含めれば取り違えない。
+    # 段階間の率は「架電→商談」のように両端を名前にする。分母を名前に含めない
+    # と、ヘッダーの商談化率（商談÷リード＝3.0%）と、ここの商談化率
+    # （架電由来の予約÷架電済み）が同じ名前で違う数字になり、どちらかが
+    # 間違っていると読まれる。
     # 提案の行は外した。面談実施は「相談済みか提案の早い方」なので定義が
     # 重なり、13ヶ月のうち9ヶ月が面談実施と同値だった。通過率も85.5%で
     # ここでは誰も止まっていない。提案件数はFS活動量に残してある。
+    # リード→予約 と 実施→成約 も外した。追う4指標（CPL・リード数・消化率・
+    # 架電→商談・商談→成約）を1本の鎖で読ませるのがこの表の役目で、
+    # 段階を全部率にすると11行が全部率で埋まって鎖が見えなくなる。
     fu_rows = [
-        ('リード数', lambda v: v.get('leads'), f_int, d_num, True, False, False),
-        ('面談予約', lambda v: v.get('appts'), f_int, d_num, True, False, True),
-        ('リード→予約', lambda v: safe_div(v.get('appts'), v.get('leads')),
-         f_pct, d_pt, False, True, False),
-        ('面談実施', lambda v: v.get('mtgs'), f_int, d_num, False, False, True),
-        ('成約', lambda v: v.get('won'), f_int, d_num, True, False, True),
-        ('実施→成約', lambda v: safe_div(v.get('won'), v.get('mtgs')),
-         f_pct, d_pt, False, True, False),
+        ('広告費', lambda v: v.get('cost'), f_man, d_man, False, False, False),
+        ('リード数', lambda v: v.get('leads'), f_int, d_num, True, False,
+         False),
+        ('CPL', lambda v: safe_div(v.get('cost'), v.get('cvden')),
+         f_yen, d_yen, True, True, True),
+        ('架電済み', lambda v: v.get('called'), f_int, d_num, False, False,
+         False),
+        ('消化率', lambda v: safe_div(v.get('called'), v.get('leads')),
+         f_pct, d_pt, True, True, True),
+        ('面談予約', lambda v: v.get('appts'), f_int, d_num, False, False,
+         False),
+        ('架電→商談', lambda v: safe_div(v.get('cappt'), v.get('called')),
+         f_pct, d_pt, True, True, True),
+        ('面談実施', lambda v: v.get('mtgs'), f_int, d_num, False, False,
+         False),
+        ('成約', lambda v: v.get('won'), f_int, d_num, False, False, False),
+        ('商談→成約', lambda v: safe_div(v.get('won'), v.get('appts')),
+         f_pct, d_pt, True, True, True),
         ('成約金額', lambda v: v.get('won_amount'), f_man, d_man, True, False,
          False),
     ]
     fu_html = month_table(fu_keys, fu, fu_rows, fu_tot)
     funnel_section = (
-        '\n<h2>月次ファネル'
-        '<span class="h2sub">直契約・獲得月ベース</span></h2>\n'
+        '\n<h2>月次KPI'
+        '<span class="h2sub">直契約・獲得月ベース／'
+        '太字が追う指標</span></h2>\n'
         + fu_html + "\n"
     ) if fu_html else ""
 

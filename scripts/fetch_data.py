@@ -692,14 +692,23 @@ def build(token, sheets_token, channel_map, webinar_cfg, campaign_cfg,
     # calls / fs / is_attr が持っている。**この2つを混ぜてはいけない。**
     # 混ぜると「7月に獲得したリード798件」と「7月に入った予約10件」を
     # 割ることになり、別の集団の割り算になる。
+    #
+    # called / cappt もこの軸に置く（消化率と商談化率のため）。
+    # called = そのリードに架電したか（架電がいつでも獲得月に載せる）。
+    # イベント軸の calls[*]["called"] とは別物。あちらは「その日に初めて
+    # かけた人数」で、こちらは「その月に獲得したリードのうち架電済みの人数」。
+    # cappt = そのうち初回架電日以降に面談予約が立った人。webは架電なしで
+    # 自分で予約を入れてくるので、それを分子から外すために日付条件が要る。
     direct = {
         w: {k: {"leads": 0, "cost": 0, "appts": 0, "mtgs": 0, "props": 0,
-                "deals": 0, "won": 0, "won_amount": 0}
+                "deals": 0, "won": 0, "won_amount": 0,
+                "called": 0, "cappt": 0}
             for k in ["event", "web", "line", "referral", "other"]}
         for w in week_starts
     }
     agency = {
-        w: {"leads": 0, "appts": 0, "deals": 0, "won": 0, "won_amount": 0}
+        w: {"leads": 0, "appts": 0, "deals": 0, "won": 0, "won_amount": 0,
+            "called": 0, "cappt": 0}
         for w in week_starts
     }
 
@@ -712,13 +721,15 @@ def build(token, sheets_token, channel_map, webinar_cfg, campaign_cfg,
     def dday_direct(d):
         return direct_day.setdefault(d.isoformat(), {
             k: {"leads": 0, "cost": 0, "appts": 0, "mtgs": 0, "props": 0,
-                "deals": 0, "won": 0, "won_amount": 0}
+                "deals": 0, "won": 0, "won_amount": 0,
+                "called": 0, "cappt": 0}
             for k in CHANNELS})
 
     def dday_agency(d):
         return agency_day.setdefault(
             d.isoformat(),
-            {"leads": 0, "appts": 0, "deals": 0, "won": 0, "won_amount": 0})
+            {"leads": 0, "appts": 0, "deals": 0, "won": 0, "won_amount": 0,
+             "called": 0, "cappt": 0})
 
     # --- リード数
     route_leads_total = {}
@@ -1142,6 +1153,16 @@ def build(token, sheets_token, channel_map, webinar_cfg, campaign_cfg,
         p = deal.get("properties") or {}
         appt_day = parse_hs_datetime(p.get(f"hs_v2_date_entered_{STAGE_APPT}"))
         if not appt_day:
+            # 相談申込を通っていない取引は面談実施日で代替する（14件・
+            # 全部2025-09〜2025-12）。上の面談予約数と同じ規則に揃えるため。
+            mtg_days = [
+                d for d in (
+                    parse_hs_datetime(p.get("hs_v2_date_entered_" + st))
+                    for st in STAGE_MEETING_DONE
+                ) if d
+            ]
+            appt_day = min(mtg_days) if mtg_days else None
+        if not appt_day:
             continue
         assoc = ((deal.get("associations") or {}).get("contacts") or {}).get("results") or []
         for a in assoc:
@@ -1156,6 +1177,37 @@ def build(token, sheets_token, channel_map, webinar_cfg, campaign_cfg,
         row["called"] += 1
         if any(d >= first_day for d in appt_days_of_contact.get(cid, [])):
             row["appointed"] += 1
+
+    # --- 消化（コホート軸）
+    # 「その月に獲得したリードのうち、何人に架電したか」。架電が翌月でも
+    # 翌々月でも、獲得した月の行に載せる。分母（リード数）と分子（架電済み）が
+    # 同じ集団になるのはこの軸だけなので、消化率はここで出す。
+    # 母集団は全期間の獲得リード。架電開始（2026-05-12）より前に獲得した
+    # ぶんも分母に残す。掘り起こせていない在庫が見えるのが目的なので、
+    # 架電開始以降の獲得だけに絞ると、その在庫が画面から消える。
+    for cid, info in cinfo.items():
+        first = first_call_of_contact.get(cid)
+        if not first:
+            continue
+        d, ch = info["date"], info["channel"]
+        mon = monday(d)
+        if mon not in weekset:
+            continue
+        # 初回架電より前に立った予約は架電の成果ではない（webの自主予約や
+        # 展示会での直接アポ）。分子から外す。
+        appointed = any(a >= first for a in appt_days_of_contact.get(cid, []))
+        if ch == "agency":
+            agency[mon]["called"] += 1
+            dday_agency(d)["called"] += 1
+            if appointed:
+                agency[mon]["cappt"] += 1
+                dday_agency(d)["cappt"] += 1
+        else:
+            direct[mon][ch]["called"] += 1
+            dday_direct(d)[ch]["called"] += 1
+            if appointed:
+                direct[mon][ch]["cappt"] += 1
+                dday_direct(d)[ch]["cappt"] += 1
 
     return {
         "title": "ホリエモンAI学校 介護校 ファネルダッシュボード",
