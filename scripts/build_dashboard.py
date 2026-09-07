@@ -2111,11 +2111,12 @@ def render(data):
                 ("架電数", lambda v: v.get(ck), f_int, d_num, True, False,
                  False),
                 # 架電数のすぐ下に置く。コールの回数と人数は必ず対で読む。
-                ("架電件数", lambda v: v.get(cc), f_int, d_num, True, False,
+                # 「1人あたり架電数」は出さない。架電件数は初回架電日に立って
+                # いるので、週の架電数を週の架電件数で割ると母集団が違う。
+                # 実際、9/7の週は架電8件・架電件数0（全員が前の週までに着手済み）
+                # で、割ると空欄になる。累計どうしなら意味を持つ（684÷441）。
+                ("架電件数", lambda v: v.get(cc), f_int, d_num, True, True,
                  False),
-                ("1人あたり 架電数",
-                 lambda v: safe_div(v.get(ck), v.get(cc)),
-                 f_dec, None, False, True, False),
                 ("稼働日数", lambda v: v.get(dk_), f_int, None, False, True,
                  True),
                 ("接続数", lambda v: v.get(nk), f_int, d_num, False, False,
@@ -2123,8 +2124,8 @@ def render(data):
                 ("接続率", lambda v: safe_div(v.get(nk), v.get(ck)),
                  f_pct, d_pt, not ak, True, False),
             ]
-            cnt = (f'　架電 {f_int(tot[ck])}'
-                   f'　{f_int(tot[cc])}件'
+            cnt = (f'　架電数 {f_int(tot[ck])}'
+                   f'　架電件数 {f_int(tot[cc])}'
                    f'　接続率 {f_pct(safe_div(tot[nk], tot[ck]))}')
             if ak:
                 rows += [
