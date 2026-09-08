@@ -69,7 +69,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 0,
@@ -82,6 +83,7 @@
     "won_amount": 0,
     "called": 0,
     "cappt": 0,
+    "handled": 0,
     "cv": null
    },
    "line": {
@@ -94,7 +96,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -106,7 +109,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -118,7 +122,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2025-09-08": {
@@ -132,7 +137,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 0,
@@ -145,6 +151,7 @@
     "won_amount": 0,
     "called": 0,
     "cappt": 0,
+    "handled": 0,
     "cv": null
    },
    "line": {
@@ -157,7 +164,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -169,7 +177,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -181,7 +190,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2025-09-15": {
@@ -195,7 +205,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 0,
@@ -208,6 +219,7 @@
     "won_amount": 0,
     "called": 0,
     "cappt": 0,
+    "handled": 0,
     "cv": null
    },
    "line": {
@@ -220,7 +232,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -232,7 +245,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -244,7 +258,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2025-09-22": {
@@ -258,7 +273,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 2
    },
    "web": {
     "leads": 1,
@@ -271,6 +287,7 @@
     "won_amount": 0,
     "called": 0,
     "cappt": 0,
+    "handled": 0,
     "cv": null
    },
    "line": {
@@ -283,7 +300,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -295,7 +313,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -307,7 +326,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2025-09-29": {
@@ -321,7 +341,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 0,
@@ -334,6 +355,7 @@
     "won_amount": 0,
     "called": 0,
     "cappt": 0,
+    "handled": 0,
     "cv": null
    },
    "line": {
@@ -346,7 +368,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -358,7 +381,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -370,7 +394,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2025-10-06": {
@@ -384,7 +409,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 61,
@@ -397,6 +423,7 @@
     "won_amount": 0,
     "called": 1,
     "cappt": 0,
+    "handled": 2,
     "cv": null
    },
    "line": {
@@ -409,7 +436,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -421,7 +449,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -433,7 +462,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2025-10-13": {
@@ -447,7 +477,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 0,
@@ -460,6 +491,7 @@
     "won_amount": 0,
     "called": 0,
     "cappt": 0,
+    "handled": 0,
     "cv": null
    },
    "line": {
@@ -472,7 +504,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -484,7 +517,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -496,7 +530,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2025-10-20": {
@@ -510,7 +545,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 0,
@@ -523,6 +559,7 @@
     "won_amount": 0,
     "called": 0,
     "cappt": 0,
+    "handled": 0,
     "cv": null
    },
    "line": {
@@ -535,7 +572,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 3,
@@ -547,7 +585,8 @@
     "won": 1,
     "won_amount": 170500,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 3
    },
    "other": {
     "leads": 1,
@@ -559,7 +598,8 @@
     "won": 1,
     "won_amount": 81400,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 1
    }
   },
   "2025-10-27": {
@@ -573,7 +613,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 0,
@@ -586,6 +627,7 @@
     "won_amount": 0,
     "called": 0,
     "cappt": 0,
+    "handled": 0,
     "cv": null
    },
    "line": {
@@ -598,7 +640,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -610,7 +653,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 1,
@@ -622,7 +666,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 1
    }
   },
   "2025-11-03": {
@@ -636,7 +681,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 0,
@@ -649,6 +695,7 @@
     "won_amount": 0,
     "called": 0,
     "cappt": 0,
+    "handled": 0,
     "cv": null
    },
    "line": {
@@ -661,7 +708,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -673,7 +721,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -685,7 +734,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2025-11-10": {
@@ -699,7 +749,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 0,
@@ -712,6 +763,7 @@
     "won_amount": 0,
     "called": 0,
     "cappt": 0,
+    "handled": 0,
     "cv": null
    },
    "line": {
@@ -724,7 +776,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -736,7 +789,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -748,7 +802,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2025-11-17": {
@@ -762,7 +817,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 2,
@@ -775,6 +831,7 @@
     "won_amount": 0,
     "called": 0,
     "cappt": 0,
+    "handled": 0,
     "cv": null
    },
    "line": {
@@ -787,7 +844,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -799,7 +857,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -811,7 +870,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2025-11-24": {
@@ -825,7 +885,8 @@
     "won": 1,
     "won_amount": 2101000,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 8
    },
    "web": {
     "leads": 3,
@@ -838,6 +899,7 @@
     "won_amount": 0,
     "called": 2,
     "cappt": 0,
+    "handled": 3,
     "cv": null
    },
    "line": {
@@ -850,7 +912,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -862,7 +925,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -874,7 +938,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2025-12-01": {
@@ -888,7 +953,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 1,
@@ -901,6 +967,7 @@
     "won_amount": 0,
     "called": 0,
     "cappt": 0,
+    "handled": 0,
     "cv": null
    },
    "line": {
@@ -913,7 +980,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -925,7 +993,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -937,7 +1006,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2025-12-08": {
@@ -951,7 +1021,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 0,
@@ -964,6 +1035,7 @@
     "won_amount": 0,
     "called": 0,
     "cappt": 0,
+    "handled": 0,
     "cv": null
    },
    "line": {
@@ -976,7 +1048,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -988,7 +1061,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -1000,7 +1074,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2025-12-15": {
@@ -1014,7 +1089,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 1
    },
    "web": {
     "leads": 0,
@@ -1027,6 +1103,7 @@
     "won_amount": 0,
     "called": 0,
     "cappt": 0,
+    "handled": 0,
     "cv": null
    },
    "line": {
@@ -1039,7 +1116,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -1051,7 +1129,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -1063,7 +1142,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2025-12-22": {
@@ -1077,7 +1157,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 0,
@@ -1090,6 +1171,7 @@
     "won_amount": 0,
     "called": 0,
     "cappt": 0,
+    "handled": 0,
     "cv": null
    },
    "line": {
@@ -1102,7 +1184,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -1114,7 +1197,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -1126,7 +1210,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2025-12-29": {
@@ -1140,7 +1225,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 0,
@@ -1153,6 +1239,7 @@
     "won_amount": 0,
     "called": 0,
     "cappt": 0,
+    "handled": 0,
     "cv": null
    },
    "line": {
@@ -1165,7 +1252,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -1177,7 +1265,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -1189,7 +1278,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-01-05": {
@@ -1203,7 +1293,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 0,
@@ -1216,6 +1307,7 @@
     "won_amount": 0,
     "called": 0,
     "cappt": 0,
+    "handled": 0,
     "cv": null
    },
    "line": {
@@ -1228,7 +1320,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -1240,7 +1333,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -1252,7 +1346,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-01-12": {
@@ -1266,7 +1361,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 0,
@@ -1279,6 +1375,7 @@
     "won_amount": 0,
     "called": 0,
     "cappt": 0,
+    "handled": 0,
     "cv": null
    },
    "line": {
@@ -1291,7 +1388,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -1303,7 +1401,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -1315,7 +1414,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-01-19": {
@@ -1329,7 +1429,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 0,
@@ -1342,6 +1443,7 @@
     "won_amount": 0,
     "called": 0,
     "cappt": 0,
+    "handled": 0,
     "cv": null
    },
    "line": {
@@ -1354,7 +1456,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -1366,7 +1469,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -1378,7 +1482,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-01-26": {
@@ -1392,7 +1497,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 0,
@@ -1405,6 +1511,7 @@
     "won_amount": 0,
     "called": 0,
     "cappt": 0,
+    "handled": 0,
     "cv": null
    },
    "line": {
@@ -1417,7 +1524,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -1429,7 +1537,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -1441,7 +1550,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-02-02": {
@@ -1455,7 +1565,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 0,
@@ -1468,6 +1579,7 @@
     "won_amount": 0,
     "called": 0,
     "cappt": 0,
+    "handled": 0,
     "cv": null
    },
    "line": {
@@ -1480,7 +1592,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -1492,7 +1605,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -1504,7 +1618,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-02-09": {
@@ -1518,7 +1633,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 0,
@@ -1531,6 +1647,7 @@
     "won_amount": 0,
     "called": 0,
     "cappt": 0,
+    "handled": 0,
     "cv": null
    },
    "line": {
@@ -1543,7 +1660,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -1555,7 +1673,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -1567,7 +1686,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-02-16": {
@@ -1581,7 +1701,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 1,
@@ -1594,6 +1715,7 @@
     "won_amount": 0,
     "called": 0,
     "cappt": 0,
+    "handled": 0,
     "cv": null
    },
    "line": {
@@ -1606,7 +1728,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -1618,7 +1741,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -1630,7 +1754,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-02-23": {
@@ -1644,7 +1769,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 1,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 3
    },
    "web": {
     "leads": 1,
@@ -1657,6 +1783,7 @@
     "won_amount": 0,
     "called": 0,
     "cappt": 0,
+    "handled": 0,
     "cv": null
    },
    "line": {
@@ -1669,7 +1796,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -1681,7 +1809,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -1693,7 +1822,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-03-02": {
@@ -1707,7 +1837,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 0,
@@ -1720,6 +1851,7 @@
     "won_amount": 0,
     "called": 0,
     "cappt": 0,
+    "handled": 0,
     "cv": null
    },
    "line": {
@@ -1732,7 +1864,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -1744,7 +1877,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -1756,7 +1890,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-03-09": {
@@ -1770,7 +1905,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 0,
@@ -1783,6 +1919,7 @@
     "won_amount": 0,
     "called": 0,
     "cappt": 0,
+    "handled": 0,
     "cv": null
    },
    "line": {
@@ -1795,7 +1932,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -1807,7 +1945,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -1819,7 +1958,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-03-16": {
@@ -1833,7 +1973,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 0,
@@ -1846,6 +1987,7 @@
     "won_amount": 0,
     "called": 0,
     "cappt": 0,
+    "handled": 0,
     "cv": null
    },
    "line": {
@@ -1858,7 +2000,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -1870,7 +2013,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -1882,7 +2026,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-03-23": {
@@ -1896,7 +2041,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 1,
@@ -1909,6 +2055,7 @@
     "won_amount": 0,
     "called": 0,
     "cappt": 0,
+    "handled": 0,
     "cv": null
    },
    "line": {
@@ -1921,7 +2068,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -1933,7 +2081,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -1945,7 +2094,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-03-30": {
@@ -1959,7 +2109,8 @@
     "won": 1,
     "won_amount": 2101000,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 1
    },
    "web": {
     "leads": 1,
@@ -1972,6 +2123,7 @@
     "won_amount": 0,
     "called": 0,
     "cappt": 0,
+    "handled": 0,
     "cv": null
    },
    "line": {
@@ -1984,7 +2136,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -1996,7 +2149,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -2008,7 +2162,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-04-06": {
@@ -2022,7 +2177,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 40,
@@ -2035,6 +2191,7 @@
     "won_amount": 0,
     "called": 2,
     "cappt": 0,
+    "handled": 3,
     "cv": 45
    },
    "line": {
@@ -2047,7 +2204,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -2059,7 +2217,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 1,
@@ -2071,7 +2230,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-04-13": {
@@ -2085,7 +2245,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 1,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 1
    },
    "web": {
     "leads": 77,
@@ -2098,6 +2259,7 @@
     "won_amount": 0,
     "called": 3,
     "cappt": 0,
+    "handled": 6,
     "cv": 92
    },
    "line": {
@@ -2110,7 +2272,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -2122,7 +2285,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -2134,7 +2298,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-04-20": {
@@ -2148,7 +2313,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 55,
@@ -2161,6 +2327,7 @@
     "won_amount": 0,
     "called": 4,
     "cappt": 0,
+    "handled": 6,
     "cv": 65
    },
    "line": {
@@ -2173,7 +2340,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -2185,7 +2353,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -2197,7 +2366,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-04-27": {
@@ -2211,7 +2381,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 27,
@@ -2224,6 +2395,7 @@
     "won_amount": 0,
     "called": 2,
     "cappt": 0,
+    "handled": 3,
     "cv": 32
    },
    "line": {
@@ -2236,7 +2408,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -2248,7 +2421,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -2260,7 +2434,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-05-04": {
@@ -2274,7 +2449,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 38,
@@ -2287,6 +2463,7 @@
     "won_amount": 0,
     "called": 4,
     "cappt": 0,
+    "handled": 7,
     "cv": 39
    },
    "line": {
@@ -2299,7 +2476,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -2311,7 +2489,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -2323,7 +2502,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-05-11": {
@@ -2337,7 +2517,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 25,
@@ -2350,6 +2531,7 @@
     "won_amount": 0,
     "called": 3,
     "cappt": 0,
+    "handled": 3,
     "cv": 33
    },
    "line": {
@@ -2362,7 +2544,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -2374,7 +2557,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -2386,7 +2570,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-05-18": {
@@ -2400,7 +2585,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 1
    },
    "web": {
     "leads": 37,
@@ -2413,6 +2599,7 @@
     "won_amount": 81400,
     "called": 10,
     "cappt": 0,
+    "handled": 12,
     "cv": 33
    },
    "line": {
@@ -2425,7 +2612,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -2437,7 +2625,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -2449,7 +2638,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-05-25": {
@@ -2463,7 +2653,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 61,
@@ -2476,6 +2667,7 @@
     "won_amount": 0,
     "called": 28,
     "cappt": 2,
+    "handled": 29,
     "cv": 74
    },
    "line": {
@@ -2488,7 +2680,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -2500,7 +2693,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -2512,7 +2706,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-06-01": {
@@ -2526,7 +2721,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 95,
@@ -2539,6 +2735,7 @@
     "won_amount": 0,
     "called": 34,
     "cappt": 1,
+    "handled": 35,
     "cv": 128
    },
    "line": {
@@ -2551,7 +2748,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -2563,7 +2761,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -2575,7 +2774,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-06-08": {
@@ -2589,7 +2789,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 68,
@@ -2602,6 +2803,7 @@
     "won_amount": 0,
     "called": 39,
     "cappt": 1,
+    "handled": 40,
     "cv": 93
    },
    "line": {
@@ -2614,7 +2816,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -2626,7 +2829,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -2638,7 +2842,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-06-15": {
@@ -2652,7 +2857,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 55,
@@ -2665,6 +2871,7 @@
     "won_amount": 0,
     "called": 33,
     "cappt": 1,
+    "handled": 35,
     "cv": 80
    },
    "line": {
@@ -2677,7 +2884,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -2689,7 +2897,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -2701,7 +2910,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-06-22": {
@@ -2715,7 +2925,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 54,
@@ -2728,6 +2939,7 @@
     "won_amount": 0,
     "called": 42,
     "cappt": 1,
+    "handled": 42,
     "cv": 68
    },
    "line": {
@@ -2740,7 +2952,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -2752,7 +2965,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -2764,7 +2978,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-06-29": {
@@ -2778,7 +2993,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 41,
@@ -2791,6 +3007,7 @@
     "won_amount": 0,
     "called": 16,
     "cappt": 0,
+    "handled": 16,
     "cv": 46
    },
    "line": {
@@ -2803,7 +3020,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -2815,7 +3033,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -2827,7 +3046,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-07-06": {
@@ -2841,7 +3061,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 72,
@@ -2854,6 +3075,7 @@
     "won_amount": 0,
     "called": 30,
     "cappt": 1,
+    "handled": 31,
     "cv": 71
    },
    "line": {
@@ -2866,7 +3088,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -2878,7 +3101,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 1,
@@ -2890,7 +3114,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 1,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 1
    }
   },
   "2026-07-13": {
@@ -2904,7 +3129,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 43,
@@ -2917,6 +3143,7 @@
     "won_amount": 0,
     "called": 9,
     "cappt": 0,
+    "handled": 10,
     "cv": 44
    },
    "line": {
@@ -2929,7 +3156,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -2941,7 +3169,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -2953,7 +3182,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-07-20": {
@@ -2966,8 +3196,9 @@
     "deals": 3,
     "won": 0,
     "won_amount": 0,
-    "called": 112,
-    "cappt": 1
+    "called": 125,
+    "cappt": 1,
+    "handled": 127
    },
    "web": {
     "leads": 40,
@@ -2980,6 +3211,7 @@
     "won_amount": 0,
     "called": 10,
     "cappt": 1,
+    "handled": 10,
     "cv": 36
    },
    "line": {
@@ -2992,7 +3224,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -3004,7 +3237,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 1,
@@ -3016,7 +3250,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-07-27": {
@@ -3030,7 +3265,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 37,
@@ -3043,6 +3279,7 @@
     "won_amount": 0,
     "called": 22,
     "cappt": 0,
+    "handled": 22,
     "cv": 56
    },
    "line": {
@@ -3055,7 +3292,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -3067,7 +3305,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -3079,7 +3318,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-08-03": {
@@ -3093,7 +3333,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 36,
@@ -3106,6 +3347,7 @@
     "won_amount": 0,
     "called": 2,
     "cappt": 0,
+    "handled": 3,
     "cv": 47
    },
    "line": {
@@ -3118,7 +3360,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -3130,7 +3373,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -3142,7 +3386,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-08-10": {
@@ -3156,7 +3401,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 41,
@@ -3169,6 +3415,7 @@
     "won_amount": 550000,
     "called": 18,
     "cappt": 2,
+    "handled": 19,
     "cv": 34
    },
    "line": {
@@ -3181,7 +3428,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -3193,7 +3441,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -3205,7 +3454,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-08-17": {
@@ -3219,7 +3469,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 34,
@@ -3232,6 +3483,7 @@
     "won_amount": 0,
     "called": 10,
     "cappt": 1,
+    "handled": 12,
     "cv": 49
    },
    "line": {
@@ -3244,7 +3496,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -3256,7 +3509,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -3268,7 +3522,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-08-24": {
@@ -3282,7 +3537,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 22,
@@ -3295,6 +3551,7 @@
     "won_amount": 0,
     "called": 1,
     "cappt": 1,
+    "handled": 1,
     "cv": 30
    },
    "line": {
@@ -3307,7 +3564,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -3319,7 +3577,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -3331,7 +3590,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-08-31": {
@@ -3345,7 +3605,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 11,
@@ -3358,6 +3619,7 @@
     "won_amount": 0,
     "called": 1,
     "cappt": 0,
+    "handled": 1,
     "cv": 16
    },
    "line": {
@@ -3370,7 +3632,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -3382,7 +3645,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -3394,7 +3658,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-09-07": {
@@ -3408,7 +3673,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 0,
@@ -3421,6 +3687,7 @@
     "won_amount": 0,
     "called": 0,
     "cappt": 0,
+    "handled": 0,
     "cv": null
    },
    "line": {
@@ -3433,7 +3700,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -3445,7 +3713,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -3457,7 +3726,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   }
  },
@@ -3469,7 +3739,8 @@
    "won": 0,
    "won_amount": 0,
    "called": 0,
-   "cappt": 0
+   "cappt": 0,
+   "handled": 0
   },
   "2025-09-08": {
    "leads": 0,
@@ -3478,7 +3749,8 @@
    "won": 0,
    "won_amount": 0,
    "called": 0,
-   "cappt": 0
+   "cappt": 0,
+   "handled": 0
   },
   "2025-09-15": {
    "leads": 0,
@@ -3487,7 +3759,8 @@
    "won": 0,
    "won_amount": 0,
    "called": 0,
-   "cappt": 0
+   "cappt": 0,
+   "handled": 0
   },
   "2025-09-22": {
    "leads": 0,
@@ -3496,7 +3769,8 @@
    "won": 0,
    "won_amount": 0,
    "called": 0,
-   "cappt": 0
+   "cappt": 0,
+   "handled": 0
   },
   "2025-09-29": {
    "leads": 0,
@@ -3505,7 +3779,8 @@
    "won": 0,
    "won_amount": 0,
    "called": 0,
-   "cappt": 0
+   "cappt": 0,
+   "handled": 0
   },
   "2025-10-06": {
    "leads": 0,
@@ -3514,7 +3789,8 @@
    "won": 0,
    "won_amount": 0,
    "called": 0,
-   "cappt": 0
+   "cappt": 0,
+   "handled": 0
   },
   "2025-10-13": {
    "leads": 0,
@@ -3523,7 +3799,8 @@
    "won": 0,
    "won_amount": 0,
    "called": 0,
-   "cappt": 0
+   "cappt": 0,
+   "handled": 0
   },
   "2025-10-20": {
    "leads": 3,
@@ -3532,7 +3809,8 @@
    "won": 3,
    "won_amount": 3500750,
    "called": 0,
-   "cappt": 0
+   "cappt": 0,
+   "handled": 3
   },
   "2025-10-27": {
    "leads": 1,
@@ -3541,7 +3819,8 @@
    "won": 1,
    "won_amount": 341000,
    "called": 0,
-   "cappt": 0
+   "cappt": 0,
+   "handled": 0
   },
   "2025-11-03": {
    "leads": 2,
@@ -3550,7 +3829,8 @@
    "won": 1,
    "won_amount": 2101000,
    "called": 0,
-   "cappt": 0
+   "cappt": 0,
+   "handled": 2
   },
   "2025-11-10": {
    "leads": 0,
@@ -3559,7 +3839,8 @@
    "won": 0,
    "won_amount": 0,
    "called": 0,
-   "cappt": 0
+   "cappt": 0,
+   "handled": 0
   },
   "2025-11-17": {
    "leads": 0,
@@ -3568,7 +3849,8 @@
    "won": 0,
    "won_amount": 0,
    "called": 0,
-   "cappt": 0
+   "cappt": 0,
+   "handled": 0
   },
   "2025-11-24": {
    "leads": 1,
@@ -3577,7 +3859,8 @@
    "won": 1,
    "won_amount": 775500,
    "called": 0,
-   "cappt": 0
+   "cappt": 0,
+   "handled": 1
   },
   "2025-12-01": {
    "leads": 2,
@@ -3586,7 +3869,8 @@
    "won": 1,
    "won_amount": 1278750,
    "called": 1,
-   "cappt": 0
+   "cappt": 0,
+   "handled": 2
   },
   "2025-12-08": {
    "leads": 0,
@@ -3595,7 +3879,8 @@
    "won": 0,
    "won_amount": 0,
    "called": 0,
-   "cappt": 0
+   "cappt": 0,
+   "handled": 0
   },
   "2025-12-15": {
    "leads": 3,
@@ -3604,7 +3889,8 @@
    "won": 1,
    "won_amount": 607750,
    "called": 0,
-   "cappt": 0
+   "cappt": 0,
+   "handled": 3
   },
   "2025-12-22": {
    "leads": 1,
@@ -3613,7 +3899,8 @@
    "won": 0,
    "won_amount": 0,
    "called": 0,
-   "cappt": 0
+   "cappt": 0,
+   "handled": 1
   },
   "2025-12-29": {
    "leads": 1,
@@ -3622,7 +3909,8 @@
    "won": 0,
    "won_amount": 0,
    "called": 0,
-   "cappt": 0
+   "cappt": 0,
+   "handled": 1
   },
   "2026-01-05": {
    "leads": 0,
@@ -3631,7 +3919,8 @@
    "won": 0,
    "won_amount": 0,
    "called": 0,
-   "cappt": 0
+   "cappt": 0,
+   "handled": 0
   },
   "2026-01-12": {
    "leads": 1,
@@ -3640,7 +3929,8 @@
    "won": 0,
    "won_amount": 0,
    "called": 0,
-   "cappt": 0
+   "cappt": 0,
+   "handled": 1
   },
   "2026-01-19": {
    "leads": 0,
@@ -3649,7 +3939,8 @@
    "won": 0,
    "won_amount": 0,
    "called": 0,
-   "cappt": 0
+   "cappt": 0,
+   "handled": 0
   },
   "2026-01-26": {
    "leads": 0,
@@ -3658,7 +3949,8 @@
    "won": 0,
    "won_amount": 0,
    "called": 0,
-   "cappt": 0
+   "cappt": 0,
+   "handled": 0
   },
   "2026-02-02": {
    "leads": 1,
@@ -3667,7 +3959,8 @@
    "won": 0,
    "won_amount": 0,
    "called": 0,
-   "cappt": 0
+   "cappt": 0,
+   "handled": 1
   },
   "2026-02-09": {
    "leads": 0,
@@ -3676,7 +3969,8 @@
    "won": 0,
    "won_amount": 0,
    "called": 0,
-   "cappt": 0
+   "cappt": 0,
+   "handled": 0
   },
   "2026-02-16": {
    "leads": 2,
@@ -3685,7 +3979,8 @@
    "won": 1,
    "won_amount": 1111000,
    "called": 0,
-   "cappt": 0
+   "cappt": 0,
+   "handled": 2
   },
   "2026-02-23": {
    "leads": 0,
@@ -3694,7 +3989,8 @@
    "won": 0,
    "won_amount": 0,
    "called": 0,
-   "cappt": 0
+   "cappt": 0,
+   "handled": 0
   },
   "2026-03-02": {
    "leads": 0,
@@ -3703,7 +3999,8 @@
    "won": 0,
    "won_amount": 0,
    "called": 0,
-   "cappt": 0
+   "cappt": 0,
+   "handled": 0
   },
   "2026-03-09": {
    "leads": 0,
@@ -3712,7 +4009,8 @@
    "won": 0,
    "won_amount": 0,
    "called": 0,
-   "cappt": 0
+   "cappt": 0,
+   "handled": 0
   },
   "2026-03-16": {
    "leads": 1,
@@ -3721,7 +4019,8 @@
    "won": 0,
    "won_amount": 0,
    "called": 0,
-   "cappt": 0
+   "cappt": 0,
+   "handled": 1
   },
   "2026-03-23": {
    "leads": 1,
@@ -3730,7 +4029,8 @@
    "won": 1,
    "won_amount": 2101000,
    "called": 0,
-   "cappt": 0
+   "cappt": 0,
+   "handled": 1
   },
   "2026-03-30": {
    "leads": 0,
@@ -3739,7 +4039,8 @@
    "won": 0,
    "won_amount": 0,
    "called": 0,
-   "cappt": 0
+   "cappt": 0,
+   "handled": 0
   },
   "2026-04-06": {
    "leads": 0,
@@ -3748,7 +4049,8 @@
    "won": 0,
    "won_amount": 0,
    "called": 0,
-   "cappt": 0
+   "cappt": 0,
+   "handled": 0
   },
   "2026-04-13": {
    "leads": 0,
@@ -3757,7 +4059,8 @@
    "won": 0,
    "won_amount": 0,
    "called": 0,
-   "cappt": 0
+   "cappt": 0,
+   "handled": 0
   },
   "2026-04-20": {
    "leads": 0,
@@ -3766,7 +4069,8 @@
    "won": 0,
    "won_amount": 0,
    "called": 0,
-   "cappt": 0
+   "cappt": 0,
+   "handled": 0
   },
   "2026-04-27": {
    "leads": 0,
@@ -3775,7 +4079,8 @@
    "won": 0,
    "won_amount": 0,
    "called": 0,
-   "cappt": 0
+   "cappt": 0,
+   "handled": 0
   },
   "2026-05-04": {
    "leads": 0,
@@ -3784,7 +4089,8 @@
    "won": 0,
    "won_amount": 0,
    "called": 0,
-   "cappt": 0
+   "cappt": 0,
+   "handled": 0
   },
   "2026-05-11": {
    "leads": 0,
@@ -3793,7 +4099,8 @@
    "won": 0,
    "won_amount": 0,
    "called": 0,
-   "cappt": 0
+   "cappt": 0,
+   "handled": 0
   },
   "2026-05-18": {
    "leads": 0,
@@ -3802,7 +4109,8 @@
    "won": 0,
    "won_amount": 0,
    "called": 0,
-   "cappt": 0
+   "cappt": 0,
+   "handled": 0
   },
   "2026-05-25": {
    "leads": 0,
@@ -3811,7 +4119,8 @@
    "won": 0,
    "won_amount": 0,
    "called": 0,
-   "cappt": 0
+   "cappt": 0,
+   "handled": 0
   },
   "2026-06-01": {
    "leads": 0,
@@ -3820,7 +4129,8 @@
    "won": 0,
    "won_amount": 0,
    "called": 0,
-   "cappt": 0
+   "cappt": 0,
+   "handled": 0
   },
   "2026-06-08": {
    "leads": 1,
@@ -3829,7 +4139,8 @@
    "won": 0,
    "won_amount": 0,
    "called": 1,
-   "cappt": 1
+   "cappt": 1,
+   "handled": 1
   },
   "2026-06-15": {
    "leads": 0,
@@ -3838,7 +4149,8 @@
    "won": 0,
    "won_amount": 0,
    "called": 0,
-   "cappt": 0
+   "cappt": 0,
+   "handled": 0
   },
   "2026-06-22": {
    "leads": 1,
@@ -3847,7 +4159,8 @@
    "won": 1,
    "won_amount": 943250,
    "called": 0,
-   "cappt": 0
+   "cappt": 0,
+   "handled": 1
   },
   "2026-06-29": {
    "leads": 0,
@@ -3856,7 +4169,8 @@
    "won": 0,
    "won_amount": 0,
    "called": 0,
-   "cappt": 0
+   "cappt": 0,
+   "handled": 0
   },
   "2026-07-06": {
    "leads": 0,
@@ -3865,7 +4179,8 @@
    "won": 0,
    "won_amount": 0,
    "called": 0,
-   "cappt": 0
+   "cappt": 0,
+   "handled": 0
   },
   "2026-07-13": {
    "leads": 0,
@@ -3874,7 +4189,8 @@
    "won": 0,
    "won_amount": 0,
    "called": 0,
-   "cappt": 0
+   "cappt": 0,
+   "handled": 0
   },
   "2026-07-20": {
    "leads": 1,
@@ -3883,7 +4199,8 @@
    "won": 0,
    "won_amount": 0,
    "called": 1,
-   "cappt": 0
+   "cappt": 0,
+   "handled": 1
   },
   "2026-07-27": {
    "leads": 0,
@@ -3892,7 +4209,8 @@
    "won": 0,
    "won_amount": 0,
    "called": 0,
-   "cappt": 0
+   "cappt": 0,
+   "handled": 0
   },
   "2026-08-03": {
    "leads": 0,
@@ -3901,7 +4219,8 @@
    "won": 0,
    "won_amount": 0,
    "called": 0,
-   "cappt": 0
+   "cappt": 0,
+   "handled": 0
   },
   "2026-08-10": {
    "leads": 0,
@@ -3910,7 +4229,8 @@
    "won": 0,
    "won_amount": 0,
    "called": 0,
-   "cappt": 0
+   "cappt": 0,
+   "handled": 0
   },
   "2026-08-17": {
    "leads": 0,
@@ -3919,7 +4239,8 @@
    "won": 0,
    "won_amount": 0,
    "called": 0,
-   "cappt": 0
+   "cappt": 0,
+   "handled": 0
   },
   "2026-08-24": {
    "leads": 0,
@@ -3928,7 +4249,8 @@
    "won": 0,
    "won_amount": 0,
    "called": 0,
-   "cappt": 0
+   "cappt": 0,
+   "handled": 0
   },
   "2026-08-31": {
    "leads": 1,
@@ -3937,7 +4259,8 @@
    "won": 0,
    "won_amount": 0,
    "called": 0,
-   "cappt": 0
+   "cappt": 0,
+   "handled": 1
   },
   "2026-09-07": {
    "leads": 0,
@@ -3946,7 +4269,8 @@
    "won": 0,
    "won_amount": 0,
    "called": 0,
-   "cappt": 0
+   "cappt": 0,
+   "handled": 0
   }
  },
  "expos": [
@@ -5039,6 +5363,17 @@
    "vcalls": 52,
    "vconn": 7,
    "vcalled": 7
+  },
+  "2026-09-08": {
+   "calls": 14,
+   "connected": 1,
+   "appts": 0,
+   "mtgs": 0,
+   "called": 13,
+   "leads": 0,
+   "vcalls": 14,
+   "vconn": 1,
+   "vcalled": 13
   }
  },
  "fs": {
@@ -9843,7 +10178,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 2
    },
    "web": {
     "leads": 1,
@@ -9855,7 +10191,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "line": {
     "leads": 0,
@@ -9867,7 +10204,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -9879,7 +10217,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -9891,7 +10230,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2025-10-10": {
@@ -9905,7 +10245,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 61,
@@ -9917,7 +10258,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 1,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 2
    },
    "line": {
     "leads": 0,
@@ -9929,7 +10271,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -9941,7 +10284,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -9953,7 +10297,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2025-10-21": {
@@ -9967,7 +10312,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 0,
@@ -9979,7 +10325,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "line": {
     "leads": 0,
@@ -9991,7 +10338,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 2,
@@ -10003,7 +10351,8 @@
     "won": 1,
     "won_amount": 170500,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 2
    },
    "other": {
     "leads": 0,
@@ -10015,7 +10364,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2025-10-24": {
@@ -10029,7 +10379,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 0,
@@ -10041,7 +10392,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "line": {
     "leads": 0,
@@ -10053,7 +10405,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 1,
@@ -10065,7 +10418,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 1
    },
    "other": {
     "leads": 1,
@@ -10077,7 +10431,8 @@
     "won": 1,
     "won_amount": 81400,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 1
    }
   },
   "2025-10-29": {
@@ -10091,7 +10446,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 0,
@@ -10103,7 +10459,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "line": {
     "leads": 0,
@@ -10115,7 +10472,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -10127,7 +10485,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 1,
@@ -10139,7 +10498,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 1
    }
   },
   "2025-11-20": {
@@ -10153,7 +10513,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 2,
@@ -10165,7 +10526,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "line": {
     "leads": 0,
@@ -10177,7 +10539,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -10189,7 +10552,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -10201,7 +10565,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2025-11-24": {
@@ -10215,7 +10580,8 @@
     "won": 1,
     "won_amount": 2101000,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 4
    },
    "web": {
     "leads": 3,
@@ -10227,7 +10593,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 2,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 3
    },
    "line": {
     "leads": 0,
@@ -10239,7 +10606,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -10251,7 +10619,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -10263,7 +10632,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2025-11-27": {
@@ -10277,7 +10647,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 4
    },
    "web": {
     "leads": 0,
@@ -10289,7 +10660,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "line": {
     "leads": 0,
@@ -10301,7 +10673,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -10313,7 +10686,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -10325,7 +10699,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2025-12-04": {
@@ -10339,7 +10714,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 1,
@@ -10351,7 +10727,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "line": {
     "leads": 0,
@@ -10363,7 +10740,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -10375,7 +10753,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -10387,7 +10766,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2025-12-09": {
@@ -10401,7 +10781,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 0,
@@ -10413,7 +10794,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "line": {
     "leads": 0,
@@ -10425,7 +10807,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -10437,7 +10820,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -10449,7 +10833,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2025-12-18": {
@@ -10463,7 +10848,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 1
    },
    "web": {
     "leads": 0,
@@ -10475,7 +10861,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "line": {
     "leads": 0,
@@ -10487,7 +10874,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -10499,7 +10887,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -10511,7 +10900,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-02-20": {
@@ -10525,7 +10915,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 1,
@@ -10537,7 +10928,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "line": {
     "leads": 0,
@@ -10549,7 +10941,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -10561,7 +10954,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -10573,7 +10967,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-02-23": {
@@ -10587,7 +10982,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 0,
@@ -10599,7 +10995,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "line": {
     "leads": 0,
@@ -10611,7 +11008,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -10623,7 +11021,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -10635,7 +11034,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-02-25": {
@@ -10649,7 +11049,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 0,
@@ -10661,7 +11062,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "line": {
     "leads": 0,
@@ -10673,7 +11075,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -10685,7 +11088,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -10697,7 +11101,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-02-26": {
@@ -10711,7 +11116,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 1,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 3
    },
    "web": {
     "leads": 0,
@@ -10723,7 +11129,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "line": {
     "leads": 0,
@@ -10735,7 +11142,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -10747,7 +11155,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -10759,7 +11168,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-02-27": {
@@ -10773,7 +11183,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 1,
@@ -10785,7 +11196,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "line": {
     "leads": 0,
@@ -10797,7 +11209,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -10809,7 +11222,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -10821,7 +11235,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-03-26": {
@@ -10835,7 +11250,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 1,
@@ -10847,7 +11263,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "line": {
     "leads": 0,
@@ -10859,7 +11276,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -10871,7 +11289,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -10883,7 +11302,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-04-02": {
@@ -10897,7 +11317,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 1,
@@ -10909,7 +11330,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "line": {
     "leads": 0,
@@ -10921,7 +11343,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -10933,7 +11356,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -10945,7 +11369,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-04-04": {
@@ -10959,7 +11384,8 @@
     "won": 1,
     "won_amount": 2101000,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 1
    },
    "web": {
     "leads": 0,
@@ -10971,7 +11397,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "line": {
     "leads": 0,
@@ -10983,7 +11410,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -10995,7 +11423,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -11007,7 +11436,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-04-06": {
@@ -11021,7 +11451,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 0,
@@ -11033,7 +11464,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "line": {
     "leads": 0,
@@ -11045,7 +11477,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -11057,7 +11490,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 1,
@@ -11069,7 +11503,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-04-07": {
@@ -11083,7 +11518,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 0,
@@ -11096,6 +11532,7 @@
     "won_amount": 0,
     "called": 0,
     "cappt": 0,
+    "handled": 0,
     "cv": 0
    },
    "line": {
@@ -11108,7 +11545,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -11120,7 +11558,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -11132,7 +11571,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-04-08": {
@@ -11146,7 +11586,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 4,
@@ -11159,6 +11600,7 @@
     "won_amount": 0,
     "called": 0,
     "cappt": 0,
+    "handled": 0,
     "cv": 8
    },
    "line": {
@@ -11171,7 +11613,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -11183,7 +11626,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -11195,7 +11639,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-04-09": {
@@ -11209,7 +11654,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 2,
@@ -11222,6 +11668,7 @@
     "won_amount": 0,
     "called": 0,
     "cappt": 0,
+    "handled": 0,
     "cv": 4
    },
    "line": {
@@ -11234,7 +11681,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -11246,7 +11694,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -11258,7 +11707,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-04-10": {
@@ -11272,7 +11722,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 8,
@@ -11285,6 +11736,7 @@
     "won_amount": 0,
     "called": 0,
     "cappt": 0,
+    "handled": 0,
     "cv": 8
    },
    "line": {
@@ -11297,7 +11749,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -11309,7 +11762,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -11321,7 +11775,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-04-11": {
@@ -11335,7 +11790,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 13,
@@ -11348,6 +11804,7 @@
     "won_amount": 0,
     "called": 2,
     "cappt": 0,
+    "handled": 3,
     "cv": 12
    },
    "line": {
@@ -11360,7 +11817,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -11372,7 +11830,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -11384,7 +11843,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-04-12": {
@@ -11398,7 +11858,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 13,
@@ -11411,6 +11872,7 @@
     "won_amount": 0,
     "called": 0,
     "cappt": 0,
+    "handled": 0,
     "cv": 13
    },
    "line": {
@@ -11423,7 +11885,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -11435,7 +11898,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -11447,7 +11911,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-04-13": {
@@ -11461,7 +11926,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 7,
@@ -11474,6 +11940,7 @@
     "won_amount": 0,
     "called": 0,
     "cappt": 0,
+    "handled": 0,
     "cv": 8
    },
    "line": {
@@ -11486,7 +11953,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -11498,7 +11966,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -11510,7 +11979,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-04-14": {
@@ -11524,7 +11994,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 22,
@@ -11537,6 +12008,7 @@
     "won_amount": 0,
     "called": 1,
     "cappt": 0,
+    "handled": 2,
     "cv": 22
    },
    "line": {
@@ -11549,7 +12021,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -11561,7 +12034,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -11573,7 +12047,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-04-15": {
@@ -11587,7 +12062,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 1,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 1
    },
    "web": {
     "leads": 12,
@@ -11600,6 +12076,7 @@
     "won_amount": 0,
     "called": 1,
     "cappt": 0,
+    "handled": 2,
     "cv": 16
    },
    "line": {
@@ -11612,7 +12089,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -11624,7 +12102,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -11636,7 +12115,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-04-16": {
@@ -11650,7 +12130,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 6,
@@ -11663,6 +12144,7 @@
     "won_amount": 0,
     "called": 0,
     "cappt": 0,
+    "handled": 0,
     "cv": 7
    },
    "line": {
@@ -11675,7 +12157,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -11687,7 +12170,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -11699,7 +12183,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-04-17": {
@@ -11713,7 +12198,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 3,
@@ -11726,6 +12212,7 @@
     "won_amount": 0,
     "called": 0,
     "cappt": 0,
+    "handled": 0,
     "cv": 7
    },
    "line": {
@@ -11738,7 +12225,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -11750,7 +12238,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -11762,7 +12251,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-04-18": {
@@ -11776,7 +12266,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 12,
@@ -11789,6 +12280,7 @@
     "won_amount": 0,
     "called": 0,
     "cappt": 0,
+    "handled": 1,
     "cv": 15
    },
    "line": {
@@ -11801,7 +12293,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -11813,7 +12306,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -11825,7 +12319,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-04-19": {
@@ -11839,7 +12334,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 15,
@@ -11852,6 +12348,7 @@
     "won_amount": 0,
     "called": 1,
     "cappt": 0,
+    "handled": 1,
     "cv": 17
    },
    "line": {
@@ -11864,7 +12361,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -11876,7 +12374,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -11888,7 +12387,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-04-20": {
@@ -11902,7 +12402,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 9,
@@ -11915,6 +12416,7 @@
     "won_amount": 0,
     "called": 0,
     "cappt": 0,
+    "handled": 0,
     "cv": 15
    },
    "line": {
@@ -11927,7 +12429,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -11939,7 +12442,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -11951,7 +12455,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-04-21": {
@@ -11965,7 +12470,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 12,
@@ -11978,6 +12484,7 @@
     "won_amount": 0,
     "called": 1,
     "cappt": 0,
+    "handled": 1,
     "cv": 11
    },
    "line": {
@@ -11990,7 +12497,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -12002,7 +12510,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -12014,7 +12523,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-04-22": {
@@ -12028,7 +12538,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 7,
@@ -12041,6 +12552,7 @@
     "won_amount": 0,
     "called": 0,
     "cappt": 0,
+    "handled": 0,
     "cv": 8
    },
    "line": {
@@ -12053,7 +12565,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -12065,7 +12578,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -12077,7 +12591,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-04-23": {
@@ -12091,7 +12606,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 14,
@@ -12104,6 +12620,7 @@
     "won_amount": 0,
     "called": 1,
     "cappt": 0,
+    "handled": 3,
     "cv": 17
    },
    "line": {
@@ -12116,7 +12633,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -12128,7 +12646,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -12140,7 +12659,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-04-24": {
@@ -12154,7 +12674,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 6,
@@ -12167,6 +12688,7 @@
     "won_amount": 0,
     "called": 1,
     "cappt": 0,
+    "handled": 1,
     "cv": 6
    },
    "line": {
@@ -12179,7 +12701,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -12191,7 +12714,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -12203,7 +12727,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-04-25": {
@@ -12217,7 +12742,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 4,
@@ -12230,6 +12756,7 @@
     "won_amount": 0,
     "called": 1,
     "cappt": 0,
+    "handled": 1,
     "cv": 4
    },
    "line": {
@@ -12242,7 +12769,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -12254,7 +12782,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -12266,7 +12795,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-04-26": {
@@ -12280,7 +12810,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 3,
@@ -12293,6 +12824,7 @@
     "won_amount": 0,
     "called": 0,
     "cappt": 0,
+    "handled": 0,
     "cv": 4
    },
    "line": {
@@ -12305,7 +12837,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -12317,7 +12850,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -12329,7 +12863,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-04-27": {
@@ -12343,7 +12878,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 2,
@@ -12356,6 +12892,7 @@
     "won_amount": 0,
     "called": 0,
     "cappt": 0,
+    "handled": 0,
     "cv": 2
    },
    "line": {
@@ -12368,7 +12905,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -12380,7 +12918,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -12392,7 +12931,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-04-28": {
@@ -12406,7 +12946,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 8,
@@ -12419,6 +12960,7 @@
     "won_amount": 0,
     "called": 0,
     "cappt": 0,
+    "handled": 0,
     "cv": 10
    },
    "line": {
@@ -12431,7 +12973,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -12443,7 +12986,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -12455,7 +12999,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-04-29": {
@@ -12469,7 +13014,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 4,
@@ -12482,6 +13028,7 @@
     "won_amount": 0,
     "called": 1,
     "cappt": 0,
+    "handled": 1,
     "cv": 4
    },
    "line": {
@@ -12494,7 +13041,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -12506,7 +13054,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -12518,7 +13067,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-04-30": {
@@ -12532,7 +13082,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 3,
@@ -12545,6 +13096,7 @@
     "won_amount": 0,
     "called": 0,
     "cappt": 0,
+    "handled": 1,
     "cv": 3
    },
    "line": {
@@ -12557,7 +13109,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -12569,7 +13122,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -12581,7 +13135,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-05-01": {
@@ -12595,7 +13150,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 6,
@@ -12608,6 +13164,7 @@
     "won_amount": 0,
     "called": 1,
     "cappt": 0,
+    "handled": 1,
     "cv": 6
    },
    "line": {
@@ -12620,7 +13177,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -12632,7 +13190,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -12644,7 +13203,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-05-02": {
@@ -12658,7 +13218,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 3,
@@ -12671,6 +13232,7 @@
     "won_amount": 0,
     "called": 0,
     "cappt": 0,
+    "handled": 0,
     "cv": 3
    },
    "line": {
@@ -12683,7 +13245,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -12695,7 +13258,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -12707,7 +13271,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-05-03": {
@@ -12721,7 +13286,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 1,
@@ -12734,6 +13300,7 @@
     "won_amount": 0,
     "called": 0,
     "cappt": 0,
+    "handled": 0,
     "cv": 4
    },
    "line": {
@@ -12746,7 +13313,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -12758,7 +13326,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -12770,7 +13339,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-05-04": {
@@ -12784,7 +13354,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 5,
@@ -12797,6 +13368,7 @@
     "won_amount": 0,
     "called": 0,
     "cappt": 0,
+    "handled": 0,
     "cv": 5
    },
    "line": {
@@ -12809,7 +13381,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -12821,7 +13394,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -12833,7 +13407,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-05-05": {
@@ -12847,7 +13422,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 12,
@@ -12860,6 +13436,7 @@
     "won_amount": 0,
     "called": 1,
     "cappt": 0,
+    "handled": 2,
     "cv": 9
    },
    "line": {
@@ -12872,7 +13449,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -12884,7 +13462,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -12896,7 +13475,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-05-06": {
@@ -12910,7 +13490,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 3,
@@ -12923,6 +13504,7 @@
     "won_amount": 0,
     "called": 1,
     "cappt": 0,
+    "handled": 2,
     "cv": 3
    },
    "line": {
@@ -12935,7 +13517,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -12947,7 +13530,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -12959,7 +13543,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-05-07": {
@@ -12973,7 +13558,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 3,
@@ -12986,6 +13572,7 @@
     "won_amount": 0,
     "called": 0,
     "cappt": 0,
+    "handled": 0,
     "cv": 4
    },
    "line": {
@@ -12998,7 +13585,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -13010,7 +13598,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -13022,7 +13611,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-05-08": {
@@ -13036,7 +13626,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 5,
@@ -13049,6 +13640,7 @@
     "won_amount": 0,
     "called": 1,
     "cappt": 0,
+    "handled": 1,
     "cv": 7
    },
    "line": {
@@ -13061,7 +13653,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -13073,7 +13666,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -13085,7 +13679,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-05-09": {
@@ -13099,7 +13694,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 3,
@@ -13112,6 +13708,7 @@
     "won_amount": 0,
     "called": 0,
     "cappt": 0,
+    "handled": 0,
     "cv": 4
    },
    "line": {
@@ -13124,7 +13721,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -13136,7 +13734,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -13148,7 +13747,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-05-10": {
@@ -13162,7 +13762,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 7,
@@ -13175,6 +13776,7 @@
     "won_amount": 0,
     "called": 1,
     "cappt": 0,
+    "handled": 2,
     "cv": 7
    },
    "line": {
@@ -13187,7 +13789,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -13199,7 +13802,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -13211,7 +13815,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-05-11": {
@@ -13225,7 +13830,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 1,
@@ -13238,6 +13844,7 @@
     "won_amount": 0,
     "called": 0,
     "cappt": 0,
+    "handled": 0,
     "cv": 2
    },
    "line": {
@@ -13250,7 +13857,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -13262,7 +13870,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -13274,7 +13883,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-05-12": {
@@ -13288,7 +13898,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 7,
@@ -13301,6 +13912,7 @@
     "won_amount": 0,
     "called": 2,
     "cappt": 0,
+    "handled": 2,
     "cv": 7
    },
    "line": {
@@ -13313,7 +13925,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -13325,7 +13938,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -13337,7 +13951,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-05-13": {
@@ -13351,7 +13966,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 6,
@@ -13364,6 +13980,7 @@
     "won_amount": 0,
     "called": 0,
     "cappt": 0,
+    "handled": 0,
     "cv": 8
    },
    "line": {
@@ -13376,7 +13993,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -13388,7 +14006,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -13400,7 +14019,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-05-14": {
@@ -13414,7 +14034,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 4,
@@ -13427,6 +14048,7 @@
     "won_amount": 0,
     "called": 0,
     "cappt": 0,
+    "handled": 0,
     "cv": 7
    },
    "line": {
@@ -13439,7 +14061,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -13451,7 +14074,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -13463,7 +14087,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-05-15": {
@@ -13477,7 +14102,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 0,
@@ -13490,6 +14116,7 @@
     "won_amount": 0,
     "called": 0,
     "cappt": 0,
+    "handled": 0,
     "cv": 1
    },
    "line": {
@@ -13502,7 +14129,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -13514,7 +14142,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -13526,7 +14155,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-05-16": {
@@ -13540,7 +14170,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 6,
@@ -13553,6 +14184,7 @@
     "won_amount": 0,
     "called": 1,
     "cappt": 0,
+    "handled": 1,
     "cv": 7
    },
    "line": {
@@ -13565,7 +14197,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -13577,7 +14210,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -13589,7 +14223,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-05-17": {
@@ -13603,7 +14238,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 1,
@@ -13616,6 +14252,7 @@
     "won_amount": 0,
     "called": 0,
     "cappt": 0,
+    "handled": 0,
     "cv": 1
    },
    "line": {
@@ -13628,7 +14265,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -13640,7 +14278,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -13652,7 +14291,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-05-18": {
@@ -13666,7 +14306,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 0,
@@ -13679,6 +14320,7 @@
     "won_amount": 0,
     "called": 0,
     "cappt": 0,
+    "handled": 0,
     "cv": 0
    },
    "line": {
@@ -13691,7 +14333,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -13703,7 +14346,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -13715,7 +14359,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-05-19": {
@@ -13729,7 +14374,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 7,
@@ -13742,6 +14388,7 @@
     "won_amount": 81400,
     "called": 2,
     "cappt": 0,
+    "handled": 2,
     "cv": 8
    },
    "line": {
@@ -13754,7 +14401,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -13766,7 +14414,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -13778,7 +14427,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-05-20": {
@@ -13792,7 +14442,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 1
    },
    "web": {
     "leads": 7,
@@ -13805,6 +14456,7 @@
     "won_amount": 0,
     "called": 3,
     "cappt": 0,
+    "handled": 3,
     "cv": 5
    },
    "line": {
@@ -13817,7 +14469,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -13829,7 +14482,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -13841,7 +14495,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-05-21": {
@@ -13855,7 +14510,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 13,
@@ -13868,6 +14524,7 @@
     "won_amount": 0,
     "called": 1,
     "cappt": 0,
+    "handled": 3,
     "cv": 9
    },
    "line": {
@@ -13880,7 +14537,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -13892,7 +14550,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -13904,7 +14563,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-05-22": {
@@ -13918,7 +14578,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 1,
@@ -13931,6 +14592,7 @@
     "won_amount": 0,
     "called": 0,
     "cappt": 0,
+    "handled": 0,
     "cv": 0
    },
    "line": {
@@ -13943,7 +14605,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -13955,7 +14618,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -13967,7 +14631,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-05-23": {
@@ -13981,7 +14646,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 5,
@@ -13994,6 +14660,7 @@
     "won_amount": 0,
     "called": 2,
     "cappt": 0,
+    "handled": 2,
     "cv": 8
    },
    "line": {
@@ -14006,7 +14673,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -14018,7 +14686,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -14030,7 +14699,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-05-24": {
@@ -14044,7 +14714,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 4,
@@ -14057,6 +14728,7 @@
     "won_amount": 0,
     "called": 2,
     "cappt": 0,
+    "handled": 2,
     "cv": 3
    },
    "line": {
@@ -14069,7 +14741,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -14081,7 +14754,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -14093,7 +14767,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-05-25": {
@@ -14107,7 +14782,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 5,
@@ -14120,6 +14796,7 @@
     "won_amount": 0,
     "called": 2,
     "cappt": 0,
+    "handled": 2,
     "cv": 8
    },
    "line": {
@@ -14132,7 +14809,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -14144,7 +14822,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -14156,7 +14835,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-05-26": {
@@ -14170,7 +14850,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 1,
@@ -14183,6 +14864,7 @@
     "won_amount": 0,
     "called": 1,
     "cappt": 0,
+    "handled": 1,
     "cv": 1
    },
    "line": {
@@ -14195,7 +14877,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -14207,7 +14890,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -14219,7 +14903,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-05-27": {
@@ -14233,7 +14918,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 7,
@@ -14246,6 +14932,7 @@
     "won_amount": 0,
     "called": 1,
     "cappt": 0,
+    "handled": 1,
     "cv": 5
    },
    "line": {
@@ -14258,7 +14945,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -14270,7 +14958,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -14282,7 +14971,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-05-28": {
@@ -14296,7 +14986,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 6,
@@ -14309,6 +15000,7 @@
     "won_amount": 0,
     "called": 2,
     "cappt": 0,
+    "handled": 2,
     "cv": 4
    },
    "line": {
@@ -14321,7 +15013,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -14333,7 +15026,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -14345,7 +15039,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-05-29": {
@@ -14359,7 +15054,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 16,
@@ -14372,6 +15068,7 @@
     "won_amount": 0,
     "called": 8,
     "cappt": 1,
+    "handled": 9,
     "cv": 22
    },
    "line": {
@@ -14384,7 +15081,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -14396,7 +15094,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -14408,7 +15107,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-05-30": {
@@ -14422,7 +15122,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 7,
@@ -14435,6 +15136,7 @@
     "won_amount": 0,
     "called": 6,
     "cappt": 0,
+    "handled": 6,
     "cv": 11
    },
    "line": {
@@ -14447,7 +15149,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -14459,7 +15162,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -14471,7 +15175,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-05-31": {
@@ -14485,7 +15190,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 19,
@@ -14498,6 +15204,7 @@
     "won_amount": 0,
     "called": 8,
     "cappt": 1,
+    "handled": 8,
     "cv": 23
    },
    "line": {
@@ -14510,7 +15217,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -14522,7 +15230,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -14534,7 +15243,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-06-01": {
@@ -14548,7 +15258,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 18,
@@ -14561,6 +15272,7 @@
     "won_amount": 0,
     "called": 5,
     "cappt": 1,
+    "handled": 5,
     "cv": 19
    },
    "line": {
@@ -14573,7 +15285,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -14585,7 +15298,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -14597,7 +15311,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-06-02": {
@@ -14611,7 +15326,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 14,
@@ -14624,6 +15340,7 @@
     "won_amount": 0,
     "called": 7,
     "cappt": 0,
+    "handled": 7,
     "cv": 23
    },
    "line": {
@@ -14636,7 +15353,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -14648,7 +15366,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -14660,7 +15379,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-06-03": {
@@ -14674,7 +15394,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 16,
@@ -14687,6 +15408,7 @@
     "won_amount": 0,
     "called": 3,
     "cappt": 0,
+    "handled": 3,
     "cv": 17
    },
    "line": {
@@ -14699,7 +15421,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -14711,7 +15434,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -14723,7 +15447,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-06-04": {
@@ -14737,7 +15462,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 18,
@@ -14750,6 +15476,7 @@
     "won_amount": 0,
     "called": 5,
     "cappt": 0,
+    "handled": 5,
     "cv": 17
    },
    "line": {
@@ -14762,7 +15489,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -14774,7 +15502,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -14786,7 +15515,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-06-05": {
@@ -14800,7 +15530,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 7,
@@ -14813,6 +15544,7 @@
     "won_amount": 0,
     "called": 3,
     "cappt": 0,
+    "handled": 3,
     "cv": 17
    },
    "line": {
@@ -14825,7 +15557,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -14837,7 +15570,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -14849,7 +15583,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-06-06": {
@@ -14863,7 +15598,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 10,
@@ -14876,6 +15612,7 @@
     "won_amount": 0,
     "called": 6,
     "cappt": 0,
+    "handled": 6,
     "cv": 20
    },
    "line": {
@@ -14888,7 +15625,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -14900,7 +15638,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -14912,7 +15651,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-06-07": {
@@ -14926,7 +15666,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 12,
@@ -14939,6 +15680,7 @@
     "won_amount": 0,
     "called": 5,
     "cappt": 0,
+    "handled": 6,
     "cv": 15
    },
    "line": {
@@ -14951,7 +15693,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -14963,7 +15706,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -14975,7 +15719,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-06-08": {
@@ -14989,7 +15734,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 14,
@@ -15002,6 +15748,7 @@
     "won_amount": 0,
     "called": 5,
     "cappt": 0,
+    "handled": 6,
     "cv": 18
    },
    "line": {
@@ -15014,7 +15761,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -15026,7 +15774,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -15038,7 +15787,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-06-09": {
@@ -15052,7 +15802,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 20,
@@ -15065,6 +15816,7 @@
     "won_amount": 0,
     "called": 10,
     "cappt": 0,
+    "handled": 10,
     "cv": 29
    },
    "line": {
@@ -15077,7 +15829,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -15089,7 +15842,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -15101,7 +15855,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-06-10": {
@@ -15115,7 +15870,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 10,
@@ -15128,6 +15884,7 @@
     "won_amount": 0,
     "called": 8,
     "cappt": 1,
+    "handled": 8,
     "cv": 18
    },
    "line": {
@@ -15140,7 +15897,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -15152,7 +15910,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -15164,7 +15923,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-06-11": {
@@ -15178,7 +15938,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 9,
@@ -15191,6 +15952,7 @@
     "won_amount": 0,
     "called": 5,
     "cappt": 0,
+    "handled": 5,
     "cv": 12
    },
    "line": {
@@ -15203,7 +15965,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -15215,7 +15978,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -15227,7 +15991,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-06-12": {
@@ -15241,7 +16006,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 3,
@@ -15254,6 +16020,7 @@
     "won_amount": 0,
     "called": 2,
     "cappt": 0,
+    "handled": 2,
     "cv": 2
    },
    "line": {
@@ -15266,7 +16033,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -15278,7 +16046,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -15290,7 +16059,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-06-13": {
@@ -15304,7 +16074,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 7,
@@ -15317,6 +16088,7 @@
     "won_amount": 0,
     "called": 6,
     "cappt": 0,
+    "handled": 6,
     "cv": 8
    },
    "line": {
@@ -15329,7 +16101,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -15341,7 +16114,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -15353,7 +16127,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-06-14": {
@@ -15367,7 +16142,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 5,
@@ -15380,6 +16156,7 @@
     "won_amount": 0,
     "called": 3,
     "cappt": 0,
+    "handled": 3,
     "cv": 6
    },
    "line": {
@@ -15392,7 +16169,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -15404,7 +16182,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -15416,7 +16195,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-06-15": {
@@ -15430,7 +16210,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 5,
@@ -15443,6 +16224,7 @@
     "won_amount": 0,
     "called": 2,
     "cappt": 0,
+    "handled": 2,
     "cv": 8
    },
    "line": {
@@ -15455,7 +16237,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -15467,7 +16250,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -15479,7 +16263,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-06-16": {
@@ -15493,7 +16278,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 6,
@@ -15506,6 +16292,7 @@
     "won_amount": 0,
     "called": 4,
     "cappt": 0,
+    "handled": 4,
     "cv": 5
    },
    "line": {
@@ -15518,7 +16305,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -15530,7 +16318,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -15542,7 +16331,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-06-17": {
@@ -15556,7 +16346,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 7,
@@ -15569,6 +16360,7 @@
     "won_amount": 0,
     "called": 4,
     "cappt": 0,
+    "handled": 4,
     "cv": 10
    },
    "line": {
@@ -15581,7 +16373,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -15593,7 +16386,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -15605,7 +16399,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-06-18": {
@@ -15619,7 +16414,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 5,
@@ -15632,6 +16428,7 @@
     "won_amount": 0,
     "called": 3,
     "cappt": 0,
+    "handled": 3,
     "cv": 13
    },
    "line": {
@@ -15644,7 +16441,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -15656,7 +16454,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -15668,7 +16467,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-06-19": {
@@ -15682,7 +16482,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 12,
@@ -15695,6 +16496,7 @@
     "won_amount": 0,
     "called": 8,
     "cappt": 1,
+    "handled": 8,
     "cv": 18
    },
    "line": {
@@ -15707,7 +16509,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -15719,7 +16522,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -15731,7 +16535,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-06-20": {
@@ -15745,7 +16550,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 9,
@@ -15758,6 +16564,7 @@
     "won_amount": 0,
     "called": 5,
     "cappt": 0,
+    "handled": 6,
     "cv": 13
    },
    "line": {
@@ -15770,7 +16577,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -15782,7 +16590,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -15794,7 +16603,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-06-21": {
@@ -15808,7 +16618,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 11,
@@ -15821,6 +16632,7 @@
     "won_amount": 0,
     "called": 7,
     "cappt": 0,
+    "handled": 8,
     "cv": 13
    },
    "line": {
@@ -15833,7 +16645,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -15845,7 +16658,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -15857,7 +16671,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-06-22": {
@@ -15871,7 +16686,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 9,
@@ -15884,6 +16700,7 @@
     "won_amount": 0,
     "called": 6,
     "cappt": 0,
+    "handled": 6,
     "cv": 9
    },
    "line": {
@@ -15896,7 +16713,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -15908,7 +16726,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -15920,7 +16739,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-06-23": {
@@ -15934,7 +16754,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 12,
@@ -15947,6 +16768,7 @@
     "won_amount": 0,
     "called": 8,
     "cappt": 0,
+    "handled": 8,
     "cv": 15
    },
    "line": {
@@ -15959,7 +16781,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -15971,7 +16794,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -15983,7 +16807,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-06-24": {
@@ -15997,7 +16822,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 7,
@@ -16010,6 +16836,7 @@
     "won_amount": 0,
     "called": 6,
     "cappt": 0,
+    "handled": 6,
     "cv": 8
    },
    "line": {
@@ -16022,7 +16849,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -16034,7 +16862,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -16046,7 +16875,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-06-25": {
@@ -16060,7 +16890,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 10,
@@ -16073,6 +16904,7 @@
     "won_amount": 0,
     "called": 10,
     "cappt": 0,
+    "handled": 10,
     "cv": 13
    },
    "line": {
@@ -16085,7 +16917,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -16097,7 +16930,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -16109,7 +16943,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-06-26": {
@@ -16123,7 +16958,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 9,
@@ -16136,6 +16972,7 @@
     "won_amount": 0,
     "called": 8,
     "cappt": 1,
+    "handled": 8,
     "cv": 14
    },
    "line": {
@@ -16148,7 +16985,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -16160,7 +16998,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -16172,7 +17011,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-06-27": {
@@ -16186,7 +17026,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 2,
@@ -16199,6 +17040,7 @@
     "won_amount": 0,
     "called": 2,
     "cappt": 0,
+    "handled": 2,
     "cv": 2
    },
    "line": {
@@ -16211,7 +17053,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -16223,7 +17066,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -16235,7 +17079,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-06-28": {
@@ -16249,7 +17094,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 5,
@@ -16262,6 +17108,7 @@
     "won_amount": 0,
     "called": 2,
     "cappt": 0,
+    "handled": 2,
     "cv": 7
    },
    "line": {
@@ -16274,7 +17121,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -16286,7 +17134,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -16298,7 +17147,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-06-29": {
@@ -16312,7 +17162,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 5,
@@ -16325,6 +17176,7 @@
     "won_amount": 0,
     "called": 1,
     "cappt": 0,
+    "handled": 1,
     "cv": 8
    },
    "line": {
@@ -16337,7 +17189,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -16349,7 +17202,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -16361,7 +17215,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-06-30": {
@@ -16375,7 +17230,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 6,
@@ -16388,6 +17244,7 @@
     "won_amount": 0,
     "called": 2,
     "cappt": 0,
+    "handled": 2,
     "cv": 6
    },
    "line": {
@@ -16400,7 +17257,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -16412,7 +17270,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -16424,7 +17283,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-07-01": {
@@ -16438,7 +17298,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 7,
@@ -16451,6 +17312,7 @@
     "won_amount": 0,
     "called": 2,
     "cappt": 0,
+    "handled": 2,
     "cv": 7
    },
    "line": {
@@ -16463,7 +17325,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -16475,7 +17338,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -16487,7 +17351,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-07-02": {
@@ -16501,7 +17366,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 5,
@@ -16514,6 +17380,7 @@
     "won_amount": 0,
     "called": 3,
     "cappt": 0,
+    "handled": 3,
     "cv": 5
    },
    "line": {
@@ -16526,7 +17393,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -16538,7 +17406,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -16550,7 +17419,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-07-03": {
@@ -16564,7 +17434,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 7,
@@ -16577,6 +17448,7 @@
     "won_amount": 0,
     "called": 1,
     "cappt": 0,
+    "handled": 1,
     "cv": 7
    },
    "line": {
@@ -16589,7 +17461,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -16601,7 +17474,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -16613,7 +17487,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-07-04": {
@@ -16627,7 +17502,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 3,
@@ -16640,6 +17516,7 @@
     "won_amount": 0,
     "called": 2,
     "cappt": 0,
+    "handled": 2,
     "cv": 3
    },
    "line": {
@@ -16652,7 +17529,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -16664,7 +17542,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -16676,7 +17555,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-07-05": {
@@ -16690,7 +17570,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 8,
@@ -16703,6 +17584,7 @@
     "won_amount": 0,
     "called": 5,
     "cappt": 0,
+    "handled": 5,
     "cv": 10
    },
    "line": {
@@ -16715,7 +17597,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -16727,7 +17610,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -16739,7 +17623,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-07-06": {
@@ -16753,7 +17638,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 8,
@@ -16766,6 +17652,7 @@
     "won_amount": 0,
     "called": 5,
     "cappt": 0,
+    "handled": 5,
     "cv": 5
    },
    "line": {
@@ -16778,7 +17665,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -16790,7 +17678,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -16802,7 +17691,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-07-07": {
@@ -16816,7 +17706,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 5,
@@ -16829,6 +17720,7 @@
     "won_amount": 0,
     "called": 5,
     "cappt": 1,
+    "handled": 5,
     "cv": 6
    },
    "line": {
@@ -16841,7 +17733,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -16853,7 +17746,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -16865,7 +17759,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-07-08": {
@@ -16879,7 +17774,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 3,
@@ -16892,6 +17788,7 @@
     "won_amount": 0,
     "called": 1,
     "cappt": 0,
+    "handled": 1,
     "cv": 3
    },
    "line": {
@@ -16904,7 +17801,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -16916,7 +17814,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -16928,7 +17827,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-07-09": {
@@ -16942,7 +17842,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 15,
@@ -16955,6 +17856,7 @@
     "won_amount": 0,
     "called": 7,
     "cappt": 0,
+    "handled": 7,
     "cv": 13
    },
    "line": {
@@ -16967,7 +17869,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -16979,7 +17882,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -16991,7 +17895,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-07-10": {
@@ -17005,7 +17910,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 14,
@@ -17018,6 +17924,7 @@
     "won_amount": 0,
     "called": 5,
     "cappt": 0,
+    "handled": 5,
     "cv": 19
    },
    "line": {
@@ -17030,7 +17937,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -17042,7 +17950,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 1,
@@ -17054,7 +17963,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 1,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 1
    }
   },
   "2026-07-11": {
@@ -17068,7 +17978,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 16,
@@ -17081,6 +17992,7 @@
     "won_amount": 0,
     "called": 6,
     "cappt": 0,
+    "handled": 6,
     "cv": 18
    },
    "line": {
@@ -17093,7 +18005,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -17105,7 +18018,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -17117,7 +18031,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-07-12": {
@@ -17131,7 +18046,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 11,
@@ -17144,6 +18060,7 @@
     "won_amount": 0,
     "called": 1,
     "cappt": 0,
+    "handled": 2,
     "cv": 7
    },
    "line": {
@@ -17156,7 +18073,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -17168,7 +18086,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -17180,7 +18099,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-07-13": {
@@ -17194,7 +18114,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 9,
@@ -17207,6 +18128,7 @@
     "won_amount": 0,
     "called": 3,
     "cappt": 0,
+    "handled": 3,
     "cv": 8
    },
    "line": {
@@ -17219,7 +18141,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -17231,7 +18154,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -17243,7 +18167,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-07-14": {
@@ -17257,7 +18182,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 7,
@@ -17270,6 +18196,7 @@
     "won_amount": 0,
     "called": 2,
     "cappt": 0,
+    "handled": 2,
     "cv": 8
    },
    "line": {
@@ -17282,7 +18209,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -17294,7 +18222,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -17306,7 +18235,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-07-15": {
@@ -17320,7 +18250,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 5,
@@ -17333,6 +18264,7 @@
     "won_amount": 0,
     "called": 1,
     "cappt": 0,
+    "handled": 1,
     "cv": 4
    },
    "line": {
@@ -17345,7 +18277,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -17357,7 +18290,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -17369,7 +18303,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-07-16": {
@@ -17383,7 +18318,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 3,
@@ -17396,6 +18332,7 @@
     "won_amount": 0,
     "called": 0,
     "cappt": 0,
+    "handled": 0,
     "cv": 4
    },
    "line": {
@@ -17408,7 +18345,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -17420,7 +18358,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -17432,7 +18371,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-07-17": {
@@ -17446,7 +18386,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 5,
@@ -17459,6 +18400,7 @@
     "won_amount": 0,
     "called": 0,
     "cappt": 0,
+    "handled": 0,
     "cv": 5
    },
    "line": {
@@ -17471,7 +18413,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -17483,7 +18426,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -17495,7 +18439,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-07-18": {
@@ -17509,7 +18454,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 9,
@@ -17522,6 +18468,7 @@
     "won_amount": 0,
     "called": 2,
     "cappt": 0,
+    "handled": 3,
     "cv": 10
    },
    "line": {
@@ -17534,7 +18481,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -17546,7 +18494,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -17558,7 +18507,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-07-19": {
@@ -17572,7 +18522,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 5,
@@ -17585,6 +18536,7 @@
     "won_amount": 0,
     "called": 1,
     "cappt": 0,
+    "handled": 1,
     "cv": 5
    },
    "line": {
@@ -17597,7 +18549,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -17609,7 +18562,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -17621,7 +18575,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-07-20": {
@@ -17635,7 +18590,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 0,
@@ -17648,6 +18604,7 @@
     "won_amount": 0,
     "called": 0,
     "cappt": 0,
+    "handled": 0,
     "cv": 1
    },
    "line": {
@@ -17660,7 +18617,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -17672,7 +18630,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -17684,7 +18643,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-07-21": {
@@ -17698,7 +18658,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 11,
@@ -17711,6 +18672,7 @@
     "won_amount": 0,
     "called": 2,
     "cappt": 0,
+    "handled": 2,
     "cv": 9
    },
    "line": {
@@ -17723,7 +18685,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -17735,7 +18698,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -17747,7 +18711,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-07-22": {
@@ -17761,7 +18726,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 5,
@@ -17774,6 +18740,7 @@
     "won_amount": 0,
     "called": 3,
     "cappt": 0,
+    "handled": 3,
     "cv": 4
    },
    "line": {
@@ -17786,7 +18753,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -17798,7 +18766,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -17810,7 +18779,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-07-23": {
@@ -17824,7 +18794,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 10,
@@ -17837,6 +18808,7 @@
     "won_amount": 0,
     "called": 2,
     "cappt": 1,
+    "handled": 2,
     "cv": 10
    },
    "line": {
@@ -17849,7 +18821,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -17861,7 +18834,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -17873,7 +18847,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-07-24": {
@@ -17887,7 +18862,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 1,
@@ -17900,6 +18876,7 @@
     "won_amount": 0,
     "called": 1,
     "cappt": 0,
+    "handled": 1,
     "cv": 1
    },
    "line": {
@@ -17912,7 +18889,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -17924,7 +18902,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 1,
@@ -17936,7 +18915,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-07-25": {
@@ -17950,7 +18930,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 6,
@@ -17963,6 +18944,7 @@
     "won_amount": 0,
     "called": 1,
     "cappt": 0,
+    "handled": 1,
     "cv": 5
    },
    "line": {
@@ -17975,7 +18957,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -17987,7 +18970,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -17999,7 +18983,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-07-26": {
@@ -18012,8 +18997,9 @@
     "deals": 3,
     "won": 0,
     "won_amount": 0,
-    "called": 112,
-    "cappt": 1
+    "called": 125,
+    "cappt": 1,
+    "handled": 127
    },
    "web": {
     "leads": 7,
@@ -18026,6 +19012,7 @@
     "won_amount": 0,
     "called": 1,
     "cappt": 0,
+    "handled": 1,
     "cv": 6
    },
    "line": {
@@ -18038,7 +19025,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -18050,7 +19038,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -18062,7 +19051,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-07-27": {
@@ -18076,7 +19066,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 6,
@@ -18089,6 +19080,7 @@
     "won_amount": 0,
     "called": 2,
     "cappt": 0,
+    "handled": 2,
     "cv": 5
    },
    "line": {
@@ -18101,7 +19093,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -18113,7 +19106,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -18125,7 +19119,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-07-28": {
@@ -18139,7 +19134,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 6,
@@ -18152,6 +19148,7 @@
     "won_amount": 0,
     "called": 2,
     "cappt": 0,
+    "handled": 2,
     "cv": 5
    },
    "line": {
@@ -18164,7 +19161,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -18176,7 +19174,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -18188,7 +19187,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-07-29": {
@@ -18202,7 +19202,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 1,
@@ -18215,6 +19216,7 @@
     "won_amount": 0,
     "called": 0,
     "cappt": 0,
+    "handled": 0,
     "cv": 1
    },
    "line": {
@@ -18227,7 +19229,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -18239,7 +19242,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -18251,7 +19255,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-07-30": {
@@ -18265,7 +19270,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 11,
@@ -18278,6 +19284,7 @@
     "won_amount": 0,
     "called": 10,
     "cappt": 0,
+    "handled": 10,
     "cv": 17
    },
    "line": {
@@ -18290,7 +19297,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -18302,7 +19310,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -18314,7 +19323,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-07-31": {
@@ -18328,7 +19338,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 4,
@@ -18341,6 +19352,7 @@
     "won_amount": 0,
     "called": 4,
     "cappt": 0,
+    "handled": 4,
     "cv": 11
    },
    "line": {
@@ -18353,7 +19365,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -18365,7 +19378,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -18377,7 +19391,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-08-01": {
@@ -18391,7 +19406,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 3,
@@ -18404,6 +19420,7 @@
     "won_amount": 0,
     "called": 2,
     "cappt": 0,
+    "handled": 2,
     "cv": 8
    },
    "line": {
@@ -18416,7 +19433,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -18428,7 +19446,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -18440,7 +19459,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-08-02": {
@@ -18454,7 +19474,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 6,
@@ -18467,6 +19488,7 @@
     "won_amount": 0,
     "called": 2,
     "cappt": 0,
+    "handled": 2,
     "cv": 9
    },
    "line": {
@@ -18479,7 +19501,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -18491,7 +19514,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -18503,7 +19527,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-08-03": {
@@ -18517,7 +19542,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 6,
@@ -18530,6 +19556,7 @@
     "won_amount": 0,
     "called": 0,
     "cappt": 0,
+    "handled": 0,
     "cv": 12
    },
    "line": {
@@ -18542,7 +19569,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -18554,7 +19582,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -18566,7 +19595,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-08-04": {
@@ -18580,7 +19610,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 6,
@@ -18593,6 +19624,7 @@
     "won_amount": 0,
     "called": 0,
     "cappt": 0,
+    "handled": 1,
     "cv": 5
    },
    "line": {
@@ -18605,7 +19637,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -18617,7 +19650,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -18629,7 +19663,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-08-05": {
@@ -18643,7 +19678,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 6,
@@ -18656,6 +19692,7 @@
     "won_amount": 0,
     "called": 0,
     "cappt": 0,
+    "handled": 0,
     "cv": 7
    },
    "line": {
@@ -18668,7 +19705,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -18680,7 +19718,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -18692,7 +19731,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-08-06": {
@@ -18706,7 +19746,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 3,
@@ -18719,6 +19760,7 @@
     "won_amount": 0,
     "called": 1,
     "cappt": 0,
+    "handled": 1,
     "cv": 4
    },
    "line": {
@@ -18731,7 +19773,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -18743,7 +19786,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -18755,7 +19799,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-08-07": {
@@ -18769,7 +19814,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 6,
@@ -18782,6 +19828,7 @@
     "won_amount": 0,
     "called": 0,
     "cappt": 0,
+    "handled": 0,
     "cv": 8
    },
    "line": {
@@ -18794,7 +19841,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -18806,7 +19854,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -18818,7 +19867,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-08-08": {
@@ -18832,7 +19882,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 8,
@@ -18845,6 +19896,7 @@
     "won_amount": 0,
     "called": 1,
     "cappt": 0,
+    "handled": 1,
     "cv": 9
    },
    "line": {
@@ -18857,7 +19909,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -18869,7 +19922,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -18881,7 +19935,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-08-09": {
@@ -18895,7 +19950,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 1,
@@ -18908,6 +19964,7 @@
     "won_amount": 0,
     "called": 0,
     "cappt": 0,
+    "handled": 0,
     "cv": 2
    },
    "line": {
@@ -18920,7 +19977,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -18932,7 +19990,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -18944,7 +20003,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-08-10": {
@@ -18958,7 +20018,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 8,
@@ -18971,6 +20032,7 @@
     "won_amount": 550000,
     "called": 1,
     "cappt": 0,
+    "handled": 2,
     "cv": 7
    },
    "line": {
@@ -18983,7 +20045,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -18995,7 +20058,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -19007,7 +20071,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-08-11": {
@@ -19021,7 +20086,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 5,
@@ -19034,6 +20100,7 @@
     "won_amount": 0,
     "called": 0,
     "cappt": 0,
+    "handled": 0,
     "cv": 4
    },
    "line": {
@@ -19046,7 +20113,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -19058,7 +20126,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -19070,7 +20139,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-08-12": {
@@ -19084,7 +20154,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 11,
@@ -19097,6 +20168,7 @@
     "won_amount": 0,
     "called": 1,
     "cappt": 0,
+    "handled": 1,
     "cv": 4
    },
    "line": {
@@ -19109,7 +20181,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -19121,7 +20194,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -19133,7 +20207,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-08-13": {
@@ -19147,7 +20222,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 3,
@@ -19160,6 +20236,7 @@
     "won_amount": 0,
     "called": 3,
     "cappt": 1,
+    "handled": 3,
     "cv": 4
    },
    "line": {
@@ -19172,7 +20249,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -19184,7 +20262,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -19196,7 +20275,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-08-14": {
@@ -19210,7 +20290,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 7,
@@ -19223,6 +20304,7 @@
     "won_amount": 0,
     "called": 6,
     "cappt": 0,
+    "handled": 6,
     "cv": 6
    },
    "line": {
@@ -19235,7 +20317,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -19247,7 +20330,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -19259,7 +20343,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-08-15": {
@@ -19273,7 +20358,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 5,
@@ -19286,6 +20372,7 @@
     "won_amount": 0,
     "called": 5,
     "cappt": 0,
+    "handled": 5,
     "cv": 6
    },
    "line": {
@@ -19298,7 +20385,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -19310,7 +20398,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -19322,7 +20411,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-08-16": {
@@ -19336,7 +20426,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 2,
@@ -19349,6 +20440,7 @@
     "won_amount": 0,
     "called": 2,
     "cappt": 1,
+    "handled": 2,
     "cv": 3
    },
    "line": {
@@ -19361,7 +20453,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -19373,7 +20466,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -19385,7 +20479,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-08-17": {
@@ -19399,7 +20494,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 5,
@@ -19412,6 +20508,7 @@
     "won_amount": 0,
     "called": 1,
     "cappt": 0,
+    "handled": 3,
     "cv": 6
    },
    "line": {
@@ -19424,7 +20521,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -19436,7 +20534,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -19448,7 +20547,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-08-18": {
@@ -19462,7 +20562,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 6,
@@ -19475,6 +20576,7 @@
     "won_amount": 0,
     "called": 2,
     "cappt": 0,
+    "handled": 2,
     "cv": 7
    },
    "line": {
@@ -19487,7 +20589,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -19499,7 +20602,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -19511,7 +20615,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-08-19": {
@@ -19525,7 +20630,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 7,
@@ -19538,6 +20644,7 @@
     "won_amount": 0,
     "called": 3,
     "cappt": 0,
+    "handled": 3,
     "cv": 11
    },
    "line": {
@@ -19550,7 +20657,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -19562,7 +20670,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -19574,7 +20683,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-08-20": {
@@ -19588,7 +20698,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 8,
@@ -19601,6 +20712,7 @@
     "won_amount": 0,
     "called": 3,
     "cappt": 0,
+    "handled": 3,
     "cv": 15
    },
    "line": {
@@ -19613,7 +20725,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -19625,7 +20738,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -19637,7 +20751,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-08-21": {
@@ -19651,7 +20766,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 0,
@@ -19664,6 +20780,7 @@
     "won_amount": 0,
     "called": 0,
     "cappt": 0,
+    "handled": 0,
     "cv": 0
    },
    "line": {
@@ -19676,7 +20793,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -19688,7 +20806,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -19700,7 +20819,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-08-22": {
@@ -19714,7 +20834,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 6,
@@ -19727,6 +20848,7 @@
     "won_amount": 0,
     "called": 1,
     "cappt": 1,
+    "handled": 1,
     "cv": 6
    },
    "line": {
@@ -19739,7 +20861,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -19751,7 +20874,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -19763,7 +20887,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-08-23": {
@@ -19777,7 +20902,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 2,
@@ -19790,6 +20916,7 @@
     "won_amount": 0,
     "called": 0,
     "cappt": 0,
+    "handled": 0,
     "cv": 4
    },
    "line": {
@@ -19802,7 +20929,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -19814,7 +20942,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -19826,7 +20955,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-08-24": {
@@ -19840,7 +20970,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 10,
@@ -19853,6 +20984,7 @@
     "won_amount": 0,
     "called": 0,
     "cappt": 0,
+    "handled": 0,
     "cv": 11
    },
    "line": {
@@ -19865,7 +20997,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -19877,7 +21010,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -19889,7 +21023,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-08-25": {
@@ -19903,7 +21038,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 5,
@@ -19916,6 +21052,7 @@
     "won_amount": 0,
     "called": 0,
     "cappt": 0,
+    "handled": 0,
     "cv": 4
    },
    "line": {
@@ -19928,7 +21065,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -19940,7 +21078,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -19952,7 +21091,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-08-26": {
@@ -19966,7 +21106,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 1,
@@ -19979,6 +21120,7 @@
     "won_amount": 0,
     "called": 0,
     "cappt": 0,
+    "handled": 0,
     "cv": 3
    },
    "line": {
@@ -19991,7 +21133,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -20003,7 +21146,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -20015,7 +21159,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-08-27": {
@@ -20029,7 +21174,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 0,
@@ -20042,6 +21188,7 @@
     "won_amount": 0,
     "called": 0,
     "cappt": 0,
+    "handled": 0,
     "cv": 0
    },
    "line": {
@@ -20054,7 +21201,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -20066,7 +21214,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -20078,7 +21227,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-08-28": {
@@ -20092,7 +21242,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 2,
@@ -20105,6 +21256,7 @@
     "won_amount": 0,
     "called": 0,
     "cappt": 0,
+    "handled": 0,
     "cv": 3
    },
    "line": {
@@ -20117,7 +21269,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -20129,7 +21282,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -20141,7 +21295,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-08-29": {
@@ -20155,7 +21310,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 2,
@@ -20168,6 +21324,7 @@
     "won_amount": 0,
     "called": 1,
     "cappt": 1,
+    "handled": 1,
     "cv": 6
    },
    "line": {
@@ -20180,7 +21337,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -20192,7 +21350,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -20204,7 +21363,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-08-30": {
@@ -20218,7 +21378,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 2,
@@ -20231,6 +21392,7 @@
     "won_amount": 0,
     "called": 0,
     "cappt": 0,
+    "handled": 0,
     "cv": 3
    },
    "line": {
@@ -20243,7 +21405,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -20255,7 +21418,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -20267,7 +21431,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-08-31": {
@@ -20281,7 +21446,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 2,
@@ -20294,6 +21460,7 @@
     "won_amount": 0,
     "called": 0,
     "cappt": 0,
+    "handled": 0,
     "cv": 3
    },
    "line": {
@@ -20306,7 +21473,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -20318,7 +21486,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -20330,7 +21499,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-09-01": {
@@ -20344,7 +21514,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 0,
@@ -20357,6 +21528,7 @@
     "won_amount": 0,
     "called": 0,
     "cappt": 0,
+    "handled": 0,
     "cv": 2
    },
    "line": {
@@ -20369,7 +21541,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -20381,7 +21554,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -20393,7 +21567,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-09-02": {
@@ -20407,7 +21582,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 4,
@@ -20420,6 +21596,7 @@
     "won_amount": 0,
     "called": 0,
     "cappt": 0,
+    "handled": 0,
     "cv": 3
    },
    "line": {
@@ -20432,7 +21609,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -20444,7 +21622,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -20456,7 +21635,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-09-03": {
@@ -20470,7 +21650,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 2,
@@ -20483,6 +21664,7 @@
     "won_amount": 0,
     "called": 1,
     "cappt": 0,
+    "handled": 1,
     "cv": 4
    },
    "line": {
@@ -20495,7 +21677,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -20507,7 +21690,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -20519,7 +21703,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-09-04": {
@@ -20533,7 +21718,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 3,
@@ -20546,6 +21732,7 @@
     "won_amount": 0,
     "called": 0,
     "cappt": 0,
+    "handled": 0,
     "cv": 4
    },
    "line": {
@@ -20558,7 +21745,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -20570,7 +21758,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -20582,7 +21771,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   },
   "2026-09-05": {
@@ -20596,7 +21786,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "web": {
     "leads": 0,
@@ -20609,6 +21800,7 @@
     "won_amount": 0,
     "called": 0,
     "cappt": 0,
+    "handled": 0,
     "cv": 0
    },
    "line": {
@@ -20621,7 +21813,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "referral": {
     "leads": 0,
@@ -20633,7 +21826,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    },
    "other": {
     "leads": 0,
@@ -20645,7 +21839,8 @@
     "won": 0,
     "won_amount": 0,
     "called": 0,
-    "cappt": 0
+    "cappt": 0,
+    "handled": 0
    }
   }
  },
@@ -20657,7 +21852,8 @@
    "won": 2,
    "won_amount": 2222000,
    "called": 0,
-   "cappt": 0
+   "cappt": 0,
+   "handled": 2
   },
   "2025-10-22": {
    "leads": 1,
@@ -20666,7 +21862,8 @@
    "won": 1,
    "won_amount": 1278750,
    "called": 0,
-   "cappt": 0
+   "cappt": 0,
+   "handled": 1
   },
   "2025-10-29": {
    "leads": 1,
@@ -20675,7 +21872,8 @@
    "won": 1,
    "won_amount": 341000,
    "called": 0,
-   "cappt": 0
+   "cappt": 0,
+   "handled": 0
   },
   "2025-11-04": {
    "leads": 1,
@@ -20684,7 +21882,8 @@
    "won": 0,
    "won_amount": 0,
    "called": 0,
-   "cappt": 0
+   "cappt": 0,
+   "handled": 1
   },
   "2025-11-06": {
    "leads": 1,
@@ -20693,7 +21892,8 @@
    "won": 1,
    "won_amount": 2101000,
    "called": 0,
-   "cappt": 0
+   "cappt": 0,
+   "handled": 1
   },
   "2025-11-25": {
    "leads": 1,
@@ -20702,7 +21902,8 @@
    "won": 1,
    "won_amount": 775500,
    "called": 0,
-   "cappt": 0
+   "cappt": 0,
+   "handled": 1
   },
   "2025-12-01": {
    "leads": 1,
@@ -20711,7 +21912,8 @@
    "won": 1,
    "won_amount": 1278750,
    "called": 0,
-   "cappt": 0
+   "cappt": 0,
+   "handled": 1
   },
   "2025-12-05": {
    "leads": 1,
@@ -20720,7 +21922,8 @@
    "won": 0,
    "won_amount": 0,
    "called": 1,
-   "cappt": 0
+   "cappt": 0,
+   "handled": 1
   },
   "2025-12-16": {
    "leads": 1,
@@ -20729,7 +21932,8 @@
    "won": 1,
    "won_amount": 607750,
    "called": 0,
-   "cappt": 0
+   "cappt": 0,
+   "handled": 1
   },
   "2025-12-18": {
    "leads": 2,
@@ -20738,7 +21942,8 @@
    "won": 0,
    "won_amount": 0,
    "called": 0,
-   "cappt": 0
+   "cappt": 0,
+   "handled": 2
   },
   "2025-12-26": {
    "leads": 1,
@@ -20747,7 +21952,8 @@
    "won": 0,
    "won_amount": 0,
    "called": 0,
-   "cappt": 0
+   "cappt": 0,
+   "handled": 1
   },
   "2025-12-29": {
    "leads": 1,
@@ -20756,7 +21962,8 @@
    "won": 0,
    "won_amount": 0,
    "called": 0,
-   "cappt": 0
+   "cappt": 0,
+   "handled": 1
   },
   "2026-01-16": {
    "leads": 1,
@@ -20765,7 +21972,8 @@
    "won": 0,
    "won_amount": 0,
    "called": 0,
-   "cappt": 0
+   "cappt": 0,
+   "handled": 1
   },
   "2026-02-03": {
    "leads": 1,
@@ -20774,7 +21982,8 @@
    "won": 0,
    "won_amount": 0,
    "called": 0,
-   "cappt": 0
+   "cappt": 0,
+   "handled": 1
   },
   "2026-02-18": {
    "leads": 1,
@@ -20783,7 +21992,8 @@
    "won": 0,
    "won_amount": 0,
    "called": 0,
-   "cappt": 0
+   "cappt": 0,
+   "handled": 1
   },
   "2026-02-20": {
    "leads": 1,
@@ -20792,7 +22002,8 @@
    "won": 1,
    "won_amount": 1111000,
    "called": 0,
-   "cappt": 0
+   "cappt": 0,
+   "handled": 1
   },
   "2026-03-20": {
    "leads": 1,
@@ -20801,7 +22012,8 @@
    "won": 0,
    "won_amount": 0,
    "called": 0,
-   "cappt": 0
+   "cappt": 0,
+   "handled": 1
   },
   "2026-03-24": {
    "leads": 1,
@@ -20810,7 +22022,8 @@
    "won": 1,
    "won_amount": 2101000,
    "called": 0,
-   "cappt": 0
+   "cappt": 0,
+   "handled": 1
   },
   "2026-06-08": {
    "leads": 1,
@@ -20819,7 +22032,8 @@
    "won": 0,
    "won_amount": 0,
    "called": 1,
-   "cappt": 1
+   "cappt": 1,
+   "handled": 1
   },
   "2026-06-22": {
    "leads": 1,
@@ -20828,7 +22042,8 @@
    "won": 1,
    "won_amount": 943250,
    "called": 0,
-   "cappt": 0
+   "cappt": 0,
+   "handled": 1
   },
   "2026-07-26": {
    "leads": 1,
@@ -20837,7 +22052,8 @@
    "won": 0,
    "won_amount": 0,
    "called": 1,
-   "cappt": 0
+   "cappt": 0,
+   "handled": 1
   },
   "2026-08-31": {
    "leads": 1,
@@ -20846,7 +22062,8 @@
    "won": 0,
    "won_amount": 0,
    "called": 0,
-   "cappt": 0
+   "cappt": 0,
+   "handled": 1
   }
  },
  "call_conversion": {
@@ -20903,7 +22120,7 @@
    "appointed": 0
   },
   "2026-09-07": {
-   "called": 5,
+   "called": 18,
    "appointed": 1
   }
  }
