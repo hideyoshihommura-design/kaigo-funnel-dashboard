@@ -3196,9 +3196,9 @@
     "deals": 3,
     "won": 0,
     "won_amount": 0,
-    "called": 125,
+    "called": 147,
     "cappt": 1,
-    "handled": 127
+    "handled": 149
    },
    "web": {
     "leads": 40,
@@ -3677,7 +3677,7 @@
     "handled": 0
    },
    "web": {
-    "leads": 0,
+    "leads": 1,
     "cost": null,
     "appts": 0,
     "mtgs": 0,
@@ -5365,15 +5365,15 @@
    "vcalled": 7
   },
   "2026-09-08": {
-   "calls": 14,
-   "connected": 1,
+   "calls": 43,
+   "connected": 2,
    "appts": 0,
    "mtgs": 0,
-   "called": 13,
-   "leads": 0,
-   "vcalls": 14,
-   "vconn": 1,
-   "vcalled": 13
+   "called": 35,
+   "leads": 1,
+   "vcalls": 43,
+   "vconn": 2,
+   "vcalled": 37
   }
  },
  "fs": {
@@ -7070,7 +7070,7 @@
    "cv_manual": false,
    "imp": 59890,
    "clicks": 1325,
-   "leads": 36,
+   "leads": 37,
    "deals": 1,
    "won": 0,
    "won_amount": 0
@@ -18997,9 +18997,9 @@
     "deals": 3,
     "won": 0,
     "won_amount": 0,
-    "called": 125,
+    "called": 147,
     "cappt": 1,
-    "handled": 127
+    "handled": 149
    },
    "web": {
     "leads": 7,
@@ -21842,6 +21842,73 @@
     "cappt": 0,
     "handled": 0
    }
+  },
+  "2026-09-08": {
+   "event": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0
+   },
+   "web": {
+    "leads": 1,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0
+   },
+   "line": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0
+   },
+   "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0
+   },
+   "other": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0
+   }
   }
  },
  "agency_day": {
@@ -22120,7 +22187,7 @@
    "appointed": 0
   },
   "2026-09-07": {
-   "called": 18,
+   "called": 40,
    "appointed": 1
   }
  }
