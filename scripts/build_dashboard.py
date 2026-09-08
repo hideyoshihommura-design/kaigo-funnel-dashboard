@@ -2185,7 +2185,7 @@ def render(data):
     # リードも予約も実施も成約も同じ集団に載っている。だから段階間の率が
     # 成立する。calls / fs / is_attr はイベント軸なので**ここに混ぜてはいけない**。
     FU_SUM = ('leads', 'appts', 'mtgs', 'props', 'won', 'won_amount',
-              'called', 'cappt')
+              'called', 'cappt', 'handled')
     FU_F = FU_SUM + ('cost', 'cvden')
     fu_day_src = data.get('direct_day') or {}
     fu_keys = month_keys(fu_day_src)
@@ -2226,7 +2226,13 @@ def render(data):
          f_yen, d_yen, True, True, True),
         ('架電済み', lambda v: v.get('called'), f_int, d_num, False, False,
          False),
-        ('消化率', lambda v: safe_div(v.get('called'), v.get('leads')),
+        # 消化＝架電したか、商談に行ったか。商談まで行ったなら手はついている。
+        # 架電済みだけを分子にすると、webから自分で予約を入れて面談まで進んだ
+        # 人が未消化に回る（面談予約67件のうち架電由来は13件しかない）。
+        # 2行並べているのは、差が「架電なしで商談になったリード」の数になるため。
+        ('消化済み', lambda v: v.get('handled'), f_int, d_num, False, True,
+         False),
+        ('消化率', lambda v: safe_div(v.get('handled'), v.get('leads')),
          f_pct, d_pt, True, True, True),
         ('面談予約', lambda v: v.get('appts'), f_int, d_num, False, False,
          False),

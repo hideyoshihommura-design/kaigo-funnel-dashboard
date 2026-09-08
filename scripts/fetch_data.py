@@ -702,13 +702,13 @@ def build(token, sheets_token, channel_map, webinar_cfg, campaign_cfg,
     direct = {
         w: {k: {"leads": 0, "cost": 0, "appts": 0, "mtgs": 0, "props": 0,
                 "deals": 0, "won": 0, "won_amount": 0,
-                "called": 0, "cappt": 0}
+                "called": 0, "cappt": 0, "handled": 0}
             for k in ["event", "web", "line", "referral", "other"]}
         for w in week_starts
     }
     agency = {
         w: {"leads": 0, "appts": 0, "deals": 0, "won": 0, "won_amount": 0,
-            "called": 0, "cappt": 0}
+            "called": 0, "cappt": 0, "handled": 0}
         for w in week_starts
     }
 
@@ -722,14 +722,14 @@ def build(token, sheets_token, channel_map, webinar_cfg, campaign_cfg,
         return direct_day.setdefault(d.isoformat(), {
             k: {"leads": 0, "cost": 0, "appts": 0, "mtgs": 0, "props": 0,
                 "deals": 0, "won": 0, "won_amount": 0,
-                "called": 0, "cappt": 0}
+                "called": 0, "cappt": 0, "handled": 0}
             for k in CHANNELS})
 
     def dday_agency(d):
         return agency_day.setdefault(
             d.isoformat(),
             {"leads": 0, "appts": 0, "deals": 0, "won": 0, "won_amount": 0,
-             "called": 0, "cappt": 0})
+             "called": 0, "cappt": 0, "handled": 0})
 
     # --- リード数
     route_leads_total = {}
@@ -1187,27 +1187,28 @@ def build(token, sheets_token, channel_map, webinar_cfg, campaign_cfg,
     # 架電開始以降の獲得だけに絞ると、その在庫が画面から消える。
     for cid, info in cinfo.items():
         first = first_call_of_contact.get(cid)
-        if not first:
+        appt_days = appt_days_of_contact.get(cid, [])
+        # 消化＝架電したか、商談に行ったか。商談まで行ったなら手はついている
+        # ので未消化に数えない。webから自分で予約を入れて面談まで進む人が
+        # いるため、架電済みだけを分子にすると彼らが未消化に回る。
+        if not first and not appt_days:
             continue
         d, ch = info["date"], info["channel"]
         mon = monday(d)
         if mon not in weekset:
             continue
-        # 初回架電より前に立った予約は架電の成果ではない（webの自主予約や
-        # 展示会での直接アポ）。分子から外す。
-        appointed = any(a >= first for a in appt_days_of_contact.get(cid, []))
-        if ch == "agency":
-            agency[mon]["called"] += 1
-            dday_agency(d)["called"] += 1
+        # 架電→商談 の分子。初回架電より前に立った予約は架電の成果ではない
+        # （webの自主予約や展示会での直接アポ）。ここからは外す。
+        appointed = bool(first) and any(a >= first for a in appt_days)
+        slot = agency[mon] if ch == "agency" else direct[mon][ch]
+        dslot = (dday_agency(d) if ch == "agency"
+                 else dday_direct(d)[ch])
+        for s in (slot, dslot):
+            s["handled"] += 1
+            if first:
+                s["called"] += 1
             if appointed:
-                agency[mon]["cappt"] += 1
-                dday_agency(d)["cappt"] += 1
-        else:
-            direct[mon][ch]["called"] += 1
-            dday_direct(d)[ch]["called"] += 1
-            if appointed:
-                direct[mon][ch]["cappt"] += 1
-                dday_direct(d)[ch]["cappt"] += 1
+                s["cappt"] += 1
 
     return {
         "title": "ホリエモンAI学校 介護校 ファネルダッシュボード",
