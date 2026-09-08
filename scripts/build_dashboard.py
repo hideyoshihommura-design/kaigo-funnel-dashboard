@@ -2225,15 +2225,17 @@ def render(data):
                            if v.get('cost') else None),
          f_yen, d_yen, True, True, True),
         ('架電済み', lambda v: v.get('called'), f_int, d_num, False, False,
-         False),
-        # 消化＝架電したか、商談に行ったか。商談まで行ったなら手はついている。
-        # 架電済みだけを分子にすると、webから自分で予約を入れて面談まで進んだ
-        # 人が未消化に回る（面談予約67件のうち架電由来は13件しかない）。
-        # 2行並べているのは、差が「架電なしで商談になったリード」の数になるため。
-        ('消化済み', lambda v: v.get('handled'), f_int, d_num, False, True,
-         False),
-        ('消化率', lambda v: safe_div(v.get('handled'), v.get('leads')),
-         f_pct, d_pt, True, True, True),
+         True),
+        # 消化＝架電したか、商談に行ったか。商談まで行ったなら手はついている
+        # （webから自分で予約を入れて面談まで進む人がいる）。
+        #
+        # 率ではなく残高で出す。率だと仕事の大きさの順位が逆になる。
+        # 2025-12は消化率1.9%で最悪に見えるが残り51件、2026-07は26.3%で
+        # 良く見えるが残り588件。手を打つべきは後者。
+        # 残高は横に足せる（合計＝総在庫1,709件）が、率は足せない。
+        # 消化済みの行は要らない（リード数 − 残高 で読める）。
+        ('未消化残高', lambda v: (v.get('leads', 0) - v.get('handled', 0)),
+         f_int, d_num, True, False, False),
         ('面談予約', lambda v: v.get('appts'), f_int, d_num, False, False,
          False),
         ('架電→商談', lambda v: safe_div(v.get('cappt'), v.get('called')),
