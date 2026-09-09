@@ -977,6 +977,9 @@ def build(token, sheets_token, channel_map, webinar_cfg, campaign_cfg,
     # 流用すると、社内が先にかけた人を業者が後からかけたとき、業者側の件数から
     # 落ちる（あるいは社内の日付に載る）。
     vendor_first_call = {}
+    # コンタクトごとの全架電日。「その日の架電から取れた予約」を出すのに、
+    # 初回架電日だけでは足りない（予約の直前にかけた日を知る必要がある）。
+    call_days_of_contact = {}
     unknown_disp = {}
     no_direction = 0
     inbound = 0
@@ -1009,6 +1012,7 @@ def build(token, sheets_token, channel_map, webinar_cfg, campaign_cfg,
         if cid:
             prev = first_call_of_contact.get(cid)
             first_call_of_contact[cid] = ts if prev is None else min(prev, ts)
+            call_days_of_contact.setdefault(cid, set()).add(ts)
             if is_vendor:
                 vprev = vendor_first_call.get(cid)
                 vendor_first_call[cid] = ts if vprev is None else min(vprev, ts)
@@ -1210,15 +1214,22 @@ def build(token, sheets_token, channel_map, webinar_cfg, campaign_cfg,
                 s["called"] += 1
             if appointed:
                 s["cappt"] += 1
-        # IS活動量の「本日」用。予約が入った日を軸に、架電を経たものだけ数える。
-        # calls[*]["appts"] は架電と無関係な予約（webの自主予約を社内が入力した
-        # ぶん）も入るので、架電0の日に予約2件が並んで意味が読めなくなる。
-        # コンタクト単位ではなく予約1件ずつ数える（1人が複数取引を持つ場合、
-        # その日に入った予約の件数として正しいのはこちら）。
+        # IS活動量の「本日」用。**予約が入った日ではなく、その予約を取った
+        # 架電の日**に載せる。「その日の架電からいくつ面談になったか」を出す
+        # ためで、架電0の日に予約が並ぶのを避けるにはこの向きしかない。
+        # 予約日の直前（同日を含む）にかけた日に付ける。同じ人に何度かけても
+        # 予約1件は1日にしか付かない。
+        # calls[*]["appts"] の方は架電と無関係な予約（webの自主予約を社内が
+        # 入力したぶん）も入るので、そのままでは活動量と並べられない。
         if first:
+            cdays = sorted(call_days_of_contact.get(cid, ()))
             for a in appt_days:
-                if a >= first and CALLS_START <= a <= end_date:
-                    daily_cappts[a] = daily_cappts.get(a, 0) + 1
+                prior = [x for x in cdays if x <= a]
+                if not prior:
+                    continue
+                hit = prior[-1]
+                if CALLS_START <= hit <= end_date:
+                    daily_cappts[hit] = daily_cappts.get(hit, 0) + 1
     for _d_iso in calls_out:
         calls_out[_d_iso]["cappts"] = daily_cappts.get(
             dt.date.fromisoformat(_d_iso), 0)
