@@ -263,7 +263,7 @@ def validate_calls(data):
         # 生成の途中で古い data.json を読むことがあるので、あっても弾かない。
         unknown = set(v) - {"calls", "connected", "appts", "called", "leads",
                             "mtgs", "props", "wons", "wonamt",
-                            "vcalls", "vconn", "vcalled"}
+                            "vcalls", "vconn", "vcalled", "cappts"}
         if unknown:
             fail(f"calls[{k}] に未知のキー: {sorted(unknown)}")
         for f in ("calls", "connected", "appts", "called", "leads",
@@ -622,7 +622,7 @@ def compute_daily(data):  # noqa: C901
     def get(d, f):
         return calls.get(d.isoformat(), {}).get(f, 0)
 
-    FIELDS = ("calls", "connected", "appts", "called", "leads")
+    FIELDS = ("calls", "connected", "appts", "called", "leads", "cappts")
     # データが1件も無い期間まで行を伸ばさない。窓の起点がデータの開始より前だと、
     # 先頭に全部0の行が並び、「架電していない日」と「まだ記録が始まっていない日」が
     # 同じ見た目になる。
@@ -675,8 +675,9 @@ def compute_daily(data):  # noqa: C901
         "today_conn": get(end, "connected"),
         "today_called": get(end, "called"),
         "today_rate": safe_div(get(end, "connected"), get(end, "calls")),
-        "today_conv": safe_div(get(end, "appts"), get(end, "called")),
-        "today_appts": get(end, "appts"),
+        # 架電由来の予約だけ。calls[*]["appts"] を使うと、webの自主予約を
+        # 社内が入力したぶんも入り、架電0の日に予約2件が並んで読めなくなる。
+        "today_appts": get(end, "cappts"),
         "week_calls": sum(get(d, "calls") for d in dates if d >= wk_start),
         "week_appts": sum(get(d, "appts") for d in dates if d >= wk_start),
         # 平均の分母は「架電した日」。暦日で割ると、架電していない日が
@@ -1996,7 +1997,10 @@ def render(data):
             kpi("接続数", f_int(ac["today_conn"])),
             kpi("接続率", f_pct(ac["today_rate"])),
             kpi("面談予約 獲得数", f_int(ac["today_appts"])),
-            kpi("商談化率", f_pct(ac["today_conv"])),
+            # 商談化率は出さない。分子（その日に入った架電由来の予約）と
+            # 分母（その日に初めてかけた人数）が別の日の話になる。今日入った
+            # 予約は先週かけた人から出ていることがあり、それを今日の新規着手で
+            # 割ると意味を持たない。日をまたいで揃う週次テーブル側に置いてある。
         ])
         # 「日次の行動量」と「架電したリード → 面談予約」の折りたたみは廃止した。
         # 前者は架電数・接続数・接続率が上のグラフと全体の週次と重複し、

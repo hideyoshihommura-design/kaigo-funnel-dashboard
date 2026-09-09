@@ -1185,6 +1185,7 @@ def build(token, sheets_token, channel_map, webinar_cfg, campaign_cfg,
     # 母集団は全期間の獲得リード。架電開始（2026-05-12）より前に獲得した
     # ぶんも分母に残す。掘り起こせていない在庫が見えるのが目的なので、
     # 架電開始以降の獲得だけに絞ると、その在庫が画面から消える。
+    daily_cappts = {}
     for cid, info in cinfo.items():
         first = first_call_of_contact.get(cid)
         appt_days = appt_days_of_contact.get(cid, [])
@@ -1209,6 +1210,18 @@ def build(token, sheets_token, channel_map, webinar_cfg, campaign_cfg,
                 s["called"] += 1
             if appointed:
                 s["cappt"] += 1
+        # IS活動量の「本日」用。予約が入った日を軸に、架電を経たものだけ数える。
+        # calls[*]["appts"] は架電と無関係な予約（webの自主予約を社内が入力した
+        # ぶん）も入るので、架電0の日に予約2件が並んで意味が読めなくなる。
+        # コンタクト単位ではなく予約1件ずつ数える（1人が複数取引を持つ場合、
+        # その日に入った予約の件数として正しいのはこちら）。
+        if first:
+            for a in appt_days:
+                if a >= first and CALLS_START <= a <= end_date:
+                    daily_cappts[a] = daily_cappts.get(a, 0) + 1
+    for _d_iso in calls_out:
+        calls_out[_d_iso]["cappts"] = daily_cappts.get(
+            dt.date.fromisoformat(_d_iso), 0)
 
     return {
         "title": "ホリエモンAI学校 介護校 ファネルダッシュボード",
