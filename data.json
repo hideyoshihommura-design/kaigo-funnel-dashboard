@@ -1,6 +1,6 @@
 {
  "title": "ホリエモンAI学校 介護校 ファネルダッシュボード",
- "generated_at": "2026-09-09",
+ "generated_at": "2026-09-10",
  "week_starts": [
   "2025-09-01",
   "2025-09-08",
@@ -3677,7 +3677,7 @@
     "handled": 0
    },
    "web": {
-    "leads": 12,
+    "leads": 14,
     "cost": 12958,
     "appts": 0,
     "mtgs": 0,
@@ -5478,7 +5478,7 @@
    "appts": 2,
    "mtgs": 1,
    "called": 0,
-   "leads": 7,
+   "leads": 9,
    "vcalls": 0,
    "vconn": 0,
    "vcalled": 0,
@@ -22243,7 +22243,7 @@
     "handled": 0
    },
    "web": {
-    "leads": 7,
+    "leads": 9,
     "cost": 0,
     "appts": 0,
     "mtgs": 0,
