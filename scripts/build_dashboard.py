@@ -2234,7 +2234,11 @@ def render(data):
         ('CPL', lambda v: (safe_div(v.get('cost'), v.get('cvden'))
                            if v.get('cost') else None),
          f_yen, d_yen, True, True, True),
-        ('架電済み', lambda v: v.get('called'), f_int, d_num, False, False,
+        # IS活動量と同じ「架電件数」で呼ぶ。どちらも架電した実人数で、
+        # 違うのは載せる軸だけ（ここは獲得月、IS活動量は架電日）。合計が
+        # 少しずれるのはそのため（ここは直契約のみ、あちらは代理店と
+        # コンタクト未紐付けも入る）。
+        ('架電件数', lambda v: v.get('called'), f_int, d_num, False, False,
          True),
         # 消化＝架電したか、商談に行ったか。商談まで行ったなら手はついている
         # （webから自分で予約を入れて面談まで進む人がいる）。
