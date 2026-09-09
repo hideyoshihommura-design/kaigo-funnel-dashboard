@@ -4317,7 +4317,8 @@
    "leads": 18,
    "vcalls": 0,
    "vconn": 0,
-   "vcalled": 0
+   "vcalled": 0,
+   "cappts": 0
   },
   "2026-06-02": {
    "calls": 0,
@@ -4328,7 +4329,8 @@
    "leads": 14,
    "vcalls": 0,
    "vconn": 0,
-   "vcalled": 0
+   "vcalled": 0,
+   "cappts": 0
   },
   "2026-06-03": {
    "calls": 13,
@@ -4339,7 +4341,8 @@
    "leads": 16,
    "vcalls": 0,
    "vconn": 0,
-   "vcalled": 0
+   "vcalled": 0,
+   "cappts": 0
   },
   "2026-06-04": {
    "calls": 0,
@@ -4350,7 +4353,8 @@
    "leads": 18,
    "vcalls": 0,
    "vconn": 0,
-   "vcalled": 0
+   "vcalled": 0,
+   "cappts": 0
   },
   "2026-06-05": {
    "calls": 7,
@@ -4361,7 +4365,8 @@
    "leads": 7,
    "vcalls": 0,
    "vconn": 0,
-   "vcalled": 0
+   "vcalled": 0,
+   "cappts": 0
   },
   "2026-06-06": {
    "calls": 0,
@@ -4372,7 +4377,8 @@
    "leads": 10,
    "vcalls": 0,
    "vconn": 0,
-   "vcalled": 0
+   "vcalled": 0,
+   "cappts": 0
   },
   "2026-06-07": {
    "calls": 0,
@@ -4383,7 +4389,8 @@
    "leads": 12,
    "vcalls": 0,
    "vconn": 0,
-   "vcalled": 0
+   "vcalled": 0,
+   "cappts": 0
   },
   "2026-06-08": {
    "calls": 16,
@@ -4394,7 +4401,8 @@
    "leads": 15,
    "vcalls": 0,
    "vconn": 0,
-   "vcalled": 0
+   "vcalled": 0,
+   "cappts": 0
   },
   "2026-06-09": {
    "calls": 4,
@@ -4405,7 +4413,8 @@
    "leads": 20,
    "vcalls": 0,
    "vconn": 0,
-   "vcalled": 0
+   "vcalled": 0,
+   "cappts": 0
   },
   "2026-06-10": {
    "calls": 12,
@@ -4416,7 +4425,8 @@
    "leads": 10,
    "vcalls": 0,
    "vconn": 0,
-   "vcalled": 0
+   "vcalled": 0,
+   "cappts": 0
   },
   "2026-06-11": {
    "calls": 0,
@@ -4427,7 +4437,8 @@
    "leads": 9,
    "vcalls": 0,
    "vconn": 0,
-   "vcalled": 0
+   "vcalled": 0,
+   "cappts": 0
   },
   "2026-06-12": {
    "calls": 31,
@@ -4438,7 +4449,8 @@
    "leads": 3,
    "vcalls": 0,
    "vconn": 0,
-   "vcalled": 0
+   "vcalled": 0,
+   "cappts": 0
   },
   "2026-06-13": {
    "calls": 0,
@@ -4449,7 +4461,8 @@
    "leads": 7,
    "vcalls": 0,
    "vconn": 0,
-   "vcalled": 0
+   "vcalled": 0,
+   "cappts": 0
   },
   "2026-06-14": {
    "calls": 0,
@@ -4460,7 +4473,8 @@
    "leads": 5,
    "vcalls": 0,
    "vconn": 0,
-   "vcalled": 0
+   "vcalled": 0,
+   "cappts": 2
   },
   "2026-06-15": {
    "calls": 0,
@@ -4471,7 +4485,8 @@
    "leads": 5,
    "vcalls": 0,
    "vconn": 0,
-   "vcalled": 0
+   "vcalled": 0,
+   "cappts": 0
   },
   "2026-06-16": {
    "calls": 10,
@@ -4482,7 +4497,8 @@
    "leads": 6,
    "vcalls": 0,
    "vconn": 0,
-   "vcalled": 0
+   "vcalled": 0,
+   "cappts": 0
   },
   "2026-06-17": {
    "calls": 22,
@@ -4493,7 +4509,8 @@
    "leads": 7,
    "vcalls": 0,
    "vconn": 0,
-   "vcalled": 0
+   "vcalled": 0,
+   "cappts": 0
   },
   "2026-06-18": {
    "calls": 7,
@@ -4504,7 +4521,8 @@
    "leads": 5,
    "vcalls": 0,
    "vconn": 0,
-   "vcalled": 0
+   "vcalled": 0,
+   "cappts": 1
   },
   "2026-06-19": {
    "calls": 14,
@@ -4515,7 +4533,8 @@
    "leads": 12,
    "vcalls": 0,
    "vconn": 0,
-   "vcalled": 0
+   "vcalled": 0,
+   "cappts": 0
   },
   "2026-06-20": {
    "calls": 0,
@@ -4526,7 +4545,8 @@
    "leads": 9,
    "vcalls": 0,
    "vconn": 0,
-   "vcalled": 0
+   "vcalled": 0,
+   "cappts": 0
   },
   "2026-06-21": {
    "calls": 0,
@@ -4537,7 +4557,8 @@
    "leads": 11,
    "vcalls": 0,
    "vconn": 0,
-   "vcalled": 0
+   "vcalled": 0,
+   "cappts": 0
   },
   "2026-06-22": {
    "calls": 0,
@@ -4548,7 +4569,8 @@
    "leads": 10,
    "vcalls": 0,
    "vconn": 0,
-   "vcalled": 0
+   "vcalled": 0,
+   "cappts": 0
   },
   "2026-06-23": {
    "calls": 15,
@@ -4559,7 +4581,8 @@
    "leads": 12,
    "vcalls": 0,
    "vconn": 0,
-   "vcalled": 0
+   "vcalled": 0,
+   "cappts": 0
   },
   "2026-06-24": {
    "calls": 13,
@@ -4570,7 +4593,8 @@
    "leads": 7,
    "vcalls": 0,
    "vconn": 0,
-   "vcalled": 0
+   "vcalled": 0,
+   "cappts": 0
   },
   "2026-06-25": {
    "calls": 14,
@@ -4581,7 +4605,8 @@
    "leads": 10,
    "vcalls": 0,
    "vconn": 0,
-   "vcalled": 0
+   "vcalled": 0,
+   "cappts": 2
   },
   "2026-06-26": {
    "calls": 12,
@@ -4592,7 +4617,8 @@
    "leads": 9,
    "vcalls": 0,
    "vconn": 0,
-   "vcalled": 0
+   "vcalled": 0,
+   "cappts": 0
   },
   "2026-06-27": {
    "calls": 0,
@@ -4603,7 +4629,8 @@
    "leads": 2,
    "vcalls": 0,
    "vconn": 0,
-   "vcalled": 0
+   "vcalled": 0,
+   "cappts": 0
   },
   "2026-06-28": {
    "calls": 0,
@@ -4614,7 +4641,8 @@
    "leads": 5,
    "vcalls": 0,
    "vconn": 0,
-   "vcalled": 0
+   "vcalled": 0,
+   "cappts": 0
   },
   "2026-06-29": {
    "calls": 9,
@@ -4625,7 +4653,8 @@
    "leads": 5,
    "vcalls": 0,
    "vconn": 0,
-   "vcalled": 0
+   "vcalled": 0,
+   "cappts": 0
   },
   "2026-06-30": {
    "calls": 22,
@@ -4636,7 +4665,8 @@
    "leads": 6,
    "vcalls": 0,
    "vconn": 0,
-   "vcalled": 0
+   "vcalled": 0,
+   "cappts": 1
   },
   "2026-07-01": {
    "calls": 0,
@@ -4647,7 +4677,8 @@
    "leads": 7,
    "vcalls": 0,
    "vconn": 0,
-   "vcalled": 0
+   "vcalled": 0,
+   "cappts": 0
   },
   "2026-07-02": {
    "calls": 14,
@@ -4658,7 +4689,8 @@
    "leads": 5,
    "vcalls": 0,
    "vconn": 0,
-   "vcalled": 0
+   "vcalled": 0,
+   "cappts": 0
   },
   "2026-07-03": {
    "calls": 0,
@@ -4669,7 +4701,8 @@
    "leads": 7,
    "vcalls": 0,
    "vconn": 0,
-   "vcalled": 0
+   "vcalled": 0,
+   "cappts": 0
   },
   "2026-07-04": {
    "calls": 0,
@@ -4680,7 +4713,8 @@
    "leads": 3,
    "vcalls": 0,
    "vconn": 0,
-   "vcalled": 0
+   "vcalled": 0,
+   "cappts": 0
   },
   "2026-07-05": {
    "calls": 0,
@@ -4691,7 +4725,8 @@
    "leads": 8,
    "vcalls": 0,
    "vconn": 0,
-   "vcalled": 0
+   "vcalled": 0,
+   "cappts": 0
   },
   "2026-07-06": {
    "calls": 0,
@@ -4702,7 +4737,8 @@
    "leads": 8,
    "vcalls": 0,
    "vconn": 0,
-   "vcalled": 0
+   "vcalled": 0,
+   "cappts": 0
   },
   "2026-07-07": {
    "calls": 0,
@@ -4713,7 +4749,8 @@
    "leads": 5,
    "vcalls": 0,
    "vconn": 0,
-   "vcalled": 0
+   "vcalled": 0,
+   "cappts": 0
   },
   "2026-07-08": {
    "calls": 7,
@@ -4724,7 +4761,8 @@
    "leads": 3,
    "vcalls": 0,
    "vconn": 0,
-   "vcalled": 0
+   "vcalled": 0,
+   "cappts": 0
   },
   "2026-07-09": {
    "calls": 17,
@@ -4735,7 +4773,8 @@
    "leads": 15,
    "vcalls": 0,
    "vconn": 0,
-   "vcalled": 0
+   "vcalled": 0,
+   "cappts": 0
   },
   "2026-07-10": {
    "calls": 14,
@@ -4746,7 +4785,8 @@
    "leads": 16,
    "vcalls": 0,
    "vconn": 0,
-   "vcalled": 0
+   "vcalled": 0,
+   "cappts": 0
   },
   "2026-07-11": {
    "calls": 0,
@@ -4757,7 +4797,8 @@
    "leads": 17,
    "vcalls": 0,
    "vconn": 0,
-   "vcalled": 0
+   "vcalled": 0,
+   "cappts": 0
   },
   "2026-07-12": {
    "calls": 0,
@@ -4768,7 +4809,8 @@
    "leads": 11,
    "vcalls": 0,
    "vconn": 0,
-   "vcalled": 0
+   "vcalled": 0,
+   "cappts": 0
   },
   "2026-07-13": {
    "calls": 4,
@@ -4779,7 +4821,8 @@
    "leads": 9,
    "vcalls": 0,
    "vconn": 0,
-   "vcalled": 0
+   "vcalled": 0,
+   "cappts": 0
   },
   "2026-07-14": {
    "calls": 2,
@@ -4790,7 +4833,8 @@
    "leads": 7,
    "vcalls": 0,
    "vconn": 0,
-   "vcalled": 0
+   "vcalled": 0,
+   "cappts": 0
   },
   "2026-07-15": {
    "calls": 14,
@@ -4801,7 +4845,8 @@
    "leads": 5,
    "vcalls": 0,
    "vconn": 0,
-   "vcalled": 0
+   "vcalled": 0,
+   "cappts": 0
   },
   "2026-07-16": {
    "calls": 0,
@@ -4812,7 +4857,8 @@
    "leads": 3,
    "vcalls": 0,
    "vconn": 0,
-   "vcalled": 0
+   "vcalled": 0,
+   "cappts": 0
   },
   "2026-07-17": {
    "calls": 0,
@@ -4823,7 +4869,8 @@
    "leads": 5,
    "vcalls": 0,
    "vconn": 0,
-   "vcalled": 0
+   "vcalled": 0,
+   "cappts": 0
   },
   "2026-07-18": {
    "calls": 0,
@@ -4834,7 +4881,8 @@
    "leads": 9,
    "vcalls": 0,
    "vconn": 0,
-   "vcalled": 0
+   "vcalled": 0,
+   "cappts": 0
   },
   "2026-07-19": {
    "calls": 0,
@@ -4845,7 +4893,8 @@
    "leads": 5,
    "vcalls": 0,
    "vconn": 0,
-   "vcalled": 0
+   "vcalled": 0,
+   "cappts": 0
   },
   "2026-07-20": {
    "calls": 0,
@@ -4856,7 +4905,8 @@
    "leads": 1,
    "vcalls": 0,
    "vconn": 0,
-   "vcalled": 0
+   "vcalled": 0,
+   "cappts": 0
   },
   "2026-07-21": {
    "calls": 0,
@@ -4867,7 +4917,8 @@
    "leads": 11,
    "vcalls": 0,
    "vconn": 0,
-   "vcalled": 0
+   "vcalled": 0,
+   "cappts": 0
   },
   "2026-07-22": {
    "calls": 0,
@@ -4878,7 +4929,8 @@
    "leads": 9,
    "vcalls": 0,
    "vconn": 0,
-   "vcalled": 0
+   "vcalled": 0,
+   "cappts": 0
   },
   "2026-07-23": {
    "calls": 0,
@@ -4889,7 +4941,8 @@
    "leads": 11,
    "vcalls": 0,
    "vconn": 0,
-   "vcalled": 0
+   "vcalled": 0,
+   "cappts": 0
   },
   "2026-07-24": {
    "calls": 0,
@@ -4900,7 +4953,8 @@
    "leads": 2,
    "vcalls": 0,
    "vconn": 0,
-   "vcalled": 0
+   "vcalled": 0,
+   "cappts": 0
   },
   "2026-07-25": {
    "calls": 0,
@@ -4911,7 +4965,8 @@
    "leads": 6,
    "vcalls": 0,
    "vconn": 0,
-   "vcalled": 0
+   "vcalled": 0,
+   "cappts": 0
   },
   "2026-07-26": {
    "calls": 0,
@@ -4922,7 +4977,8 @@
    "leads": 552,
    "vcalls": 0,
    "vconn": 0,
-   "vcalled": 0
+   "vcalled": 0,
+   "cappts": 0
   },
   "2026-07-27": {
    "calls": 6,
@@ -4933,7 +4989,8 @@
    "leads": 6,
    "vcalls": 0,
    "vconn": 0,
-   "vcalled": 0
+   "vcalled": 0,
+   "cappts": 0
   },
   "2026-07-28": {
    "calls": 10,
@@ -4944,7 +5001,8 @@
    "leads": 34,
    "vcalls": 0,
    "vconn": 0,
-   "vcalled": 0
+   "vcalled": 0,
+   "cappts": 0
   },
   "2026-07-29": {
    "calls": 4,
@@ -4955,7 +5013,8 @@
    "leads": 1,
    "vcalls": 0,
    "vconn": 0,
-   "vcalled": 0
+   "vcalled": 0,
+   "cappts": 1
   },
   "2026-07-30": {
    "calls": 7,
@@ -4966,7 +5025,8 @@
    "leads": 12,
    "vcalls": 0,
    "vconn": 0,
-   "vcalled": 0
+   "vcalled": 0,
+   "cappts": 0
   },
   "2026-07-31": {
    "calls": 4,
@@ -4977,7 +5037,8 @@
    "leads": 6,
    "vcalls": 0,
    "vconn": 0,
-   "vcalled": 0
+   "vcalled": 0,
+   "cappts": 1
   },
   "2026-08-01": {
    "calls": 0,
@@ -4988,7 +5049,8 @@
    "leads": 4,
    "vcalls": 0,
    "vconn": 0,
-   "vcalled": 0
+   "vcalled": 0,
+   "cappts": 0
   },
   "2026-08-02": {
    "calls": 0,
@@ -4999,7 +5061,8 @@
    "leads": 6,
    "vcalls": 0,
    "vconn": 0,
-   "vcalled": 0
+   "vcalled": 0,
+   "cappts": 0
   },
   "2026-08-03": {
    "calls": 0,
@@ -5010,7 +5073,8 @@
    "leads": 6,
    "vcalls": 0,
    "vconn": 0,
-   "vcalled": 0
+   "vcalled": 0,
+   "cappts": 0
   },
   "2026-08-04": {
    "calls": 0,
@@ -5021,7 +5085,8 @@
    "leads": 7,
    "vcalls": 0,
    "vconn": 0,
-   "vcalled": 0
+   "vcalled": 0,
+   "cappts": 0
   },
   "2026-08-05": {
    "calls": 0,
@@ -5032,7 +5097,8 @@
    "leads": 6,
    "vcalls": 0,
    "vconn": 0,
-   "vcalled": 0
+   "vcalled": 0,
+   "cappts": 0
   },
   "2026-08-06": {
    "calls": 2,
@@ -5043,7 +5109,8 @@
    "leads": 17,
    "vcalls": 0,
    "vconn": 0,
-   "vcalled": 0
+   "vcalled": 0,
+   "cappts": 1
   },
   "2026-08-07": {
    "calls": 1,
@@ -5054,7 +5121,8 @@
    "leads": 6,
    "vcalls": 0,
    "vconn": 0,
-   "vcalled": 0
+   "vcalled": 0,
+   "cappts": 0
   },
   "2026-08-08": {
    "calls": 0,
@@ -5065,7 +5133,8 @@
    "leads": 8,
    "vcalls": 0,
    "vconn": 0,
-   "vcalled": 0
+   "vcalled": 0,
+   "cappts": 0
   },
   "2026-08-09": {
    "calls": 0,
@@ -5076,7 +5145,8 @@
    "leads": 1,
    "vcalls": 0,
    "vconn": 0,
-   "vcalled": 0
+   "vcalled": 0,
+   "cappts": 0
   },
   "2026-08-10": {
    "calls": 1,
@@ -5087,7 +5157,8 @@
    "leads": 8,
    "vcalls": 0,
    "vconn": 0,
-   "vcalled": 0
+   "vcalled": 0,
+   "cappts": 0
   },
   "2026-08-11": {
    "calls": 0,
@@ -5098,7 +5169,8 @@
    "leads": 5,
    "vcalls": 0,
    "vconn": 0,
-   "vcalled": 0
+   "vcalled": 0,
+   "cappts": 0
   },
   "2026-08-12": {
    "calls": 0,
@@ -5109,7 +5181,8 @@
    "leads": 11,
    "vcalls": 0,
    "vconn": 0,
-   "vcalled": 0
+   "vcalled": 0,
+   "cappts": 0
   },
   "2026-08-13": {
    "calls": 0,
@@ -5120,7 +5193,8 @@
    "leads": 3,
    "vcalls": 0,
    "vconn": 0,
-   "vcalled": 0
+   "vcalled": 0,
+   "cappts": 0
   },
   "2026-08-14": {
    "calls": 0,
@@ -5131,7 +5205,8 @@
    "leads": 7,
    "vcalls": 0,
    "vconn": 0,
-   "vcalled": 0
+   "vcalled": 0,
+   "cappts": 0
   },
   "2026-08-15": {
    "calls": 0,
@@ -5142,7 +5217,8 @@
    "leads": 5,
    "vcalls": 0,
    "vconn": 0,
-   "vcalled": 0
+   "vcalled": 0,
+   "cappts": 0
   },
   "2026-08-16": {
    "calls": 0,
@@ -5153,7 +5229,8 @@
    "leads": 2,
    "vcalls": 0,
    "vconn": 0,
-   "vcalled": 0
+   "vcalled": 0,
+   "cappts": 0
   },
   "2026-08-17": {
    "calls": 0,
@@ -5164,7 +5241,8 @@
    "leads": 5,
    "vcalls": 0,
    "vconn": 0,
-   "vcalled": 0
+   "vcalled": 0,
+   "cappts": 0
   },
   "2026-08-18": {
    "calls": 0,
@@ -5175,7 +5253,8 @@
    "leads": 6,
    "vcalls": 0,
    "vconn": 0,
-   "vcalled": 0
+   "vcalled": 0,
+   "cappts": 0
   },
   "2026-08-19": {
    "calls": 0,
@@ -5186,7 +5265,8 @@
    "leads": 7,
    "vcalls": 0,
    "vconn": 0,
-   "vcalled": 0
+   "vcalled": 0,
+   "cappts": 0
   },
   "2026-08-20": {
    "calls": 12,
@@ -5197,7 +5277,8 @@
    "leads": 8,
    "vcalls": 11,
    "vconn": 1,
-   "vcalled": 11
+   "vcalled": 11,
+   "cappts": 0
   },
   "2026-08-22": {
    "calls": 0,
@@ -5208,7 +5289,8 @@
    "leads": 6,
    "vcalls": 0,
    "vconn": 0,
-   "vcalled": 0
+   "vcalled": 0,
+   "cappts": 0
   },
   "2026-08-23": {
    "calls": 0,
@@ -5219,7 +5301,8 @@
    "leads": 2,
    "vcalls": 0,
    "vconn": 0,
-   "vcalled": 0
+   "vcalled": 0,
+   "cappts": 0
   },
   "2026-08-24": {
    "calls": 5,
@@ -5230,7 +5313,8 @@
    "leads": 10,
    "vcalls": 5,
    "vconn": 2,
-   "vcalled": 5
+   "vcalled": 5,
+   "cappts": 1
   },
   "2026-08-25": {
    "calls": 16,
@@ -5241,7 +5325,8 @@
    "leads": 5,
    "vcalls": 16,
    "vconn": 4,
-   "vcalled": 12
+   "vcalled": 12,
+   "cappts": 0
   },
   "2026-08-26": {
    "calls": 36,
@@ -5252,7 +5337,8 @@
    "leads": 1,
    "vcalls": 36,
    "vconn": 4,
-   "vcalled": 17
+   "vcalled": 17,
+   "cappts": 0
   },
   "2026-08-27": {
    "calls": 53,
@@ -5263,7 +5349,8 @@
    "leads": 0,
    "vcalls": 53,
    "vconn": 9,
-   "vcalled": 40
+   "vcalled": 40,
+   "cappts": 3
   },
   "2026-08-28": {
    "calls": 33,
@@ -5274,7 +5361,8 @@
    "leads": 2,
    "vcalls": 33,
    "vconn": 3,
-   "vcalled": 21
+   "vcalled": 21,
+   "cappts": 0
   },
   "2026-08-29": {
    "calls": 0,
@@ -5285,7 +5373,8 @@
    "leads": 2,
    "vcalls": 0,
    "vconn": 0,
-   "vcalled": 0
+   "vcalled": 0,
+   "cappts": 0
   },
   "2026-08-30": {
    "calls": 0,
@@ -5296,7 +5385,8 @@
    "leads": 2,
    "vcalls": 0,
    "vconn": 0,
-   "vcalled": 0
+   "vcalled": 0,
+   "cappts": 0
   },
   "2026-08-31": {
    "calls": 38,
@@ -5307,7 +5397,8 @@
    "leads": 3,
    "vcalls": 38,
    "vconn": 2,
-   "vcalled": 1
+   "vcalled": 1,
+   "cappts": 0
   },
   "2026-09-01": {
    "calls": 35,
@@ -5318,7 +5409,8 @@
    "leads": 0,
    "vcalls": 34,
    "vconn": 3,
-   "vcalled": 22
+   "vcalled": 22,
+   "cappts": 0
   },
   "2026-09-02": {
    "calls": 38,
@@ -5329,7 +5421,8 @@
    "leads": 4,
    "vcalls": 36,
    "vconn": 1,
-   "vcalled": 16
+   "vcalled": 16,
+   "cappts": 0
   },
   "2026-09-03": {
    "calls": 43,
@@ -5340,7 +5433,8 @@
    "leads": 2,
    "vcalls": 42,
    "vconn": 4,
-   "vcalled": 36
+   "vcalled": 36,
+   "cappts": 0
   },
   "2026-09-04": {
    "calls": 42,
@@ -5351,7 +5445,8 @@
    "leads": 3,
    "vcalls": 40,
    "vconn": 2,
-   "vcalled": 0
+   "vcalled": 0,
+   "cappts": 0
   },
   "2026-09-07": {
    "calls": 52,
@@ -5362,7 +5457,8 @@
    "leads": 0,
    "vcalls": 52,
    "vconn": 7,
-   "vcalled": 7
+   "vcalled": 7,
+   "cappts": 1
   },
   "2026-09-08": {
    "calls": 45,
@@ -5373,7 +5469,8 @@
    "leads": 5,
    "vcalls": 43,
    "vconn": 2,
-   "vcalled": 37
+   "vcalled": 37,
+   "cappts": 0
   },
   "2026-09-09": {
    "calls": 0,
@@ -5384,7 +5481,8 @@
    "leads": 6,
    "vcalls": 0,
    "vconn": 0,
-   "vcalled": 0
+   "vcalled": 0,
+   "cappts": 2
   }
  },
  "fs": {
