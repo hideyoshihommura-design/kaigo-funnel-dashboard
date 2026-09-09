@@ -718,11 +718,17 @@ def compute_daily(data):  # noqa: C901
         "vendor": vendor,
         # グラフは日次区間だけ。日の棒と週の棒を同じ横軸に混ぜると、
         # 棒の高さが1日分なのか1週間分なのか区別できなくなる。
+        # 積み上げの中身は「新規着手」と「追いかけ」。合計の高さは架電数のまま。
+        # 接続／未接続の内訳から差し替えた。日によって中身が大きく振れるのが
+        # ここで、8/31は架電38件のうち新規1件（37件が追いかけ）、9/3は43件の
+        # うち新規35件だった。新しいリードに手をつけているのか、既に着手した
+        # 人を追っているのかは、消化を見るうえで接続率より先に知りたい。
+        # 日次の接続内訳は失うが、接続率は週次テーブルに残っている。
         "chart": {
             "labels": [r["label"] for r in day_rows],
             "dates": [r["key"] for r in day_rows],
-            "connected": [r["connected"] for r in day_rows],
-            "noans": [r["calls"] - r["connected"] for r in day_rows],
+            "called": [r["called"] for r in day_rows],
+            "followup": [r["calls"] - r["called"] for r in day_rows],
         },
         "span": f"{daily_from.isoformat()} 〜 {end.isoformat()}",
         "first": dates[0].isoformat(),
@@ -1258,13 +1264,13 @@ function mkStackedBar(id,labels,bars,maLabel,maData,maColor,fmt){
 /* 架電数の日次棒。1本の棒の高さが架電数で、内訳が接続できた／できなかった。
    接続数を別の棒や別グラフにすると、架電を増やしたのか繋がるようになったのかを
    2つの図を見比べて判断することになる。積み上げなら1本で両方読める。 */
-function mkCallBar(id,labels,connected,noans,cConn,cNo){
+function mkCallBar(id,labels,called,followup,cConn,cNo){
   reg(id,{type:'bar',
     data:{labels:labels,datasets:[
-      {label:'接続',data:connected,backgroundColor:cConn,borderWidth:0,stack:'c',
-       barPercentage:1,categoryPercentage:.86},
-      {label:'未接続',data:noans,backgroundColor:cNo,borderWidth:0,stack:'c',
-       barPercentage:1,categoryPercentage:.86}]},
+      {label:'架電件数（新規着手）',data:called,backgroundColor:cConn,
+       borderWidth:0,stack:'c',barPercentage:1,categoryPercentage:.86},
+      {label:'追いかけ',data:followup,backgroundColor:cNo,borderWidth:0,
+       stack:'c',barPercentage:1,categoryPercentage:.86}]},
     options:{responsive:true,maintainAspectRatio:false,
       interaction:{mode:'index',intersect:false},
       plugins:{legend:{position:'bottom',labels:{boxWidth:10,boxHeight:10,padding:12}},
@@ -2166,12 +2172,12 @@ def render(data):
 </div>
 {vn_fold}
 <div class="charts one">
-  <div class="card"><h3>架電数の日次推移（{daily["span"]}）</h3>
+  <div class="card"><h3>架電件数の日次推移（{daily["span"]}）</h3>
     <div class="chart"><canvas id="c_call"></canvas></div></div>
 </div>"""
         daily_js = (
             f"mkCallBar('c_call',{js(daily['chart']['labels'])},"
-            f"{js(daily['chart']['connected'])},{js(daily['chart']['noans'])},"
+            f"{js(daily['chart']['called'])},{js(daily['chart']['followup'])},"
             f"'{COLORS['call_conn']}','{COLORS['call_noans']}');\n"
         )
     else:
@@ -2531,8 +2537,8 @@ def render(data):
 
     day_dates = js(daily["chart"]["dates"]) if daily else "[]"
     day_labels = js(daily["chart"]["labels"]) if daily else "[]"
-    day_conn = js(daily["chart"]["connected"]) if daily else "[]"
-    day_no = js(daily["chart"]["noans"]) if daily else "[]"
+    day_conn = js(daily["chart"]["called"]) if daily else "[]"
+    day_no = js(daily["chart"]["followup"]) if daily else "[]"
 
     charts_js = f"""
 var RAW={js(raw)};
