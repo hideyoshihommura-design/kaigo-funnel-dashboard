@@ -4402,7 +4402,7 @@
    "vcalls": 0,
    "vconn": 0,
    "vcalled": 0,
-   "cappts": 0
+   "cappts": 1
   },
   "2026-06-09": {
    "calls": 4,
@@ -4450,7 +4450,7 @@
    "vcalls": 0,
    "vconn": 0,
    "vcalled": 0,
-   "cappts": 0
+   "cappts": 3
   },
   "2026-06-13": {
    "calls": 0,
@@ -4474,7 +4474,7 @@
    "vcalls": 0,
    "vconn": 0,
    "vcalled": 0,
-   "cappts": 2
+   "cappts": 0
   },
   "2026-06-15": {
    "calls": 0,
@@ -4510,7 +4510,7 @@
    "vcalls": 0,
    "vconn": 0,
    "vcalled": 0,
-   "cappts": 0
+   "cappts": 1
   },
   "2026-06-18": {
    "calls": 7,
@@ -4522,7 +4522,7 @@
    "vcalls": 0,
    "vconn": 0,
    "vcalled": 0,
-   "cappts": 1
+   "cappts": 0
   },
   "2026-06-19": {
    "calls": 14,
@@ -4582,7 +4582,7 @@
    "vcalls": 0,
    "vconn": 0,
    "vcalled": 0,
-   "cappts": 0
+   "cappts": 1
   },
   "2026-06-24": {
    "calls": 13,
@@ -4606,7 +4606,7 @@
    "vcalls": 0,
    "vconn": 0,
    "vcalled": 0,
-   "cappts": 2
+   "cappts": 0
   },
   "2026-06-26": {
    "calls": 12,
@@ -4654,7 +4654,7 @@
    "vcalls": 0,
    "vconn": 0,
    "vcalled": 0,
-   "cappts": 0
+   "cappts": 1
   },
   "2026-06-30": {
    "calls": 22,
@@ -4666,7 +4666,7 @@
    "vcalls": 0,
    "vconn": 0,
    "vcalled": 0,
-   "cappts": 1
+   "cappts": 0
   },
   "2026-07-01": {
    "calls": 0,
@@ -4690,7 +4690,7 @@
    "vcalls": 0,
    "vconn": 0,
    "vcalled": 0,
-   "cappts": 0
+   "cappts": 1
   },
   "2026-07-03": {
    "calls": 0,
@@ -4786,7 +4786,7 @@
    "vcalls": 0,
    "vconn": 0,
    "vcalled": 0,
-   "cappts": 0
+   "cappts": 1
   },
   "2026-07-11": {
    "calls": 0,
@@ -5014,7 +5014,7 @@
    "vcalls": 0,
    "vconn": 0,
    "vcalled": 0,
-   "cappts": 1
+   "cappts": 0
   },
   "2026-07-30": {
    "calls": 7,
@@ -5038,7 +5038,7 @@
    "vcalls": 0,
    "vconn": 0,
    "vcalled": 0,
-   "cappts": 1
+   "cappts": 0
   },
   "2026-08-01": {
    "calls": 0,
@@ -5470,7 +5470,7 @@
    "vcalls": 43,
    "vconn": 2,
    "vcalled": 37,
-   "cappts": 0
+   "cappts": 1
   },
   "2026-09-09": {
    "calls": 0,
@@ -5482,7 +5482,7 @@
    "vcalls": 0,
    "vconn": 0,
    "vcalled": 0,
-   "cappts": 2
+   "cappts": 0
   }
  },
  "fs": {
