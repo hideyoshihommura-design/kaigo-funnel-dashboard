@@ -3196,9 +3196,9 @@
     "deals": 4,
     "won": 0,
     "won_amount": 0,
-    "called": 147,
+    "called": 155,
     "cappt": 2,
-    "handled": 149
+    "handled": 157
    },
    "web": {
     "leads": 40,
@@ -3677,8 +3677,8 @@
     "handled": 0
    },
    "web": {
-    "leads": 15,
-    "cost": 12958,
+    "leads": 18,
+    "cost": 28191,
     "appts": 0,
     "mtgs": 0,
     "props": 0,
@@ -3688,7 +3688,7 @@
     "called": 0,
     "cappt": 0,
     "handled": 0,
-    "cv": 13
+    "cv": 24
    },
    "line": {
     "leads": 0,
@@ -5485,15 +5485,15 @@
    "cappts": 0
   },
   "2026-09-10": {
-   "calls": 0,
-   "connected": 0,
+   "calls": 9,
+   "connected": 1,
    "appts": 0,
    "mtgs": 0,
-   "called": 0,
-   "leads": 1,
-   "vcalls": 0,
-   "vconn": 0,
-   "vcalled": 0,
+   "called": 8,
+   "leads": 4,
+   "vcalls": 9,
+   "vconn": 1,
+   "vcalled": 8,
    "cappts": 0
   }
  },
@@ -7357,10 +7357,10 @@
    "cv": 16
   },
   "2026-09-07": {
-   "spend": 12958,
-   "imp": 5287,
-   "clicks": 116,
-   "cv": 13
+   "spend": 28191,
+   "imp": 11803,
+   "clicks": 256,
+   "cv": 24
   }
  },
  "adperf_day": {
@@ -8101,6 +8101,12 @@
    "imp": 5287,
    "clicks": 116,
    "cv": 13
+  },
+  "2026-09-09": {
+   "spend": 15233,
+   "imp": 6516,
+   "clicks": 140,
+   "cv": 11
   }
  },
  "ad_day": {
@@ -10356,6 +10362,14 @@
     "imp": 5287,
     "clicks": 116,
     "cv": 13
+   }
+  },
+  "2026-09-09": {
+   "Meta/ウェビナー": {
+    "spend": 15233,
+    "imp": 6516,
+    "clicks": 140,
+    "cv": 11
    }
   }
  },
@@ -19190,9 +19204,9 @@
     "deals": 4,
     "won": 0,
     "won_amount": 0,
-    "called": 147,
+    "called": 155,
     "cappt": 2,
-    "handled": 149
+    "handled": 157
    },
    "web": {
     "leads": 7,
@@ -22256,7 +22270,7 @@
    },
    "web": {
     "leads": 9,
-    "cost": 0,
+    "cost": 15233,
     "appts": 0,
     "mtgs": 0,
     "props": 0,
@@ -22265,7 +22279,8 @@
     "won_amount": 0,
     "called": 0,
     "cappt": 0,
-    "handled": 0
+    "handled": 0,
+    "cv": 11
    },
    "line": {
     "leads": 0,
@@ -22322,7 +22337,7 @@
     "handled": 0
    },
    "web": {
-    "leads": 1,
+    "leads": 4,
     "cost": 0,
     "appts": 0,
     "mtgs": 0,
@@ -22651,7 +22666,7 @@
    "appointed": 1
   },
   "2026-09-07": {
-   "called": 42,
+   "called": 50,
    "appointed": 1
   }
  }
