@@ -3481,9 +3481,9 @@
     "deals": 3,
     "won": 0,
     "won_amount": 0,
-    "called": 10,
+    "called": 12,
     "cappt": 1,
-    "handled": 12,
+    "handled": 14,
     "cv": 49
    },
    "line": {
@@ -3549,9 +3549,9 @@
     "deals": 1,
     "won": 0,
     "won_amount": 0,
-    "called": 1,
+    "called": 7,
     "cappt": 1,
-    "handled": 1,
+    "handled": 7,
     "cv": 30
    },
    "line": {
@@ -3617,9 +3617,9 @@
     "deals": 0,
     "won": 0,
     "won_amount": 0,
-    "called": 4,
+    "called": 8,
     "cappt": 0,
-    "handled": 4,
+    "handled": 8,
     "cv": 16
    },
    "line": {
@@ -3677,7 +3677,7 @@
     "handled": 0
    },
    "web": {
-    "leads": 18,
+    "leads": 20,
     "cost": 28191,
     "appts": 0,
     "mtgs": 0,
@@ -5485,15 +5485,15 @@
    "cappts": 0
   },
   "2026-09-10": {
-   "calls": 9,
-   "connected": 1,
+   "calls": 35,
+   "connected": 8,
    "appts": 0,
    "mtgs": 0,
-   "called": 8,
-   "leads": 4,
-   "vcalls": 9,
-   "vconn": 1,
-   "vcalled": 8,
+   "called": 20,
+   "leads": 6,
+   "vcalls": 35,
+   "vconn": 8,
+   "vcalled": 20,
    "cappts": 0
   }
  },
@@ -20713,9 +20713,9 @@
     "deals": 2,
     "won": 0,
     "won_amount": 0,
-    "called": 1,
+    "called": 2,
     "cappt": 0,
-    "handled": 3,
+    "handled": 4,
     "cv": 6
    },
    "line": {
@@ -21053,9 +21053,9 @@
     "deals": 1,
     "won": 0,
     "won_amount": 0,
-    "called": 1,
+    "called": 2,
     "cappt": 1,
-    "handled": 1,
+    "handled": 2,
     "cv": 6
    },
    "line": {
@@ -21257,9 +21257,9 @@
     "deals": 0,
     "won": 0,
     "won_amount": 0,
-    "called": 0,
+    "called": 1,
     "cappt": 0,
-    "handled": 0,
+    "handled": 1,
     "cv": 4
    },
    "line": {
@@ -21461,9 +21461,9 @@
     "deals": 0,
     "won": 0,
     "won_amount": 0,
-    "called": 0,
+    "called": 2,
     "cappt": 0,
-    "handled": 0,
+    "handled": 2,
     "cv": 3
    },
    "line": {
@@ -21529,9 +21529,9 @@
     "deals": 1,
     "won": 0,
     "won_amount": 0,
-    "called": 1,
+    "called": 2,
     "cappt": 1,
-    "handled": 1,
+    "handled": 2,
     "cv": 6
    },
    "line": {
@@ -21597,9 +21597,9 @@
     "deals": 0,
     "won": 0,
     "won_amount": 0,
-    "called": 0,
+    "called": 2,
     "cappt": 0,
-    "handled": 0,
+    "handled": 2,
     "cv": 3
    },
    "line": {
@@ -21665,9 +21665,9 @@
     "deals": 0,
     "won": 0,
     "won_amount": 0,
-    "called": 0,
+    "called": 2,
     "cappt": 0,
-    "handled": 0,
+    "handled": 2,
     "cv": 3
    },
    "line": {
@@ -21801,9 +21801,9 @@
     "deals": 0,
     "won": 0,
     "won_amount": 0,
-    "called": 1,
+    "called": 3,
     "cappt": 0,
-    "handled": 1,
+    "handled": 3,
     "cv": 3
    },
    "line": {
@@ -22337,7 +22337,7 @@
     "handled": 0
    },
    "web": {
-    "leads": 4,
+    "leads": 6,
     "cost": 0,
     "appts": 0,
     "mtgs": 0,
@@ -22666,7 +22666,7 @@
    "appointed": 1
   },
   "2026-09-07": {
-   "called": 50,
+   "called": 62,
    "appointed": 1
   }
  }
