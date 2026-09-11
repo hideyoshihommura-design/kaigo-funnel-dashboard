@@ -1577,15 +1577,12 @@ function apply(from,to){
     }
   }
 }
-/* 表示中のページはブラウザやCDNのキャッシュで古いことがある。
-   クエリを変えて読み直すことで、確実に配信中の最新を取りに行く。
-   ここで押しても再集計は走らない（数字の作り直しはGitHub Actions側）。
-   静的サイトに再集計ボタンは置けない。起動にはトークンが要り、
-   公開ページに置くと誰でも読めてしまうため。 */
-function reloadFresh(){
-  var u = location.pathname + '?t=' + Date.now();
-  location.replace(u);
-}
+/* 「最新を取得」ボタンは廃止した。やっていたのはクエリを変えての
+   再読込（キャッシュ避け）だけで、再集計は走らない。名前から「数字を
+   取り直す」と読めてしまい、押しても数字が変わらないので紛らわしかった。
+   なお静的サイトに再集計ボタンは置けない。起動にはトークンが要り、
+   公開ページに置くと誰でも読めてしまうため。数字の鮮度は下の
+   「数字の更新」の経過時間で判断する。 */
 /* 「数字の更新」がいつかを、経過時間で添える。日時だけだと
    それが今の数字なのか判断できない。 */
 function showAge(){
@@ -2594,7 +2591,6 @@ showAge();
   <input type="date" id="to" value="{period_end.isoformat()}" min="{weeks[0]}" max="{period_end.isoformat()}">
   <button type="button" onclick="onApply()">適用</button>
   <button type="button" class="ghost" onclick="resetRange()">全期間</button>
-  <button type="button" class="ghost" onclick="reloadFresh()">最新を取得</button>
 </div>
 
 <div class="summary">
