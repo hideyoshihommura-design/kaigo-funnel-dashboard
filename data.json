@@ -3677,7 +3677,7 @@
     "handled": 0
    },
    "web": {
-    "leads": 23,
+    "leads": 24,
     "cost": 44291,
     "appts": 0,
     "mtgs": 0,
@@ -5497,14 +5497,14 @@
    "cappts": 0
   },
   "2026-09-11": {
-   "calls": 0,
-   "connected": 0,
+   "calls": 17,
+   "connected": 5,
    "appts": 0,
    "mtgs": 0,
    "called": 0,
-   "leads": 2,
-   "vcalls": 0,
-   "vconn": 0,
+   "leads": 3,
+   "vcalls": 17,
+   "vconn": 5,
    "vcalled": 0,
    "cappts": 0
   }
@@ -22431,7 +22431,7 @@
     "handled": 0
    },
    "web": {
-    "leads": 2,
+    "leads": 3,
     "cost": 0,
     "appts": 0,
     "mtgs": 0,
