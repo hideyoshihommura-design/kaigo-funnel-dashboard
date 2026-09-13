@@ -1,6 +1,6 @@
 {
  "title": "ホリエモンAI学校 介護校 ファネルダッシュボード",
- "generated_at": "2026-09-13",
+ "generated_at": "2026-09-14",
  "week_starts": [
   "2025-09-01",
   "2025-09-08",
@@ -55,7 +55,8 @@
   "2026-08-17",
   "2026-08-24",
   "2026-08-31",
-  "2026-09-07"
+  "2026-09-07",
+  "2026-09-14"
  ],
  "direct": {
   "2025-09-01": {
@@ -3677,7 +3678,7 @@
     "handled": 0
    },
    "web": {
-    "leads": 32,
+    "leads": 33,
     "cost": 44291,
     "appts": 0,
     "mtgs": 0,
@@ -3689,6 +3690,74 @@
     "cappt": 0,
     "handled": 0,
     "cv": 31
+   },
+   "line": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0
+   },
+   "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0
+   },
+   "other": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0
+   }
+  },
+  "2026-09-14": {
+   "event": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0
+   },
+   "web": {
+    "leads": 0,
+    "cost": null,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "cv": null
    },
    "line": {
     "leads": 0,
@@ -4263,6 +4332,16 @@
    "handled": 1
   },
   "2026-09-07": {
+   "leads": 0,
+   "appts": 0,
+   "deals": 0,
+   "won": 0,
+   "won_amount": 0,
+   "called": 0,
+   "cappt": 0,
+   "handled": 0
+  },
+  "2026-09-14": {
    "leads": 0,
    "appts": 0,
    "deals": 0,
@@ -5526,7 +5605,7 @@
    "appts": 0,
    "mtgs": 0,
    "called": 0,
-   "leads": 2,
+   "leads": 3,
    "vcalls": 0,
    "vconn": 0,
    "vcalled": 0,
@@ -22589,7 +22668,7 @@
     "handled": 0
    },
    "web": {
-    "leads": 2,
+    "leads": 3,
     "cost": 0,
     "appts": 0,
     "mtgs": 0,
