@@ -1381,9 +1381,12 @@ def build(token, sheets_token, channel_map, webinar_cfg, campaign_cfg,
         _by_call = ("vendor" if _best[1] else "inhouse") if _best else "none"
         _key = (_row["creator"], _by_call)
         _tally[_key] = _tally.get(_key, 0) + 1
-        if _row["creator"] != _by_call:
+        # 業者に付け替わるものだけ出す。「架電なし」は54件あって
+        # 全部出すと埋もれる。
+        if _row["creator"] != _by_call and _by_call == "vendor":
             _moved.append(f"{_a} {_row['name']} "
-                          f"作成={_row['creator']} 直前架電={_by_call}")
+                          f"作成={_row['creator']} → 業者 "
+                          f"(直前架電 {_best[0]})")
     print("[audit] 面談予約の判定: 作成者ベース → 直前架電ベース",
           file=sys.stderr)
     for _k in sorted(_tally):
