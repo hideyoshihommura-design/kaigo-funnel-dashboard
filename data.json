@@ -3679,7 +3679,7 @@
    },
    "web": {
     "leads": 33,
-    "cost": 44291,
+    "cost": 90014,
     "appts": 0,
     "mtgs": 0,
     "props": 0,
@@ -3689,7 +3689,7 @@
     "called": 0,
     "cappt": 0,
     "handled": 0,
-    "cv": 31
+    "cv": 48
    },
    "line": {
     "leads": 0,
@@ -7472,10 +7472,10 @@
    "cv": 16
   },
   "2026-09-07": {
-   "spend": 44291,
-   "imp": 20165,
-   "clicks": 402,
-   "cv": 31
+   "spend": 90014,
+   "imp": 38912,
+   "clicks": 816,
+   "cv": 48
   }
  },
  "adperf_day": {
@@ -8228,6 +8228,24 @@
    "imp": 8362,
    "clicks": 146,
    "cv": 7
+  },
+  "2026-09-11": {
+   "spend": 14973,
+   "imp": 6773,
+   "clicks": 141,
+   "cv": 6
+  },
+  "2026-09-12": {
+   "spend": 17669,
+   "imp": 6528,
+   "clicks": 145,
+   "cv": 6
+  },
+  "2026-09-13": {
+   "spend": 13081,
+   "imp": 5446,
+   "clicks": 128,
+   "cv": 5
   }
  },
  "ad_day": {
@@ -10499,6 +10517,30 @@
     "imp": 8362,
     "clicks": 146,
     "cv": 7
+   }
+  },
+  "2026-09-11": {
+   "Meta/ウェビナー": {
+    "spend": 14973,
+    "imp": 6773,
+    "clicks": 141,
+    "cv": 6
+   }
+  },
+  "2026-09-12": {
+   "Meta/ウェビナー": {
+    "spend": 17669,
+    "imp": 6528,
+    "clicks": 145,
+    "cv": 6
+   }
+  },
+  "2026-09-13": {
+   "Meta/ウェビナー": {
+    "spend": 13081,
+    "imp": 5446,
+    "clicks": 128,
+    "cv": 5
    }
   }
  },
@@ -22535,7 +22577,7 @@
    },
    "web": {
     "leads": 4,
-    "cost": 0,
+    "cost": 14973,
     "appts": 0,
     "mtgs": 0,
     "props": 0,
@@ -22544,7 +22586,8 @@
     "won_amount": 0,
     "called": 0,
     "cappt": 0,
-    "handled": 0
+    "handled": 0,
+    "cv": 6
    },
    "line": {
     "leads": 0,
@@ -22602,7 +22645,7 @@
    },
    "web": {
     "leads": 5,
-    "cost": 0,
+    "cost": 17669,
     "appts": 0,
     "mtgs": 0,
     "props": 0,
@@ -22611,7 +22654,8 @@
     "won_amount": 0,
     "called": 0,
     "cappt": 0,
-    "handled": 0
+    "handled": 0,
+    "cv": 6
    },
    "line": {
     "leads": 0,
@@ -22669,7 +22713,7 @@
    },
    "web": {
     "leads": 3,
-    "cost": 0,
+    "cost": 13081,
     "appts": 0,
     "mtgs": 0,
     "props": 0,
@@ -22678,7 +22722,8 @@
     "won_amount": 0,
     "called": 0,
     "cappt": 0,
-    "handled": 0
+    "handled": 0,
+    "cv": 5
    },
    "line": {
     "leads": 0,
