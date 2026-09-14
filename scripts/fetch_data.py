@@ -837,7 +837,7 @@ def build(token, sheets_token, channel_map, webinar_cfg, campaign_cfg,
     # コールの記録漏れ・発信着信欄の空白でそのまま結果が狂う（実際に狂った）。
     # 集計期間の頭（PERIOD_START）から出す。
     is_attr = {}
-    attr_audit = []
+    attr_pending = []
     unknown_creators = {}
 
     def dattr(d):
@@ -923,29 +923,21 @@ def build(token, sheets_token, channel_map, webinar_cfg, campaign_cfg,
             creator = str(p.get("hs_created_by_user_id") or "").strip()
             if not creator:
                 unknown_creators["(空)"] = unknown_creators.get("(空)", 0) + 1
-            bucket = "vendor" if creator in vendor_ids else "inhouse"
-            # 【診断】作成者ベースと「予約直前にかけた人」ベースの比較用。
-            # 表示には使わない。判定ロジックを変えてよいか見るためだけ。
-            if appt_day:
-                attr_audit.append({
-                    "appt": appt_day,
-                    "creator": bucket,
-                    "cids": [str(a.get("id")) for a in assoc],
-                    "name": p.get("dealname") or "",
-                })
-            # 面談実施と提案も作成者別に持つ。面談を実施するのは社内のFSだが、
-            # ここで見たいのは「誰が実施したか」ではなく「業者が取った予約が
-            # その後どこまで進んだか」。だから取引の作成者で振り分けるのが正しい。
-            for field, day in (("appts", appt_day),
-                               ("deals", parse_hs_datetime(p.get("createdate"))),
-                               ("mtgs", mtg_day),
-                               ("props", prop_day),
-                               ("wons", won_day if won else None)):
-                if not day or day < PERIOD_START or day > end_date:
-                    continue
-                dattr(day)[bucket][field] += 1
-                if field == "wons":
-                    dattr(day)[bucket]["wonamt"] += amount
+            # 振り分けはコールの記録が要るので、ここでは確定できない
+            # （コールを読むのはこの下の日次架電ブロック）。材料だけ貯めて、
+            # あとでまとめて is_attr に積む。
+            attr_pending.append({
+                "anchor": appt_day,
+                "creator": "vendor" if creator in vendor_ids else "inhouse",
+                "cids": [str(a.get("id")) for a in assoc],
+                "name": p.get("dealname") or "",
+                "amount": amount,
+                "days": (("appts", appt_day),
+                         ("deals", parse_hs_datetime(p.get("createdate"))),
+                         ("mtgs", mtg_day),
+                         ("props", prop_day),
+                         ("wons", won_day if won else None)),
+            })
 
         for a in assoc:
             acid = str(a.get("id"))
@@ -1364,40 +1356,41 @@ def build(token, sheets_token, channel_map, webinar_cfg, campaign_cfg,
         calls_out[_d_iso]["cappts"] = daily_cappts.get(
             dt.date.fromisoformat(_d_iso), 0)
 
-    # ---- 【診断】作成者ベース vs 直前架電ベース ----------------------------
-    # 判定ロジックを「誰が取引を作ったか」から「予約の直前にかけたのは誰か」に
-    # 変えてよいか見るための比較。data.json には入れない。表示も変えない。
-    # 過去に直前架電ベースで作って失敗している（コールの記録漏れで業者ぶんが
-    # 落ちた）ので、今の記録の質で同じことが起きないかを数えるのが目的。
-    _tally = {}
-    _moved = []
-    for _row in attr_audit:
-        _a = _row["appt"]
-        _best = None
-        for _cid in _row["cids"]:
-            for _day, _isv in calls_of_contact.get(_cid, ()):
-                if _day <= _a and (_best is None or _day > _best[0]):
-                    _best = (_day, _isv)
-        _by_call = ("vendor" if _best[1] else "inhouse") if _best else "none"
-        _key = (_row["creator"], _by_call)
-        _tally[_key] = _tally.get(_key, 0) + 1
-        # 業者に付け替わるものだけ出す。「架電なし」は54件あって
-        # 全部出すと埋もれる。
-        if _row["creator"] != _by_call and _by_call == "vendor":
-            _moved.append(f"{_a} {_row['name']} "
-                          f"作成={_row['creator']} → 業者 "
-                          f"(直前架電 {_best[0]})")
-    print("[audit] 面談予約の判定: 作成者ベース → 直前架電ベース",
-          file=sys.stderr)
-    for _k in sorted(_tally):
-        print(f"[audit]   作成={_k[0]:8s} 直前架電={_k[1]:8s} : {_tally[_k]}件",
+    # ---- 面談予約の振り分け ------------------------------------------------
+    # 業者ぶんは「予約が立つ直前（同日を含む）にかけたのが業者か」で決める。
+    # 以前は「誰が取引を作ったか」で見ていたが、業者がアポを取っても取引を
+    # 社内が作ると業者の実績から落ちていた（実測で3件・業者6件→9件）。
+    # 取引作成のルールが守られているかに結果が左右されない。
+    # 業者の架電が無ければ今までどおり社内。区分は2つのまま。
+    #
+    # 一度この方式で作って失敗している（コールの発信・着信欄が空のものを
+    # 落とし、業者の予約2件が「架電なし」に回った）。今はその欄が空でも
+    # 発信として数えているので再現しない。実測でも「作成=業者なのに
+    # 直前架電=なし／社内」は0件だった。
+    attr_moved = []
+    for _row in attr_pending:
+        anchor = _row["anchor"]
+        best = None
+        if anchor:
+            for _cid in _row["cids"]:
+                for _day, _isv in calls_of_contact.get(_cid, ()):
+                    if _day <= anchor and (best is None or _day > best[0]):
+                        best = (_day, _isv)
+        bucket = "vendor" if (best and best[1]) else "inhouse"
+        if bucket == "vendor" and _row["creator"] != "vendor":
+            attr_moved.append(f"{anchor} {_row['name']}（直前架電 {best[0]}）")
+        for field, day in _row["days"]:
+            if not day or day < PERIOD_START or day > end_date:
+                continue
+            dattr(day)[bucket][field] += 1
+            if field == "wons":
+                dattr(day)[bucket]["wonamt"] += _row["amount"]
+    if attr_moved:
+        print(f"[info] 業者の架電から取れたが取引を社内が作った予約が "
+              f"{len(attr_moved)}件あります（業者ぶんに計上しました）:",
               file=sys.stderr)
-    _v_now = sum(n for (c, _), n in _tally.items() if c == "vendor")
-    _v_new = sum(n for (_, b), n in _tally.items() if b == "vendor")
-    print(f"[audit] 業者ぶん 作成者ベース {_v_now}件 → 直前架電ベース "
-          f"{_v_new}件", file=sys.stderr)
-    for _line in _moved[:40]:
-        print(f"[audit]   差分: {_line}", file=sys.stderr)
+        for _line in attr_moved:
+            print(f"[info]   {_line}", file=sys.stderr)
 
     return {
         "title": "ホリエモンAI学校 介護校 ファネルダッシュボード",
