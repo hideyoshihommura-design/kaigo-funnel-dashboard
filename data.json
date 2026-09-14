@@ -338,8 +338,8 @@
     "handled": 2,
     "done": 0,
     "wip": 0,
-    "backlog": 151,
-    "blnomail": 27
+    "backlog": 134,
+    "blnomail": 12
    },
    "web": {
     "leads": 1,
@@ -531,8 +531,8 @@
     "handled": 2,
     "done": 0,
     "wip": 1,
-    "backlog": 16,
-    "blnomail": 2,
+    "backlog": 14,
+    "blnomail": 0,
     "cv": null
    },
    "line": {
@@ -1130,8 +1130,8 @@
     "handled": 8,
     "done": 0,
     "wip": 0,
-    "backlog": 129,
-    "blnomail": 21
+    "backlog": 113,
+    "blnomail": 5
    },
    "web": {
     "leads": 3,
@@ -1218,8 +1218,8 @@
     "handled": 0,
     "done": 0,
     "wip": 0,
-    "backlog": 15,
-    "blnomail": 3
+    "backlog": 14,
+    "blnomail": 2
    },
    "web": {
     "leads": 1,
@@ -1394,8 +1394,8 @@
     "handled": 1,
     "done": 0,
     "wip": 0,
-    "backlog": 29,
-    "blnomail": 4
+    "backlog": 28,
+    "blnomail": 3
    },
    "web": {
     "leads": 0,
@@ -2274,8 +2274,8 @@
     "handled": 3,
     "done": 1,
     "wip": 0,
-    "backlog": 173,
-    "blnomail": 21
+    "backlog": 154,
+    "blnomail": 2
    },
    "web": {
     "leads": 1,
@@ -2819,8 +2819,8 @@
     "handled": 3,
     "done": 0,
     "wip": 2,
-    "backlog": 30,
-    "blnomail": 1,
+    "backlog": 29,
+    "blnomail": 0,
     "cv": 45
    },
    "line": {
@@ -2907,8 +2907,8 @@
     "handled": 6,
     "done": 0,
     "wip": 3,
-    "backlog": 53,
-    "blnomail": 4,
+    "backlog": 50,
+    "blnomail": 1,
     "cv": 92
    },
    "line": {
@@ -2995,8 +2995,8 @@
     "handled": 6,
     "done": 1,
     "wip": 3,
-    "backlog": 39,
-    "blnomail": 1,
+    "backlog": 38,
+    "blnomail": 0,
     "cv": 65
    },
    "line": {
@@ -3083,8 +3083,8 @@
     "handled": 3,
     "done": 0,
     "wip": 2,
-    "backlog": 20,
-    "blnomail": 1,
+    "backlog": 19,
+    "blnomail": 0,
     "cv": 32
    },
    "line": {
@@ -3347,8 +3347,8 @@
     "handled": 12,
     "done": 1,
     "wip": 9,
-    "backlog": 20,
-    "blnomail": 2,
+    "backlog": 18,
+    "blnomail": 0,
     "cv": 33
    },
    "line": {
@@ -3435,8 +3435,8 @@
     "handled": 29,
     "done": 5,
     "wip": 23,
-    "backlog": 26,
-    "blnomail": 1,
+    "backlog": 25,
+    "blnomail": 0,
     "cv": 74
    },
    "line": {
@@ -3523,8 +3523,8 @@
     "handled": 35,
     "done": 3,
     "wip": 31,
-    "backlog": 46,
-    "blnomail": 5,
+    "backlog": 43,
+    "blnomail": 2,
     "cv": 128
    },
    "line": {
@@ -3963,8 +3963,8 @@
     "handled": 31,
     "done": 4,
     "wip": 26,
-    "backlog": 40,
-    "blnomail": 2,
+    "backlog": 39,
+    "blnomail": 1,
     "cv": 71
    },
    "line": {
@@ -4046,13 +4046,13 @@
     "deals": 1,
     "won": 0,
     "won_amount": 0,
-    "called": 21,
+    "called": 24,
     "cappt": 0,
-    "handled": 21,
-    "done": 1,
-    "wip": 20,
-    "backlog": 22,
-    "blnomail": 2,
+    "handled": 24,
+    "done": 2,
+    "wip": 22,
+    "backlog": 17,
+    "blnomail": 0,
     "cv": 44
    },
    "line": {
@@ -4122,8 +4122,8 @@
     "handled": 157,
     "done": 63,
     "wip": 92,
-    "backlog": 387,
-    "blnomail": 45
+    "backlog": 363,
+    "blnomail": 22
    },
    "web": {
     "leads": 40,
@@ -4227,8 +4227,8 @@
     "handled": 22,
     "done": 2,
     "wip": 20,
-    "backlog": 15,
-    "blnomail": 2,
+    "backlog": 13,
+    "blnomail": 0,
     "cv": 56
    },
    "line": {
@@ -4315,8 +4315,8 @@
     "handled": 3,
     "done": 1,
     "wip": 2,
-    "backlog": 33,
-    "blnomail": 1,
+    "backlog": 32,
+    "blnomail": 0,
     "cv": 47
    },
    "line": {
@@ -4403,8 +4403,8 @@
     "handled": 19,
     "done": 8,
     "wip": 10,
-    "backlog": 22,
-    "blnomail": 1,
+    "backlog": 21,
+    "blnomail": 0,
     "cv": 34
    },
    "line": {
@@ -4491,7 +4491,7 @@
     "handled": 14,
     "done": 5,
     "wip": 7,
-    "backlog": 20,
+    "backlog": 19,
     "blnomail": 0,
     "cv": 49
    },
@@ -4667,8 +4667,8 @@
     "handled": 8,
     "done": 2,
     "wip": 6,
-    "backlog": 3,
-    "blnomail": 2,
+    "backlog": 1,
+    "blnomail": 0,
     "cv": 16
    },
    "line": {
@@ -6932,15 +6932,15 @@
    "cappts": 0
   },
   "2026-09-14": {
-   "calls": 16,
+   "calls": 19,
    "connected": 2,
    "appts": 1,
    "mtgs": 0,
-   "called": 14,
+   "called": 17,
    "leads": 1,
-   "vcalls": 16,
+   "vcalls": 19,
    "vconn": 2,
-   "vcalled": 16,
+   "vcalled": 19,
    "cappts": 0
   }
  },
@@ -11892,8 +11892,8 @@
     "handled": 2,
     "done": 0,
     "wip": 0,
-    "backlog": 151,
-    "blnomail": 27
+    "backlog": 134,
+    "blnomail": 12
    },
    "web": {
     "leads": 1,
@@ -11996,8 +11996,8 @@
     "handled": 2,
     "done": 0,
     "wip": 1,
-    "backlog": 16,
-    "blnomail": 2
+    "backlog": 14,
+    "blnomail": 0
    },
    "line": {
     "leads": 0,
@@ -12414,8 +12414,8 @@
     "handled": 4,
     "done": 0,
     "wip": 0,
-    "backlog": 115,
-    "blnomail": 17
+    "backlog": 100,
+    "blnomail": 2
    },
    "web": {
     "leads": 3,
@@ -12501,8 +12501,8 @@
     "handled": 4,
     "done": 0,
     "wip": 0,
-    "backlog": 14,
-    "blnomail": 4
+    "backlog": 13,
+    "blnomail": 3
    },
    "web": {
     "leads": 0,
@@ -12588,8 +12588,8 @@
     "handled": 0,
     "done": 0,
     "wip": 0,
-    "backlog": 15,
-    "blnomail": 3
+    "backlog": 14,
+    "blnomail": 2
    },
    "web": {
     "leads": 1,
@@ -12762,8 +12762,8 @@
     "handled": 1,
     "done": 0,
     "wip": 0,
-    "backlog": 29,
-    "blnomail": 4
+    "backlog": 28,
+    "blnomail": 3
    },
    "web": {
     "leads": 0,
@@ -13023,8 +13023,8 @@
     "handled": 0,
     "done": 0,
     "wip": 0,
-    "backlog": 45,
-    "blnomail": 6
+    "backlog": 39,
+    "blnomail": 0
    },
    "web": {
     "leads": 0,
@@ -13110,8 +13110,8 @@
     "handled": 3,
     "done": 1,
     "wip": 0,
-    "backlog": 57,
-    "blnomail": 2
+    "backlog": 56,
+    "blnomail": 1
    },
    "web": {
     "leads": 0,
@@ -13197,8 +13197,8 @@
     "handled": 0,
     "done": 0,
     "wip": 0,
-    "backlog": 71,
-    "blnomail": 13
+    "backlog": 59,
+    "blnomail": 1
    },
    "web": {
     "leads": 1,
@@ -14001,8 +14001,8 @@
     "handled": 3,
     "done": 0,
     "wip": 2,
-    "backlog": 7,
-    "blnomail": 1,
+    "backlog": 6,
+    "blnomail": 0,
     "cv": 12
    },
    "line": {
@@ -14177,8 +14177,8 @@
     "handled": 0,
     "done": 0,
     "wip": 0,
-    "backlog": 7,
-    "blnomail": 1,
+    "backlog": 6,
+    "blnomail": 0,
     "cv": 8
    },
    "line": {
@@ -14265,8 +14265,8 @@
     "handled": 2,
     "done": 0,
     "wip": 1,
-    "backlog": 13,
-    "blnomail": 1,
+    "backlog": 12,
+    "blnomail": 0,
     "cv": 22
    },
    "line": {
@@ -14705,8 +14705,8 @@
     "handled": 1,
     "done": 0,
     "wip": 1,
-    "backlog": 12,
-    "blnomail": 2,
+    "backlog": 11,
+    "blnomail": 1,
     "cv": 17
    },
    "line": {
@@ -15321,8 +15321,8 @@
     "handled": 0,
     "done": 0,
     "wip": 0,
-    "backlog": 3,
-    "blnomail": 1,
+    "backlog": 2,
+    "blnomail": 0,
     "cv": 4
    },
    "line": {
@@ -15409,8 +15409,8 @@
     "handled": 0,
     "done": 0,
     "wip": 0,
-    "backlog": 2,
-    "blnomail": 1,
+    "backlog": 1,
+    "blnomail": 0,
     "cv": 2
    },
    "line": {
@@ -17609,8 +17609,8 @@
     "handled": 0,
     "done": 0,
     "wip": 0,
-    "backlog": 1,
-    "blnomail": 1,
+    "backlog": 0,
+    "blnomail": 0,
     "cv": 0
    },
    "line": {
@@ -17697,8 +17697,8 @@
     "handled": 2,
     "done": 0,
     "wip": 2,
-    "backlog": 3,
-    "blnomail": 1,
+    "backlog": 2,
+    "blnomail": 0,
     "cv": 8
    },
    "line": {
@@ -18225,8 +18225,8 @@
     "handled": 9,
     "done": 2,
     "wip": 6,
-    "backlog": 5,
-    "blnomail": 1,
+    "backlog": 4,
+    "blnomail": 0,
     "cv": 22
    },
    "line": {
@@ -18577,8 +18577,8 @@
     "handled": 7,
     "done": 2,
     "wip": 5,
-    "backlog": 6,
-    "blnomail": 1,
+    "backlog": 5,
+    "blnomail": 0,
     "cv": 23
    },
    "line": {
@@ -18753,8 +18753,8 @@
     "handled": 5,
     "done": 0,
     "wip": 5,
-    "backlog": 11,
-    "blnomail": 2,
+    "backlog": 10,
+    "blnomail": 1,
     "cv": 17
    },
    "line": {
@@ -18929,8 +18929,8 @@
     "handled": 6,
     "done": 0,
     "wip": 6,
-    "backlog": 3,
-    "blnomail": 1,
+    "backlog": 2,
+    "blnomail": 0,
     "cv": 20
    },
    "line": {
@@ -22009,8 +22009,8 @@
     "handled": 6,
     "done": 2,
     "wip": 4,
-    "backlog": 10,
-    "blnomail": 1,
+    "backlog": 9,
+    "blnomail": 0,
     "cv": 18
    },
    "line": {
@@ -22185,8 +22185,8 @@
     "handled": 4,
     "done": 0,
     "wip": 4,
-    "backlog": 5,
-    "blnomail": 1,
+    "backlog": 4,
+    "blnomail": 0,
     "cv": 8
    },
    "line": {
@@ -22361,8 +22361,8 @@
     "handled": 1,
     "done": 0,
     "wip": 1,
-    "backlog": 4,
-    "blnomail": 1,
+    "backlog": 3,
+    "blnomail": 0,
     "cv": 4
    },
    "line": {
@@ -22620,12 +22620,12 @@
     "deals": 1,
     "won": 0,
     "won_amount": 0,
-    "called": 5,
+    "called": 8,
     "cappt": 0,
-    "handled": 5,
-    "done": 1,
-    "wip": 4,
-    "backlog": 4,
+    "handled": 8,
+    "done": 2,
+    "wip": 6,
+    "backlog": 1,
     "blnomail": 0,
     "cv": 10
    },
@@ -23312,8 +23312,8 @@
     "handled": 157,
     "done": 63,
     "wip": 92,
-    "backlog": 387,
-    "blnomail": 45
+    "backlog": 363,
+    "blnomail": 22
    },
    "web": {
     "leads": 7,
@@ -23417,8 +23417,8 @@
     "handled": 2,
     "done": 0,
     "wip": 2,
-    "backlog": 4,
-    "blnomail": 1,
+    "backlog": 3,
+    "blnomail": 0,
     "cv": 5
    },
    "line": {
@@ -23681,8 +23681,8 @@
     "handled": 10,
     "done": 1,
     "wip": 9,
-    "backlog": 1,
-    "blnomail": 1,
+    "backlog": 0,
+    "blnomail": 0,
     "cv": 17
    },
    "line": {
@@ -24121,8 +24121,8 @@
     "handled": 1,
     "done": 1,
     "wip": 0,
-    "backlog": 5,
-    "blnomail": 1,
+    "backlog": 4,
+    "blnomail": 0,
     "cv": 5
    },
    "line": {
@@ -24649,8 +24649,8 @@
     "handled": 2,
     "done": 0,
     "wip": 1,
-    "backlog": 6,
-    "blnomail": 1,
+    "backlog": 5,
+    "blnomail": 0,
     "cv": 7
    },
    "line": {
@@ -25441,7 +25441,7 @@
     "handled": 3,
     "done": 2,
     "wip": 1,
-    "backlog": 4,
+    "backlog": 3,
     "blnomail": 0,
     "cv": 11
    },
@@ -26673,8 +26673,8 @@
     "handled": 3,
     "done": 1,
     "wip": 2,
-    "backlog": 1,
-    "blnomail": 1,
+    "backlog": 0,
+    "blnomail": 0,
     "cv": 3
    },
    "line": {
@@ -26761,8 +26761,8 @@
     "handled": 1,
     "done": 1,
     "wip": 0,
-    "backlog": 1,
-    "blnomail": 1,
+    "backlog": 0,
+    "blnomail": 0,
     "cv": 4
    },
    "line": {
@@ -28080,7 +28080,7 @@
    "appointed": 1
   },
   "2026-09-14": {
-   "called": 14,
+   "called": 17,
    "appointed": 0
   }
  }
