@@ -8455,24 +8455,6 @@
   },
   "2026-09-09": {
    "vendor": {
-    "appts": 0,
-    "deals": 0,
-    "mtgs": 0,
-    "props": 0,
-    "wons": 0,
-    "wonamt": 0
-   },
-   "inhouse": {
-    "appts": 2,
-    "deals": 2,
-    "mtgs": 1,
-    "props": 1,
-    "wons": 0,
-    "wonamt": 0
-   }
-  },
-  "2026-09-14": {
-   "vendor": {
     "appts": 1,
     "deals": 1,
     "mtgs": 1,
@@ -8481,8 +8463,26 @@
     "wonamt": 0
    },
    "inhouse": {
-    "appts": 2,
-    "deals": 2,
+    "appts": 1,
+    "deals": 1,
+    "mtgs": 0,
+    "props": 0,
+    "wons": 0,
+    "wonamt": 0
+   }
+  },
+  "2026-09-14": {
+   "vendor": {
+    "appts": 3,
+    "deals": 3,
+    "mtgs": 1,
+    "props": 1,
+    "wons": 0,
+    "wonamt": 0
+   },
+   "inhouse": {
+    "appts": 0,
+    "deals": 0,
     "mtgs": 0,
     "props": 0,
     "wons": 0,
