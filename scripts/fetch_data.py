@@ -691,7 +691,8 @@ def fetch_expo_costs(token):
 
 
 def build(token, sheets_token, channel_map, webinar_cfg, campaign_cfg,
-          vendor_ids, end_date):
+          vendor_ids, end_date, deal_overrides=None):
+    deal_overrides = deal_overrides or {}
     channels = channel_map["channels"]
     route_to_channel = {}
     for key, spec in channels.items():
@@ -911,6 +912,17 @@ def build(token, sheets_token, channel_map, webinar_cfg, campaign_cfg,
             # （実際に2件あり、上部の成約数と1件ずれていた）。
             # 上部と同じ won / amount を使うことで定義のズレを作らない。
             won_day = parse_hs_datetime(p.get(f"hs_v2_date_entered_{STAGE_WON}"))
+            # 実態と違う日付が記録された取引の手動上書き。
+            # HubSpotのステージ入り日は読み取り専用で直せないため。
+            _ov = deal_overrides.get(str(deal.get("id")))
+            if _ov and _ov.get("won"):
+                _new = parse_hs_date(_ov["won"])
+                if _new and _new != won_day:
+                    print(f"[info] 成約日を手動上書き: "
+                          f"{p.get('dealname') or deal.get('id')} "
+                          f"{won_day} → {_new}"
+                          f"（{_ov.get('_reason', '')}）", file=sys.stderr)
+                    won_day = _new
             if won and won_day:
                 daily_wons[won_day] = daily_wons.get(won_day, 0) + 1
                 daily_wonamt[won_day] = daily_wonamt.get(won_day, 0) + amount
@@ -1473,6 +1485,8 @@ def main():
     ap.add_argument("--webinars", default="config/webinars.json")
     ap.add_argument("--ad-campaigns", default="config/ad_campaigns.json")
     ap.add_argument("--callers", default="config/callers.json")
+    ap.add_argument("--deal-overrides",
+                    default="config/deal_date_overrides.json")
     ap.add_argument("--previous", help="前回の data.json（妥当性チェックの比較対象）")
     ap.add_argument("--end", help="集計終端 YYYY-MM-DD（既定: 今日 JST）")
     args = ap.parse_args()
@@ -1517,6 +1531,13 @@ def main():
             "架電由来の切り分けで業者ぶんが常に0件になります。"
         )
 
+    # 取引の日付の手動上書き。HubSpotのステージ入り日は読み取り専用なので、
+    # 実態と違う日付が記録された取引だけをここで直す。任意。
+    deal_overrides = {}
+    if os.path.exists(args.deal_overrides):
+        with open(args.deal_overrides, encoding="utf-8") as f:
+            deal_overrides = (json.load(f).get("overrides") or {})
+
     previous = None
     if args.previous and os.path.exists(args.previous):
         try:
@@ -1527,7 +1548,7 @@ def main():
 
     sheets_token = google_access_token(sa_json)
     data = build(token, sheets_token, channel_map, webinar_cfg,
-                 campaign_cfg, vendor_ids, end_date)
+                 campaign_cfg, vendor_ids, end_date, deal_overrides)
 
     if not sanity_check(data, previous):
         sys.exit(2)
