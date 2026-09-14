@@ -7215,6 +7215,12 @@
    "wons": 0,
    "wonamt": 0
   },
+  "2026-08-31": {
+   "mtgs": 0,
+   "props": 0,
+   "wons": 1,
+   "wonamt": 550000
+  },
   "2026-09-01": {
    "mtgs": 1,
    "props": 1,
@@ -7226,12 +7232,6 @@
    "props": 1,
    "wons": 0,
    "wonamt": 0
-  },
-  "2026-09-04": {
-   "mtgs": 0,
-   "props": 0,
-   "wons": 1,
-   "wonamt": 550000
   },
   "2026-09-09": {
    "mtgs": 1,
@@ -8381,6 +8381,24 @@
     "wonamt": 0
    }
   },
+  "2026-08-31": {
+   "vendor": {
+    "appts": 0,
+    "deals": 0,
+    "mtgs": 0,
+    "props": 0,
+    "wons": 0,
+    "wonamt": 0
+   },
+   "inhouse": {
+    "appts": 0,
+    "deals": 0,
+    "mtgs": 0,
+    "props": 0,
+    "wons": 1,
+    "wonamt": 550000
+   }
+  },
   "2026-09-01": {
    "vendor": {
     "appts": 0,
@@ -8415,24 +8433,6 @@
     "props": 0,
     "wons": 0,
     "wonamt": 0
-   }
-  },
-  "2026-09-04": {
-   "vendor": {
-    "appts": 0,
-    "deals": 0,
-    "mtgs": 0,
-    "props": 0,
-    "wons": 0,
-    "wonamt": 0
-   },
-   "inhouse": {
-    "appts": 0,
-    "deals": 0,
-    "mtgs": 0,
-    "props": 0,
-    "wons": 1,
-    "wonamt": 550000
    }
   },
   "2026-09-07": {
