@@ -112,6 +112,12 @@ NO_CAP_DISPOSITIONS = {
 # 「通算3コールで追い切り」。
 CALL_CAP = 3
 
+# 電話番号が入りうるプロパティ。1つでも埋まっていれば架電可能とみなす。
+# phone / mobilephone だけを見ると、実際にはかけられる人を「番号なし」と
+# 数えてしまう（代表番号(検索)に1,300件以上入っている）。
+PHONE_PROPS = ("phone", "mobilephone", "denwabangou",
+               "daihyoubangoukensaku", "tel")
+
 KNOWN_NOT_CONNECTED_PREFIX = {
     "73a0d17f", "b2cf5968", "a4c4c377", "dd9628ed", "9d9162e7",
     "6590e4e2", "17b47fee", "980c20eb", "97db3e14", "c8088d85", "82438db7",
@@ -301,7 +307,11 @@ def fetch_contacts(token):
     route が空のコンタクトはリード数に含めない（週次表・展示会表とも同じ定義）。
     """
     groups = [{"filters": [{"propertyName": "route", "operator": "HAS_PROPERTY"}]}]
-    props = ["hs_object_id", "route", "createdate", "kakutokubishokaicvbi"]
+    # 電話番号は5項目に散っている。未消化残高から「かけようがない人」を
+    # 外すのに使う。1つでも埋まっていれば架電可能とみなす。
+    # 代表番号(検索)＝会社の代表番号なので、本人の番号が無くてもかけられる。
+    props = ["hs_object_id", "route", "createdate", "kakutokubishokaicvbi",
+             *PHONE_PROPS]
     rows = hs_search_all(token, "contacts", groups, props)
     print(f"[info] contacts(route有): {len(rows)}件", file=sys.stderr)
     return rows
@@ -709,7 +719,10 @@ def build(token, sheets_token, channel_map, webinar_cfg, campaign_cfg,
         if ch is None:
             unknown_routes[route] = unknown_routes.get(route, 0) + 1
             continue
-        cinfo[str(c["id"])] = {"date": d, "route": route, "channel": ch}
+        cinfo[str(c["id"])] = {
+            "date": d, "route": route, "channel": ch,
+            "phone": any((p.get(x) or "").strip() for x in PHONE_PROPS),
+        }
     if unknown_routes:
         warn(
             "channel_map.json に無い route があります（どのチャネルにも入れていません）: "
@@ -736,14 +749,14 @@ def build(token, sheets_token, channel_map, webinar_cfg, campaign_cfg,
         w: {k: {"leads": 0, "cost": 0, "appts": 0, "mtgs": 0, "props": 0,
                 "deals": 0, "won": 0, "won_amount": 0,
                 "called": 0, "cappt": 0, "handled": 0,
-                "done": 0, "wip": 0}
+                "done": 0, "wip": 0, "backlog": 0}
             for k in ["event", "web", "line", "referral", "other"]}
         for w in week_starts
     }
     agency = {
         w: {"leads": 0, "appts": 0, "deals": 0, "won": 0, "won_amount": 0,
             "called": 0, "cappt": 0, "handled": 0,
-                "done": 0, "wip": 0}
+                "done": 0, "wip": 0, "backlog": 0}
         for w in week_starts
     }
 
@@ -758,7 +771,7 @@ def build(token, sheets_token, channel_map, webinar_cfg, campaign_cfg,
             k: {"leads": 0, "cost": 0, "appts": 0, "mtgs": 0, "props": 0,
                 "deals": 0, "won": 0, "won_amount": 0,
                 "called": 0, "cappt": 0, "handled": 0,
-                "done": 0, "wip": 0}
+                "done": 0, "wip": 0, "backlog": 0}
             for k in CHANNELS})
 
     def dday_agency(d):
@@ -766,7 +779,7 @@ def build(token, sheets_token, channel_map, webinar_cfg, campaign_cfg,
             d.isoformat(),
             {"leads": 0, "appts": 0, "deals": 0, "won": 0, "won_amount": 0,
              "called": 0, "cappt": 0, "handled": 0,
-                "done": 0, "wip": 0})
+                "done": 0, "wip": 0, "backlog": 0})
 
     # --- リード数
     route_leads_total = {}
@@ -1247,11 +1260,20 @@ def build(token, sheets_token, channel_map, webinar_cfg, campaign_cfg,
         # 消化＝架電したか、商談に行ったか。商談まで行ったなら手はついている
         # ので未消化に数えない。webから自分で予約を入れて面談まで進む人が
         # いるため、架電済みだけを分子にすると彼らが未消化に回る。
-        if not first and not appt_days:
-            continue
         d, ch = info["date"], info["channel"]
         mon = monday(d)
         if mon not in weekset:
+            continue
+        if not first and not appt_days:
+            # 未消化残高。電話番号がどこにも無い人はここに数えない。
+            # かけようがない相手を在庫に積むと、架電チームへの指示として
+            # 使えない数字になる。
+            if info.get("phone"):
+                slot0 = agency[mon] if ch == "agency" else direct[mon][ch]
+                dslot0 = (dday_agency(d) if ch == "agency"
+                          else dday_direct(d)[ch])
+                slot0["backlog"] += 1
+                dslot0["backlog"] += 1
             continue
         # 架電→商談 の分子。初回架電より前に立った予約は架電の成果ではない
         # （webの自主予約や展示会での直接アポ）。ここからは外す。

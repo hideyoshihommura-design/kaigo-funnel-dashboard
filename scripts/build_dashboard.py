@@ -2192,7 +2192,7 @@ def render(data):
     # リードも予約も実施も成約も同じ集団に載っている。だから段階間の率が
     # 成立する。calls / fs / is_attr はイベント軸なので**ここに混ぜてはいけない**。
     FU_SUM = ('leads', 'appts', 'mtgs', 'props', 'won', 'won_amount',
-              'called', 'cappt', 'handled', 'done', 'wip')
+              'called', 'cappt', 'handled', 'done', 'wip', 'backlog')
     FU_F = FU_SUM + ('cost', 'cvden')
     fu_day_src = data.get('direct_day') or {}
     fu_keys = month_keys(fu_day_src)
@@ -2251,9 +2251,13 @@ def render(data):
         # 率ではなく残高で出す。率だと仕事の大きさの順位が逆になる。
         # 2025-12は消化率1.9%で最悪に見えるが残り51件、2026-07は26.3%で
         # 良く見えるが残り588件。手を打つべきは後者。
-        # 残高は横に足せる（合計＝総在庫1,709件）が、率は足せない。
-        # 消化済みの行は要らない（リード数 − 残高 で読める）。
-        ('未消化残高', lambda v: (v.get('leads', 0) - v.get('handled', 0)),
+        # 残高は横に足せるが、率は足せない。
+        #
+        # 集計側（backlog）で数える。「リード数 − 消化済み」で引き算していたが、
+        # それだと電話番号がどこにも無い人が在庫に入る。かけようがない相手を
+        # 積むと架電チームへの指示として使えない。そのぶん
+        # リード数 = 架電件数 + 残高 にはならなくなる。
+        ('未消化残高', lambda v: v.get('backlog'),
          f_int, d_num, True, False, False),
         ('面談予約', lambda v: v.get('appts'), f_int, d_num, False, False,
          False),
