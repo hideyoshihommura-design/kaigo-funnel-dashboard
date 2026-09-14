@@ -3820,12 +3820,12 @@
     "deals": 1,
     "won": 0,
     "won_amount": 0,
-    "called": 18,
+    "called": 20,
     "cappt": 0,
-    "handled": 19,
+    "handled": 21,
     "done": 0,
-    "wip": 18,
-    "backlog": 24,
+    "wip": 20,
+    "backlog": 22,
     "cv": 44
    },
    "line": {
@@ -6602,15 +6602,15 @@
    "cappts": 0
   },
   "2026-09-14": {
-   "calls": 12,
+   "calls": 14,
    "connected": 2,
    "appts": 1,
    "mtgs": 0,
-   "called": 11,
+   "called": 13,
    "leads": 1,
-   "vcalls": 12,
+   "vcalls": 14,
    "vconn": 2,
-   "vcalled": 12,
+   "vcalled": 14,
    "cappts": 0
   }
  },
@@ -21679,12 +21679,12 @@
     "deals": 1,
     "won": 0,
     "won_amount": 0,
-    "called": 2,
+    "called": 4,
     "cappt": 0,
-    "handled": 3,
+    "handled": 5,
     "done": 0,
-    "wip": 2,
-    "backlog": 6,
+    "wip": 4,
+    "backlog": 4,
     "cv": 10
    },
    "line": {
@@ -26827,7 +26827,7 @@
    "appointed": 1
   },
   "2026-09-14": {
-   "called": 11,
+   "called": 13,
    "appointed": 0
   }
  }
