@@ -837,6 +837,7 @@ def build(token, sheets_token, channel_map, webinar_cfg, campaign_cfg,
     # コールの記録漏れ・発信着信欄の空白でそのまま結果が狂う（実際に狂った）。
     # 集計期間の頭（PERIOD_START）から出す。
     is_attr = {}
+    attr_audit = []
     unknown_creators = {}
 
     def dattr(d):
@@ -923,6 +924,15 @@ def build(token, sheets_token, channel_map, webinar_cfg, campaign_cfg,
             if not creator:
                 unknown_creators["(空)"] = unknown_creators.get("(空)", 0) + 1
             bucket = "vendor" if creator in vendor_ids else "inhouse"
+            # 【診断】作成者ベースと「予約直前にかけた人」ベースの比較用。
+            # 表示には使わない。判定ロジックを変えてよいか見るためだけ。
+            if appt_day:
+                attr_audit.append({
+                    "appt": appt_day,
+                    "creator": bucket,
+                    "cids": [str(a.get("id")) for a in assoc],
+                    "name": p.get("dealname") or "",
+                })
             # 面談実施と提案も作成者別に持つ。面談を実施するのは社内のFSだが、
             # ここで見たいのは「誰が実施したか」ではなく「業者が取った予約が
             # その後どこまで進んだか」。だから取引の作成者で振り分けるのが正しい。
@@ -1049,6 +1059,7 @@ def build(token, sheets_token, channel_map, webinar_cfg, campaign_cfg,
     # コンタクトごとの全架電日。「その日の架電から取れた予約」を出すのに、
     # 初回架電日だけでは足りない（予約の直前にかけた日を知る必要がある）。
     call_days_of_contact = {}
+    calls_of_contact = {}
     # 消化／着手中の判定用。通算の架電回数、付いたコール結果の全部、
     # 最新のコール結果。
     call_count_of_contact = {}
@@ -1087,6 +1098,9 @@ def build(token, sheets_token, channel_map, webinar_cfg, campaign_cfg,
             prev = first_call_of_contact.get(cid)
             first_call_of_contact[cid] = ts if prev is None else min(prev, ts)
             call_days_of_contact.setdefault(cid, set()).add(ts)
+            # 【診断】予約直前にかけたのが業者か社内かを見るため、日付と
+            # かけた人の区分を対で持つ。
+            calls_of_contact.setdefault(cid, []).append((ts, is_vendor))
             call_count_of_contact[cid] = call_count_of_contact.get(cid, 0) + 1
             if disp:
                 disps_of_contact.setdefault(cid, set()).add(disp)
@@ -1349,6 +1363,38 @@ def build(token, sheets_token, channel_map, webinar_cfg, campaign_cfg,
     for _d_iso in calls_out:
         calls_out[_d_iso]["cappts"] = daily_cappts.get(
             dt.date.fromisoformat(_d_iso), 0)
+
+    # ---- 【診断】作成者ベース vs 直前架電ベース ----------------------------
+    # 判定ロジックを「誰が取引を作ったか」から「予約の直前にかけたのは誰か」に
+    # 変えてよいか見るための比較。data.json には入れない。表示も変えない。
+    # 過去に直前架電ベースで作って失敗している（コールの記録漏れで業者ぶんが
+    # 落ちた）ので、今の記録の質で同じことが起きないかを数えるのが目的。
+    _tally = {}
+    _moved = []
+    for _row in attr_audit:
+        _a = _row["appt"]
+        _best = None
+        for _cid in _row["cids"]:
+            for _day, _isv in calls_of_contact.get(_cid, ()):
+                if _day <= _a and (_best is None or _day > _best[0]):
+                    _best = (_day, _isv)
+        _by_call = ("vendor" if _best[1] else "inhouse") if _best else "none"
+        _key = (_row["creator"], _by_call)
+        _tally[_key] = _tally.get(_key, 0) + 1
+        if _row["creator"] != _by_call:
+            _moved.append(f"{_a} {_row['name']} "
+                          f"作成={_row['creator']} 直前架電={_by_call}")
+    print("[audit] 面談予約の判定: 作成者ベース → 直前架電ベース",
+          file=sys.stderr)
+    for _k in sorted(_tally):
+        print(f"[audit]   作成={_k[0]:8s} 直前架電={_k[1]:8s} : {_tally[_k]}件",
+              file=sys.stderr)
+    _v_now = sum(n for (c, _), n in _tally.items() if c == "vendor")
+    _v_new = sum(n for (_, b), n in _tally.items() if b == "vendor")
+    print(f"[audit] 業者ぶん 作成者ベース {_v_now}件 → 直前架電ベース "
+          f"{_v_new}件", file=sys.stderr)
+    for _line in _moved[:40]:
+        print(f"[audit]   差分: {_line}", file=sys.stderr)
 
     return {
         "title": "ホリエモンAI学校 介護校 ファネルダッシュボード",
