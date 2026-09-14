@@ -2035,13 +2035,41 @@ def render(data):
         # 同じ月に分子と分母がそろわない（2025-11は面談実施0で成約1、
         # 2026-02と2026-03は1/1で100%になる）。正しい実施→成約率は
         # コホート軸の月次ファネルにある。
-        fs_mk = month_keys(fsd)
-        fs_mo = {mk: {f: 0 for f in FS_FIELDS} for mk in fs_mk}
+        #
+        # 架電と面談予約もここに入れる。どれも「そのできごとが起きた月」で
+        # 数えるイベント軸なので、1つの表にまとまる。
+        # 月次KPI（獲得月ベース）では「今月何件成約したか」が読めない
+        # （9/4の成約は8月に獲得したリードなので8月の列に載る）。
+        # 架電は IS活動量では週次なので、月で見たいときはこちら。
+        # 面談予約は「予約が入った月」。どこにも無かった。
+        FSM_F = FS_FIELDS + ("calls", "called", "appts")
+        fs_day_src = {**{k: None for k in fsd},
+                      **{k: None for k in (data.get("calls") or {})},
+                      **{k: None for k in (data.get("is_attr") or {})}}
+        fs_mk = month_keys(fs_day_src)
+        fs_mo = {mk: {f: 0 for f in FSM_F} for mk in fs_mk}
         for fs_d, fs_v in fsd.items():
             slot = fs_mo[fs_d[:7]]
             for f in FS_FIELDS:
                 slot[f] += fs_v.get(f, 0)
+        for fs_d, fs_v in (data.get("calls") or {}).items():
+            slot = fs_mo[fs_d[:7]]
+            slot["calls"] += fs_v.get("calls", 0)
+            slot["called"] += fs_v.get("called", 0)
+        # 面談予約は is_attr から。calls[*]["appts"] はコンタクト未紐付けの
+        # 取引も入るので、月次KPIの面談予約と総数が合わなくなる。
+        for fs_d, fs_v in (data.get("is_attr") or {}).items():
+            slot = fs_mo[fs_d[:7]]
+            slot["appts"] += sum((fs_v.get(b) or {}).get("appts", 0)
+                                 for b in ATTR_KEYS)
+        fs_t = {f: sum(fs_mo[mk][f] for mk in fs_mk) for f in FSM_F}
         fs_mrows = [
+            ("架電数", lambda v: v.get("calls"), f_int, d_num, False, False,
+             False),
+            ("架電件数", lambda v: v.get("called"), f_int, d_num, True, False,
+             True),
+            ("面談予約", lambda v: v.get("appts"), f_int, d_num, True, False,
+             True),
             ("面談実施", lambda v: v.get("mtgs"), f_int, d_num, True, False,
              False),
             ("提案", lambda v: v.get("props"), f_int, d_num, False, True,
@@ -2052,13 +2080,13 @@ def render(data):
              False),
         ]
         fs_section = f"""
-<h2>FS活動量</h2>
+<h2>月次実績<span class="h2sub">できごとが起きた月ベース</span></h2>
 <div class="actsum">
   <div class="card cum"><div class="tag">累計<span class="taglabel">全期間・直契約</span></div>
     <div class="kpis">{fs_total}</div></div>
 </div>
 <div class="tabgrid">
-  <details class="fold" id="f-fs-m"><summary><span class="tri">▶</span>月次<span class="cnt">{len(fs_mk)}ヶ月分　面談実施 {f_int(fs_t["mtgs"])}　成約 {f_int(fs_t["wons"])}　成約金額 {f_man(fs_t["wonamt"])}</span></summary>
+  <details class="fold" id="f-fs-m"><summary><span class="tri">▶</span>月次<span class="cnt">{len(fs_mk)}ヶ月分　架電 {f_int(fs_t["calls"])}　面談予約 {f_int(fs_t["appts"])}　面談実施 {f_int(fs_t["mtgs"])}　成約 {f_int(fs_t["wons"])}</span></summary>
     <div class="foldin">{month_table(fs_mk, fs_mo, fs_mrows, fs_t)}</div></details>
 </div>"""
         # ---- IS活動量の週次（全体 / 架電業者） ----
@@ -2231,19 +2259,29 @@ def render(data):
         ('CPL', lambda v: (safe_div(v.get('cost'), v.get('cvden'))
                            if v.get('cost') else None),
          f_yen, d_yen, True, True, True),
+        # ここから下は前月差を出さない（4番目の要素が None）。
+        # 列は「その月に獲得したリードの集団」なので、隣と比べているのは
+        # 別の大きさ・別の熟成度の集団になる。26/7→26/8 の架電件数
+        # 267→46 は、8月のリードが7月の5分の1（798→160）というだけで、
+        # 架電の動きを何も表していない。すぐ上のリード数を見れば分かる。
+        # 下の段（面談予約・成約）はさらに経過時間の差が乗る。
+        # 月をまたいだ増減を見るのは「月次実績」（イベント軸）の役目。
+        # 前月差が意味を持つのは、同じものを同じ条件で比べている
+        # 広告費・リード数・CPL の3行だけ。
+        #
         # IS活動量と同じ「架電件数」で呼ぶ。どちらも架電した実人数で、
         # 違うのは載せる軸だけ（ここは獲得月、IS活動量は架電日）。合計が
         # 少しずれるのはそのため（ここは直契約のみ、あちらは代理店と
         # コンタクト未紐付けも入る）。
-        ('架電件数', lambda v: v.get('called'), f_int, d_num, False, False,
+        ('架電件数', lambda v: v.get('called'), f_int, None, False, False,
          True),
         # 架電件数の内訳。「コール結果一覧」のF列（コール追い切り基準）で割る。
         # 消化＝追い切りラベルが付いた／通算3コール到達／商談に進んだ。
         # 着手中＝かけたが、まだどちらでもない。
         # 着手中は未消化残高には入れない（残高は一度もかけていない人のまま）。
-        ('　うち消化', lambda v: v.get('done'), f_int, d_num, False, True,
+        ('　うち消化', lambda v: v.get('done'), f_int, None, False, True,
          False),
-        ('　うち着手中', lambda v: v.get('wip'), f_int, d_num, False, True,
+        ('　うち着手中', lambda v: v.get('wip'), f_int, None, False, True,
          False),
         # 消化＝架電したか、商談に行ったか。商談まで行ったなら手はついている
         # （webから自分で予約を入れて面談まで進む人がいる）。
@@ -2258,17 +2296,17 @@ def render(data):
         # 積むと架電チームへの指示として使えない。そのぶん
         # リード数 = 架電件数 + 残高 にはならなくなる。
         ('未消化残高', lambda v: v.get('backlog'),
-         f_int, d_num, True, False, False),
-        ('面談予約', lambda v: v.get('appts'), f_int, d_num, False, False,
+         f_int, None, True, False, False),
+        ('面談予約', lambda v: v.get('appts'), f_int, None, False, False,
          False),
         ('架電→商談', lambda v: safe_div(v.get('cappt'), v.get('called')),
-         f_pct, d_pt, True, True, True),
-        ('面談実施', lambda v: v.get('mtgs'), f_int, d_num, False, False,
+         f_pct, None, True, True, True),
+        ('面談実施', lambda v: v.get('mtgs'), f_int, None, False, False,
          False),
-        ('成約', lambda v: v.get('won'), f_int, d_num, False, False, False),
+        ('成約', lambda v: v.get('won'), f_int, None, False, False, False),
         ('商談→成約', lambda v: safe_div(v.get('won'), v.get('appts')),
-         f_pct, d_pt, True, True, True),
-        ('成約金額', lambda v: v.get('won_amount'), f_man, d_man, True, False,
+         f_pct, None, True, True, True),
+        ('成約金額', lambda v: v.get('won_amount'), f_man, None, True, False,
          False),
     ]
     fu_html = month_table(fu_keys, fu, fu_rows, fu_tot)
