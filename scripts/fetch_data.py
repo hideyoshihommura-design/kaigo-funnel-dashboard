@@ -118,6 +118,11 @@ CALL_CAP = 3
 PHONE_PROPS = ("phone", "mobilephone", "denwabangou",
                "daihyoubangoukensaku", "tel")
 
+# メールでナーチャリングできない条件。試算用に数えるだけで、今は表示に
+# 使っていない（未消化残高から外すかどうかは未決）。
+# メール同意ステータス・メール配信可否（運用）は全件未設定なので見ない。
+MAIL_PROPS = ("email", "hs_email_optout", "hs_email_hard_bounce_reason_enum")
+
 KNOWN_NOT_CONNECTED_PREFIX = {
     "73a0d17f", "b2cf5968", "a4c4c377", "dd9628ed", "9d9162e7",
     "6590e4e2", "17b47fee", "980c20eb", "97db3e14", "c8088d85", "82438db7",
@@ -311,7 +316,7 @@ def fetch_contacts(token):
     # 外すのに使う。1つでも埋まっていれば架電可能とみなす。
     # 代表番号(検索)＝会社の代表番号なので、本人の番号が無くてもかけられる。
     props = ["hs_object_id", "route", "createdate", "kakutokubishokaicvbi",
-             *PHONE_PROPS]
+             *PHONE_PROPS, *MAIL_PROPS]
     rows = hs_search_all(token, "contacts", groups, props)
     print(f"[info] contacts(route有): {len(rows)}件", file=sys.stderr)
     return rows
@@ -722,6 +727,13 @@ def build(token, sheets_token, channel_map, webinar_cfg, campaign_cfg,
         cinfo[str(c["id"])] = {
             "date": d, "route": route, "channel": ch,
             "phone": any((p.get(x) or "").strip() for x in PHONE_PROPS),
+            # アドレスが無い／全配信を停止した／ハードバウンスした のいずれか。
+            "nomail": (
+                not (p.get("email") or "").strip()
+                or str(p.get("hs_email_optout") or "").lower() == "true"
+                or bool((p.get("hs_email_hard_bounce_reason_enum")
+                         or "").strip())
+            ),
         }
     if unknown_routes:
         warn(
@@ -749,14 +761,14 @@ def build(token, sheets_token, channel_map, webinar_cfg, campaign_cfg,
         w: {k: {"leads": 0, "cost": 0, "appts": 0, "mtgs": 0, "props": 0,
                 "deals": 0, "won": 0, "won_amount": 0,
                 "called": 0, "cappt": 0, "handled": 0,
-                "done": 0, "wip": 0, "backlog": 0}
+                "done": 0, "wip": 0, "backlog": 0, "blnomail": 0}
             for k in ["event", "web", "line", "referral", "other"]}
         for w in week_starts
     }
     agency = {
         w: {"leads": 0, "appts": 0, "deals": 0, "won": 0, "won_amount": 0,
             "called": 0, "cappt": 0, "handled": 0,
-                "done": 0, "wip": 0, "backlog": 0}
+                "done": 0, "wip": 0, "backlog": 0, "blnomail": 0}
         for w in week_starts
     }
 
@@ -771,7 +783,7 @@ def build(token, sheets_token, channel_map, webinar_cfg, campaign_cfg,
             k: {"leads": 0, "cost": 0, "appts": 0, "mtgs": 0, "props": 0,
                 "deals": 0, "won": 0, "won_amount": 0,
                 "called": 0, "cappt": 0, "handled": 0,
-                "done": 0, "wip": 0, "backlog": 0}
+                "done": 0, "wip": 0, "backlog": 0, "blnomail": 0}
             for k in CHANNELS})
 
     def dday_agency(d):
@@ -779,7 +791,7 @@ def build(token, sheets_token, channel_map, webinar_cfg, campaign_cfg,
             d.isoformat(),
             {"leads": 0, "appts": 0, "deals": 0, "won": 0, "won_amount": 0,
              "called": 0, "cappt": 0, "handled": 0,
-                "done": 0, "wip": 0, "backlog": 0})
+                "done": 0, "wip": 0, "backlog": 0, "blnomail": 0})
 
     # --- リード数
     route_leads_total = {}
@@ -1274,6 +1286,10 @@ def build(token, sheets_token, channel_map, webinar_cfg, campaign_cfg,
                           else dday_direct(d)[ch])
                 slot0["backlog"] += 1
                 dslot0["backlog"] += 1
+                # 残高のうちメールが届かない人。試算用に持つだけで表示しない。
+                if info.get("nomail"):
+                    slot0["blnomail"] += 1
+                    dslot0["blnomail"] += 1
             continue
         # 架電→商談 の分子。初回架電より前に立った予約は架電の成果ではない
         # （webの自主予約や展示会での直接アポ）。ここからは外す。
