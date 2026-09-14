@@ -123,6 +123,12 @@ PHONE_PROPS = ("phone", "mobilephone", "denwabangou",
 # メール同意ステータス・メール配信可否（運用）は全件未設定なので見ない。
 MAIL_PROPS = ("email", "hs_email_optout", "hs_email_hard_bounce_reason_enum")
 
+# 架電除外（HubSpotの `架電除外` プロパティ）。かけられる相手だが、
+# かけないと決めた人。メール配信を停止した人をここに入れている。
+# 未消化残高から外す。架電件数には足さない（一度もかけていないので、
+# 足すと架電→商談の分母が濁り、架電チームの成績が実際より悪く出る）。
+EXCLUDE_PROP = "kadenjogai"
+
 KNOWN_NOT_CONNECTED_PREFIX = {
     "73a0d17f", "b2cf5968", "a4c4c377", "dd9628ed", "9d9162e7",
     "6590e4e2", "17b47fee", "980c20eb", "97db3e14", "c8088d85", "82438db7",
@@ -316,7 +322,7 @@ def fetch_contacts(token):
     # 外すのに使う。1つでも埋まっていれば架電可能とみなす。
     # 代表番号(検索)＝会社の代表番号なので、本人の番号が無くてもかけられる。
     props = ["hs_object_id", "route", "createdate", "kakutokubishokaicvbi",
-             *PHONE_PROPS, *MAIL_PROPS]
+             *PHONE_PROPS, *MAIL_PROPS, EXCLUDE_PROP]
     rows = hs_search_all(token, "contacts", groups, props)
     print(f"[info] contacts(route有): {len(rows)}件", file=sys.stderr)
     return rows
@@ -734,6 +740,7 @@ def build(token, sheets_token, channel_map, webinar_cfg, campaign_cfg,
                 or bool((p.get("hs_email_hard_bounce_reason_enum")
                          or "").strip())
             ),
+            "excluded": str(p.get(EXCLUDE_PROP) or "").lower() == "true",
         }
     if unknown_routes:
         warn(
@@ -1277,10 +1284,13 @@ def build(token, sheets_token, channel_map, webinar_cfg, campaign_cfg,
         if mon not in weekset:
             continue
         if not first and not appt_days:
-            # 未消化残高。電話番号がどこにも無い人はここに数えない。
-            # かけようがない相手を在庫に積むと、架電チームへの指示として
-            # 使えない数字になる。
-            if info.get("phone"):
+            # 未消化残高＝「まだかけていなくて、これからかける相手」。
+            # 2つ外す。どちらも在庫に積むと架電チームへの指示に使えない。
+            #   電話番号がどこにも無い … かけようがない
+            #   架電除外 … かけられるが、かけないと決めた（メール配信停止など）
+            # 架電件数には足さない。一度もかけていないので、足すと
+            # 架電→商談の分母が濁り、成績が実際より悪く出る。
+            if info.get("phone") and not info.get("excluded"):
                 slot0 = agency[mon] if ch == "agency" else direct[mon][ch]
                 dslot0 = (dday_agency(d) if ch == "agency"
                           else dday_direct(d)[ch])
