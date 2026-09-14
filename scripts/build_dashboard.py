@@ -2192,7 +2192,7 @@ def render(data):
     # リードも予約も実施も成約も同じ集団に載っている。だから段階間の率が
     # 成立する。calls / fs / is_attr はイベント軸なので**ここに混ぜてはいけない**。
     FU_SUM = ('leads', 'appts', 'mtgs', 'props', 'won', 'won_amount',
-              'called', 'cappt', 'handled')
+              'called', 'cappt', 'handled', 'done', 'wip')
     FU_F = FU_SUM + ('cost', 'cvden')
     fu_day_src = data.get('direct_day') or {}
     fu_keys = month_keys(fu_day_src)
@@ -2237,6 +2237,14 @@ def render(data):
         # コンタクト未紐付けも入る）。
         ('架電件数', lambda v: v.get('called'), f_int, d_num, False, False,
          True),
+        # 架電件数の内訳。「コール結果一覧」のF列（コール追い切り基準）で割る。
+        # 消化＝追い切りラベルが付いた／通算3コール到達／商談に進んだ。
+        # 着手中＝かけたが、まだどちらでもない。
+        # 着手中は未消化残高には入れない（残高は一度もかけていない人のまま）。
+        ('　うち消化', lambda v: v.get('done'), f_int, d_num, False, True,
+         False),
+        ('　うち着手中', lambda v: v.get('wip'), f_int, d_num, False, True,
+         False),
         # 消化＝架電したか、商談に行ったか。商談まで行ったなら手はついている
         # （webから自分で予約を入れて面談まで進む人がいる）。
         #

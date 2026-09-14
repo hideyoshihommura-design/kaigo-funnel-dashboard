@@ -79,6 +79,39 @@ KNOWN_NOT_CONNECTED = {
     "b2cf5968-551e-4856-9783-52b3da59a7d0",  # 留守録を残した
     "a4c4c377-d246-4b32-a13b-75a56a4cd0ff",  # 伝言を残した
 }
+# 「コール結果一覧」（業者運用）の追い切り基準。架電件数を 消化／着手中 に
+# 割るのに使う。列の対応は F列「コール追い切り基準」そのまま。
+#
+# 架電終了（消化）＝このラベルが1件でも付いたら、その時点で追い切り。
+# 「1件でも」にしているのは、アポ獲得のあとに追いかけ電話で「再架電」が
+# 付くと、最新だけ見たときに着手中へ戻ってしまうため。
+FINISHED_DISPOSITIONS = {
+    "97db3e14-a1fe-4785-bf8d-d456dac97ad6",  # 1-1 番号不備
+    "17b47fee-58de-441e-a44c-c6300d46f273",  # 番号間違い（HubSpot標準）
+    "980c20eb-fcb7-484e-a58e-58753fefe44e",  # 1-3 受付拒否
+    "c8088d85-95b3-4ac8-8288-15d9d405490b",  # 2-3 5回架電（アプローチ停止）
+    "4333f2a1-6c85-439c-9061-a9077c11e661",  # 4-1 アポイント獲得（新規）
+    "2c222002-dcb9-4c33-94f9-928791a5e93a",  # 4-2 アポイント獲得（FC）
+    "2bd76f7c-55d5-475d-8d39-64d2cd6bf335",  # 4-3 明確なNG（絶対不要）
+}
+
+# 回数の上限が無い結果。F列が「3コール」ではなく「時期開けて架電（1カ月
+# 以内）」「フォローコールで再確認」になっている。通算3回に達しても
+# 追い切りにしない。日程調整URL送付は予約直前の人なので、ここを消化に
+# 入れると追客中が在庫から消える。
+# こちらは**最新のコール結果**で見る（今どの状態かの話なので）。
+NO_CAP_DISPOSITIONS = {
+    "205e7e58-2aea-4ce1-862b-9aebec83a6f4",  # 3-1 リーチ（ヒアリングなし）
+    "74436836-1849-4aa8-936e-570d14942e5a",  # 3-2 FC（リーチ ヒアリングなし）
+    "221cf167-b937-46dc-bcff-0477c7011403",  # 3-6 日程調整URL送付
+}
+
+# 上の2つに入らない結果（留守電・再架電・再架電（着電）・FC（不在・受付
+# 拒否）・リーチ（ヒアリングあり）・FC（リーチヒアリングあり）・資料送付・
+# ウェビナー案内、およびHubSpot標準の応答なし・接続済み等）は
+# 「通算3コールで追い切り」。
+CALL_CAP = 3
+
 KNOWN_NOT_CONNECTED_PREFIX = {
     "73a0d17f", "b2cf5968", "a4c4c377", "dd9628ed", "9d9162e7",
     "6590e4e2", "17b47fee", "980c20eb", "97db3e14", "c8088d85", "82438db7",
@@ -702,13 +735,15 @@ def build(token, sheets_token, channel_map, webinar_cfg, campaign_cfg,
     direct = {
         w: {k: {"leads": 0, "cost": 0, "appts": 0, "mtgs": 0, "props": 0,
                 "deals": 0, "won": 0, "won_amount": 0,
-                "called": 0, "cappt": 0, "handled": 0}
+                "called": 0, "cappt": 0, "handled": 0,
+                "done": 0, "wip": 0}
             for k in ["event", "web", "line", "referral", "other"]}
         for w in week_starts
     }
     agency = {
         w: {"leads": 0, "appts": 0, "deals": 0, "won": 0, "won_amount": 0,
-            "called": 0, "cappt": 0, "handled": 0}
+            "called": 0, "cappt": 0, "handled": 0,
+                "done": 0, "wip": 0}
         for w in week_starts
     }
 
@@ -722,14 +757,16 @@ def build(token, sheets_token, channel_map, webinar_cfg, campaign_cfg,
         return direct_day.setdefault(d.isoformat(), {
             k: {"leads": 0, "cost": 0, "appts": 0, "mtgs": 0, "props": 0,
                 "deals": 0, "won": 0, "won_amount": 0,
-                "called": 0, "cappt": 0, "handled": 0}
+                "called": 0, "cappt": 0, "handled": 0,
+                "done": 0, "wip": 0}
             for k in CHANNELS})
 
     def dday_agency(d):
         return agency_day.setdefault(
             d.isoformat(),
             {"leads": 0, "appts": 0, "deals": 0, "won": 0, "won_amount": 0,
-             "called": 0, "cappt": 0, "handled": 0})
+             "called": 0, "cappt": 0, "handled": 0,
+                "done": 0, "wip": 0})
 
     # --- リード数
     route_leads_total = {}
@@ -980,6 +1017,11 @@ def build(token, sheets_token, channel_map, webinar_cfg, campaign_cfg,
     # コンタクトごとの全架電日。「その日の架電から取れた予約」を出すのに、
     # 初回架電日だけでは足りない（予約の直前にかけた日を知る必要がある）。
     call_days_of_contact = {}
+    # 消化／着手中の判定用。通算の架電回数、付いたコール結果の全部、
+    # 最新のコール結果。
+    call_count_of_contact = {}
+    disps_of_contact = {}
+    last_disp_of_contact = {}
     unknown_disp = {}
     no_direction = 0
     inbound = 0
@@ -1013,6 +1055,15 @@ def build(token, sheets_token, channel_map, webinar_cfg, campaign_cfg,
             prev = first_call_of_contact.get(cid)
             first_call_of_contact[cid] = ts if prev is None else min(prev, ts)
             call_days_of_contact.setdefault(cid, set()).add(ts)
+            call_count_of_contact[cid] = call_count_of_contact.get(cid, 0) + 1
+            if disp:
+                disps_of_contact.setdefault(cid, set()).add(disp)
+                # 最新のコール結果。同じ日に複数あるときは先に見た方を残す
+                # （日より細かい順序は扱わない。終端ラベルは「1件でも」で
+                # 拾うので、ここが入れ替わっても消化判定は変わらない）。
+                lprev = last_disp_of_contact.get(cid)
+                if lprev is None or ts > lprev[0]:
+                    last_disp_of_contact[cid] = (ts, disp)
             if is_vendor:
                 vprev = vendor_first_call.get(cid)
                 vendor_first_call[cid] = ts if vprev is None else min(vprev, ts)
@@ -1208,10 +1259,27 @@ def build(token, sheets_token, channel_map, webinar_cfg, campaign_cfg,
         slot = agency[mon] if ch == "agency" else direct[mon][ch]
         dslot = (dday_agency(d) if ch == "agency"
                  else dday_direct(d)[ch])
+        # 架電件数を 消化／着手中 に割る。「コール結果一覧」のF列どおり。
+        #   消化 … 追い切りラベルが1件でも付いた、または通算3コールに達した、
+        #          または商談に進んだ
+        #   着手中 … かけたが、まだどちらでもない
+        # 通算3コールの例外が NO_CAP_DISPOSITIONS（時期を開けて追う・
+        # フォローコールで再確認）。今その状態にいる人は回数に関係なく着手中。
+        done = False
+        if first:
+            dset = disps_of_contact.get(cid, ())
+            last = (last_disp_of_contact.get(cid) or (None, None))[1]
+            done = (
+                any(x in FINISHED_DISPOSITIONS for x in dset)
+                or bool(appt_days)
+                or (call_count_of_contact.get(cid, 0) >= CALL_CAP
+                    and last not in NO_CAP_DISPOSITIONS)
+            )
         for s in (slot, dslot):
             s["handled"] += 1
             if first:
                 s["called"] += 1
+                s["done" if done else "wip"] += 1
             if appointed:
                 s["cappt"] += 1
         # IS活動量の「本日」用。**予約が入った日ではなく、その予約を取った
