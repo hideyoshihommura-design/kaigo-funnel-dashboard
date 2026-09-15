@@ -4831,7 +4831,7 @@
    },
    "web": {
     "leads": 2,
-    "cost": null,
+    "cost": 11953,
     "appts": 0,
     "mtgs": 0,
     "props": 0,
@@ -4845,7 +4845,7 @@
     "wip": 0,
     "backlog": 2,
     "blnomail": 0,
-    "cv": null
+    "cv": 1
    },
    "line": {
     "leads": 0,
@@ -8844,6 +8844,12 @@
    "imp": 38912,
    "clicks": 816,
    "cv": 48
+  },
+  "2026-09-14": {
+   "spend": 8360,
+   "imp": 3538,
+   "clicks": 76,
+   "cv": 1
   }
  },
  "adperf_day": {
@@ -9614,6 +9620,12 @@
    "imp": 5446,
    "clicks": 128,
    "cv": 5
+  },
+  "2026-09-14": {
+   "spend": 8360,
+   "imp": 3538,
+   "clicks": 76,
+   "cv": 1
   }
  },
  "ad_day": {
@@ -11909,6 +11921,20 @@
     "imp": 5446,
     "clicks": 128,
     "cv": 5
+   }
+  },
+  "2026-09-14": {
+   "Meta/あおぞらTech": {
+    "spend": 3593,
+    "imp": 1082,
+    "clicks": 38,
+    "cv": 0
+   },
+   "Meta/ウェビナー": {
+    "spend": 8360,
+    "imp": 3538,
+    "clicks": 76,
+    "cv": 1
    }
   }
  },
@@ -27753,7 +27779,7 @@
    },
    "web": {
     "leads": 1,
-    "cost": 0,
+    "cost": 11953,
     "appts": 0,
     "mtgs": 0,
     "props": 0,
@@ -27766,7 +27792,8 @@
     "done": 0,
     "wip": 0,
     "backlog": 1,
-    "blnomail": 0
+    "blnomail": 0,
+    "cv": 1
    },
    "line": {
     "leads": 0,
