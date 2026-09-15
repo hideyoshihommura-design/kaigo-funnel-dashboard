@@ -2413,9 +2413,13 @@ def render(data):
                                key=lambda k: -apc_built[k][2]["spend"]):
             apc_keys, apc_m, apc_tot = apc_built[apc_pair]
             apc_name = apc_pair.replace("Meta/", "")
+            # 画面に出す名前だけ差し替える。シートの値（＝id）はそのまま使う。
+            # id を表示名にすると、シートの略称を変えたときに開閉状態
+            # （localStorage）が飛ぶ。
+            apc_label = (data.get("ad_names") or {}).get(apc_name, apc_name)
             apc_blocks.append(
                 f'<details class="fold" id="f-ap-{apc_name}">'
-                f'<summary><span class="tri">▶</span>Meta / {apc_name}'
+                f'<summary><span class="tri">▶</span>Meta / {apc_label}'
                 f'<span class="cnt">消費 {f_man(apc_tot["spend"])}'
                 f'　CV {f_int(apc_tot["cv"])}'
                 f'　CPL {f_yen(safe_div(apc_tot["spend"], apc_tot["cv"]))}'

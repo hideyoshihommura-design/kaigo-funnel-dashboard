@@ -1424,6 +1424,9 @@ def build(token, sheets_token, channel_map, webinar_cfg, campaign_cfg,
         "ad_day": {d: {p: {kk: int(round(vv)) for kk, vv in m.items()}
                        for p, m in sorted(pairs.items())}
                    for d, pairs in sorted(ad_day.items())},
+        # 画面に出すときの名前。シートのキャンペーン列が略称のものだけ。
+        # シート側の値は変えない（変えると過去の行と突き合わなくなる）。
+        "ad_names": dict(campaign_cfg.get("display_names") or {}),
         "direct_day": {k: direct_day[k] for k in sorted(direct_day)},
         "agency_day": {k: agency_day[k] for k in sorted(agency_day)},
         "call_conversion": {w.isoformat(): v for w, v in sorted(conv.items())},
