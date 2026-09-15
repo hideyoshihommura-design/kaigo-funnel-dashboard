@@ -3524,7 +3524,7 @@
     "done": 4,
     "wip": 30,
     "backlog": 43,
-    "blnomail": 2,
+    "blnomail": 3,
     "cv": 128
    },
    "line": {
@@ -11938,6 +11938,9 @@
    }
   }
  },
+ "ad_names": {
+  "あおぞらTech": "あおぞらCareTech研究所"
+ },
  "direct_day": {
   "2025-09-22": {
    "event": {
@@ -18552,7 +18555,7 @@
     "done": 1,
     "wip": 4,
     "backlog": 11,
-    "blnomail": 1,
+    "blnomail": 2,
     "cv": 19
    },
    "line": {
