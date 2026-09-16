@@ -1558,13 +1558,12 @@ function apply(from,to){
      日次と週次の切り替わり（dayMode）でリード獲得側とズレる。
      平均成約単価と消化状況の4枠は全期間固定なので、ここでは触らない
      （id を振っていない）。 */
-  var sc={called:0,cappt:0,appt:0,won:0},ck,cr;
+  var sc={called:0,cappt:0},ck,cr;
   for(ck in RAW.coh){
     if(!RAW.coh.hasOwnProperty(ck)){continue;}
     if(ck<from||ck>to){continue;}
     cr=RAW.coh[ck];
     sc.called+=cr[0]; sc.cappt+=cr[1];
-    sc.appt+=cr[2]; sc.won+=cr[3];
   }
   var sv={calls:0,conn:0,called:0,appt:0},vk,vr;
   for(vk in RAW.days){
@@ -1580,7 +1579,8 @@ function apply(from,to){
   }
   setK('sm_cpl',jYen(div(ad.spend,ad.cv)));
   setK('sm_conv',jPct(div(sc.cappt,sc.called)));
-  setK('sm_win',jPct(div(sc.won,sc.appt)));
+  /* 実施→成約は FS（イベント軸）の f を使う。上の fs_close と同じ割り算。 */
+  setK('sm_win',jPct(div(f.wons,f.mtgs)));
   setK('sm_vcalled',jInt(sv.called)); setK('sm_vcalls',jInt(sv.calls));
   setK('sm_vrate',jPct(div(sv.conn,sv.calls))); setK('sm_vappt',jInt(sv.appt));
 
@@ -1811,7 +1811,7 @@ def render(data):
         return t
 
     coh = _sum_day(data.get("direct_day"),
-                   ("called", "cappt", "done", "wip", "backlog", "appts", "won"))
+                   ("called", "cappt", "done", "wip", "backlog"))
     ad_t = _sum_day(data.get("ad_day"), ("spend", "cv"))
     vt = {"vcalls": 0, "vconn": 0, "vcalled": 0}
     for day, v in (data.get("calls") or {}).items():
@@ -1825,9 +1825,13 @@ def render(data):
     # 0件になって消える日が大半になる。シミュレーターの「単価」は
     # 事業の前提として置く数字なので、期間で動かす意味もない。
     fs_all = {"wons": 0, "wonamt": 0}
-    for v in (data.get("fs") or {}).values():
+    fs_p = {"mtgs": 0, "wons": 0}
+    for day, v in (data.get("fs") or {}).items():
         fs_all["wons"] += v.get("wons") or 0
         fs_all["wonamt"] += v.get("wonamt") or 0
+        if a_start <= day <= a_end:
+            fs_p["mtgs"] += v.get("mtgs") or 0
+            fs_p["wons"] += v.get("wons") or 0
 
     def act_card(tag, kpis):
         return (f'<div class="card"><div class="tag">{tag}</div>'
@@ -1838,7 +1842,14 @@ def render(data):
         + act_card("単価と<br>転換率", [
             kpi("web CPL", f_yen(safe_div(ad_t["spend"], ad_t["cv"])), "sm_cpl"),
             kpi("架電→商談", f_pct(safe_div(coh["cappt"], coh["called"])), "sm_conv"),
-            kpi("商談→成約", f_pct(safe_div(coh["won"], coh["appts"])), "sm_win"),
+            # 「商談→成約」ではなく「実施→成約」。分母は面談実施（イベント軸）。
+            # シミュレーターの商談枠はクローザーの処理能力（1人目30件/月・
+            # 専任50件/人）なので、向こうの「商談」は実施した面談を指す。
+            # 予約が入っただけでは枠を消費しない。
+            # このダッシュボードの「商談」は相談申込ステージの取引＝面談予約で、
+            # 予約78に対して実施58。予約を分母にすると 7.7%、実施なら 10.3% で、
+            # シミュレーターに入れるのは後者。
+            kpi("実施→成約", f_pct(safe_div(fs_p["wons"], fs_p["mtgs"])), "sm_win"),
             kpi("平均成約単価（全期間）",
                 f_yen(safe_div(fs_all["wonamt"], fs_all["wons"]))),
         ])
@@ -2699,9 +2710,10 @@ def render(data):
         # 重要値の枠の再計算用。コホート軸（direct_day をチャネル横断で合計）。
         # ヘッダーの dkpi と同じ軸だが、あちらは架電・消化を持っていない。
         # 消化（done/wip/backlog）は入れない。重要値の消化状況は全期間固定で、
-        # 期間フィルタで動かさないため。
+        # 期間フィルタで動かさないため。成約は実施→成約（FS側）で出すので
+        # ここには要らない。
         "coh": {day: [sum(c.get(f) or 0 for c in chs.values())
-                      for f in ("called", "cappt", "appts", "won")]
+                      for f in ("called", "cappt")]
                 for day, chs in (data.get("direct_day") or {}).items()},
         # 架電業者の面談予約。is_attr（取引の作成者ではなく直前架電で判定）の
         # vendor 側。IS活動量の「架電業者の週次」と同じ数え方。
