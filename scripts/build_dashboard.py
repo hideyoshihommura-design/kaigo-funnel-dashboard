@@ -1022,7 +1022,7 @@ font-variant-numeric:tabular-nums;letter-spacing:-.02em;white-space:nowrap;}
   .kpi{padding:12px 9px;}
   .summary .card .tag{min-width:64px;padding:12px 10px;margin-right:10px;}
 }
-/* 実測値。サマリー（.summary）と同じ部品を使うが sticky にはしない。
+/* 重要値。サマリー（.summary）と同じ部品を使うが sticky にはしない。
    3段とも4枠なので、段ごとに横1列。タグは3段とも同色にして1つの塊に見せる
    （直契約のティールと代理店の黒はヘッダー側の区別なので、ここでは使わない）。 */
 .actual{display:grid;grid-template-columns:minmax(0,1fr);gap:10px;margin:0 0 18px;}
@@ -1553,7 +1553,7 @@ function apply(from,to){
   setK('ap_cvr',jPct(div(ad.cv,ad.clicks),2));
   setK('ap_cpl',jYen(div(ad.spend,ad.cv)));
 
-  /* ---- 実測値 ----
+  /* ---- 重要値 ----
      web CPL は上の広告カードの ad をそのまま使う。別に足し直すと、
      日次と週次の切り替わり（dayMode）でリード獲得側とズレる。
      平均成約単価と消化状況の4枠は全期間固定なので、ここでは触らない
@@ -1790,7 +1790,7 @@ def render(data):
         kpi("成約金額", f_yen(ta["amount"]), "a_amt"),
     ])
 
-    # ---- 実測値 ----
+    # ---- 重要値 ----
     # 営業シミュレーター（仮説側）に入れる数字を1か所に集めた枠。
     # これまでヘッダー・月次KPIの累計列・FSのカード・IS活動量の折りたたみの
     # 4か所に散っていて、1回の確認で行き来が要った。
@@ -1834,7 +1834,7 @@ def render(data):
                 f'<div class="kpis">{"".join(kpis)}</div></div>')
 
     actual_section = (
-        '<h2>実測値</h2>\n<div class="actual">'
+        '<h2>重要値</h2>\n<div class="actual">'
         + act_card("単価と<br>転換率", [
             kpi("web CPL", f_yen(safe_div(ad_t["spend"], ad_t["cv"])), "sm_cpl"),
             kpi("架電→商談", f_pct(safe_div(coh["cappt"], coh["called"])), "sm_conv"),
@@ -2696,9 +2696,9 @@ def render(data):
                      v.get("called", 0), v.get("vcalls", 0),
                      v.get("vconn", 0), v.get("vcalled", 0)]
                  for k, v in (data.get("calls") or {}).items()},
-        # 実測値の枠の再計算用。コホート軸（direct_day をチャネル横断で合計）。
+        # 重要値の枠の再計算用。コホート軸（direct_day をチャネル横断で合計）。
         # ヘッダーの dkpi と同じ軸だが、あちらは架電・消化を持っていない。
-        # 消化（done/wip/backlog）は入れない。実測値の消化状況は全期間固定で、
+        # 消化（done/wip/backlog）は入れない。重要値の消化状況は全期間固定で、
         # 期間フィルタで動かさないため。
         "coh": {day: [sum(c.get(f) or 0 for c in chs.values())
                       for f in ("called", "cappt", "appts", "won")]
