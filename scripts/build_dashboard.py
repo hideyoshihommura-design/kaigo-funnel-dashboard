@@ -1556,14 +1556,15 @@ function apply(from,to){
   /* ---- 実測値 ----
      web CPL は上の広告カードの ad をそのまま使う。別に足し直すと、
      日次と週次の切り替わり（dayMode）でリード獲得側とズレる。
-     平均成約単価は全期間固定なので、ここでは触らない。 */
-  var sc={called:0,cappt:0,done:0,wip:0,bl:0,appt:0,won:0},ck,cr;
+     平均成約単価と消化状況の4枠は全期間固定なので、ここでは触らない
+     （id を振っていない）。 */
+  var sc={called:0,cappt:0,appt:0,won:0},ck,cr;
   for(ck in RAW.coh){
     if(!RAW.coh.hasOwnProperty(ck)){continue;}
     if(ck<from||ck>to){continue;}
     cr=RAW.coh[ck];
-    sc.called+=cr[0]; sc.cappt+=cr[1]; sc.done+=cr[2]; sc.wip+=cr[3];
-    sc.bl+=cr[4]; sc.appt+=cr[5]; sc.won+=cr[6];
+    sc.called+=cr[0]; sc.cappt+=cr[1];
+    sc.appt+=cr[2]; sc.won+=cr[3];
   }
   var sv={calls:0,conn:0,called:0,appt:0},vk,vr;
   for(vk in RAW.days){
@@ -1582,8 +1583,6 @@ function apply(from,to){
   setK('sm_win',jPct(div(sc.won,sc.appt)));
   setK('sm_vcalled',jInt(sv.called)); setK('sm_vcalls',jInt(sv.calls));
   setK('sm_vrate',jPct(div(sv.conn,sv.calls))); setK('sm_vappt',jInt(sv.appt));
-  setK('sm_target',jInt(sc.called+sc.bl)); setK('sm_done',jInt(sc.done));
-  setK('sm_wip',jInt(sc.wip)); setK('sm_todo',jInt(sc.bl));
 
   /* ---- 月次ファネルは月を「列」に並べているので、行ではなく列を隠す ----
      他の表は showRows が行を隠すが、この表だけ向きが違う。
@@ -1849,11 +1848,16 @@ def render(data):
             kpi("接続率", f_pct(safe_div(vt["vconn"], vt["vcalls"])), "sm_vrate"),
             kpi("面談予約", f_int(vappt), "sm_vappt"),
         ])
-        + act_card("消化状況", [
-            kpi("架電対象", f_int(coh["called"] + coh["backlog"]), "sm_target"),
-            kpi("追い切った", f_int(coh["done"]), "sm_done"),
-            kpi("着手中", f_int(coh["wip"]), "sm_wip"),
-            kpi("未着手", f_int(coh["backlog"]), "sm_todo"),
+        # 消化状況は全期間固定。これは「今この瞬間のリスト在庫」で、
+        # 期間で切ると意味が変わる。上の架電業者はイベント軸（その期間に
+        # 何件かけたか）、こちらはコホート軸（その期間に獲得したリードの
+        # 進み具合）なので、期間を絞ると「業者は177件かけたのに架電対象は
+        # 50件」という別集団の並びになって読み違える。
+        + act_card("消化状況<br>（全期間）", [
+            kpi("架電対象", f_int(coh["called"] + coh["backlog"])),
+            kpi("追い切った", f_int(coh["done"])),
+            kpi("着手中", f_int(coh["wip"])),
+            kpi("未着手", f_int(coh["backlog"])),
         ])
         + "</div>"
     )
@@ -2694,9 +2698,10 @@ def render(data):
                  for k, v in (data.get("calls") or {}).items()},
         # 実測値の枠の再計算用。コホート軸（direct_day をチャネル横断で合計）。
         # ヘッダーの dkpi と同じ軸だが、あちらは架電・消化を持っていない。
+        # 消化（done/wip/backlog）は入れない。実測値の消化状況は全期間固定で、
+        # 期間フィルタで動かさないため。
         "coh": {day: [sum(c.get(f) or 0 for c in chs.values())
-                      for f in ("called", "cappt", "done", "wip",
-                                "backlog", "appts", "won")]
+                      for f in ("called", "cappt", "appts", "won")]
                 for day, chs in (data.get("direct_day") or {}).items()},
         # 架電業者の面談予約。is_attr（取引の作成者ではなく直前架電で判定）の
         # vendor 側。IS活動量の「架電業者の週次」と同じ数え方。
