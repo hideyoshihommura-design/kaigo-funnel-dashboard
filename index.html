@@ -108,7 +108,7 @@ font-variant-numeric:tabular-nums;letter-spacing:-.02em;white-space:nowrap;}
   .kpi{padding:12px 9px;}
   .summary .card .tag{min-width:64px;padding:12px 10px;margin-right:10px;}
 }
-/* 実測値。サマリー（.summary）と同じ部品を使うが sticky にはしない。
+/* 重要値。サマリー（.summary）と同じ部品を使うが sticky にはしない。
    3段とも4枠なので、段ごとに横1列。タグは3段とも同色にして1つの塊に見せる
    （直契約のティールと代理店の黒はヘッダー側の区別なので、ここでは使わない）。 */
 .actual{display:grid;grid-template-columns:minmax(0,1fr);gap:10px;margin:0 0 18px;}
@@ -284,7 +284,7 @@ tr.roll td.wk{background:var(--head);color:var(--muted);font-weight:600;}
 <body><div class="wrap">
 
 <h1>ホリエモンAI学校 介護校 ファネルダッシュボード</h1>
-<div class="sub"><span id="period">2025-09-01 〜 2026-09-16（週次・月曜始まり）</span>　/　数字の更新 2026-09-16 19:41<span id="age"></span></div>
+<div class="sub"><span id="period">2025-09-01 〜 2026-09-16（週次・月曜始まり）</span>　/　数字の更新 2026-09-16 19:49<span id="age"></span></div>
 <div class="range">
   <label>期間</label>
   <input type="date" id="from" value="2025-09-01" min="2025-09-01" max="2026-09-16">
@@ -301,7 +301,7 @@ tr.roll td.wk{background:var(--head);color:var(--muted);font-weight:600;}
     <div class="kpis"><div class="kpi"><div class="k">総リード数</div><div class="v" id="a_leads">25</div></div><div class="kpi"><div class="k">総商談数</div><div class="v" id="a_deals">24</div></div><div class="kpi"><div class="k">商談化率</div><div class="v" id="a_mtg">96.0%</div></div><div class="kpi"><div class="k">総成約数</div><div class="v" id="a_won">11</div></div><div class="kpi"><div class="k">成約率</div><div class="v" id="a_win">45.8%</div></div><div class="kpi"><div class="k">成約金額</div><div class="v" id="a_amt">¥12,760,000</div></div></div></div>
 </div>
 
-<h2>実測値</h2>
+<h2>重要値</h2>
 <div class="actual"><div class="card"><div class="tag">単価と<br>転換率</div><div class="kpis"><div class="kpi"><div class="k">web CPL</div><div class="v" id="sm_cpl">¥2,403</div></div><div class="kpi"><div class="k">架電→商談</div><div class="v" id="sm_conv">4.4%</div></div><div class="kpi"><div class="k">商談→成約</div><div class="v" id="sm_win">7.7%</div></div><div class="kpi"><div class="k">平均成約単価（全期間）</div><div class="v">¥847,550</div></div></div></div><div class="card"><div class="tag">架電業者</div><div class="kpis"><div class="kpi"><div class="k">架電件数</div><div class="v" id="sm_vcalled">284</div></div><div class="kpi"><div class="k">架電数</div><div class="v" id="sm_vcalls">567</div></div><div class="kpi"><div class="k">接続率</div><div class="v" id="sm_vrate">12.9%</div></div><div class="kpi"><div class="k">面談予約</div><div class="v" id="sm_vappt">11</div></div></div></div><div class="card"><div class="tag">消化状況<br>（全期間）</div><div class="kpis"><div class="kpi"><div class="k">架電対象</div><div class="v">1,951</div></div><div class="kpi"><div class="k">追い切った</div><div class="v">134</div></div><div class="kpi"><div class="k">着手中</div><div class="v">408</div></div><div class="kpi"><div class="k">未着手</div><div class="v">1,409</div></div></div></div></div>
 
 <h2>月次KPI<span class="h2sub">直契約・獲得月ベース／太字が追う指標</span></h2>
@@ -751,7 +751,7 @@ function apply(from,to){
   setK('ap_cvr',jPct(div(ad.cv,ad.clicks),2));
   setK('ap_cpl',jYen(div(ad.spend,ad.cv)));
 
-  /* ---- 実測値 ----
+  /* ---- 重要値 ----
      web CPL は上の広告カードの ad をそのまま使う。別に足し直すと、
      日次と週次の切り替わり（dayMode）でリード獲得側とズレる。
      平均成約単価と消化状況の4枠は全期間固定なので、ここでは触らない
