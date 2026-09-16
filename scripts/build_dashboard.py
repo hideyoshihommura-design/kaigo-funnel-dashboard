@@ -1022,6 +1022,18 @@ font-variant-numeric:tabular-nums;letter-spacing:-.02em;white-space:nowrap;}
   .kpi{padding:12px 9px;}
   .summary .card .tag{min-width:64px;padding:12px 10px;margin-right:10px;}
 }
+/* 実測値。サマリー（.summary）と同じ部品を使うが sticky にはしない。
+   3段とも4枠なので、段ごとに横1列。タグは3段とも同色にして1つの塊に見せる
+   （直契約のティールと代理店の黒はヘッダー側の区別なので、ここでは使わない）。 */
+.actual{display:grid;grid-template-columns:minmax(0,1fr);gap:10px;margin:0 0 18px;}
+.actual .card{padding:0 10px 0 0;display:flex;align-items:stretch;overflow:hidden;}
+.actual .card .tag{flex:0 0 auto;display:flex;flex-direction:column;
+justify-content:center;padding:14px 12px;margin-right:12px;min-width:104px;
+font-size:12px;font-weight:700;line-height:1.35;white-space:nowrap;
+background:var(--ink);color:#fff;}
+@media(max-width:1250px){
+  .actual .card .tag{min-width:88px;padding:12px 10px;margin-right:10px;}
+}
 .charts{display:grid;grid-template-columns:repeat(auto-fit,minmax(460px,1fr));
 gap:16px;margin-bottom:8px;}
 .charts.one{grid-template-columns:minmax(0,1fr);}
@@ -1541,6 +1553,38 @@ function apply(from,to){
   setK('ap_cvr',jPct(div(ad.cv,ad.clicks),2));
   setK('ap_cpl',jYen(div(ad.spend,ad.cv)));
 
+  /* ---- 実測値 ----
+     web CPL は上の広告カードの ad をそのまま使う。別に足し直すと、
+     日次と週次の切り替わり（dayMode）でリード獲得側とズレる。
+     平均成約単価は全期間固定なので、ここでは触らない。 */
+  var sc={called:0,cappt:0,done:0,wip:0,bl:0,appt:0,won:0},ck,cr;
+  for(ck in RAW.coh){
+    if(!RAW.coh.hasOwnProperty(ck)){continue;}
+    if(ck<from||ck>to){continue;}
+    cr=RAW.coh[ck];
+    sc.called+=cr[0]; sc.cappt+=cr[1]; sc.done+=cr[2]; sc.wip+=cr[3];
+    sc.bl+=cr[4]; sc.appt+=cr[5]; sc.won+=cr[6];
+  }
+  var sv={calls:0,conn:0,called:0,appt:0},vk,vr;
+  for(vk in RAW.days){
+    if(!RAW.days.hasOwnProperty(vk)){continue;}
+    if(vk<from||vk>to){continue;}
+    vr=RAW.days[vk];
+    sv.calls+=vr[5]||0; sv.conn+=vr[6]||0; sv.called+=vr[7]||0;
+  }
+  for(vk in RAW.vappt){
+    if(!RAW.vappt.hasOwnProperty(vk)){continue;}
+    if(vk<from||vk>to){continue;}
+    sv.appt+=RAW.vappt[vk];
+  }
+  setK('sm_cpl',jYen(div(ad.spend,ad.cv)));
+  setK('sm_conv',jPct(div(sc.cappt,sc.called)));
+  setK('sm_win',jPct(div(sc.won,sc.appt)));
+  setK('sm_vcalled',jInt(sv.called)); setK('sm_vcalls',jInt(sv.calls));
+  setK('sm_vrate',jPct(div(sv.conn,sv.calls))); setK('sm_vappt',jInt(sv.appt));
+  setK('sm_target',jInt(sc.called+sc.bl)); setK('sm_done',jInt(sc.done));
+  setK('sm_wip',jInt(sc.wip)); setK('sm_todo',jInt(sc.bl));
+
   /* ---- 月次ファネルは月を「列」に並べているので、行ではなく列を隠す ----
      他の表は showRows が行を隠すが、この表だけ向きが違う。
      月はまるごと入れる（指定日を含む月は残す）。週次表と同じ考え方で、
@@ -1746,6 +1790,73 @@ def render(data):
         kpi("成約率", f_pct(ta["win_rate"]), "a_win"),
         kpi("成約金額", f_yen(ta["amount"]), "a_amt"),
     ])
+
+    # ---- 実測値 ----
+    # 営業シミュレーター（仮説側）に入れる数字を1か所に集めた枠。
+    # これまでヘッダー・月次KPIの累計列・FSのカード・IS活動量の折りたたみの
+    # 4か所に散っていて、1回の確認で行き来が要った。
+    # シミュレーター側の入力欄と定義を合わせてある（CPL＝リード単価、
+    # 商談化率＝架電→商談、成約率＝商談→成約、単価＝平均成約単価）。
+    # 広告費と社内ぶんの架電件数はシミュレーターの入力にあるが、
+    # ここには出さない（月次KPIとIS活動量にある）。
+    a_start, a_end = weeks[0], period_end.isoformat()
+
+    def _sum_day(src, fields):
+        t = {f: 0 for f in fields}
+        for day, chs in (src or {}).items():
+            if day < a_start or day > a_end:
+                continue
+            for v in chs.values():
+                for f in fields:
+                    t[f] += v.get(f) or 0
+        return t
+
+    coh = _sum_day(data.get("direct_day"),
+                   ("called", "cappt", "done", "wip", "backlog", "appts", "won"))
+    ad_t = _sum_day(data.get("ad_day"), ("spend", "cv"))
+    vt = {"vcalls": 0, "vconn": 0, "vcalled": 0}
+    for day, v in (data.get("calls") or {}).items():
+        if a_start <= day <= a_end:
+            for f in vt:
+                vt[f] += v.get(f) or 0
+    vappt = sum((v.get("vendor") or {}).get("appts") or 0
+                for day, v in (data.get("is_attr") or {}).items()
+                if a_start <= day <= a_end)
+    # 平均成約単価だけ全期間で固定する。成約が6件しかなく、期間を絞ると
+    # 0件になって消える日が大半になる。シミュレーターの「単価」は
+    # 事業の前提として置く数字なので、期間で動かす意味もない。
+    fs_all = {"wons": 0, "wonamt": 0}
+    for v in (data.get("fs") or {}).values():
+        fs_all["wons"] += v.get("wons") or 0
+        fs_all["wonamt"] += v.get("wonamt") or 0
+
+    def act_card(tag, kpis):
+        return (f'<div class="card"><div class="tag">{tag}</div>'
+                f'<div class="kpis">{"".join(kpis)}</div></div>')
+
+    actual_section = (
+        '<h2>実測値</h2>\n<div class="actual">'
+        + act_card("単価と<br>転換率", [
+            kpi("web CPL", f_yen(safe_div(ad_t["spend"], ad_t["cv"])), "sm_cpl"),
+            kpi("架電→商談", f_pct(safe_div(coh["cappt"], coh["called"])), "sm_conv"),
+            kpi("商談→成約", f_pct(safe_div(coh["won"], coh["appts"])), "sm_win"),
+            kpi("平均成約単価（全期間）",
+                f_yen(safe_div(fs_all["wonamt"], fs_all["wons"]))),
+        ])
+        + act_card("架電業者", [
+            kpi("架電件数", f_int(vt["vcalled"]), "sm_vcalled"),
+            kpi("架電数", f_int(vt["vcalls"]), "sm_vcalls"),
+            kpi("接続率", f_pct(safe_div(vt["vconn"], vt["vcalls"])), "sm_vrate"),
+            kpi("面談予約", f_int(vappt), "sm_vappt"),
+        ])
+        + act_card("消化状況", [
+            kpi("架電対象", f_int(coh["called"] + coh["backlog"]), "sm_target"),
+            kpi("追い切った", f_int(coh["done"]), "sm_done"),
+            kpi("着手中", f_int(coh["wip"]), "sm_wip"),
+            kpi("未着手", f_int(coh["backlog"]), "sm_todo"),
+        ])
+        + "</div>"
+    )
 
     # 「週次テーブル（53週 × チャネル別）」は廃止した。319行あり、
     # 中身は上の4枚のグラフと同じで、しかも週を縦に並べる古い向きだった。
@@ -2578,8 +2689,19 @@ def render(data):
         "dfrom": dcost_first or "9999-12-31",
         "days": {k: [v.get("calls", 0), v.get("connected", 0),
                      v.get("appts", 0), v.get("leads", 0),
-                     v.get("called", 0)]
+                     v.get("called", 0), v.get("vcalls", 0),
+                     v.get("vconn", 0), v.get("vcalled", 0)]
                  for k, v in (data.get("calls") or {}).items()},
+        # 実測値の枠の再計算用。コホート軸（direct_day をチャネル横断で合計）。
+        # ヘッダーの dkpi と同じ軸だが、あちらは架電・消化を持っていない。
+        "coh": {day: [sum(c.get(f) or 0 for c in chs.values())
+                      for f in ("called", "cappt", "done", "wip",
+                                "backlog", "appts", "won")]
+                for day, chs in (data.get("direct_day") or {}).items()},
+        # 架電業者の面談予約。is_attr（取引の作成者ではなく直前架電で判定）の
+        # vendor 側。IS活動量の「架電業者の週次」と同じ数え方。
+        "vappt": {day: (v.get("vendor") or {}).get("appts") or 0
+                  for day, v in (data.get("is_attr") or {}).items()},
         "fs": {k: [v.get("mtgs", 0), v.get("props", 0),
                    v.get("wons", 0), v.get("wonamt", 0)]
                for k, v in (data.get("fs") or {}).items()},
@@ -2654,6 +2776,7 @@ showAge();
     <div class="kpis">{agency_kpis}</div></div>
 </div>
 
+{actual_section}
 {funnel_section}
 {adperf_section}
 {webinar_section}
