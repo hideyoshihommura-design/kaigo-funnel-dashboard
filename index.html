@@ -223,6 +223,13 @@ align-items:stretch;}
 /* 中は必ず1行。入らない時は折り返さず、文字を縮めて収める
    （.kpi .v の clamp が画面幅に追従する）。 */
 .actsum .kpis{flex-wrap:nowrap;}
+/* web広告のカードは枠が9つあり、累計額が7桁に伸びた結果、640px幅で
+   ¥3,085,004 の末尾が2〜3px切れていた（実測5項目）。1行のルールは壊さずに
+   文字の下限だけ 10px→9px に下げて収める。折り返す案は捨てた（9枠が2段に
+   割れて他のカードと並びが揃わなくなる）。
+   下限に当たるのは 0.98vw が9pxを下回る918pxより狭いときだけなので、
+   1280px級で見ている限り今と1pxも変わらない。 */
+.actsum .kpi .v{font-size:clamp(9px,0.98vw,16px);}
 .actsum .card .tag{flex:0 0 auto;display:flex;flex-direction:column;
 justify-content:center;padding:14px 12px;margin-right:12px;min-width:74px;
 font-size:12px;font-weight:700;line-height:1.35;white-space:nowrap;}
@@ -288,7 +295,7 @@ tr.roll td.wk{background:var(--head);color:var(--muted);font-weight:600;}
 <body><div class="wrap">
 
 <h1>ホリエモンAI学校 介護校 ファネルダッシュボード</h1>
-<div class="sub"><span id="period">2025-09-01 〜 2026-09-18（週次・月曜始まり）</span>　/　数字の更新 2026-09-18 11:01<span id="age"></span></div>
+<div class="sub"><span id="period">2025-09-01 〜 2026-09-18（週次・月曜始まり）</span>　/　数字の更新 2026-09-18 13:00<span id="age"></span></div>
 <div class="range">
   <label>期間</label>
   <input type="date" id="from" value="2025-09-01" min="2025-09-01" max="2026-09-18">
