@@ -6978,6 +6978,18 @@
    "vconn": 5,
    "vcalled": 0,
    "cappts": 2
+  },
+  "2026-09-18": {
+   "calls": 1,
+   "connected": 0,
+   "appts": 0,
+   "mtgs": 0,
+   "called": 0,
+   "leads": 0,
+   "vcalls": 0,
+   "vconn": 0,
+   "vcalled": 0,
+   "cappts": 0
   }
  },
  "fs": {
