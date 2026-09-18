@@ -4831,7 +4831,7 @@
    },
    "web": {
     "leads": 14,
-    "cost": 41699,
+    "cost": 58731,
     "appts": 0,
     "mtgs": 0,
     "props": 0,
@@ -4845,7 +4845,7 @@
     "wip": 0,
     "backlog": 14,
     "blnomail": 0,
-    "cv": 19
+    "cv": 26
    },
    "line": {
     "leads": 0,
@@ -8806,6 +8806,26 @@
    "deals": 2,
    "won": 0,
    "won_amount": 0
+  },
+  {
+   "name": "第12回 勤務表",
+   "start": "2026-09-08",
+   "end": "2026-09-17",
+   "days": 10,
+   "cost": 127556,
+   "cost_days": 10,
+   "cost_est_days": 0,
+   "cost_manual": false,
+   "cv": 73,
+   "cv_days": 10,
+   "cv_est_days": 0,
+   "cv_manual": false,
+   "imp": 56032,
+   "clicks": 1083,
+   "leads": 47,
+   "deals": 1,
+   "won": 0,
+   "won_amount": 0
   }
  ],
  "adperf": {
@@ -8930,10 +8950,10 @@
    "cv": 48
   },
   "2026-09-14": {
-   "spend": 33003,
-   "imp": 15218,
-   "clicks": 233,
-   "cv": 19
+   "spend": 37542,
+   "imp": 17120,
+   "clicks": 267,
+   "cv": 25
   }
  },
  "adperf_day": {
@@ -9722,6 +9742,12 @@
    "imp": 5427,
    "clicks": 78,
    "cv": 11
+  },
+  "2026-09-17": {
+   "spend": 4539,
+   "imp": 1902,
+   "clicks": 34,
+   "cv": 6
   }
  },
  "ad_day": {
@@ -12048,11 +12074,31 @@
    }
   },
   "2026-09-16": {
+   "Meta/あおぞらTech": {
+    "spend": 5166,
+    "imp": 1015,
+    "clicks": 33,
+    "cv": 0
+   },
    "Meta/ウェビナー": {
     "spend": 11656,
     "imp": 5427,
     "clicks": 78,
     "cv": 11
+   }
+  },
+  "2026-09-17": {
+   "Meta/あおぞらTech": {
+    "spend": 7327,
+    "imp": 1103,
+    "clicks": 39,
+    "cv": 1
+   },
+   "Meta/ウェビナー": {
+    "spend": 4539,
+    "imp": 1902,
+    "clicks": 34,
+    "cv": 6
    }
   }
  },
@@ -28076,7 +28122,7 @@
    },
    "web": {
     "leads": 4,
-    "cost": 11656,
+    "cost": 16822,
     "appts": 0,
     "mtgs": 0,
     "props": 0,
@@ -28164,7 +28210,7 @@
    },
    "web": {
     "leads": 3,
-    "cost": 0,
+    "cost": 11866,
     "appts": 0,
     "mtgs": 0,
     "props": 0,
@@ -28177,7 +28223,8 @@
     "done": 0,
     "wip": 0,
     "backlog": 3,
-    "blnomail": 0
+    "blnomail": 0,
+    "cv": 7
    },
    "line": {
     "leads": 0,
