@@ -686,6 +686,24 @@ def compute_daily(data):  # noqa: C901
         "worked_days": len(worked),
     }
 
+    # 「本日」の1枚だけだと、朝は必ず全項目が0になる。土日は業者が稼働しないので
+    # 直近3週で5/21日（24%）が架電0件。**「昨日」固定にすると月曜の朝は
+    # 本日も昨日も0になり、一番見たい金曜の結果が見えない。** そこで2枚目は
+    # 「直近の稼働日」＝架電が1件以上あった最後の日（本日は除く）にする。
+    # どの日に開いても必ず中身が入る。見出しに日付を出すので、それが昨日なのか
+    # 金曜なのかは見出しで分かる。
+    prev = [d for d in worked if d < end]
+    if prev:
+        p = prev[-1]
+        activity.update({
+            "prev": f"{p.month}/{p.day}({WD_JA[p.weekday()]})",
+            "prev_calls": get(p, "calls"),
+            "prev_conn": get(p, "connected"),
+            "prev_called": get(p, "called"),
+            "prev_rate": safe_div(get(p, "connected"), get(p, "calls")),
+            "prev_appts": get(p, "cappts"),
+        })
+
     # 架電業者ぶん。**日付（VENDOR_START 以降）では切らない。**
     # 業者アカウントのコール（vcalls / vconn）と、業者アカウントが作った
     # 面談予約（is_attr の vendor）で数える。日付で切ると、社内が1件でも
@@ -1141,6 +1159,10 @@ align-items:stretch;}
 justify-content:center;padding:14px 12px;margin-right:12px;min-width:74px;
 font-size:12px;font-weight:700;line-height:1.35;white-space:nowrap;}
 .actsum .card.act .tag{background:#08959C;color:#fff;}
+/* 直近の稼働日は本日と同じ指標を1日ずらしただけなので、色は本日と同じにする
+   （.act のまま）。別の色を当てると別の集計に見える。淡い色で主従を付ける案は
+   やめた。#5FB3B8 だと白文字のコントラストが2.4:1 で、12pxの太字には足りない。
+   区別は見出しの文字（本日／直近の稼働日）と日付で足りる。 */
 .actsum .card.cum .tag{background:var(--ink);color:#fff;}
 /* 業者ぶんは期間指定で動かない固定の集計。上2枚と役割が違うので色も変える。 */
 .actsum .card.vendor .tag{background:#8459A5;color:#fff;}
@@ -2125,6 +2147,15 @@ def render(data):
             # 予約は先週かけた人から出ていることがあり、それを今日の新規着手で
             # 割ると意味を持たない。日をまたいで揃う週次テーブル側に置いてある。
         ])
+        # 直近の稼働日。本日と同じ並び・同じ項目にする。並びが違うと
+        # 上下の数字を見比べる時にどれとどれが対応するのか毎回探すことになる。
+        prev_items = "".join([
+            kpi("架電数", f_int(ac["prev_calls"])),
+            kpi("架電件数", f_int(ac["prev_called"])),
+            kpi("接続数", f_int(ac["prev_conn"])),
+            kpi("接続率", f_pct(ac["prev_rate"])),
+            kpi("面談予約 獲得数", f_int(ac["prev_appts"])),
+        ]) if ac.get("prev") else ""
         # 「日次の行動量」と「架電したリード → 面談予約」の折りたたみは廃止した。
         # 前者は架電数・接続数・接続率が上のグラフと全体の週次と重複し、
         # 後者は「面談予約 ÷ 架電したリード数」という、全体の週次から
@@ -2324,6 +2355,7 @@ def render(data):
 <div class="actsum">
   <div class="card act"><div class="tag">本日<span class="taglabel">{daily["activity"]["today"]}</span></div>
     <div class="kpis">{act_items}</div></div>
+  {f'<div class="card act prev"><div class="tag">直近の<br>稼働日<span class="taglabel">{daily["activity"]["prev"]}</span></div><div class="kpis">{prev_items}</div></div>' if prev_items else ''}
 </div>
 {vn_fold}
 <div class="charts one">
