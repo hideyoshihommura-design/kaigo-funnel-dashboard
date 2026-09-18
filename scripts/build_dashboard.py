@@ -1155,6 +1155,13 @@ align-items:stretch;}
 /* 中は必ず1行。入らない時は折り返さず、文字を縮めて収める
    （.kpi .v の clamp が画面幅に追従する）。 */
 .actsum .kpis{flex-wrap:nowrap;}
+/* web広告のカードは枠が9つあり、累計額が7桁に伸びた結果、640px幅で
+   ¥3,085,004 の末尾が2〜3px切れていた（実測5項目）。1行のルールは壊さずに
+   文字の下限だけ 10px→9px に下げて収める。折り返す案は捨てた（9枠が2段に
+   割れて他のカードと並びが揃わなくなる）。
+   下限に当たるのは 0.98vw が9pxを下回る918pxより狭いときだけなので、
+   1280px級で見ている限り今と1pxも変わらない。 */
+.actsum .kpi .v{font-size:clamp(9px,0.98vw,16px);}
 .actsum .card .tag{flex:0 0 auto;display:flex;flex-direction:column;
 justify-content:center;padding:14px 12px;margin-right:12px;min-width:74px;
 font-size:12px;font-weight:700;line-height:1.35;white-space:nowrap;}
