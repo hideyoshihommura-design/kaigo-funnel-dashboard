@@ -37,6 +37,14 @@ CHANNEL_KEYS = [k for k, _ in CHANNELS]
 # 連動するままで、こちらは日付固定。両者は入れ子（業者ぶんは期間内累計の一部）。
 VENDOR_START = dt.date(2026, 8, 19)
 
+# 残リードの枠。未着手がこの件数を割ったら、広告のファネルを増やす検討に入る
+# （2026-09-16 の定例で決定。20%ずつ予算を上げていく想定）。
+# 「残り」と「500まであと」は在庫なので期間指定では動かさない。
+LEAD_FLOOR = 500
+# 入り（リード獲得）と出（新規着手）は流量なので、常に同じ長さの窓で見る。
+# 当月にすると月初は小さく月末は大きく出て、日によって意味が変わる。
+FLOW_WINDOW_DAYS = 30
+
 # 取引作成者別の内訳。取引は相談申込に入った瞬間に作られるので、作成者＝
 # 面談予約を取った人。判定は fetch_data.py 側（業者アカウントのIDは
 # config/callers.json）。ここは並び順と表示名だけを持つ。
@@ -1052,6 +1060,10 @@ background:var(--ink);color:#fff;}
 @media(max-width:1250px){
   .actual .card .tag{min-width:88px;padding:12px 10px;margin-right:10px;}
 }
+/* 残リードは毎日ひと目で読む枠なので、数字を他より大きくする。5枠しか
+   入れていないので、1枠あたりの幅に余裕がある（1280px で約230px、
+   1,414 を22pxで出しても半分も使わない）。1行は崩さない。 */
+.actual .card.lead .kpi .v{font-size:clamp(12px,1.35vw,22px);}
 .charts{display:grid;grid-template-columns:repeat(auto-fit,minmax(460px,1fr));
 gap:16px;margin-bottom:8px;}
 .charts.one{grid-template-columns:minmax(0,1fr);}
@@ -1583,10 +1595,9 @@ function apply(from,to){
   setK('ap_cpl',jYen(div(ad.spend,ad.cv)));
 
   /* ---- 重要値 ----
-     web CPL は上の広告カードの ad をそのまま使う。別に足し直すと、
-     日次と週次の切り替わり（dayMode）でリード獲得側とズレる。
-     平均成約単価と消化状況の4枠は全期間固定なので、ここでは触らない
-     （id を振っていない）。 */
+     期間指定で動くのは 架電→商談 と 実施→成約 の2つだけ。
+     平均成約単価は全期間固定、残リードの枠は全部「今の状態」なので
+     どちらも id を振っていない（ここでは触らない）。 */
   var sc={called:0,cappt:0},ck,cr;
   for(ck in RAW.coh){
     if(!RAW.coh.hasOwnProperty(ck)){continue;}
@@ -1594,24 +1605,9 @@ function apply(from,to){
     cr=RAW.coh[ck];
     sc.called+=cr[0]; sc.cappt+=cr[1];
   }
-  var sv={calls:0,conn:0,called:0,appt:0},vk,vr;
-  for(vk in RAW.days){
-    if(!RAW.days.hasOwnProperty(vk)){continue;}
-    if(vk<from||vk>to){continue;}
-    vr=RAW.days[vk];
-    sv.calls+=vr[5]||0; sv.conn+=vr[6]||0; sv.called+=vr[7]||0;
-  }
-  for(vk in RAW.vappt){
-    if(!RAW.vappt.hasOwnProperty(vk)){continue;}
-    if(vk<from||vk>to){continue;}
-    sv.appt+=RAW.vappt[vk];
-  }
-  setK('sm_cpl',jYen(div(ad.spend,ad.cv)));
   setK('sm_conv',jPct(div(sc.cappt,sc.called)));
   /* 実施→成約は FS（イベント軸）の f を使う。上の fs_close と同じ割り算。 */
   setK('sm_win',jPct(div(f.wons,f.mtgs)));
-  setK('sm_vcalled',jInt(sv.called)); setK('sm_vcalls',jInt(sv.calls));
-  setK('sm_vrate',jPct(div(sv.conn,sv.calls))); setK('sm_vappt',jInt(sv.appt));
 
   /* ---- 月次ファネルは月を「列」に並べているので、行ではなく列を隠す ----
      他の表は showRows が行を隠すが、この表だけ向きが違う。
@@ -1839,17 +1835,31 @@ def render(data):
                     t[f] += v.get(f) or 0
         return t
 
-    coh = _sum_day(data.get("direct_day"),
-                   ("called", "cappt", "done", "wip", "backlog"))
-    ad_t = _sum_day(data.get("ad_day"), ("spend", "cv"))
-    vt = {"vcalls": 0, "vconn": 0, "vcalled": 0}
-    for day, v in (data.get("calls") or {}).items():
-        if a_start <= day <= a_end:
-            for f in vt:
-                vt[f] += v.get(f) or 0
-    vappt = sum((v.get("vendor") or {}).get("appts") or 0
-                for day, v in (data.get("is_attr") or {}).items()
-                if a_start <= day <= a_end)
+    coh = _sum_day(data.get("direct_day"), ("called", "cappt", "backlog"))
+
+    # ---- 残リードの枠で使う流量 ----
+    # 入り＝その期間に獲得したリード（コホート軸・direct_day の leads）。
+    # 出 ＝その期間に初めて架電した件数（イベント軸・calls の called）。
+    # 軸は違うが、どちらも同じ在庫（未着手）への流入と流出なので並べてよい。
+    # 割り算はしない。未着手は おおよそ 入り − 出 だけ動く。
+    w_from = (period_end - dt.timedelta(days=FLOW_WINDOW_DAYS - 1)).isoformat()
+    flow_in = sum(v.get("leads") or 0
+                  for day, chs in (data.get("direct_day") or {}).items()
+                  if w_from <= day <= a_end
+                  for v in chs.values())
+    flow_out = sum(v.get("called") or 0
+                   for day, v in (data.get("calls") or {}).items()
+                   if w_from <= day <= a_end)
+    # web CPL も同じ窓で見る。ここは「今いくらで買えているか」を見る枠なので、
+    # 全期間だと初期のコンバージョンが無かった時期が混ざって高く出る。
+    # 期間指定に連動する web CPL はリード獲得のカード（ap_cpl）に残してある。
+    ad_w = {"spend": 0, "cv": 0}
+    for day, row in (data.get("ad_day") or {}).items():
+        if w_from <= day <= a_end:
+            for v in row.values():
+                ad_w["spend"] += v.get("spend") or 0
+                ad_w["cv"] += v.get("cv") or 0
+
     # 平均成約単価だけ全期間で固定する。成約が6件しかなく、期間を絞ると
     # 0件になって消える日が大半になる。シミュレーターの「単価」は
     # 事業の前提として置く数字なので、期間で動かす意味もない。
@@ -1862,14 +1872,33 @@ def render(data):
             fs_p["mtgs"] += v.get("mtgs") or 0
             fs_p["wons"] += v.get("wons") or 0
 
-    def act_card(tag, kpis):
-        return (f'<div class="card"><div class="tag">{tag}</div>'
+    def act_card(tag, kpis, cls=""):
+        c = f"card {cls}".strip()
+        return (f'<div class="{c}"><div class="tag">{tag}</div>'
                 f'<div class="kpis">{"".join(kpis)}</div></div>')
+
+    # 残リードは毎日見る枠なので一番上に置く。中身は全部「今の状態」で、
+    # 期間指定では動かさない（id を振らない）。在庫は期間で切ると意味が
+    # 変わり、流量は窓の長さが変わると比べられなくなる。
+    # 架電業者の活動量（架電数・接続率）はここに置かない。マーケが動かせる
+    # 数字ではないうえ、IS活動量の「架電業者の週次」に同じものがある。
+    lead_section = (
+        '<h2>残リード</h2>\n<div class="actual">'
+        + act_card("残リード", [
+            kpi("残り", f_int(coh["backlog"])),
+            kpi(f"{LEAD_FLOOR:,}まであと",
+                f_int(max(0, coh["backlog"] - LEAD_FLOOR))),
+            kpi(f"web CPL（直近{FLOW_WINDOW_DAYS}日）",
+                f_yen(safe_div(ad_w["spend"], ad_w["cv"]))),
+            kpi(f"入り 獲得（直近{FLOW_WINDOW_DAYS}日）", f_int(flow_in)),
+            kpi(f"出 新規着手（直近{FLOW_WINDOW_DAYS}日）", f_int(flow_out)),
+        ], "lead")
+        + "</div>"
+    )
 
     actual_section = (
         '<h2>重要値</h2>\n<div class="actual">'
-        + act_card("単価と<br>転換率", [
-            kpi("web CPL", f_yen(safe_div(ad_t["spend"], ad_t["cv"])), "sm_cpl"),
+        + act_card("転換率と<br>単価", [
             kpi("架電→商談", f_pct(safe_div(coh["cappt"], coh["called"])), "sm_conv"),
             # 「商談→成約」ではなく「実施→成約」。分母は面談実施（イベント軸）。
             # シミュレーターの商談枠はクローザーの処理能力（1人目30件/月・
@@ -1881,23 +1910,6 @@ def render(data):
             kpi("実施→成約", f_pct(safe_div(fs_p["wons"], fs_p["mtgs"])), "sm_win"),
             kpi("平均成約単価（全期間）",
                 f_yen(safe_div(fs_all["wonamt"], fs_all["wons"]))),
-        ])
-        + act_card("架電業者", [
-            kpi("架電件数", f_int(vt["vcalled"]), "sm_vcalled"),
-            kpi("架電数", f_int(vt["vcalls"]), "sm_vcalls"),
-            kpi("接続率", f_pct(safe_div(vt["vconn"], vt["vcalls"])), "sm_vrate"),
-            kpi("面談予約", f_int(vappt), "sm_vappt"),
-        ])
-        # 消化状況は全期間固定。これは「今この瞬間のリスト在庫」で、
-        # 期間で切ると意味が変わる。上の架電業者はイベント軸（その期間に
-        # 何件かけたか）、こちらはコホート軸（その期間に獲得したリードの
-        # 進み具合）なので、期間を絞ると「業者は177件かけたのに架電対象は
-        # 50件」という別集団の並びになって読み違える。
-        + act_card("消化状況<br>（全期間）", [
-            kpi("架電対象", f_int(coh["called"] + coh["backlog"])),
-            kpi("追い切った", f_int(coh["done"])),
-            kpi("着手中", f_int(coh["wip"])),
-            kpi("未着手", f_int(coh["backlog"])),
         ])
         + "</div>"
     )
@@ -2743,21 +2755,15 @@ def render(data):
         "dfrom": dcost_first or "9999-12-31",
         "days": {k: [v.get("calls", 0), v.get("connected", 0),
                      v.get("appts", 0), v.get("leads", 0),
-                     v.get("called", 0), v.get("vcalls", 0),
-                     v.get("vconn", 0), v.get("vcalled", 0)]
+                     v.get("called", 0)]
                  for k, v in (data.get("calls") or {}).items()},
-        # 重要値の枠の再計算用。コホート軸（direct_day をチャネル横断で合計）。
-        # ヘッダーの dkpi と同じ軸だが、あちらは架電・消化を持っていない。
-        # 消化（done/wip/backlog）は入れない。重要値の消化状況は全期間固定で、
-        # 期間フィルタで動かさないため。成約は実施→成約（FS側）で出すので
-        # ここには要らない。
+        # 重要値の「架電→商談」の再計算用。コホート軸（direct_day を
+        # チャネル横断で合計）。ヘッダーの dkpi と同じ軸だが、あちらは
+        # 架電を持っていない。消化（done/wip/backlog）と残リードの枠は
+        # 期間フィルタで動かさないので入れない。成約は実施→成約（FS側）で出す。
         "coh": {day: [sum(c.get(f) or 0 for c in chs.values())
                       for f in ("called", "cappt")]
                 for day, chs in (data.get("direct_day") or {}).items()},
-        # 架電業者の面談予約。is_attr（取引の作成者ではなく直前架電で判定）の
-        # vendor 側。IS活動量の「架電業者の週次」と同じ数え方。
-        "vappt": {day: (v.get("vendor") or {}).get("appts") or 0
-                  for day, v in (data.get("is_attr") or {}).items()},
         "fs": {k: [v.get("mtgs", 0), v.get("props", 0),
                    v.get("wons", 0), v.get("wonamt", 0)]
                for k, v in (data.get("fs") or {}).items()},
@@ -2832,6 +2838,7 @@ showAge();
     <div class="kpis">{agency_kpis}</div></div>
 </div>
 
+{lead_section}
 {actual_section}
 {funnel_section}
 {adperf_section}
