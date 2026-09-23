@@ -1665,10 +1665,8 @@ function apply(from,to){
   setK('sm_win',jPct(div(f.wons,f.mtgs)));
   setK('sm_vcalled',jInt(sv.called)); setK('sm_vcalls',jInt(sv.calls));
   setK('sm_vrate',jPct(div(sv.conn,sv.calls))); setK('sm_vappt',jInt(sv.appt));
-  /* 月次KPIの右に置いた「転換率と単価」の箱。重要値と同じ割り算だが
-     id が別なので両方に書き込む。 */
-  setK('lb_conv',jPct(div(sc.cappt,sc.called)));
-  setK('lb_win',jPct(div(f.wons,f.mtgs)));
+  /* 月次KPIの右の2つの箱（残リード・転換率と単価）はここで触らない。
+     どちらも期間指定では動かさない。見出しに期間を書いてある。 */
 
   /* ---- 月次ファネルは月を「列」に並べているので、行ではなく列を隠す ----
      他の表は showRows が行を隠すが、この表だけ向きが違う。
@@ -1921,15 +1919,11 @@ def render(data):
     flow_out = sum(v.get("called") or 0
                    for day, v in (data.get("calls") or {}).items()
                    if w_from <= day <= a_end)
-    # web CPL も同じ窓で見る。ここは「今いくらで買えているか」を見る枠なので、
-    # 全期間だと初期のコンバージョンが無かった時期が混ざって高く出る。
-    # 期間指定に連動する web CPL はリード獲得のカード（ap_cpl）に残してある。
-    ad_w = {"spend": 0, "cv": 0}
-    for day, row in (data.get("ad_day") or {}).items():
-        if w_from <= day <= a_end:
-            for v in row.values():
-                ad_w["spend"] += v.get("spend") or 0
-                ad_w["cv"] += v.get("cv") or 0
+    # **残リードの箱に web CPL は置かない。** 一度置いたが外した。
+    # 30日平均なので前日差が6〜154円しかなく、毎日見ても新しいことが
+    # 分からない（2026-09-13〜22 で実測。10日の振れ幅 ¥235）。
+    # CPLは既にヘッダー・重要値・リード獲得・推移グラフの4か所にある。
+    # 直近の値が要るときは、期間指定を直近1ヶ月にしてリード獲得のCPLを見る。
 
     # 平均成約単価だけ全期間で固定する。成約が6件しかなく、期間を絞ると
     # 0件になって消える日が大半になる。シミュレーターの「単価」は
@@ -1973,8 +1967,6 @@ def render(data):
         + lb_row(f"増減 {FLOW_WINDOW_DAYS}日",
                  f'<span class="{"minus" if net < 0 else "plus"}">'
                  f'{"+" if net > 0 else ""}{f_int(net)}</span>')
-        + lb_row(f"web CPL {FLOW_WINDOW_DAYS}日",
-                 f_yen(safe_div(ad_w["spend"], ad_w["cv"])))
         + "</aside>"
     )
 
@@ -1982,15 +1974,17 @@ def render(data):
     # 更新頻度が違い（毎日／月1）、期間フィルタの挙動も違う（残リードは
     # 動かない、架電→商談と実施→成約は動く）。同じ箱に入れると、期間を
     # 変えたときに一部だけ動いて理由が分からなくなる。
+    # 3つとも期間指定では動かさない（id を振らない）。右の2つの箱は
+    # 「今の姿」を出す場所で、月ごとの推移は隣の表が出している
+    # （表にも 架電→商談・商談→成約 の行がある）。
+    # **見出しに「全期間」と書くのが必須。** 書かずに固定にすると、8月に
+    # 絞ったとき表の14.8%と箱の4.8%が並んで理由が分からなくなる。
+    # 期間に連動する版は上の「重要値」に残してある。
     rate_box = (
         '<aside class="leadbox rate">'
-        '<div class="lbtitle">転換率と単価<span>シミュレーターに入れる数字</span></div>'
-        + lb_row("架電→商談",
-                 f'<span id="lb_conv">'
-                 f'{f_pct(safe_div(coh["cappt"], coh["called"]))}</span>')
-        + lb_row("実施→成約",
-                 f'<span id="lb_win">'
-                 f'{f_pct(safe_div(fs_p["wons"], fs_p["mtgs"]))}</span>')
+        '<div class="lbtitle">転換率と単価<span>全期間</span></div>'
+        + lb_row("架電→商談", f_pct(safe_div(coh["cappt"], coh["called"])))
+        + lb_row("実施→成約", f_pct(safe_div(fs_p["wons"], fs_p["mtgs"])))
         + lb_row("平均成約単価",
                  f_yen(safe_div(fs_all["wonamt"], fs_all["wons"])))
         + "</aside>"
