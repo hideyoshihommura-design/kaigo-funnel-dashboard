@@ -156,7 +156,9 @@ font-variant-numeric:tabular-nums;white-space:nowrap;}
    いる間ずっと視界から外れる。 */
 @media(max-width:1100px){
   .fnlrow{grid-template-columns:minmax(0,1fr);}
-  .leadbox{order:-1;}
+  /* 幅いっぱいに伸ばすと .lbrow の両端寄せでラベルと数字が1000px近く
+     離れて読めなくなる。横に置いたときと同じくらいの幅で止める。 */
+  .leadbox{order:-1;max-width:420px;}
 }
 .charts{display:grid;grid-template-columns:repeat(auto-fit,minmax(460px,1fr));
 gap:16px;margin-bottom:8px;}
@@ -333,7 +335,7 @@ tr.roll td.wk{background:var(--head);color:var(--muted);font-weight:600;}
 <body><div class="wrap">
 
 <h1>ホリエモンAI学校 介護校 ファネルダッシュボード</h1>
-<div class="sub"><span id="period">2025-09-01 〜 2026-09-23（週次・月曜始まり）</span>　/　数字の更新 2026-09-23 14:27<span id="age"></span></div>
+<div class="sub"><span id="period">2025-09-01 〜 2026-09-23（週次・月曜始まり）</span>　/　数字の更新 2026-09-23 14:30<span id="age"></span></div>
 <div class="range">
   <label>期間</label>
   <input type="date" id="from" value="2025-09-01" min="2025-09-01" max="2026-09-23">
