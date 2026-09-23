@@ -1064,16 +1064,40 @@ background:var(--ink);color:#fff;}
    入れていないので、1枠あたりの幅に余裕がある（1280px で約230px、
    1,414 を22pxで出しても半分も使わない）。1行は崩さない。 */
 .actual .card.lead .kpi .v{font-size:clamp(10px,1.35vw,22px);}
-/* 「残り」がこの枠の答えで、他の3つはその背景。同じ大きさで4つ並べると
-   目がどこに落ちるか決まらないので、先頭だけ大きくして主従を付ける。
-   枠も広く取る。伸び代は2倍まで。3倍にすると 1280px で枠が486pxになり、
-   数字の右に空白が300px以上空いて間延びした。 */
-.actual .card.lead .kpi:first-child{flex-grow:2;}
-.actual .card.lead .kpi:first-child .v{font-size:clamp(20px,3vw,44px);
-line-height:1.1;}
-/* 在庫（残り）と流れ（獲得・着手・CPL）の境目だけ罫線を濃くする。
-   他はすべて同じ薄さなので、ここだけで区切りが伝わる。 */
-.actual .card.lead .kpi:nth-child(2){border-left-color:var(--ink);}
+/* 残リードは月次KPIの表の右に縦で置く（.fnlrow / .leadbox）。
+   横一列のカードは一度作ったが、ラベルと数字が横に並ぶ形が読みづらく、
+   社長の「月KPIの表の右側に単独でウィンドウ」とも違っていたのでやめた。 */
+.fnlrow{display:grid;grid-template-columns:minmax(0,1fr) 240px;gap:14px;
+align-items:start;margin:0 0 16px;}
+.fnlrow .fnl{margin:0;}
+/* 表は overflow-x:auto なので、狭めても横スクロールで全月読める。
+   1280px で表の枠は 1223→969px、見える月は13→10に減る。ただし列は毎月
+   増えるので、この枠を置かなくても16列（1270px）でスクロールし始める。 */
+.leadbox{border:1px solid var(--line);border-radius:8px;background:var(--card);
+overflow:hidden;}
+.lbtitle{background:var(--ink);color:#fff;font-size:12px;font-weight:700;
+padding:9px 12px;line-height:1.35;}
+.lbtitle span{display:block;font-size:10.5px;font-weight:400;opacity:.9;}
+/* 「残り」がこの枠の答え。他の3つはその背景なので、大きさで主従を付ける。 */
+.lbmain{padding:14px 12px 12px;border-bottom:1px solid var(--line);}
+.lbmain .k{font-size:11px;color:var(--muted);letter-spacing:.03em;}
+.lbmain .v{font-size:40px;font-weight:700;color:var(--ink-strong);
+font-variant-numeric:tabular-nums;letter-spacing:-.02em;line-height:1.15;
+margin-top:2px;}
+/* 流れの3つはラベル左・数字右の1行ずつ。縦に積むと桁が揃わないので、
+   両端に寄せて数字の位置をそろえる。 */
+.lbrow{display:flex;justify-content:space-between;align-items:baseline;
+gap:8px;padding:10px 12px;border-bottom:1px solid var(--line);}
+.lbrow:last-child{border-bottom:none;}
+.lbrow .k{font-size:11px;color:var(--muted);white-space:nowrap;}
+.lbrow .v{font-size:17px;font-weight:700;color:var(--ink-strong);
+font-variant-numeric:tabular-nums;white-space:nowrap;}
+/* 横に並べられない幅では表の上に戻す。下に置くと、表を横スクロールして
+   いる間ずっと視界から外れる。 */
+@media(max-width:1100px){
+  .fnlrow{grid-template-columns:minmax(0,1fr);}
+  .leadbox{order:-1;}
+}
 .charts{display:grid;grid-template-columns:repeat(auto-fit,minmax(460px,1fr));
 gap:16px;margin-bottom:8px;}
 .charts.one{grid-template-columns:minmax(0,1fr);}
@@ -1892,21 +1916,21 @@ def render(data):
     # 変わり、流量は窓の長さが変わると比べられなくなる。
     # 架電業者の活動量（架電数・接続率）はここに置かない。マーケが動かせる
     # 数字ではないうえ、IS活動量の「架電業者の週次」に同じものがある。
-    lead_section = (
-        '<h2>残リード</h2>\n<div class="actual">'
-        # 並びは 在庫 → 流れ（入り・出）→ 単価。入りと出は対になるので隣に置く。
-        # ラベルは短くする。「web CPL（直近30日）」のように括弧で書くと
-        # 493px幅でラベルが切れた。
-        # タグに「残リード」と書くと見出しと同じ言葉が2つ並ぶ。枠の中身
-        # （今の残り＋直近30日の流れ）が分かる書き方にする。
-        + act_card(f"今の残りと<br>直近{FLOW_WINDOW_DAYS}日", [
-            kpi("残り", f_int(coh["backlog"])),
-            kpi(f"リード獲得 {FLOW_WINDOW_DAYS}日", f_int(flow_in)),
-            kpi(f"新規着手 {FLOW_WINDOW_DAYS}日", f_int(flow_out)),
-            kpi(f"web CPL {FLOW_WINDOW_DAYS}日",
-                f_yen(safe_div(ad_w["spend"], ad_w["cv"]))),
-        ], "lead")
-        + "</div>"
+    # 月次KPIの表の右に置く縦の枠。独立したセクションにはしない。
+    # 並びは 在庫（残り）→ 流れ（入り・出）→ 単価。入りと出は対なので隣に置く。
+    def lb_row(k, v):
+        return f'<div class="lbrow"><span class="k">{k}</span><span class="v">{v}</span></div>'
+
+    lead_box = (
+        '<aside class="leadbox">'
+        f'<div class="lbtitle">残リード<span>今の残りと直近{FLOW_WINDOW_DAYS}日</span></div>'
+        f'<div class="lbmain"><div class="k">残り</div>'
+        f'<div class="v">{f_int(coh["backlog"])}</div></div>'
+        + lb_row(f"リード獲得 {FLOW_WINDOW_DAYS}日", f_int(flow_in))
+        + lb_row(f"新規着手 {FLOW_WINDOW_DAYS}日", f_int(flow_out))
+        + lb_row(f"web CPL {FLOW_WINDOW_DAYS}日",
+                 f_yen(safe_div(ad_w["spend"], ad_w["cv"])))
+        + "</aside>"
     )
 
     actual_section = (
@@ -2500,11 +2524,14 @@ def render(data):
          False),
     ]
     fu_html = month_table(fu_keys, fu, fu_rows, fu_tot)
+    # 残リードの枠は表の右に並べる（社長の「月KPIの表の右側に単独で
+    # ウィンドウ」）。表を狭めるぶん見える月が13→10に減るが、表は
+    # 横スクロールするので全月読める。
     funnel_section = (
         '\n<h2>月次KPI'
         '<span class="h2sub">直契約・獲得月ベース／'
         '太字が追う指標</span></h2>\n'
-        + fu_html + "\n"
+        f'<div class="fnlrow">{fu_html}{lead_box}</div>\n'
     ) if fu_html else ""
 
     # 「取引作成者別」のセクションは廃止した。作成者で切った数字のうち
@@ -2851,7 +2878,6 @@ showAge();
     <div class="kpis">{agency_kpis}</div></div>
 </div>
 
-{lead_section}
 {actual_section}
 {funnel_section}
 {adperf_section}
