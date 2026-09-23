@@ -1070,6 +1070,12 @@ background:var(--ink);color:#fff;}
 .fnlrow{display:grid;grid-template-columns:minmax(0,1fr) 240px;gap:14px;
 align-items:start;margin:0 0 16px;}
 .fnlrow .fnl{margin:0;}
+/* 右の列は2つの箱を縦に積む。残リード（毎日・期間で動かない）と
+   転換率と単価（月1・期間に連動）で性質が違うので、同じ箱に混ぜない。 */
+.fnlside{display:flex;flex-direction:column;gap:12px;min-width:0;}
+/* 増減の符号。減っているときだけ色を変える。増えているときは通常色で、
+   注意を引く必要がない。 */
+.lbrow .minus{color:#B3261E;}
 /* 表は overflow-x:auto なので、狭めても横スクロールで全月読める。
    1280px で表の枠は 1223→969px、見える月は13→10に減る。ただし列は毎月
    増えるので、この枠を置かなくても16列（1270px）でスクロールし始める。 */
@@ -1098,7 +1104,7 @@ font-variant-numeric:tabular-nums;white-space:nowrap;}
   .fnlrow{grid-template-columns:minmax(0,1fr);}
   /* 幅いっぱいに伸ばすと .lbrow の両端寄せでラベルと数字が1000px近く
      離れて読めなくなる。横に置いたときと同じくらいの幅で止める。 */
-  .leadbox{order:-1;max-width:420px;}
+  .fnlside{order:-1;max-width:420px;}
 }
 .charts{display:grid;grid-template-columns:repeat(auto-fit,minmax(460px,1fr));
 gap:16px;margin-bottom:8px;}
@@ -1641,9 +1647,28 @@ function apply(from,to){
     cr=RAW.coh[ck];
     sc.called+=cr[0]; sc.cappt+=cr[1];
   }
+  var sv={calls:0,conn:0,called:0,appt:0},vk,vr;
+  for(vk in RAW.days){
+    if(!RAW.days.hasOwnProperty(vk)){continue;}
+    if(vk<from||vk>to){continue;}
+    vr=RAW.days[vk];
+    sv.calls+=vr[5]||0; sv.conn+=vr[6]||0; sv.called+=vr[7]||0;
+  }
+  for(vk in RAW.vappt){
+    if(!RAW.vappt.hasOwnProperty(vk)){continue;}
+    if(vk<from||vk>to){continue;}
+    sv.appt+=RAW.vappt[vk];
+  }
+  setK('sm_cpl',jYen(div(ad.spend,ad.cv)));
   setK('sm_conv',jPct(div(sc.cappt,sc.called)));
   /* 実施→成約は FS（イベント軸）の f を使う。上の fs_close と同じ割り算。 */
   setK('sm_win',jPct(div(f.wons,f.mtgs)));
+  setK('sm_vcalled',jInt(sv.called)); setK('sm_vcalls',jInt(sv.calls));
+  setK('sm_vrate',jPct(div(sv.conn,sv.calls))); setK('sm_vappt',jInt(sv.appt));
+  /* 月次KPIの右に置いた「転換率と単価」の箱。重要値と同じ割り算だが
+     id が別なので両方に書き込む。 */
+  setK('lb_conv',jPct(div(sc.cappt,sc.called)));
+  setK('lb_win',jPct(div(f.wons,f.mtgs)));
 
   /* ---- 月次ファネルは月を「列」に並べているので、行ではなく列を隠す ----
      他の表は showRows が行を隠すが、この表だけ向きが違う。
@@ -1871,7 +1896,17 @@ def render(data):
                     t[f] += v.get(f) or 0
         return t
 
-    coh = _sum_day(data.get("direct_day"), ("called", "cappt", "backlog"))
+    coh = _sum_day(data.get("direct_day"),
+                   ("called", "cappt", "done", "wip", "backlog"))
+    ad_t = _sum_day(data.get("ad_day"), ("spend", "cv"))
+    vt = {"vcalls": 0, "vconn": 0, "vcalled": 0}
+    for day, v in (data.get("calls") or {}).items():
+        if a_start <= day <= a_end:
+            for f in vt:
+                vt[f] += v.get(f) or 0
+    vappt = sum((v.get("vendor") or {}).get("appts") or 0
+                for day, v in (data.get("is_attr") or {}).items()
+                if a_start <= day <= a_end)
 
     # ---- 残リードの枠で使う流量 ----
     # 入り＝その期間に獲得したリード（コホート軸・direct_day の leads）。
@@ -1923,6 +1958,11 @@ def render(data):
     def lb_row(k, v):
         return f'<div class="lbrow"><span class="k">{k}</span><span class="v">{v}</span></div>'
 
+    # 増減は 入り − 出。**符号がこの枠の合図。** 2026-09 に反転した
+    # （6月+96 / 7月+710 / 8月+66 / 9月−119）。入りと出の2つを見比べて
+    # 引き算し、さらに先月と比べないと気づけない転換が、符号1つで出る。
+    # 「500まであと」（変数−定数・5ヶ月間ほぼ動かない）とは別物として入れた。
+    net = flow_in - flow_out
     lead_box = (
         '<aside class="leadbox">'
         f'<div class="lbtitle">残リード<span>今の残りと直近{FLOW_WINDOW_DAYS}日</span></div>'
@@ -1930,14 +1970,36 @@ def render(data):
         f'<div class="v">{f_int(coh["backlog"])}</div></div>'
         + lb_row(f"リード獲得 {FLOW_WINDOW_DAYS}日", f_int(flow_in))
         + lb_row(f"新規着手 {FLOW_WINDOW_DAYS}日", f_int(flow_out))
+        + lb_row(f"増減 {FLOW_WINDOW_DAYS}日",
+                 f'<span class="{"minus" if net < 0 else "plus"}">'
+                 f'{"+" if net > 0 else ""}{f_int(net)}</span>')
         + lb_row(f"web CPL {FLOW_WINDOW_DAYS}日",
                  f_yen(safe_div(ad_w["spend"], ad_w["cv"])))
         + "</aside>"
     )
 
+    # 転換率と単価は別の箱にして下に積む。残リードと同じ箱に混ぜない。
+    # 更新頻度が違い（毎日／月1）、期間フィルタの挙動も違う（残リードは
+    # 動かない、架電→商談と実施→成約は動く）。同じ箱に入れると、期間を
+    # 変えたときに一部だけ動いて理由が分からなくなる。
+    rate_box = (
+        '<aside class="leadbox rate">'
+        '<div class="lbtitle">転換率と単価<span>シミュレーターに入れる数字</span></div>'
+        + lb_row("架電→商談",
+                 f'<span id="lb_conv">'
+                 f'{f_pct(safe_div(coh["cappt"], coh["called"]))}</span>')
+        + lb_row("実施→成約",
+                 f'<span id="lb_win">'
+                 f'{f_pct(safe_div(fs_p["wons"], fs_p["mtgs"]))}</span>')
+        + lb_row("平均成約単価",
+                 f_yen(safe_div(fs_all["wonamt"], fs_all["wons"])))
+        + "</aside>"
+    )
+
     actual_section = (
         '<h2>重要値</h2>\n<div class="actual">'
-        + act_card("転換率と<br>単価", [
+        + act_card("単価と<br>転換率", [
+            kpi("web CPL", f_yen(safe_div(ad_t["spend"], ad_t["cv"])), "sm_cpl"),
             kpi("架電→商談", f_pct(safe_div(coh["cappt"], coh["called"])), "sm_conv"),
             # 「商談→成約」ではなく「実施→成約」。分母は面談実施（イベント軸）。
             # シミュレーターの商談枠はクローザーの処理能力（1人目30件/月・
@@ -1949,6 +2011,22 @@ def render(data):
             kpi("実施→成約", f_pct(safe_div(fs_p["wons"], fs_p["mtgs"])), "sm_win"),
             kpi("平均成約単価（全期間）",
                 f_yen(safe_div(fs_all["wonamt"], fs_all["wons"]))),
+        ])
+        + act_card("架電業者", [
+            kpi("架電件数", f_int(vt["vcalled"]), "sm_vcalled"),
+            kpi("架電数", f_int(vt["vcalls"]), "sm_vcalls"),
+            kpi("接続率", f_pct(safe_div(vt["vconn"], vt["vcalls"])), "sm_vrate"),
+            kpi("面談予約", f_int(vappt), "sm_vappt"),
+        ])
+        # 消化状況は全期間固定。これは「今この瞬間のリスト在庫」で、
+        # 期間で切ると意味が変わる。上の架電業者はイベント軸（その期間に
+        # 何件かけたか）、こちらはコホート軸（その期間に獲得したリードの
+        # 進み具合）なので、期間を絞ると別集団の並びになって読み違える。
+        + act_card("消化状況<br>（全期間）", [
+            kpi("架電対象", f_int(coh["called"] + coh["backlog"])),
+            kpi("追い切った", f_int(coh["done"])),
+            kpi("着手中", f_int(coh["wip"])),
+            kpi("未着手", f_int(coh["backlog"])),
         ])
         + "</div>"
     )
@@ -2533,7 +2611,8 @@ def render(data):
         '\n<h2>月次KPI'
         '<span class="h2sub">直契約・獲得月ベース／'
         '太字が追う指標</span></h2>\n'
-        f'<div class="fnlrow">{fu_html}{lead_box}</div>\n'
+        f'<div class="fnlrow">{fu_html}'
+        f'<div class="fnlside">{lead_box}{rate_box}</div></div>\n'
     ) if fu_html else ""
 
     # 「取引作成者別」のセクションは廃止した。作成者で切った数字のうち
@@ -2797,8 +2876,12 @@ def render(data):
         "dfrom": dcost_first or "9999-12-31",
         "days": {k: [v.get("calls", 0), v.get("connected", 0),
                      v.get("appts", 0), v.get("leads", 0),
-                     v.get("called", 0)]
+                     v.get("called", 0), v.get("vcalls", 0),
+                     v.get("vconn", 0), v.get("vcalled", 0)]
                  for k, v in (data.get("calls") or {}).items()},
+        # 架電業者の面談予約。is_attr（直前架電で判定）の vendor 側。
+        "vappt": {day: (v.get("vendor") or {}).get("appts") or 0
+                  for day, v in (data.get("is_attr") or {}).items()},
         # 重要値の「架電→商談」の再計算用。コホート軸（direct_day を
         # チャネル横断で合計）。ヘッダーの dkpi と同じ軸だが、あちらは
         # 架電を持っていない。消化（done/wip/backlog）と残リードの枠は
