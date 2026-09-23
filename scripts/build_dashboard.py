@@ -1064,6 +1064,15 @@ background:var(--ink);color:#fff;}
    入れていないので、1枠あたりの幅に余裕がある（1280px で約230px、
    1,414 を22pxで出しても半分も使わない）。1行は崩さない。 */
 .actual .card.lead .kpi .v{font-size:clamp(10px,1.35vw,22px);}
+/* 「残り」がこの枠の答えで、他の3つはその背景。同じ大きさで4つ並べると
+   目がどこに落ちるか決まらないので、先頭だけ大きくして主従を付ける。
+   枠も広く取る（flex の伸び代を3倍）。 */
+.actual .card.lead .kpi:first-child{flex-grow:3;}
+.actual .card.lead .kpi:first-child .v{font-size:clamp(20px,3vw,44px);
+line-height:1.1;}
+/* 在庫（残り）と流れ（獲得・着手・CPL）の境目だけ罫線を濃くする。
+   他はすべて同じ薄さなので、ここだけで区切りが伝わる。 */
+.actual .card.lead .kpi:nth-child(2){border-left-color:var(--ink);}
 .charts{display:grid;grid-template-columns:repeat(auto-fit,minmax(460px,1fr));
 gap:16px;margin-bottom:8px;}
 .charts.one{grid-template-columns:minmax(0,1fr);}
@@ -1884,16 +1893,15 @@ def render(data):
     # 数字ではないうえ、IS活動量の「架電業者の週次」に同じものがある。
     lead_section = (
         '<h2>残リード</h2>\n<div class="actual">'
+        # 並びは 在庫 → 流れ（入り・出）→ 単価。入りと出は対になるので隣に置く。
+        # ラベルは短くする。「web CPL（直近30日）」のように括弧で書くと
+        # 493px幅でラベルが切れた。
         + act_card("残リード", [
             kpi("残り", f_int(coh["backlog"])),
-            kpi(f"{LEAD_FLOOR:,}まであと",
-                f_int(max(0, coh["backlog"] - LEAD_FLOOR))),
-            # ラベルは短くする。「web CPL（直近30日）」のように括弧で書くと
-            # 493px幅で5枠のうち4枠のラベルが切れた。
-            kpi(f"web CPL {FLOW_WINDOW_DAYS}日",
-                f_yen(safe_div(ad_w["spend"], ad_w["cv"]))),
             kpi(f"リード獲得 {FLOW_WINDOW_DAYS}日", f_int(flow_in)),
             kpi(f"新規着手 {FLOW_WINDOW_DAYS}日", f_int(flow_out)),
+            kpi(f"web CPL {FLOW_WINDOW_DAYS}日",
+                f_yen(safe_div(ad_w["spend"], ad_w["cv"]))),
         ], "lead")
         + "</div>"
     )
