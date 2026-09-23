@@ -1063,7 +1063,7 @@ background:var(--ink);color:#fff;}
 /* 残リードは毎日ひと目で読む枠なので、数字を他より大きくする。5枠しか
    入れていないので、1枠あたりの幅に余裕がある（1280px で約230px、
    1,414 を22pxで出しても半分も使わない）。1行は崩さない。 */
-.actual .card.lead .kpi .v{font-size:clamp(12px,1.35vw,22px);}
+.actual .card.lead .kpi .v{font-size:clamp(10px,1.35vw,22px);}
 .charts{display:grid;grid-template-columns:repeat(auto-fit,minmax(460px,1fr));
 gap:16px;margin-bottom:8px;}
 .charts.one{grid-template-columns:minmax(0,1fr);}
@@ -1888,10 +1888,12 @@ def render(data):
             kpi("残り", f_int(coh["backlog"])),
             kpi(f"{LEAD_FLOOR:,}まであと",
                 f_int(max(0, coh["backlog"] - LEAD_FLOOR))),
-            kpi(f"web CPL（直近{FLOW_WINDOW_DAYS}日）",
+            # ラベルは短くする。「web CPL（直近30日）」のように括弧で書くと
+            # 493px幅で5枠のうち4枠のラベルが切れた。
+            kpi(f"web CPL {FLOW_WINDOW_DAYS}日",
                 f_yen(safe_div(ad_w["spend"], ad_w["cv"]))),
-            kpi(f"入り 獲得（直近{FLOW_WINDOW_DAYS}日）", f_int(flow_in)),
-            kpi(f"出 新規着手（直近{FLOW_WINDOW_DAYS}日）", f_int(flow_out)),
+            kpi(f"リード獲得 {FLOW_WINDOW_DAYS}日", f_int(flow_in)),
+            kpi(f"新規着手 {FLOW_WINDOW_DAYS}日", f_int(flow_out)),
         ], "lead")
         + "</div>"
     )
