@@ -1096,7 +1096,9 @@ font-variant-numeric:tabular-nums;white-space:nowrap;}
    いる間ずっと視界から外れる。 */
 @media(max-width:1100px){
   .fnlrow{grid-template-columns:minmax(0,1fr);}
-  .leadbox{order:-1;}
+  /* 幅いっぱいに伸ばすと .lbrow の両端寄せでラベルと数字が1000px近く
+     離れて読めなくなる。横に置いたときと同じくらいの幅で止める。 */
+  .leadbox{order:-1;max-width:420px;}
 }
 .charts{display:grid;grid-template-columns:repeat(auto-fit,minmax(460px,1fr));
 gap:16px;margin-bottom:8px;}
