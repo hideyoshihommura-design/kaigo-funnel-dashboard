@@ -123,7 +123,7 @@ background:var(--ink);color:#fff;}
 /* 残リードは毎日ひと目で読む枠なので、数字を他より大きくする。5枠しか
    入れていないので、1枠あたりの幅に余裕がある（1280px で約230px、
    1,414 を22pxで出しても半分も使わない）。1行は崩さない。 */
-.actual .card.lead .kpi .v{font-size:clamp(12px,1.35vw,22px);}
+.actual .card.lead .kpi .v{font-size:clamp(10px,1.35vw,22px);}
 .charts{display:grid;grid-template-columns:repeat(auto-fit,minmax(460px,1fr));
 gap:16px;margin-bottom:8px;}
 .charts.one{grid-template-columns:minmax(0,1fr);}
@@ -299,7 +299,7 @@ tr.roll td.wk{background:var(--head);color:var(--muted);font-weight:600;}
 <body><div class="wrap">
 
 <h1>ホリエモンAI学校 介護校 ファネルダッシュボード</h1>
-<div class="sub"><span id="period">2025-09-01 〜 2026-09-23（週次・月曜始まり）</span>　/　数字の更新 2026-09-23 12:52<span id="age"></span></div>
+<div class="sub"><span id="period">2025-09-01 〜 2026-09-23（週次・月曜始まり）</span>　/　数字の更新 2026-09-23 12:54<span id="age"></span></div>
 <div class="range">
   <label>期間</label>
   <input type="date" id="from" value="2025-09-01" min="2025-09-01" max="2026-09-23">
@@ -317,7 +317,7 @@ tr.roll td.wk{background:var(--head);color:var(--muted);font-weight:600;}
 </div>
 
 <h2>残リード</h2>
-<div class="actual"><div class="card lead"><div class="tag">残リード</div><div class="kpis"><div class="kpi"><div class="k">残り</div><div class="v">1,416</div></div><div class="kpi"><div class="k">500まであと</div><div class="v">916</div></div><div class="kpi"><div class="k">web CPL（直近30日）</div><div class="v">¥2,651</div></div><div class="kpi"><div class="k">入り 獲得（直近30日）</div><div class="v">76</div></div><div class="kpi"><div class="k">出 新規着手（直近30日）</div><div class="v">256</div></div></div></div></div>
+<div class="actual"><div class="card lead"><div class="tag">残リード</div><div class="kpis"><div class="kpi"><div class="k">残り</div><div class="v">1,416</div></div><div class="kpi"><div class="k">500まであと</div><div class="v">916</div></div><div class="kpi"><div class="k">web CPL 30日</div><div class="v">¥2,651</div></div><div class="kpi"><div class="k">リード獲得 30日</div><div class="v">76</div></div><div class="kpi"><div class="k">新規着手 30日</div><div class="v">256</div></div></div></div></div>
 <h2>重要値</h2>
 <div class="actual"><div class="card"><div class="tag">転換率と<br>単価</div><div class="kpis"><div class="kpi"><div class="k">架電→商談</div><div class="v" id="sm_conv">4.8%</div></div><div class="kpi"><div class="k">実施→成約</div><div class="v" id="sm_win">9.7%</div></div><div class="kpi"><div class="k">平均成約単価（全期間）</div><div class="v">¥847,550</div></div></div></div></div>
 
