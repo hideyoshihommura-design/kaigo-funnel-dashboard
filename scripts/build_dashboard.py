@@ -1066,8 +1066,9 @@ background:var(--ink);color:#fff;}
 .actual .card.lead .kpi .v{font-size:clamp(10px,1.35vw,22px);}
 /* 「残り」がこの枠の答えで、他の3つはその背景。同じ大きさで4つ並べると
    目がどこに落ちるか決まらないので、先頭だけ大きくして主従を付ける。
-   枠も広く取る（flex の伸び代を3倍）。 */
-.actual .card.lead .kpi:first-child{flex-grow:3;}
+   枠も広く取る。伸び代は2倍まで。3倍にすると 1280px で枠が486pxになり、
+   数字の右に空白が300px以上空いて間延びした。 */
+.actual .card.lead .kpi:first-child{flex-grow:2;}
 .actual .card.lead .kpi:first-child .v{font-size:clamp(20px,3vw,44px);
 line-height:1.1;}
 /* 在庫（残り）と流れ（獲得・着手・CPL）の境目だけ罫線を濃くする。
@@ -1896,7 +1897,9 @@ def render(data):
         # 並びは 在庫 → 流れ（入り・出）→ 単価。入りと出は対になるので隣に置く。
         # ラベルは短くする。「web CPL（直近30日）」のように括弧で書くと
         # 493px幅でラベルが切れた。
-        + act_card("残リード", [
+        # タグに「残リード」と書くと見出しと同じ言葉が2つ並ぶ。枠の中身
+        # （今の残り＋直近30日の流れ）が分かる書き方にする。
+        + act_card(f"今の残りと<br>直近{FLOW_WINDOW_DAYS}日", [
             kpi("残り", f_int(coh["backlog"])),
             kpi(f"リード獲得 {FLOW_WINDOW_DAYS}日", f_int(flow_in)),
             kpi(f"新規着手 {FLOW_WINDOW_DAYS}日", f_int(flow_out)),
