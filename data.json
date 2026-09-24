@@ -4751,12 +4751,12 @@
     "deals": 1,
     "won": 0,
     "won_amount": 0,
-    "called": 1,
+    "called": 3,
     "cappt": 1,
-    "handled": 1,
+    "handled": 3,
     "done": 1,
-    "wip": 0,
-    "backlog": 32,
+    "wip": 2,
+    "backlog": 30,
     "blnomail": 1,
     "cv": 48
    },
@@ -4919,8 +4919,8 @@
     "blnomail": 0
    },
    "web": {
-    "leads": 5,
-    "cost": 18736,
+    "leads": 6,
+    "cost": 30911,
     "appts": 0,
     "mtgs": 0,
     "props": 0,
@@ -4932,9 +4932,9 @@
     "handled": 0,
     "done": 0,
     "wip": 0,
-    "backlog": 5,
+    "backlog": 6,
     "blnomail": 0,
-    "cv": 2
+    "cv": 4
    },
    "line": {
     "leads": 0,
@@ -7141,6 +7141,18 @@
    "vconn": 0,
    "vcalled": 0,
    "cappts": 0
+  },
+  "2026-09-24": {
+   "calls": 4,
+   "connected": 2,
+   "appts": 0,
+   "mtgs": 0,
+   "called": 2,
+   "leads": 1,
+   "vcalls": 4,
+   "vconn": 2,
+   "vcalled": 2,
+   "cappts": 0
   }
  },
  "fs": {
@@ -9143,10 +9155,10 @@
    "cv": 25
   },
   "2026-09-21": {
-   "spend": 18736,
-   "imp": 6874,
-   "clicks": 86,
-   "cv": 2
+   "spend": 30911,
+   "imp": 12720,
+   "clicks": 165,
+   "cv": 4
   }
  },
  "adperf_day": {
@@ -9953,6 +9965,12 @@
    "imp": 4831,
    "clicks": 57,
    "cv": 1
+  },
+  "2026-09-23": {
+   "spend": 12175,
+   "imp": 5846,
+   "clicks": 79,
+   "cv": 2
   }
  },
  "ad_day": {
@@ -12344,6 +12362,14 @@
     "imp": 4831,
     "clicks": 57,
     "cv": 1
+   }
+  },
+  "2026-09-23": {
+   "Meta/ウェビナー": {
+    "spend": 12175,
+    "imp": 5846,
+    "clicks": 79,
+    "cv": 2
    }
   }
  },
@@ -27670,12 +27696,12 @@
     "deals": 1,
     "won": 0,
     "won_amount": 0,
-    "called": 1,
+    "called": 3,
     "cappt": 1,
-    "handled": 1,
+    "handled": 3,
     "done": 1,
-    "wip": 0,
-    "backlog": 4,
+    "wip": 2,
+    "backlog": 2,
     "blnomail": 0,
     "cv": 13
    },
@@ -28983,7 +29009,7 @@
    },
    "web": {
     "leads": 2,
-    "cost": 0,
+    "cost": 12175,
     "appts": 0,
     "mtgs": 0,
     "props": 0,
@@ -28996,6 +29022,94 @@
     "done": 0,
     "wip": 0,
     "backlog": 2,
+    "blnomail": 0,
+    "cv": 2
+   },
+   "line": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "other": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   }
+  },
+  "2026-09-24": {
+   "event": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "web": {
+    "leads": 1,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 1,
     "blnomail": 0
    },
    "line": {
@@ -29435,6 +29549,10 @@
   "2026-09-14": {
    "called": 43,
    "appointed": 8
+  },
+  "2026-09-21": {
+   "called": 2,
+   "appointed": 0
   }
  }
 }
