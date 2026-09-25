@@ -3962,8 +3962,8 @@
     "called": 30,
     "cappt": 1,
     "handled": 31,
-    "done": 4,
-    "wip": 26,
+    "done": 5,
+    "wip": 25,
     "backlog": 39,
     "blnomail": 1,
     "cv": 71
@@ -4658,8 +4658,8 @@
     "leads": 11,
     "cost": 50831,
     "appts": 2,
-    "mtgs": 0,
-    "props": 0,
+    "mtgs": 1,
+    "props": 1,
     "deals": 2,
     "won": 0,
     "won_amount": 0,
@@ -4833,18 +4833,18 @@
    "web": {
     "leads": 15,
     "cost": 82482,
-    "appts": 0,
-    "mtgs": 0,
+    "appts": 1,
+    "mtgs": 1,
     "props": 0,
-    "deals": 0,
+    "deals": 1,
     "won": 0,
     "won_amount": 0,
     "called": 5,
     "cappt": 0,
-    "handled": 5,
+    "handled": 6,
     "done": 1,
     "wip": 4,
-    "backlog": 10,
+    "backlog": 9,
     "blnomail": 0,
     "cv": 27
    },
@@ -7155,14 +7155,14 @@
    "cappts": 4
   },
   "2026-09-25": {
-   "calls": 0,
-   "connected": 0,
-   "appts": 0,
-   "mtgs": 0,
+   "calls": 8,
+   "connected": 6,
+   "appts": 1,
+   "mtgs": 2,
    "called": 0,
    "leads": 1,
-   "vcalls": 0,
-   "vconn": 0,
+   "vcalls": 8,
+   "vconn": 6,
    "vcalled": 0,
    "cappts": 0
   }
@@ -7477,6 +7477,12 @@
   "2026-09-21": {
    "mtgs": 4,
    "props": 4,
+   "wons": 0,
+   "wonamt": 0
+  },
+  "2026-09-25": {
+   "mtgs": 2,
+   "props": 1,
    "wons": 0,
    "wonamt": 0
   }
@@ -8809,6 +8815,24 @@
     "appts": 0,
     "deals": 0,
     "mtgs": 0,
+    "props": 0,
+    "wons": 0,
+    "wonamt": 0
+   }
+  },
+  "2026-09-25": {
+   "vendor": {
+    "appts": 0,
+    "deals": 0,
+    "mtgs": 1,
+    "props": 1,
+    "wons": 0,
+    "wonamt": 0
+   },
+   "inhouse": {
+    "appts": 1,
+    "deals": 1,
+    "mtgs": 1,
     "props": 0,
     "wons": 0,
     "wonamt": 0
@@ -22463,8 +22487,8 @@
     "called": 5,
     "cappt": 0,
     "handled": 5,
-    "done": 0,
-    "wip": 5,
+    "done": 1,
+    "wip": 4,
     "backlog": 8,
     "blnomail": 1,
     "cv": 19
@@ -27295,8 +27319,8 @@
     "leads": 2,
     "cost": 13149,
     "appts": 1,
-    "mtgs": 0,
-    "props": 0,
+    "mtgs": 1,
+    "props": 1,
     "deals": 1,
     "won": 0,
     "won_amount": 0,
@@ -28702,18 +28726,18 @@
    "web": {
     "leads": 1,
     "cost": 6792,
-    "appts": 0,
-    "mtgs": 0,
+    "appts": 1,
+    "mtgs": 1,
     "props": 0,
-    "deals": 0,
+    "deals": 1,
     "won": 0,
     "won_amount": 0,
     "called": 0,
     "cappt": 0,
-    "handled": 0,
+    "handled": 1,
     "done": 0,
     "wip": 0,
-    "backlog": 1,
+    "backlog": 0,
     "blnomail": 0,
     "cv": 0
    },
