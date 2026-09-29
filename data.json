@@ -5009,7 +5009,7 @@
    },
    "web": {
     "leads": 5,
-    "cost": null,
+    "cost": 11241,
     "appts": 0,
     "mtgs": 0,
     "props": 0,
@@ -5023,7 +5023,7 @@
     "wip": 1,
     "backlog": 4,
     "blnomail": 0,
-    "cv": null
+    "cv": 11
    },
    "line": {
     "leads": 0,
@@ -9376,6 +9376,12 @@
    "imp": 37739,
    "clicks": 504,
    "cv": 19
+  },
+  "2026-09-28": {
+   "spend": 11241,
+   "imp": 5489,
+   "clicks": 81,
+   "cv": 11
   }
  },
  "adperf_day": {
@@ -10212,6 +10218,12 @@
    "imp": 6448,
    "clicks": 88,
    "cv": 1
+  },
+  "2026-09-28": {
+   "spend": 11241,
+   "imp": 5489,
+   "clicks": 81,
+   "cv": 11
   }
  },
  "ad_day": {
@@ -12643,6 +12655,14 @@
     "imp": 6448,
     "clicks": 88,
     "cv": 1
+   }
+  },
+  "2026-09-28": {
+   "Meta/ウェビナー": {
+    "spend": 11241,
+    "imp": 5489,
+    "clicks": 81,
+    "cv": 11
    }
   }
  },
@@ -29722,7 +29742,7 @@
    },
    "web": {
     "leads": 5,
-    "cost": 0,
+    "cost": 11241,
     "appts": 0,
     "mtgs": 0,
     "props": 0,
@@ -29735,7 +29755,8 @@
     "done": 0,
     "wip": 1,
     "backlog": 4,
-    "blnomail": 0
+    "blnomail": 0,
+    "cv": 11
    },
    "line": {
     "leads": 0,
