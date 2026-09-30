@@ -5009,7 +5009,7 @@
    },
    "web": {
     "leads": 11,
-    "cost": 23901,
+    "cost": 29742,
     "appts": 0,
     "mtgs": 0,
     "props": 0,
@@ -5023,7 +5023,7 @@
     "wip": 1,
     "backlog": 10,
     "blnomail": 0,
-    "cv": 16
+    "cv": 23
    },
    "line": {
     "leads": 0,
@@ -9290,6 +9290,26 @@
    "deals": 3,
    "won": 0,
    "won_amount": 0
+  },
+  {
+   "name": "第13回 送迎表",
+   "start": "2026-09-21",
+   "end": "2026-09-30",
+   "days": 10,
+   "cost": 119002,
+   "cost_days": 10,
+   "cost_est_days": 0,
+   "cost_manual": false,
+   "cv": 42,
+   "cv_days": 10,
+   "cv_est_days": 0,
+   "cv_manual": false,
+   "imp": 54106,
+   "clicks": 724,
+   "leads": 27,
+   "deals": 0,
+   "won": 0,
+   "won_amount": 0
   }
  ],
  "adperf": {
@@ -9426,10 +9446,10 @@
    "cv": 19
   },
   "2026-09-28": {
-   "spend": 23901,
-   "imp": 13372,
-   "clicks": 169,
-   "cv": 16
+   "spend": 29742,
+   "imp": 16367,
+   "clicks": 220,
+   "cv": 23
   }
  },
  "adperf_day": {
@@ -10278,6 +10298,12 @@
    "imp": 7883,
    "clicks": 88,
    "cv": 5
+  },
+  "2026-09-30": {
+   "spend": 5841,
+   "imp": 2995,
+   "clicks": 51,
+   "cv": 7
   }
  },
  "ad_day": {
@@ -12725,6 +12751,14 @@
     "imp": 7883,
     "clicks": 88,
     "cv": 5
+   }
+  },
+  "2026-09-30": {
+   "Meta/ウェビナー": {
+    "spend": 5841,
+    "imp": 2995,
+    "clicks": 51,
+    "cv": 7
    }
   }
  },
@@ -29980,7 +30014,7 @@
    },
    "web": {
     "leads": 3,
-    "cost": 0,
+    "cost": 5841,
     "appts": 0,
     "mtgs": 0,
     "props": 0,
@@ -29993,7 +30027,8 @@
     "done": 0,
     "wip": 0,
     "backlog": 3,
-    "blnomail": 0
+    "blnomail": 0,
+    "cv": 7
    },
    "line": {
     "leads": 0,
