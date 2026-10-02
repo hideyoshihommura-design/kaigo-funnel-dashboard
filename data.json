@@ -5008,7 +5008,7 @@
     "blnomail": 0
    },
    "web": {
-    "leads": 11,
+    "leads": 12,
     "cost": 29742,
     "appts": 0,
     "mtgs": 0,
@@ -5021,7 +5021,7 @@
     "handled": 1,
     "done": 0,
     "wip": 1,
-    "backlog": 10,
+    "backlog": 11,
     "blnomail": 0,
     "cv": 23
    },
@@ -7340,6 +7340,18 @@
    "vconn": 20,
    "vcalled": 19,
    "cappts": 4
+  },
+  "2026-10-02": {
+   "calls": 5,
+   "connected": 1,
+   "appts": 0,
+   "mtgs": 0,
+   "called": 0,
+   "leads": 1,
+   "vcalls": 5,
+   "vconn": 1,
+   "vcalled": 0,
+   "cappts": 0
   }
  },
  "fs": {
@@ -30065,6 +30077,93 @@
     "backlog": 3,
     "blnomail": 0,
     "cv": 7
+   },
+   "line": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "other": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   }
+  },
+  "2026-10-02": {
+   "event": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "web": {
+    "leads": 1,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 1,
+    "blnomail": 0
    },
    "line": {
     "leads": 0,
