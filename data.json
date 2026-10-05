@@ -4747,17 +4747,17 @@
    "web": {
     "leads": 33,
     "cost": 90014,
-    "appts": 4,
+    "appts": 5,
     "mtgs": 2,
     "props": 2,
-    "deals": 4,
+    "deals": 5,
     "won": 0,
     "won_amount": 0,
     "called": 28,
-    "cappt": 4,
+    "cappt": 5,
     "handled": 28,
-    "done": 17,
-    "wip": 11,
+    "done": 22,
+    "wip": 6,
     "backlog": 5,
     "blnomail": 0,
     "cv": 48
@@ -7479,6 +7479,18 @@
    "vconn": 0,
    "vcalled": 0,
    "cappts": 0
+  },
+  "2026-10-05": {
+   "calls": 17,
+   "connected": 3,
+   "appts": 1,
+   "mtgs": 0,
+   "called": 0,
+   "leads": 0,
+   "vcalls": 17,
+   "vconn": 3,
+   "vcalled": 0,
+   "cappts": 1
   }
  },
  "fs": {
@@ -9241,6 +9253,24 @@
     "wons": 0,
     "wonamt": 0
    }
+  },
+  "2026-10-05": {
+   "vendor": {
+    "appts": 1,
+    "deals": 1,
+    "mtgs": 0,
+    "props": 0,
+    "wons": 0,
+    "wonamt": 0
+   },
+   "inhouse": {
+    "appts": 0,
+    "deals": 0,
+    "mtgs": 0,
+    "props": 0,
+    "wons": 0,
+    "wonamt": 0
+   }
   }
  },
  "webinars": [
@@ -9480,7 +9510,7 @@
    "imp": 56032,
    "clicks": 1083,
    "leads": 47,
-   "deals": 4,
+   "deals": 5,
    "won": 0,
    "won_amount": 0
   },
@@ -28337,8 +28367,8 @@
     "called": 5,
     "cappt": 2,
     "handled": 5,
-    "done": 4,
-    "wip": 1,
+    "done": 5,
+    "wip": 0,
     "backlog": 0,
     "blnomail": 0,
     "cv": 13
@@ -28425,8 +28455,8 @@
     "called": 8,
     "cappt": 1,
     "handled": 8,
-    "done": 5,
-    "wip": 3,
+    "done": 6,
+    "wip": 2,
     "backlog": 1,
     "blnomail": 0,
     "cv": 11
@@ -28513,8 +28543,8 @@
     "called": 6,
     "cappt": 1,
     "handled": 6,
-    "done": 4,
-    "wip": 2,
+    "done": 5,
+    "wip": 1,
     "backlog": 1,
     "blnomail": 0,
     "cv": 7
@@ -28592,17 +28622,17 @@
    "web": {
     "leads": 4,
     "cost": 14973,
-    "appts": 0,
+    "appts": 1,
     "mtgs": 0,
     "props": 0,
-    "deals": 0,
+    "deals": 1,
     "won": 0,
     "won_amount": 0,
     "called": 4,
-    "cappt": 0,
+    "cappt": 1,
     "handled": 4,
-    "done": 2,
-    "wip": 2,
+    "done": 4,
+    "wip": 0,
     "backlog": 0,
     "blnomail": 0,
     "cv": 6
@@ -31071,7 +31101,7 @@
   },
   "2026-09-21": {
    "called": 21,
-   "appointed": 4
+   "appointed": 5
   },
   "2026-09-28": {
    "called": 50,
