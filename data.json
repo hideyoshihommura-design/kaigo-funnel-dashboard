@@ -5023,7 +5023,7 @@
     "done": 5,
     "wip": 2,
     "backlog": 19,
-    "blnomail": 0,
+    "blnomail": 1,
     "cv": 42
    },
    "line": {
@@ -30262,7 +30262,7 @@
     "done": 2,
     "wip": 1,
     "backlog": 2,
-    "blnomail": 0,
+    "blnomail": 1,
     "cv": 11
    },
    "line": {
