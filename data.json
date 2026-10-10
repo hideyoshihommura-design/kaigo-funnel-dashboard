@@ -4748,7 +4748,7 @@
     "leads": 33,
     "cost": 90014,
     "appts": 5,
-    "mtgs": 3,
+    "mtgs": 4,
     "props": 3,
     "deals": 5,
     "won": 0,
@@ -4924,8 +4924,8 @@
     "leads": 20,
     "cost": 89260,
     "appts": 3,
-    "mtgs": 1,
-    "props": 0,
+    "mtgs": 2,
+    "props": 1,
     "deals": 3,
     "won": 0,
     "won_amount": 0,
@@ -7349,7 +7349,7 @@
    "cappts": 0
   },
   "2026-09-24": {
-   "calls": 48,
+   "calls": 49,
    "connected": 21,
    "appts": 4,
    "mtgs": 0,
@@ -7481,11 +7481,11 @@
    "cappts": 0
   },
   "2026-10-05": {
-   "calls": 40,
-   "connected": 8,
+   "calls": 42,
+   "connected": 9,
    "appts": 2,
    "mtgs": 0,
-   "called": 6,
+   "called": 7,
    "leads": 3,
    "vcalls": 40,
    "vconn": 8,
@@ -7532,7 +7532,7 @@
    "calls": 0,
    "connected": 0,
    "appts": 0,
-   "mtgs": 0,
+   "mtgs": 2,
    "called": 0,
    "leads": 1,
    "vcalls": 0,
@@ -7886,6 +7886,12 @@
   },
   "2026-10-08": {
    "mtgs": 1,
+   "props": 1,
+   "wons": 0,
+   "wonamt": 0
+  },
+  "2026-10-10": {
+   "mtgs": 2,
    "props": 1,
    "wons": 0,
    "wonamt": 0
@@ -9355,6 +9361,24 @@
     "appts": 2,
     "deals": 2,
     "mtgs": 1,
+    "props": 1,
+    "wons": 0,
+    "wonamt": 0
+   },
+   "inhouse": {
+    "appts": 0,
+    "deals": 0,
+    "mtgs": 0,
+    "props": 0,
+    "wons": 0,
+    "wonamt": 0
+   }
+  },
+  "2026-10-10": {
+   "vendor": {
+    "appts": 0,
+    "deals": 0,
+    "mtgs": 2,
     "props": 1,
     "wons": 0,
     "wonamt": 0
@@ -28625,7 +28649,7 @@
     "leads": 9,
     "cost": 15233,
     "appts": 1,
-    "mtgs": 0,
+    "mtgs": 1,
     "props": 0,
     "deals": 1,
     "won": 0,
@@ -30033,8 +30057,8 @@
     "leads": 4,
     "cost": 15133,
     "appts": 2,
-    "mtgs": 1,
-    "props": 0,
+    "mtgs": 2,
+    "props": 1,
     "deals": 2,
     "won": 0,
     "won_amount": 0,
@@ -31725,7 +31749,7 @@
    "appointed": 6
   },
   "2026-10-05": {
-   "called": 20,
+   "called": 21,
    "appointed": 0
   }
  }
