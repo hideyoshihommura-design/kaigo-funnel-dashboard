@@ -9629,6 +9629,26 @@
    "deals": 4,
    "won": 0,
    "won_amount": 0
+  },
+  {
+   "name": "第14回 介護記録",
+   "start": "2026-10-02",
+   "end": "2026-10-08",
+   "days": 7,
+   "cost": 77880,
+   "cost_days": 7,
+   "cost_est_days": 0,
+   "cost_manual": false,
+   "cv": 38,
+   "cv_days": 7,
+   "cv_est_days": 0,
+   "cv_manual": false,
+   "imp": 42866,
+   "clicks": 698,
+   "leads": 26,
+   "deals": 0,
+   "won": 0,
+   "won_amount": 0
   }
  ],
  "adperf": {
