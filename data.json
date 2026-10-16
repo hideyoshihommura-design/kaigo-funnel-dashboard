@@ -5018,12 +5018,12 @@
     "deals": 2,
     "won": 0,
     "won_amount": 0,
-    "called": 18,
+    "called": 19,
     "cappt": 2,
-    "handled": 18,
-    "done": 7,
+    "handled": 19,
+    "done": 8,
     "wip": 11,
-    "backlog": 8,
+    "backlog": 7,
     "blnomail": 1,
     "cv": 42
    },
@@ -5186,7 +5186,7 @@
     "blnomail": 0
    },
    "web": {
-    "leads": 0,
+    "leads": 1,
     "cost": null,
     "appts": 0,
     "mtgs": 0,
@@ -5199,7 +5199,7 @@
     "handled": 0,
     "done": 0,
     "wip": 0,
-    "backlog": 0,
+    "backlog": 1,
     "blnomail": 0,
     "cv": null
    },
@@ -7690,6 +7690,18 @@
    "vconn": 17,
    "vcalled": 26,
    "cappts": 1
+  },
+  "2026-10-16": {
+   "calls": 8,
+   "connected": 0,
+   "appts": 0,
+   "mtgs": 0,
+   "called": 1,
+   "leads": 1,
+   "vcalls": 8,
+   "vconn": 0,
+   "vcalled": 1,
+   "cappts": 0
   }
  },
  "fs": {
@@ -31065,12 +31077,12 @@
     "deals": 0,
     "won": 0,
     "won_amount": 0,
-    "called": 5,
+    "called": 6,
     "cappt": 0,
-    "handled": 5,
-    "done": 0,
+    "handled": 6,
+    "done": 1,
     "wip": 5,
-    "backlog": 2,
+    "backlog": 1,
     "blnomail": 0,
     "cv": 8
    },
@@ -31564,6 +31576,93 @@
     "backlog": 0,
     "blnomail": 0
    }
+  },
+  "2026-10-16": {
+   "event": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "web": {
+    "leads": 1,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 1,
+    "blnomail": 0
+   },
+   "line": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "other": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   }
   }
  },
  "agency_day": {
@@ -31964,7 +32063,7 @@
    "appointed": 1
   },
   "2026-10-12": {
-   "called": 55,
+   "called": 56,
    "appointed": 1
   }
  }
