@@ -7805,6 +7805,18 @@
    "vconn": 9,
    "vcalled": 12,
    "cappts": 3
+  },
+  "2026-10-19": {
+   "calls": 23,
+   "connected": 1,
+   "appts": 0,
+   "mtgs": 0,
+   "called": 0,
+   "leads": 0,
+   "vcalls": 23,
+   "vconn": 1,
+   "vcalled": 0,
+   "cappts": 0
   }
  },
  "fs": {
