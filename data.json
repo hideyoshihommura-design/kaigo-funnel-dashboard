@@ -3616,7 +3616,7 @@
     "handled": 41,
     "done": 6,
     "wip": 34,
-    "backlog": 15,
+    "backlog": 16,
     "blnomail": 0,
     "cv": 93
    },
@@ -7819,14 +7819,14 @@
    "cappts": 2
   },
   "2026-10-20": {
-   "calls": 41,
-   "connected": 5,
+   "calls": 46,
+   "connected": 6,
    "appts": 0,
    "mtgs": 0,
    "called": 12,
    "leads": 0,
-   "vcalls": 41,
-   "vconn": 5,
+   "vcalls": 46,
+   "vconn": 6,
    "vcalled": 15,
    "cappts": 0
   }
@@ -21013,7 +21013,7 @@
     "handled": 10,
     "done": 0,
     "wip": 10,
-    "backlog": 6,
+    "backlog": 7,
     "blnomail": 0,
     "cv": 29
    },
