@@ -5286,8 +5286,8 @@
     "called": 1,
     "cappt": 0,
     "handled": 1,
-    "done": 0,
-    "wip": 1,
+    "done": 1,
+    "wip": 0,
     "backlog": 0,
     "blnomail": 0,
     "cv": null
@@ -7855,15 +7855,15 @@
    "cappts": 1
   },
   "2026-10-23": {
-   "calls": 12,
-   "connected": 0,
+   "calls": 32,
+   "connected": 10,
    "appts": 0,
    "mtgs": 0,
-   "called": 0,
+   "called": 8,
    "leads": 0,
-   "vcalls": 12,
-   "vconn": 0,
-   "vcalled": 0,
+   "vcalls": 32,
+   "vconn": 10,
+   "vcalled": 8,
    "cappts": 0
   }
  },
@@ -32529,8 +32529,8 @@
     "called": 1,
     "cappt": 0,
     "handled": 1,
-    "done": 0,
-    "wip": 1,
+    "done": 1,
+    "wip": 0,
     "backlog": 0,
     "blnomail": 0
    },
@@ -32989,7 +32989,7 @@
    "appointed": 5
   },
   "2026-10-19": {
-   "called": 49,
+   "called": 57,
    "appointed": 1
   }
  }
