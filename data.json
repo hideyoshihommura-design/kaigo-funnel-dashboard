@@ -7968,6 +7968,18 @@
    "vconn": 10,
    "vcalled": 8,
    "cappts": 0
+  },
+  "2026-10-26": {
+   "calls": 21,
+   "connected": 5,
+   "appts": 0,
+   "mtgs": 0,
+   "called": 3,
+   "leads": 0,
+   "vcalls": 21,
+   "vconn": 5,
+   "vcalled": 3,
+   "cappts": 0
   }
  },
  "fs": {
@@ -33094,6 +33106,10 @@
   "2026-10-19": {
    "called": 57,
    "appointed": 1
+  },
+  "2026-10-26": {
+   "called": 3,
+   "appointed": 0
   }
  }
 }
