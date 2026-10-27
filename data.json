@@ -4143,8 +4143,8 @@
     "called": 37,
     "cappt": 6,
     "handled": 37,
-    "done": 27,
-    "wip": 10,
+    "done": 28,
+    "wip": 9,
     "backlog": 3,
     "blnomail": 0,
     "cv": 36
@@ -7980,6 +7980,18 @@
    "vconn": 21,
    "vcalled": 20,
    "cappts": 2
+  },
+  "2026-10-27": {
+   "calls": 2,
+   "connected": 0,
+   "appts": 0,
+   "mtgs": 0,
+   "called": 0,
+   "leads": 0,
+   "vcalls": 2,
+   "vconn": 0,
+   "vcalled": 0,
+   "cappts": 0
   }
  },
  "fs": {
@@ -25094,8 +25106,8 @@
     "called": 8,
     "cappt": 3,
     "handled": 8,
-    "done": 5,
-    "wip": 3,
+    "done": 6,
+    "wip": 2,
     "backlog": 2,
     "blnomail": 0,
     "cv": 10
