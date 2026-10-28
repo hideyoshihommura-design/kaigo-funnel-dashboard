@@ -77,7 +77,7 @@ KPI_WEEKS_PER_MONTH = 4.345
 KPI_MONTH_FROM = "2026-04"
 # 目標（2026-10 にユーザーが設定）。件数は月あたり。
 KPI_TARGETS = {"leads": 300, "cpl": 2000, "called": 300,
-               "conv": 0.15, "win": 0.08}
+               "conv": 0.15, "win": 0.10}
 
 MA_WINDOW = 4
 
