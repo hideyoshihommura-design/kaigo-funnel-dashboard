@@ -64,6 +64,21 @@ FS_FIELDS = ("mtgs", "props", "wons", "wonamt")
 # 118 + 88 + 76×13 = 1,194px で、13ヶ月が横スクロールなしで収まる。
 FU_W_K, FU_W_C, FU_W_M = 118, 88, 76
 
+# ---- 重要値（目標と実績） ----
+# 毎週・毎月この5つを目標と並べて見る枠。**すべてイベント軸**（その期間に
+# 起きたこと）で、月次KPIのコホート軸（その月に獲得したリード）とは別物。
+KPI_FIELDS = ("leads", "spend", "cv", "called", "cappts", "mtgs", "wons")
+KPI_W_K, KPI_W_C, KPI_W_M = 168, 78, 76
+KPI_WEEKS = 13
+# 月の目標を週に直すときの割り算。365 ÷ 12 ÷ 7 = 4.345週。
+KPI_WEEKS_PER_MONTH = 4.345
+# 既定で表示を始める月。これより前はweb広告（2026-04-07開始）も架電
+# （2026-06開始）も無く、CPLが空欄・架電件数0の列が並ぶ。スライダーで遡れる。
+KPI_MONTH_FROM = "2026-04"
+# 目標（2026-10 にユーザーが設定）。件数は月あたり。
+KPI_TARGETS = {"leads": 300, "cpl": 2000, "called": 300,
+               "conv": 0.15, "win": 0.08}
+
 MA_WINDOW = 4
 
 # ---- 日次架電ブロック ----
@@ -950,6 +965,37 @@ def week_label(iso):
     return f"{d.month}/{d.day}–{e.month}/{e.day}"
 
 
+def mon_label(m):
+    return m[2:].replace("-", "/")
+
+
+def wk_label(iso):
+    d = dt.date.fromisoformat(iso)
+    return f"{d.month}/{d.day}"
+
+
+# 重要値の行。
+# (表示名, 値の取り方, 補足, 整形, 目標, 週次にも出すか, 小さいほど良いか,
+#  週に直すとき目標を割るか)
+# **最後のフラグが要る。** 件数の目標は月あたりなので週では4.345で割るが、
+# CPLと率は期間の長さで変わらないのでそのまま使う。
+KPI_ROWS = [
+    ("リード獲得数", lambda b: b["leads"], "全チャネル",
+     f_int, KPI_TARGETS["leads"], True, False, True),
+    ("CPL", lambda b: safe_div(b["spend"], b["cv"]), "web広告のみ",
+     f_yen, KPI_TARGETS["cpl"], True, True, False),
+    ("架電件数", lambda b: b["called"], "その期間に着手した件数",
+     f_int, KPI_TARGETS["called"], True, False, True),
+    # 分母はその期間に架電した件数。獲得月ベースの「架電→商談」とは別物。
+    ("商談化率", lambda b: safe_div(b["cappts"], b["called"]),
+     "架電件数ぶんのアポ", f_pct, KPI_TARGETS["conv"], True, False, False),
+    # 週次には出さない。成約0件の週が92%で、ほぼ全週0%になる。
+    ("成約率", lambda b: safe_div(b["wons"], b["mtgs"]),
+     "その期間に実施した面談ぶんの成約", f_pct, KPI_TARGETS["win"],
+     False, False, False),
+]
+
+
 def cell(value_txt, ma_txt):
     """本値の下に4週移動平均を小さく併記したセル。"""
     if value_txt == "" and ma_txt == "":
@@ -1048,22 +1094,29 @@ font-variant-numeric:tabular-nums;letter-spacing:-.02em;white-space:nowrap;}
   .kpi{padding:12px 9px;}
   .summary .card .tag{min-width:64px;padding:12px 10px;margin-right:10px;}
 }
-/* 重要値。サマリー（.summary）と同じ部品を使うが sticky にはしない。
-   3段とも4枠なので、段ごとに横1列。タグは3段とも同色にして1つの塊に見せる
-   （直契約のティールと代理店の黒はヘッダー側の区別なので、ここでは使わない）。 */
-.actual{display:grid;grid-template-columns:minmax(0,1fr);gap:10px;margin:0 0 18px;}
-.actual .card{padding:0 10px 0 0;display:flex;align-items:stretch;overflow:hidden;}
-.actual .card .tag{flex:0 0 auto;display:flex;flex-direction:column;
-justify-content:center;padding:14px 12px;margin-right:12px;min-width:104px;
-font-size:12px;font-weight:700;line-height:1.35;white-space:nowrap;
-background:var(--ink);color:#fff;}
-@media(max-width:1250px){
-  .actual .card .tag{min-width:88px;padding:12px 10px;margin-right:10px;}
-}
-/* 残リードは毎日ひと目で読む枠なので、数字を他より大きくする。5枠しか
-   入れていないので、1枠あたりの幅に余裕がある（1280px で約230px、
-   1,414 を22pxで出しても半分も使わない）。1行は崩さない。 */
-.actual .card.lead .kpi .v{font-size:clamp(10px,1.35vw,22px);}
+/* 重要値（目標と実績）。月次ファネルと同じ表の部品（.fnl）を使う。
+   旧「重要値」の3段カード（.actual）は廃止した。固有の数字が1つも無く、
+   web CPLはリード獲得、架電業者はIS活動量、消化状況は月次KPIと残リードの
+   箱に同じものがあった。 */
+.kpih3{font-size:13px;font-weight:700;color:var(--ink-strong);
+margin:18px 0 8px;letter-spacing:.02em;}
+/* 指標名の下の補足と、累計の下の「全期間」。定義が1行で分かるようにする。
+   この表は同じ名前で定義の違う数字（月次KPIの架電→商談）が別の場所にある
+   ので、補足が無いとどちらを見ているか分からない。 */
+.fnl .fk i,.fnl .fc i{display:block;font-size:10px;color:var(--muted);
+font-style:normal;font-weight:400;margin-top:2px;line-height:1.3;}
+/* 目標列は中身が動かないので、面を変えて実績の列と区別する。 */
+.fnl .tgt{background:var(--head);}
+.fnl .tgt b{color:var(--ink);}
+/* 目標に対して達成・未達を色で出す。CPLだけは小さいほど良いので、
+   判定の向きを行ごとに持っている（KPI_ROWS の最後のフラグ）。 */
+.fnl td.good b{color:#1B7A3E;}
+.fnl td.bad b{color:#B3261E;}
+/* 表示を始める月のスライダー。既定は KPI_MONTH_FROM。 */
+.sld{display:flex;align-items:center;gap:12px;margin:0 0 10px;
+font-size:12px;color:var(--ink);flex-wrap:wrap;}
+.sld input{flex:0 0 240px;accent-color:#08959C;}
+.sld b{font-variant-numeric:tabular-nums;color:var(--ink-strong);}
 /* 残リードは月次KPIの表の右に縦で置く（.fnlrow / .leadbox）。
    横一列のカードは一度作ったが、ラベルと数字が横に並ぶ形が読みづらく、
    社長の「月KPIの表の右側に単独でウィンドウ」とも違っていたのでやめた。 */
@@ -1638,37 +1691,9 @@ function apply(from,to){
   setK('ap_cvr',jPct(div(ad.cv,ad.clicks),2));
   setK('ap_cpl',jYen(div(ad.spend,ad.cv)));
 
-  /* ---- 重要値 ----
-     期間指定で動くのは 架電→商談 と 実施→成約 の2つだけ。
-     平均成約単価は全期間固定、残リードの枠は全部「今の状態」なので
-     どちらも id を振っていない（ここでは触らない）。 */
-  var sc={called:0,cappt:0},ck,cr;
-  for(ck in RAW.coh){
-    if(!RAW.coh.hasOwnProperty(ck)){continue;}
-    if(ck<from||ck>to){continue;}
-    cr=RAW.coh[ck];
-    sc.called+=cr[0]; sc.cappt+=cr[1];
-  }
-  var sv={calls:0,conn:0,called:0,appt:0},vk,vr;
-  for(vk in RAW.days){
-    if(!RAW.days.hasOwnProperty(vk)){continue;}
-    if(vk<from||vk>to){continue;}
-    vr=RAW.days[vk];
-    sv.calls+=vr[5]||0; sv.conn+=vr[6]||0; sv.called+=vr[7]||0;
-  }
-  for(vk in RAW.vappt){
-    if(!RAW.vappt.hasOwnProperty(vk)){continue;}
-    if(vk<from||vk>to){continue;}
-    sv.appt+=RAW.vappt[vk];
-  }
-  setK('sm_cpl',jYen(div(ad.spend,ad.cv)));
-  setK('sm_conv',jPct(div(sc.cappt,sc.called)));
-  /* 実施→成約は FS（イベント軸）の f を使う。上の fs_close と同じ割り算。 */
-  setK('sm_win',jPct(div(f.wons,f.mtgs)));
-  setK('sm_vcalled',jInt(sv.called)); setK('sm_vcalls',jInt(sv.calls));
-  setK('sm_vrate',jPct(div(sv.conn,sv.calls))); setK('sm_vappt',jInt(sv.appt));
-  /* 月次KPIの右の2つの箱（残リード・転換率と単価）はここで触らない。
-     どちらも期間指定では動かさない。見出しに期間を書いてある。 */
+  /* 重要値（目標と実績）と、月次KPIの右の2つの箱（残リード・転換率と単価）は
+     ここで触らない。重要値は data-km のスライダーで月を出し入れし、累計は
+     常に全期間。箱の2つも期間指定では動かさない（見出しに期間を書いてある）。 */
 
   /* ---- 月次ファネルは月を「列」に並べているので、行ではなく列を隠す ----
      他の表は showRows が行を隠すが、この表だけ向きが違う。
@@ -1728,6 +1753,25 @@ function showAge(){
   else if(mins < 60*24){ s = Math.floor(mins/60) + '時間前'; }
   else { s = Math.floor(mins/1440) + '日前'; }
   el.textContent = '（' + s + '）';
+}
+/* 重要値の「表示を始める月」。月の列を隠すだけで、累計と目標は動かさない
+   （累計は常に全期間）。**data-km を使うのは、上の期間フィルタが掴む
+   data-m と取り合わないようにするため。** */
+function kpiSlider(){
+  var s = document.getElementById('kms');
+  if(!s){return;}
+  function draw(){
+    var from = KPI_MONTHS[+s.value];
+    document.getElementById('kmslab').textContent =
+      from.slice(2).replace('-','/');
+    document.getElementById('kmscnt').textContent = KPI_MONTHS.length - s.value;
+    var c = document.querySelectorAll('[data-km]'), i;
+    for(i=0;i<c.length;i++){
+      c[i].style.display = c[i].getAttribute('data-km') >= from ? '' : 'none';
+    }
+  }
+  s.addEventListener('input', draw);
+  draw();
 }
 function resetRange(){
   document.getElementById('from').value=RAW.start;
@@ -1898,15 +1942,6 @@ def render(data):
 
     coh = _sum_day(data.get("direct_day"),
                    ("called", "cappt", "done", "wip", "backlog"))
-    ad_t = _sum_day(data.get("ad_day"), ("spend", "cv"))
-    vt = {"vcalls": 0, "vconn": 0, "vcalled": 0}
-    for day, v in (data.get("calls") or {}).items():
-        if a_start <= day <= a_end:
-            for f in vt:
-                vt[f] += v.get(f) or 0
-    vappt = sum((v.get("vendor") or {}).get("appts") or 0
-                for day, v in (data.get("is_attr") or {}).items()
-                if a_start <= day <= a_end)
 
     # ---- 残リードの枠で使う流量 ----
     # 入り＝その期間に獲得したリード（コホート軸・direct_day の leads）。
@@ -1938,11 +1973,6 @@ def render(data):
         if a_start <= day <= a_end:
             fs_p["mtgs"] += v.get("mtgs") or 0
             fs_p["wons"] += v.get("wons") or 0
-
-    def act_card(tag, kpis, cls=""):
-        c = f"card {cls}".strip()
-        return (f'<div class="{c}"><div class="tag">{tag}</div>'
-                f'<div class="kpis">{"".join(kpis)}</div></div>')
 
     # 残リードは毎日見る枠なので一番上に置く。中身は全部「今の状態」で、
     # 期間指定では動かさない（id を振らない）。在庫は期間で切ると意味が
@@ -1995,39 +2025,103 @@ def render(data):
         + "</aside>"
     )
 
+    # ---- 重要値（目標と実績） ----
+    # 毎週・毎月この5つを目標と並べて見る、というのがこの枠の役目。
+    # **旧「重要値」（単価と転換率／架電業者／消化状況の3段カード）は廃止した。**
+    # 固有の数字が1つも無く、全部どこかと重複していた（web CPLはリード獲得、
+    # 架電業者はIS活動量、消化状況は月次KPIと残リードの箱）。
+    #
+    # **定義はすべてイベント軸（その期間に起きたこと）。コホート軸ではない。**
+    # ユーザーの言う商談化率は「その月（週）に架電した件数のうち何件アポが
+    # 取れたか」。月次KPIの「架電→商談」は獲得月ベースで別物。10月で比べると
+    # 分母が 97（獲得月）と 226（活動）で倍以上違う。全期間では一致する。
+    # 成約率も同じ考え方で「その期間に実施した面談のうち何件成約したか」。
+    #
+    # **累計は常に全期間（2025-09〜）。** 表示している月の合計ではない。
+    # 成約6件のうち3件が2026-03以前にあり、4月以降だけ足すと 4.2% になって
+    # ヘッダーやFS活動量の 7.1% と食い違う。
+    kpi_b = {}
+
+    def _kb(k):
+        return kpi_b.setdefault(k, dict.fromkeys(KPI_FIELDS, 0))
+
+    kpi_all = dict.fromkeys(KPI_FIELDS, 0)
+
+    def _kadd(day, field, n):
+        if not n:
+            return
+        _kb(day[:7])[field] += n
+        _kb(monday_of(dt.date.fromisoformat(day)).isoformat())[field] += n
+        kpi_all[field] += n
+
+    for day, chs in (data.get("direct_day") or {}).items():
+        for v in chs.values():
+            _kadd(day, "leads", v.get("leads") or 0)
+    for day, row in (data.get("ad_day") or {}).items():
+        for v in row.values():
+            _kadd(day, "spend", v.get("spend") or 0)
+            _kadd(day, "cv", v.get("cv") or 0)
+    for day, v in (data.get("calls") or {}).items():
+        _kadd(day, "called", v.get("called") or 0)
+        _kadd(day, "cappts", v.get("cappts") or 0)
+    for day, v in (data.get("fs") or {}).items():
+        _kadd(day, "mtgs", v.get("mtgs") or 0)
+        _kadd(day, "wons", v.get("wons") or 0)
+
+    kpi_months = sorted(k for k in kpi_b if len(k) == 7)
+    kpi_weeks = sorted(k for k in kpi_b if len(k) == 10)[-KPI_WEEKS:]
+
+    def kpi_table(keys, labeler, attr, weekly):
+        rows = [r for r in KPI_ROWS if not weekly or r[5]]
+        colg = (f'<colgroup><col style="width:{KPI_W_K}px">'
+                f'<col style="width:{KPI_W_C}px">'
+                f'<col style="width:{KPI_W_C}px">'
+                + f'<col style="width:{KPI_W_M}px">' * len(keys) + "</colgroup>")
+        width = KPI_W_K + KPI_W_C * 2 + KPI_W_M * len(keys)
+        last = keys[-1] if keys else ""
+        head = ('<tr><th class="fk">指標</th>'
+                '<th class="fc">累計<i>全期間</i></th><th class="fc">目標</th>'
+                + "".join(f'<th {attr}="{k}"'
+                          + (' class="now"' if k == last else "")
+                          + f">{labeler(k)}</th>" for k in keys) + "</tr>")
+        body = []
+        for name, get, note, fmt, target, _wk, lower, scale in rows:
+            tgt = round(target / KPI_WEEKS_PER_MONTH) if weekly and scale \
+                else target
+            cells = []
+            for k in keys:
+                v = get(kpi_b.get(k) or dict.fromkeys(KPI_FIELDS, 0))
+                hit = "" if v is None else (
+                    "good" if ((v <= tgt) if lower else (v >= tgt)) else "bad")
+                cls = " ".join(c for c in ("now" if k == last else "", hit) if c)
+                cells.append(f'<td {attr}="{k}"'
+                             + (f' class="{cls}"' if cls else "")
+                             + f"><b>{fmt(v)}</b></td>")
+            body.append(
+                f'<tr class="main"><td class="fk">{name}<i>{note}</i></td>'
+                f'<td class="fc"><b>{fmt(get(kpi_all))}</b></td>'
+                f'<td class="fc tgt"><b>{fmt(tgt)}</b></td>'
+                + "".join(cells) + "</tr>")
+        return (f'<div class="fnl"><table style="width:{width}px">{colg}'
+                f"<thead>{head}</thead><tbody>{''.join(body)}</tbody>"
+                "</table></div>")
+
+    # 既定は KPI_MONTH_FROM から。それ以前はweb広告も架電も無く、CPLが空欄・
+    # 架電件数が0の列が並ぶ。スライダーで遡れるようにしてある。
+    # **data-km / data-kw を使う。** 上の期間フィルタは data-m / data-w を
+    # 掴むので、同じ名前にするとフィルタとスライダーが取り合う。
+    kpi_def = max(0, kpi_months.index(KPI_MONTH_FROM)
+                  if KPI_MONTH_FROM in kpi_months else 0)
     actual_section = (
-        '<h2>重要値</h2>\n<div class="actual">'
-        + act_card("単価と<br>転換率", [
-            kpi("web CPL", f_yen(safe_div(ad_t["spend"], ad_t["cv"])), "sm_cpl"),
-            kpi("架電→商談", f_pct(safe_div(coh["cappt"], coh["called"])), "sm_conv"),
-            # 「商談→成約」ではなく「実施→成約」。分母は面談実施（イベント軸）。
-            # シミュレーターの商談枠はクローザーの処理能力（1人目30件/月・
-            # 専任50件/人）なので、向こうの「商談」は実施した面談を指す。
-            # 予約が入っただけでは枠を消費しない。
-            # このダッシュボードの「商談」は相談申込ステージの取引＝面談予約で、
-            # 予約78に対して実施58。予約を分母にすると 7.7%、実施なら 10.3% で、
-            # シミュレーターに入れるのは後者。
-            kpi("実施→成約", f_pct(safe_div(fs_p["wons"], fs_p["mtgs"])), "sm_win"),
-            kpi("平均成約単価（全期間）",
-                f_yen(safe_div(fs_all["wonamt"], fs_all["wons"]))),
-        ])
-        + act_card("架電業者", [
-            kpi("架電件数", f_int(vt["vcalled"]), "sm_vcalled"),
-            kpi("架電数", f_int(vt["vcalls"]), "sm_vcalls"),
-            kpi("接続率", f_pct(safe_div(vt["vconn"], vt["vcalls"])), "sm_vrate"),
-            kpi("面談予約", f_int(vappt), "sm_vappt"),
-        ])
-        # 消化状況は全期間固定。これは「今この瞬間のリスト在庫」で、
-        # 期間で切ると意味が変わる。上の架電業者はイベント軸（その期間に
-        # 何件かけたか）、こちらはコホート軸（その期間に獲得したリードの
-        # 進み具合）なので、期間を絞ると別集団の並びになって読み違える。
-        + act_card("消化状況<br>（全期間）", [
-            kpi("架電対象", f_int(coh["called"] + coh["backlog"])),
-            kpi("追い切った", f_int(coh["done"])),
-            kpi("着手中", f_int(coh["wip"])),
-            kpi("未着手", f_int(coh["backlog"])),
-        ])
-        + "</div>"
+        "<h2>重要値</h2>\n"
+        '<div class="sld"><label for="kms">表示を始める月</label>'
+        f'<input type="range" id="kms" min="0" max="{len(kpi_months) - 1}"'
+        f' value="{kpi_def}" step="1">'
+        f'<span><b id="kmslab"></b> 〜 {mon_label(kpi_months[-1])}'
+        '　（<b id="kmscnt"></b>ヶ月）</span></div>\n'
+        + kpi_table(kpi_months, mon_label, "data-km", False)
+        + f'\n<h3 class="kpih3">週次<span class="h2sub">直近{KPI_WEEKS}週</span></h3>\n'
+        + kpi_table(kpi_weeks, wk_label, "data-kw", True)
     )
 
     # 「週次テーブル（53週 × チャネル別）」は廃止した。319行あり、
@@ -2873,21 +2967,14 @@ def render(data):
         # この日以降なら日別の広告費が揃っているので、日単位で正確に切れる。
         # それより前は日次入力タブが無く週次テンプレしか無いので週で出す。
         "dfrom": dcost_first or "9999-12-31",
+        # 業者ぶん（vcalls/vconn/vcalled）と is_attr、コホート軸の coh は
+        # 旧「重要値」の3段カードの再計算用に渡していたが、その枠を廃止した
+        # ので外した。業者ぶんはIS活動量の折りたたみが data.json から直接
+        # 組み立てている。
         "days": {k: [v.get("calls", 0), v.get("connected", 0),
                      v.get("appts", 0), v.get("leads", 0),
-                     v.get("called", 0), v.get("vcalls", 0),
-                     v.get("vconn", 0), v.get("vcalled", 0)]
+                     v.get("called", 0)]
                  for k, v in (data.get("calls") or {}).items()},
-        # 架電業者の面談予約。is_attr（直前架電で判定）の vendor 側。
-        "vappt": {day: (v.get("vendor") or {}).get("appts") or 0
-                  for day, v in (data.get("is_attr") or {}).items()},
-        # 重要値の「架電→商談」の再計算用。コホート軸（direct_day を
-        # チャネル横断で合計）。ヘッダーの dkpi と同じ軸だが、あちらは
-        # 架電を持っていない。消化（done/wip/backlog）と残リードの枠は
-        # 期間フィルタで動かさないので入れない。成約は実施→成約（FS側）で出す。
-        "coh": {day: [sum(c.get(f) or 0 for c in chs.values())
-                      for f in ("called", "cappt")]
-                for day, chs in (data.get("direct_day") or {}).items()},
         "fs": {k: [v.get("mtgs", 0), v.get("props", 0),
                    v.get("wons", 0), v.get("wonamt", 0)]
                for k, v in (data.get("fs") or {}).items()},
@@ -2922,8 +3009,10 @@ var DAY_C={day_conn}; var DAY_N={day_no};
 var TOTC='{COLORS["total"]}';
 var CC='{COLORS["call_conn"]}'; var CN='{COLORS["call_noans"]}';
 var L={js(labels)};
+var KPI_MONTHS={js(kpi_months)};
 {DRAW_JS}{FILTER_JS}
 resetRange();
+kpiSlider();
 showAge();
 """
 
