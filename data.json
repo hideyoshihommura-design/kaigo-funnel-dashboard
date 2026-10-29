@@ -5259,24 +5259,24 @@
   },
   "2026-10-19": {
    "event": {
-    "leads": 169,
+    "leads": 168,
     "cost": 583000,
-    "appts": 1,
+    "appts": 4,
     "mtgs": 0,
     "props": 0,
-    "deals": 1,
+    "deals": 4,
     "won": 0,
     "won_amount": 0,
-    "called": 74,
-    "cappt": 1,
-    "handled": 74,
-    "done": 14,
-    "wip": 60,
-    "backlog": 95,
-    "blnomail": 6
+    "called": 92,
+    "cappt": 4,
+    "handled": 92,
+    "done": 18,
+    "wip": 74,
+    "backlog": 76,
+    "blnomail": 4
    },
    "web": {
-    "leads": 1,
+    "leads": 2,
     "cost": null,
     "appts": 0,
     "mtgs": 0,
@@ -5289,7 +5289,7 @@
     "handled": 1,
     "done": 1,
     "wip": 0,
-    "backlog": 0,
+    "backlog": 1,
     "blnomail": 0,
     "cv": null
    },
@@ -6327,8 +6327,8 @@
    "name": "Care Tex大阪",
    "date": "2026-10-19",
    "cost": 583000,
-   "leads": 169,
-   "deals": 1,
+   "leads": 168,
+   "deals": 4,
    "won": 0
   }
  ],
@@ -8014,16 +8014,16 @@
    "cappts": 1
   },
   "2026-10-29": {
-   "calls": 0,
-   "connected": 0,
-   "appts": 0,
+   "calls": 26,
+   "connected": 8,
+   "appts": 3,
    "mtgs": 0,
-   "called": 0,
+   "called": 18,
    "leads": 2,
-   "vcalls": 0,
-   "vconn": 0,
-   "vcalled": 0,
-   "cappts": 0
+   "vcalls": 26,
+   "vconn": 8,
+   "vcalled": 18,
+   "cappts": 3
   }
  },
  "fs": {
@@ -10069,6 +10069,24 @@
     "deals": 1,
     "mtgs": 2,
     "props": 2,
+    "wons": 0,
+    "wonamt": 0
+   },
+   "inhouse": {
+    "appts": 0,
+    "deals": 0,
+    "mtgs": 0,
+    "props": 0,
+    "wons": 0,
+    "wonamt": 0
+   }
+  },
+  "2026-10-29": {
+   "vendor": {
+    "appts": 3,
+    "deals": 3,
+    "mtgs": 0,
+    "props": 0,
     "wons": 0,
     "wonamt": 0
    },
@@ -32813,24 +32831,24 @@
   },
   "2026-10-20": {
    "event": {
-    "leads": 169,
+    "leads": 168,
     "cost": 0,
-    "appts": 1,
+    "appts": 4,
     "mtgs": 0,
     "props": 0,
-    "deals": 1,
+    "deals": 4,
     "won": 0,
     "won_amount": 0,
-    "called": 74,
-    "cappt": 1,
-    "handled": 74,
-    "done": 14,
-    "wip": 60,
-    "backlog": 95,
-    "blnomail": 6
+    "called": 92,
+    "cappt": 4,
+    "handled": 92,
+    "done": 18,
+    "wip": 74,
+    "backlog": 76,
+    "blnomail": 4
    },
    "web": {
-    "leads": 0,
+    "leads": 1,
     "cost": 0,
     "appts": 0,
     "mtgs": 0,
@@ -32843,7 +32861,7 @@
     "handled": 0,
     "done": 0,
     "wip": 0,
-    "backlog": 0,
+    "backlog": 1,
     "blnomail": 0
    },
    "line": {
@@ -33566,8 +33584,8 @@
    "appointed": 1
   },
   "2026-10-26": {
-   "called": 53,
-   "appointed": 2
+   "called": 71,
+   "appointed": 5
   }
  }
 }
