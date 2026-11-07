@@ -5453,7 +5453,7 @@
     "blnomail": 0
    },
    "web": {
-    "leads": 25,
+    "leads": 28,
     "cost": 68281,
     "appts": 0,
     "mtgs": 0,
@@ -5466,7 +5466,7 @@
     "handled": 0,
     "done": 0,
     "wip": 0,
-    "backlog": 25,
+    "backlog": 28,
     "blnomail": 0,
     "cv": 29
    },
@@ -8230,7 +8230,7 @@
    "appts": 0,
    "mtgs": 0,
    "called": 0,
-   "leads": 3,
+   "leads": 6,
    "vcalls": 0,
    "vconn": 0,
    "vcalled": 0,
@@ -10631,6 +10631,26 @@
    "clicks": 698,
    "leads": 26,
    "deals": 2,
+   "won": 0,
+   "won_amount": 0
+  },
+  {
+   "name": "第15回 介護記録",
+   "start": "2026-10-28",
+   "end": "2026-11-04",
+   "days": 8,
+   "cost": 100881,
+   "cost_days": 8,
+   "cost_est_days": 0,
+   "cost_manual": false,
+   "cv": 42,
+   "cv_days": 8,
+   "cv_est_days": 0,
+   "cv_manual": false,
+   "imp": 36986,
+   "clicks": 920,
+   "leads": 30,
+   "deals": 0,
    "won": 0,
    "won_amount": 0
   }
@@ -33713,7 +33733,7 @@
     "blnomail": 0
    },
    "web": {
-    "leads": 3,
+    "leads": 6,
     "cost": 0,
     "appts": 0,
     "mtgs": 0,
@@ -33726,7 +33746,7 @@
     "handled": 0,
     "done": 0,
     "wip": 0,
-    "backlog": 3,
+    "backlog": 6,
     "blnomail": 0
    },
    "line": {
