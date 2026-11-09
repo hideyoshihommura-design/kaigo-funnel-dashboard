@@ -1,6 +1,6 @@
 {
  "title": "ホリエモンAI学校 介護校 ファネルダッシュボード",
- "generated_at": "2026-11-09",
+ "generated_at": "2026-11-10",
  "week_starts": [
   "2025-09-01",
   "2025-09-08",
@@ -4409,8 +4409,8 @@
     "called": 31,
     "cappt": 3,
     "handled": 32,
-    "done": 17,
-    "wip": 14,
+    "done": 18,
+    "wip": 13,
     "backlog": 8,
     "blnomail": 1,
     "cv": 34
@@ -5542,7 +5542,7 @@
     "blnomail": 0
    },
    "web": {
-    "leads": 3,
+    "leads": 8,
     "cost": null,
     "appts": 0,
     "mtgs": 0,
@@ -5555,8 +5555,8 @@
     "handled": 0,
     "done": 0,
     "wip": 0,
-    "backlog": 3,
-    "blnomail": 0,
+    "backlog": 8,
+    "blnomail": 1,
     "cv": null
    },
    "line": {
@@ -8352,14 +8352,14 @@
    "cappts": 0
   },
   "2026-11-09": {
-   "calls": 20,
-   "connected": 5,
+   "calls": 26,
+   "connected": 7,
    "appts": 1,
    "mtgs": 0,
    "called": 4,
-   "leads": 3,
-   "vcalls": 20,
-   "vconn": 5,
+   "leads": 8,
+   "vcalls": 26,
+   "vconn": 7,
    "vcalled": 4,
    "cappts": 1
   }
@@ -27498,8 +27498,8 @@
     "called": 7,
     "cappt": 0,
     "handled": 7,
-    "done": 2,
-    "wip": 5,
+    "done": 3,
+    "wip": 4,
     "backlog": 4,
     "blnomail": 0,
     "cv": 4
@@ -34082,7 +34082,7 @@
     "blnomail": 0
    },
    "web": {
-    "leads": 3,
+    "leads": 8,
     "cost": 0,
     "appts": 0,
     "mtgs": 0,
@@ -34095,8 +34095,8 @@
     "handled": 0,
     "done": 0,
     "wip": 0,
-    "backlog": 3,
-    "blnomail": 0
+    "backlog": 8,
+    "blnomail": 1
    },
    "line": {
     "leads": 0,
