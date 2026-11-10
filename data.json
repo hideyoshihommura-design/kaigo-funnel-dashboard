@@ -5263,14 +5263,14 @@
    "event": {
     "leads": 168,
     "cost": 583000,
-    "appts": 6,
-    "mtgs": 3,
-    "props": 3,
-    "deals": 6,
+    "appts": 8,
+    "mtgs": 6,
+    "props": 6,
+    "deals": 8,
     "won": 0,
     "won_amount": 0,
     "called": 108,
-    "cappt": 6,
+    "cappt": 8,
     "handled": 108,
     "done": 25,
     "wip": 83,
@@ -5374,12 +5374,12 @@
     "deals": 0,
     "won": 0,
     "won_amount": 0,
-    "called": 3,
+    "called": 12,
     "cappt": 0,
-    "handled": 3,
-    "done": 0,
-    "wip": 3,
-    "backlog": 16,
+    "handled": 12,
+    "done": 1,
+    "wip": 11,
+    "backlog": 7,
     "blnomail": 0,
     "cv": 29
    },
@@ -5456,18 +5456,18 @@
    "web": {
     "leads": 36,
     "cost": 104470,
-    "appts": 0,
+    "appts": 2,
     "mtgs": 0,
     "props": 0,
-    "deals": 0,
+    "deals": 2,
     "won": 0,
     "won_amount": 0,
-    "called": 3,
-    "cappt": 0,
-    "handled": 3,
-    "done": 0,
-    "wip": 3,
-    "backlog": 33,
+    "called": 7,
+    "cappt": 2,
+    "handled": 7,
+    "done": 2,
+    "wip": 5,
+    "backlog": 29,
     "blnomail": 0,
     "cv": 48
    },
@@ -5542,7 +5542,7 @@
     "blnomail": 0
    },
    "web": {
-    "leads": 9,
+    "leads": 10,
     "cost": 17478,
     "appts": 0,
     "mtgs": 0,
@@ -5555,7 +5555,7 @@
     "handled": 0,
     "done": 0,
     "wip": 0,
-    "backlog": 9,
+    "backlog": 10,
     "blnomail": 1,
     "cv": 8
    },
@@ -6534,7 +6534,7 @@
    "date": "2026-10-19",
    "cost": 583000,
    "leads": 168,
-   "deals": 6,
+   "deals": 8,
    "won": 0
   }
  ],
@@ -8229,7 +8229,7 @@
    "vcalls": 26,
    "vconn": 8,
    "vcalled": 18,
-   "cappts": 3
+   "cappts": 4
   },
   "2026-10-30": {
    "calls": 32,
@@ -8241,7 +8241,7 @@
    "vcalls": 32,
    "vconn": 17,
    "vcalled": 17,
-   "cappts": 1
+   "cappts": 2
   },
   "2026-10-31": {
    "calls": 0,
@@ -8364,16 +8364,16 @@
    "cappts": 1
   },
   "2026-11-10": {
-   "calls": 14,
-   "connected": 1,
-   "appts": 0,
-   "mtgs": 0,
-   "called": 5,
-   "leads": 1,
-   "vcalls": 14,
-   "vconn": 1,
-   "vcalled": 5,
-   "cappts": 0
+   "calls": 27,
+   "connected": 5,
+   "appts": 4,
+   "mtgs": 3,
+   "called": 18,
+   "leads": 2,
+   "vcalls": 27,
+   "vconn": 5,
+   "vcalled": 18,
+   "cappts": 2
   }
  },
  "fs": {
@@ -8758,6 +8758,12 @@
   "2026-11-05": {
    "mtgs": 5,
    "props": 5,
+   "wons": 0,
+   "wonamt": 0
+  },
+  "2026-11-10": {
+   "mtgs": 3,
+   "props": 3,
    "wons": 0,
    "wonamt": 0
   }
@@ -10508,6 +10514,24 @@
     "wons": 0,
     "wonamt": 0
    }
+  },
+  "2026-11-10": {
+   "vendor": {
+    "appts": 4,
+    "deals": 4,
+    "mtgs": 3,
+    "props": 3,
+    "wons": 0,
+    "wonamt": 0
+   },
+   "inhouse": {
+    "appts": 0,
+    "deals": 0,
+    "mtgs": 0,
+    "props": 0,
+    "wons": 0,
+    "wonamt": 0
+   }
   }
  },
  "webinars": [
@@ -10807,7 +10831,7 @@
    "imp": 36986,
    "clicks": 920,
    "leads": 30,
-   "deals": 0,
+   "deals": 2,
    "won": 0,
    "won_amount": 0
   }
@@ -32869,14 +32893,14 @@
    "event": {
     "leads": 168,
     "cost": 0,
-    "appts": 6,
-    "mtgs": 3,
-    "props": 3,
-    "deals": 6,
+    "appts": 8,
+    "mtgs": 6,
+    "props": 6,
+    "deals": 8,
     "won": 0,
     "won_amount": 0,
     "called": 108,
-    "cappt": 6,
+    "cappt": 8,
     "handled": 108,
     "done": 25,
     "wip": 83,
@@ -33154,12 +33178,12 @@
     "deals": 0,
     "won": 0,
     "won_amount": 0,
-    "called": 0,
+    "called": 1,
     "cappt": 0,
-    "handled": 0,
+    "handled": 1,
     "done": 0,
-    "wip": 0,
-    "backlog": 3,
+    "wip": 1,
+    "backlog": 2,
     "blnomail": 0,
     "cv": 6
    },
@@ -33242,12 +33266,12 @@
     "deals": 0,
     "won": 0,
     "won_amount": 0,
-    "called": 0,
+    "called": 4,
     "cappt": 0,
-    "handled": 0,
-    "done": 0,
-    "wip": 0,
-    "backlog": 5,
+    "handled": 4,
+    "done": 1,
+    "wip": 3,
+    "backlog": 1,
     "blnomail": 0,
     "cv": 6
    },
@@ -33330,12 +33354,12 @@
     "deals": 0,
     "won": 0,
     "won_amount": 0,
-    "called": 0,
+    "called": 3,
     "cappt": 0,
-    "handled": 0,
+    "handled": 3,
     "done": 0,
-    "wip": 0,
-    "backlog": 3,
+    "wip": 3,
+    "backlog": 0,
     "blnomail": 0,
     "cv": 5
    },
@@ -33418,12 +33442,12 @@
     "deals": 0,
     "won": 0,
     "won_amount": 0,
-    "called": 1,
+    "called": 2,
     "cappt": 0,
-    "handled": 1,
+    "handled": 2,
     "done": 0,
-    "wip": 1,
-    "backlog": 5,
+    "wip": 2,
+    "backlog": 4,
     "blnomail": 0,
     "cv": 9
    },
@@ -33500,18 +33524,18 @@
    "web": {
     "leads": 3,
     "cost": 13200,
-    "appts": 0,
+    "appts": 1,
     "mtgs": 0,
     "props": 0,
-    "deals": 0,
+    "deals": 1,
     "won": 0,
     "won_amount": 0,
-    "called": 0,
-    "cappt": 0,
-    "handled": 0,
-    "done": 0,
-    "wip": 0,
-    "backlog": 3,
+    "called": 3,
+    "cappt": 1,
+    "handled": 3,
+    "done": 1,
+    "wip": 2,
+    "backlog": 0,
     "blnomail": 0,
     "cv": 3
    },
@@ -33588,18 +33612,18 @@
    "web": {
     "leads": 7,
     "cost": 19824,
-    "appts": 0,
+    "appts": 1,
     "mtgs": 0,
     "props": 0,
-    "deals": 0,
+    "deals": 1,
     "won": 0,
     "won_amount": 0,
-    "called": 0,
-    "cappt": 0,
-    "handled": 0,
-    "done": 0,
+    "called": 1,
+    "cappt": 1,
+    "handled": 1,
+    "done": 1,
     "wip": 0,
-    "backlog": 7,
+    "backlog": 6,
     "blnomail": 0,
     "cv": 8
    },
@@ -34202,7 +34226,7 @@
     "blnomail": 0
    },
    "web": {
-    "leads": 1,
+    "leads": 2,
     "cost": 0,
     "appts": 0,
     "mtgs": 0,
@@ -34215,7 +34239,7 @@
     "handled": 0,
     "done": 0,
     "wip": 0,
-    "backlog": 1,
+    "backlog": 2,
     "blnomail": 0
    },
    "line": {
@@ -34674,15 +34698,15 @@
   },
   "2026-10-19": {
    "called": 57,
-   "appointed": 2
+   "appointed": 3
   },
   "2026-10-26": {
    "called": 88,
-   "appointed": 6
+   "appointed": 7
   },
   "2026-11-09": {
-   "called": 9,
-   "appointed": 0
+   "called": 22,
+   "appointed": 2
   }
  }
 }
