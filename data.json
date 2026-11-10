@@ -5542,8 +5542,8 @@
     "blnomail": 0
    },
    "web": {
-    "leads": 8,
-    "cost": null,
+    "leads": 9,
+    "cost": 17478,
     "appts": 0,
     "mtgs": 0,
     "props": 0,
@@ -5555,9 +5555,9 @@
     "handled": 0,
     "done": 0,
     "wip": 0,
-    "backlog": 8,
+    "backlog": 9,
     "blnomail": 1,
-    "cv": null
+    "cv": 8
    },
    "line": {
     "leads": 0,
@@ -8362,6 +8362,18 @@
    "vconn": 7,
    "vcalled": 4,
    "cappts": 1
+  },
+  "2026-11-10": {
+   "calls": 0,
+   "connected": 0,
+   "appts": 0,
+   "mtgs": 0,
+   "called": 0,
+   "leads": 1,
+   "vcalls": 0,
+   "vconn": 0,
+   "vcalled": 0,
+   "cappts": 0
   }
  },
  "fs": {
@@ -10956,6 +10968,12 @@
    "imp": 44129,
    "clicks": 896,
    "cv": 48
+  },
+  "2026-11-09": {
+   "spend": 17478,
+   "imp": 8790,
+   "clicks": 174,
+   "cv": 8
   }
  },
  "adperf_day": {
@@ -11930,6 +11948,12 @@
    "imp": 5701,
    "clicks": 109,
    "cv": 10
+  },
+  "2026-11-09": {
+   "spend": 17478,
+   "imp": 8790,
+   "clicks": 174,
+   "cv": 8
   }
  },
  "ad_day": {
@@ -14545,6 +14569,14 @@
     "imp": 5701,
     "clicks": 109,
     "cv": 10
+   }
+  },
+  "2026-11-09": {
+   "Meta/ウェビナー": {
+    "spend": 17478,
+    "imp": 8790,
+    "clicks": 174,
+    "cv": 8
    }
   }
  },
@@ -34083,7 +34115,7 @@
    },
    "web": {
     "leads": 8,
-    "cost": 0,
+    "cost": 17478,
     "appts": 0,
     "mtgs": 0,
     "props": 0,
@@ -34096,7 +34128,95 @@
     "done": 0,
     "wip": 0,
     "backlog": 8,
-    "blnomail": 1
+    "blnomail": 1,
+    "cv": 8
+   },
+   "line": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "other": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   }
+  },
+  "2026-11-10": {
+   "event": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "web": {
+    "leads": 1,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 1,
+    "blnomail": 0
    },
    "line": {
     "leads": 0,
