@@ -1,6 +1,6 @@
 {
  "title": "ホリエモンAI学校 介護校 ファネルダッシュボード",
- "generated_at": "2026-11-10",
+ "generated_at": "2026-11-11",
  "week_starts": [
   "2025-09-01",
   "2025-09-08",
@@ -5542,7 +5542,7 @@
     "blnomail": 0
    },
    "web": {
-    "leads": 10,
+    "leads": 11,
     "cost": 17478,
     "appts": 0,
     "mtgs": 0,
@@ -5555,7 +5555,7 @@
     "handled": 0,
     "done": 0,
     "wip": 0,
-    "backlog": 10,
+    "backlog": 11,
     "blnomail": 1,
     "cv": 8
    },
@@ -8374,6 +8374,18 @@
    "vconn": 5,
    "vcalled": 18,
    "cappts": 2
+  },
+  "2026-11-11": {
+   "calls": 0,
+   "connected": 0,
+   "appts": 0,
+   "mtgs": 0,
+   "called": 0,
+   "leads": 1,
+   "vcalls": 0,
+   "vconn": 0,
+   "vcalled": 0,
+   "cappts": 0
   }
  },
  "fs": {
@@ -34240,6 +34252,93 @@
     "done": 0,
     "wip": 0,
     "backlog": 2,
+    "blnomail": 0
+   },
+   "line": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "other": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   }
+  },
+  "2026-11-11": {
+   "event": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "web": {
+    "leads": 1,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 1,
     "blnomail": 0
    },
    "line": {
