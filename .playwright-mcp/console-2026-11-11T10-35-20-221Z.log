@@ -1,6 +1,0 @@
-[      99ms] RangeError: Invalid time value
-    at Date.toISOString (<anonymous>)
-    at apply (https://hideyoshihommura-design.github.io/kaigo-funnel-dashboard/:868:17)
-    at resetRange (https://hideyoshihommura-design.github.io/kaigo-funnel-dashboard/:973:3)
-    at https://hideyoshihommura-design.github.io/kaigo-funnel-dashboard/:995:1
-[     293ms] [WARNING] <meta name="apple-mobile-web-app-capable" content="yes"> is deprecated. Please include <meta name="mobile-web-app-capable" content="yes"> @ https://hideyoshihommura-design.github.io/kaigo-funnel-dashboard/:1

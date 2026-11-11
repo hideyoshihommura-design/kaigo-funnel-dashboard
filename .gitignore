@@ -15,3 +15,6 @@ previous.json
 
 # セッション引き継ぎメモ（ローカル専用）
 .claude/HANDOFF.md
+
+# ブラウザ自動操作の作業ファイル（スクリーンショット・コンソールログ）
+.playwright-mcp/
