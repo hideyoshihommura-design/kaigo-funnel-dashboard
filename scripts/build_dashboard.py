@@ -2730,9 +2730,13 @@ def render(data):
             got = (fu.get(cm) or {}).get("leads") or 0
             b = [0, 0, 0, 0]
             for mm, n in flow[cm].items():
-                b[min(_lag(cm, mm), 3)] += n
+                # 実効獲得日より前に面談が記録された取引が1件ある
+                # （獲得日の手入力が後ろにずれたもの）。負のラグを
+                # min() だけで潰すと b[-1] になり「3ヶ月後〜」に化ける。
+                # 先頭の列は「当月まで」として、獲得前のぶんもここに入れる。
+                b[max(0, min(_lag(cm, mm), 3))] += n
             lag_rows.append((cm, got, b, sum(b)))
-        lag_head = ("当月", "翌月", "2ヶ月後", "3ヶ月後〜")
+        lag_head = ("当月まで", "翌月", "2ヶ月後", "3ヶ月後〜")
         lag_html = (
             '<div class="fnl"><table style="width:%dpx">' % (168 + 78 * 6)
             + '<colgroup><col style="width:168px">'
