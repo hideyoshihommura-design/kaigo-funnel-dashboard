@@ -1011,7 +1011,7 @@ KPI_ROWS = [
      f_int, KPI_TARGETS["called"], True, False, True, None),
     # 分母はその期間に架電した件数。獲得月ベースの「架電→商談」とは別物。
     ("商談化率", lambda b: safe_div(b["cappts"], b["called"]),
-     "架電件数ぶんのアポ", f_pct, KPI_TARGETS["conv"], True, False, False,
+     "面談予約数", f_pct, KPI_TARGETS["conv"], True, False, False,
      _num("cappts", "called")),
     # 社長が10/28と11/07に2回「月40件はマスト」と言った数字。成約率の分母と
     # 同じものなので、面談実施→成約率と縦に読めるよう商談化率の下に置く。
@@ -1019,7 +1019,7 @@ KPI_ROWS = [
      f_int, KPI_TARGETS["mtgs"], True, False, True, None),
     # 週次には出さない。成約0件の週が92%で、ほぼ全週0%になる。
     ("成約率", lambda b: safe_div(b["wons"], b["mtgs"]),
-     "その期間に実施した面談ぶんの成約", f_pct, KPI_TARGETS["win"],
+     "成約数", f_pct, KPI_TARGETS["win"],
      False, False, False, _num("wons", "mtgs")),
 ]
 
