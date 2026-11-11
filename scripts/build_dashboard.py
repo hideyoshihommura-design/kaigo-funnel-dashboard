@@ -2903,7 +2903,7 @@ def render(data):
             sum(r[6] for r in ch_rows),
             sum(r[7] for r in ch_rows),
         )
-        W_K, W_N, W_S = 76, 50, 72
+        W_K, W_N, W_S = 104, 50, 72
         nmon = len(ch_cols)
         width = W_K + W_S + (W_N * nmon + W_S) * 2 + W_S * 2
 
@@ -2945,7 +2945,12 @@ def render(data):
             + "".join(
                 f'<tr class="main{" hl sep" if gm == "合計" else ""}">'
                 f'<td class="fk">'
-                + (gm if gm == "合計" else month_col_label(gm)) + '</td>'
+                # 行の見出しに「獲得」を付ける。同じ「26/11」が行（獲得した月）
+                # と列（予約・実施が起きた月）の両方に出るので、付けないと
+                # 「今月8件面談したのに0なのはなぜか」と必ず読み違える
+                # （実際にそう読まれた）。行が自分で名乗れば見間違えない。
+                + (gm if gm == "合計"
+                   else month_col_label(gm) + " 獲得") + '</td>'
                 f'<td class="sum"><b>{f_int(leads)}</b></td>'
                 + _cells(ab, gm)
                 + f'<td class="sum"><b>{f_int(at)}</b></td>'
