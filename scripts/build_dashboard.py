@@ -984,17 +984,21 @@ def wk_label(iso):
 #  週に直すとき目標を割るか)
 # **最後のフラグが要る。** 件数の目標は月あたりなので週では4.345で割るが、
 # CPLと率は期間の長さで変わらないのでそのまま使う。
-# 率の行は、セルの中に分子／分母を小さく併記する（9番目の要素）。
-# 行を足して分子を別に並べるより短く、しかも率のすぐ下に出るので
-# 「この11.7%は31÷264」がその場で読める。行を足す案は、面談予約と成約に
-# 目標が無く（社長が言っていない）、目標欄を埋めるために計算した数字を
-# 置くことになるのでやめた。
-def _frac(num_key, den_key):
+# 率の行は、セルの中に分子の件数を小さく併記する（9番目の要素）。
+# 行を足して件数を別に並べるより短く、率のすぐ下に出るので「この11.7%は
+# 31件」がその場で読める。行を足す案は、面談予約と成約に目標が無く
+# （社長が言っていない）、目標欄を埋めるために計算した数字を置くことに
+# なるのでやめた。
+# **分母は書かない。** 架電件数も面談実施もすぐ上の行に出ているので、
+# 「31/264」と書くと同じ数字が画面に2回出るうえ、分数は読みにくい。
+# 行の注釈が分子を名乗っている（「架電件数ぶんのアポ」→アポ、
+# 「〜面談ぶんの成約」→成約）ので、件数だけで何の数か分かる。
+# 分母が0の期間は率が空欄なので、件数も空欄にして揃える。
+def _num(num_key, den_key):
     def f(b):
-        d = b.get(den_key) or 0
-        if not d:
+        if not (b.get(den_key) or 0):
             return ""
-        return f"{f_int(b.get(num_key) or 0)}/{f_int(d)}"
+        return f_int(b.get(num_key) or 0)
     return f
 
 
@@ -1008,7 +1012,7 @@ KPI_ROWS = [
     # 分母はその期間に架電した件数。獲得月ベースの「架電→商談」とは別物。
     ("商談化率", lambda b: safe_div(b["cappts"], b["called"]),
      "架電件数ぶんのアポ", f_pct, KPI_TARGETS["conv"], True, False, False,
-     _frac("cappts", "called")),
+     _num("cappts", "called")),
     # 社長が10/28と11/07に2回「月40件はマスト」と言った数字。成約率の分母と
     # 同じものなので、面談実施→成約率と縦に読めるよう商談化率の下に置く。
     ("面談実施", lambda b: b["mtgs"], "その期間に実施した面談",
@@ -1016,7 +1020,7 @@ KPI_ROWS = [
     # 週次には出さない。成約0件の週が92%で、ほぼ全週0%になる。
     ("成約率", lambda b: safe_div(b["wons"], b["mtgs"]),
      "その期間に実施した面談ぶんの成約", f_pct, KPI_TARGETS["win"],
-     False, False, False, _frac("wons", "mtgs")),
+     False, False, False, _num("wons", "mtgs")),
 ]
 
 
@@ -2164,7 +2168,7 @@ def render(data):
                           + (' class="now"' if k == last else "")
                           + f">{labeler(k)}</th>" for k in keys) + "</tr>")
         body = []
-        for name, get, note, fmt, target, _wk, lower, scale, frac in rows:
+        for name, get, note, fmt, target, _wk, lower, scale, num in rows:
             tgt = round(target / KPI_WEEKS_PER_MONTH) if weekly and scale \
                 else target
             cells = []
@@ -2175,14 +2179,14 @@ def render(data):
                     "good" if ((v <= tgt) if lower else (v >= tgt)) else "bad")
                 cls = " ".join(c for c in ("now" if k == last else "", hit) if c)
                 # 率の行は分子／分母をその下に小さく出す。
-                sub = f"<i>{frac(b)}</i>" if frac else ""
+                sub = f"<i>{num(b)}</i>" if num else ""
                 cells.append(f'<td {attr}="{k}"'
                              + (f' class="{cls}"' if cls else "")
                              + f"><b>{fmt(v)}</b>{sub}</td>")
             body.append(
                 f'<tr class="main"><td class="fk">{name}<i>{note}</i></td>'
                 f'<td class="fc"><b>{fmt(get(kpi_all))}</b>'
-                + (f"<i>{frac(kpi_all)}</i>" if frac else "") + "</td>"
+                + (f"<i>{num(kpi_all)}</i>" if num else "") + "</td>"
                 f'<td class="fc tgt"><b>{fmt(tgt)}</b></td>'
                 + "".join(cells) + "</tr>")
         return (f'<div class="fnl"><table style="width:{width}px">{colg}'
