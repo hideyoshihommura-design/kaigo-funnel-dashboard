@@ -835,22 +835,10 @@ def build(token, sheets_token, channel_map, webinar_cfg, campaign_cfg,
     daily_props = {}
     daily_wons = {}
     daily_wonamt = {}
-    # --- 獲得月 → 面談実施月（直契約のみ）
-    # コホート軸とイベント軸を結ぶ唯一の組。他の集計はどちらか片方の軸に
-    # 潰してしまうので、ここでしか「いつ取ったリードが、いつ面談になったか」
-    # は出せない。行ごとの合計は月次KPIの面談実施（獲得月ベース）と一致する。
-    mtg_flow = {}
-    # --- 面談予約の月 → 面談を実施した月（直契約のみ）
-    # 社長が11/07に詰まったのはここ。「10月は予約30件なのに実施18件、
-    # なぜ減るのか」。減ってはいない。予約した面談の日が翌月以降にあるだけ。
-    # 予約 = 実施済み + 未実施 + 流れた で閉じるように持つ。未実施が
-    # 来月以降の面談実施になるので、月40件に届くかの先行指標にもなる。
-    # 行ごとの合計は月次実績の面談予約（is_attr）と一致する。
-    appt_flow = {}
     # --- リード獲得月 × 面談予約月 × 面談実施月（直契約のみ）
     # 社長が見たいのは「どこで獲得したリードが、どこで予約になって、
-    # どこで面談を実施したか」。3段ぜんぶ。獲得→実施だけ（mtg_flow）でも
-    # 予約→実施だけ（appt_flow）でも、鎖の一部しか見えない。
+    # どこで面談を実施したか」。3段ぜんぶ。獲得→実施だけでも
+    # 予約→実施だけでも、鎖の一部しか見えない。
     # ここは3つ組の生データとして持ち、表示側でどの切り口にも畳めるようにする。
     # 列の意味: chain[獲得月][予約月][実施月 | "pending" | "lost"] = 件数。
     # 予約が無い取引は入らない（面談予約が無ければ鎖が始まらない）。
@@ -929,10 +917,6 @@ def build(token, sheets_token, channel_map, webinar_cfg, campaign_cfg,
         if ch != "agency":
             if mtg_day:
                 daily_mtgs[mtg_day] = daily_mtgs.get(mtg_day, 0) + 1
-                _cm = info["date"].strftime("%Y-%m")
-                _mm = mtg_day.strftime("%Y-%m")
-                mtg_flow.setdefault(_cm, {})
-                mtg_flow[_cm][_mm] = mtg_flow[_cm].get(_mm, 0) + 1
             if appt_day:
                 # 行は予約が入った月。列は実施した月か、まだなら未実施／流れた。
                 _am = appt_day.strftime("%Y-%m")
@@ -942,8 +926,6 @@ def build(token, sheets_token, channel_map, webinar_cfg, campaign_cfg,
                     _to = "lost"
                 else:
                     _to = "pending"
-                appt_flow.setdefault(_am, {})
-                appt_flow[_am][_to] = appt_flow[_am].get(_to, 0) + 1
                 _gm = info["date"].strftime("%Y-%m")
                 chain.setdefault(_gm, {}).setdefault(_am, {})
                 chain[_gm][_am][_to] = chain[_gm][_am].get(_to, 0) + 1
@@ -1456,10 +1438,6 @@ def build(token, sheets_token, channel_map, webinar_cfg, campaign_cfg,
         "expos": expos,
         "calls": calls_out,
         "fs": fs_days,
-        "mtg_flow": {k: {kk: mtg_flow[k][kk] for kk in sorted(mtg_flow[k])}
-                     for k in sorted(mtg_flow)},
-        "appt_flow": {k: {kk: appt_flow[k][kk] for kk in sorted(appt_flow[k])}
-                      for k in sorted(appt_flow)},
         "chain": {g: {a: {m: chain[g][a][m] for m in sorted(chain[g][a])}
                       for a in sorted(chain[g])} for g in sorted(chain)},
         "is_attr": {k: is_attr[k] for k in sorted(is_attr)},

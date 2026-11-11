@@ -2772,138 +2772,25 @@ def render(data):
         f'<div class="fnlside">{lead_box}{rate_box}</div></div>\n'
     ) if fu_html else ""
 
-    # ---- 獲得月 → 面談実施月のズレ ----
-    # 月次KPIの「面談実施」（獲得月ベース）を、いつ実施したかで割った表。
-    # 行の合計は月次KPIの面談実施と一致する（validate_mtg_flow で突き合わせ）。
-    # 月次KPIも月次実績も、片方の軸に潰した合計しか出せない。両軸を結べる
-    # のはこの表だけ。「予約30件なのに実施18件」が読めないのはこれが無いため。
-    flow = data.get("mtg_flow") or {}
-    flow_section = ""
-    if flow:
-        flow_months = [m for m in fu_keys if m in flow]
-        # --- A案: ラグ表（列は固定。何ヶ月遅れたかで割る）
-        def _lag(cm, mm):
-            a, b = int(cm[:4]) * 12 + int(cm[5:7]), int(mm[:4]) * 12 + int(mm[5:7])
-            return b - a
-        lag_rows = []
-        for cm in flow_months:
-            got = (fu.get(cm) or {}).get("leads") or 0
-            b = [0, 0, 0, 0]
-            for mm, n in flow[cm].items():
-                # 実効獲得日より前に面談が記録された取引が1件ある
-                # （獲得日の手入力が後ろにずれたもの）。負のラグを
-                # min() だけで潰すと b[-1] になり「3ヶ月後〜」に化ける。
-                # 先頭の列は「当月まで」として、獲得前のぶんもここに入れる。
-                b[max(0, min(_lag(cm, mm), 3))] += n
-            lag_rows.append((cm, got, b, sum(b)))
-        lag_head = ("当月まで", "翌月", "2ヶ月後", "3ヶ月後〜")
-        lag_html = (
-            '<div class="fnl"><table style="width:%dpx">' % (168 + 78 * 6)
-            + '<colgroup><col style="width:168px">'
-            + '<col style="width:78px">' * 6 + '</colgroup>'
-            + '<thead><tr><th class="fk">獲得月</th>'
-            + '<th class="fc">リード</th>'
-            + "".join(f'<th class="fc">{h}</th>' for h in lag_head)
-            + '<th class="fc">面談実施 計</th></tr></thead><tbody>'
-            + "".join(
-                f'<tr class="main"><td class="fk">{month_col_label(cm)}</td>'
-                f'<td class="fc"><b>{f_int(got)}</b></td>'
-                + "".join(f'<td><b>{f_int(n) if n else "&nbsp;"}</b></td>'
-                          for n in b)
-                + f'<td class="fc"><b>{f_int(tot)}</b></td></tr>'
-                for cm, got, b, tot in lag_rows)
-            + '</tbody></table></div>')
-        # --- B案: クロス表（列が実施月そのもの。毎月1列増える）
-        mm_all = sorted({mm for v in flow.values() for mm in v})
-        cross_html = (
-            '<div class="fnl"><table style="width:%dpx">'
-            % (168 + 78 + 76 * len(mm_all))
-            + '<colgroup><col style="width:168px">'
-            + '<col style="width:78px">'
-            + '<col style="width:76px">' * len(mm_all) + '</colgroup>'
-            + '<thead><tr><th class="fk">獲得月</th><th class="fc">計</th>'
-            + "".join(f'<th>{month_col_label(m)}</th>' for m in mm_all)
-            + '</tr></thead><tbody>'
-            + "".join(
-                f'<tr class="main"><td class="fk">{month_col_label(cm)}</td>'
-                f'<td class="fc"><b>{f_int(sum(flow[cm].values()))}</b></td>'
-                + "".join(
-                    f'<td><b>{f_int(flow[cm].get(m)) if flow[cm].get(m) else "&nbsp;"}'
-                    f'</b></td>' for m in mm_all)
-                + '</tr>' for cm in flow_months)
-            + '</tbody></table></div>')
-        flow_section = (
-            '\n<h2>獲得月 → 面談実施月'
-            '<span class="h2sub">直契約・行の合計は月次KPIの面談実施と一致'
-            '</span></h2>\n'
-            '<h3 class="kpih3">A案 ラグ表<span class="h2sub">'
-            '列は固定</span></h3>\n' + lag_html
-            + '\n<h3 class="kpih3">B案 クロス表<span class="h2sub">'
-            '列は実施月。毎月1列増える</span></h3>\n' + cross_html + "\n")
-
-    # ---- 面談予約 → 面談実施（C案） ----
-    # 社長が11/07に詰まったのは「10月は予約30件なのに実施18件、なぜ減るのか」。
-    # 減ってはいない。予約した面談の日が翌月以降にあるだけ。A案・B案は
-    # 「実施済みの面談」しか数えていないので、残りの12件がどこへ行ったかを
-    # 答えられない。この表は予約を起点にして
-    # 予約 = 実施済み + 未実施 + 流れた で閉じる（佐野さんの表の
-    # 「案件獲得 = クロージング + 失注 + 仕掛中」と同じ文法）。
-    # 未実施がそのまま来月以降の面談実施になるので、月40件に届くかの
-    # 先行指標にもなる。行の合計は月次実績の面談予約と一致する。
-    aflow = data.get("appt_flow") or {}
-    aflow_section = ""
-    if aflow:
-        af_months = [m for m in sorted(aflow)]
-        af_rows = []
-        for am in af_months:
-            v = aflow[am]
-            pend = v.get("pending", 0)
-            lost = v.get("lost", 0)
-            b = [0, 0, 0]
-            for mm, n in v.items():
-                if mm in ("pending", "lost"):
-                    continue
-                lag = (int(mm[:4]) * 12 + int(mm[5:7])
-                       - (int(am[:4]) * 12 + int(am[5:7])))
-                b[max(0, min(lag, 2))] += n
-            af_rows.append((am, sum(v.values()), b, sum(b), pend, lost))
-        af_head = ("当月中", "翌月", "2ヶ月後〜")
-        aflow_html = (
-            '<div class="fnl"><table style="width:%dpx">' % (120 + 78 * 7)
-            + '<colgroup><col style="width:120px">'
-            + '<col style="width:78px">' * 7 + '</colgroup>'
-            + '<thead><tr><th class="fk">予約が入った月</th>'
-            + '<th class="fc">面談予約</th>'
-            + "".join(f'<th class="fc">{h}</th>' for h in af_head)
-            + '<th class="fc">実施済み</th><th class="fc">未実施</th>'
-            + '<th class="fc">流れた</th></tr></thead><tbody>'
-            + "".join(
-                f'<tr class="main"><td class="fk">{month_col_label(am)}</td>'
-                f'<td class="fc"><b>{f_int(tot)}</b></td>'
-                + "".join(f'<td><b>{f_int(n) if n else "&nbsp;"}</b></td>'
-                          for n in b)
-                + f'<td class="fc"><b>{f_int(done)}</b></td>'
-                + f'<td class="fc"><b>{f_int(pend) if pend else "&nbsp;"}</b></td>'
-                + f'<td class="fc"><b>{f_int(lost) if lost else "&nbsp;"}</b></td>'
-                + '</tr>'
-                for am, tot, b, done, pend, lost in af_rows)
-            + '</tbody></table></div>')
-        aflow_section = (
-            '\n<h2>面談予約 → 面談実施'
-            '<span class="h2sub">直契約・予約 ＝ 実施済み ＋ 未実施 ＋ 流れた'
-            '／行の合計は月次実績の面談予約と一致</span></h2>\n'
-            + aflow_html + "\n")
-
-    # ---- リード獲得 → 面談予約 → 面談実施（鎖を1本で） ----
-    # 社長が見たいのは3段ぜんぶ。獲得→実施（mtg_flow）だけでも
-    # 予約→実施（appt_flow）だけでも鎖の一部しか見えない。
-    # 1行＝ある月に獲得したリードの集団。その集団が
-    #   何ヶ月後に予約になり（左ブロック）、
-    #   何ヶ月後に面談を実施したか（右ブロック）、
-    #   まだ実施していないぶんと流れたぶんはいくつか
-    # を1行で追う。ラグはどちらも獲得月からの月数で測る。起点をそろえないと
-    # 左右のブロックを横に見比べられない。
+    # ---- リード獲得 → 面談予約 → 面談実施（鎖を2枚で） ----
+    # 社長の宿題（2026-11-07）。「何月に案件になったやつが、何月に面談実施に
+    # なってるのか、っていうこのズレ」。案件になった＝相談申込＝面談予約。
+    # ①は 獲得月 × 予約月、②は 予約月 × 実施月。**①の列が②の行**になるので
+    # 鎖が①→②でつながる。②の行を獲得月にすると、①と②の列を頭の中で
+    # つながないと「予約30件がどこへ行ったか」が出てこない。
+    #
+    # 作る途中で捨てた案（戻す前に読むこと）
+    #  - 獲得月×実施月だけ … 予約を飛ばすので「予約30件なのに実施18件」に
+    #    答えられない。実施済みの面談しか数えていないため。
+    #  - 予約月×実施月だけ … 獲得が見えない。広告費と面談がつながらない。
+    #  - 1枚に横並び（予約14列＋実施14列）… 30列になり、中身があるのは
+    #    三角形の部分だけ。空欄を見るために横スクロールすることになった。
+    #  - ラグで丸める（当月／翌月／2ヶ月後〜）… 「7月のリードがいつ予約に
+    #    なったか」が読めない。列は実月にする。
+    #  - 積み上げ棒グラフ … 「ズレ」は見えるが、どの月の案件がどこへ行ったか
+    #    までは出ない。表のほうが答えになっている。
     # 予約計は月次KPIの面談予約、実施計は月次KPIの面談実施と一致する。
+    # ②は各行で 予約 ＝ 実施 ＋ 未実施 ＋ 流れた で閉じる。
     ch3 = data.get("chain") or {}
     chain_section = ""
     chain_asc = []
@@ -3424,8 +3311,6 @@ showAge();
 {actual_section}
 {funnel_section}
 {chain_section}
-{aflow_section}
-{flow_section}
 {adperf_section}
 {webinar_section}
 {daily_section}
