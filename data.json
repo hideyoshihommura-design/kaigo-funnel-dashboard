@@ -6503,7 +6503,8 @@
    "cost": 220000,
    "leads": 153,
    "deals": 3,
-   "won": 0
+   "won": 0,
+   "won_amount": 0
   },
   {
    "name": "CareTex北陸",
@@ -6511,7 +6512,8 @@
    "cost": 455323,
    "leads": 121,
    "deals": 5,
-   "won": 1
+   "won": 1,
+   "won_amount": 2101000
   },
   {
    "name": "CareTex東京",
@@ -6519,7 +6521,8 @@
    "cost": 616000,
    "leads": 175,
    "deals": 2,
-   "won": 0
+   "won": 0,
+   "won_amount": 0
   },
   {
    "name": "CareTEX福岡",
@@ -6527,7 +6530,8 @@
    "cost": 572000,
    "leads": 587,
    "deals": 6,
-   "won": 0
+   "won": 0,
+   "won_amount": 0
   },
   {
    "name": "Care Tex大阪",
@@ -6535,7 +6539,8 @@
    "cost": 583000,
    "leads": 167,
    "deals": 8,
-   "won": 0
+   "won": 0,
+   "won_amount": 0
   }
  ],
  "calls": {
