@@ -1,0 +1,1329 @@
+- generic [ref=f1e2]:
+  - heading "ホリエモンAI学校 介護校 ファネルダッシュボード" [level=1] [ref=f1e3]
+  - generic [ref=f1e4]: 2025-09-01 〜 2026-11-11（週次・月曜始まり） / 数字の更新 2026-11-11 19:36（436日前）
+  - generic [ref=f1e5]:
+    - generic [ref=f1e6]: 期間
+    - textbox [ref=f1e7]: 2025-09-01
+    - generic [ref=f1e8]: 〜
+    - textbox [ref=f1e9]: 2026-11-11
+    - button "適用" [ref=f1e10] [cursor=pointer]
+    - button "全期間" [ref=f1e11] [cursor=pointer]
+  - generic [ref=f1e12]:
+    - generic [ref=f1e13]:
+      - generic [ref=f1e14]:
+        - text: 直契約
+        - generic [ref=f1e15]: 期間累計
+      - generic [ref=f1e16]:
+        - generic [ref=f1e17]:
+          - generic [ref=f1e18]: 総リード数
+          - generic [ref=f1e19]: 2,560
+        - generic [ref=f1e20]:
+          - generic [ref=f1e21]: 総費用
+          - generic [ref=f1e22]: ¥5,959,131
+        - generic [ref=f1e23]:
+          - generic [ref=f1e24]: 全体CPL
+          - generic [ref=f1e25]: ¥2,104
+        - generic [ref=f1e26]:
+          - generic [ref=f1e27]: 総商談数
+          - generic [ref=f1e28]: "123"
+        - generic [ref=f1e29]:
+          - generic [ref=f1e30]: 商談化率
+          - generic [ref=f1e31]: 4.8%
+        - generic [ref=f1e32]:
+          - generic [ref=f1e33]: 総成約数
+          - generic [ref=f1e34]: "6"
+        - generic [ref=f1e35]:
+          - generic [ref=f1e36]: 成約率
+          - generic [ref=f1e37]: 4.9%
+        - generic [ref=f1e38]:
+          - generic [ref=f1e39]: 成約金額
+          - generic [ref=f1e40]: ¥5,085,300
+    - generic [ref=f1e41]:
+      - generic [ref=f1e42]:
+        - text: 代理店
+        - generic [ref=f1e43]: 期間累計
+      - generic [ref=f1e44]:
+        - generic [ref=f1e45]:
+          - generic [ref=f1e46]: 総リード数
+          - generic [ref=f1e47]: "25"
+        - generic [ref=f1e48]:
+          - generic [ref=f1e49]: 総商談数
+          - generic [ref=f1e50]: "25"
+        - generic [ref=f1e51]:
+          - generic [ref=f1e52]: 商談化率
+          - generic [ref=f1e53]: 100.0%
+        - generic [ref=f1e54]:
+          - generic [ref=f1e55]: 総成約数
+          - generic [ref=f1e56]: "12"
+        - generic [ref=f1e57]:
+          - generic [ref=f1e58]: 成約率
+          - generic [ref=f1e59]: 48.0%
+        - generic [ref=f1e60]:
+          - generic [ref=f1e61]: 成約金額
+          - generic [ref=f1e62]: ¥13,871,000
+  - heading "重要値" [level=2] [ref=f1e63]
+  - generic [ref=f1e64]:
+    - generic [ref=f1e65]: 表示を始める月
+    - slider "表示を始める月" [ref=f1e66]: "6"
+    - generic [ref=f1e67]: 26/04 〜 26/11 （8ヶ月）
+  - table [ref=f1e69]:
+    - rowgroup [ref=f1e88]:
+      - row [ref=f1e89]:
+        - columnheader "指標" [ref=f1e90]
+        - columnheader "累計 全期間" [ref=f1e91]:
+          - text: 累計
+          - generic [ref=f1e92]: 全期間
+        - columnheader "目標" [ref=f1e93]
+        - columnheader "26/04" [ref=f1e94]
+        - columnheader "26/05" [ref=f1e95]
+        - columnheader "26/06" [ref=f1e96]
+        - columnheader "26/07" [ref=f1e97]
+        - columnheader "26/08" [ref=f1e98]
+        - columnheader "26/09" [ref=f1e99]
+        - columnheader "26/10" [ref=f1e100]
+        - columnheader "26/11" [ref=f1e101]
+    - rowgroup [ref=f1e102]:
+      - row [ref=f1e103]:
+        - cell "リード獲得数 全チャネル" [ref=f1e104]:
+          - text: リード獲得数
+          - generic [ref=f1e105]: 全チャネル
+        - cell "2,560" [ref=f1e106]
+        - cell "300" [ref=f1e108]
+        - cell "193" [ref=f1e110]
+        - cell "173" [ref=f1e112]
+        - cell "283" [ref=f1e114]
+        - cell "798" [ref=f1e116]
+        - cell "160" [ref=f1e118]
+        - cell "87" [ref=f1e120]
+        - cell "213" [ref=f1e122]
+        - cell "59" [ref=f1e124]
+      - row [ref=f1e126]:
+        - cell "CPL web広告のみ" [ref=f1e127]:
+          - text: CPL
+          - generic [ref=f1e128]: web広告のみ
+        - cell "¥2,409" [ref=f1e129]
+        - cell "¥2,000" [ref=f1e131]
+        - cell "¥3,294" [ref=f1e133]
+        - cell "¥2,782" [ref=f1e135]
+        - cell "¥2,376" [ref=f1e137]
+        - cell "¥1,540" [ref=f1e139]
+        - cell "¥2,117" [ref=f1e141]
+        - cell "¥2,559" [ref=f1e143]
+        - cell "¥2,208" [ref=f1e145]
+        - cell "¥2,181" [ref=f1e147]
+      - row [ref=f1e149]:
+        - cell "架電件数 その期間に着手した件数" [ref=f1e150]:
+          - text: 架電件数
+          - generic [ref=f1e151]: その期間に着手した件数
+        - cell "881" [ref=f1e152]
+        - cell "300" [ref=f1e154]
+        - cell "0" [ref=f1e156]
+        - cell "0" [ref=f1e158]
+        - cell "187" [ref=f1e160]
+        - cell "88" [ref=f1e162]
+        - cell "94" [ref=f1e164]
+        - cell "220" [ref=f1e166]
+        - cell "264" [ref=f1e168]
+        - cell "28" [ref=f1e170]
+      - row [ref=f1e172]:
+        - cell "商談化率 面談予約数" [ref=f1e173]:
+          - text: 商談化率
+          - generic [ref=f1e174]: 面談予約数
+        - cell "7.8% 69" [ref=f1e175]:
+          - generic [ref=f1e176]: 7.8%
+          - generic [ref=f1e177]: "69"
+        - cell "15.0%" [ref=f1e178]
+        - cell [ref=f1e180]
+        - cell [ref=f1e181]
+        - cell "3.7% 7" [ref=f1e182]:
+          - generic [ref=f1e183]: 3.7%
+          - generic [ref=f1e184]: "7"
+        - cell "2.3% 2" [ref=f1e185]:
+          - generic [ref=f1e186]: 2.3%
+          - generic [ref=f1e187]: "2"
+        - cell "5.3% 5" [ref=f1e188]:
+          - generic [ref=f1e189]: 5.3%
+          - generic [ref=f1e190]: "5"
+        - cell "9.1% 20" [ref=f1e191]:
+          - generic [ref=f1e192]: 9.1%
+          - generic [ref=f1e193]: "20"
+        - cell "11.7% 31" [ref=f1e194]:
+          - generic [ref=f1e195]: 11.7%
+          - generic [ref=f1e196]: "31"
+        - cell "14.3% 4" [ref=f1e197]:
+          - generic [ref=f1e198]: 14.3%
+          - generic [ref=f1e199]: "4"
+      - row [ref=f1e200]:
+        - cell "面談実施 その期間に実施した面談" [ref=f1e201]:
+          - text: 面談実施
+          - generic [ref=f1e202]: その期間に実施した面談
+        - cell "95" [ref=f1e203]
+        - cell "40" [ref=f1e205]
+        - cell "7" [ref=f1e207]
+        - cell "7" [ref=f1e209]
+        - cell "7" [ref=f1e211]
+        - cell "9" [ref=f1e213]
+        - cell "9" [ref=f1e215]
+        - cell "16" [ref=f1e217]
+        - cell "18" [ref=f1e219]
+        - cell "8" [ref=f1e221]
+      - row [ref=f1e223]:
+        - cell "成約率 成約数" [ref=f1e224]:
+          - text: 成約率
+          - generic [ref=f1e225]: 成約数
+        - cell "6.3% 6" [ref=f1e226]:
+          - generic [ref=f1e227]: 6.3%
+          - generic [ref=f1e228]: "6"
+        - cell "10.0%" [ref=f1e229]
+        - cell "0.0% 0" [ref=f1e231]:
+          - generic [ref=f1e232]: 0.0%
+          - generic [ref=f1e233]: "0"
+        - cell "14.3% 1" [ref=f1e234]:
+          - generic [ref=f1e235]: 14.3%
+          - generic [ref=f1e236]: "1"
+        - cell "14.3% 1" [ref=f1e237]:
+          - generic [ref=f1e238]: 14.3%
+          - generic [ref=f1e239]: "1"
+        - cell "0.0% 0" [ref=f1e240]:
+          - generic [ref=f1e241]: 0.0%
+          - generic [ref=f1e242]: "0"
+        - cell "11.1% 1" [ref=f1e243]:
+          - generic [ref=f1e244]: 11.1%
+          - generic [ref=f1e245]: "1"
+        - cell "0.0% 0" [ref=f1e246]:
+          - generic [ref=f1e247]: 0.0%
+          - generic [ref=f1e248]: "0"
+        - cell "0.0% 0" [ref=f1e249]:
+          - generic [ref=f1e250]: 0.0%
+          - generic [ref=f1e251]: "0"
+        - cell "0.0% 0" [ref=f1e252]:
+          - generic [ref=f1e253]: 0.0%
+          - generic [ref=f1e254]: "0"
+  - heading "週次直近13週" [level=3] [ref=f1e255]
+  - table [ref=f1e257]:
+    - rowgroup [ref=f1e275]:
+      - row [ref=f1e276]:
+        - columnheader "指標" [ref=f1e277]
+        - columnheader "累計 全期間" [ref=f1e278]:
+          - text: 累計
+          - generic [ref=f1e279]: 全期間
+        - columnheader "目標" [ref=f1e280]
+        - columnheader "8/17" [ref=f1e281]
+        - columnheader "8/24" [ref=f1e282]
+        - columnheader "8/31" [ref=f1e283]
+        - columnheader "9/7" [ref=f1e284]
+        - columnheader "9/14" [ref=f1e285]
+        - columnheader "9/21" [ref=f1e286]
+        - columnheader "9/28" [ref=f1e287]
+        - columnheader "10/5" [ref=f1e288]
+        - columnheader "10/12" [ref=f1e289]
+        - columnheader "10/19" [ref=f1e290]
+        - columnheader "10/26" [ref=f1e291]
+        - columnheader "11/2" [ref=f1e292]
+        - columnheader "11/9" [ref=f1e293]
+    - rowgroup [ref=f1e294]:
+      - row [ref=f1e295]:
+        - cell "リード獲得数 全チャネル" [ref=f1e296]:
+          - text: リード獲得数
+          - generic [ref=f1e297]: 全チャネル
+        - cell "2,560" [ref=f1e298]
+        - cell "69" [ref=f1e300]
+        - cell "34" [ref=f1e302]
+        - cell "22" [ref=f1e304]
+        - cell "11" [ref=f1e306]
+        - cell "32" [ref=f1e308]
+        - cell "15" [ref=f1e310]
+        - cell "20" [ref=f1e312]
+        - cell "26" [ref=f1e314]
+        - cell "13" [ref=f1e316]
+        - cell "2" [ref=f1e318]
+        - cell "170" [ref=f1e320]
+        - cell "19" [ref=f1e322]
+        - cell "36" [ref=f1e324]
+        - cell "17" [ref=f1e326]
+      - row [ref=f1e328]:
+        - cell "CPL web広告のみ" [ref=f1e329]:
+          - text: CPL
+          - generic [ref=f1e330]: web広告のみ
+        - cell "¥2,409" [ref=f1e331]
+        - cell "¥2,000" [ref=f1e333]
+        - cell "¥2,473" [ref=f1e335]
+        - cell "¥2,458" [ref=f1e337]
+        - cell "¥3,177" [ref=f1e339]
+        - cell "¥1,875" [ref=f1e341]
+        - cell "¥3,055" [ref=f1e343]
+        - cell "¥4,698" [ref=f1e345]
+        - cell "¥1,679" [ref=f1e347]
+        - cell "¥1,953" [ref=f1e349]
+        - cell [ref=f1e351]
+        - cell [ref=f1e352]
+        - cell "¥2,195" [ref=f1e353]
+        - cell "¥2,176" [ref=f1e355]
+        - cell "¥2,603" [ref=f1e357]
+      - row [ref=f1e359]:
+        - cell "架電件数 その期間に着手した件数" [ref=f1e360]:
+          - text: 架電件数
+          - generic [ref=f1e361]: その期間に着手した件数
+        - cell "881" [ref=f1e362]
+        - cell "69" [ref=f1e364]
+        - cell "11" [ref=f1e366]
+        - cell "79" [ref=f1e368]
+        - cell "77" [ref=f1e370]
+        - cell "62" [ref=f1e372]
+        - cell "43" [ref=f1e374]
+        - cell "21" [ref=f1e376]
+        - cell "50" [ref=f1e378]
+        - cell "21" [ref=f1e380]
+        - cell "66" [ref=f1e382]
+        - cell "57" [ref=f1e384]
+        - cell "88" [ref=f1e386]
+        - cell "0" [ref=f1e388]
+        - cell "28" [ref=f1e390]
+      - row [ref=f1e392]:
+        - cell "商談化率 面談予約数" [ref=f1e393]:
+          - text: 商談化率
+          - generic [ref=f1e394]: 面談予約数
+        - cell "7.8% 69" [ref=f1e395]:
+          - generic [ref=f1e396]: 7.8%
+          - generic [ref=f1e397]: "69"
+        - cell "15.0%" [ref=f1e398]
+        - cell "0.0% 0" [ref=f1e400]:
+          - generic [ref=f1e401]: 0.0%
+          - generic [ref=f1e402]: "0"
+        - cell "5.1% 4" [ref=f1e403]:
+          - generic [ref=f1e404]: 5.1%
+          - generic [ref=f1e405]: "4"
+        - cell "0.0% 0" [ref=f1e406]:
+          - generic [ref=f1e407]: 0.0%
+          - generic [ref=f1e408]: "0"
+        - cell "4.8% 3" [ref=f1e409]:
+          - generic [ref=f1e410]: 4.8%
+          - generic [ref=f1e411]: "3"
+        - cell "18.6% 8" [ref=f1e412]:
+          - generic [ref=f1e413]: 18.6%
+          - generic [ref=f1e414]: "8"
+        - cell "28.6% 6" [ref=f1e415]:
+          - generic [ref=f1e416]: 28.6%
+          - generic [ref=f1e417]: "6"
+        - cell "18.0% 9" [ref=f1e418]:
+          - generic [ref=f1e419]: 18.0%
+          - generic [ref=f1e420]: "9"
+        - cell "19.0% 4" [ref=f1e421]:
+          - generic [ref=f1e422]: 19.0%
+          - generic [ref=f1e423]: "4"
+        - cell "10.6% 7" [ref=f1e424]:
+          - generic [ref=f1e425]: 10.6%
+          - generic [ref=f1e426]: "7"
+        - cell "7.0% 4" [ref=f1e427]:
+          - generic [ref=f1e428]: 7.0%
+          - generic [ref=f1e429]: "4"
+        - cell "11.4% 10" [ref=f1e430]:
+          - generic [ref=f1e431]: 11.4%
+          - generic [ref=f1e432]: "10"
+        - cell [ref=f1e433]
+        - cell "14.3% 4" [ref=f1e434]:
+          - generic [ref=f1e435]: 14.3%
+          - generic [ref=f1e436]: "4"
+      - row [ref=f1e437]:
+        - cell "面談実施 その期間に実施した面談" [ref=f1e438]:
+          - text: 面談実施
+          - generic [ref=f1e439]: その期間に実施した面談
+        - cell "95" [ref=f1e440]
+        - cell "9" [ref=f1e442]
+        - cell "1" [ref=f1e444]
+        - cell "2" [ref=f1e446]
+        - cell "2" [ref=f1e448]
+        - cell "1" [ref=f1e450]
+        - cell "2" [ref=f1e452]
+        - cell "6" [ref=f1e454]
+        - cell "6" [ref=f1e456]
+        - cell "5" [ref=f1e458]
+        - cell "2" [ref=f1e460]
+        - cell "5" [ref=f1e462]
+        - cell "5" [ref=f1e464]
+        - cell "5" [ref=f1e466]
+        - cell "3" [ref=f1e468]
+  - heading "月次KPI直契約・獲得月ベース／太字が追う指標" [level=2] [ref=f1e470]
+  - generic [ref=f1e471]:
+    - table [ref=f1e473]:
+      - rowgroup [ref=f1e492]:
+        - row [ref=f1e493]:
+          - columnheader "指標" [ref=f1e494]
+          - columnheader "累計" [ref=f1e495]
+          - columnheader "25/9" [ref=f1e496]
+          - columnheader "25/10" [ref=f1e497]
+          - columnheader "25/11" [ref=f1e498]
+          - columnheader "25/12" [ref=f1e499]
+          - columnheader "26/1" [ref=f1e500]
+          - columnheader "26/2" [ref=f1e501]
+          - columnheader "26/3" [ref=f1e502]
+          - columnheader "26/4" [ref=f1e503]
+          - columnheader "26/5" [ref=f1e504]
+          - columnheader "26/6" [ref=f1e505]
+          - columnheader "26/7" [ref=f1e506]
+          - columnheader "26/8" [ref=f1e507]
+          - columnheader "26/9" [ref=f1e508]
+          - columnheader "26/10" [ref=f1e509]
+          - columnheader "26/11" [ref=f1e510]
+      - rowgroup [ref=f1e511]:
+        - row [ref=f1e512]:
+          - cell "広告費" [ref=f1e513]
+          - cell "¥595.9万" [ref=f1e514]
+          - cell "¥22.0万" [ref=f1e517]
+          - cell "0 -¥22.0万" [ref=f1e520]:
+            - generic [ref=f1e521]: "0"
+            - generic [ref=f1e522]: "-¥22.0万"
+          - cell "¥45.5万 +¥45.5万" [ref=f1e523]:
+            - generic [ref=f1e524]: ¥45.5万
+            - generic [ref=f1e525]: +¥45.5万
+          - cell "0 -¥45.5万" [ref=f1e526]:
+            - generic [ref=f1e527]: "0"
+            - generic [ref=f1e528]: "-¥45.5万"
+          - cell "0 ±0" [ref=f1e529]:
+            - generic [ref=f1e530]: "0"
+            - generic [ref=f1e531]: ±0
+          - cell "¥61.6万 +¥61.6万" [ref=f1e532]:
+            - generic [ref=f1e533]: ¥61.6万
+            - generic [ref=f1e534]: +¥61.6万
+          - cell "0 -¥61.6万" [ref=f1e535]:
+            - generic [ref=f1e536]: "0"
+            - generic [ref=f1e537]: "-¥61.6万"
+          - cell "¥72.8万 +¥72.8万" [ref=f1e538]:
+            - generic [ref=f1e539]: ¥72.8万
+            - generic [ref=f1e540]: +¥72.8万
+          - cell "¥53.4万 -¥19.4万" [ref=f1e541]:
+            - generic [ref=f1e542]: ¥53.4万
+            - generic [ref=f1e543]: "-¥19.4万"
+          - cell "¥91.0万 +¥37.6万" [ref=f1e544]:
+            - generic [ref=f1e545]: ¥91.0万
+            - generic [ref=f1e546]: +¥37.6万
+          - cell "¥91.4万 +¥0.4万" [ref=f1e547]:
+            - generic [ref=f1e548]: ¥91.4万
+            - generic [ref=f1e549]: +¥0.4万
+          - cell "¥38.1万 -¥53.3万" [ref=f1e550]:
+            - generic [ref=f1e551]: ¥38.1万
+            - generic [ref=f1e552]: "-¥53.3万"
+          - cell "¥33.3万 -¥4.8万" [ref=f1e553]:
+            - generic [ref=f1e554]: ¥33.3万
+            - generic [ref=f1e555]: "-¥4.8万"
+          - cell "¥71.1万 +¥37.8万" [ref=f1e556]:
+            - generic [ref=f1e557]: ¥71.1万
+            - generic [ref=f1e558]: +¥37.8万
+          - cell "¥15.7万 -¥55.4万" [ref=f1e559]:
+            - generic [ref=f1e560]: ¥15.7万
+            - generic [ref=f1e561]: "-¥55.4万"
+        - row [ref=f1e562]:
+          - cell "リード数" [ref=f1e563]
+          - cell "2,560" [ref=f1e564]
+          - cell "154" [ref=f1e567]
+          - cell "67 -87" [ref=f1e570]:
+            - generic [ref=f1e571]: "67"
+            - generic [ref=f1e572]: "-87"
+          - cell "142 +75" [ref=f1e573]:
+            - generic [ref=f1e574]: "142"
+            - generic [ref=f1e575]: "+75"
+          - cell "52 -90" [ref=f1e576]:
+            - generic [ref=f1e577]: "52"
+            - generic [ref=f1e578]: "-90"
+          - cell "0 -52" [ref=f1e579]:
+            - generic [ref=f1e580]: "0"
+            - generic [ref=f1e581]: "-52"
+          - cell "178 +178" [ref=f1e582]:
+            - generic [ref=f1e583]: "178"
+            - generic [ref=f1e584]: "+178"
+          - cell "1 -177" [ref=f1e585]:
+            - generic [ref=f1e586]: "1"
+            - generic [ref=f1e587]: "-177"
+          - cell "193 +192" [ref=f1e588]:
+            - generic [ref=f1e589]: "193"
+            - generic [ref=f1e590]: "+192"
+          - cell "173 -20" [ref=f1e591]:
+            - generic [ref=f1e592]: "173"
+            - generic [ref=f1e593]: "-20"
+          - cell "283 +110" [ref=f1e594]:
+            - generic [ref=f1e595]: "283"
+            - generic [ref=f1e596]: "+110"
+          - cell "798 +515" [ref=f1e597]:
+            - generic [ref=f1e598]: "798"
+            - generic [ref=f1e599]: "+515"
+          - cell "160 -638" [ref=f1e600]:
+            - generic [ref=f1e601]: "160"
+            - generic [ref=f1e602]: "-638"
+          - cell "87 -73" [ref=f1e603]:
+            - generic [ref=f1e604]: "87"
+            - generic [ref=f1e605]: "-73"
+          - cell "213 +126" [ref=f1e606]:
+            - generic [ref=f1e607]: "213"
+            - generic [ref=f1e608]: "+126"
+          - cell "59 -154" [ref=f1e609]:
+            - generic [ref=f1e610]: "59"
+            - generic [ref=f1e611]: "-154"
+        - row [ref=f1e612]:
+          - cell "CPL" [ref=f1e613]
+          - cell "¥2,102" [ref=f1e614]
+          - cell "¥1,429" [ref=f1e617]
+          - cell [ref=f1e620]
+          - cell "¥3,206" [ref=f1e622]
+          - cell [ref=f1e625]
+          - cell [ref=f1e627]
+          - cell "¥3,461" [ref=f1e629]
+          - cell [ref=f1e632]
+          - cell "¥3,236" [ref=f1e634]
+          - cell "¥2,739 -¥497" [ref=f1e637]:
+            - generic [ref=f1e638]: ¥2,739
+            - generic [ref=f1e639]: "-¥497"
+          - cell "¥2,376 -¥363" [ref=f1e640]:
+            - generic [ref=f1e641]: ¥2,376
+            - generic [ref=f1e642]: "-¥363"
+          - cell "¥1,132 -¥1,244" [ref=f1e643]:
+            - generic [ref=f1e644]: ¥1,132
+            - generic [ref=f1e645]: "-¥1,244"
+          - cell "¥1,935 +¥803" [ref=f1e646]:
+            - generic [ref=f1e647]: ¥1,935
+            - generic [ref=f1e648]: +¥803
+          - cell "¥2,540 +¥605" [ref=f1e649]:
+            - generic [ref=f1e650]: ¥2,540
+            - generic [ref=f1e651]: +¥605
+          - cell "¥3,078 +¥538" [ref=f1e652]:
+            - generic [ref=f1e653]: ¥3,078
+            - generic [ref=f1e654]: +¥538
+          - cell "¥2,181 -¥897" [ref=f1e655]:
+            - generic [ref=f1e656]: ¥2,181
+            - generic [ref=f1e657]: "-¥897"
+        - row [ref=f1e658]:
+          - cell "架電件数" [ref=f1e659]
+          - cell "873" [ref=f1e660]
+          - cell "0" [ref=f1e662]
+          - cell "3" [ref=f1e664]
+          - cell "2" [ref=f1e666]
+          - cell "0" [ref=f1e668]
+          - cell "0" [ref=f1e670]
+          - cell "1" [ref=f1e672]
+          - cell "0" [ref=f1e674]
+          - cell "13" [ref=f1e676]
+          - cell "51" [ref=f1e678]
+          - cell "153" [ref=f1e680]
+          - cell "290" [ref=f1e682]
+          - cell "124" [ref=f1e684]
+          - cell "76" [ref=f1e686]
+          - cell "145" [ref=f1e688]
+          - cell "15" [ref=f1e690]
+        - row [ref=f1e692]:
+          - cell "うち消化" [ref=f1e693]
+          - cell "374" [ref=f1e694]
+          - cell "0" [ref=f1e696]
+          - cell "1" [ref=f1e698]
+          - cell "0" [ref=f1e700]
+          - cell "0" [ref=f1e702]
+          - cell "0" [ref=f1e704]
+          - cell "1" [ref=f1e706]
+          - cell "0" [ref=f1e708]
+          - cell "5" [ref=f1e710]
+          - cell "11" [ref=f1e712]
+          - cell "24" [ref=f1e714]
+          - cell "137" [ref=f1e716]
+          - cell "85" [ref=f1e718]
+          - cell "59" [ref=f1e720]
+          - cell "47" [ref=f1e722]
+          - cell "4" [ref=f1e724]
+        - row [ref=f1e726]:
+          - cell "うち着手中" [ref=f1e727]
+          - cell "499" [ref=f1e728]
+          - cell "0" [ref=f1e730]
+          - cell "2" [ref=f1e732]
+          - cell "2" [ref=f1e734]
+          - cell "0" [ref=f1e736]
+          - cell "0" [ref=f1e738]
+          - cell "0" [ref=f1e740]
+          - cell "0" [ref=f1e742]
+          - cell "8" [ref=f1e744]
+          - cell "40" [ref=f1e746]
+          - cell "129" [ref=f1e748]
+          - cell "153" [ref=f1e750]
+          - cell "39" [ref=f1e752]
+          - cell "17" [ref=f1e754]
+          - cell "98" [ref=f1e756]
+          - cell "11" [ref=f1e758]
+        - row [ref=f1e760]:
+          - cell "未消化残高" [ref=f1e761]
+          - cell "1,387" [ref=f1e762]
+          - cell "135" [ref=f1e764]
+          - cell "13" [ref=f1e766]
+          - cell "114" [ref=f1e768]
+          - cell "43" [ref=f1e770]
+          - cell "0" [ref=f1e772]
+          - cell "156" [ref=f1e774]
+          - cell "1" [ref=f1e776]
+          - cell "130" [ref=f1e778]
+          - cell "91" [ref=f1e780]
+          - cell "92" [ref=f1e782]
+          - cell "463" [ref=f1e784]
+          - cell "27" [ref=f1e786]
+          - cell "10" [ref=f1e788]
+          - cell "68" [ref=f1e790]
+          - cell "44" [ref=f1e792]
+        - row [ref=f1e794]:
+          - cell "面談予約" [ref=f1e795]
+          - cell "123" [ref=f1e796]
+          - cell "3" [ref=f1e798]
+          - cell "7" [ref=f1e800]
+          - cell "10" [ref=f1e802]
+          - cell "1" [ref=f1e804]
+          - cell "0" [ref=f1e806]
+          - cell "2" [ref=f1e808]
+          - cell "0" [ref=f1e810]
+          - cell "8" [ref=f1e812]
+          - cell "11" [ref=f1e814]
+          - cell "12" [ref=f1e816]
+          - cell "23" [ref=f1e818]
+          - cell "20" [ref=f1e820]
+          - cell "13" [ref=f1e822]
+          - cell "11" [ref=f1e824]
+          - cell "2" [ref=f1e826]
+        - row [ref=f1e828]:
+          - cell "架電→商談" [ref=f1e829]
+          - cell "7.8%" [ref=f1e830]
+          - cell [ref=f1e832]
+          - cell "33.3%" [ref=f1e833]
+          - cell "0.0%" [ref=f1e835]
+          - cell [ref=f1e837]
+          - cell [ref=f1e838]
+          - cell "0.0%" [ref=f1e839]
+          - cell [ref=f1e841]
+          - cell "0.0%" [ref=f1e842]
+          - cell "5.9%" [ref=f1e844]
+          - cell "4.6%" [ref=f1e846]
+          - cell "5.5%" [ref=f1e848]
+          - cell "12.9%" [ref=f1e850]
+          - cell "15.8%" [ref=f1e852]
+          - cell "7.6%" [ref=f1e854]
+          - cell "13.3%" [ref=f1e856]
+        - row [ref=f1e858]:
+          - cell "面談実施" [ref=f1e859]
+          - cell "95" [ref=f1e860]
+          - cell "2" [ref=f1e862]
+          - cell "5" [ref=f1e864]
+          - cell "9" [ref=f1e866]
+          - cell "0" [ref=f1e868]
+          - cell "0" [ref=f1e870]
+          - cell "2" [ref=f1e872]
+          - cell "0" [ref=f1e874]
+          - cell "7" [ref=f1e876]
+          - cell "8" [ref=f1e878]
+          - cell "11" [ref=f1e880]
+          - cell "18" [ref=f1e882]
+          - cell "17" [ref=f1e884]
+          - cell "9" [ref=f1e886]
+          - cell "7" [ref=f1e888]
+          - cell "0" [ref=f1e890]
+        - row [ref=f1e892]:
+          - cell "成約" [ref=f1e893]
+          - cell "6" [ref=f1e894]
+          - cell "0" [ref=f1e896]
+          - cell "2" [ref=f1e898]
+          - cell "1" [ref=f1e900]
+          - cell "0" [ref=f1e902]
+          - cell "0" [ref=f1e904]
+          - cell "0" [ref=f1e906]
+          - cell "0" [ref=f1e908]
+          - cell "1" [ref=f1e910]
+          - cell "1" [ref=f1e912]
+          - cell "0" [ref=f1e914]
+          - cell "0" [ref=f1e916]
+          - cell "1" [ref=f1e918]
+          - cell "0" [ref=f1e920]
+          - cell "0" [ref=f1e922]
+          - cell "0" [ref=f1e924]
+        - row [ref=f1e926]:
+          - cell "商談→成約" [ref=f1e927]
+          - cell "4.9%" [ref=f1e928]
+          - cell "0.0%" [ref=f1e930]
+          - cell "28.6%" [ref=f1e932]
+          - cell "10.0%" [ref=f1e934]
+          - cell "0.0%" [ref=f1e936]
+          - cell [ref=f1e938]
+          - cell "0.0%" [ref=f1e939]
+          - cell [ref=f1e941]
+          - cell "12.5%" [ref=f1e942]
+          - cell "9.1%" [ref=f1e944]
+          - cell "0.0%" [ref=f1e946]
+          - cell "0.0%" [ref=f1e948]
+          - cell "5.0%" [ref=f1e950]
+          - cell "0.0%" [ref=f1e952]
+          - cell "0.0%" [ref=f1e954]
+          - cell "0.0%" [ref=f1e956]
+        - row [ref=f1e958]:
+          - cell "成約金額" [ref=f1e959]
+          - cell "¥508.5万" [ref=f1e960]
+          - cell "0" [ref=f1e962]
+          - cell "¥25.2万" [ref=f1e964]
+          - cell "¥210.1万" [ref=f1e966]
+          - cell "0" [ref=f1e968]
+          - cell "0" [ref=f1e970]
+          - cell "0" [ref=f1e972]
+          - cell "0" [ref=f1e974]
+          - cell "¥210.1万" [ref=f1e976]
+          - cell "¥8.1万" [ref=f1e978]
+          - cell "0" [ref=f1e980]
+          - cell "0" [ref=f1e982]
+          - cell "¥55.0万" [ref=f1e984]
+          - cell "0" [ref=f1e986]
+          - cell "0" [ref=f1e988]
+          - cell "0" [ref=f1e990]
+    - generic [ref=f1e992]:
+      - complementary [ref=f1e993]:
+        - generic [ref=f1e994]:
+          - text: 残リード
+          - generic [ref=f1e995]: 今の残りと直近30日
+        - generic [ref=f1e996]:
+          - generic [ref=f1e997]: 残り
+          - generic [ref=f1e998]: 1,387
+        - generic [ref=f1e999]:
+          - generic [ref=f1e1000]: リード獲得 30日
+          - generic [ref=f1e1001]: "244"
+        - generic [ref=f1e1002]:
+          - generic [ref=f1e1003]: 新規着手 30日
+          - generic [ref=f1e1004]: "239"
+        - generic [ref=f1e1005]:
+          - generic [ref=f1e1006]: 増減 30日
+          - generic [ref=f1e1007]: "+5"
+      - complementary [ref=f1e1008]:
+        - generic [ref=f1e1009]:
+          - text: 転換率と単価
+          - generic [ref=f1e1010]: 全期間
+        - generic [ref=f1e1011]:
+          - generic [ref=f1e1012]: 架電→商談
+          - generic [ref=f1e1013]: 7.8%
+        - generic [ref=f1e1014]:
+          - generic [ref=f1e1015]: 実施→成約
+          - generic [ref=f1e1016]: 6.3%
+        - generic [ref=f1e1017]:
+          - generic [ref=f1e1018]: 平均成約単価
+          - generic [ref=f1e1019]: ¥847,550
+  - heading "リード獲得 → 面談予約 → 面談実施直契約・①の列が②の行になる／予約計は月次KPIの面談予約、実施計は面談実施と一致" [level=2] [ref=f1e1020]
+  - generic [ref=f1e1021]:
+    - generic [ref=f1e1022]: 表示を始める月
+    - slider "表示を始める月" [ref=f1e1023]: "5"
+    - generic [ref=f1e1024]: 26/04 〜 26/11 （8ヶ月）
+  - generic [ref=f1e1025]:
+    - generic [ref=f1e1026]:
+      - heading "① いつ獲得したリードが、いつ予約になったか" [level=3] [ref=f1e1027]
+      - table [ref=f1e1029]:
+        - rowgroup [ref=f1e1042]:
+          - row [ref=f1e1043]:
+            - columnheader "獲得月" [ref=f1e1044]
+            - columnheader "リード" [ref=f1e1045]
+            - columnheader "面談予約が入った月" [ref=f1e1046]
+          - row [ref=f1e1047]:
+            - columnheader [ref=f1e1048]
+            - columnheader [ref=f1e1049]
+            - columnheader "26/11" [ref=f1e1050]
+            - columnheader "26/10" [ref=f1e1051]
+            - columnheader "26/9" [ref=f1e1052]
+            - columnheader "26/8" [ref=f1e1053]
+            - columnheader "26/7" [ref=f1e1054]
+            - columnheader "26/6" [ref=f1e1055]
+            - columnheader "26/5" [ref=f1e1056]
+            - columnheader "26/4" [ref=f1e1057]
+            - columnheader "26/3"
+            - columnheader "26/2"
+            - columnheader "26/1"
+            - columnheader "25/12"
+            - columnheader "25/10"
+            - columnheader "25/9"
+            - columnheader "予約 計" [ref=f1e1058]
+        - rowgroup [ref=f1e1059]:
+          - row [ref=f1e1060]:
+            - cell "合計" [ref=f1e1061]
+            - cell "2,559" [ref=f1e1062]
+            - cell "6" [ref=f1e1064]
+            - cell "30" [ref=f1e1066]
+            - cell "22" [ref=f1e1068]
+            - cell "11" [ref=f1e1070]
+            - cell "10" [ref=f1e1072]
+            - cell "10" [ref=f1e1074]
+            - cell "8" [ref=f1e1076]
+            - cell "8" [ref=f1e1078]
+            - cell "1"
+            - cell "1"
+            - cell "2"
+            - cell "7"
+            - cell "6"
+            - cell "1"
+            - cell "123" [ref=f1e1080]
+          - row [ref=f1e1082]:
+            - cell "26/11 獲得" [ref=f1e1083]
+            - cell "59" [ref=f1e1084]
+            - cell "2" [ref=f1e1086]
+            - cell [ref=f1e1088]
+            - cell [ref=f1e1090]
+            - cell [ref=f1e1092]
+            - cell [ref=f1e1094]
+            - cell [ref=f1e1096]
+            - cell [ref=f1e1098]
+            - cell [ref=f1e1100]
+            - cell
+            - cell
+            - cell
+            - cell
+            - cell
+            - cell
+            - cell "2" [ref=f1e1102]
+          - row [ref=f1e1104]:
+            - cell "26/10 獲得" [ref=f1e1105]
+            - cell "213" [ref=f1e1106]
+            - cell "3" [ref=f1e1108]
+            - cell "8" [ref=f1e1110]
+            - cell [ref=f1e1112]
+            - cell [ref=f1e1114]
+            - cell [ref=f1e1116]
+            - cell [ref=f1e1118]
+            - cell [ref=f1e1120]
+            - cell [ref=f1e1122]
+            - cell
+            - cell
+            - cell
+            - cell
+            - cell
+            - cell
+            - cell "11" [ref=f1e1124]
+          - row [ref=f1e1126]:
+            - cell "26/9 獲得" [ref=f1e1127]
+            - cell "87" [ref=f1e1128]
+            - cell [ref=f1e1130]
+            - cell "8" [ref=f1e1132]
+            - cell "5" [ref=f1e1134]
+            - cell [ref=f1e1136]
+            - cell [ref=f1e1138]
+            - cell [ref=f1e1140]
+            - cell [ref=f1e1142]
+            - cell [ref=f1e1144]
+            - cell
+            - cell
+            - cell
+            - cell
+            - cell
+            - cell
+            - cell "13" [ref=f1e1146]
+          - row [ref=f1e1148]:
+            - cell "26/8 獲得" [ref=f1e1149]
+            - cell "160" [ref=f1e1150]
+            - cell [ref=f1e1152]
+            - cell "6" [ref=f1e1154]
+            - cell "7" [ref=f1e1156]
+            - cell "7" [ref=f1e1158]
+            - cell [ref=f1e1160]
+            - cell [ref=f1e1162]
+            - cell [ref=f1e1164]
+            - cell [ref=f1e1166]
+            - cell
+            - cell
+            - cell
+            - cell
+            - cell
+            - cell
+            - cell "20" [ref=f1e1168]
+          - row [ref=f1e1170]:
+            - cell "26/7 獲得" [ref=f1e1171]
+            - cell "798" [ref=f1e1172]
+            - cell [ref=f1e1174]
+            - cell "6" [ref=f1e1176]
+            - cell "7" [ref=f1e1178]
+            - cell "4" [ref=f1e1180]
+            - cell "6" [ref=f1e1182]
+            - cell [ref=f1e1184]
+            - cell [ref=f1e1186]
+            - cell [ref=f1e1188]
+            - cell
+            - cell
+            - cell
+            - cell
+            - cell
+            - cell
+            - cell "23" [ref=f1e1190]
+          - row [ref=f1e1192]:
+            - cell "26/6 獲得" [ref=f1e1193]
+            - cell "283" [ref=f1e1194]
+            - cell [ref=f1e1196]
+            - cell "2" [ref=f1e1198]
+            - cell "1" [ref=f1e1200]
+            - cell [ref=f1e1202]
+            - cell "1" [ref=f1e1204]
+            - cell "8" [ref=f1e1206]
+            - cell [ref=f1e1208]
+            - cell [ref=f1e1210]
+            - cell
+            - cell
+            - cell
+            - cell
+            - cell
+            - cell
+            - cell "12" [ref=f1e1212]
+          - row [ref=f1e1214]:
+            - cell "26/5 獲得" [ref=f1e1215]
+            - cell "173" [ref=f1e1216]
+            - cell [ref=f1e1218]
+            - cell [ref=f1e1220]
+            - cell "1" [ref=f1e1222]
+            - cell [ref=f1e1224]
+            - cell "2" [ref=f1e1226]
+            - cell "2" [ref=f1e1228]
+            - cell "6" [ref=f1e1230]
+            - cell [ref=f1e1232]
+            - cell
+            - cell
+            - cell
+            - cell
+            - cell
+            - cell
+            - cell "11" [ref=f1e1234]
+          - row [ref=f1e1236]:
+            - cell "26/4 獲得" [ref=f1e1237]
+            - cell "193" [ref=f1e1238]
+            - cell [ref=f1e1240]
+            - cell [ref=f1e1242]
+            - cell [ref=f1e1244]
+            - cell [ref=f1e1246]
+            - cell "1" [ref=f1e1248]
+            - cell [ref=f1e1250]
+            - cell "2" [ref=f1e1252]
+            - cell "5" [ref=f1e1254]
+            - cell
+            - cell
+            - cell
+            - cell
+            - cell
+            - cell
+            - cell "8" [ref=f1e1256]
+    - generic [ref=f1e1258]:
+      - heading "② いつ入った予約が、いつ面談になったか" [level=3] [ref=f1e1259]
+      - table [ref=f1e1261]:
+        - rowgroup [ref=f1e1276]:
+          - row [ref=f1e1277]:
+            - columnheader "予約月" [ref=f1e1278]
+            - columnheader "予約" [ref=f1e1279]
+            - columnheader "面談を実施した月" [ref=f1e1280]
+            - columnheader "未実施" [ref=f1e1281]
+            - columnheader "流れた" [ref=f1e1282]
+          - row [ref=f1e1283]:
+            - columnheader [ref=f1e1284]
+            - columnheader [ref=f1e1285]
+            - columnheader "26/11" [ref=f1e1286]
+            - columnheader "26/10" [ref=f1e1287]
+            - columnheader "26/9" [ref=f1e1288]
+            - columnheader "26/8" [ref=f1e1289]
+            - columnheader "26/7" [ref=f1e1290]
+            - columnheader "26/6" [ref=f1e1291]
+            - columnheader "26/5" [ref=f1e1292]
+            - columnheader "26/4" [ref=f1e1293]
+            - columnheader "26/3"
+            - columnheader "26/2"
+            - columnheader "26/1"
+            - columnheader "25/12"
+            - columnheader "25/10"
+            - columnheader "25/9"
+            - columnheader "実施 計" [ref=f1e1294]
+            - columnheader [ref=f1e1295]
+            - columnheader [ref=f1e1296]
+        - rowgroup [ref=f1e1297]:
+          - row [ref=f1e1298]:
+            - cell "合計" [ref=f1e1299]
+            - cell "123" [ref=f1e1300]
+            - cell "8" [ref=f1e1302]
+            - cell "18" [ref=f1e1304]
+            - cell "16" [ref=f1e1306]
+            - cell "9" [ref=f1e1308]
+            - cell "9" [ref=f1e1310]
+            - cell "7" [ref=f1e1312]
+            - cell "7" [ref=f1e1314]
+            - cell "7" [ref=f1e1316]
+            - cell "1"
+            - cell "1"
+            - cell
+            - cell "5"
+            - cell "5"
+            - cell "2"
+            - cell "95" [ref=f1e1318]
+            - cell "10" [ref=f1e1320]
+            - cell "18" [ref=f1e1322]
+          - row [ref=f1e1324]:
+            - cell "26/11 予約" [ref=f1e1325]
+            - cell "6" [ref=f1e1326]
+            - cell "3" [ref=f1e1328]
+            - cell [ref=f1e1330]
+            - cell [ref=f1e1332]
+            - cell [ref=f1e1334]
+            - cell [ref=f1e1336]
+            - cell [ref=f1e1338]
+            - cell [ref=f1e1340]
+            - cell [ref=f1e1342]
+            - cell
+            - cell
+            - cell
+            - cell
+            - cell
+            - cell
+            - cell "3" [ref=f1e1344]
+            - cell "3" [ref=f1e1346]
+            - cell [ref=f1e1348]
+          - row [ref=f1e1350]:
+            - cell "26/10 予約" [ref=f1e1351]
+            - cell "30" [ref=f1e1352]
+            - cell "5" [ref=f1e1354]
+            - cell "13" [ref=f1e1356]
+            - cell [ref=f1e1358]
+            - cell [ref=f1e1360]
+            - cell [ref=f1e1362]
+            - cell [ref=f1e1364]
+            - cell [ref=f1e1366]
+            - cell [ref=f1e1368]
+            - cell
+            - cell
+            - cell
+            - cell
+            - cell
+            - cell
+            - cell "18" [ref=f1e1370]
+            - cell "7" [ref=f1e1372]
+            - cell "5" [ref=f1e1374]
+          - row [ref=f1e1376]:
+            - cell "26/9 予約" [ref=f1e1377]
+            - cell "22" [ref=f1e1378]
+            - cell [ref=f1e1380]
+            - cell "5" [ref=f1e1382]
+            - cell "13" [ref=f1e1384]
+            - cell [ref=f1e1386]
+            - cell [ref=f1e1388]
+            - cell [ref=f1e1390]
+            - cell [ref=f1e1392]
+            - cell [ref=f1e1394]
+            - cell
+            - cell
+            - cell
+            - cell
+            - cell
+            - cell
+            - cell "18" [ref=f1e1396]
+            - cell [ref=f1e1398]
+            - cell "4" [ref=f1e1400]
+          - row [ref=f1e1402]:
+            - cell "26/8 予約" [ref=f1e1403]
+            - cell "11" [ref=f1e1404]
+            - cell [ref=f1e1406]
+            - cell [ref=f1e1408]
+            - cell "3" [ref=f1e1410]
+            - cell "7" [ref=f1e1412]
+            - cell [ref=f1e1414]
+            - cell [ref=f1e1416]
+            - cell [ref=f1e1418]
+            - cell [ref=f1e1420]
+            - cell
+            - cell
+            - cell
+            - cell
+            - cell
+            - cell
+            - cell "10" [ref=f1e1422]
+            - cell [ref=f1e1424]
+            - cell "1" [ref=f1e1426]
+          - row [ref=f1e1428]:
+            - cell "26/7 予約" [ref=f1e1429]
+            - cell "10" [ref=f1e1430]
+            - cell [ref=f1e1432]
+            - cell [ref=f1e1434]
+            - cell [ref=f1e1436]
+            - cell "2" [ref=f1e1438]
+            - cell "7" [ref=f1e1440]
+            - cell [ref=f1e1442]
+            - cell [ref=f1e1444]
+            - cell [ref=f1e1446]
+            - cell
+            - cell
+            - cell
+            - cell
+            - cell
+            - cell
+            - cell "9" [ref=f1e1448]
+            - cell [ref=f1e1450]
+            - cell "1" [ref=f1e1452]
+          - row [ref=f1e1454]:
+            - cell "26/6 予約" [ref=f1e1455]
+            - cell "10" [ref=f1e1456]
+            - cell [ref=f1e1458]
+            - cell [ref=f1e1460]
+            - cell [ref=f1e1462]
+            - cell [ref=f1e1464]
+            - cell "2" [ref=f1e1466]
+            - cell "7" [ref=f1e1468]
+            - cell [ref=f1e1470]
+            - cell [ref=f1e1472]
+            - cell
+            - cell
+            - cell
+            - cell
+            - cell
+            - cell
+            - cell "9" [ref=f1e1474]
+            - cell [ref=f1e1476]
+            - cell "1" [ref=f1e1478]
+          - row [ref=f1e1480]:
+            - cell "26/5 予約" [ref=f1e1481]
+            - cell "8" [ref=f1e1482]
+            - cell [ref=f1e1484]
+            - cell [ref=f1e1486]
+            - cell [ref=f1e1488]
+            - cell [ref=f1e1490]
+            - cell [ref=f1e1492]
+            - cell [ref=f1e1494]
+            - cell "6" [ref=f1e1496]
+            - cell [ref=f1e1498]
+            - cell
+            - cell
+            - cell
+            - cell
+            - cell
+            - cell
+            - cell "6" [ref=f1e1500]
+            - cell [ref=f1e1502]
+            - cell "2" [ref=f1e1504]
+          - row [ref=f1e1506]:
+            - cell "26/4 予約" [ref=f1e1507]
+            - cell "8" [ref=f1e1508]
+            - cell [ref=f1e1510]
+            - cell [ref=f1e1512]
+            - cell [ref=f1e1514]
+            - cell [ref=f1e1516]
+            - cell [ref=f1e1518]
+            - cell [ref=f1e1520]
+            - cell "1" [ref=f1e1522]
+            - cell "7" [ref=f1e1524]
+            - cell
+            - cell
+            - cell
+            - cell
+            - cell
+            - cell
+            - cell "8" [ref=f1e1526]
+            - cell [ref=f1e1528]
+            - cell [ref=f1e1530]
+  - heading "リード獲得web広告のみ・展示会は含まない" [level=2] [ref=f1e1532]
+  - generic [ref=f1e1534]:
+    - generic [ref=f1e1535]:
+      - text: web広告
+      - generic [ref=f1e1536]: 期間内・全キャンペーン
+    - generic [ref=f1e1537]:
+      - generic [ref=f1e1538]:
+        - generic [ref=f1e1539]: 消費金額
+        - generic [ref=f1e1540]: ¥3,512,808
+      - generic [ref=f1e1541]:
+        - generic [ref=f1e1542]: IMP
+        - generic [ref=f1e1543]: 4,156,181
+      - generic [ref=f1e1544]:
+        - generic [ref=f1e1545]: クリック
+        - generic [ref=f1e1546]: 144,421
+      - generic [ref=f1e1547]:
+        - generic [ref=f1e1548]: CTR
+        - generic [ref=f1e1549]: 3.47%
+      - generic [ref=f1e1550]:
+        - generic [ref=f1e1551]: CPC
+        - generic [ref=f1e1552]: ¥24
+      - generic [ref=f1e1553]:
+        - generic [ref=f1e1554]: CPM
+        - generic [ref=f1e1555]: ¥845
+      - generic [ref=f1e1556]:
+        - generic [ref=f1e1557]: CV
+        - generic [ref=f1e1558]: 1,458
+      - generic [ref=f1e1559]:
+        - generic [ref=f1e1560]: CVR
+        - generic [ref=f1e1561]: 1.01%
+      - generic [ref=f1e1562]:
+        - generic [ref=f1e1563]: CPL
+        - generic [ref=f1e1564]: ¥2,409
+  - generic [ref=f1e1565]:
+    - group [ref=f1e1566]:
+      - generic "▶ Meta / ウェビナー 消費 ¥196.3万 CV 981 CPL ¥2,001" [ref=f1e1567] [cursor=pointer]:
+        - generic [ref=f1e1568]: ▶
+        - text: Meta / ウェビナー
+        - generic [ref=f1e1569]: 消費 ¥196.3万 CV 981 CPL ¥2,001
+    - group [ref=f1e1570]:
+      - generic "▶ Meta / 介護校 消費 ¥112.2万 CV 349 CPL ¥3,216" [ref=f1e1571] [cursor=pointer]:
+        - generic [ref=f1e1572]: ▶
+        - text: Meta / 介護校
+        - generic [ref=f1e1573]: 消費 ¥112.2万 CV 349 CPL ¥3,216
+    - group [ref=f1e1574]:
+      - generic "▶ Meta / Claude 消費 ¥17.1万 CV 114 CPL ¥1,504" [ref=f1e1575] [cursor=pointer]:
+        - generic [ref=f1e1576]: ▶
+        - text: Meta / Claude
+        - generic [ref=f1e1577]: 消費 ¥17.1万 CV 114 CPL ¥1,504
+    - group [ref=f1e1578]:
+      - generic "▶ Meta / あおぞらCareTech研究所 消費 ¥4.5万 CV 2 CPL ¥22,470" [ref=f1e1579] [cursor=pointer]:
+        - generic [ref=f1e1580]: ▶
+        - text: Meta / あおぞらCareTech研究所
+        - generic [ref=f1e1581]: 消費 ¥4.5万 CV 2 CPL ¥22,470
+  - group [ref=f1e1583]:
+    - generic "▶ web広告の週次 30週分・全媒体" [ref=f1e1584] [cursor=pointer]:
+      - generic [ref=f1e1585]: ▶
+      - text: web広告の週次
+      - generic [ref=f1e1586]: 30週分・全媒体
+  - heading "ウェビナー別" [level=2] [ref=f1e1587]
+  - group [ref=f1e1589]:
+    - generic "▶ お題ごとの成果 15回分" [ref=f1e1590] [cursor=pointer]:
+      - generic [ref=f1e1591]: ▶
+      - text: お題ごとの成果
+      - generic [ref=f1e1592]: 15回分
+  - heading "IS活動量" [level=2] [ref=f1e1593]
+  - generic [ref=f1e1594]:
+    - generic [ref=f1e1595]:
+      - generic [ref=f1e1596]:
+        - text: 本日
+        - generic [ref=f1e1597]: 11/11(水)
+      - generic [ref=f1e1598]:
+        - generic [ref=f1e1599]:
+          - generic [ref=f1e1600]: 架電数
+          - generic [ref=f1e1601]: "22"
+        - generic [ref=f1e1602]:
+          - generic [ref=f1e1603]: 架電件数
+          - generic [ref=f1e1604]: "6"
+        - generic [ref=f1e1605]:
+          - generic [ref=f1e1606]: 接続数
+          - generic [ref=f1e1607]: "3"
+        - generic [ref=f1e1608]:
+          - generic [ref=f1e1609]: 接続率
+          - generic [ref=f1e1610]: 13.6%
+        - generic [ref=f1e1611]:
+          - generic [ref=f1e1612]: 面談予約 獲得数
+          - generic [ref=f1e1613]: "1"
+    - generic [ref=f1e1614]:
+      - generic [ref=f1e1615]:
+        - text: 直近の稼働日
+        - generic [ref=f1e1616]: 11/10(火)
+      - generic [ref=f1e1617]:
+        - generic [ref=f1e1618]:
+          - generic [ref=f1e1619]: 架電数
+          - generic [ref=f1e1620]: "27"
+        - generic [ref=f1e1621]:
+          - generic [ref=f1e1622]: 架電件数
+          - generic [ref=f1e1623]: "18"
+        - generic [ref=f1e1624]:
+          - generic [ref=f1e1625]: 接続数
+          - generic [ref=f1e1626]: "5"
+        - generic [ref=f1e1627]:
+          - generic [ref=f1e1628]: 接続率
+          - generic [ref=f1e1629]: 18.5%
+        - generic [ref=f1e1630]:
+          - generic [ref=f1e1631]: 面談予約 獲得数
+          - generic [ref=f1e1632]: "2"
+  - generic [ref=f1e1633]:
+    - group [ref=f1e1634]:
+      - generic "▶ 全体の週次 22週分 架電数 2,089 架電件数 881 接続率 23.6%" [ref=f1e1635] [cursor=pointer]:
+        - generic [ref=f1e1636]: ▶
+        - text: 全体の週次
+        - generic [ref=f1e1637]: 22週分 架電数 2,089 架電件数 881 接続率 23.6%
+    - group [ref=f1e1638]:
+      - generic "▶ 架電業者の週次 12週分 架電数 1,740 架電件数 631 接続率 23.9% 面談予約 59 商談化率 3.4%" [ref=f1e1639] [cursor=pointer]:
+        - generic [ref=f1e1640]: ▶
+        - text: 架電業者の週次
+        - generic [ref=f1e1641]: 12週分 架電数 1,740 架電件数 631 接続率 23.9% 面談予約 59 商談化率 3.4%
+  - heading "架電件数の日次推移（2026-08-10 〜 2026-11-11）" [level=3] [ref=f1e1644]
+  - heading "月次実績できごとが起きた月ベース" [level=2] [ref=f1e1647]
+  - generic [ref=f1e1649]:
+    - generic [ref=f1e1650]:
+      - text: 累計
+      - generic [ref=f1e1651]: 全期間・直契約
+    - generic [ref=f1e1652]:
+      - generic [ref=f1e1653]:
+        - generic [ref=f1e1654]: 面談実施
+        - generic [ref=f1e1655]: "95"
+      - generic [ref=f1e1656]:
+        - generic [ref=f1e1657]: 提案
+        - generic [ref=f1e1658]: "82"
+      - generic [ref=f1e1659]:
+        - generic [ref=f1e1660]: 成約数
+        - generic [ref=f1e1661]: "6"
+      - generic [ref=f1e1662]:
+        - generic [ref=f1e1663]: 成約金額
+        - generic [ref=f1e1664]: ¥5,085,300
+      - generic [ref=f1e1665]:
+        - generic [ref=f1e1666]: 実施→成約率
+        - generic [ref=f1e1667]: 6.3%
+      - generic [ref=f1e1668]:
+        - generic [ref=f1e1669]: 平均成約単価
+        - generic [ref=f1e1670]: ¥847,550
+  - group [ref=f1e1672]:
+    - generic "▶ 月次 15ヶ月分 架電 2,089 面談予約 123 面談実施 95 成約 6" [ref=f1e1673] [cursor=pointer]:
+      - generic [ref=f1e1674]: ▶
+      - text: 月次
+      - generic [ref=f1e1675]: 15ヶ月分 架電 2,089 面談予約 123 面談実施 95 成約 6
+  - heading "直契約" [level=2] [ref=f1e1676]
+  - generic [ref=f1e1677]:
+    - heading "チャネル別 リード数推移（積み上げ＝合計）" [level=3] [ref=f1e1679]
+    - heading "web CPL推移（2026-04-06〜）" [level=3] [ref=f1e1683]
+    - generic [ref=f1e1686]:
+      - heading "商談化率推移（期間累計）" [level=3] [ref=f1e1687]
+      - generic [ref=f1e1692]: 母数：週次リード数
+    - generic [ref=f1e1693]:
+      - heading "成約率推移（期間累計）" [level=3] [ref=f1e1694]
+      - generic [ref=f1e1699]: 母数：週次商談数
+  - heading "展示会別CPL" [level=2] [ref=f1e1700]
+  - group [ref=f1e1701]:
+    - generic "▶ 展示会別CPL 5件" [ref=f1e1702] [cursor=pointer]:
+      - generic [ref=f1e1703]: ▶
+      - text: 展示会別CPL
+      - generic [ref=f1e1704]: 5件
+    - table [ref=f1e1706]:
+      - rowgroup [ref=f1e1707]:
+        - row [ref=f1e1708]:
+          - columnheader "展示会名" [ref=f1e1709]
+          - columnheader "開催日" [ref=f1e1710]
+          - columnheader "費用" [ref=f1e1711]
+          - columnheader "リード数" [ref=f1e1712]
+          - columnheader "CPL" [ref=f1e1713]
+          - columnheader "商談数" [ref=f1e1714]
+          - columnheader "成約数" [ref=f1e1715]
+      - rowgroup [ref=f1e1716]:
+        - row [ref=f1e1717]:
+          - cell "AI活用EXPO" [ref=f1e1718]
+          - cell "2025-09-22" [ref=f1e1719]
+          - cell "¥220,000" [ref=f1e1720]
+          - cell "153" [ref=f1e1721]
+          - cell "¥1,438" [ref=f1e1722]
+          - cell "3" [ref=f1e1723]
+          - cell "0" [ref=f1e1724]
+        - row [ref=f1e1725]:
+          - cell "CareTex北陸" [ref=f1e1726]
+          - cell "2025-11-24" [ref=f1e1727]
+          - cell "¥455,323" [ref=f1e1728]
+          - cell "121" [ref=f1e1729]
+          - cell "¥3,763" [ref=f1e1730]
+          - cell "5" [ref=f1e1731]
+          - cell "1" [ref=f1e1732]
+        - row [ref=f1e1733]:
+          - cell "CareTex東京" [ref=f1e1734]
+          - cell "2026-02-23" [ref=f1e1735]
+          - cell "¥616,000" [ref=f1e1736]
+          - cell "175" [ref=f1e1737]
+          - cell "¥3,520" [ref=f1e1738]
+          - cell "2" [ref=f1e1739]
+          - cell "0" [ref=f1e1740]
+        - row [ref=f1e1741]:
+          - cell "CareTEX福岡" [ref=f1e1742]
+          - cell "2026-07-20" [ref=f1e1743]
+          - cell "¥572,000" [ref=f1e1744]
+          - cell "587" [ref=f1e1745]
+          - cell "¥974" [ref=f1e1746]
+          - cell "6" [ref=f1e1747]
+          - cell "0" [ref=f1e1748]
+        - row [ref=f1e1749]:
+          - cell "Care Tex大阪" [ref=f1e1750]
+          - cell "2026-10-19" [ref=f1e1751]
+          - cell "¥583,000" [ref=f1e1752]
+          - cell "167" [ref=f1e1753]
+          - cell "¥3,491" [ref=f1e1754]
+          - cell "8" [ref=f1e1755]
+          - cell "0" [ref=f1e1756]
+  - heading "チャネル別全期間・直契約・実数のみ" [level=2] [ref=f1e1757]
+  - group [ref=f1e1759]:
+    - generic "▶ チャネル別 5チャネル リード 2,560 成約 6 成約金額 ¥508.5万" [ref=f1e1760] [cursor=pointer]:
+      - generic [ref=f1e1761]: ▶
+      - text: チャネル別
+      - generic [ref=f1e1762]: 5チャネル リード 2,560 成約 6 成約金額 ¥508.5万
