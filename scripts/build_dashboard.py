@@ -2893,7 +2893,7 @@ def render(data):
         # 合計行を先頭に置く。他部署の表と同じで、まず合計を見てから
         # 中身に降りる読み方になる。列ごとの合計は「その月に予約が
         # いくつ入ったか／面談をいくつ実施したか」で、月次実績と一致する。
-        ch_tot = (
+        chain_tot = (
             "合計",
             sum(r[1] for r in ch_rows),
             {c: sum(r[2].get(c, 0) for r in ch_rows) for c in ch_cols},
@@ -2955,7 +2955,7 @@ def render(data):
                 + f'<td class="sum"><b>{f_int(lost) if lost else "&nbsp;"}</b></td>'
                 + '</tr>'
                 for gm, leads, ab, at, mb, mt, pend, lost
-                in [ch_tot] + ch_rows)
+                in [chain_tot] + ch_rows)
             + '</tbody></table></div>')
         chain_section = (
             '\n<h2>リード獲得 → 面談予約 → 面談実施'
