@@ -75,6 +75,11 @@ KPI_WEEKS_PER_MONTH = 4.345
 # 既定で表示を始める月。これより前はweb広告（2026-04-07開始）も架電
 # （2026-06開始）も無く、CPLが空欄・架電件数0の列が並ぶ。スライダーで遡れる。
 KPI_MONTH_FROM = "2026-04"
+# 鎖の表（獲得→予約→実施）で既定で表示を始める獲得月。
+# 2枚を縦に積むので、13行だと1画面に収まらず同じ行を上下で見比べられない。
+# 8行なら2枚とも収まる。これ以前は予約が全期間で14件しかなく、
+# しかも全部決着済みで動かない。スライダーで遡れる。
+CHAIN_MONTH_FROM = "2026-04"
 # 目標（2026-10 にユーザーが設定）。件数は月あたり。
 KPI_TARGETS = {"leads": 300, "cpl": 2000, "called": 300,
                "conv": 0.15, "mtgs": 40, "win": 0.10}
@@ -1450,34 +1455,6 @@ function mkCallBar(id,labels,called,followup,cConn,cNo){
                    return Math.round(v).toLocaleString();}}}}}});
 }
 
-/* 案件になった月と面談を実施した月のズレ。棒＝その月に実施した面談、
-   積み上げ＝その案件が何ヶ月前に立ったか。段の数はデータから決まるので、
-   2ヶ月後が出てくれば勝手に3段になる（作り直さない）。
-   色は1色の濃淡。薄いほど新しい案件。段ごとに別の色相を当てると、
-   段が増えるたびに色の意味を覚え直すことになる。 */
-function mkLagBar(id,labels,sets){
-  if(!document.getElementById(id)){return;}
-  reg(id,{type:'bar',
-    data:{labels:labels,datasets:sets.map(function(s){
-      return {label:s.label,data:s.data,backgroundColor:s.color,borderWidth:0,
-        stack:'g',barPercentage:1,categoryPercentage:.86};})},
-    options:{responsive:true,maintainAspectRatio:false,
-      interaction:{mode:'index',intersect:false},
-      plugins:{legend:{position:'bottom',labels:{boxWidth:10,boxHeight:10,padding:12}},
-        tooltip:{callbacks:{
-          label:function(c){
-            if(!c.parsed.y) return null;
-            return c.dataset.label+': '+Math.round(c.parsed.y).toLocaleString()+'件';},
-          footer:function(items){
-            var t=0;items.forEach(function(i){t+=i.parsed.y||0;});
-            return '面談実施: '+t.toLocaleString()+'件';}}}},
-      scales:{x:{stacked:true,grid:{display:false},
-                 ticks:{maxRotation:0,autoSkip:true,maxTicksLimit:14}},
-              y:{stacked:true,beginAtZero:true,grid:{color:'#EFEADC'},
-                 ticks:{precision:0,callback:function(v){
-                   return Math.round(v).toLocaleString();}}}}}});
-}
-
 /* 率の線の真下に置く「母数」の帯。率と件数は単位が違うので同じ縦軸には重ねず、
    時間軸だけを揃えて上下に並べる。1枚のグラフに縦軸を2本置くと、
    どちらの目盛りで読むのか分からなくなり、率の変化も件数の変化も誤読される。 */
@@ -1807,6 +1784,29 @@ function kpiSlider(){
     var c = document.querySelectorAll('[data-km]'), i;
     for(i=0;i<c.length;i++){
       c[i].style.display = c[i].getAttribute('data-km') >= from ? '' : 'none';
+    }
+  }
+  s.addEventListener('input', draw);
+  draw();
+}
+/* 鎖の表（獲得→予約→実施）の行を絞るスライダー。既定は CHAIN_MONTH_FROM。
+   2枚を縦に積むと13行では1画面に収まらず、同じ行を上下で見比べるのに
+   スクロールすることになる。既定を8行にすると2枚とも収まる。
+   落とした行の数字は月次KPIに残っているので消えるわけではない。
+   kpiSlider と同じ作りだが、掴む属性を data-cm にして取り合わないようにする
+   （上の期間フィルタの data-m、重要値の data-km とも別）。 */
+function chainSlider(){
+  var s = document.getElementById('cms');
+  if(!s){return;}
+  function draw(){
+    var from = CHAIN_MONTHS[+s.value];
+    document.getElementById('cmslab').textContent =
+      from.slice(2).replace('-','/');
+    document.getElementById('cmscnt').textContent =
+      CHAIN_MONTHS.length - s.value;
+    var c = document.querySelectorAll('[data-cm]'), i;
+    for(i=0;i<c.length;i++){
+      c[i].style.display = c[i].getAttribute('data-cm') >= from ? '' : 'none';
     }
   }
   s.addEventListener('input', draw);
@@ -2881,44 +2881,8 @@ def render(data):
     # 予約計は月次KPIの面談予約、実施計は月次KPIの面談実施と一致する。
     ch3 = data.get("chain") or {}
     chain_section = ""
-    lag_labels, lag_sets = [], []
+    chain_asc = []
     if ch3:
-        # ---- ズレのグラフ（社長の11/07の宿題そのもの） ----
-        # 棒＝その月に実施した面談。積み上げ＝案件が何ヶ月前に立ったか。
-        # **段の数は決め打ちしない。** 今のデータは最大1ヶ月ずれだが、
-        # 2ヶ月後が1件でも出れば段が自動で増える。決め打ちすると
-        # その時に作り直しになる。
-        # 色は1色の濃淡（薄い＝新しい案件）。段が増えても意味が変わらない。
-        LAG_RAMP = ["#9FD4D7", "#5FB3B8", "#08959C", "#0B6E73", "#08494C"]
-        lag_cnt = {}
-        for _g, _per_appt in ch3.items():
-            for _am, _outs in _per_appt.items():
-                for _mm, _n in _outs.items():
-                    if _mm in ("pending", "lost"):
-                        continue
-                    _lag = max(0, (int(_mm[:4]) * 12 + int(_mm[5:7]))
-                               - (int(_am[:4]) * 12 + int(_am[5:7])))
-                    lag_cnt.setdefault(_mm, {})
-                    lag_cnt[_mm][_lag] = lag_cnt[_mm].get(_lag, 0) + _n
-        lag_labels = [m for m in fu_keys if m in lag_cnt][-13:]
-        max_lag = max((l for v in lag_cnt.values() for l in v), default=0)
-        # 段が多くなりすぎたら末尾をまとめる。今はまとめる必要が無いので
-        # まとまらない。必要になったら自動でまとまる。
-        cap = min(max_lag, len(LAG_RAMP) - 1)
-        for lag in range(cap + 1):
-            if lag == 0:
-                name = "当月の案件"
-            elif lag < cap or max_lag <= cap:
-                name = f"{lag}ヶ月前の案件"
-            else:
-                name = f"{lag}ヶ月以上前の案件"
-            lag_sets.append({
-                "label": name,
-                "color": LAG_RAMP[lag],
-                "data": [sum(n for l, n in (lag_cnt.get(m) or {}).items()
-                             if (l == lag if lag < cap else l >= lag))
-                         for m in lag_labels],
-            })
         def _mi(mk):
             return int(mk[:4]) * 12 + int(mk[5:7])
         ch_months = [m for m in fu_keys if m in ch3]
@@ -2989,8 +2953,11 @@ def render(data):
             rows_html = []
             for row in [chain_tot] + ch_rows:
                 buckets, total, tail = pick(row)
+                # 合計行は常に出す（スライダーで隠れると基準が消える）。
                 rows_html.append(
-                    f'<tr class="main{" hl sep" if row[0] == "合計" else ""}">'
+                    f'<tr class="main{" hl sep" if row[0] == "合計" else ""}"'
+                    + ("" if row[0] == "合計" else f' data-cm="{row[0]}"')
+                    + '>'
                     f'<td class="fk">{_row_key(row[0])}</td>'
                     f'<td class="sum"><b>{f_int(row[1])}</b></td>'
                     + "".join(
@@ -3022,14 +2989,20 @@ def render(data):
                 + '</tr></thead><tbody>'
                 + "".join(rows_html) + '</tbody></table></div>')
 
+        # 行を絞るスライダー。既定は CHAIN_MONTH_FROM。
+        # 行は新しい順なので、スライダーの位置は「古い側をどこまで出すか」。
+        chain_asc = ch_months[::-1]
+        chain_def = max(0, chain_asc.index(CHAIN_MONTH_FROM)
+                        if CHAIN_MONTH_FROM in chain_asc else 0)
         chain_section = (
             '\n<h2>リード獲得 → 面談予約 → 面談実施'
             '<span class="h2sub">直契約・1行＝その月に獲得したリードの集団／'
             '予約計は月次KPIの面談予約、実施計は面談実施と一致</span></h2>\n'
-            '<div class="charts one"><div class="card">'
-            '<h3>面談を実施した月 × その案件が何ヶ月前に立ったか</h3>'
-            '<div class="chart"><canvas id="c_lag"></canvas></div>'
-            '</div></div>\n'
+            '<div class="sld"><label for="cms">表示を始める獲得月</label>'
+            f'<input type="range" id="cms" min="0" max="{len(chain_asc) - 1}"'
+            f' value="{chain_def}" step="1">'
+            f'<span><b id="cmslab"></b> 〜 {month_col_label(chain_asc[-1])}'
+            '　（<b id="cmscnt"></b>ヶ月）</span></div>\n'
             '<h3 class="kpih3">① 面談予約が入った月</h3>\n'
             + _tbl("面談予約が入った月", lambda r: (r[2], r[3], ()), "予約 計", ())
             + '\n<h3 class="kpih3">② 面談を実施した月</h3>\n'
@@ -3339,10 +3312,9 @@ var TOTC='{COLORS["total"]}';
 var CC='{COLORS["call_conn"]}'; var CN='{COLORS["call_noans"]}';
 var L={js(labels)};
 var KPI_MONTHS={js(kpi_months)};
-var LAG_L={js([month_col_label(m) for m in lag_labels])};
-var LAG_DS={js(lag_sets)};
+var CHAIN_MONTHS={js(chain_asc)};
 {DRAW_JS}{FILTER_JS}
-mkLagBar('c_lag',LAG_L,LAG_DS);
+chainSlider();
 resetRange();
 kpiSlider();
 showAge();
