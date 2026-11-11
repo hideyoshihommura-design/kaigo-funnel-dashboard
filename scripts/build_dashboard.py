@@ -1313,6 +1313,13 @@ border-right:1px solid var(--line);vertical-align:middle;}
 .fnl .fc{position:sticky;left:118px;background:#eef2f6;z-index:2;
 border-right:2px solid #8fa0b0;font-weight:700;}
 .fnl thead .fc{background:#e2e8ee;z-index:3;}
+/* 合計の列。見た目は .fc と同じだが sticky にしない。.fc は left:118px に
+   貼り付くので、1行に2つ以上使うと同じ位置で重なって読めなくなる。
+   左に固定するのは行の見出し1列だけにする。 */
+.fnl .sum{background:#eef2f6;border-right:2px solid #8fa0b0;font-weight:700;}
+.fnl thead .sum{background:#e2e8ee;}
+/* 鎖の表はブロックの境目を縦線で出す（予約のかたまり／実施のかたまり）。 */
+.fnl .blk{border-left:2px solid #8fa0b0;}
 /* 値と前月差は1つのセルの中で上下2段。行を分けると指標7つで14行になり、
    半分が補助情報の行になる。
    **薄い扱いは前月差の1種類だけにする。** 0を薄く、値を細く、背景を淡く、
@@ -2850,51 +2857,81 @@ def render(data):
         def _mi(mk):
             return int(mk[:4]) * 12 + int(mk[5:7])
         ch_months = [m for m in fu_keys if m in ch3]
+        # 列は実月。「2ヶ月後〜」のような丸めはしない。丸めると
+        # 「7月のリードがいつ予約になったか」が読めず、広告費を使った月と
+        # 面談が立つ月を突き合わせられない。
+        # 使う列は、実際に値がある月だけに絞る（空列を並べても幅が増えるだけ）。
+        used = set()
+        for gm in ch_months:
+            for am, outs in ch3[gm].items():
+                used.add(am)
+                used |= {mm for mm in outs if mm not in ("pending", "lost")}
+        ch_cols = [m for m in fu_keys if m in used]
         ch_rows = []
         for gm in ch_months:
-            ab, mb = [0, 0, 0], [0, 0, 0]
+            ab = {c: 0 for c in ch_cols}
+            mb = {c: 0 for c in ch_cols}
             pend = lost = 0
             for am, outs in ch3[gm].items():
-                n_appt = sum(outs.values())
-                ab[max(0, min(_mi(am) - _mi(gm), 2))] += n_appt
+                ab[am] = ab.get(am, 0) + sum(outs.values())
                 for mm, n in outs.items():
                     if mm == "pending":
                         pend += n
                     elif mm == "lost":
                         lost += n
                     else:
-                        mb[max(0, min(_mi(mm) - _mi(gm), 2))] += n
+                        mb[mm] = mb.get(mm, 0) + n
             ch_rows.append((gm, (fu.get(gm) or {}).get("leads") or 0,
-                            ab, sum(ab), mb, sum(mb), pend, lost))
-        LAG3 = ("当月", "翌月", "2ヶ月後〜")
-        ncol = 1 + 3 + 1 + 3 + 1 + 2  # リード/予約3/予約計/実施3/実施計/未実施/流れた
+                            ab, sum(ab.values()), mb, sum(mb.values()),
+                            pend, lost))
+        W_K, W_N, W_S = 76, 50, 72
+        nmon = len(ch_cols)
+        width = W_K + W_S + (W_N * nmon + W_S) * 2 + W_S * 2
+
+        def _cells(buckets, gm):
+            # 獲得月より前の列は空ける（まだ存在しないリードなので）。
+            out = []
+            for i, c in enumerate(ch_cols):
+                v = buckets.get(c, 0)
+                cls = ' class="blk"' if i == 0 else ""
+                out.append(f'<td{cls}><b>'
+                           + (f_int(v) if v else "&nbsp;") + '</b></td>')
+            return "".join(out)
+
         chain_html = (
-            '<div class="fnl"><table style="width:%dpx">' % (96 + 74 * ncol)
-            + '<colgroup><col style="width:96px">'
-            + '<col style="width:74px">' * ncol + '</colgroup>'
+            f'<div class="fnl"><table style="width:{width}px">'
+            + f'<colgroup><col style="width:{W_K}px">'
+            + f'<col style="width:{W_S}px">'
+            + (f'<col style="width:{W_N}px">' * nmon
+               + f'<col style="width:{W_S}px">') * 2
+            + f'<col style="width:{W_S}px">' * 2 + '</colgroup>'
             + '<thead>'
-            + '<tr><th class="fk">獲得月</th><th class="fc">リード</th>'
-            + '<th class="fc" colspan="4">面談予約（獲得月から何ヶ月後か）</th>'
-            + '<th class="fc" colspan="4">面談実施（獲得月から何ヶ月後か）</th>'
-            + '<th class="fc">未実施</th><th class="fc">流れた</th></tr>'
-            + '<tr><th class="fk"></th><th class="fc"></th>'
-            + "".join(f'<th class="fc">{h}</th>' for h in LAG3)
-            + '<th class="fc">予約 計</th>'
-            + "".join(f'<th class="fc">{h}</th>' for h in LAG3)
-            + '<th class="fc">実施 計</th>'
-            + '<th class="fc"></th><th class="fc"></th></tr>'
+            + '<tr><th class="fk">獲得月</th><th class="sum">リード</th>'
+            + f'<th class="sum blk" colspan="{nmon + 1}">'
+            '面談予約が入った月</th>'
+            + f'<th class="sum blk" colspan="{nmon + 1}">'
+            '面談を実施した月</th>'
+            + '<th class="sum">未実施</th><th class="sum">流れた</th></tr>'
+            + '<tr><th class="fk"></th><th class="sum"></th>'
+            + "".join(f'<th{" class=\"blk\"" if i == 0 else ""}>'
+                      f'{month_col_label(c)}</th>'
+                      for i, c in enumerate(ch_cols))
+            + '<th class="sum">予約 計</th>'
+            + "".join(f'<th{" class=\"blk\"" if i == 0 else ""}>'
+                      f'{month_col_label(c)}</th>'
+                      for i, c in enumerate(ch_cols))
+            + '<th class="sum">実施 計</th>'
+            + '<th class="sum"></th><th class="sum"></th></tr>'
             + '</thead><tbody>'
             + "".join(
                 f'<tr class="main"><td class="fk">{month_col_label(gm)}</td>'
-                f'<td class="fc"><b>{f_int(leads)}</b></td>'
-                + "".join(f'<td><b>{f_int(n) if n else "&nbsp;"}</b></td>'
-                          for n in ab)
-                + f'<td class="fc"><b>{f_int(at)}</b></td>'
-                + "".join(f'<td><b>{f_int(n) if n else "&nbsp;"}</b></td>'
-                          for n in mb)
-                + f'<td class="fc"><b>{f_int(mt)}</b></td>'
-                + f'<td class="fc"><b>{f_int(pend) if pend else "&nbsp;"}</b></td>'
-                + f'<td class="fc"><b>{f_int(lost) if lost else "&nbsp;"}</b></td>'
+                f'<td class="sum"><b>{f_int(leads)}</b></td>'
+                + _cells(ab, gm)
+                + f'<td class="sum"><b>{f_int(at)}</b></td>'
+                + _cells(mb, gm)
+                + f'<td class="sum"><b>{f_int(mt)}</b></td>'
+                + f'<td class="sum"><b>{f_int(pend) if pend else "&nbsp;"}</b></td>'
+                + f'<td class="sum"><b>{f_int(lost) if lost else "&nbsp;"}</b></td>'
                 + '</tr>'
                 for gm, leads, ab, at, mb, mt, pend, lost in ch_rows)
             + '</tbody></table></div>')
