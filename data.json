@@ -11031,6 +11031,26 @@
    "deals": 2,
    "won": 0,
    "won_amount": 0
+  },
+  {
+   "name": "第16回 送迎表",
+   "start": "2026-11-05",
+   "end": "2026-11-11",
+   "days": 7,
+   "cost": 106290,
+   "cost_days": 7,
+   "cost_est_days": 0,
+   "cost_manual": false,
+   "cv": 50,
+   "cv_days": 7,
+   "cv_est_days": 0,
+   "cv_manual": false,
+   "imp": 50145,
+   "clicks": 985,
+   "leads": 41,
+   "deals": 0,
+   "won": 0,
+   "won_amount": 0
   }
  ],
  "adperf": {
