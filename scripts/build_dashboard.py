@@ -2866,7 +2866,13 @@ def render(data):
             for am, outs in ch3[gm].items():
                 used.add(am)
                 used |= {mm for mm in outs if mm not in ("pending", "lost")}
-        ch_cols = [m for m in fu_keys if m in used]
+        # 列も行も新しい月が左・上。社長が見ている他部署の表
+        # （佐野さんの「対象月別集計表」）がその向きで、読み始める位置を
+        # そろえないと毎回どちらから読むかを探すことになる。
+        # このダッシュボードの他の表は古い月が左だが、この表だけは
+        # 他部署と並べて見られることを優先する。
+        ch_cols = [m for m in fu_keys if m in used][::-1]
+        ch_months = ch_months[::-1]
         ch_rows = []
         for gm in ch_months:
             ab = {c: 0 for c in ch_cols}
@@ -2884,6 +2890,19 @@ def render(data):
             ch_rows.append((gm, (fu.get(gm) or {}).get("leads") or 0,
                             ab, sum(ab.values()), mb, sum(mb.values()),
                             pend, lost))
+        # 合計行を先頭に置く。他部署の表と同じで、まず合計を見てから
+        # 中身に降りる読み方になる。列ごとの合計は「その月に予約が
+        # いくつ入ったか／面談をいくつ実施したか」で、月次実績と一致する。
+        ch_tot = (
+            "合計",
+            sum(r[1] for r in ch_rows),
+            {c: sum(r[2].get(c, 0) for r in ch_rows) for c in ch_cols},
+            sum(r[3] for r in ch_rows),
+            {c: sum(r[4].get(c, 0) for r in ch_rows) for c in ch_cols},
+            sum(r[5] for r in ch_rows),
+            sum(r[6] for r in ch_rows),
+            sum(r[7] for r in ch_rows),
+        )
         W_K, W_N, W_S = 76, 50, 72
         nmon = len(ch_cols)
         width = W_K + W_S + (W_N * nmon + W_S) * 2 + W_S * 2
@@ -2924,7 +2943,9 @@ def render(data):
             + '<th class="sum"></th><th class="sum"></th></tr>'
             + '</thead><tbody>'
             + "".join(
-                f'<tr class="main"><td class="fk">{month_col_label(gm)}</td>'
+                f'<tr class="main{" hl sep" if gm == "合計" else ""}">'
+                f'<td class="fk">'
+                + (gm if gm == "合計" else month_col_label(gm)) + '</td>'
                 f'<td class="sum"><b>{f_int(leads)}</b></td>'
                 + _cells(ab, gm)
                 + f'<td class="sum"><b>{f_int(at)}</b></td>'
@@ -2933,7 +2954,8 @@ def render(data):
                 + f'<td class="sum"><b>{f_int(pend) if pend else "&nbsp;"}</b></td>'
                 + f'<td class="sum"><b>{f_int(lost) if lost else "&nbsp;"}</b></td>'
                 + '</tr>'
-                for gm, leads, ab, at, mb, mt, pend, lost in ch_rows)
+                for gm, leads, ab, at, mb, mt, pend, lost
+                in [ch_tot] + ch_rows)
             + '</tbody></table></div>')
         chain_section = (
             '\n<h2>リード獲得 → 面談予約 → 面談実施'
