@@ -828,7 +828,9 @@ def build(token, sheets_token, channel_map, webinar_cfg, campaign_cfg,
     # --- 商談・成約（週はコンタクトの実効獲得日。取引の作成日ではない）
     # ウェビナー別の集計でも同じ紐付けを使うので、コンタクト単位でも持っておく。
     per_contact = {}
-    route_deals, route_won = {}, {}
+    # route_amt は展示会別テーブルの成約金額・回収率に使う。
+    # ウェビナー別と同じ項目を並べるため（2026-11-11）。
+    route_deals, route_won, route_amt = {}, {}, {}
     orphan_deals = 0
     daily_appts = {}
     daily_mtgs = {}
@@ -909,6 +911,7 @@ def build(token, sheets_token, channel_map, webinar_cfg, campaign_cfg,
         amount = int(to_number(p.get("amount_in_home_currency")) or 0) if won else 0
         if won:
             route_won[route] = route_won.get(route, 0) + 1
+            route_amt[route] = route_amt.get(route, 0) + amount
         # --- フィールドセールスの活動（直契約のみ）
         # 代理店経由は代理店が売っているので自社FSの活動ではない。
         # 上部の直契約カードと同じ母集団（route有効・獲得週が期間内・直契約）に
@@ -1049,6 +1052,7 @@ def build(token, sheets_token, channel_map, webinar_cfg, campaign_cfg,
             "leads": route_leads_total.get(route, 0),
             "deals": route_deals.get(route, 0),
             "won": route_won.get(route, 0),
+            "won_amount": route_amt.get(route, 0),
         })
         # イベント費用は開催週にだけ全額を計上する
         direct[peak]["event"]["cost"] += cost

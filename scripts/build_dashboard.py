@@ -2227,21 +2227,31 @@ def render(data):
     # totals_agency はそのために使い続ける）。
 
     # ---- 展示会 表 ----
+    # リードから後ろの項目はウェビナー別とそろえる（2026-11-11）。
+    # どちらも「どの施策が良かったか」を比べる表で、隣に並んでいるのに
+    # 商談化率・成約金額・回収率がウェビナー側にしか無かった。
+    # 計算式もウェビナー別と同じにする（商談化率＝商談数÷リード、
+    # 回収率＝成約金額÷費用）。違う式で同じ名前を出すと比べられない。
     ebody = []
     for e in sorted(data.get("expos", []), key=lambda x: x["date"]):
-        cpl = safe_div(e.get("cost"), e.get("leads"))
+        e_cost = e.get("cost")
+        e_leads = e.get("leads")
+        e_amt = e.get("won_amount", 0)
         ebody.append(
             f'<tr data-d="{e["date"]}">'
             f'<td class="ch">{e["name"]}</td>'
             f'<td class="ch">{e["date"]}</td>'
-            f'<td class="num">{f_yen(e.get("cost"))}</td>'
-            f'<td class="num">{f_int(e.get("leads"))}</td>'
-            f'<td class="num">{f_yen(cpl)}</td>'
+            f'<td class="num">{f_yen(e_cost)}</td>'
+            f'<td class="num">{f_int(e_leads)}</td>'
+            f'<td class="num">{f_yen(safe_div(e_cost, e_leads))}</td>'
             f'<td class="num">{f_int(e.get("deals"))}</td>'
+            f'<td class="num">{f_pct(safe_div(e.get("deals", 0), e_leads))}</td>'
             f'<td class="num">{f_int(e.get("won"))}</td>'
+            f'<td class="num">{f_yen(e_amt)}</td>'
+            f'<td class="num">{f_pct(safe_div(e_amt, e_cost) if e_cost else None)}</td>'
             "</tr>"
         )
-    expo_table = "".join(ebody) or '<tr><td colspan="7" class="ch"></td></tr>'
+    expo_table = "".join(ebody) or '<tr><td colspan="10" class="ch"></td></tr>'
 
     # ---- チャネル別の実数（全期間・直契約） ----
     # 廃止した「週次テーブル（53週 × チャネル別）」の代わり。あの表が
@@ -3318,7 +3328,7 @@ showAge();
 <details class="fold" id="f-expo" open><summary><span class="tri">▶</span>展示会別CPL<span class="cnt">{len(data.get("expos") or [])}件</span></summary>
 <div class="tablewrap"><table>
 <thead><tr><th>展示会名</th><th>開催日</th><th>費用</th><th>リード数</th><th>CPL</th>
-<th>商談数</th><th>成約数</th></tr></thead>
+<th>商談数</th><th>商談化率</th><th>成約数</th><th>成約金額</th><th>回収率</th></tr></thead>
 <tbody>{expo_table}</tbody></table></div></details>
 
 {daily_section}
