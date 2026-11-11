@@ -2960,31 +2960,61 @@ def render(data):
         W_K, W_N, W_S = 86, 42, 56
         nmon = len(ch_cols)
 
-        # 予約と実施を1つの表に横並びで入れると30列になり、しかも中身が
-        # あるのは三角形の部分だけなので、空欄を見るために横スクロールする
-        # ことになる。上下2枚に分けると幅が半分になり、数字は1つも捨てずに
-        # 横スクロールなしで収まる。行の見出しは2枚とも同じなので、
-        # 上下で同じ行を目で追える。
-        # 行の見出しに「獲得」を付ける。同じ「26/11」が行（獲得した月）と
-        # 列（予約・実施が起きた月）の両方に出るので、付けないと
-        # 「今月8件面談したのに0なのはなぜか」と必ず読み違える。
-        def _row_key(gm):
-            return gm if gm == "合計" else month_col_label(gm) + " 獲得"
+        # ---- ②の行は「予約が入った月」 ----
+        # 社長の文は「何月に案件になったやつが、何月に面談実施になってるのか」。
+        # 案件になった＝取引ができた＝相談申込＝面談予約が入った、なので
+        # 起点は予約月。②の行を獲得月にすると、①の列と②の列を頭の中で
+        # つながないと「予約30件がどこへ行ったか」が出てこない。
+        # ①の列（予約月）が②の行になることで、鎖が①→②でつながる。
+        ap_rows_src = {}
+        for _g, _per_appt in ch3.items():
+            for _am, _outs in _per_appt.items():
+                slot = ap_rows_src.setdefault(
+                    _am, {"appts": 0, "mtg": {}, "pend": 0, "lost": 0})
+                for _mm, _n in _outs.items():
+                    slot["appts"] += _n
+                    if _mm == "pending":
+                        slot["pend"] += _n
+                    elif _mm == "lost":
+                        slot["lost"] += _n
+                    else:
+                        slot["mtg"][_mm] = slot["mtg"].get(_mm, 0) + _n
+        ap_months = [m for m in ch_cols if m in ap_rows_src]
+        ap_rows = [(am, ap_rows_src[am]["appts"], ap_rows_src[am]["mtg"],
+                    sum(ap_rows_src[am]["mtg"].values()),
+                    (ap_rows_src[am]["pend"], ap_rows_src[am]["lost"]))
+                   for am in ap_months]
+        ap_tot_row = (
+            "合計",
+            sum(r[1] for r in ap_rows),
+            {c: sum(r[2].get(c, 0) for r in ap_rows) for c in ch_cols},
+            sum(r[3] for r in ap_rows),
+            (sum(r[4][0] for r in ap_rows), sum(r[4][1] for r in ap_rows)),
+        )
+        # ①の行は獲得月。リード数は鎖の出発点なのでここだけに置く。
+        # ②にも置くと、左右に並んだとき同じ数字が真横に2つ並ぶうえ、
+        # ②の「予約＝実施＋未実施＋流れた」の式には参加しない。
+        g_rows = [(r[0], r[1], r[2], r[3], ()) for r in ch_rows]
+        g_tot_row = (chain_tot[0], chain_tot[1], chain_tot[2],
+                     chain_tot[3], ())
 
-        def _tbl(block_label, pick, tot_label, tail_heads):
-            """1枚ぶん。pick は行タプルから (月別dict, 計, 末尾の値...) を返す."""
+        # 行の見出しに「獲得」「予約」を付ける。同じ「26/11」が行と列の
+        # 両方に出るので、付けないと「今月8件面談したのに0なのはなぜか」と
+        # 必ず読み違える（実際にそう読まれた）。
+        def _tbl(rows, tot_row, key_suffix, scale_head, block_label,
+                 tot_label, tail_heads):
             ntail = len(tail_heads)
             width = W_K + W_S + W_N * nmon + W_S * (1 + ntail)
             rows_html = []
-            for row in [chain_tot] + ch_rows:
-                buckets, total, tail = pick(row)
+            for key, scale, buckets, total, tail in [tot_row] + rows:
+                is_tot = key == "合計"
+                label = key if is_tot else month_col_label(key) + key_suffix
                 # 合計行は常に出す（スライダーで隠れると基準が消える）。
                 rows_html.append(
-                    f'<tr class="main{" hl sep" if row[0] == "合計" else ""}"'
-                    + ("" if row[0] == "合計" else f' data-cm="{row[0]}"')
-                    + '>'
-                    f'<td class="fk">{_row_key(row[0])}</td>'
-                    f'<td class="sum"><b>{f_int(row[1])}</b></td>'
+                    f'<tr class="main{" hl sep" if is_tot else ""}"'
+                    + ("" if is_tot else f' data-cm="{key}"') + '>'
+                    f'<td class="fk">{label}</td>'
+                    f'<td class="sum"><b>{f_int(scale)}</b></td>'
                     + "".join(
                         f'<td{" class=\"blk\"" if i == 0 else ""}><b>'
                         + (f_int(buckets.get(c, 0)) if buckets.get(c) else "&nbsp;")
@@ -3006,7 +3036,8 @@ def render(data):
                           for c in ch_cols)
                 + f'<col style="width:{W_S}px">' * (1 + ntail) + '</colgroup>'
                 + '<thead>'
-                + '<tr><th class="fk">獲得月</th><th class="sum">リード</th>'
+                + f'<tr><th class="fk">{key_suffix.strip()}月</th>'
+                + f'<th class="sum">{scale_head}</th>'
                 + f'<th class="sum blk" colspan="{nmon + 1}">{block_label}</th>'
                 + "".join(f'<th class="sum">{h}</th>' for h in tail_heads)
                 + '</tr>'
@@ -3026,21 +3057,23 @@ def render(data):
                         if CHAIN_MONTH_FROM in chain_asc else 0)
         chain_section = (
             '\n<h2>リード獲得 → 面談予約 → 面談実施'
-            '<span class="h2sub">直契約・1行＝その月に獲得したリードの集団／'
+            '<span class="h2sub">直契約・①の列が②の行になる／'
             '予約計は月次KPIの面談予約、実施計は面談実施と一致</span></h2>\n'
-            '<div class="sld"><label for="cms">表示を始める獲得月</label>'
+            '<div class="sld"><label for="cms">表示を始める月</label>'
             f'<input type="range" id="cms" min="0" max="{len(chain_asc) - 1}"'
             f' value="{chain_def}" step="1">'
             f'<span><b id="cmslab"></b> 〜 {month_col_label(chain_asc[-1])}'
             '　（<b id="cmscnt"></b>ヶ月）</span></div>\n'
-            # 左右に並べる。同じ行を上下にスクロールせずに見比べられる。
-            # 幅は、スライダーで畳んだ列のぶんだけ縮む（chainSlider）。
+            # 左右に並べる。幅はスライダーで畳んだ列のぶんだけ縮む。
             '<div class="chrow">'
-            '<div><h3 class="kpih3">① 面談予約が入った月</h3>\n'
-            + _tbl("面談予約が入った月", lambda r: (r[2], r[3], ()), "予約 計", ())
-            + '</div><div><h3 class="kpih3">② 面談を実施した月</h3>\n'
-            + _tbl("面談を実施した月", lambda r: (r[4], r[5], (r[6], r[7])),
-                   "実施 計", ("未実施", "流れた"))
+            '<div><h3 class="kpih3">① いつ獲得したリードが、いつ予約になったか'
+            '</h3>\n'
+            + _tbl(g_rows, g_tot_row, " 獲得", "リード",
+                   "面談予約が入った月", "予約 計", ())
+            + '</div><div><h3 class="kpih3">'
+            '② いつ入った予約が、いつ面談になったか</h3>\n'
+            + _tbl(ap_rows, ap_tot_row, " 予約", "予約",
+                   "面談を実施した月", "実施 計", ("未実施", "流れた"))
             + '</div></div>\n')
 
     # 「取引作成者別」のセクションは廃止した。作成者で切った数字のうち
