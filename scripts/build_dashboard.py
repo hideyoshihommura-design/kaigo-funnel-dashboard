@@ -1844,11 +1844,16 @@ function chainSlider(){
       var cols = t[j].querySelectorAll('col[data-cm]'), w = 0;
       for(k=0;k<cols.length;k++){
         var on = cols[k].getAttribute('data-cm') >= from;
-        if(!cols[k].dataset.w){
-          cols[k].dataset.w = parseInt(cols[k].style.width, 10) || 50;
+        /* 元の幅は **DOM属性に書かない**。dataset.w は data-w 属性になり、
+           期間フィルタ（apply）が `[data-w]` を週の日付として読むので
+           new Date('42') で落ちる。落ちると resetRange がそこで止まり、
+           グラフ7枚と重要値のスライダーが動かなくなる（実際にそうなった）。
+           JSのプロパティに持てば属性は増えない。 */
+        if(cols[k]._w === undefined){
+          cols[k]._w = parseInt(cols[k].style.width, 10) || 50;
         }
-        cols[k].style.width = on ? cols[k].dataset.w + 'px' : '0px';
-        if(on){ w += +cols[k].dataset.w; }
+        cols[k].style.width = on ? cols[k]._w + 'px' : '0px';
+        if(on){ w += cols[k]._w; }
       }
       t[j].style.width = (w + (+t[j].getAttribute('data-fix'))) + 'px';
     }
