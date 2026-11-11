@@ -75,9 +75,14 @@ KPI_WEEKS_PER_MONTH = 4.345
 # 既定で表示を始める月。これより前はweb広告（2026-04-07開始）も架電
 # （2026-06開始）も無く、CPLが空欄・架電件数0の列が並ぶ。スライダーで遡れる。
 KPI_MONTH_FROM = "2026-04"
+# 鎖の表（獲得→予約→実施）で既定で表示を始める獲得月。
+# 2枚を縦に積むので、13行だと1画面に収まらず同じ行を上下で見比べられない。
+# 8行なら2枚とも収まる。これ以前は予約が全期間で14件しかなく、
+# しかも全部決着済みで動かない。スライダーで遡れる。
+CHAIN_MONTH_FROM = "2026-04"
 # 目標（2026-10 にユーザーが設定）。件数は月あたり。
 KPI_TARGETS = {"leads": 300, "cpl": 2000, "called": 300,
-               "conv": 0.15, "win": 0.10}
+               "conv": 0.15, "mtgs": 40, "win": 0.10}
 
 MA_WINDOW = 4
 
@@ -989,6 +994,10 @@ KPI_ROWS = [
     # 分母はその期間に架電した件数。獲得月ベースの「架電→商談」とは別物。
     ("商談化率", lambda b: safe_div(b["cappts"], b["called"]),
      "架電件数ぶんのアポ", f_pct, KPI_TARGETS["conv"], True, False, False),
+    # 社長が10/28と11/07に2回「月40件はマスト」と言った数字。成約率の分母と
+    # 同じものなので、面談実施→成約率と縦に読めるよう商談化率の下に置く。
+    ("面談実施", lambda b: b["mtgs"], "その期間に実施した面談",
+     f_int, KPI_TARGETS["mtgs"], True, False, True),
     # 週次には出さない。成約0件の週が92%で、ほぼ全週0%になる。
     ("成約率", lambda b: safe_div(b["wons"], b["mtgs"]),
      "その期間に実施した面談ぶんの成約", f_pct, KPI_TARGETS["win"],
@@ -1309,6 +1318,21 @@ border-right:1px solid var(--line);vertical-align:middle;}
 .fnl .fc{position:sticky;left:118px;background:#eef2f6;z-index:2;
 border-right:2px solid #8fa0b0;font-weight:700;}
 .fnl thead .fc{background:#e2e8ee;z-index:3;}
+/* 合計の列。見た目は .fc と同じだが sticky にしない。.fc は left:118px に
+   貼り付くので、1行に2つ以上使うと同じ位置で重なって読めなくなる。
+   左に固定するのは行の見出し1列だけにする。 */
+.fnl .sum{background:#eef2f6;border-right:2px solid #8fa0b0;font-weight:700;}
+.fnl thead .sum{background:#e2e8ee;}
+/* 鎖の表はブロックの境目を縦線で出す（予約のかたまり／実施のかたまり）。 */
+.fnl .blk{border-left:2px solid #8fa0b0;}
+/* 鎖の表は2枚を左右に並べる。上下に積むと、同じ行を見比べるのに
+   縦スクロールすることになる。入らない幅では縦に戻す。 */
+.chrow{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;}
+.chrow>div{min-width:0;}
+/* 2枚を並べるぶん1列あたりが狭い。「26/11」が切れるので、
+   折り返さずに詰める（中は必ず1行）。 */
+.chrow .fnl th,.chrow .fnl td{padding-left:5px;padding-right:5px;}
+.chrow .fnl thead th{font-size:10.5px;letter-spacing:-.01em;}
 /* 値と前月差は1つのセルの中で上下2段。行を分けると指標7つで14行になり、
    半分が補助情報の行になる。
    **薄い扱いは前月差の1種類だけにする。** 0を薄く、値を細く、背景を淡く、
@@ -1768,6 +1792,46 @@ function kpiSlider(){
     var c = document.querySelectorAll('[data-km]'), i;
     for(i=0;i<c.length;i++){
       c[i].style.display = c[i].getAttribute('data-km') >= from ? '' : 'none';
+    }
+  }
+  s.addEventListener('input', draw);
+  draw();
+}
+/* 鎖の表（獲得→予約→実施）の行を絞るスライダー。既定は CHAIN_MONTH_FROM。
+   2枚を縦に積むと13行では1画面に収まらず、同じ行を上下で見比べるのに
+   スクロールすることになる。既定を8行にすると2枚とも収まる。
+   落とした行の数字は月次KPIに残っているので消えるわけではない。
+   kpiSlider と同じ作りだが、掴む属性を data-cm にして取り合わないようにする
+   （上の期間フィルタの data-m、重要値の data-km とも別）。 */
+function chainSlider(){
+  var s = document.getElementById('cms');
+  if(!s){return;}
+  function draw(){
+    var from = CHAIN_MONTHS[+s.value];
+    document.getElementById('cmslab').textContent =
+      from.slice(2).replace('-','/');
+    document.getElementById('cmscnt').textContent =
+      CHAIN_MONTHS.length - s.value;
+    var r = document.querySelectorAll('tr[data-cm]'), i;
+    for(i=0;i<r.length;i++){
+      r[i].style.display = r[i].getAttribute('data-cm') >= from ? '' : 'none';
+    }
+    /* 使っていない列は幅を0にして畳む。行だけ絞っても列が残ったままだと
+       幅が縮まず、2枚を左右に並べられない。display:none では
+       table-layout:fixed の colgroup 幅が残るので、幅そのものを0にする
+       （セルは overflow:hidden なので中身ははみ出さない）。 */
+    var t = document.querySelectorAll('table[data-chain]'), j, k;
+    for(j=0;j<t.length;j++){
+      var cols = t[j].querySelectorAll('col[data-cm]'), w = 0;
+      for(k=0;k<cols.length;k++){
+        var on = cols[k].getAttribute('data-cm') >= from;
+        if(!cols[k].dataset.w){
+          cols[k].dataset.w = parseInt(cols[k].style.width, 10) || 50;
+        }
+        cols[k].style.width = on ? cols[k].dataset.w + 'px' : '0px';
+        if(on){ w += +cols[k].dataset.w; }
+      }
+      t[j].style.width = (w + (+t[j].getAttribute('data-fix'))) + 'px';
     }
   }
   s.addEventListener('input', draw);
@@ -2708,6 +2772,197 @@ def render(data):
         f'<div class="fnlside">{lead_box}{rate_box}</div></div>\n'
     ) if fu_html else ""
 
+    # ---- リード獲得 → 面談予約 → 面談実施（鎖を2枚で） ----
+    # 社長の宿題（2026-11-07）。「何月に案件になったやつが、何月に面談実施に
+    # なってるのか、っていうこのズレ」。案件になった＝相談申込＝面談予約。
+    # ①は 獲得月 × 予約月、②は 予約月 × 実施月。**①の列が②の行**になるので
+    # 鎖が①→②でつながる。②の行を獲得月にすると、①と②の列を頭の中で
+    # つながないと「予約30件がどこへ行ったか」が出てこない。
+    #
+    # 作る途中で捨てた案（戻す前に読むこと）
+    #  - 獲得月×実施月だけ … 予約を飛ばすので「予約30件なのに実施18件」に
+    #    答えられない。実施済みの面談しか数えていないため。
+    #  - 予約月×実施月だけ … 獲得が見えない。広告費と面談がつながらない。
+    #  - 1枚に横並び（予約14列＋実施14列）… 30列になり、中身があるのは
+    #    三角形の部分だけ。空欄を見るために横スクロールすることになった。
+    #  - ラグで丸める（当月／翌月／2ヶ月後〜）… 「7月のリードがいつ予約に
+    #    なったか」が読めない。列は実月にする。
+    #  - 積み上げ棒グラフ … 「ズレ」は見えるが、どの月の案件がどこへ行ったか
+    #    までは出ない。表のほうが答えになっている。
+    # 予約計は月次KPIの面談予約、実施計は月次KPIの面談実施と一致する。
+    # ②は各行で 予約 ＝ 実施 ＋ 未実施 ＋ 流れた で閉じる。
+    ch3 = data.get("chain") or {}
+    chain_section = ""
+    chain_asc = []
+    if ch3:
+        def _mi(mk):
+            return int(mk[:4]) * 12 + int(mk[5:7])
+        ch_months = [m for m in fu_keys if m in ch3]
+        # 列は実月。「2ヶ月後〜」のような丸めはしない。丸めると
+        # 「7月のリードがいつ予約になったか」が読めず、広告費を使った月と
+        # 面談が立つ月を突き合わせられない。
+        # 使う列は、実際に値がある月だけに絞る（空列を並べても幅が増えるだけ）。
+        used = set()
+        for gm in ch_months:
+            for am, outs in ch3[gm].items():
+                used.add(am)
+                used |= {mm for mm in outs if mm not in ("pending", "lost")}
+        # 列も行も新しい月が左・上。社長が見ている他部署の表
+        # （佐野さんの「対象月別集計表」）がその向きで、読み始める位置を
+        # そろえないと毎回どちらから読むかを探すことになる。
+        # このダッシュボードの他の表は古い月が左だが、この表だけは
+        # 他部署と並べて見られることを優先する。
+        ch_cols = [m for m in fu_keys if m in used][::-1]
+        ch_months = ch_months[::-1]
+        ch_rows = []
+        for gm in ch_months:
+            ab = {c: 0 for c in ch_cols}
+            mb = {c: 0 for c in ch_cols}
+            pend = lost = 0
+            for am, outs in ch3[gm].items():
+                ab[am] = ab.get(am, 0) + sum(outs.values())
+                for mm, n in outs.items():
+                    if mm == "pending":
+                        pend += n
+                    elif mm == "lost":
+                        lost += n
+                    else:
+                        mb[mm] = mb.get(mm, 0) + n
+            ch_rows.append((gm, (fu.get(gm) or {}).get("leads") or 0,
+                            ab, sum(ab.values()), mb, sum(mb.values()),
+                            pend, lost))
+        # 合計行を先頭に置く。他部署の表と同じで、まず合計を見てから
+        # 中身に降りる読み方になる。列ごとの合計は「その月に予約が
+        # いくつ入ったか／面談をいくつ実施したか」で、月次実績と一致する。
+        chain_tot = (
+            "合計",
+            sum(r[1] for r in ch_rows),
+            {c: sum(r[2].get(c, 0) for r in ch_rows) for c in ch_cols},
+            sum(r[3] for r in ch_rows),
+            {c: sum(r[4].get(c, 0) for r in ch_rows) for c in ch_cols},
+            sum(r[5] for r in ch_rows),
+            sum(r[6] for r in ch_rows),
+            sum(r[7] for r in ch_rows),
+        )
+        W_K, W_N, W_S = 86, 42, 56
+        nmon = len(ch_cols)
+
+        # ---- ②の行は「予約が入った月」 ----
+        # 社長の文は「何月に案件になったやつが、何月に面談実施になってるのか」。
+        # 案件になった＝取引ができた＝相談申込＝面談予約が入った、なので
+        # 起点は予約月。②の行を獲得月にすると、①の列と②の列を頭の中で
+        # つながないと「予約30件がどこへ行ったか」が出てこない。
+        # ①の列（予約月）が②の行になることで、鎖が①→②でつながる。
+        ap_rows_src = {}
+        for _g, _per_appt in ch3.items():
+            for _am, _outs in _per_appt.items():
+                slot = ap_rows_src.setdefault(
+                    _am, {"appts": 0, "mtg": {}, "pend": 0, "lost": 0})
+                for _mm, _n in _outs.items():
+                    slot["appts"] += _n
+                    if _mm == "pending":
+                        slot["pend"] += _n
+                    elif _mm == "lost":
+                        slot["lost"] += _n
+                    else:
+                        slot["mtg"][_mm] = slot["mtg"].get(_mm, 0) + _n
+        ap_months = [m for m in ch_cols if m in ap_rows_src]
+        ap_rows = [(am, ap_rows_src[am]["appts"], ap_rows_src[am]["mtg"],
+                    sum(ap_rows_src[am]["mtg"].values()),
+                    (ap_rows_src[am]["pend"], ap_rows_src[am]["lost"]))
+                   for am in ap_months]
+        ap_tot_row = (
+            "合計",
+            sum(r[1] for r in ap_rows),
+            {c: sum(r[2].get(c, 0) for r in ap_rows) for c in ch_cols},
+            sum(r[3] for r in ap_rows),
+            (sum(r[4][0] for r in ap_rows), sum(r[4][1] for r in ap_rows)),
+        )
+        # ①の行は獲得月。リード数は鎖の出発点なのでここだけに置く。
+        # ②にも置くと、左右に並んだとき同じ数字が真横に2つ並ぶうえ、
+        # ②の「予約＝実施＋未実施＋流れた」の式には参加しない。
+        g_rows = [(r[0], r[1], r[2], r[3], ()) for r in ch_rows]
+        g_tot_row = (chain_tot[0], chain_tot[1], chain_tot[2],
+                     chain_tot[3], ())
+
+        # 行の見出しに「獲得」「予約」を付ける。同じ「26/11」が行と列の
+        # 両方に出るので、付けないと「今月8件面談したのに0なのはなぜか」と
+        # 必ず読み違える（実際にそう読まれた）。
+        def _tbl(rows, tot_row, key_suffix, scale_head, block_label,
+                 tot_label, tail_heads):
+            ntail = len(tail_heads)
+            width = W_K + W_S + W_N * nmon + W_S * (1 + ntail)
+            rows_html = []
+            for key, scale, buckets, total, tail in [tot_row] + rows:
+                is_tot = key == "合計"
+                label = key if is_tot else month_col_label(key) + key_suffix
+                # 合計行は常に出す（スライダーで隠れると基準が消える）。
+                rows_html.append(
+                    f'<tr class="main{" hl sep" if is_tot else ""}"'
+                    + ("" if is_tot else f' data-cm="{key}"') + '>'
+                    f'<td class="fk">{label}</td>'
+                    f'<td class="sum"><b>{f_int(scale)}</b></td>'
+                    + "".join(
+                        f'<td{" class=\"blk\"" if i == 0 else ""}><b>'
+                        + (f_int(buckets.get(c, 0)) if buckets.get(c) else "&nbsp;")
+                        + '</b></td>' for i, c in enumerate(ch_cols))
+                    + f'<td class="sum"><b>{f_int(total)}</b></td>'
+                    + "".join(f'<td class="sum"><b>'
+                              + (f_int(v) if v else "&nbsp;") + '</b></td>'
+                              for v in tail)
+                    + '</tr>')
+            return (
+                f'<div class="fnl"><table data-chain="1" data-fix="'
+                f'{W_K + W_S + W_S * (1 + ntail)}" style="width:{width}px">'
+                + f'<colgroup><col style="width:{W_K}px">'
+                + f'<col style="width:{W_S}px">'
+                # 月の列は data-cm を持たせる。スライダーで表示を始める月より
+                # 古い列は幅を0にして畳む。行だけ絞っても、使っていない列が
+                # 残ったままでは幅が縮まず左右に並べられない。
+                + "".join(f'<col data-cm="{c}" style="width:{W_N}px">'
+                          for c in ch_cols)
+                + f'<col style="width:{W_S}px">' * (1 + ntail) + '</colgroup>'
+                + '<thead>'
+                + f'<tr><th class="fk">{key_suffix.strip()}月</th>'
+                + f'<th class="sum">{scale_head}</th>'
+                + f'<th class="sum blk" colspan="{nmon + 1}">{block_label}</th>'
+                + "".join(f'<th class="sum">{h}</th>' for h in tail_heads)
+                + '</tr>'
+                + '<tr><th class="fk"></th><th class="sum"></th>'
+                + "".join(f'<th{" class=\"blk\"" if i == 0 else ""}>'
+                          f'{month_col_label(c)}</th>'
+                          for i, c in enumerate(ch_cols))
+                + f'<th class="sum">{tot_label}</th>'
+                + '<th class="sum"></th>' * ntail
+                + '</tr></thead><tbody>'
+                + "".join(rows_html) + '</tbody></table></div>')
+
+        # 行を絞るスライダー。既定は CHAIN_MONTH_FROM。
+        # 行は新しい順なので、スライダーの位置は「古い側をどこまで出すか」。
+        chain_asc = ch_months[::-1]
+        chain_def = max(0, chain_asc.index(CHAIN_MONTH_FROM)
+                        if CHAIN_MONTH_FROM in chain_asc else 0)
+        chain_section = (
+            '\n<h2>リード獲得 → 面談予約 → 面談実施'
+            '<span class="h2sub">直契約・①の列が②の行になる／'
+            '予約計は月次KPIの面談予約、実施計は面談実施と一致</span></h2>\n'
+            '<div class="sld"><label for="cms">表示を始める月</label>'
+            f'<input type="range" id="cms" min="0" max="{len(chain_asc) - 1}"'
+            f' value="{chain_def}" step="1">'
+            f'<span><b id="cmslab"></b> 〜 {month_col_label(chain_asc[-1])}'
+            '　（<b id="cmscnt"></b>ヶ月）</span></div>\n'
+            # 左右に並べる。幅はスライダーで畳んだ列のぶんだけ縮む。
+            '<div class="chrow">'
+            '<div><h3 class="kpih3">① いつ獲得したリードが、いつ予約になったか'
+            '</h3>\n'
+            + _tbl(g_rows, g_tot_row, " 獲得", "リード",
+                   "面談予約が入った月", "予約 計", ())
+            + '</div><div><h3 class="kpih3">'
+            '② いつ入った予約が、いつ面談になったか</h3>\n'
+            + _tbl(ap_rows, ap_tot_row, " 予約", "予約",
+                   "面談を実施した月", "実施 計", ("未実施", "流れた"))
+            + '</div></div>\n')
+
     # 「取引作成者別」のセクションは廃止した。作成者で切った数字のうち
     # 見たいのは架電業者ぶんで、それはIS活動量の「架電業者の週次」に入って
     # いる。data.json の is_attr はそちらと、ファネルとの突き合わせ
@@ -3010,7 +3265,9 @@ var TOTC='{COLORS["total"]}';
 var CC='{COLORS["call_conn"]}'; var CN='{COLORS["call_noans"]}';
 var L={js(labels)};
 var KPI_MONTHS={js(kpi_months)};
+var CHAIN_MONTHS={js(chain_asc)};
 {DRAW_JS}{FILTER_JS}
+chainSlider();
 resetRange();
 kpiSlider();
 showAge();
@@ -3053,6 +3310,7 @@ showAge();
 
 {actual_section}
 {funnel_section}
+{chain_section}
 {adperf_section}
 {webinar_section}
 {daily_section}
