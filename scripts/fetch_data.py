@@ -847,6 +847,16 @@ def build(token, sheets_token, channel_map, webinar_cfg, campaign_cfg,
     # 来月以降の面談実施になるので、月40件に届くかの先行指標にもなる。
     # 行ごとの合計は月次実績の面談予約（is_attr）と一致する。
     appt_flow = {}
+    # --- リード獲得月 × 面談予約月 × 面談実施月（直契約のみ）
+    # 社長が見たいのは「どこで獲得したリードが、どこで予約になって、
+    # どこで面談を実施したか」。3段ぜんぶ。獲得→実施だけ（mtg_flow）でも
+    # 予約→実施だけ（appt_flow）でも、鎖の一部しか見えない。
+    # ここは3つ組の生データとして持ち、表示側でどの切り口にも畳めるようにする。
+    # 列の意味: chain[獲得月][予約月][実施月 | "pending" | "lost"] = 件数。
+    # 予約が無い取引は入らない（面談予約が無ければ鎖が始まらない）。
+    # mtg_day はあるが相談申込を通っていない14件は appt_day に mtg_day を
+    # 充てているので、その行は獲得月→予約→実施が同月に見える。
+    chain = {}
     # --- 取引作成者別（直契約のみ）
     # 取引は相談申込に入った瞬間に作られるので、作成者＝面談予約を取った人。
     # 架電履歴から「直前にかけたのは誰か」を推定する必要はない。推定に頼ると
@@ -934,6 +944,9 @@ def build(token, sheets_token, channel_map, webinar_cfg, campaign_cfg,
                     _to = "pending"
                 appt_flow.setdefault(_am, {})
                 appt_flow[_am][_to] = appt_flow[_am].get(_to, 0) + 1
+                _gm = info["date"].strftime("%Y-%m")
+                chain.setdefault(_gm, {}).setdefault(_am, {})
+                chain[_gm][_am][_to] = chain[_gm][_am].get(_to, 0) + 1
             prop_day = parse_hs_datetime(p.get("hs_v2_date_entered_qualifiedtobuy"))
             if prop_day:
                 daily_props[prop_day] = daily_props.get(prop_day, 0) + 1
@@ -1447,6 +1460,8 @@ def build(token, sheets_token, channel_map, webinar_cfg, campaign_cfg,
                      for k in sorted(mtg_flow)},
         "appt_flow": {k: {kk: appt_flow[k][kk] for kk in sorted(appt_flow[k])}
                       for k in sorted(appt_flow)},
+        "chain": {g: {a: {m: chain[g][a][m] for m in sorted(chain[g][a])}
+                      for a in sorted(chain[g])} for g in sorted(chain)},
         "is_attr": {k: is_attr[k] for k in sorted(is_attr)},
         "webinars": webinars_out,
         "adperf": {k: {kk: int(round(vv)) for kk, vv in v.items()}

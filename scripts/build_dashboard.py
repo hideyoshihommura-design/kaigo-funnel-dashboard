@@ -2834,6 +2834,76 @@ def render(data):
             '／行の合計は月次実績の面談予約と一致</span></h2>\n'
             + aflow_html + "\n")
 
+    # ---- リード獲得 → 面談予約 → 面談実施（鎖を1本で） ----
+    # 社長が見たいのは3段ぜんぶ。獲得→実施（mtg_flow）だけでも
+    # 予約→実施（appt_flow）だけでも鎖の一部しか見えない。
+    # 1行＝ある月に獲得したリードの集団。その集団が
+    #   何ヶ月後に予約になり（左ブロック）、
+    #   何ヶ月後に面談を実施したか（右ブロック）、
+    #   まだ実施していないぶんと流れたぶんはいくつか
+    # を1行で追う。ラグはどちらも獲得月からの月数で測る。起点をそろえないと
+    # 左右のブロックを横に見比べられない。
+    # 予約計は月次KPIの面談予約、実施計は月次KPIの面談実施と一致する。
+    ch3 = data.get("chain") or {}
+    chain_section = ""
+    if ch3:
+        def _mi(mk):
+            return int(mk[:4]) * 12 + int(mk[5:7])
+        ch_months = [m for m in fu_keys if m in ch3]
+        ch_rows = []
+        for gm in ch_months:
+            ab, mb = [0, 0, 0], [0, 0, 0]
+            pend = lost = 0
+            for am, outs in ch3[gm].items():
+                n_appt = sum(outs.values())
+                ab[max(0, min(_mi(am) - _mi(gm), 2))] += n_appt
+                for mm, n in outs.items():
+                    if mm == "pending":
+                        pend += n
+                    elif mm == "lost":
+                        lost += n
+                    else:
+                        mb[max(0, min(_mi(mm) - _mi(gm), 2))] += n
+            ch_rows.append((gm, (fu.get(gm) or {}).get("leads") or 0,
+                            ab, sum(ab), mb, sum(mb), pend, lost))
+        LAG3 = ("当月", "翌月", "2ヶ月後〜")
+        ncol = 1 + 3 + 1 + 3 + 1 + 2  # リード/予約3/予約計/実施3/実施計/未実施/流れた
+        chain_html = (
+            '<div class="fnl"><table style="width:%dpx">' % (96 + 74 * ncol)
+            + '<colgroup><col style="width:96px">'
+            + '<col style="width:74px">' * ncol + '</colgroup>'
+            + '<thead>'
+            + '<tr><th class="fk">獲得月</th><th class="fc">リード</th>'
+            + '<th class="fc" colspan="4">面談予約（獲得月から何ヶ月後か）</th>'
+            + '<th class="fc" colspan="4">面談実施（獲得月から何ヶ月後か）</th>'
+            + '<th class="fc">未実施</th><th class="fc">流れた</th></tr>'
+            + '<tr><th class="fk"></th><th class="fc"></th>'
+            + "".join(f'<th class="fc">{h}</th>' for h in LAG3)
+            + '<th class="fc">予約 計</th>'
+            + "".join(f'<th class="fc">{h}</th>' for h in LAG3)
+            + '<th class="fc">実施 計</th>'
+            + '<th class="fc"></th><th class="fc"></th></tr>'
+            + '</thead><tbody>'
+            + "".join(
+                f'<tr class="main"><td class="fk">{month_col_label(gm)}</td>'
+                f'<td class="fc"><b>{f_int(leads)}</b></td>'
+                + "".join(f'<td><b>{f_int(n) if n else "&nbsp;"}</b></td>'
+                          for n in ab)
+                + f'<td class="fc"><b>{f_int(at)}</b></td>'
+                + "".join(f'<td><b>{f_int(n) if n else "&nbsp;"}</b></td>'
+                          for n in mb)
+                + f'<td class="fc"><b>{f_int(mt)}</b></td>'
+                + f'<td class="fc"><b>{f_int(pend) if pend else "&nbsp;"}</b></td>'
+                + f'<td class="fc"><b>{f_int(lost) if lost else "&nbsp;"}</b></td>'
+                + '</tr>'
+                for gm, leads, ab, at, mb, mt, pend, lost in ch_rows)
+            + '</tbody></table></div>')
+        chain_section = (
+            '\n<h2>リード獲得 → 面談予約 → 面談実施'
+            '<span class="h2sub">直契約・1行＝その月に獲得したリードの集団／'
+            '予約計は月次KPIの面談予約、実施計は面談実施と一致</span></h2>\n'
+            + chain_html + "\n")
+
     # 「取引作成者別」のセクションは廃止した。作成者で切った数字のうち
     # 見たいのは架電業者ぶんで、それはIS活動量の「架電業者の週次」に入って
     # いる。data.json の is_attr はそちらと、ファネルとの突き合わせ
@@ -3179,6 +3249,7 @@ showAge();
 
 {actual_section}
 {funnel_section}
+{chain_section}
 {aflow_section}
 {flow_section}
 {adperf_section}
