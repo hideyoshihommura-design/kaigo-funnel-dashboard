@@ -1325,6 +1325,10 @@ border-right:2px solid #8fa0b0;font-weight:700;}
 .fnl thead .sum{background:#e2e8ee;}
 /* 鎖の表はブロックの境目を縦線で出す（予約のかたまり／実施のかたまり）。 */
 .fnl .blk{border-left:2px solid #8fa0b0;}
+/* 鎖の表は2枚を左右に並べる。上下に積むと、同じ行を見比べるのに
+   縦スクロールすることになる。入らない幅では縦に戻す。 */
+.chrow{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;}
+.chrow>div{min-width:0;}
 /* 値と前月差は1つのセルの中で上下2段。行を分けると指標7つで14行になり、
    半分が補助情報の行になる。
    **薄い扱いは前月差の1種類だけにする。** 0を薄く、値を細く、背景を淡く、
@@ -1804,9 +1808,26 @@ function chainSlider(){
       from.slice(2).replace('-','/');
     document.getElementById('cmscnt').textContent =
       CHAIN_MONTHS.length - s.value;
-    var c = document.querySelectorAll('[data-cm]'), i;
-    for(i=0;i<c.length;i++){
-      c[i].style.display = c[i].getAttribute('data-cm') >= from ? '' : 'none';
+    var r = document.querySelectorAll('tr[data-cm]'), i;
+    for(i=0;i<r.length;i++){
+      r[i].style.display = r[i].getAttribute('data-cm') >= from ? '' : 'none';
+    }
+    /* 使っていない列は幅を0にして畳む。行だけ絞っても列が残ったままだと
+       幅が縮まず、2枚を左右に並べられない。display:none では
+       table-layout:fixed の colgroup 幅が残るので、幅そのものを0にする
+       （セルは overflow:hidden なので中身ははみ出さない）。 */
+    var t = document.querySelectorAll('table[data-chain]'), j, k;
+    for(j=0;j<t.length;j++){
+      var cols = t[j].querySelectorAll('col[data-cm]'), w = 0;
+      for(k=0;k<cols.length;k++){
+        var on = cols[k].getAttribute('data-cm') >= from;
+        if(!cols[k].dataset.w){
+          cols[k].dataset.w = parseInt(cols[k].style.width, 10) || 50;
+        }
+        cols[k].style.width = on ? cols[k].dataset.w + 'px' : '0px';
+        if(on){ w += +cols[k].dataset.w; }
+      }
+      t[j].style.width = (w + (+t[j].getAttribute('data-fix'))) + 'px';
     }
   }
   s.addEventListener('input', draw);
@@ -2932,7 +2953,7 @@ def render(data):
             sum(r[6] for r in ch_rows),
             sum(r[7] for r in ch_rows),
         )
-        W_K, W_N, W_S = 104, 50, 72
+        W_K, W_N, W_S = 92, 42, 62
         nmon = len(ch_cols)
 
         # 予約と実施を1つの表に横並びで入れると30列になり、しかも中身が
@@ -2970,10 +2991,15 @@ def render(data):
                               for v in tail)
                     + '</tr>')
             return (
-                f'<div class="fnl"><table style="width:{width}px">'
+                f'<div class="fnl"><table data-chain="1" data-fix="'
+                f'{W_K + W_S + W_S * (1 + ntail)}" style="width:{width}px">'
                 + f'<colgroup><col style="width:{W_K}px">'
                 + f'<col style="width:{W_S}px">'
-                + f'<col style="width:{W_N}px">' * nmon
+                # 月の列は data-cm を持たせる。スライダーで表示を始める月より
+                # 古い列は幅を0にして畳む。行だけ絞っても、使っていない列が
+                # 残ったままでは幅が縮まず左右に並べられない。
+                + "".join(f'<col data-cm="{c}" style="width:{W_N}px">'
+                          for c in ch_cols)
                 + f'<col style="width:{W_S}px">' * (1 + ntail) + '</colgroup>'
                 + '<thead>'
                 + '<tr><th class="fk">獲得月</th><th class="sum">リード</th>'
@@ -3003,12 +3029,15 @@ def render(data):
             f' value="{chain_def}" step="1">'
             f'<span><b id="cmslab"></b> 〜 {month_col_label(chain_asc[-1])}'
             '　（<b id="cmscnt"></b>ヶ月）</span></div>\n'
-            '<h3 class="kpih3">① 面談予約が入った月</h3>\n'
+            # 左右に並べる。同じ行を上下にスクロールせずに見比べられる。
+            # 幅は、スライダーで畳んだ列のぶんだけ縮む（chainSlider）。
+            '<div class="chrow">'
+            '<div><h3 class="kpih3">① 面談予約が入った月</h3>\n'
             + _tbl("面談予約が入った月", lambda r: (r[2], r[3], ()), "予約 計", ())
-            + '\n<h3 class="kpih3">② 面談を実施した月</h3>\n'
+            + '</div><div><h3 class="kpih3">② 面談を実施した月</h3>\n'
             + _tbl("面談を実施した月", lambda r: (r[4], r[5], (r[6], r[7])),
                    "実施 計", ("未実施", "流れた"))
-            + "\n")
+            + '</div></div>\n')
 
     # 「取引作成者別」のセクションは廃止した。作成者で切った数字のうち
     # 見たいのは架電業者ぶんで、それはIS活動量の「架電業者の週次」に入って
