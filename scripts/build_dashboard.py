@@ -2953,7 +2953,7 @@ def render(data):
             sum(r[6] for r in ch_rows),
             sum(r[7] for r in ch_rows),
         )
-        W_K, W_N, W_S = 92, 42, 62
+        W_K, W_N, W_S = 86, 38, 58
         nmon = len(ch_cols)
 
         # 予約と実施を1つの表に横並びで入れると30列になり、しかも中身が
