@@ -2781,6 +2781,59 @@ def render(data):
             + '\n<h3 class="kpih3">B案 クロス表<span class="h2sub">'
             '列は実施月。毎月1列増える</span></h3>\n' + cross_html + "\n")
 
+    # ---- 面談予約 → 面談実施（C案） ----
+    # 社長が11/07に詰まったのは「10月は予約30件なのに実施18件、なぜ減るのか」。
+    # 減ってはいない。予約した面談の日が翌月以降にあるだけ。A案・B案は
+    # 「実施済みの面談」しか数えていないので、残りの12件がどこへ行ったかを
+    # 答えられない。この表は予約を起点にして
+    # 予約 = 実施済み + 未実施 + 流れた で閉じる（佐野さんの表の
+    # 「案件獲得 = クロージング + 失注 + 仕掛中」と同じ文法）。
+    # 未実施がそのまま来月以降の面談実施になるので、月40件に届くかの
+    # 先行指標にもなる。行の合計は月次実績の面談予約と一致する。
+    aflow = data.get("appt_flow") or {}
+    aflow_section = ""
+    if aflow:
+        af_months = [m for m in sorted(aflow)]
+        af_rows = []
+        for am in af_months:
+            v = aflow[am]
+            pend = v.get("pending", 0)
+            lost = v.get("lost", 0)
+            b = [0, 0, 0]
+            for mm, n in v.items():
+                if mm in ("pending", "lost"):
+                    continue
+                lag = (int(mm[:4]) * 12 + int(mm[5:7])
+                       - (int(am[:4]) * 12 + int(am[5:7])))
+                b[max(0, min(lag, 2))] += n
+            af_rows.append((am, sum(v.values()), b, sum(b), pend, lost))
+        af_head = ("当月中", "翌月", "2ヶ月後〜")
+        aflow_html = (
+            '<div class="fnl"><table style="width:%dpx">' % (120 + 78 * 7)
+            + '<colgroup><col style="width:120px">'
+            + '<col style="width:78px">' * 7 + '</colgroup>'
+            + '<thead><tr><th class="fk">予約が入った月</th>'
+            + '<th class="fc">面談予約</th>'
+            + "".join(f'<th class="fc">{h}</th>' for h in af_head)
+            + '<th class="fc">実施済み</th><th class="fc">未実施</th>'
+            + '<th class="fc">流れた</th></tr></thead><tbody>'
+            + "".join(
+                f'<tr class="main"><td class="fk">{month_col_label(am)}</td>'
+                f'<td class="fc"><b>{f_int(tot)}</b></td>'
+                + "".join(f'<td><b>{f_int(n) if n else "&nbsp;"}</b></td>'
+                          for n in b)
+                + f'<td class="fc"><b>{f_int(done)}</b></td>'
+                + f'<td class="fc"><b>{f_int(pend) if pend else "&nbsp;"}</b></td>'
+                + f'<td class="fc"><b>{f_int(lost) if lost else "&nbsp;"}</b></td>'
+                + '</tr>'
+                for am, tot, b, done, pend, lost in af_rows)
+            + '</tbody></table></div>')
+        aflow_section = (
+            '\n<h2>面談予約 → 面談実施'
+            '<span class="h2sub">直契約・予約 ＝ 実施済み ＋ 未実施 ＋ 流れた'
+            '／行の合計は月次実績の面談予約と一致</span></h2>\n'
+            + aflow_html + "\n")
+
     # 「取引作成者別」のセクションは廃止した。作成者で切った数字のうち
     # 見たいのは架電業者ぶんで、それはIS活動量の「架電業者の週次」に入って
     # いる。data.json の is_attr はそちらと、ファネルとの突き合わせ
@@ -3126,6 +3179,7 @@ showAge();
 
 {actual_section}
 {funnel_section}
+{aflow_section}
 {flow_section}
 {adperf_section}
 {webinar_section}

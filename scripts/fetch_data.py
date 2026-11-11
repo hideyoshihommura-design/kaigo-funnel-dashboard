@@ -38,6 +38,9 @@ SHEETS_API = "https://sheets.googleapis.com/v4/spreadsheets"
 # コンタクトの route で切り出す。そうしないと直契約と定義が揃わず比率が比較できない。
 PIPELINE = "default"
 STAGE_WON = "closedwon"
+# 不成約。予約が入ったのに面談まで行かなかったぶんを「流れた」として
+# 切り出すのに使う。予約 = 実施済み + 未実施 + 流れた で閉じる。
+STAGE_LOST = "closedlost"
 
 # 相談申込ステージ。面談予約数はこのステージ入り日で数える。
 STAGE_APPT = "2055087803"
@@ -837,6 +840,13 @@ def build(token, sheets_token, channel_map, webinar_cfg, campaign_cfg,
     # 潰してしまうので、ここでしか「いつ取ったリードが、いつ面談になったか」
     # は出せない。行ごとの合計は月次KPIの面談実施（獲得月ベース）と一致する。
     mtg_flow = {}
+    # --- 面談予約の月 → 面談を実施した月（直契約のみ）
+    # 社長が11/07に詰まったのはここ。「10月は予約30件なのに実施18件、
+    # なぜ減るのか」。減ってはいない。予約した面談の日が翌月以降にあるだけ。
+    # 予約 = 実施済み + 未実施 + 流れた で閉じるように持つ。未実施が
+    # 来月以降の面談実施になるので、月40件に届くかの先行指標にもなる。
+    # 行ごとの合計は月次実績の面談予約（is_attr）と一致する。
+    appt_flow = {}
     # --- 取引作成者別（直契約のみ）
     # 取引は相談申込に入った瞬間に作られるので、作成者＝面談予約を取った人。
     # 架電履歴から「直前にかけたのは誰か」を推定する必要はない。推定に頼ると
@@ -913,6 +923,17 @@ def build(token, sheets_token, channel_map, webinar_cfg, campaign_cfg,
                 _mm = mtg_day.strftime("%Y-%m")
                 mtg_flow.setdefault(_cm, {})
                 mtg_flow[_cm][_mm] = mtg_flow[_cm].get(_mm, 0) + 1
+            if appt_day:
+                # 行は予約が入った月。列は実施した月か、まだなら未実施／流れた。
+                _am = appt_day.strftime("%Y-%m")
+                if mtg_day:
+                    _to = mtg_day.strftime("%Y-%m")
+                elif p.get("dealstage") == STAGE_LOST:
+                    _to = "lost"
+                else:
+                    _to = "pending"
+                appt_flow.setdefault(_am, {})
+                appt_flow[_am][_to] = appt_flow[_am].get(_to, 0) + 1
             prop_day = parse_hs_datetime(p.get("hs_v2_date_entered_qualifiedtobuy"))
             if prop_day:
                 daily_props[prop_day] = daily_props.get(prop_day, 0) + 1
@@ -1424,6 +1445,8 @@ def build(token, sheets_token, channel_map, webinar_cfg, campaign_cfg,
         "fs": fs_days,
         "mtg_flow": {k: {kk: mtg_flow[k][kk] for kk in sorted(mtg_flow[k])}
                      for k in sorted(mtg_flow)},
+        "appt_flow": {k: {kk: appt_flow[k][kk] for kk in sorted(appt_flow[k])}
+                      for k in sorted(appt_flow)},
         "is_attr": {k: is_attr[k] for k in sorted(is_attr)},
         "webinars": webinars_out,
         "adperf": {k: {kk: int(round(vv)) for kk, vv in v.items()}
