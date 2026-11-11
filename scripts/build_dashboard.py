@@ -77,7 +77,7 @@ KPI_WEEKS_PER_MONTH = 4.345
 KPI_MONTH_FROM = "2026-04"
 # 目標（2026-10 にユーザーが設定）。件数は月あたり。
 KPI_TARGETS = {"leads": 300, "cpl": 2000, "called": 300,
-               "conv": 0.15, "win": 0.10}
+               "conv": 0.15, "mtgs": 40, "win": 0.10}
 
 MA_WINDOW = 4
 
@@ -989,6 +989,10 @@ KPI_ROWS = [
     # 分母はその期間に架電した件数。獲得月ベースの「架電→商談」とは別物。
     ("商談化率", lambda b: safe_div(b["cappts"], b["called"]),
      "架電件数ぶんのアポ", f_pct, KPI_TARGETS["conv"], True, False, False),
+    # 社長が10/28と11/07に2回「月40件はマスト」と言った数字。成約率の分母と
+    # 同じものなので、面談実施→成約率と縦に読めるよう商談化率の下に置く。
+    ("面談実施", lambda b: b["mtgs"], "その期間に実施した面談",
+     f_int, KPI_TARGETS["mtgs"], True, False, True),
     # 週次には出さない。成約0件の週が92%で、ほぼ全週0%になる。
     ("成約率", lambda b: safe_div(b["wons"], b["mtgs"]),
      "その期間に実施した面談ぶんの成約", f_pct, KPI_TARGETS["win"],
@@ -2708,6 +2712,71 @@ def render(data):
         f'<div class="fnlside">{lead_box}{rate_box}</div></div>\n'
     ) if fu_html else ""
 
+    # ---- 獲得月 → 面談実施月のズレ ----
+    # 月次KPIの「面談実施」（獲得月ベース）を、いつ実施したかで割った表。
+    # 行の合計は月次KPIの面談実施と一致する（validate_mtg_flow で突き合わせ）。
+    # 月次KPIも月次実績も、片方の軸に潰した合計しか出せない。両軸を結べる
+    # のはこの表だけ。「予約30件なのに実施18件」が読めないのはこれが無いため。
+    flow = data.get("mtg_flow") or {}
+    flow_section = ""
+    if flow:
+        flow_months = [m for m in fu_keys if m in flow]
+        # --- A案: ラグ表（列は固定。何ヶ月遅れたかで割る）
+        def _lag(cm, mm):
+            a, b = int(cm[:4]) * 12 + int(cm[5:7]), int(mm[:4]) * 12 + int(mm[5:7])
+            return b - a
+        lag_rows = []
+        for cm in flow_months:
+            got = (fu.get(cm) or {}).get("leads") or 0
+            b = [0, 0, 0, 0]
+            for mm, n in flow[cm].items():
+                b[min(_lag(cm, mm), 3)] += n
+            lag_rows.append((cm, got, b, sum(b)))
+        lag_head = ("当月", "翌月", "2ヶ月後", "3ヶ月後〜")
+        lag_html = (
+            '<div class="fnl"><table style="width:%dpx">' % (168 + 78 * 6)
+            + '<colgroup><col style="width:168px">'
+            + '<col style="width:78px">' * 6 + '</colgroup>'
+            + '<thead><tr><th class="fk">獲得月</th>'
+            + '<th class="fc">リード</th>'
+            + "".join(f'<th class="fc">{h}</th>' for h in lag_head)
+            + '<th class="fc">面談実施 計</th></tr></thead><tbody>'
+            + "".join(
+                f'<tr class="main"><td class="fk">{month_col_label(cm)}</td>'
+                f'<td class="fc"><b>{f_int(got)}</b></td>'
+                + "".join(f'<td><b>{f_int(n) if n else "&nbsp;"}</b></td>'
+                          for n in b)
+                + f'<td class="fc"><b>{f_int(tot)}</b></td></tr>'
+                for cm, got, b, tot in lag_rows)
+            + '</tbody></table></div>')
+        # --- B案: クロス表（列が実施月そのもの。毎月1列増える）
+        mm_all = sorted({mm for v in flow.values() for mm in v})
+        cross_html = (
+            '<div class="fnl"><table style="width:%dpx">'
+            % (168 + 78 + 76 * len(mm_all))
+            + '<colgroup><col style="width:168px">'
+            + '<col style="width:78px">'
+            + '<col style="width:76px">' * len(mm_all) + '</colgroup>'
+            + '<thead><tr><th class="fk">獲得月</th><th class="fc">計</th>'
+            + "".join(f'<th>{month_col_label(m)}</th>' for m in mm_all)
+            + '</tr></thead><tbody>'
+            + "".join(
+                f'<tr class="main"><td class="fk">{month_col_label(cm)}</td>'
+                f'<td class="fc"><b>{f_int(sum(flow[cm].values()))}</b></td>'
+                + "".join(
+                    f'<td><b>{f_int(flow[cm].get(m)) if flow[cm].get(m) else "&nbsp;"}'
+                    f'</b></td>' for m in mm_all)
+                + '</tr>' for cm in flow_months)
+            + '</tbody></table></div>')
+        flow_section = (
+            '\n<h2>獲得月 → 面談実施月'
+            '<span class="h2sub">直契約・行の合計は月次KPIの面談実施と一致'
+            '</span></h2>\n'
+            '<h3 class="kpih3">A案 ラグ表<span class="h2sub">'
+            '列は固定</span></h3>\n' + lag_html
+            + '\n<h3 class="kpih3">B案 クロス表<span class="h2sub">'
+            '列は実施月。毎月1列増える</span></h3>\n' + cross_html + "\n")
+
     # 「取引作成者別」のセクションは廃止した。作成者で切った数字のうち
     # 見たいのは架電業者ぶんで、それはIS活動量の「架電業者の週次」に入って
     # いる。data.json の is_attr はそちらと、ファネルとの突き合わせ
@@ -3053,6 +3122,7 @@ showAge();
 
 {actual_section}
 {funnel_section}
+{flow_section}
 {adperf_section}
 {webinar_section}
 {daily_section}

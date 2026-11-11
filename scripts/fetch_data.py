@@ -832,6 +832,11 @@ def build(token, sheets_token, channel_map, webinar_cfg, campaign_cfg,
     daily_props = {}
     daily_wons = {}
     daily_wonamt = {}
+    # --- 獲得月 → 面談実施月（直契約のみ）
+    # コホート軸とイベント軸を結ぶ唯一の組。他の集計はどちらか片方の軸に
+    # 潰してしまうので、ここでしか「いつ取ったリードが、いつ面談になったか」
+    # は出せない。行ごとの合計は月次KPIの面談実施（獲得月ベース）と一致する。
+    mtg_flow = {}
     # --- 取引作成者別（直契約のみ）
     # 取引は相談申込に入った瞬間に作られるので、作成者＝面談予約を取った人。
     # 架電履歴から「直前にかけたのは誰か」を推定する必要はない。推定に頼ると
@@ -904,6 +909,10 @@ def build(token, sheets_token, channel_map, webinar_cfg, campaign_cfg,
         if ch != "agency":
             if mtg_day:
                 daily_mtgs[mtg_day] = daily_mtgs.get(mtg_day, 0) + 1
+                _cm = info["date"].strftime("%Y-%m")
+                _mm = mtg_day.strftime("%Y-%m")
+                mtg_flow.setdefault(_cm, {})
+                mtg_flow[_cm][_mm] = mtg_flow[_cm].get(_mm, 0) + 1
             prop_day = parse_hs_datetime(p.get("hs_v2_date_entered_qualifiedtobuy"))
             if prop_day:
                 daily_props[prop_day] = daily_props.get(prop_day, 0) + 1
@@ -1413,6 +1422,8 @@ def build(token, sheets_token, channel_map, webinar_cfg, campaign_cfg,
         "expos": expos,
         "calls": calls_out,
         "fs": fs_days,
+        "mtg_flow": {k: {kk: mtg_flow[k][kk] for kk in sorted(mtg_flow[k])}
+                     for k in sorted(mtg_flow)},
         "is_attr": {k: is_attr[k] for k in sorted(is_attr)},
         "webinars": webinars_out,
         "adperf": {k: {kk: int(round(vv)) for kk, vv in v.items()}
