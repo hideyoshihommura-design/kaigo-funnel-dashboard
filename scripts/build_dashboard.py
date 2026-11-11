@@ -2899,7 +2899,7 @@ def render(data):
                     _lag = max(0, (int(_mm[:4]) * 12 + int(_mm[5:7]))
                                - (int(_am[:4]) * 12 + int(_am[5:7])))
                     lag_cnt.setdefault(_mm, {})
-                    lag_cnt[_mm][_lag] = lag_cnt[_mm].get(_lag, 0) + 1
+                    lag_cnt[_mm][_lag] = lag_cnt[_mm].get(_lag, 0) + _n
         lag_labels = [m for m in fu_keys if m in lag_cnt][-13:]
         max_lag = max((l for v in lag_cnt.values() for l in v), default=0)
         # 段が多くなりすぎたら末尾をまとめる。今はまとめる必要が無いので
