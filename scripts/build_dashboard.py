@@ -1302,11 +1302,6 @@ align-items:stretch;}
 .actsum .card .tag{flex:0 0 auto;display:flex;flex-direction:column;
 justify-content:center;padding:14px 12px;margin-right:12px;min-width:74px;
 font-size:12px;font-weight:700;line-height:1.35;white-space:nowrap;}
-.actsum .card.act .tag{background:#08959C;color:#fff;}
-/* 直近の稼働日は本日と同じ指標を1日ずらしただけなので、色は本日と同じにする
-   （.act のまま）。別の色を当てると別の集計に見える。淡い色で主従を付ける案は
-   やめた。#5FB3B8 だと白文字のコントラストが2.4:1 で、12pxの太字には足りない。
-   区別は見出しの文字（本日／直近の稼働日）と日付で足りる。 */
 .actsum .card.cum .tag{background:var(--ink);color:#fff;}
 /* 業者ぶんは期間指定で動かない固定の集計。上2枚と役割が違うので色も変える。 */
 .actsum .card.vendor .tag{background:#8459A5;color:#fff;}
@@ -2453,34 +2448,6 @@ def render(data):
 
     # ---- 日次架電 ----
     if daily:
-        ac = daily["activity"]
-        # 「本日」「今週」は期間フィルタでは動かさない（常に生成日基準）。
-        # 期間を切った状態でも「今どれだけ動いているか」は見たいので、
-        # ここが期間に追従すると本来の役割が消える。
-        # 本日と累計で同じ並びにする。並びが違うと、上下の数字を
-        # 見比べる時にどれとどれが対応するのか毎回探すことになる。
-        act_items = "".join([
-            kpi("架電数", f_int(ac["today_calls"])),
-            # 「リード数」という名前で出していたが、中身は today_called
-            # （その日に初めてかけた人数）で、獲得リード数ではない。
-            kpi("架電件数", f_int(ac["today_called"])),
-            kpi("接続数", f_int(ac["today_conn"])),
-            kpi("接続率", f_pct(ac["today_rate"])),
-            kpi("面談予約 獲得数", f_int(ac["today_appts"])),
-            # 商談化率は出さない。分子（その日に入った架電由来の予約）と
-            # 分母（その日に初めてかけた人数）が別の日の話になる。今日入った
-            # 予約は先週かけた人から出ていることがあり、それを今日の新規着手で
-            # 割ると意味を持たない。日をまたいで揃う週次テーブル側に置いてある。
-        ])
-        # 直近の稼働日。本日と同じ並び・同じ項目にする。並びが違うと
-        # 上下の数字を見比べる時にどれとどれが対応するのか毎回探すことになる。
-        prev_items = "".join([
-            kpi("架電数", f_int(ac["prev_calls"])),
-            kpi("架電件数", f_int(ac["prev_called"])),
-            kpi("接続数", f_int(ac["prev_conn"])),
-            kpi("接続率", f_pct(ac["prev_rate"])),
-            kpi("面談予約 獲得数", f_int(ac["prev_appts"])),
-        ]) if ac.get("prev") else ""
         # 「日次の行動量」と「架電したリード → 面談予約」の折りたたみは廃止した。
         # 前者は架電数・接続数・接続率が上のグラフと全体の週次と重複し、
         # 後者は「面談予約 ÷ 架電したリード数」という、全体の週次から
@@ -2675,18 +2642,20 @@ def render(data):
         )
         vn_fold = f'<div class="tabgrid">{vn_folds}</div>' if vn_folds else ""
 
+        # 「本日」「直近の稼働日」のカード2枚は 2026-11-11 に廃止した。
+        # 同じ2日ぶんが下の日次グラフにそのまま入っていて、固有の数字が
+        # 1つも無かった（旧「重要値」の3段カードを廃止したのと同じ理由）。
+        # **グラフのほうは残す。** 「新規着手」と「追いかけ」の内訳は
+        # ここにしか無く、週次テーブルでは見られない。カードもグラフも
+        # 消すと、このセクションは既定で閉じている折りたたみ2本だけになり、
+        # 開くまで何も見えなくなる。
         daily_section = f"""
 <h2>IS活動量</h2>
-<div class="actsum">
-  <div class="card act"><div class="tag">本日<span class="taglabel">{daily["activity"]["today"]}</span></div>
-    <div class="kpis">{act_items}</div></div>
-  {f'<div class="card act prev"><div class="tag">直近の<br>稼働日<span class="taglabel">{daily["activity"]["prev"]}</span></div><div class="kpis">{prev_items}</div></div>' if prev_items else ''}
-</div>
-{vn_fold}
 <div class="charts one">
   <div class="card"><h3>架電件数の日次推移（{daily["span"]}）</h3>
     <div class="chart"><canvas id="c_call"></canvas></div></div>
-</div>"""
+</div>
+{vn_fold}"""
         daily_js = (
             f"mkCallBar('c_call',{js(daily['chart']['labels'])},"
             f"{js(daily['chart']['called'])},{js(daily['chart']['followup'])},"
@@ -3345,6 +3314,13 @@ showAge();
 {chain_section}
 {adperf_section}
 {webinar_section}
+<h2>展示会別CPL</h2>
+<details class="fold" id="f-expo" open><summary><span class="tri">▶</span>展示会別CPL<span class="cnt">{len(data.get("expos") or [])}件</span></summary>
+<div class="tablewrap"><table>
+<thead><tr><th>展示会名</th><th>開催日</th><th>費用</th><th>リード数</th><th>CPL</th>
+<th>商談数</th><th>成約数</th></tr></thead>
+<tbody>{expo_table}</tbody></table></div></details>
+
 {daily_section}
 {fs_section}
 <h2>直契約</h2>
@@ -3362,13 +3338,6 @@ showAge();
     <div class="base"><canvas id="c_win_b"></canvas></div>
     <div class="baselabel">母数：週次商談数</div></div>
 </div>
-
-<h2>展示会別CPL</h2>
-<details class="fold" id="f-expo" open><summary><span class="tri">▶</span>展示会別CPL<span class="cnt">{len(data.get("expos") or [])}件</span></summary>
-<div class="tablewrap"><table>
-<thead><tr><th>展示会名</th><th>開催日</th><th>費用</th><th>リード数</th><th>CPL</th>
-<th>商談数</th><th>成約数</th></tr></thead>
-<tbody>{expo_table}</tbody></table></div></details>
 
 <h2>チャネル別<span class="h2sub">全期間・直契約・実数のみ</span></h2>
 <div class="tabgrid">
