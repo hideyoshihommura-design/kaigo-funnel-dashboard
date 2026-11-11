@@ -1329,6 +1329,10 @@ border-right:2px solid #8fa0b0;font-weight:700;}
    縦スクロールすることになる。入らない幅では縦に戻す。 */
 .chrow{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;}
 .chrow>div{min-width:0;}
+/* 2枚を並べるぶん1列あたりが狭い。「26/11」が切れるので、
+   折り返さずに詰める（中は必ず1行）。 */
+.chrow .fnl th,.chrow .fnl td{padding-left:5px;padding-right:5px;}
+.chrow .fnl thead th{font-size:10.5px;letter-spacing:-.01em;}
 /* 値と前月差は1つのセルの中で上下2段。行を分けると指標7つで14行になり、
    半分が補助情報の行になる。
    **薄い扱いは前月差の1種類だけにする。** 0を薄く、値を細く、背景を淡く、
@@ -2953,7 +2957,7 @@ def render(data):
             sum(r[6] for r in ch_rows),
             sum(r[7] for r in ch_rows),
         )
-        W_K, W_N, W_S = 86, 38, 58
+        W_K, W_N, W_S = 86, 42, 56
         nmon = len(ch_cols)
 
         # 予約と実施を1つの表に横並びで入れると30列になり、しかも中身が
