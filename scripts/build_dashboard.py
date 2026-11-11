@@ -1785,8 +1785,12 @@ function apply(from,to){
 function showAge(){
   var el = document.getElementById('age');
   if(!el){return;}
+  /* **「数字の更新」に続く日付だけを拾う。** 最初の日付を拾うと、
+     同じ .sub の先頭にある期間の開始日（2025-09-01）を読んでしまい、
+     いつ更新しても「436日前」のような固定の値が出る（実際に出ていた）。
+     postprocess で「生成日」→「数字の更新」に置換されるので両方見る。 */
   var m = document.querySelector('.sub').textContent.match(
-    /(\d{4})-(\d{2})-(\d{2})(?:\s+(\d{2}):(\d{2}))?/);
+    /(?:数字の更新|生成日)\s*(\d{4})-(\d{2})-(\d{2})(?:\s+(\d{2}):(\d{2}))?/);
   if(!m){return;}
   var t = new Date(m[1]+'-'+m[2]+'-'+m[3]+'T'+(m[4]||'00')+':'+(m[5]||'00')+':00+09:00');
   var mins = Math.floor((Date.now() - t.getTime()) / 60000);
