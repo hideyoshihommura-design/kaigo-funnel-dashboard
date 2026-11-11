@@ -5193,8 +5193,8 @@
     "leads": 2,
     "cost": null,
     "appts": 1,
-    "mtgs": 0,
-    "props": 0,
+    "mtgs": 1,
+    "props": 1,
     "deals": 1,
     "won": 0,
     "won_amount": 0,
@@ -5457,8 +5457,8 @@
     "leads": 36,
     "cost": 104470,
     "appts": 2,
-    "mtgs": 0,
-    "props": 0,
+    "mtgs": 1,
+    "props": 1,
     "deals": 2,
     "won": 0,
     "won_amount": 0,
@@ -8379,7 +8379,7 @@
    "calls": 22,
    "connected": 3,
    "appts": 1,
-   "mtgs": 0,
+   "mtgs": 2,
    "called": 6,
    "leads": 7,
    "vcalls": 22,
@@ -8778,6 +8778,12 @@
    "props": 3,
    "wons": 0,
    "wonamt": 0
+  },
+  "2026-11-11": {
+   "mtgs": 2,
+   "props": 2,
+   "wons": 0,
+   "wonamt": 0
   }
  },
  "chain": {
@@ -8926,9 +8932,9 @@
   "2026-10": {
    "2026-10": {
     "2026-10": 1,
-    "2026-11": 3,
+    "2026-11": 4,
     "lost": 1,
-    "pending": 3
+    "pending": 2
    },
    "2026-11": {
     "2026-11": 3
@@ -8936,7 +8942,8 @@
   },
   "2026-11": {
    "2026-11": {
-    "pending": 2
+    "2026-11": 1,
+    "pending": 1
    }
   }
  },
@@ -10709,8 +10716,8 @@
    "vendor": {
     "appts": 1,
     "deals": 1,
-    "mtgs": 0,
-    "props": 0,
+    "mtgs": 2,
+    "props": 2,
     "wons": 0,
     "wonamt": 0
    },
@@ -32955,8 +32962,8 @@
     "leads": 2,
     "cost": 0,
     "appts": 1,
-    "mtgs": 0,
-    "props": 0,
+    "mtgs": 1,
+    "props": 1,
     "deals": 1,
     "won": 0,
     "won_amount": 0,
@@ -33743,8 +33750,8 @@
     "leads": 3,
     "cost": 13200,
     "appts": 1,
-    "mtgs": 0,
-    "props": 0,
+    "mtgs": 1,
+    "props": 1,
     "deals": 1,
     "won": 0,
     "won_amount": 0,
