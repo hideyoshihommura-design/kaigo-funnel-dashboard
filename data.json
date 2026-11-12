@@ -5542,8 +5542,8 @@
     "blnomail": 0
    },
    "web": {
-    "leads": 20,
-    "cost": 39038,
+    "leads": 23,
+    "cost": 48683,
     "appts": 0,
     "mtgs": 0,
     "props": 0,
@@ -5555,9 +5555,9 @@
     "handled": 0,
     "done": 0,
     "wip": 0,
-    "backlog": 20,
-    "blnomail": 1,
-    "cv": 15
+    "backlog": 23,
+    "blnomail": 2,
+    "cv": 21
    },
    "line": {
     "leads": 0,
@@ -8393,13 +8393,13 @@
    "cappts": 1
   },
   "2026-11-12": {
-   "calls": 0,
+   "calls": 6,
    "connected": 0,
    "appts": 0,
    "mtgs": 0,
    "called": 0,
-   "leads": 3,
-   "vcalls": 0,
+   "leads": 6,
+   "vcalls": 6,
    "vconn": 0,
    "vcalled": 0,
    "cappts": 0
@@ -11054,16 +11054,16 @@
    "start": "2026-11-05",
    "end": "2026-11-11",
    "days": 7,
-   "cost": 106290,
+   "cost": 115935,
    "cost_days": 7,
    "cost_est_days": 0,
    "cost_manual": false,
-   "cv": 50,
+   "cv": 56,
    "cv_days": 7,
    "cv_est_days": 0,
    "cv_manual": false,
-   "imp": 50145,
-   "clicks": 985,
+   "imp": 54078,
+   "clicks": 1057,
    "leads": 41,
    "deals": 0,
    "won": 0,
@@ -11228,10 +11228,10 @@
    "cv": 48
   },
   "2026-11-09": {
-   "spend": 39038,
-   "imp": 18400,
-   "clicks": 346,
-   "cv": 15
+   "spend": 48683,
+   "imp": 22333,
+   "clicks": 418,
+   "cv": 21
   }
  },
  "adperf_day": {
@@ -12220,10 +12220,10 @@
    "cv": 1
   },
   "2026-11-11": {
-   "spend": 8657,
-   "imp": 3465,
-   "clicks": 70,
-   "cv": 6
+   "spend": 18302,
+   "imp": 7398,
+   "clicks": 142,
+   "cv": 12
   }
  },
  "ad_day": {
@@ -14859,10 +14859,10 @@
   },
   "2026-11-11": {
    "Meta/ウェビナー": {
-    "spend": 8657,
-    "imp": 3465,
-    "clicks": 70,
-    "cv": 6
+    "spend": 18302,
+    "imp": 7398,
+    "clicks": 142,
+    "cv": 12
    }
   }
  },
@@ -34577,7 +34577,7 @@
    },
    "web": {
     "leads": 7,
-    "cost": 8657,
+    "cost": 18302,
     "appts": 0,
     "mtgs": 0,
     "props": 0,
@@ -34591,7 +34591,7 @@
     "wip": 0,
     "backlog": 7,
     "blnomail": 0,
-    "cv": 6
+    "cv": 12
    },
    "line": {
     "leads": 0,
@@ -34664,7 +34664,7 @@
     "blnomail": 0
    },
    "web": {
-    "leads": 3,
+    "leads": 6,
     "cost": 0,
     "appts": 0,
     "mtgs": 0,
@@ -34677,8 +34677,8 @@
     "handled": 0,
     "done": 0,
     "wip": 0,
-    "backlog": 3,
-    "blnomail": 0
+    "backlog": 6,
+    "blnomail": 1
    },
    "line": {
     "leads": 0,
