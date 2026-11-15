@@ -1,6 +1,6 @@
 {
  "title": "ホリエモンAI学校 介護校 ファネルダッシュボード",
- "generated_at": "2026-11-15",
+ "generated_at": "2026-11-16",
  "week_starts": [
   "2025-09-01",
   "2025-09-08",
@@ -64,7 +64,8 @@
   "2026-10-19",
   "2026-10-26",
   "2026-11-02",
-  "2026-11-09"
+  "2026-11-09",
+  "2026-11-16"
  ],
  "direct": {
   "2025-09-01": {
@@ -5542,7 +5543,7 @@
     "blnomail": 0
    },
    "web": {
-    "leads": 37,
+    "leads": 40,
     "cost": 48683,
     "appts": 0,
     "mtgs": 0,
@@ -5555,9 +5556,97 @@
     "handled": 0,
     "done": 0,
     "wip": 0,
-    "backlog": 37,
+    "backlog": 40,
     "blnomail": 2,
     "cv": 21
+   },
+   "line": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "other": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   }
+  },
+  "2026-11-16": {
+   "event": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "web": {
+    "leads": 0,
+    "cost": null,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0,
+    "cv": null
    },
    "line": {
     "leads": 0,
@@ -6482,6 +6571,20 @@
    "blnomail": 0
   },
   "2026-11-09": {
+   "leads": 0,
+   "appts": 0,
+   "deals": 0,
+   "won": 0,
+   "won_amount": 0,
+   "called": 0,
+   "cappt": 0,
+   "handled": 0,
+   "done": 0,
+   "wip": 0,
+   "backlog": 0,
+   "blnomail": 0
+  },
+  "2026-11-16": {
    "leads": 0,
    "appts": 0,
    "deals": 0,
@@ -8434,7 +8537,7 @@
    "appts": 0,
    "mtgs": 0,
    "called": 0,
-   "leads": 2,
+   "leads": 5,
    "vcalls": 0,
    "vconn": 0,
    "vcalled": 0,
@@ -34980,7 +35083,7 @@
     "blnomail": 0
    },
    "web": {
-    "leads": 2,
+    "leads": 5,
     "cost": 0,
     "appts": 0,
     "mtgs": 0,
@@ -34993,7 +35096,7 @@
     "handled": 0,
     "done": 0,
     "wip": 0,
-    "backlog": 2,
+    "backlog": 5,
     "blnomail": 0
    },
    "line": {
