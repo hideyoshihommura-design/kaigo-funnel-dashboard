@@ -1,6 +1,6 @@
 {
  "title": "ホリエモンAI学校 介護校 ファネルダッシュボード",
- "generated_at": "2026-11-16",
+ "generated_at": "2026-11-17",
  "week_starts": [
   "2025-09-01",
   "2025-09-08",
@@ -4143,12 +4143,12 @@
     "deals": 7,
     "won": 0,
     "won_amount": 0,
-    "called": 38,
+    "called": 39,
     "cappt": 6,
-    "handled": 38,
+    "handled": 39,
     "done": 31,
-    "wip": 7,
-    "backlog": 2,
+    "wip": 8,
+    "backlog": 1,
     "blnomail": 0,
     "cv": 36
    },
@@ -4234,8 +4234,8 @@
     "called": 31,
     "cappt": 2,
     "handled": 31,
-    "done": 20,
-    "wip": 11,
+    "done": 21,
+    "wip": 10,
     "backlog": 3,
     "blnomail": 0,
     "cv": 56
@@ -4322,8 +4322,8 @@
     "called": 33,
     "cappt": 6,
     "handled": 33,
-    "done": 27,
-    "wip": 6,
+    "done": 28,
+    "wip": 5,
     "backlog": 2,
     "blnomail": 0,
     "cv": 47
@@ -5273,8 +5273,8 @@
     "called": 114,
     "cappt": 8,
     "handled": 114,
-    "done": 29,
-    "wip": 85,
+    "done": 30,
+    "wip": 84,
     "backlog": 53,
     "blnomail": 4
    },
@@ -5457,18 +5457,18 @@
    "web": {
     "leads": 36,
     "cost": 104470,
-    "appts": 3,
+    "appts": 4,
     "mtgs": 1,
     "props": 1,
-    "deals": 3,
+    "deals": 4,
     "won": 0,
     "won_amount": 0,
-    "called": 27,
-    "cappt": 3,
-    "handled": 27,
-    "done": 8,
-    "wip": 19,
-    "backlog": 9,
+    "called": 28,
+    "cappt": 4,
+    "handled": 28,
+    "done": 11,
+    "wip": 17,
+    "backlog": 8,
     "blnomail": 0,
     "cv": 48
    },
@@ -5544,7 +5544,7 @@
    },
    "web": {
     "leads": 40,
-    "cost": 126416,
+    "cost": 126456,
     "appts": 0,
     "mtgs": 0,
     "props": 0,
@@ -5631,8 +5631,8 @@
     "blnomail": 0
    },
    "web": {
-    "leads": 3,
-    "cost": null,
+    "leads": 6,
+    "cost": 8654,
     "appts": 0,
     "mtgs": 0,
     "props": 0,
@@ -5644,9 +5644,9 @@
     "handled": 0,
     "done": 0,
     "wip": 0,
-    "backlog": 3,
+    "backlog": 6,
     "blnomail": 0,
-    "cv": null
+    "cv": 4
    },
    "line": {
     "leads": 0,
@@ -8544,16 +8544,16 @@
    "cappts": 0
   },
   "2026-11-16": {
-   "calls": 25,
-   "connected": 8,
-   "appts": 0,
+   "calls": 47,
+   "connected": 14,
+   "appts": 2,
    "mtgs": 0,
-   "called": 16,
-   "leads": 3,
-   "vcalls": 14,
-   "vconn": 3,
-   "vcalled": 5,
-   "cappts": 0
+   "called": 21,
+   "leads": 6,
+   "vcalls": 25,
+   "vconn": 5,
+   "vcalled": 9,
+   "cappts": 1
   }
  },
  "fs": {
@@ -9112,7 +9112,7 @@
   "2026-11": {
    "2026-11": {
     "2026-11": 1,
-    "pending": 2
+    "pending": 3
    }
   }
  },
@@ -10916,6 +10916,24 @@
     "wons": 0,
     "wonamt": 0
    }
+  },
+  "2026-11-16": {
+   "vendor": {
+    "appts": 0,
+    "deals": 0,
+    "mtgs": 0,
+    "props": 0,
+    "wons": 0,
+    "wonamt": 0
+   },
+   "inhouse": {
+    "appts": 1,
+    "deals": 1,
+    "mtgs": 0,
+    "props": 0,
+    "wons": 0,
+    "wonamt": 0
+   }
   }
  },
  "webinars": [
@@ -11224,7 +11242,7 @@
    "start": "2026-11-05",
    "end": "2026-11-11",
    "days": 7,
-   "cost": 115935,
+   "cost": 115965,
    "cost_days": 7,
    "cost_est_days": 0,
    "cost_manual": false,
@@ -11232,10 +11250,10 @@
    "cv_days": 7,
    "cv_est_days": 0,
    "cv_manual": false,
-   "imp": 54078,
-   "clicks": 1057,
+   "imp": 54093,
+   "clicks": 1082,
    "leads": 41,
-   "deals": 1,
+   "deals": 2,
    "won": 0,
    "won_amount": 0
   }
@@ -11398,10 +11416,16 @@
    "cv": 48
   },
   "2026-11-09": {
-   "spend": 126416,
-   "imp": 61836,
-   "clicks": 1214,
+   "spend": 126456,
+   "imp": 61858,
+   "clicks": 1239,
    "cv": 56
+  },
+  "2026-11-16": {
+   "spend": 8654,
+   "imp": 3741,
+   "clicks": 70,
+   "cv": 4
   }
  },
  "adperf_day": {
@@ -12378,20 +12402,20 @@
    "cv": 10
   },
   "2026-11-09": {
-   "spend": 17478,
-   "imp": 8790,
+   "spend": 17485,
+   "imp": 8796,
    "clicks": 174,
    "cv": 8
   },
   "2026-11-10": {
-   "spend": 12903,
-   "imp": 6145,
-   "clicks": 102,
+   "spend": 12912,
+   "imp": 6150,
+   "clicks": 127,
    "cv": 1
   },
   "2026-11-11": {
-   "spend": 18302,
-   "imp": 7398,
+   "spend": 18316,
+   "imp": 7402,
    "clicks": 142,
    "cv": 12
   },
@@ -12414,10 +12438,16 @@
    "cv": 7
   },
   "2026-11-15": {
-   "spend": 20547,
-   "imp": 11028,
+   "spend": 20557,
+   "imp": 11035,
    "clicks": 254,
    "cv": 7
+  },
+  "2026-11-16": {
+   "spend": 8654,
+   "imp": 3741,
+   "clicks": 70,
+   "cv": 4
   }
  },
  "ad_day": {
@@ -15037,24 +15067,24 @@
   },
   "2026-11-09": {
    "Meta/ウェビナー": {
-    "spend": 17478,
-    "imp": 8790,
+    "spend": 17485,
+    "imp": 8796,
     "clicks": 174,
     "cv": 8
    }
   },
   "2026-11-10": {
    "Meta/ウェビナー": {
-    "spend": 12903,
-    "imp": 6145,
-    "clicks": 102,
+    "spend": 12912,
+    "imp": 6150,
+    "clicks": 127,
     "cv": 1
    }
   },
   "2026-11-11": {
    "Meta/ウェビナー": {
-    "spend": 18302,
-    "imp": 7398,
+    "spend": 18316,
+    "imp": 7402,
     "clicks": 142,
     "cv": 12
    }
@@ -15085,10 +15115,18 @@
   },
   "2026-11-15": {
    "Meta/ウェビナー": {
-    "spend": 20547,
-    "imp": 11028,
+    "spend": 20557,
+    "imp": 11035,
     "clicks": 254,
     "cv": 7
+   }
+  },
+  "2026-11-16": {
+   "Meta/ウェビナー": {
+    "spend": 8654,
+    "imp": 3741,
+    "clicks": 70,
+    "cv": 4
    }
   }
  },
@@ -26279,12 +26317,12 @@
     "deals": 3,
     "won": 0,
     "won_amount": 0,
-    "called": 9,
+    "called": 10,
     "cappt": 3,
-    "handled": 9,
+    "handled": 10,
     "done": 7,
-    "wip": 2,
-    "backlog": 1,
+    "wip": 3,
+    "backlog": 0,
     "blnomail": 0,
     "cv": 10
    },
@@ -26898,8 +26936,8 @@
     "called": 10,
     "cappt": 0,
     "handled": 10,
-    "done": 5,
-    "wip": 5,
+    "done": 6,
+    "wip": 4,
     "backlog": 0,
     "blnomail": 0,
     "cv": 17
@@ -27250,8 +27288,8 @@
     "called": 6,
     "cappt": 0,
     "handled": 6,
-    "done": 5,
-    "wip": 1,
+    "done": 6,
+    "wip": 0,
     "backlog": 0,
     "blnomail": 0,
     "cv": 12
@@ -33390,8 +33428,8 @@
     "called": 114,
     "cappt": 8,
     "handled": 114,
-    "done": 29,
-    "wip": 85,
+    "done": 30,
+    "wip": 84,
     "backlog": 53,
     "blnomail": 4
    },
@@ -34276,17 +34314,17 @@
    "web": {
     "leads": 3,
     "cost": 8342,
-    "appts": 0,
+    "appts": 1,
     "mtgs": 0,
     "props": 0,
-    "deals": 0,
+    "deals": 1,
     "won": 0,
     "won_amount": 0,
     "called": 2,
-    "cappt": 0,
+    "cappt": 1,
     "handled": 2,
-    "done": 0,
-    "wip": 2,
+    "done": 2,
+    "wip": 0,
     "backlog": 1,
     "blnomail": 0,
     "cv": 7
@@ -34373,8 +34411,8 @@
     "called": 7,
     "cappt": 0,
     "handled": 7,
-    "done": 0,
-    "wip": 7,
+    "done": 1,
+    "wip": 6,
     "backlog": 1,
     "blnomail": 0,
     "cv": 9
@@ -34458,12 +34496,12 @@
     "deals": 0,
     "won": 0,
     "won_amount": 0,
-    "called": 4,
+    "called": 5,
     "cappt": 0,
-    "handled": 4,
+    "handled": 5,
     "done": 2,
-    "wip": 2,
-    "backlog": 4,
+    "wip": 3,
+    "backlog": 3,
     "blnomail": 0,
     "cv": 9
    },
@@ -34627,7 +34665,7 @@
    },
    "web": {
     "leads": 8,
-    "cost": 17478,
+    "cost": 17485,
     "appts": 0,
     "mtgs": 0,
     "props": 0,
@@ -34715,7 +34753,7 @@
    },
    "web": {
     "leads": 2,
-    "cost": 12903,
+    "cost": 12912,
     "appts": 0,
     "mtgs": 0,
     "props": 0,
@@ -34803,7 +34841,7 @@
    },
    "web": {
     "leads": 7,
-    "cost": 18302,
+    "cost": 18316,
     "appts": 0,
     "mtgs": 0,
     "props": 0,
@@ -35155,7 +35193,7 @@
    },
    "web": {
     "leads": 5,
-    "cost": 20547,
+    "cost": 20557,
     "appts": 0,
     "mtgs": 0,
     "props": 0,
@@ -35242,8 +35280,8 @@
     "blnomail": 0
    },
    "web": {
-    "leads": 3,
-    "cost": 0,
+    "leads": 6,
+    "cost": 8654,
     "appts": 0,
     "mtgs": 0,
     "props": 0,
@@ -35255,8 +35293,9 @@
     "handled": 0,
     "done": 0,
     "wip": 0,
-    "backlog": 3,
-    "blnomail": 0
+    "backlog": 6,
+    "blnomail": 0,
+    "cv": 4
    },
    "line": {
     "leads": 0,
@@ -35725,8 +35764,8 @@
    "appointed": 4
   },
   "2026-11-16": {
-   "called": 16,
-   "appointed": 0
+   "called": 21,
+   "appointed": 2
   }
  }
 }
