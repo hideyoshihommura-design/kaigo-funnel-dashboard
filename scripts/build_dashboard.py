@@ -1005,7 +1005,9 @@ def _num(num_key, den_key):
 KPI_ROWS = [
     ("リード獲得数", lambda b: b["leads"], "全チャネル",
      f_int, KPI_TARGETS["leads"], True, False, True, None),
-    ("CPL", lambda b: safe_div(b["spend"], b["cv"]), "web広告のみ",
+    # 分母・分子ともウェビナー区分の広告だけ。全広告のCPLは他に4か所あるので、
+    # ここは社長が見たい「ウェビナー広告の単価」に寄せてある。
+    ("CPL", lambda b: safe_div(b["spend"], b["cv"]), "ウェビナー広告のみ",
      f_yen, KPI_TARGETS["cpl"], True, True, False, None),
     ("架電件数", lambda b: b["called"], "その期間に着手した件数",
      f_int, KPI_TARGETS["called"], True, False, True, None),
@@ -2144,8 +2146,22 @@ def render(data):
     for day, chs in (data.get("direct_day") or {}).items():
         for v in chs.values():
             _kadd(day, "leads", v.get("leads") or 0)
+    # **重要値のCPLはウェビナー広告だけ。** 他のCPL（ヘッダー・リード獲得の
+    # カード・CPL推移グラフ・月次KPIの全体CPL）は今までどおり全広告の合計で、
+    # ここだけ母集団が違う。行の注記に「ウェビナー広告のみ」と書いてあるのが
+    # その区別。介護校・Claude・常設・あおぞらTech は入れない。
+    # ad_day のキーは「媒体/キャンペーン」。区分は data.json の ad_campaigns
+    # （config/ad_campaigns.json の campaigns をそのまま渡したもの）で引く。
+    camp_cat = data.get("ad_campaigns") or {}
+    if (data.get("ad_day") or {}) and not camp_cat:
+        # 黙ってCPLを空にしない。古い data.json を食わせたときにここに来る。
+        print("[warn] data.json に ad_campaigns がありません。"
+              "重要値のCPLが空になります。data.json を取り直してください。",
+              file=sys.stderr)
     for day, row in (data.get("ad_day") or {}).items():
-        for v in row.values():
+        for pair, v in row.items():
+            if camp_cat.get(pair.split("/", 1)[-1]) != "webinar":
+                continue
             _kadd(day, "spend", v.get("spend") or 0)
             _kadd(day, "cv", v.get("cv") or 0)
     for day, v in (data.get("calls") or {}).items():

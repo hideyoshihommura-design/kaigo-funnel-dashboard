@@ -1458,6 +1458,10 @@ def build(token, sheets_token, channel_map, webinar_cfg, campaign_cfg,
         # 画面に出すときの名前。シートのキャンペーン列が略称のものだけ。
         # シート側の値は変えない（変えると過去の行と突き合わなくなる）。
         "ad_names": dict(campaign_cfg.get("display_names") or {}),
+        # キャンペーン → 区分（webinar / other）。重要値のCPLをウェビナー広告
+        # だけで出すために使う。build_dashboard.py は config/ を読まないので、
+        # data.json 経由で渡す。足すのは config/ad_campaigns.json のほう。
+        "ad_campaigns": dict(campaign_cfg.get("campaigns") or {}),
         "direct_day": {k: direct_day[k] for k in sorted(direct_day)},
         "agency_day": {k: agency_day[k] for k in sorted(agency_day)},
         "call_conversion": {w.isoformat(): v for w, v in sorted(conv.items())},
