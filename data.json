@@ -138,6 +138,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -210,6 +227,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -314,6 +348,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -386,6 +437,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -490,6 +558,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -562,6 +647,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -666,6 +768,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -754,6 +873,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 1,
     "cost": 0,
@@ -826,6 +962,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -930,6 +1083,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -1002,6 +1172,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -1106,6 +1293,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -1178,6 +1382,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -1282,6 +1503,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -1354,6 +1592,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -1458,6 +1713,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -1530,6 +1802,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -1634,6 +1923,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -1706,6 +2012,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -1810,6 +2133,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -1882,6 +2222,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -1986,6 +2343,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -2058,6 +2432,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -2162,6 +2553,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -2234,6 +2642,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -2338,6 +2763,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -2410,6 +2852,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -2514,6 +2973,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -2586,6 +3062,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -2690,6 +3183,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -2762,6 +3272,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -2866,6 +3393,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 1,
     "cost": 0,
@@ -2938,6 +3482,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -3042,6 +3603,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -3114,6 +3692,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -3218,6 +3813,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -3290,6 +3902,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -3394,6 +4023,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -3466,6 +4112,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -3570,6 +4233,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -3642,6 +4322,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -3746,6 +4443,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -3818,6 +4532,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -3922,6 +4653,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -3994,6 +4742,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -4098,6 +4863,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -4170,6 +4952,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -4274,6 +5073,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 1,
     "cost": 0,
@@ -4346,6 +5162,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -4450,6 +5283,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -4522,6 +5372,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -4626,6 +5493,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -4698,6 +5582,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -4802,6 +5703,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -4874,6 +5792,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -4978,6 +5913,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -5050,6 +6002,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -5154,6 +6123,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -5226,6 +6212,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -5330,6 +6333,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -5402,6 +6422,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -5506,6 +6543,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -5594,6 +6648,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 6,
+    "cost": 0,
+    "appts": 2,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 2,
+    "won": 0,
+    "won_amount": 0,
+    "called": 6,
+    "cappt": 2,
+    "handled": 6,
+    "done": 3,
+    "wip": 3,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -5666,6 +6737,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -8465,7 +9553,7 @@
    "appts": 1,
    "mtgs": 0,
    "called": 4,
-   "leads": 8,
+   "leads": 10,
    "vcalls": 26,
    "vconn": 7,
    "vcalled": 4,
@@ -8489,7 +9577,7 @@
    "appts": 1,
    "mtgs": 2,
    "called": 6,
-   "leads": 7,
+   "leads": 8,
    "vcalls": 22,
    "vconn": 3,
    "vcalled": 6,
@@ -8501,7 +9589,7 @@
    "appts": 2,
    "mtgs": 0,
    "called": 4,
-   "leads": 10,
+   "leads": 11,
    "vcalls": 26,
    "vconn": 4,
    "vcalled": 2,
@@ -8525,7 +9613,7 @@
    "appts": 0,
    "mtgs": 0,
    "called": 0,
-   "leads": 4,
+   "leads": 6,
    "vcalls": 0,
    "vconn": 0,
    "vcalled": 0,
@@ -8553,11 +9641,11 @@
    "vcalls": 25,
    "vconn": 5,
    "vcalled": 9,
-   "cappts": 1
+   "cappts": 2
   },
   "2026-11-17": {
-   "calls": 15,
-   "connected": 4,
+   "calls": 17,
+   "connected": 5,
    "appts": 3,
    "mtgs": 0,
    "called": 0,
@@ -8565,7 +9653,7 @@
    "vcalls": 11,
    "vconn": 3,
    "vcalled": 0,
-   "cappts": 2
+   "cappts": 3
   }
  },
  "fs": {
@@ -9127,7 +10215,7 @@
   "2026-11": {
    "2026-11": {
     "2026-11": 1,
-    "pending": 4
+    "pending": 6
    }
   }
  },
@@ -10934,8 +12022,8 @@
   },
   "2026-11-16": {
    "vendor": {
-    "appts": 0,
-    "deals": 0,
+    "appts": 1,
+    "deals": 1,
     "mtgs": 0,
     "props": 0,
     "wons": 0,
@@ -10952,8 +12040,8 @@
   },
   "2026-11-17": {
    "vendor": {
-    "appts": 1,
-    "deals": 1,
+    "appts": 2,
+    "deals": 2,
     "mtgs": 0,
     "props": 0,
     "wons": 0,
@@ -15180,6 +16268,13 @@
  "ad_names": {
   "あおぞらTech": "あおぞらCareTech研究所"
  },
+ "ad_campaigns": {
+  "ウェビナー": "webinar",
+  "介護校": "other",
+  "Claude": "other",
+  "常設": "other",
+  "あおぞらTech": "other"
+ },
  "direct_day": {
   "2025-09-22": {
    "event": {
@@ -15234,6 +16329,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -15337,6 +16449,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -15419,6 +16548,23 @@
     "called": 0,
     "cappt": 0,
     "handled": 2,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
     "done": 0,
     "wip": 0,
     "backlog": 0,
@@ -15511,6 +16657,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 1,
     "cost": 0,
@@ -15582,6 +16745,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -15685,6 +16865,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -15756,6 +16953,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -15859,6 +17073,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -15930,6 +17161,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -16033,6 +17281,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -16104,6 +17369,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -16207,6 +17489,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -16278,6 +17577,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -16381,6 +17697,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -16452,6 +17785,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -16555,6 +17905,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -16626,6 +17993,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -16729,6 +18113,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -16816,6 +18217,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -16887,6 +18305,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -16991,6 +18426,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -17063,6 +18515,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -17167,6 +18636,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -17239,6 +18725,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -17343,6 +18846,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -17415,6 +18935,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -17519,6 +19056,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -17591,6 +19145,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -17695,6 +19266,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -17767,6 +19355,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -17871,6 +19476,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -17943,6 +19565,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -18047,6 +19686,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -18119,6 +19775,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -18223,6 +19896,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -18295,6 +19985,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -18399,6 +20106,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -18471,6 +20195,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -18575,6 +20316,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -18647,6 +20405,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -18751,6 +20526,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -18823,6 +20615,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -18927,6 +20736,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -18999,6 +20825,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -19103,6 +20946,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -19175,6 +21035,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -19279,6 +21156,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -19351,6 +21245,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -19455,6 +21366,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -19527,6 +21455,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -19631,6 +21576,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -19703,6 +21665,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -19807,6 +21786,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -19879,6 +21875,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -19983,6 +21996,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -20055,6 +22085,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -20159,6 +22206,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -20231,6 +22295,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -20335,6 +22416,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -20407,6 +22505,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -20511,6 +22626,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -20583,6 +22715,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -20687,6 +22836,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -20759,6 +22925,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -20863,6 +23046,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -20935,6 +23135,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -21039,6 +23256,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -21111,6 +23345,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -21215,6 +23466,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -21287,6 +23555,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -21391,6 +23676,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -21463,6 +23765,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -21567,6 +23886,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -21639,6 +23975,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -21743,6 +24096,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -21815,6 +24185,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -21919,6 +24306,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -21991,6 +24395,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -22095,6 +24516,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -22167,6 +24605,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -22271,6 +24726,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -22343,6 +24815,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -22447,6 +24936,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -22519,6 +25025,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -22623,6 +25146,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -22695,6 +25235,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -22799,6 +25356,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -22871,6 +25445,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -22975,6 +25566,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -23047,6 +25655,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -23151,6 +25776,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -23223,6 +25865,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -23327,6 +25986,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -23399,6 +26075,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -23503,6 +26196,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -23575,6 +26285,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -23679,6 +26406,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -23751,6 +26495,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -23855,6 +26616,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -23927,6 +26705,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -24031,6 +26826,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -24103,6 +26915,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -24207,6 +27036,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -24279,6 +27125,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -24383,6 +27246,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -24455,6 +27335,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -24559,6 +27456,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -24631,6 +27545,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -24735,6 +27666,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -24807,6 +27755,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -24911,6 +27876,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -24983,6 +27965,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -25087,6 +28086,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -25159,6 +28175,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -25263,6 +28296,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 1,
     "cost": 0,
@@ -25335,6 +28385,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -25439,6 +28506,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -25511,6 +28595,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -25615,6 +28716,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -25687,6 +28805,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -25791,6 +28926,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -25863,6 +29015,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -25967,6 +29136,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -26039,6 +29225,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -26143,6 +29346,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -26215,6 +29435,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -26319,6 +29556,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -26391,6 +29645,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -26495,6 +29766,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 1,
     "cost": 0,
@@ -26567,6 +29855,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -26671,6 +29976,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -26743,6 +30065,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -26847,6 +30186,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -26919,6 +30275,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -27023,6 +30396,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -27095,6 +30485,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -27199,6 +30606,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 1,
     "cost": 0,
@@ -27271,6 +30695,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -27375,6 +30816,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -27447,6 +30905,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -27551,6 +31026,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -27623,6 +31115,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -27727,6 +31236,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -27799,6 +31325,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -27903,6 +31446,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -27975,6 +31535,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -28079,6 +31656,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -28151,6 +31745,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -28255,6 +31866,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -28327,6 +31955,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -28431,6 +32076,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -28503,6 +32165,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -28607,6 +32286,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -28679,6 +32375,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -28783,6 +32496,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -28855,6 +32585,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -28959,6 +32706,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -29031,6 +32795,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -29135,6 +32916,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -29207,6 +33005,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -29311,6 +33126,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -29383,6 +33215,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -29487,6 +33336,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -29559,6 +33425,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -29663,6 +33546,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -29735,6 +33635,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -29839,6 +33756,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -29911,6 +33845,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -30015,6 +33966,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -30087,6 +34055,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -30191,6 +34176,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -30263,6 +34265,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -30367,6 +34386,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -30439,6 +34475,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -30543,6 +34596,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -30615,6 +34685,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -30719,6 +34806,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -30791,6 +34895,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -30895,6 +35016,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -30967,6 +35105,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -31071,6 +35226,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -31143,6 +35315,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -31247,6 +35436,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -31319,6 +35525,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -31423,6 +35646,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -31495,6 +35735,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -31599,6 +35856,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -31671,6 +35945,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -31775,6 +36066,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -31847,6 +36155,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -31951,6 +36276,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -32023,6 +36365,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -32127,6 +36486,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -32199,6 +36575,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -32303,6 +36696,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -32375,6 +36785,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -32479,6 +36906,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -32551,6 +36995,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -32655,6 +37116,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -32727,6 +37205,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -32831,6 +37326,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -32903,6 +37415,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -33007,6 +37536,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -33079,6 +37625,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -33183,6 +37746,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -33254,6 +37834,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -33357,6 +37954,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -33428,6 +38042,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -33531,6 +38162,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -33602,6 +38250,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -33706,6 +38371,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -33778,6 +38460,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -33882,6 +38581,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -33954,6 +38670,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -34058,6 +38791,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -34130,6 +38880,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -34234,6 +39001,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -34306,6 +39090,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -34410,6 +39211,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -34482,6 +39300,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -34586,6 +39421,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -34658,6 +39510,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -34762,6 +39631,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 2,
+    "cost": 0,
+    "appts": 1,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 1,
+    "won": 0,
+    "won_amount": 0,
+    "called": 2,
+    "cappt": 1,
+    "handled": 2,
+    "done": 1,
+    "wip": 1,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -34834,6 +39720,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -34938,6 +39841,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 1,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 1,
+    "cappt": 0,
+    "handled": 1,
+    "done": 1,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -35026,6 +39946,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 1,
+    "cost": 0,
+    "appts": 1,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 1,
+    "won": 0,
+    "won_amount": 0,
+    "called": 1,
+    "cappt": 1,
+    "handled": 1,
+    "done": 1,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -35098,6 +40035,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -35202,6 +40156,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 2,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 2,
+    "cappt": 0,
+    "handled": 2,
+    "done": 0,
+    "wip": 2,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -35274,6 +40245,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
@@ -35378,6 +40366,23 @@
     "backlog": 0,
     "blnomail": 0
    },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
    "other": {
     "leads": 0,
     "cost": 0,
@@ -35450,6 +40455,23 @@
     "blnomail": 0
    },
    "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
     "leads": 0,
     "cost": 0,
     "appts": 0,
