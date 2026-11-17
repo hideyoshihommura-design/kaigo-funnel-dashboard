@@ -36,6 +36,11 @@
       "label": "紹介",
       "routes": ["社内紹介", "本部・他FCからの紹介"]
     },
+    "caretech": {
+      "_comment": "ACG CareTech研究所（受託開発）。介護校とは別事業で広告アカウントも別（295486751582822）。架電はこのリードにもしているので、架電件数・リード獲得数・面談予約・面談実施・成約数には入れる。一方でweb広告の成果に混ぜたくないので独立したチャネルにしてある。費用欄は ¥0 と出る（CareTechの広告費は広告日次シート経由で web の費用に入るため）。重要値のCPLはウェビナー広告だけなので、CareTechの広告費が入っても動かない。チャネルを足したら scripts/fetch_data.py と scripts/build_dashboard.py の CHANNELS、COLORS にも同じキーを足すこと。",
+      "label": "CareTech",
+      "routes": ["受託開発資料請求フォーム"]
+    },
     "other": {
       "label": "その他",
       "routes": ["youtube", "その他", "FAX　DM経由"]

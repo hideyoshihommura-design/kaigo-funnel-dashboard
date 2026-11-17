@@ -768,12 +768,18 @@ def build(token, sheets_token, channel_map, webinar_cfg, campaign_cfg,
     # かけた人数」で、こちらは「その月に獲得したリードのうち架電済みの人数」。
     # cappt = そのうち初回架電日以降に面談予約が立った人。webは架電なしで
     # 自分で予約を入れてくるので、それを分子から外すために日付条件が要る。
+    # 直契約のチャネル。**`config/channel_map.json` の channels から agency を
+    # 除いたものと必ず一致させること。**ここに無いチャネルを channel_map に
+    # 足すと KeyError で落ちる。build_dashboard.py の CHANNELS とも同じ並びに
+    # する（表の行順とグラフの積み上げ順がこれで決まる）。
+    # 「その他」は受け皿なので必ず最後に置く。
+    CHANNELS = ["event", "web", "line", "referral", "caretech", "other"]
     direct = {
         w: {k: {"leads": 0, "cost": 0, "appts": 0, "mtgs": 0, "props": 0,
                 "deals": 0, "won": 0, "won_amount": 0,
                 "called": 0, "cappt": 0, "handled": 0,
                 "done": 0, "wip": 0, "backlog": 0, "blnomail": 0}
-            for k in ["event", "web", "line", "referral", "other"]}
+            for k in CHANNELS}
         for w in week_starts
     }
     agency = {
@@ -787,7 +793,6 @@ def build(token, sheets_token, channel_map, webinar_cfg, campaign_cfg,
     # その週まるごとの値が出てしまうため、同じ数え方で日別にも積んでおく。
     # チャネル別の内訳は週次表でしか使わないので、ここでは合計だけ持つ。
     direct_day, agency_day = {}, {}
-    CHANNELS = ["event", "web", "line", "referral", "other"]
 
     def dday_direct(d):
         return direct_day.setdefault(d.isoformat(), {

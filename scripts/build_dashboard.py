@@ -23,11 +23,19 @@ CHARTJS_PATH = os.path.join(
     os.path.dirname(os.path.abspath(__file__)), "..", "assets", "chart.umd.js"
 )
 
+# **`config/channel_map.json` の channels（agency を除く）と、
+# `fetch_data.py` の CHANNELS と、3つとも同じ並びにすること。**
+# この並びがチャネル別テーブルの行順とリード獲得グラフの積み上げ順になる。
+# 「その他」は受け皿なので必ず最後。
 CHANNELS = [
     ("event", "イベント"),
     ("web", "web"),
     ("line", "LINE"),
     ("referral", "紹介"),
+    # ACG CareTech研究所（受託開発）。介護校とは別事業で広告アカウントも別。
+    # 費用欄は ¥0 と出る。CareTechの広告費は広告日次シート経由で web の
+    # 費用に入るため（シートの媒体が Meta なので web に寄る）。
+    ("caretech", "CareTech"),
     ("other", "その他"),
 ]
 CHANNEL_KEYS = [k for k, _ in CHANNELS]
@@ -148,6 +156,12 @@ COLORS = {
     "web": "#08959C",     # コーポレートブルーを線用に暗くした段（白地でコントラスト3:1以上）
     "line": "#8459A5",
     "referral": "#B8860B",
+    # 濃紺。白地コントラスト 8.44。既存5色から最も離れた色を選んである
+    # （通常視で最近接 83、P型 42、D型 38。既存で最も近い event×referral は
+    # D型で 7.9 なので、足したことでパレットが悪くなってはいない）。
+    # 青系にしたのは、オレンジ・金・緑が並ぶこのパレットでは赤を足すと
+    # 2色覚で見分けがつかなくなるため。
+    "caretech": "#2A4B8D",
     "other": "#4E7A2E",
     "total": BRAND["gray"],
     "leads": "#08959C",
