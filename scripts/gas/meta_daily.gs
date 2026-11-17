@@ -23,17 +23,31 @@
  * ── 設置手順 ──────────────────────────────────────
  * 1. スクリプト プロパティ（⚙️ プロジェクトの設定）
  *      META_TOKEN     … システムユーザートークン（ads_read のみ・60日で切れる）
- *      META_ACCOUNTS  … act_1733426553997050,act_295486751582822
- *                       1つ目=介護校。2つ目=ACG1（CareTech／Claude講座LP）で、
- *                       所有者が別ポートフォリオ（大牟禮康佑's Business）のため
- *                       パートナー共有 → システムユーザーに割り当て、で読めている。
- *                       **共有を外すとここだけ静かに0件になる。**
  *      NOTIFY_EMAIL   … 省略可。未設定なら実行ユーザー宛に送る
+ *    **ここに入れるのはトークンだけ。** 広告アカウントは下の MD_ACCOUNTS に書く。
+ *    アカウントIDは秘密ではないので、コードに置いたほうが履歴に残って経緯を追える。
+ *    設定画面にはトークンが平文で並ぶので、用がないなら開かない。
  * 2. 関数 setupMetaTrigger を1回だけ実行（毎朝7時のトリガーが作られる）
  * 3. 動作確認は syncMetaDaily を手で実行
  */
 
 var MD_API = 'https://graph.facebook.com/v21.0';
+
+/**
+ * 読みに行く広告アカウント。**ここが正。**スクリプトプロパティの
+ * META_ACCOUNTS は見ていない（古い値が残っていても影響しない）。
+ *
+ *   act_1733426553997050 … ホリエモンAI学校介護校
+ *   act_295486751582822  … ACG1（CareTech／Claude講座LP）
+ *     所有者が別ポートフォリオ（大牟禮康佑's Business = 409243572945361）。
+ *     介護校（1333643245086340）へ**パートナー共有**したうえで
+ *     `Conversions API System User` に「パフォーマンスを確認」で割り当ててある。
+ *     **共有を外すとこのアカウントだけ静かに0件になる。**
+ */
+var MD_ACCOUNTS = [
+  'act_1733426553997050',
+  'act_295486751582822'
+];
 
 /** 何日さかのぼって取り直すか。Metaの数字が確定するまでの猶予。 */
 var MD_LOOKBACK_DAYS = 7;
@@ -88,15 +102,14 @@ function backfillMetaDaily() {
 
 /** 本体。since / until は 'YYYY-MM-DD'（広告アカウントのTZで切った日付）。 */
 function mdRun_(sinceYmd, untilYmd) {
-  var props = PropertiesService.getScriptProperties();
-  var token = props.getProperty('META_TOKEN');
-  var accounts = (props.getProperty('META_ACCOUNTS') || '')
-    .split(',').map(function (s) { return s.trim(); }).filter(String);
+  var token = PropertiesService.getScriptProperties().getProperty('META_TOKEN');
+  var accounts = MD_ACCOUNTS;
 
-  if (!token || !accounts.length) {
+  if (!token) {
     mdNotify_('広告日次の自動入力が設定されていません',
-      'META_TOKEN か META_ACCOUNTS が未設定です。\n'
-      + 'スプレッドシート → 拡張機能 → Apps Script → プロジェクトの設定 から登録してください。');
+      'META_TOKEN が未設定です。\n'
+      + 'スプレッドシート → 拡張機能 → Apps Script → プロジェクトの設定 →\n'
+      + 'スクリプト プロパティ に META_TOKEN を登録してください。');
     return;
   }
 
