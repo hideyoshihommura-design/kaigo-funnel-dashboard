@@ -23,7 +23,11 @@
  * ── 設置手順 ──────────────────────────────────────
  * 1. スクリプト プロパティ（⚙️ プロジェクトの設定）
  *      META_TOKEN     … システムユーザートークン（ads_read のみ・60日で切れる）
- *      META_ACCOUNTS  … act_1733426553997050
+ *      META_ACCOUNTS  … act_1733426553997050,act_295486751582822
+ *                       1つ目=介護校。2つ目=ACG1（CareTech／Claude講座LP）で、
+ *                       所有者が別ポートフォリオ（大牟禮康佑's Business）のため
+ *                       パートナー共有 → システムユーザーに割り当て、で読めている。
+ *                       **共有を外すとここだけ静かに0件になる。**
  *      NOTIFY_EMAIL   … 省略可。未設定なら実行ユーザー宛に送る
  * 2. 関数 setupMetaTrigger を1回だけ実行（毎朝7時のトリガーが作られる）
  * 3. 動作確認は syncMetaDaily を手で実行
@@ -43,15 +47,47 @@ var MD_MEDIUM = 'Meta';
  * 新しいキャンペーンを始めたら、ここに1行足すこと。
  */
 var MD_CAMPAIGN_MAP = {
-  '120243893187730769': 'ウェビナー'   // 【リード】ホリエモンAI学校介護校_総合
+  // act_1733426553997050（ホリエモンAI学校介護校）
+  '120243893187730769': 'ウェビナー',     // 【リード】ホリエモンAI学校介護校_総合
+  // act_295486751582822（ACG1／大牟禮康佑's Business からパートナー共有）
+  // 1本のキャンペーンに Claude講座LP と CareTech のLPが同居している。
+  // Meta側では分けられないので、今の実態（CareTech）に寄せて あおぞらTech にする。
+  '120248495898370169': 'あおぞらTech'   // Claude講座LP・あおぞらCareTech研究所_リード獲得
 };
 
 /** actions のどれをCV数として採るか。シートの手入力値と一致したのが lead。 */
 var MD_CV_ACTION = 'lead';
 
 
-/** 毎朝これが動く。 */
+/** 毎朝これが動く。直近 MD_LOOKBACK_DAYS 日ぶんを取り直す。 */
 function syncMetaDaily() {
+  var until = new Date();
+  var since = new Date(until.getTime() - (MD_LOOKBACK_DAYS - 1) * 86400000);
+  // **日付は文字列にしてから渡す。** Dateのまま持ち回すと、シートのTZと
+  // 広告アカウントのTZ（日本）の差で1日ずれる。ここで広告アカウントのTZに
+  // 確定させておけば、以降は文字列なのでずれようがない。
+  mdRun_(mdApiYmd_(since), mdApiYmd_(until));
+}
+
+
+/**
+ * 期間を指定して取り直す。**1回だけ手で動かす用。**
+ *
+ * 毎朝の実行は直近7日しか見ないので、長く抜けた期間はこれで埋める。
+ * 下の2つの日付を直してから、関数プルダウンで backfillMetaDaily を選んで実行する。
+ *
+ * 2026-11-17: ACG1（CareTech）を足したとき、2026-09-21〜11-16 が
+ * 丸ごと抜けていたのでこれで埋めた。
+ */
+function backfillMetaDaily() {
+  var SINCE = '2026-09-21';
+  var UNTIL = '2026-11-17';
+  mdRun_(SINCE, UNTIL);
+}
+
+
+/** 本体。since / until は 'YYYY-MM-DD'（広告アカウントのTZで切った日付）。 */
+function mdRun_(sinceYmd, untilYmd) {
   var props = PropertiesService.getScriptProperties();
   var token = props.getProperty('META_TOKEN');
   var accounts = (props.getProperty('META_ACCOUNTS') || '')
@@ -64,14 +100,11 @@ function syncMetaDaily() {
     return;
   }
 
-  var until = new Date();
-  var since = new Date(until.getTime() - (MD_LOOKBACK_DAYS - 1) * 86400000);
-
   var rows = [];        // 書き込む行
   var unknown = {};     // 対応表に無かったキャンペーン
 
   for (var i = 0; i < accounts.length; i++) {
-    var res = mdFetchInsights_(accounts[i], token, since, until);
+    var res = mdFetchInsights_(accounts[i], token, sinceYmd, untilYmd);
     if (res.error) {
       mdNotify_('広告日次の自動入力が失敗しました', res.error);
       return;   // 鍵切れなどで全滅しているので、ここで止める
@@ -113,14 +146,17 @@ function syncMetaDaily() {
 }
 
 
-/** 直近の日次実績を取る。失敗したら error に理由を入れて返す。 */
+/**
+ * 日次実績を取る。失敗したら error に理由を入れて返す。
+ * since / until は 'YYYY-MM-DD' の文字列（広告アカウントのTZで切ったもの）。
+ */
 function mdFetchInsights_(acct, token, since, until) {
   var q = acct + '/insights'
     + '?level=campaign'
     + '&fields=campaign_id,campaign_name,spend,impressions,clicks,actions'
     + '&time_increment=1'
     + '&time_range=' + encodeURIComponent(JSON.stringify({
-        since: mdApiYmd_(since), until: mdApiYmd_(until)
+        since: since, until: until
       }))
     + '&limit=500';
 
