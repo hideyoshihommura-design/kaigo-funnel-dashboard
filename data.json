@@ -5863,7 +5863,7 @@
    },
    "web": {
     "leads": 20,
-    "cost": 89260,
+    "cost": 100553,
     "appts": 3,
     "mtgs": 2,
     "props": 1,
@@ -5968,7 +5968,7 @@
    },
    "web": {
     "leads": 26,
-    "cost": 70516,
+    "cost": 70592,
     "appts": 4,
     "mtgs": 1,
     "props": 1,
@@ -6073,7 +6073,7 @@
    },
    "web": {
     "leads": 13,
-    "cost": 37106,
+    "cost": 37133,
     "appts": 1,
     "mtgs": 1,
     "props": 1,
@@ -6493,19 +6493,19 @@
    },
    "web": {
     "leads": 36,
-    "cost": 104470,
+    "cost": 104484,
     "appts": 5,
     "mtgs": 1,
     "props": 1,
     "deals": 5,
     "won": 0,
     "won_amount": 0,
-    "called": 28,
+    "called": 29,
     "cappt": 5,
-    "handled": 28,
-    "done": 13,
-    "wip": 15,
-    "backlog": 8,
+    "handled": 29,
+    "done": 15,
+    "wip": 14,
+    "backlog": 7,
     "blnomail": 0,
     "cv": 48
    },
@@ -6598,7 +6598,7 @@
    },
    "web": {
     "leads": 40,
-    "cost": 126456,
+    "cost": 161772,
     "appts": 0,
     "mtgs": 0,
     "props": 0,
@@ -6612,7 +6612,7 @@
     "wip": 1,
     "backlog": 39,
     "blnomail": 2,
-    "cv": 56
+    "cv": 70
    },
    "line": {
     "leads": 0,
@@ -6703,7 +6703,7 @@
    },
    "web": {
     "leads": 8,
-    "cost": 22485,
+    "cost": 34273,
     "appts": 0,
     "mtgs": 0,
     "props": 0,
@@ -6717,7 +6717,7 @@
     "wip": 0,
     "backlog": 8,
     "blnomail": 0,
-    "cv": 8
+    "cv": 12
    },
    "line": {
     "leads": 0,
@@ -9644,11 +9644,11 @@
    "cappts": 2
   },
   "2026-11-17": {
-   "calls": 17,
+   "calls": 21,
    "connected": 5,
    "appts": 3,
    "mtgs": 0,
-   "called": 0,
+   "called": 1,
    "leads": 2,
    "vcalls": 11,
    "vconn": 3,
@@ -12303,7 +12303,7 @@
    "start": "2026-09-21",
    "end": "2026-09-30",
    "days": 10,
-   "cost": 119002,
+   "cost": 119130,
    "cost_days": 10,
    "cost_est_days": 0,
    "cost_manual": false,
@@ -12311,8 +12311,8 @@
    "cv_days": 10,
    "cv_est_days": 0,
    "cv_manual": false,
-   "imp": 54106,
-   "clicks": 724,
+   "imp": 54145,
+   "clicks": 725,
    "leads": 27,
    "deals": 4,
    "won": 0,
@@ -12323,7 +12323,7 @@
    "start": "2026-10-02",
    "end": "2026-10-08",
    "days": 7,
-   "cost": 77880,
+   "cost": 77907,
    "cost_days": 7,
    "cost_est_days": 0,
    "cost_manual": false,
@@ -12331,7 +12331,7 @@
    "cv_days": 7,
    "cv_est_days": 0,
    "cv_manual": false,
-   "imp": 42866,
+   "imp": 42873,
    "clicks": 698,
    "leads": 26,
    "deals": 2,
@@ -12363,7 +12363,7 @@
    "start": "2026-11-05",
    "end": "2026-11-11",
    "days": 7,
-   "cost": 115965,
+   "cost": 115979,
    "cost_days": 7,
    "cost_est_days": 0,
    "cost_manual": false,
@@ -12371,7 +12371,7 @@
    "cv_days": 7,
    "cv_est_days": 0,
    "cv_manual": false,
-   "imp": 54093,
+   "imp": 54100,
    "clicks": 1082,
    "leads": 41,
    "deals": 3,
@@ -12507,20 +12507,20 @@
    "cv": 25
   },
   "2026-09-21": {
-   "spend": 89260,
-   "imp": 37739,
-   "clicks": 504,
+   "spend": 89312,
+   "imp": 37757,
+   "clicks": 505,
    "cv": 19
   },
   "2026-09-28": {
-   "spend": 70516,
-   "imp": 40170,
+   "spend": 70592,
+   "imp": 40192,
    "clicks": 638,
    "cv": 42
   },
   "2026-10-05": {
-   "spend": 37106,
-   "imp": 19063,
+   "spend": 37133,
+   "imp": 19069,
    "clicks": 280,
    "cv": 19
   },
@@ -12531,8 +12531,8 @@
    "cv": 29
   },
   "2026-11-02": {
-   "spend": 104470,
-   "imp": 44129,
+   "spend": 104484,
+   "imp": 44136,
    "clicks": 896,
    "cv": 48
   },
@@ -12543,10 +12543,10 @@
    "cv": 56
   },
   "2026-11-16": {
-   "spend": 22485,
-   "imp": 9255,
-   "clicks": 189,
-   "cv": 8
+   "spend": 29329,
+   "imp": 12412,
+   "clicks": 250,
+   "cv": 11
   }
  },
  "adperf_day": {
@@ -13349,21 +13349,21 @@
    "cv": 1
   },
   "2026-09-22": {
-   "spend": 13148,
-   "imp": 4831,
+   "spend": 13150,
+   "imp": 4833,
    "clicks": 57,
    "cv": 1
   },
   "2026-09-23": {
-   "spend": 12175,
-   "imp": 5846,
+   "spend": 12183,
+   "imp": 5850,
    "clicks": 79,
    "cv": 2
   },
   "2026-09-24": {
-   "spend": 14788,
-   "imp": 5448,
-   "clicks": 74,
+   "spend": 14819,
+   "imp": 5456,
+   "clicks": 75,
    "cv": 6
   },
   "2026-09-25": {
@@ -13379,26 +13379,26 @@
    "cv": 4
   },
   "2026-09-27": {
-   "spend": 12327,
-   "imp": 6448,
+   "spend": 12338,
+   "imp": 6452,
    "clicks": 88,
    "cv": 1
   },
   "2026-09-28": {
-   "spend": 11241,
-   "imp": 5489,
+   "spend": 11246,
+   "imp": 5492,
    "clicks": 81,
    "cv": 11
   },
   "2026-09-29": {
-   "spend": 12660,
-   "imp": 7883,
+   "spend": 12662,
+   "imp": 7886,
    "clicks": 88,
    "cv": 5
   },
   "2026-09-30": {
-   "spend": 5841,
-   "imp": 2995,
+   "spend": 5910,
+   "imp": 3010,
    "clicks": 51,
    "cv": 7
   },
@@ -13422,13 +13422,13 @@
   },
   "2026-10-04": {
    "spend": 13066,
-   "imp": 7508,
+   "imp": 7509,
    "clicks": 151,
    "cv": 8
   },
   "2026-10-05": {
-   "spend": 8755,
-   "imp": 4277,
+   "spend": 8760,
+   "imp": 4280,
    "clicks": 51,
    "cv": 2
   },
@@ -13439,8 +13439,8 @@
    "cv": 4
   },
   "2026-10-07": {
-   "spend": 13077,
-   "imp": 7613,
+   "spend": 13099,
+   "imp": 7616,
    "clicks": 121,
    "cv": 10
   },
@@ -13505,20 +13505,20 @@
    "cv": 7
   },
   "2026-11-06": {
-   "spend": 22721,
-   "imp": 11162,
+   "spend": 22730,
+   "imp": 11164,
    "clicks": 236,
    "cv": 9
   },
   "2026-11-07": {
    "spend": 23166,
-   "imp": 11058,
+   "imp": 11059,
    "clicks": 216,
    "cv": 9
   },
   "2026-11-08": {
-   "spend": 13023,
-   "imp": 5701,
+   "spend": 13028,
+   "imp": 5705,
    "clicks": 109,
    "cv": 10
   },
@@ -13565,16 +13565,16 @@
    "cv": 7
   },
   "2026-11-16": {
-   "spend": 17004,
-   "imp": 7031,
+   "spend": 17020,
+   "imp": 7039,
    "clicks": 142,
    "cv": 8
   },
   "2026-11-17": {
-   "spend": 5481,
-   "imp": 2224,
-   "clicks": 47,
-   "cv": 0
+   "spend": 12309,
+   "imp": 5373,
+   "clicks": 108,
+   "cv": 3
   }
  },
  "ad_day": {
@@ -15953,6 +15953,12 @@
    }
   },
   "2026-09-21": {
+   "Meta/あおぞらTech": {
+    "spend": 7083,
+    "imp": 970,
+    "clicks": 33,
+    "cv": 0
+   },
    "Meta/ウェビナー": {
     "spend": 5588,
     "imp": 2043,
@@ -15961,26 +15967,32 @@
    }
   },
   "2026-09-22": {
+   "Meta/あおぞらTech": {
+    "spend": 4158,
+    "imp": 634,
+    "clicks": 16,
+    "cv": 0
+   },
    "Meta/ウェビナー": {
-    "spend": 13148,
-    "imp": 4831,
+    "spend": 13150,
+    "imp": 4833,
     "clicks": 57,
     "cv": 1
    }
   },
   "2026-09-23": {
    "Meta/ウェビナー": {
-    "spend": 12175,
-    "imp": 5846,
+    "spend": 12183,
+    "imp": 5850,
     "clicks": 79,
     "cv": 2
    }
   },
   "2026-09-24": {
    "Meta/ウェビナー": {
-    "spend": 14788,
-    "imp": 5448,
-    "clicks": 74,
+    "spend": 14819,
+    "imp": 5456,
+    "clicks": 75,
     "cv": 6
    }
   },
@@ -16002,32 +16014,32 @@
   },
   "2026-09-27": {
    "Meta/ウェビナー": {
-    "spend": 12327,
-    "imp": 6448,
+    "spend": 12338,
+    "imp": 6452,
     "clicks": 88,
     "cv": 1
    }
   },
   "2026-09-28": {
    "Meta/ウェビナー": {
-    "spend": 11241,
-    "imp": 5489,
+    "spend": 11246,
+    "imp": 5492,
     "clicks": 81,
     "cv": 11
    }
   },
   "2026-09-29": {
    "Meta/ウェビナー": {
-    "spend": 12660,
-    "imp": 7883,
+    "spend": 12662,
+    "imp": 7886,
     "clicks": 88,
     "cv": 5
    }
   },
   "2026-09-30": {
    "Meta/ウェビナー": {
-    "spend": 5841,
-    "imp": 2995,
+    "spend": 5910,
+    "imp": 3010,
     "clicks": 51,
     "cv": 7
    }
@@ -16059,15 +16071,15 @@
   "2026-10-04": {
    "Meta/ウェビナー": {
     "spend": 13066,
-    "imp": 7508,
+    "imp": 7509,
     "clicks": 151,
     "cv": 8
    }
   },
   "2026-10-05": {
    "Meta/ウェビナー": {
-    "spend": 8755,
-    "imp": 4277,
+    "spend": 8760,
+    "imp": 4280,
     "clicks": 51,
     "cv": 2
    }
@@ -16082,8 +16094,8 @@
   },
   "2026-10-07": {
    "Meta/ウェビナー": {
-    "spend": 13077,
-    "imp": 7613,
+    "spend": 13099,
+    "imp": 7616,
     "clicks": 121,
     "cv": 10
    }
@@ -16170,8 +16182,8 @@
   },
   "2026-11-06": {
    "Meta/ウェビナー": {
-    "spend": 22721,
-    "imp": 11162,
+    "spend": 22730,
+    "imp": 11164,
     "clicks": 236,
     "cv": 9
    }
@@ -16179,20 +16191,26 @@
   "2026-11-07": {
    "Meta/ウェビナー": {
     "spend": 23166,
-    "imp": 11058,
+    "imp": 11059,
     "clicks": 216,
     "cv": 9
    }
   },
   "2026-11-08": {
    "Meta/ウェビナー": {
-    "spend": 13023,
-    "imp": 5701,
+    "spend": 13028,
+    "imp": 5705,
     "clicks": 109,
     "cv": 10
    }
   },
   "2026-11-09": {
+   "Meta/あおぞらTech": {
+    "spend": 6374,
+    "imp": 1026,
+    "clicks": 53,
+    "cv": 2
+   },
    "Meta/ウェビナー": {
     "spend": 17485,
     "imp": 8796,
@@ -16201,6 +16219,12 @@
    }
   },
   "2026-11-10": {
+   "Meta/あおぞらTech": {
+    "spend": 5326,
+    "imp": 948,
+    "clicks": 48,
+    "cv": 1
+   },
    "Meta/ウェビナー": {
     "spend": 12912,
     "imp": 6150,
@@ -16209,6 +16233,12 @@
    }
   },
   "2026-11-11": {
+   "Meta/あおぞらTech": {
+    "spend": 4951,
+    "imp": 1011,
+    "clicks": 35,
+    "cv": 5
+   },
    "Meta/ウェビナー": {
     "spend": 18316,
     "imp": 7402,
@@ -16217,6 +16247,12 @@
    }
   },
   "2026-11-12": {
+   "Meta/あおぞらTech": {
+    "spend": 4973,
+    "imp": 1019,
+    "clicks": 45,
+    "cv": 0
+   },
    "Meta/ウェビナー": {
     "spend": 21241,
     "imp": 9292,
@@ -16225,6 +16261,12 @@
    }
   },
   "2026-11-13": {
+   "Meta/あおぞらTech": {
+    "spend": 3559,
+    "imp": 895,
+    "clicks": 46,
+    "cv": 2
+   },
    "Meta/ウェビナー": {
     "spend": 20408,
     "imp": 10277,
@@ -16233,6 +16275,12 @@
    }
   },
   "2026-11-14": {
+   "Meta/あおぞらTech": {
+    "spend": 4446,
+    "imp": 946,
+    "clicks": 28,
+    "cv": 2
+   },
    "Meta/ウェビナー": {
     "spend": 15537,
     "imp": 8906,
@@ -16241,6 +16289,12 @@
    }
   },
   "2026-11-15": {
+   "Meta/あおぞらTech": {
+    "spend": 5687,
+    "imp": 1100,
+    "clicks": 28,
+    "cv": 2
+   },
    "Meta/ウェビナー": {
     "spend": 20557,
     "imp": 11036,
@@ -16249,19 +16303,25 @@
    }
   },
   "2026-11-16": {
+   "Meta/あおぞらTech": {
+    "spend": 4944,
+    "imp": 942,
+    "clicks": 45,
+    "cv": 1
+   },
    "Meta/ウェビナー": {
-    "spend": 17004,
-    "imp": 7031,
+    "spend": 17020,
+    "imp": 7039,
     "clicks": 142,
     "cv": 8
    }
   },
   "2026-11-17": {
    "Meta/ウェビナー": {
-    "spend": 5481,
-    "imp": 2224,
-    "clicks": 47,
-    "cv": 0
+    "spend": 12309,
+    "imp": 5373,
+    "clicks": 108,
+    "cv": 3
    }
   }
  },
@@ -35911,7 +35971,7 @@
    },
    "web": {
     "leads": 1,
-    "cost": 5588,
+    "cost": 12671,
     "appts": 0,
     "mtgs": 0,
     "props": 0,
@@ -36016,7 +36076,7 @@
    },
    "web": {
     "leads": 2,
-    "cost": 13148,
+    "cost": 17308,
     "appts": 0,
     "mtgs": 0,
     "props": 0,
@@ -36121,7 +36181,7 @@
    },
    "web": {
     "leads": 2,
-    "cost": 12175,
+    "cost": 12183,
     "appts": 0,
     "mtgs": 0,
     "props": 0,
@@ -36226,7 +36286,7 @@
    },
    "web": {
     "leads": 5,
-    "cost": 14788,
+    "cost": 14819,
     "appts": 0,
     "mtgs": 0,
     "props": 0,
@@ -36541,7 +36601,7 @@
    },
    "web": {
     "leads": 1,
-    "cost": 12327,
+    "cost": 12338,
     "appts": 1,
     "mtgs": 0,
     "props": 0,
@@ -36646,7 +36706,7 @@
    },
    "web": {
     "leads": 5,
-    "cost": 11241,
+    "cost": 11246,
     "appts": 2,
     "mtgs": 0,
     "props": 0,
@@ -36751,7 +36811,7 @@
    },
    "web": {
     "leads": 3,
-    "cost": 12660,
+    "cost": 12662,
     "appts": 1,
     "mtgs": 1,
     "props": 1,
@@ -36856,7 +36916,7 @@
    },
    "web": {
     "leads": 3,
-    "cost": 5841,
+    "cost": 5910,
     "appts": 0,
     "mtgs": 0,
     "props": 0,
@@ -37381,7 +37441,7 @@
    },
    "web": {
     "leads": 3,
-    "cost": 8755,
+    "cost": 8760,
     "appts": 0,
     "mtgs": 0,
     "props": 0,
@@ -37591,7 +37651,7 @@
    },
    "web": {
     "leads": 4,
-    "cost": 13077,
+    "cost": 13099,
     "appts": 1,
     "mtgs": 1,
     "props": 1,
@@ -39266,7 +39326,7 @@
    },
    "web": {
     "leads": 8,
-    "cost": 22721,
+    "cost": 22730,
     "appts": 0,
     "mtgs": 0,
     "props": 0,
@@ -39276,8 +39336,8 @@
     "called": 7,
     "cappt": 0,
     "handled": 7,
-    "done": 2,
-    "wip": 5,
+    "done": 3,
+    "wip": 4,
     "backlog": 1,
     "blnomail": 0,
     "cv": 9
@@ -39381,8 +39441,8 @@
     "called": 5,
     "cappt": 1,
     "handled": 5,
-    "done": 3,
-    "wip": 2,
+    "done": 4,
+    "wip": 1,
     "backlog": 3,
     "blnomail": 0,
     "cv": 9
@@ -39476,19 +39536,19 @@
    },
    "web": {
     "leads": 6,
-    "cost": 13023,
+    "cost": 13028,
     "appts": 1,
     "mtgs": 0,
     "props": 0,
     "deals": 1,
     "won": 0,
     "won_amount": 0,
-    "called": 3,
+    "called": 4,
     "cappt": 1,
-    "handled": 3,
+    "handled": 4,
     "done": 1,
-    "wip": 2,
-    "backlog": 3,
+    "wip": 3,
+    "backlog": 2,
     "blnomail": 0,
     "cv": 10
    },
@@ -39581,7 +39641,7 @@
    },
    "web": {
     "leads": 8,
-    "cost": 17485,
+    "cost": 23859,
     "appts": 0,
     "mtgs": 0,
     "props": 0,
@@ -39595,7 +39655,7 @@
     "wip": 0,
     "backlog": 8,
     "blnomail": 1,
-    "cv": 8
+    "cv": 10
    },
    "line": {
     "leads": 0,
@@ -39686,7 +39746,7 @@
    },
    "web": {
     "leads": 2,
-    "cost": 12912,
+    "cost": 18238,
     "appts": 0,
     "mtgs": 0,
     "props": 0,
@@ -39700,7 +39760,7 @@
     "wip": 0,
     "backlog": 2,
     "blnomail": 0,
-    "cv": 1
+    "cv": 2
    },
    "line": {
     "leads": 0,
@@ -39791,7 +39851,7 @@
    },
    "web": {
     "leads": 7,
-    "cost": 18316,
+    "cost": 23267,
     "appts": 0,
     "mtgs": 0,
     "props": 0,
@@ -39805,7 +39865,7 @@
     "wip": 1,
     "backlog": 6,
     "blnomail": 0,
-    "cv": 12
+    "cv": 17
    },
    "line": {
     "leads": 0,
@@ -39896,7 +39956,7 @@
    },
    "web": {
     "leads": 10,
-    "cost": 21241,
+    "cost": 26214,
     "appts": 0,
     "mtgs": 0,
     "props": 0,
@@ -40001,7 +40061,7 @@
    },
    "web": {
     "leads": 4,
-    "cost": 20408,
+    "cost": 23967,
     "appts": 0,
     "mtgs": 0,
     "props": 0,
@@ -40015,7 +40075,7 @@
     "wip": 0,
     "backlog": 4,
     "blnomail": 0,
-    "cv": 8
+    "cv": 10
    },
    "line": {
     "leads": 0,
@@ -40106,7 +40166,7 @@
    },
    "web": {
     "leads": 4,
-    "cost": 15537,
+    "cost": 19983,
     "appts": 0,
     "mtgs": 0,
     "props": 0,
@@ -40120,7 +40180,7 @@
     "wip": 0,
     "backlog": 4,
     "blnomail": 0,
-    "cv": 7
+    "cv": 9
    },
    "line": {
     "leads": 0,
@@ -40211,7 +40271,7 @@
    },
    "web": {
     "leads": 5,
-    "cost": 20557,
+    "cost": 26244,
     "appts": 0,
     "mtgs": 0,
     "props": 0,
@@ -40225,7 +40285,7 @@
     "wip": 0,
     "backlog": 5,
     "blnomail": 0,
-    "cv": 7
+    "cv": 9
    },
    "line": {
     "leads": 0,
@@ -40316,7 +40376,7 @@
    },
    "web": {
     "leads": 6,
-    "cost": 17004,
+    "cost": 21964,
     "appts": 0,
     "mtgs": 0,
     "props": 0,
@@ -40330,7 +40390,7 @@
     "wip": 0,
     "backlog": 6,
     "blnomail": 0,
-    "cv": 8
+    "cv": 9
    },
    "line": {
     "leads": 0,
@@ -40421,7 +40481,7 @@
    },
    "web": {
     "leads": 2,
-    "cost": 5481,
+    "cost": 12309,
     "appts": 0,
     "mtgs": 0,
     "props": 0,
@@ -40435,7 +40495,7 @@
     "wip": 0,
     "backlog": 2,
     "blnomail": 0,
-    "cv": 0
+    "cv": 3
    },
    "line": {
     "leads": 0,
@@ -40921,7 +40981,7 @@
    "appointed": 4
   },
   "2026-11-16": {
-   "called": 21,
+   "called": 22,
    "appointed": 4
   }
  }
