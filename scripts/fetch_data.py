@@ -517,6 +517,9 @@ def fetch_ad_daily(token, week_starts, campaign_cfg):
                 f"実際のヘッダー: {header}"
             )
         cols[name] = header.index(name)
+    # 「広告」列は任意。Metaのウェビナーキャンペーンだけ広告単位で入れている
+    # （GAS の MD_AD_LEVEL）。無いシートでも読めるようにしておく。
+    ad_col = header.index("広告") if "広告" in header else None
 
     campaigns = {
         k: v for k, v in (campaign_cfg.get("campaigns") or {}).items()
@@ -528,6 +531,13 @@ def fetch_ad_daily(token, week_starts, campaign_cfg):
     # ウェビナーキャンペーンだけの日次。回ごとの掲載期間で切って使う。
     wcost_by_day, wcv_by_day = {}, {}
     wimp_by_day, wclk_by_day = {}, {}
+    # 広告名 → 日 → 実績。**ウェビナーの回をまたぐ広告があるので要る。**
+    # 1本のキャンペーンの中に「第N回ウェビナー」という広告が回ごとにあり、
+    # 次の回の広告を前の回の掲載期間中に走らせている（実測: 第16回の広告は
+    # 2026-11-04 から、第15回の期間中に開始。第15回の広告は 11-09 まで、
+    # 第16回の期間中まで継続）。日付で切るかぎり、重なった日の費用は
+    # どちらか一方の回に丸ごと乗る。広告名で引けば正しく割れる。
+    wb_ad_day = {}
     adperf, adperf_day = {}, {}
     # 日 × 媒体 × キャンペーンの生データ。ここだけは集計せずに一番細かい粒度で
     # 残す。媒体別・キャンペーン別・その掛け合わせ・全体のどれでも後から計算
@@ -555,10 +565,14 @@ def fetch_ad_daily(token, week_starts, campaign_cfg):
         camp = (str(row[cols["キャンペーン"]]).strip()
                 if len(row) > cols["キャンペーン"] else "")
         pair = f"{media}/{camp}"
+        ad_name = (str(row[ad_col]).strip()
+                   if ad_col is not None and len(row) > ad_col else "")
 
         # 同じ日・同じ媒体・同じキャンペーンが2行あると二重計上になる。
         # 貼り付けのやり直しで起きやすいので、気づけるようにしておく。
-        key = (d, media, camp)
+        # **広告名までキーに入れる。** ウェビナーは広告単位で1日に複数行入る
+        # ので、広告名を見ないと正常な行を重複と誤って報告する。
+        key = (d, media, camp, ad_name)
         if key in seen:
             dup_rows += 1
         seen.add(key)
@@ -599,6 +613,13 @@ def fetch_ad_daily(token, week_starts, campaign_cfg):
         wcv_by_day[d] = wcv_by_day.get(d, 0.0) + cvv
         wimp_by_day[d] = wimp_by_day.get(d, 0.0) + imp
         wclk_by_day[d] = wclk_by_day.get(d, 0.0) + clicks
+        if ad_name:
+            a = wb_ad_day.setdefault(ad_name, {}).setdefault(
+                d, {"spend": 0.0, "imp": 0.0, "clicks": 0.0, "cv": 0.0})
+            a["spend"] += spend
+            a["imp"] += imp
+            a["clicks"] += clicks
+            a["cv"] += cvv
         # 週次と日次の両方に積む。週次だけにすると、期間指定を1日に絞った
         # ときにその週まるごとの値が出てしまう。
         for bucket, bkey in (
@@ -619,7 +640,7 @@ def fetch_ad_daily(token, week_starts, campaign_cfg):
         )
     if dup_rows:
         warn(
-            f"広告日次シートに同じ日付×媒体×キャンペーンの行が {dup_rows} 組"
+            f"広告日次シートに同じ日付×媒体×キャンペーン×広告の行が {dup_rows} 組"
             "あります。二重計上になっているので、シート側を確認してください。"
         )
     if unknown_pairs:
@@ -658,7 +679,7 @@ def fetch_ad_daily(token, week_starts, campaign_cfg):
 
     return (cost, cost_by_day, cv_by_day, cv,
             wcost_by_day, wcv_by_day, wimp_by_day, wclk_by_day,
-            adperf, adperf_day, ad_day)
+            adperf, adperf_day, ad_day, wb_ad_day)
 
 
 def fetch_expo_costs(token):
@@ -1067,7 +1088,7 @@ def build(token, sheets_token, channel_map, webinar_cfg, campaign_cfg,
     # --- web 費用
     (web_cost, web_cost_day, web_cv_day, web_cv,
      wb_cost_day, wb_cv_day, wb_imp_day, wb_clk_day, adperf, adperf_day,
-     ad_day) = fetch_ad_daily(sheets_token, week_starts, campaign_cfg)
+     ad_day, wb_ad_day) = fetch_ad_daily(sheets_token, week_starts, campaign_cfg)
     for w in week_starts:
         direct[w]["web"]["cost"] = web_cost[w]
         # CPLの分母は広告側のCV（申込延べ数）に揃える。HubSpotのリード数は
@@ -1229,26 +1250,82 @@ def build(token, sheets_token, channel_map, webinar_cfg, campaign_cfg,
         # 実額を書いて上書きする（cost / cv）。推定で埋めるより、
         # 手元にある正しい数字を入れたほうが確かなため。
         days = [ws + dt.timedelta(days=i) for i in range((we - ws).days + 1)]
-        cost_days = [d for d in days if d in wb_cost_day]
-        cost = int(round(sum(wb_cost_day[d] for d in cost_days))) if cost_days else None
-        cv_days = [d for d in days if d in wb_cv_day]
-        cv = int(round(sum(wb_cv_day[d] for d in cv_days))) if cv_days else None
-        exact_days = len(cost_days)
-        est_days = 0
-        cv_est = 0
+        # --- 広告費まわりは、広告名が引けるなら広告名で引く
+        #
+        # **日付で切ると回をまたぐ。** 1本のキャンペーンの中に「第N回ウェビナー」
+        # という広告が回ごとにあり、次の回の広告を前の回の掲載期間中から
+        # 走らせている。実測（2026-11-18 に広告マネージャで確認）:
+        #   第16回の広告 … 2026-11-04 開始（第15回の期間は 10-28〜11-04）
+        #   第15回の広告 … 2026-11-09 まで継続（第16回の期間は 11-05〜11-11）
+        #   11-11 は第16回・第17回が同時に走っていた（¥8,736 と ¥9,580）
+        # 日付で切るかぎり、重なった日の費用はどちらか一方の回に丸ごと乗る。
+        #
+        # **リード・商談・成約は日付でしか切れない。** どの回も同じ
+        # 「ウェビナー申込みフォーム」から入るので、HubSpot側に回の区別が無い。
+        # なのでこの回だけ「費用は広告軸・リードは日付軸」になる。軸が違うものを
+        # 並べるのは普段やらないが、費用を取り違えるほうが害が大きいので許す。
+        # CPLは分子も分母（CV）も広告軸でそろうので、ここは正しくなる。
+        ad_names = [a for a in (wb.get("ads") or []) if a in wb_ad_day]
+        if wb.get("ads") and not ad_names:
+            # 広告名の打ち間違い・シート側の未取得で黙って0円にしない。
+            warn(
+                f"webinars.json の『{wb.get('name')}』に書いてある広告名が"
+                f"広告日次シートにありません（{wb.get('ads')}）。"
+                "日付で切る従来の方法に戻しています。"
+            )
+        if ad_names:
+            per_day = {}
+            for a in ad_names:
+                for d, v in wb_ad_day[a].items():
+                    s = per_day.setdefault(
+                        d, {"spend": 0.0, "imp": 0.0, "clicks": 0.0, "cv": 0.0})
+                    for k in s:
+                        s[k] += v[k]
+            cost = int(round(sum(v["spend"] for v in per_day.values())))
+            cv = int(round(sum(v["cv"] for v in per_day.values())))
+            imp = int(round(sum(v["imp"] for v in per_day.values())))
+            clicks = int(round(sum(v["clicks"] for v in per_day.values())))
+            cost_days = sorted(per_day)
+            cv_days = cost_days
+            exact_days = len(cost_days)
+            est_days = 0
+            cv_est = 0
+            if cost_days:
+                print(
+                    f"[info] ウェビナー『{wb.get('name')}』: 広告"
+                    f"{'・'.join(ad_names)} の {cost_days[0]}〜{cost_days[-1]}"
+                    f"（{len(cost_days)}日）を集計（掲載期間は {ws}〜{we}）",
+                    file=sys.stderr)
+        else:
+            # 費用とCVはウェビナーキャンペーンの日次だけを合計する。
+            # 週次タブにはキャンペーン別の内訳が無いため、日次入力が始まる
+            # 2026-06-09 より前は算出できない。その期間は設定ファイルに
+            # 実額を書いて上書きする（cost / cv）。推定で埋めるより、
+            # 手元にある正しい数字を入れたほうが確かなため。
+            cost_days = [d for d in days if d in wb_cost_day]
+            cost = (int(round(sum(wb_cost_day[d] for d in cost_days)))
+                    if cost_days else None)
+            cv_days = [d for d in days if d in wb_cv_day]
+            cv = (int(round(sum(wb_cv_day[d] for d in cv_days)))
+                  if cv_days else None)
+            exact_days = len(cost_days)
+            est_days = 0
+            cv_est = 0
+            # 表示回数とクリックも同じ期間で切る。CPL = CPM ÷ (CTR × CVR) なので、
+            # 回ごとのCPLが動いたときに「表示単価か、クリック率か、申込率か」を
+            # 切り分けられる。手入力の上書きは用意しない（cost / cv だけの経緯）。
+            imp_days = [d for d in days if d in wb_imp_day]
+            imp = (int(round(sum(wb_imp_day[d] for d in imp_days)))
+                   if imp_days else None)
+            clk_days = [d for d in days if d in wb_clk_day]
+            clicks = (int(round(sum(wb_clk_day[d] for d in clk_days)))
+                      if clk_days else None)
         # 設定に実額があればそれを優先する。
         if wb.get("cost") is not None:
             cost = int(wb["cost"])
             exact_days = len(days)
         if wb.get("cv") is not None:
             cv = int(wb["cv"])
-        # 表示回数とクリックも同じ期間で切る。CPL = CPM ÷ (CTR × CVR) なので、
-        # 回ごとのCPLが動いたときに「表示単価か、クリック率か、申込率か」を
-        # 切り分けられる。手入力の上書きは用意しない（cost / cv だけの経緯）。
-        imp_days = [d for d in days if d in wb_imp_day]
-        imp = int(round(sum(wb_imp_day[d] for d in imp_days))) if imp_days else None
-        clk_days = [d for d in days if d in wb_clk_day]
-        clicks = int(round(sum(wb_clk_day[d] for d in clk_days))) if clk_days else None
 
         webinars_out.append({
             "name": wb.get("name") or "(名前なし)",
