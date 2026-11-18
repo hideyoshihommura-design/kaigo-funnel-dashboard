@@ -6273,12 +6273,12 @@
     "deals": 8,
     "won": 0,
     "won_amount": 0,
-    "called": 114,
+    "called": 120,
     "cappt": 8,
-    "handled": 114,
-    "done": 30,
-    "wip": 84,
-    "backlog": 53,
+    "handled": 120,
+    "done": 32,
+    "wip": 88,
+    "backlog": 47,
     "blnomail": 4
    },
    "web": {
@@ -6608,8 +6608,8 @@
     "called": 8,
     "cappt": 0,
     "handled": 8,
-    "done": 2,
-    "wip": 6,
+    "done": 3,
+    "wip": 5,
     "backlog": 32,
     "blnomail": 2,
     "cv": 70
@@ -6702,7 +6702,7 @@
     "blnomail": 0
    },
    "web": {
-    "leads": 13,
+    "leads": 17,
     "cost": 54629,
     "appts": 0,
     "mtgs": 0,
@@ -6715,7 +6715,7 @@
     "handled": 0,
     "done": 0,
     "wip": 0,
-    "backlog": 13,
+    "backlog": 17,
     "blnomail": 1,
     "cv": 17
    },
@@ -9656,15 +9656,15 @@
    "cappts": 3
   },
   "2026-11-18": {
-   "calls": 0,
-   "connected": 0,
+   "calls": 16,
+   "connected": 5,
    "appts": 0,
    "mtgs": 0,
-   "called": 0,
-   "leads": 3,
-   "vcalls": 0,
-   "vconn": 0,
-   "vcalled": 0,
+   "called": 8,
+   "leads": 7,
+   "vcalls": 16,
+   "vconn": 5,
+   "vcalled": 8,
    "cappts": 0
   }
  },
@@ -12393,6 +12393,26 @@
    "clicks": 1082,
    "leads": 41,
    "deals": 3,
+   "won": 0,
+   "won_amount": 0
+  },
+  {
+   "name": "第17回 勤務表",
+   "start": "2026-11-12",
+   "end": "2026-11-18",
+   "days": 7,
+   "cost": 123823,
+   "cost_days": 7,
+   "cost_est_days": 0,
+   "cost_manual": false,
+   "cv": 51,
+   "cv_days": 7,
+   "cv_est_days": 0,
+   "cv_manual": false,
+   "imp": 60557,
+   "clicks": 1227,
+   "leads": 40,
+   "deals": 0,
    "won": 0,
    "won_amount": 0
   }
@@ -38201,12 +38221,12 @@
     "deals": 8,
     "won": 0,
     "won_amount": 0,
-    "called": 114,
+    "called": 120,
     "cappt": 8,
-    "handled": 114,
-    "done": 30,
-    "wip": 84,
-    "backlog": 53,
+    "handled": 120,
+    "done": 32,
+    "wip": 88,
+    "backlog": 47,
     "blnomail": 4
    },
    "web": {
@@ -39899,8 +39919,8 @@
     "called": 1,
     "cappt": 0,
     "handled": 1,
-    "done": 0,
-    "wip": 1,
+    "done": 1,
+    "wip": 0,
     "backlog": 6,
     "blnomail": 0,
     "cv": 17
@@ -40623,7 +40643,7 @@
     "blnomail": 0
    },
    "web": {
-    "leads": 3,
+    "leads": 7,
     "cost": 5139,
     "appts": 0,
     "mtgs": 0,
@@ -40636,7 +40656,7 @@
     "handled": 0,
     "done": 0,
     "wip": 0,
-    "backlog": 3,
+    "backlog": 7,
     "blnomail": 0,
     "cv": 1
    },
@@ -41124,7 +41144,7 @@
    "appointed": 4
   },
   "2026-11-16": {
-   "called": 30,
+   "called": 38,
    "appointed": 4
   }
  }
