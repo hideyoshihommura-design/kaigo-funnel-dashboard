@@ -1,6 +1,6 @@
 {
  "title": "ホリエモンAI学校 介護校 ファネルダッシュボード",
- "generated_at": "2026-11-19",
+ "generated_at": "2026-11-20",
  "week_starts": [
   "2025-09-01",
   "2025-09-08",
@@ -6599,14 +6599,14 @@
    "web": {
     "leads": 40,
     "cost": 161772,
-    "appts": 0,
+    "appts": 1,
     "mtgs": 0,
     "props": 0,
     "deals": 1,
     "won": 0,
     "won_amount": 0,
     "called": 25,
-    "cappt": 0,
+    "cappt": 1,
     "handled": 25,
     "done": 10,
     "wip": 15,
@@ -9670,14 +9670,14 @@
   "2026-11-19": {
    "calls": 24,
    "connected": 10,
-   "appts": 0,
+   "appts": 1,
    "mtgs": 0,
    "called": 13,
    "leads": 0,
    "vcalls": 24,
    "vconn": 10,
    "vcalled": 15,
-   "cappts": 0
+   "cappts": 1
   }
  },
  "fs": {
@@ -10251,7 +10251,7 @@
   "2026-11": {
    "2026-11": {
     "2026-11": 2,
-    "pending": 5
+    "pending": 6
    }
   }
  },
@@ -12112,8 +12112,8 @@
   },
   "2026-11-19": {
    "vendor": {
-    "appts": 0,
-    "deals": 0,
+    "appts": 1,
+    "deals": 1,
     "mtgs": 0,
     "props": 0,
     "wons": 0,
@@ -12121,7 +12121,7 @@
    },
    "inhouse": {
     "appts": 0,
-    "deals": 1,
+    "deals": 0,
     "mtgs": 0,
     "props": 0,
     "wons": 0,
@@ -40083,14 +40083,14 @@
    "web": {
     "leads": 10,
     "cost": 26214,
-    "appts": 0,
+    "appts": 1,
     "mtgs": 0,
     "props": 0,
     "deals": 1,
     "won": 0,
     "won_amount": 0,
     "called": 9,
-    "cappt": 0,
+    "cappt": 1,
     "handled": 9,
     "done": 4,
     "wip": 5,
@@ -41318,7 +41318,7 @@
   },
   "2026-11-16": {
    "called": 59,
-   "appointed": 4
+   "appointed": 5
   }
  }
 }
