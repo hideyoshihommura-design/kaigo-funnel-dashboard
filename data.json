@@ -6703,7 +6703,7 @@
    },
    "web": {
     "leads": 17,
-    "cost": 61297,
+    "cost": 64415,
     "appts": 0,
     "mtgs": 0,
     "props": 0,
@@ -12425,7 +12425,7 @@
    "start": "2026-11-12",
    "end": "2026-11-18",
    "days": 7,
-   "cost": 138123,
+   "cost": 138326,
    "cost_days": 8,
    "cost_est_days": 0,
    "cost_manual": false,
@@ -12433,9 +12433,9 @@
    "cv_days": 8,
    "cv_est_days": 0,
    "cv_manual": false,
-   "imp": 66280,
-   "clicks": 1359,
-   "leads": 40,
+   "imp": 66332,
+   "clicks": 1360,
+   "leads": 39,
    "deals": 0,
    "won": 0,
    "won_amount": 0
@@ -12605,9 +12605,9 @@
    "cv": 56
   },
   "2026-11-16": {
-   "spend": 50801,
-   "imp": 22877,
-   "clicks": 491,
+   "spend": 51004,
+   "imp": 22929,
+   "clicks": 492,
    "cv": 23
   }
  },
@@ -13633,15 +13633,15 @@
    "cv": 8
   },
   "2026-11-17": {
-   "spend": 23941,
-   "imp": 11604,
+   "spend": 23943,
+   "imp": 11607,
    "clicks": 236,
    "cv": 7
   },
   "2026-11-18": {
-   "spend": 9837,
-   "imp": 4232,
-   "clicks": 113,
+   "spend": 10038,
+   "imp": 4281,
+   "clicks": 114,
    "cv": 8
   }
  },
@@ -16372,8 +16372,8 @@
   },
   "2026-11-16": {
    "Meta/あおぞらTech": {
-    "spend": 5532,
-    "imp": 1029,
+    "spend": 5538,
+    "imp": 1030,
     "clicks": 49,
     "cv": 1
    },
@@ -16386,23 +16386,29 @@
   },
   "2026-11-17": {
    "Meta/あおぞらTech": {
-    "spend": 4964,
-    "imp": 969,
+    "spend": 5090,
+    "imp": 978,
     "clicks": 34,
     "cv": 2
    },
    "Meta/ウェビナー": {
-    "spend": 23941,
-    "imp": 11604,
+    "spend": 23943,
+    "imp": 11607,
     "clicks": 236,
     "cv": 7
    }
   },
   "2026-11-18": {
+   "Meta/あおぞらTech": {
+    "spend": 2783,
+    "imp": 449,
+    "clicks": 18,
+    "cv": 0
+   },
    "Meta/ウェビナー": {
-    "spend": 9837,
-    "imp": 4232,
-    "clicks": 113,
+    "spend": 10038,
+    "imp": 4281,
+    "clicks": 114,
     "cv": 8
    }
   }
@@ -40458,7 +40464,7 @@
    },
    "web": {
     "leads": 6,
-    "cost": 22555,
+    "cost": 22561,
     "appts": 0,
     "mtgs": 0,
     "props": 0,
@@ -40563,7 +40569,7 @@
    },
    "web": {
     "leads": 4,
-    "cost": 28905,
+    "cost": 29033,
     "appts": 0,
     "mtgs": 0,
     "props": 0,
@@ -40668,7 +40674,7 @@
    },
    "web": {
     "leads": 7,
-    "cost": 9837,
+    "cost": 12821,
     "appts": 0,
     "mtgs": 0,
     "props": 0,
