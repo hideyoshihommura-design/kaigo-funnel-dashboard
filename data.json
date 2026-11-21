@@ -6702,8 +6702,8 @@
     "blnomail": 0
    },
    "web": {
-    "leads": 26,
-    "cost": 69428,
+    "leads": 29,
+    "cost": 110211,
     "appts": 0,
     "mtgs": 0,
     "props": 0,
@@ -6715,9 +6715,9 @@
     "handled": 10,
     "done": 4,
     "wip": 6,
-    "backlog": 16,
+    "backlog": 19,
     "blnomail": 2,
-    "cv": 26
+    "cv": 49
    },
    "line": {
     "leads": 0,
@@ -9697,7 +9697,7 @@
    "appts": 0,
    "mtgs": 0,
    "called": 0,
-   "leads": 2,
+   "leads": 5,
    "vcalls": 0,
    "vconn": 0,
    "vcalled": 0,
@@ -12677,10 +12677,10 @@
    "cv": 56
   },
   "2026-11-16": {
-   "spend": 51010,
-   "imp": 22932,
-   "clicks": 492,
-   "cv": 23
+   "spend": 87208,
+   "imp": 35514,
+   "clicks": 1018,
+   "cv": 44
   }
  },
  "adperf_day": {
@@ -13715,6 +13715,18 @@
    "imp": 4282,
    "clicks": 114,
    "cv": 8
+  },
+  "2026-11-20": {
+   "spend": 27958,
+   "imp": 10212,
+   "clicks": 381,
+   "cv": 16
+  },
+  "2026-11-21": {
+   "spend": 8240,
+   "imp": 2370,
+   "clicks": 145,
+   "cv": 5
   }
  },
  "ad_day": {
@@ -16474,7 +16486,7 @@
    "Meta/あおぞらTech": {
     "spend": 5325,
     "imp": 734,
-    "clicks": 28,
+    "clicks": 29,
     "cv": 0
    },
    "Meta/ウェビナー": {
@@ -16486,10 +16498,32 @@
   },
   "2026-11-19": {
    "Meta/あおぞらTech": {
-    "spend": 2457,
-    "imp": 417,
-    "clicks": 9,
+    "spend": 3899,
+    "imp": 675,
+    "clicks": 18,
     "cv": 0
+   }
+  },
+  "2026-11-20": {
+   "Meta/あおぞらTech": {
+    "spend": 3143,
+    "imp": 426,
+    "clicks": 17,
+    "cv": 2
+   },
+   "Meta/ウェビナー": {
+    "spend": 27958,
+    "imp": 10212,
+    "clicks": 381,
+    "cv": 16
+   }
+  },
+  "2026-11-21": {
+   "Meta/ウェビナー": {
+    "spend": 8240,
+    "imp": 2370,
+    "clicks": 145,
+    "cv": 5
    }
   }
  },
@@ -40859,7 +40893,7 @@
    },
    "web": {
     "leads": 0,
-    "cost": 2457,
+    "cost": 3899,
     "appts": 0,
     "mtgs": 0,
     "props": 0,
@@ -40964,7 +40998,7 @@
    },
    "web": {
     "leads": 7,
-    "cost": 0,
+    "cost": 31101,
     "appts": 0,
     "mtgs": 0,
     "props": 0,
@@ -40977,7 +41011,8 @@
     "done": 0,
     "wip": 0,
     "backlog": 7,
-    "blnomail": 1
+    "blnomail": 1,
+    "cv": 18
    },
    "line": {
     "leads": 0,
@@ -41067,8 +41102,8 @@
     "blnomail": 0
    },
    "web": {
-    "leads": 2,
-    "cost": 0,
+    "leads": 5,
+    "cost": 8240,
     "appts": 0,
     "mtgs": 0,
     "props": 0,
@@ -41080,8 +41115,9 @@
     "handled": 0,
     "done": 0,
     "wip": 0,
-    "backlog": 2,
-    "blnomail": 0
+    "backlog": 5,
+    "blnomail": 0,
+    "cv": 5
    },
    "line": {
     "leads": 0,
