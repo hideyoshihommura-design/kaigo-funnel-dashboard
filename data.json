@@ -1,6 +1,6 @@
 {
  "title": "ホリエモンAI学校 介護校 ファネルダッシュボード",
- "generated_at": "2026-11-24",
+ "generated_at": "2026-11-25",
  "week_starts": [
   "2025-09-01",
   "2025-09-08",
@@ -6808,8 +6808,8 @@
     "blnomail": 0
    },
    "web": {
-    "leads": 12,
-    "cost": 28483,
+    "leads": 14,
+    "cost": 55892,
     "appts": 0,
     "mtgs": 0,
     "props": 0,
@@ -6821,9 +6821,9 @@
     "handled": 0,
     "done": 0,
     "wip": 0,
-    "backlog": 12,
+    "backlog": 14,
     "blnomail": 0,
-    "cv": 11
+    "cv": 22
    },
    "line": {
     "leads": 0,
@@ -9858,6 +9858,18 @@
    "vconn": 5,
    "vcalled": 8,
    "cappts": 0
+  },
+  "2026-11-25": {
+   "calls": 0,
+   "connected": 0,
+   "appts": 0,
+   "mtgs": 0,
+   "called": 0,
+   "leads": 2,
+   "vcalls": 0,
+   "vconn": 0,
+   "vcalled": 0,
+   "cappts": 0
   }
  },
  "fs": {
@@ -12887,10 +12899,10 @@
    "cv": 72
   },
   "2026-11-23": {
-   "spend": 25328,
-   "imp": 9126,
-   "clicks": 315,
-   "cv": 10
+   "spend": 47465,
+   "imp": 18165,
+   "clicks": 543,
+   "cv": 19
   }
  },
  "adperf_day": {
@@ -13945,16 +13957,22 @@
    "cv": 14
   },
   "2026-11-23": {
-   "spend": 22230,
-   "imp": 7768,
+   "spend": 22284,
+   "imp": 7775,
    "clicks": 284,
    "cv": 10
   },
   "2026-11-24": {
-   "spend": 3098,
-   "imp": 1358,
-   "clicks": 31,
-   "cv": 0
+   "spend": 19645,
+   "imp": 8492,
+   "clicks": 201,
+   "cv": 8
+  },
+  "2026-11-25": {
+   "spend": 5536,
+   "imp": 1898,
+   "clicks": 58,
+   "cv": 1
   }
  },
  "ad_day": {
@@ -16776,24 +16794,38 @@
   },
   "2026-11-23": {
    "Meta/あおぞらTech": {
-    "spend": 3155,
-    "imp": 654,
-    "clicks": 20,
-    "cv": 1
+    "spend": 4836,
+    "imp": 961,
+    "clicks": 40,
+    "cv": 3
    },
    "Meta/ウェビナー": {
-    "spend": 22230,
-    "imp": 7768,
+    "spend": 22284,
+    "imp": 7775,
     "clicks": 284,
     "cv": 10
    }
   },
   "2026-11-24": {
-   "Meta/ウェビナー": {
-    "spend": 3098,
-    "imp": 1358,
-    "clicks": 31,
+   "Meta/あおぞらTech": {
+    "spend": 3591,
+    "imp": 609,
+    "clicks": 13,
     "cv": 0
+   },
+   "Meta/ウェビナー": {
+    "spend": 19645,
+    "imp": 8492,
+    "clicks": 201,
+    "cv": 8
+   }
+  },
+  "2026-11-25": {
+   "Meta/ウェビナー": {
+    "spend": 5536,
+    "imp": 1898,
+    "clicks": 58,
+    "cv": 1
    }
   }
  },
@@ -41583,7 +41615,7 @@
    },
    "web": {
     "leads": 8,
-    "cost": 25385,
+    "cost": 27120,
     "appts": 0,
     "mtgs": 0,
     "props": 0,
@@ -41597,7 +41629,7 @@
     "wip": 0,
     "backlog": 8,
     "blnomail": 0,
-    "cv": 11
+    "cv": 13
    },
    "line": {
     "leads": 0,
@@ -41688,7 +41720,7 @@
    },
    "web": {
     "leads": 4,
-    "cost": 3098,
+    "cost": 23236,
     "appts": 0,
     "mtgs": 0,
     "props": 0,
@@ -41702,7 +41734,112 @@
     "wip": 0,
     "backlog": 4,
     "blnomail": 0,
-    "cv": 0
+    "cv": 8
+   },
+   "line": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "other": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   }
+  },
+  "2026-11-25": {
+   "event": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "web": {
+    "leads": 2,
+    "cost": 5536,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 2,
+    "blnomail": 0,
+    "cv": 1
    },
    "line": {
     "leads": 0,
