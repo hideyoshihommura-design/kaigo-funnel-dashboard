@@ -1,6 +1,6 @@
 {
  "title": "ホリエモンAI学校 介護校 ファネルダッシュボード",
- "generated_at": "2026-11-26",
+ "generated_at": "2026-11-27",
  "week_starts": [
   "2025-09-01",
   "2025-09-08",
@@ -6504,8 +6504,8 @@
     "called": 36,
     "cappt": 6,
     "handled": 36,
-    "done": 21,
-    "wip": 15,
+    "done": 23,
+    "wip": 13,
     "backlog": 0,
     "blnomail": 0,
     "cv": 48
@@ -6609,8 +6609,8 @@
     "called": 38,
     "cappt": 1,
     "handled": 38,
-    "done": 28,
-    "wip": 10,
+    "done": 29,
+    "wip": 9,
     "backlog": 2,
     "blnomail": 0,
     "cv": 70
@@ -6714,8 +6714,8 @@
     "called": 17,
     "cappt": 0,
     "handled": 17,
-    "done": 13,
-    "wip": 4,
+    "done": 14,
+    "wip": 3,
     "backlog": 31,
     "blnomail": 1,
     "cv": 79
@@ -6808,7 +6808,7 @@
     "blnomail": 0
    },
    "web": {
-    "leads": 24,
+    "leads": 28,
     "cost": 78646,
     "appts": 0,
     "mtgs": 0,
@@ -6821,7 +6821,7 @@
     "handled": 0,
     "done": 0,
     "wip": 0,
-    "backlog": 24,
+    "backlog": 28,
     "blnomail": 0,
     "cv": 32
    },
@@ -9872,14 +9872,14 @@
    "cappts": 0
   },
   "2026-11-26": {
-   "calls": 21,
-   "connected": 0,
+   "calls": 35,
+   "connected": 2,
    "appts": 0,
    "mtgs": 0,
    "called": 0,
-   "leads": 5,
-   "vcalls": 21,
-   "vconn": 0,
+   "leads": 9,
+   "vcalls": 35,
+   "vconn": 2,
    "vcalled": 0,
    "cappts": 0
   }
@@ -39893,8 +39893,8 @@
     "called": 8,
     "cappt": 0,
     "handled": 8,
-    "done": 4,
-    "wip": 4,
+    "done": 5,
+    "wip": 3,
     "backlog": 0,
     "blnomail": 0,
     "cv": 9
@@ -40103,8 +40103,8 @@
     "called": 6,
     "cappt": 1,
     "handled": 6,
-    "done": 2,
-    "wip": 4,
+    "done": 3,
+    "wip": 3,
     "backlog": 0,
     "blnomail": 0,
     "cv": 10
@@ -40733,8 +40733,8 @@
     "called": 3,
     "cappt": 0,
     "handled": 3,
-    "done": 2,
-    "wip": 1,
+    "done": 3,
+    "wip": 0,
     "backlog": 1,
     "blnomail": 0,
     "cv": 9
@@ -40943,8 +40943,8 @@
     "called": 6,
     "cappt": 0,
     "handled": 6,
-    "done": 3,
-    "wip": 3,
+    "done": 4,
+    "wip": 2,
     "backlog": 0,
     "blnomail": 0,
     "cv": 9
@@ -41982,7 +41982,7 @@
     "blnomail": 0
    },
    "web": {
-    "leads": 5,
+    "leads": 9,
     "cost": 4715,
     "appts": 0,
     "mtgs": 0,
@@ -41995,7 +41995,7 @@
     "handled": 0,
     "done": 0,
     "wip": 0,
-    "backlog": 5,
+    "backlog": 9,
     "blnomail": 0,
     "cv": 1
    },
