@@ -6402,7 +6402,7 @@
     "done": 4,
     "wip": 8,
     "backlog": 7,
-    "blnomail": 1,
+    "blnomail": 2,
     "cv": 29
    },
    "line": {
@@ -39088,7 +39088,7 @@
     "done": 1,
     "wip": 0,
     "backlog": 2,
-    "blnomail": 0,
+    "blnomail": 1,
     "cv": 6
    },
    "line": {
