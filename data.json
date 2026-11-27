@@ -6266,35 +6266,35 @@
   },
   "2026-10-19": {
    "event": {
-    "leads": 167,
+    "leads": 166,
     "cost": 583000,
-    "appts": 9,
-    "mtgs": 7,
-    "props": 7,
-    "deals": 9,
+    "appts": 8,
+    "mtgs": 6,
+    "props": 6,
+    "deals": 8,
     "won": 0,
     "won_amount": 0,
-    "called": 121,
-    "cappt": 9,
-    "handled": 121,
-    "done": 35,
+    "called": 120,
+    "cappt": 8,
+    "handled": 120,
+    "done": 34,
     "wip": 86,
     "backlog": 46,
     "blnomail": 5
    },
    "web": {
-    "leads": 3,
+    "leads": 4,
     "cost": null,
-    "appts": 0,
-    "mtgs": 0,
-    "props": 0,
-    "deals": 0,
+    "appts": 1,
+    "mtgs": 1,
+    "props": 1,
+    "deals": 1,
     "won": 0,
     "won_amount": 0,
-    "called": 3,
-    "cappt": 0,
-    "handled": 3,
-    "done": 2,
+    "called": 4,
+    "cappt": 1,
+    "handled": 4,
+    "done": 3,
     "wip": 1,
     "backlog": 0,
     "blnomail": 0,
@@ -6808,8 +6808,8 @@
     "blnomail": 0
    },
    "web": {
-    "leads": 28,
-    "cost": 78646,
+    "leads": 31,
+    "cost": 101530,
     "appts": 0,
     "mtgs": 0,
     "props": 0,
@@ -6821,9 +6821,9 @@
     "handled": 0,
     "done": 0,
     "wip": 0,
-    "backlog": 28,
+    "backlog": 31,
     "blnomail": 0,
-    "cv": 32
+    "cv": 47
    },
    "line": {
     "leads": 0,
@@ -7848,8 +7848,8 @@
    "name": "Care Tex大阪",
    "date": "2026-10-19",
    "cost": 583000,
-   "leads": 167,
-   "deals": 9,
+   "leads": 166,
+   "deals": 8,
    "won": 0,
    "won_amount": 0
   }
@@ -9880,6 +9880,18 @@
    "leads": 9,
    "vcalls": 35,
    "vconn": 2,
+   "vcalled": 0,
+   "cappts": 0
+  },
+  "2026-11-27": {
+   "calls": 0,
+   "connected": 0,
+   "appts": 0,
+   "mtgs": 0,
+   "called": 0,
+   "leads": 3,
+   "vcalls": 0,
+   "vconn": 0,
    "vcalled": 0,
    "cappts": 0
   }
@@ -12932,10 +12944,10 @@
    "cv": 72
   },
   "2026-11-23": {
-   "spend": 65654,
-   "imp": 25036,
-   "clicks": 772,
-   "cv": 28
+   "spend": 83467,
+   "imp": 31338,
+   "clicks": 950,
+   "cv": 42
   }
  },
  "adperf_day": {
@@ -14002,16 +14014,22 @@
    "cv": 8
   },
   "2026-11-25": {
-   "spend": 18985,
-   "imp": 7074,
+   "spend": 19005,
+   "imp": 7090,
    "clicks": 228,
    "cv": 9
   },
   "2026-11-26": {
-   "spend": 4715,
-   "imp": 1682,
-   "clicks": 59,
-   "cv": 1
+   "spend": 17526,
+   "imp": 6411,
+   "clicks": 175,
+   "cv": 13
+  },
+  "2026-11-27": {
+   "spend": 4982,
+   "imp": 1557,
+   "clicks": 62,
+   "cv": 2
   }
  },
  "ad_day": {
@@ -16861,24 +16879,38 @@
   },
   "2026-11-25": {
    "Meta/あおぞらTech": {
-    "spend": 3052,
-    "imp": 562,
-    "clicks": 24,
+    "spend": 5369,
+    "imp": 989,
+    "clicks": 40,
     "cv": 1
    },
    "Meta/ウェビナー": {
-    "spend": 18985,
-    "imp": 7074,
+    "spend": 19005,
+    "imp": 7090,
     "clicks": 228,
     "cv": 9
    }
   },
   "2026-11-26": {
-   "Meta/ウェビナー": {
-    "spend": 4715,
-    "imp": 1682,
-    "clicks": 59,
+   "Meta/あおぞらTech": {
+    "spend": 2754,
+    "imp": 370,
+    "clicks": 16,
     "cv": 1
+   },
+   "Meta/ウェビナー": {
+    "spend": 17526,
+    "imp": 6411,
+    "clicks": 175,
+    "cv": 13
+   }
+  },
+  "2026-11-27": {
+   "Meta/ウェビナー": {
+    "spend": 4982,
+    "imp": 1557,
+    "clicks": 62,
+    "cv": 2
    }
   }
  },
@@ -38712,35 +38744,35 @@
   },
   "2026-10-20": {
    "event": {
-    "leads": 167,
+    "leads": 166,
     "cost": 0,
-    "appts": 9,
-    "mtgs": 7,
-    "props": 7,
-    "deals": 9,
+    "appts": 8,
+    "mtgs": 6,
+    "props": 6,
+    "deals": 8,
     "won": 0,
     "won_amount": 0,
-    "called": 121,
-    "cappt": 9,
-    "handled": 121,
-    "done": 35,
+    "called": 120,
+    "cappt": 8,
+    "handled": 120,
+    "done": 34,
     "wip": 86,
     "backlog": 46,
     "blnomail": 5
    },
    "web": {
-    "leads": 2,
+    "leads": 3,
     "cost": 0,
-    "appts": 0,
-    "mtgs": 0,
-    "props": 0,
-    "deals": 0,
+    "appts": 1,
+    "mtgs": 1,
+    "props": 1,
+    "deals": 1,
     "won": 0,
     "won_amount": 0,
-    "called": 2,
-    "cappt": 0,
-    "handled": 2,
-    "done": 1,
+    "called": 3,
+    "cappt": 1,
+    "handled": 3,
+    "done": 2,
     "wip": 1,
     "backlog": 0,
     "blnomail": 0
@@ -41878,7 +41910,7 @@
    },
    "web": {
     "leads": 7,
-    "cost": 22037,
+    "cost": 24374,
     "appts": 0,
     "mtgs": 0,
     "props": 0,
@@ -41983,7 +42015,7 @@
    },
    "web": {
     "leads": 9,
-    "cost": 4715,
+    "cost": 20280,
     "appts": 0,
     "mtgs": 0,
     "props": 0,
@@ -41997,7 +42029,112 @@
     "wip": 0,
     "backlog": 9,
     "blnomail": 0,
-    "cv": 1
+    "cv": 14
+   },
+   "line": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "referral": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "caretech": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "other": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   }
+  },
+  "2026-11-27": {
+   "event": {
+    "leads": 0,
+    "cost": 0,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 0,
+    "blnomail": 0
+   },
+   "web": {
+    "leads": 3,
+    "cost": 4982,
+    "appts": 0,
+    "mtgs": 0,
+    "props": 0,
+    "deals": 0,
+    "won": 0,
+    "won_amount": 0,
+    "called": 0,
+    "cappt": 0,
+    "handled": 0,
+    "done": 0,
+    "wip": 0,
+    "backlog": 3,
+    "blnomail": 0,
+    "cv": 2
    },
    "line": {
     "leads": 0,
